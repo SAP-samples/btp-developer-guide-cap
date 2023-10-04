@@ -1,6 +1,3 @@
 [submodule "incidents-app"]
 	path = incidents-app
 	url = https://github.com/cap-js/incidents-app
-[submodule "calesi"]
-	path = calesi
-	url = https://github.com/cap-js/calesi

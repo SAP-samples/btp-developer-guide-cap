@@ -93,7 +93,7 @@
     using { API_BUSINESS_PARTNER as S4 } from './external/API_BUSINESS_PARTNER';
     ```
 
-11. Add the following entities to the ProcessorService: 
+11. Add the below code snippet to the ProcessorService: 
 
     ```js
     service ProcessorService {
@@ -102,7 +102,9 @@
 
       @readonly
       entity Customers as projection on my.Customers;
-
+    }
+    
+    extend service ProcessorService {
       entity BusinessPartner as projection on S4.A_BusinessPartner {
         key BusinessPartner as ID,
         FirstName as firstName,

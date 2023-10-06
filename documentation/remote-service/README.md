@@ -1,0 +1,20 @@
+# Project Board
+
+1. [Introduction](./introduction.md)
+1. [Make sure prerequisites are fulfilled and all required systems are in place](./mission-prerequisites/README.md)
+2. [Explore APIs & events in SAP API Business Hub](./explore-apis-and-events/README.md)
+3. [Configure the connectivity between SAP S/4HANA Cloud and SAP BTP](./s4hana-cloud-to-btp-connectivity/README.md)
+4.  [Configure Mock Server - optional](./install-mock-server/README.md)
+    - [Option 1 - Deploy Mock to CF](./install-mock-server/install-mock-server-cf.md)
+    - [Option 2 - Deploy Mock to Kyma](./install-mock-server/install-mock-server-kyma.md)
+5. [Implement Remote Service Connectivity](./develop/extend-app.md)
+6. [Run a developer test with Mock Data](./develop/test-with-mock.md)
+7. [Prepare the app for Production](./deploy/prep-for-prod/prep-for-prod.md)
+7. [Option 1 - Deploy to CF](./deploy/cf/README.md)
+    - [Deploy the application with the SAP S/4HANA Cloud system ](./deploy/cf/deploy-to-cf.md)
+    - [Deploy the Application with Mock Server - optional](./deploy/cf/deploy-app-using-mock-cf.md)
+8. [Option 2 - Deploy to Kyma](./deploy/kyma/README.md)
+    - [Deploy the application with the SAP S/4HANA Cloud system ](./deploy/kyma/deploy-to-kyma.md)
+    - [Deploy the Application with Mock Server - optional](./deploy/kyma/deploy-app-using-mock-kyma.md)
+9. [Test the end to end flow](./test-the-application/test-the-app.md)
+ 

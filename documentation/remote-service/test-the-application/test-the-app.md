@@ -15,6 +15,8 @@ You have sucessfully deployed the application to your Kyma environment.
    
    ![Test app](./images/run-app02.png)
 
+3. While creation of an incident, the Customer value help fetches business partners from remote service.
+
 
 ## Summary
 

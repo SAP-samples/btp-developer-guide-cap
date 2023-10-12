@@ -1,41 +1,79 @@
-# SAP-samples/repository-template
-This default template for SAP Samples repositories includes files for README, LICENSE, and .reuse/dep5. All repositories on github.com/SAP-samples will be created based on this template.
+# BTP Developer's Guide
 
-# Containing Files
+## Overview
 
-1. The LICENSE file:
-In most cases, the license for SAP sample projects is `Apache 2.0`.
+The goal of the SAP BTP Developer’s Guide is to help developers implementing business applications on SAP BTP including the integration with the SAP cloud suite. It consists of the description of the software development and delivery processes, an architecture blueprint with a curated list of services implementing the standard nucleus of SAP’s business applications on SAP BTP, and instructions to deliver SAP Cloud Qualities and Intelligent Enterprise Suite Qualities. The tutorials built using Incident Management application follows the best practices and guidance described in SAP BTP developers guide.
 
-2. The .reuse/dep5 file: 
-The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the .reuse/dep5 in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository.
+## Business Scenario
 
-3. The README.md file (this file):
-Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
+The Incident Management application uses the following sample business scenario:
 
-# [Title]
-<!-- Please include descriptive title -->
+ACME is a popular Electronics company. ACME hires call center support representatives to process and manage customer incidents. A call center support representative (Processor) receives a phone call from an existing customer and creates a new incident on behalf of the customer. The newly created incident is based on a customer complaint received during the phone call so the call center support representative also adds the conversation with the customer to the incident.
 
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
--->
+## Solution Diagram
 
-## Description
-<!-- Please include SEO-friendly description -->
 
-## Requirements
+![Solution Diagram](Solution-Diagram.png)
 
-## Download and Installation
+## Entitlements
+
+The application requires the following set of [Entitlements and Quotas](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/00aa2c23479d42568b18882b1ca90d79.html?locale=en-US) in the SAP BTP cockpit:
+
+### Deployment on CF
+
+| Service                           | Plan               | Number of Instances |
+|-----------------------------------|------------------- |:-------------------:|
+| SAP HANA Schemas & HDI Containers | hdi-shared         |          1          |
+| SAP HANA Cloud                    | tools              |  Subscription       |
+| SAP HANA Cloud                    | hana               |          1          |
+| Cloud Foundry Runtime                      |   MEMORY                 |          1          |
+| SAP Build Work Zone, standard edition             | standard/free      |  Subscription       |
+
+### Deployment on Kyma
+
+| Service                           | Plan               | Number of Instances |
+|-----------------------------------|------------------- |:-------------------:|
+| SAP HANA Schemas & HDI Containers | hdi-shared         |          1          |
+| SAP HANA Cloud                    | tools              |  Subscription       |
+| SAP HANA Cloud                    | hana               |          1          |
+| Kyma runtime                      |                    |          1          |
+| SAP Build Work Zone, standard edition              | standard/free      |  Subscription       |
+
+## Tutorials
+
+Best practices are documented in a step-by-step tutorial/guide for learning how to develop, deploy and operate a full stack application using SAP Cloud Application Programming Model and SAP Fiori. 
+
+The tutorial also describes how to use a set of most important BTP services in a CAP application. A reference implementation is provided based on “Incidents management “ example as part of the tutorial to provide hands-on experience. 
+
+Best practices are documented in a step-by-step tutorial/guide for learning how to develop, deploy and operate a full stack application using SAP Cloud Application Programming Model and SAP Fiori. 
+
+The tutorials built using the Incident Management application are organized in two parts: 
+
+- Beginner tutorials 
+- Advanced modules 
+
+The beginner tutorials cover the following basic steps for Cloud Foundry and Kyma runtimes: 
+
+- Setting up the development environment 
+- Building a CAP application with SAP Fiori elements user interface and a custom logic 
+- Adding local launchpad, authorization and tests for local development  
+- Deploying the application in a productive account  
+- Setting up continuous integration and delivery pipeline   
+
+The advanced modules are built on top of the beginner tutorials. Depending on what you need, you can pick the different modules. For each of these modules, the beginner tutorials is a prerequisite. The modules are: 
+
+- Integrating Change tracking to Incident Management Application
+- Remote service integration using the SAP Destination and SAP Connectivity service 
+- Eventing using the SAP Event Mesh service which is built on top of Remote Service sample
+- Audit logging using SAP Audit Log service 
 
 ## Known Issues
-<!-- You may simply state "No known issues. -->
 
-## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
- 
-For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
+No known issues.
 
-## Contributing
-If you wish to contribute code, offer fixes or improvements, please send a pull request. Due to legal reasons, contributors will be asked to accept a DCO when they create the first pull request to this project. This happens in an automated fashion during the submission process. SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
+## How to Obtain Support
+
+In case you find a bug, or you need additional support, please open an issue here in GitHub.
 
 ## License
-Copyright (c) 2023 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
+Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.

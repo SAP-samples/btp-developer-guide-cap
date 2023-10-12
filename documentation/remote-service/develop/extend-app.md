@@ -87,23 +87,15 @@
     to_PhoneNumber : Composition of many API_BUSINESS_PARTNER.A_AddressPhoneNumber on to_PhoneNumber.AddressID = AddressID;
     ```
 
-10. In the next steps we add some of the Business Partner entities to the project service model. Open the  srv/processors-service.cds file. On the top add the import for the Business Partner API
+10. Create new file extend.cds in srv folder.
+
+11. Copy the below snippet to the newly created extend.cds file
 
     ```js
+    using { sap.capire.incidents as my } from '../db/schema';
     using { API_BUSINESS_PARTNER as S4 } from './external/API_BUSINESS_PARTNER';
-    ```
+    using from './processor-service';
 
-11. Add the below code snippet to the ProcessorService: 
-
-    ```js
-    service ProcessorService {
-
-      entity Incidents as projection on my.Incidents;
-
-      @readonly
-      entity Customers as projection on my.Customers;
-    }
-    
     extend service ProcessorService {
       entity BusinessPartner as projection on S4.A_BusinessPartner {
         key BusinessPartner as ID,
@@ -150,33 +142,35 @@
 
   * Add the custom handler implementation after the init method
       ```js
-      async onCustomerRead(req) {
-        console.log('>> delegating to S4 service...', req.query);
-        const top = parseInt(req._queryOptions?.$top) || 100;
-        const skip = parseInt(req._queryOptions?.$skip) || 0;
+        async onCustomerRead(req) {
+          console.log('>> delegating to S4 service...', req.query);
+          const top = parseInt(req._queryOptions?.$top) || 100;
+          const skip = parseInt(req._queryOptions?.$skip) || 0;
+        
+          const { BusinessPartner } = this.entities;
 
-        const { BusinessPartner } = this.entities;
+          // Expands are required as the runtime does not support path expressions for remote services
+          let result = await this.S4bupa.run(SELECT.from(BusinessPartner, bp => {
+            bp('*'),
+              bp.addresses(address => {
+                address('email'),
+                  address.email(emails => {
+                    emails('email');
+                  });
+              })
+          }).limit(top, skip));
+        
+          result = result.map((bp) => ({
+            ID: bp.ID,
+            name: bp.name,
+            email: bp.addresses[0]?.email[0]?.email
+          }));
 
-        var result = await this.S4bupa.run(SELECT.from(BusinessPartner, bp => {
-          bp('*'),
-            bp.addresses(address => {
-              address('*'),
-                address.email(emails => {
-                  emails('*');
-                });
-            })
-        }).limit(top, skip));
-
-        result = result.map((bp) => ({
-          ID: bp.ID,
-          name: bp.name,
-          email: bp.addresses[0]?.email[0]?.email
-        }));
-        result.$count = 1000;
-        console.log("after result", result);
-        return result;
-      }
-      
+          // Explicitly set $count so the values show up in the value help in the UI
+          result.$count = 1000;
+          console.log("after result", result);
+          return result;
+        }   
     ```
 
 *  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add the below code snippet to the init method
@@ -186,38 +180,40 @@
     this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
     ```
 * Add the custom handler after init method
+
   ```js
-  async onCustomerCache(req, next) {
+    async onCustomerCache(req, next) {
       const { Customers } = this.entities;
-      const newCustomerId = req.data.customer_ID
+      const newCustomerId = req.data.customer_ID;
       const result = await next();
       const { BusinessPartner } = this.entities;
       if (newCustomerId && (newCustomerId !== "") && ((req.event == "CREATE") || (req.event == "UPDATE"))) {
-        console.log('>> CREATE or UPDATE customer!')
-        var customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp => {
+        console.log('>> CREATE or UPDATE customer!');
+
+        // Expands are required as the runtime does not support path expressions for remote services
+        const customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp => {
           bp('*'),
             bp.addresses(address => {
-              address('*'),
+              address('email', 'phoneNumber'),
                 address.email(emails => {
-                  emails('*')
+                  emails('email')
                 }),
                 address.phoneNumber(phoneNumber => {
-                  phoneNumber('*')
+                  phoneNumber('phone')
                 })
             })
         }).where({ ID: newCustomerId }));
-        customer.email = customer.addresses[0]?.email[0]?.email
-        customer.phone = customer.addresses[0]?.phoneNumber[0]?.phone
-      };
-      if (customer) {
-        delete customer.addresses;
-        delete customer.name;
-        await UPSERT.into(Customers).entries(customer)
+                                                                                      
+        if(customer) {
+          customer.email = customer.addresses[0]?.email[0]?.email;
+          customer.phone = customer.addresses[0]?.phoneNumber[0]?.phone;
+          delete customer.addresses;
+          delete customer.name;
+          await UPSERT.into(Customers).entries(customer);
+        }
       }
-
       return result;
-    }
-
+      }
     ```
 
 11. To run tests, navigate to `tests/test.js` and  Replace line no.3 with the below code snippet

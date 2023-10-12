@@ -13,6 +13,8 @@ ACME is a popular Electronics company. ACME hires call center support representa
 ## Solution Diagram
 
 
+![Solution Diagram](Solution-Diagram.png)
+
 ## Entitlements
 
 The application requires the following set of [Entitlements and Quotas](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/00aa2c23479d42568b18882b1ca90d79.html?locale=en-US) in the SAP BTP cockpit:
@@ -26,8 +28,6 @@ The application requires the following set of [Entitlements and Quotas](https://
 | SAP HANA Cloud                    | hana               |          1          |
 | Cloud Foundry Runtime                      |   MEMORY                 |          1          |
 | SAP Build Work Zone, standard edition             | standard/free      |  Subscription       |
-
-
 
 ### Deployment on Kyma
 

@@ -292,16 +292,16 @@ It is recommended to use a technical user for this secret that has only read per
 ---
 
 ## Download and Setup the Project Locally
-1. In SAP Business Application Studio, right click on the project folder (`Incident-mgmt``) and choose **Download**.
+1. In SAP Business Application Studio, right click on the project folder (`Incidents-app``) and choose **Download**.
 ![Generated Charts1](./images/downloadproject.png)
 
-2. Extract the downloaded file `incident-mgmt.tar`.
+2. Extract the downloaded file `incidents-app.tar`.
 
 3. Open a command line window.
 
 4. Open the project in VS code:
   ```bash
-  code incidents-mgmt
+  code incidents-app
   ```
 
 ## Add Configurations for UI
@@ -426,7 +426,7 @@ Replace `YOUR_MTA_ID` in the above command with the `ID` from mta.yaml file.
 Run the below command to undeploy your application from SAP BTP Kyma Runtime
 
   ```sh
-  helm uninstall incidents-mgmt -n <YOUR_NAMESPACE>
+  helm uninstall incidents-app -n <YOUR_NAMESPACE>
   ```
 
 

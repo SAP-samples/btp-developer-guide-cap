@@ -74,20 +74,14 @@ cds add mta
 3. Choose **Start**.
 ![V4 Template](./images/approuter1.png)
 
-4. In the next dialog, choose **Use a Local CAP Project** and choose your current **`incidents-mgmnt`** project.
-
-5. Choose **Next**.
-![V4 Template](./images/approuter2.png)
-
 6. Choose **Managed Approuter** in **Approuter Configuration** .
-![V4 Template](./images/approuter3.png)
     
 7. Enter `incidents` as the business solution name.
 
 8. Select **yes** for the **Plan to add a UI**.
- ![V4 Template](./images/approuter3.png)
 
 9. Choose **Next**.
+![V4 Template](./images/approuter5.png)
 
 10. Select **do not overwrite** for xs-security.json.
 
@@ -102,52 +96,52 @@ _schema-version: '3.1'
 ...
 module:
   ...
-- name: incidents-destination-content
+- name: incident-management-destination-content
   type: com.sap.application.content
   requires:
-  - name: incidents-destination-service
+  - name: incident-management-destination-service
     parameters:
       content-target: true
-  - name: incidents_html_repo_host
+  - name: incident-management_html_repo_host
     parameters:
       service-key:
-        name: incidents_html_repo_host-key
-  - name: incidents-auth
+        name: incident-management_html_repo_host-key
+  - name: incident-management-auth
     parameters:
       service-key:
-        name: incidents-auth-key
+        name: incident-management-auth-key
   parameters:
     content:
       instance:
         destinations:
-        - Name: incidents_incidents_html_repo_host
-          ServiceInstanceName: incidents-html5-app-host-service
-          ServiceKeyName: incidents_html_repo_host-key
+        - Name: incidents_incident_management_html_repo_host
+          ServiceInstanceName: incident-management-html5-app-host-service
+          ServiceKeyName: incident-management_html_repo_host-key
           sap.cloud.service: incidents
         - Authentication: OAuth2UserTokenExchange
-          Name: incidents_incidents_auth
-          ServiceInstanceName: incidents-auth
-          ServiceKeyName: incidents-auth-key
+          Name: incidents_incident_management_auth
+          ServiceInstanceName: incident-management-auth
+          ServiceKeyName: incident-management-auth-key
           sap.cloud.service: incidents
         existing_destinations_policy: ignore
   build-parameters:
     no-source: true
   ...
 resources: 
-- name: incidents-destination-service
+- name: incident-management-destination-service
   type: org.cloudfoundry.managed-service
   parameters:
     config:
       HTML5Runtime_enabled: true
       version: 1.0.0
     service: destination
-    service-name: incidents-destination-service
+    service-name: incident-management-destination-service
     service-plan: lite
-- name: incidents_html_repo_host
+- name: incident-management_html_repo_host
   type: org.cloudfoundry.managed-service
   parameters:
     service: html5-apps-repo
-    service-name: incidents-html5-app-host-service
+    service-name: incident-management-html5-app-host-service
     service-plan: app-host
 parameters:
   enable-parallel-deployments: true
@@ -173,7 +167,7 @@ build-parameters:
 4. Select **Local CAP Project API** in destination name and choose the option yes for Edit the deployment configurations.
 
 5. Choose **Finish**.
-![V4 Template](./images/ui2.png)
+![V4 Template](./images/ui3.png)
 
 The above steps will add SAP Cloud service at the end of `app/incidents/webapp/manifest.json`:
 
@@ -191,11 +185,11 @@ _schema-version: '3.1'
 ...
 module:
   ...
-- name: incidents-app-content
+- name: incident-management-app-content
   type: com.sap.application.content
   path: .
   requires:
-  - name: incidents_html_repo_host
+  - name: incident-management_html_repo_host
     parameters:
       content-target: true
   build-parameters:
@@ -217,7 +211,7 @@ module:
     supported-platforms: []
   ...
 resources: 
-- name: incidents-destination-service
+- name: incident-management-destination-service
   type: org.cloudfoundry.managed-service
   parameters:
     config:
@@ -233,14 +227,14 @@ resources:
           - Authentication: NoAuthentication
             HTML5.DynamicDestination: true
             HTML5.ForwardAuthToken: true
-            Name: incidents-srv-api
+            Name: incident-management-srv-api
             ProxyType: Internet
             Type: HTTP
             URL: ~{srv-api/srv-url}
           existing_destinations_policy: update
       version: 1.0.0
     service: destination
-    service-name: incidents-destination-service
+    service-name: incident-management-destination-service
     service-plan: lite
   requires:
   - name: srv-api
@@ -298,16 +292,16 @@ It is recommended to use a technical user for this secret that has only read per
 ---
 
 ## Download and Setup the Project Locally
-1. In SAP Business Application Studio, right click on the project folder (`Incident-mgmt``) and choose **Download**.
+1. In SAP Business Application Studio, right click on the project folder (`Incidents-app``) and choose **Download**.
 ![Generated Charts1](./images/downloadproject.png)
 
-2. Extract the downloaded file `incident-mgmt.tar`.
+2. Extract the downloaded file `incidents-app.tar`.
 
 3. Open a command line window.
 
 4. Open the project in VS code:
   ```bash
-  code incidents-mgmt
+  code incidents-app
   ```
 
 ## Add Configurations for UI
@@ -432,7 +426,7 @@ Replace `YOUR_MTA_ID` in the above command with the `ID` from mta.yaml file.
 Run the below command to undeploy your application from SAP BTP Kyma Runtime
 
   ```sh
-  helm uninstall incidents-mgmt -n <YOUR_NAMESPACE>
+  helm uninstall incidents-app -n <YOUR_NAMESPACE>
   ```
 
 

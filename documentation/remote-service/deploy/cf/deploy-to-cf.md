@@ -29,25 +29,16 @@ Extend the existing MTA build file with the settings for SAP S/4HANA Cloud exten
 
 **Note** - As **system-name** you must enter the name of your the registered SAP S/4HANA Cloud system.
 
-3. Add the below code snippet to mta.yaml resources
-    ```yaml
-      - name: incidents-destination
-        type: org.cloudfoundry.managed-service
-        parameters:
-          service: destination
-          service-plan: lite
-    ```
-
-4. In the incidents-mgmt-srv module requires section add **- name: incidents-mgmt-destination-service**
+4. In the incident-management-srv module requires section add **- name: incident-management-destination-service**
    
     ```yaml
-    - name: incidents-mgmt-srv
+    - name: incident-management-srv
       type: nodejs
       path: gen/srv
       requires:
-      - name: incidents-mgmt-auth
-      - name: incidents-mgmt-db
-      - name: incidents-mgmt-destination-service
+      - name: incident-management-auth
+      - name: incident-management-db
+      - name: incident-management-destination-service
     ....
     ```
 
@@ -55,7 +46,7 @@ Extend the existing MTA build file with the settings for SAP S/4HANA Cloud exten
    
    ![build mtar](./images/build_mtar.png)
 
-5. If the build was successful, you find the generated file in the mta_archives folder. Right-click on incidents_1.0.0.mtar and select **Deploy MTA Archive**  
+5. If the build was successful, you find the generated file in the mta_archives folder. Right-click on incident-management_1.0.0.mtar and select **Deploy MTA Archive**  
    
    ![deploy mtar](./images/deploy_mtar.png)
 
@@ -65,4 +56,7 @@ Extend the existing MTA build file with the settings for SAP S/4HANA Cloud exten
 
    ![login](./images/select_account.png)
 
-You have to [Assign Application Roles](../../../../administrate/User-Role-Assigment/User-Role-Assignment.md) to be able to access the application via the URL.
+
+You'll need to [Assign Application Roles]() before you can access the application.
+
+Next step, proceed to [Integrate with SAP Build Workzone]() to access the application in launchpad.

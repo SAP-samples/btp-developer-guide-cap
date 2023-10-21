@@ -106,6 +106,7 @@ To increase your development speed, it is helpful to run and test your implement
       ![run test](./images/test-app03.png)
    
    * Set Title, Customer, Status and Urgency. 
+   * The value help for Customer fetches data from mock server.
    * Create a conversation.
    * Choose Create to save the settings.
      

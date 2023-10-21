@@ -2,27 +2,23 @@
 
 ## Prerequisites
 
+* You have ensured that the [prerequisites are fullfilled and all the required systems are in place](../mission-prerequisites/README.md)
 * You have downloaded the [Business Partner API](../prepare/explore-apis-and-events/README.md)
 
-  
 ## Content
 
-1. Clone the incident management application from Github. 
+1. Navigate to the project's root folder of incident management application. 
    
-   ```bash
-   git clone https://github.com/cap-js/incidents-app.git
-   ```
-
-2.  Change the name in package.json to `incidents-mgmt`
+2.  Change the name in package.json to `incident-management`
     
     ```js
     {
-      "name": "incidents-mgmt",
+      "name": "incident-management",
       "version": "1.0.0",
       "dependencies": {
         ....
     ```
-3. Now we need to add some additional libraries to the package.json for the communication with external systems. In the terminal go to the incidents-mgmt folder and run the following command:  
+3. Now we need to add some additional libraries to the package.json for the communication with external systems. In the terminal go to the project's root folder of incident management application and run the following command:  
    
    ```bash
    npm add @sap-cloud-sdk/http-client@3.x @sap-cloud-sdk/util@3.x @sap-cloud-sdk/connectivity@3.x @sap-cloud-sdk/resilience@3.x

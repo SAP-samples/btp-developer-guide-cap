@@ -2,11 +2,13 @@
 
 ## Clone the Incident Management Application
 
-Run the below command to clone the Incident Management Application
+1. Run the below command to clone the Incident Management Application
 
   ```sh
   git clone https://github.com/cap-js/incidents-app.git
   ```
+
+2. Navigate to **package.json** file from the project's root folder and modify the **name** to **incident-management**
 
 Based on the SAP BTP Runtime environment to which you want to deploy your application, you can choose one of the below two options
 
@@ -16,9 +18,8 @@ Based on the SAP BTP Runtime environment to which you want to deploy your applic
 # Prepare application to Deploy to Cloud Foundry
 
 ## Preliminary Setup
-- Setup SAP BTP Account. Either [create and configure a new account](../../administrate/Prepare-BTP/Prepare-BTP.md) or get access to an existing one. 
-- [User Role Assignment](../../administrate/User-Role-Assigment/User-Role-Assignment.md)
-- [Get the required SAP BTP service entitlements](../../administrate/Prepare-BTP/Configure-BTP-CF.md)
+
+- [Prepare for SAP BTP Development with Cloud Foundry Runtime]()
 
 ---
 **Info:**
@@ -74,18 +75,18 @@ cds add mta
 3. Choose **Start**.
 ![V4 Template](./images/approuter1.png)
 
-6. Choose **Managed Approuter** in **Approuter Configuration** .
+4. Choose **Managed Approuter** in **Approuter Configuration** .
     
-7. Enter `incidents` as the business solution name.
+5. Enter `incidents` as the business solution name.
 
-8. Select **yes** for the **Plan to add a UI**.
+6. Select **yes** for the **Plan to add a UI**.
 
-9. Choose **Next**.
+7. Choose **Next**.
 ![V4 Template](./images/approuter5.png)
 
-10. Select **do not overwrite** for xs-security.json.
+8. Select **do not overwrite** for xs-security.json.
 
-11. Choose **finish**.
+9. Choose **finish**.
 
  ![V4 Template](./images/approuter4.png)
 
@@ -155,6 +156,8 @@ build-parameters:
 * This snippet adds `destinations` required by `SAP Build workzone` - HTML5 repo host service and xsuaa service
 * The `html5-apps-repo` service with plan `app-host` is required to deploy the HTML5 applications to the HTML5 Application Repository.
 
+10. Add 
+
 ## Add UI Application
 
 1. In SAP Business Application Studio, invoke the Command Palette ( **View** &rarr; **Command Palette** or <kbd>Shift</kbd> + <kbd>Command</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows) and choose **Fiori: Open Application info**.
@@ -178,7 +181,7 @@ The above steps will add SAP Cloud service at the end of `app/incidents/webapp/m
   }
 ```
 
-The above steps will generate the following module and update the resouces in **mta.yaml**:
+6. The above steps will generate the following module and update the resouces in **mta.yaml**:
 
 ```yaml hl_lines="5-9"
 _schema-version: '3.1'
@@ -247,10 +250,7 @@ resources:
 
 ## Preliminary Setup
 - [Download your project from SAP Business Application Studio](#download-and-setup-the-project-locally), unzip and import it into Visual Studio Code.
-- Setup SAP BTP Account. Either [create and configure a new account](../../administrate/Prepare-BTP/Prepare-BTP.md) or get access to an existing one. 
-- [User and Role assignment](../../administrate/User-Role-Assigment/User-Role-Assignment.md)
-- An [SAP HANA Cloud database](../../administrate/HANA-Cloud-Setup/HANA-Cloud-Setup.md) running in your subaccount.
-- Enable the Kyma runtime. [Enable Kyma](https://developers.sap.com/tutorials/cp-kyma-getting-started.html)
+- [Prepare for SAP BTP Development with Kyma Runtime]()
 - Download and install the following command line tools:
   - [kubectl command line client for Kubernetes](https://kubernetes.io/docs/tasks/tools/)
   - [Docker Desktop](https://docs.docker.com/get-docker/) is a paid subscription and it costs approx 12.45 EUR/Month
@@ -258,7 +258,6 @@ resources:
   - [helm command line tool](https://helm.sh/docs/intro/install/)
 - [Access Kyma instance using kubectl](https://help.sap.com/docs/btp/sap-business-technology-platform/access-kyma-instance-using-kubectl?locale=244dbc262b5c4d37a42cfd7405e4719e.html)
 - Use the image artifactory recommended by your organization. Incase if you dont have an artifactory you can use [dockerhub](https://docs.docker.com/docker-hub/quickstart/) for a non-productive usage.
-- Get the required SAP BTP service entitlements
 
 ## Overview
 SAP BTP, Kyma runtime is a cloud-native application runtime that combines the power of Kubernetes with a set of best-in-class tools and open-source components that empower you to develop, run, and operate secure and scalable cloud-native applications. Detailed information is available at [Kyma Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment).
@@ -405,10 +404,7 @@ The files in the charts folder support the deployment of your CAP service, datab
 
 # Undeploy the Application
 
-Based on the SAP BTP Runtime environment to which you had deployed your application, you can choose one of the below two options
-
-  - [Undeploy application from Cloud Foundry](#undeploy-application-from-cloud-foundry)
-  - [Undeploy application from Kyma Runtime](#undeploy-application-from-kyma)
+Based on the SAP BTP Runtime environment to which you had deployed your application, you can choose one of the below two options:
   
 ## Undeploy application from Cloud Foundry
 
@@ -426,7 +422,7 @@ Replace `YOUR_MTA_ID` in the above command with the `ID` from mta.yaml file.
 Run the below command to undeploy your application from SAP BTP Kyma Runtime
 
   ```sh
-  helm uninstall incidents-app -n <YOUR_NAMESPACE>
+  helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>
   ```
 
 

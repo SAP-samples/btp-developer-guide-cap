@@ -9,7 +9,7 @@ In essence, these are the steps you need to follow:
 
 2. An additional 256 MB of Cloud Foundry runtim is required for deploying Mock Server.
 
-3. Create a [destination](#create-destination-to-mock-server) to the mock server in the same subaccount as your SAP AppGyver subscription.
+3. Create a [destination](#create-destination-to-mock-server) to the mock server in the same SAP BTP subaccount.
 
 > This installation of the mock server is only needed if you want to test an application deployed for cloud foundry. For running local developement test you could use the local mock server. 
 
@@ -29,9 +29,9 @@ In essence, these are the steps you need to follow:
 2. In the left-hand navidation, choose **Cloud Foundry** &rarr; **Spaces**, copy the Space name and write it in a text editor of your choice.
 
 **In SAP Business Application Studio:**
-1. In the tabs, choose **View** and select **Find Command**.
+1. In the tabs, choose **View** and select **Command Palette**.
 
-2. Search for **CF Login** and select **CF: Login on to Cloud Foundry**.
+2. Search for **CF Login** and select **CF: Login to Cloud Foundry**.
 
 3. Enter the Cloud Foundy API endpoint you have copied from SAP BTP cockpit or take the default suggested API endpoint.
 
@@ -94,4 +94,4 @@ In essence, these are the steps you need to follow:
 
 1. Call the **Application Route**.
 
-2. There are couple of options to display the data of the mock server. For example, call the **Open API** endpoint and you will get a Swagger UI where you can test the OData services.
+2. There will be couple of api end points to display the data.

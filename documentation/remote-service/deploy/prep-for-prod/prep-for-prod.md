@@ -91,4 +91,4 @@ For more information, [see SAP Help](https://help.sap.com/viewer/65de2977205c403
         }
     }
     ```
-> If you deploy to Cloud Foundry then the **destination** would be `incidents-api-access` for Kyma it's `incidents-mgmt-s4-hana-cloud`. 
+> If you deploy to Cloud Foundry then the **destination** would be `incidents-api-access` for Kyma it's `incident-management-s4-hana-cloud`. 

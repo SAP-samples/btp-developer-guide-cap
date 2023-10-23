@@ -14,23 +14,23 @@ Deploy the project to Cloud Foundry using the MTA build file
 
     ```json
         "credentials": {
-                "destination": "<destination_name>",
-                "path": "/v2/odata/v4/api-business-partner"
-                }
+            "destination": "<destination_name>",
+            "path": "/v2/odata/v4/api-business-partner"
+        }
     ```
 
 **Note** - As **destination_name** you must enter the name of the destination created while installing mock server to SAP BTP Cloud Foundry Runtime.
 
-1. In the incidents-srv module requires section add **- name: incidents-destination-service**
+1. In the incidents-srv module requires section add **- name: incident-management-destination-service**
    
     ```yaml
-    - name: incidents-srv
+    - name: incident-management-srv
       type: nodejs
       path: gen/srv
       requires:
-      - name: incidents-auth
-      - name: incidents-db
-      - name: incidents-destination-service
+      - name: incident-management-auth
+      - name: incident-management-db
+      - name: incident-management-destination-service
     ....
     ```
 
@@ -47,3 +47,7 @@ Deploy the project to Cloud Foundry using the MTA build file
    ![login](./images/login.png)
 
    ![login](./images/select_account.png)
+
+You'll need to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) before you can access the application.
+
+Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.

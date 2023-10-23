@@ -23,11 +23,11 @@ The application requires the following set of [Entitlements and Quotas](https://
 
 | Service                           | Plan               | Number of Instances |
 |-----------------------------------|------------------- |:-------------------:|
-| SAP HANA Schemas & HDI Containers | hdi-shared         |          1          |
+| Cloud Foundry Runtime             | free (Environment) |    1
+|SAP HANA Schemas & HDI Containers  | hdi-shared         |          1          |
 | SAP HANA Cloud                    | tools              |  Subscription       |
-| SAP HANA Cloud                    | hana               |          1          |
-| Cloud Foundry Runtime                      |   MEMORY                 |          1          |
-| SAP Build Work Zone, standard edition             | standard/free      |  Subscription       |
+| SAP HANA Cloud                    | hana-free          |          1          |
+| SAP Build Work Zone, standard edition| standard/free(Application) |  Subscription |
 
 ### Deployment on Kyma
 
@@ -35,9 +35,9 @@ The application requires the following set of [Entitlements and Quotas](https://
 |-----------------------------------|------------------- |:-------------------:|
 | SAP HANA Schemas & HDI Containers | hdi-shared         |          1          |
 | SAP HANA Cloud                    | tools              |  Subscription       |
-| SAP HANA Cloud                    | hana               |          1          |
-| Kyma runtime                      |                    |          1          |
-| SAP Build Work Zone, standard edition              | standard/free      |  Subscription       |
+| SAP HANA Cloud                    | hana-free               |          1          |
+| Kyma runtime                      | Standard             |          1          |
+| SAP Build Work Zone, standard edition    | standard/free(Application)      |  Subscription       |
 
 ## Tutorials
 

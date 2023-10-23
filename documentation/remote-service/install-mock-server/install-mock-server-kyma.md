@@ -5,13 +5,13 @@
 If you don't have access to an SAP backend system (ECC, SAP S/4HANA or SAP on-premise system) but still need OData services with some data, you can use this [mock server application](https://github.com/SAP-samples/cloud-extension-ecc-business-process/blob/mock/README.md). It contains some entities of SAP OData services with sample data.
 
 In essence, these are the steps you need to follow:
-1. Install the mock server [SAP Business Application Studio](#option-1-install-the-mock-server)
+1. Install the [mock server](#option-1-install-the-mock-server)
 
-2. Create a [destination](#create-destination-to-mock-server) to the mock server in the same subaccount as your SAP AppGyver subscription.
+2. Create a [destination](#create-destination-to-mock-server) to the mock server in your same subaccount.
 
 > This installation of the mock server is only needed if you want to test an application deployed for Kyma Runtime. For running local developement test you could use the local mock server. 
 
-## Install the Mock Server Using SAP Business Application Studio
+## Install the Mock Server
 
 ### Prerequisites
 
@@ -96,26 +96,31 @@ In essence, these are the steps you need to follow:
 
     - Add your container image settings `<your-container-registry>` and `tag` to your `chart/values.yaml`
 
+7. Run the below command to create a namespace if it is not done already
+
+   ```sh
+   kubectl create namespace incidents-namespace
+   kubectl label namespace incidents-namespace istio-injection=enabled
+   ```
+
 7. Deploy mock server using
 
     ```yaml
     helm upgrade --install mock ./chart -n <namespace>
     ```   
 
-8. Get the api url for the installed mock server <To DO>
+8. Copy the service url for the installed mock server from the terminal
+
+    ![kyma api url](./images/kyma-api.png)
 
 ## Create Destination to Mock Server
 
-1. In SAP BTP cockpit, go to your subaccount and navigate to the space where you have deployed the mock server. In the **Applications** section, choose the **mock-srv** application.
-
-2. In the application overview screen, copy the **Application Route** of the mock server.
-
-3. Go back to the subaccount overview and choose **Connectivity** &rarr; **Destination**. Then, choose **New Destination**. 
+3. Go to your SAP BTP cockpit and navigate to the subaccount overview and choose **Connectivity** &rarr; **Destination**. Then, choose **New Destination**. 
   1. Enter the following values:
 
       * **Name** = *[Some destination name depending on your mission]*
       * **Type** = HTTP
-      * **URL** = *[URL for your OData entities]* e.g. https://\<The application route of the mock server\>/v2/op-api-business-partner-srv/
+      * **URL** = *[service url for the installed mock server]* e.g. https://\<The application route of the mock server\>/v2/op-api-business-partner-srv/
       * **Proxy Type** = Internet
       * **Authentication** = NoAuthentication
 
@@ -129,4 +134,4 @@ In essence, these are the steps you need to follow:
 
 1. Call the **Application Route**.
 
-2. There are couple of options to display the data of the mock server. For example, call the **Open API** endpoint and you will get a Swagger UI where you can test the OData services.
+2. There will be couple of api end points to display the data.

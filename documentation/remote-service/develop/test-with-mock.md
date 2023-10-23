@@ -78,6 +78,7 @@ To increase your development speed, it is helpful to run and test your implement
    > If the API_BUSINESS_PARTNER doesn't show up, remove the .cds-services.json file - you find it in the user root folder (e.g.: /home/user/.cds-services.json) 
 
 4.  Open a new terminal and run `cds watch`. This will start the application connected to the running mock service.
+   >In case you had previously deployed the application to Kyma Runtime -  Navigate to `app/incidents/resources/webapp` folder and move the webapp folder to `app/incidents`. Also, delete the resources folder.
 5. In a browser, open the server URL: `http://localhost:4004`.
 6. There are two URLs under web applications:
  

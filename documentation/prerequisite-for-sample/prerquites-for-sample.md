@@ -19,7 +19,7 @@ Based on the SAP BTP Runtime environment to which you want to deploy your applic
 
 ## Preliminary Setup
 
-- [Prepare for SAP BTP Development with Cloud Foundry Runtime]()
+- [Prepare for SAP BTP Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html)
 
 ---
 **Info:**
@@ -251,6 +251,7 @@ resources:
 ## Preliminary Setup
 - [Download your project from SAP Business Application Studio](#download-and-setup-the-project-locally), unzip and import it into Visual Studio Code.
 - [Prepare for SAP BTP Development with Kyma Runtime]()
+- [SAP BTP Operator Module is enabled](https://help.sap.com/docs/btp/sap-business-technology-platform/enable-and-disable-kyma-module#loio1b548e9ad4744b978b8b595288b0cb5c)
 - Download and install the following command line tools:
   - [kubectl command line client for Kubernetes](https://kubernetes.io/docs/tasks/tools/)
   - [Docker Desktop](https://docs.docker.com/get-docker/) is a paid subscription and it costs approx 12.45 EUR/Month

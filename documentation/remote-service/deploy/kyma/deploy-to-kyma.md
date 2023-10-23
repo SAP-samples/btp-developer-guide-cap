@@ -42,7 +42,8 @@ The pack CLI builds the image that contains the build result in the gen/srv fold
 
 ### Build UI Deployer image
 
- Build the image:
+1. Create a new folder called `resources` under `app/incidents` and move `webapp` folder to `resources`.
+2. Build the image:
 
     ```sh
     pack build <your-container-registry>/incidents-mgmt-html5-deployer:<image-version> \

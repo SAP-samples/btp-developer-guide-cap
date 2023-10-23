@@ -31,7 +31,7 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
 2. Build the image:
 
     ```sh
-    pack build <your-container-registry>/incidents-mgmt-srv:<image-version> \
+    pack build <your-container-registry>/incident-management-srv:<image-version> \
         --path gen/srv \
         --builder paketobuildpacks/builder-jammy-base \
         --publish
@@ -46,7 +46,7 @@ The pack CLI builds the image that contains the build result in the gen/srv fold
 2. Build the image:
 
     ```sh
-    pack build <your-container-registry>/incidents-mgmt-html5-deployer:<image-version> \
+    pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
         --path app/incidents \
         --builder paketobuildpacks/builder-jammy-base \
         --publish
@@ -57,7 +57,7 @@ The pack CLI builds the image that contains the build result in the gen/srv fold
 Run the below command to build the database image:
 
 ```sh
-pack build <your-container-registry>/incidents-mgmt-hana-deployer:<image-version> \
+pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
      --path gen/db \
      --builder paketobuildpacks/builder-jammy-base \
      --publish
@@ -99,17 +99,17 @@ global:
 ...
 srv:
   image:
-    repository: <your-container-registry>/incidents-mgmt-srv
+    repository: <your-container-registry>/incident-management-srv
     tag: <srv-image-version>
 ...
 hana-deployer:
   image:
-    repository: <your-container-registry>/incidents-mgmt-hana-deployer
+    repository: <your-container-registry>/incident-management-hana-deployer
     tag: <db-deployer-image-version>
 ...
 html5-apps-deployer:
   image:
-    repository: <your-container-registry>/incidents-mgmt-html5-deployer
+    repository: <your-container-registry>/incident-management-html5-deployer
     tag: <html5apps-deployer-image-version>
 
 2. Change the value for `SAP_CLOUD_SERVICE` to `ns.incidents`
@@ -167,10 +167,10 @@ backendDestinations:
 2. Deploy using Helm command:
 
   ```sh
-  helm upgrade --install incidents-mgmt --namespace incidents-namespace ./chart \
+  helm upgrade --install incident-management --namespace incidents-namespace ./chart \
   --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
   ```
-This installs the Helm chart from the chart folder with the release name ***incidents-mgmt*** in the namespace ***incidents-namespace***.
+This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incidents-namespace***.
 
 ::: tip
 
@@ -181,4 +181,4 @@ The outcome of installation will look something like this:
 
 ![deployed app](./images/deployedapp.png)
 
-You have to [Assign Application Roles](../../../../administrate/User-Role-Assigment/User-Role-Assignment.md) to be able to access the application via the URL.
+You have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) to be able to access the application via the URL.

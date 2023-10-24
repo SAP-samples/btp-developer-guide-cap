@@ -62,10 +62,9 @@ The beginner tutorials cover the following basic steps for Cloud Foundry and Kym
 
 The advanced modules are built on top of the beginner tutorials. Depending on what you need, you can pick the different modules. For each of these modules, the beginner tutorials is a prerequisite. The modules are: 
 
-- Integrating Change tracking to Incident Management Application
-- Remote service integration using the SAP Destination and SAP Connectivity service 
+- Remote service integration using the SAP Destination/Connectivity service
 - Eventing using the SAP Event Mesh service which is built on top of Remote Service sample
-- Audit logging using SAP Audit Log service 
+- Integrating Change tracking to Incident Management Application
 
 ## Known Issues
 

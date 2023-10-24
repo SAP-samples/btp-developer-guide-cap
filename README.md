@@ -1,8 +1,10 @@
-# BTP Developer's Guide
+# SAP BTP Developer's Guide
 
 ## Overview
 
-The goal of the SAP BTP Developer’s Guide is to help developers implementing business applications on SAP BTP including the integration with the SAP cloud suite. It consists of the description of the software development and delivery processes, an architecture blueprint with a curated list of services implementing the standard nucleus of SAP’s business applications on SAP BTP, and instructions to deliver SAP Cloud Qualities and Intelligent Enterprise Suite Qualities. The tutorials built using Incident Management application follows the best practices and guidance described in SAP BTP developers guide.
+The goal of the SAP BTP Developer’s Guide is to help you implement business applications on SAP BTP. The SAP BTP Developer's Guide explains the building blocks for developing, delivering, and integrating business applications.
+Development projects for business applications have similar characteristics. Standardized development guidance is driving developer efficiency.
+The Incident Management sample application is a showcase of the SAP Cloud Application Programming Model (CAP) and adheres to the development recommendations set out in the SAP BTP Developer’s Guide. Best practices are documented in step-by-step tutorials based on the Incident Management application for learning how to develop, deploy, and operate a full-stack application using CAP and SAP Fiori. The tutorials also show how to use a set of important SAP BTP services in a CAP application.
 
 ## Business Scenario
 
@@ -12,59 +14,22 @@ ACME is a popular Electronics company. ACME hires call center support representa
 
 ## Solution Diagram
 
-
 ![Solution Diagram](Solution-Diagram.png)
-
-## Entitlements
-
-The application requires the following set of [Entitlements and Quotas](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/00aa2c23479d42568b18882b1ca90d79.html?locale=en-US) in the SAP BTP cockpit:
-
-### Deployment on CF
-
-| Service                           | Plan               | Number of Instances |
-|-----------------------------------|------------------- |:-------------------:|
-| Cloud Foundry Runtime             | free (Environment) |    1
-|SAP HANA Schemas & HDI Containers  | hdi-shared         |          1          |
-| SAP HANA Cloud                    | tools              |  Subscription       |
-| SAP HANA Cloud                    | hana-free          |          1          |
-| SAP Build Work Zone, standard edition| standard/free(Application) |  Subscription |
-
-### Deployment on Kyma
-
-| Service                           | Plan               | Number of Instances |
-|-----------------------------------|------------------- |:-------------------:|
-| SAP HANA Schemas & HDI Containers | hdi-shared         |          1          |
-| SAP HANA Cloud                    | tools              |  Subscription       |
-| SAP HANA Cloud                    | hana-free               |          1          |
-| Kyma runtime                      | Standard             |          1          |
-| SAP Build Work Zone, standard edition    | standard/free(Application)      |  Subscription       |
 
 ## Tutorials
 
-Best practices are documented in a step-by-step tutorial/guide for learning how to develop, deploy and operate a full stack application using SAP Cloud Application Programming Model and SAP Fiori. 
+The tutorials are organized in the following way.
 
-The tutorial also describes how to use a set of most important BTP services in a CAP application. A reference implementation is provided based on “Incidents management “ example as part of the tutorial to provide hands-on experience. 
+* Basic groups of tutorials for the Incident Management application. See:
 
-Best practices are documented in a step-by-step tutorial/guide for learning how to develop, deploy and operate a full stack application using SAP Cloud Application Programming Model and SAP Fiori. 
+    * [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html)
+    * [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html)
 
-The tutorials built using the Incident Management application are organized in two parts: 
+* Separate tutorials for the additional modules based on the Incident Management application
 
-- Beginner tutorials 
-- Advanced modules 
-
-The beginner tutorials cover the following basic steps for Cloud Foundry and Kyma runtimes: 
-
-- Setting up the development environment 
-- Building a CAP application with SAP Fiori elements user interface and a custom logic 
-- Adding local launchpad, authorization and tests for local development  
-- Deploying the application in a productive account  
-- Setting up continuous integration and delivery pipeline   
-
-The advanced modules are built on top of the beginner tutorials. Depending on what you need, you can pick the different modules. For each of these modules, the beginner tutorials is a prerequisite. The modules are: 
-
-- Remote service integration using the SAP Destination/Connectivity service
-- Eventing using the SAP Event Mesh service which is built on top of Remote Service sample
-- Integrating Change tracking to Incident Management Application
+    * Remote service integration using SAP Destination and Connectivity service
+    * Eventing using the SAP Event Mesh service which is built on top of the remote service integration
+    * Integrating change tracking to the Incident Management application
 
 ## Known Issues
 
@@ -72,7 +37,8 @@ No known issues.
 
 ## How to Obtain Support
 
-In case you find a bug, or you need additional support, please open an issue here in GitHub.
+In case you find a bug, or you need additional support, please open an issue in this GitHub repository.
 
 ## License
+
 Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.

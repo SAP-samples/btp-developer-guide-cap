@@ -1,14 +1,16 @@
-# Explore APIs & events in SAP Business Accelerator Hub
+# Get the Business Partner API
 
-The SAP Business Accelerator Hub is a web application hosted by SAP to discover, explore, and test SAP and partner APIs (application programming interfaces) that are required to build extensions or process integrations.
+SAP Business Accelerator Hub is a web application hosted by SAP where you can discover, explore, and test SAP and partner APIs (Application Programming Interfaces) that are required to build extensions or process integrations.
 
-Go through the [SAP Business Accelerator Hub](https://api.sap.com/) and check whether these APIs can help you complete your extension scenario. 
+In the [SAP Business Accelerator Hub](https://api.sap.com/), you can find the APIs that you need to complete your extension scenario. 
 
-For our scenario we use the Business Partner API from SAP S/4HANA Cloud.
+For our scenario, we use the Business Partner API from SAP S/4HANA Cloud.
 
-### Get the Business Partner API
+### Download the Business Partner API
 
-Download the [Business Partner API (A2X) from SAP Business Accelerator Hub](https://api.sap.com/api/API_BUSINESS_PARTNER/overview). Go to section _API Resources_, select _API Specification_, and select the _EDMX_ file. You will need this file in a later section.
+1. In the SAP Business Accelerator Hub, go to [Business Partner API (A2X)](https://api.sap.com/api/API_BUSINESS_PARTNER/overview). 
+2. In _API Resources_, select _API Specification_.
+3. From the list of files, download the _EDMX_ file. You will need this file in a later section.
    
    ![Download API](./images/download-api.png)
 

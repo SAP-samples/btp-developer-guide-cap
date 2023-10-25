@@ -78,7 +78,7 @@ html5-apps-deployer:
 ```yaml{3}
 html5-apps-deployer:
   env:
-    SAP_CLOUD_SERVICE: ns.incidents
+    SAP_CLOUD_SERVICE: incidents
 ```
 ### Configure Cluster Domain
 

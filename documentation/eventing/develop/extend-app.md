@@ -1,9 +1,9 @@
 # Extend the Incident Management Application with Eventing
 
 ## Introduction 
-In this chapter you will add files , so the CAP application can listen and react to events from your SAP S/4HANA Cloud system.  
+In this chapter you will add code , so that the CAP based application can listen and react to events from your SAP S/4HANA Cloud system.  
  
-First you will add event definitions for the SAP S/4HANA events.
+First you will need to add event definitions for the SAP S/4HANA events.
 
 
 ## Prerequisites
@@ -13,9 +13,9 @@ First you will add event definitions for the SAP S/4HANA events.
   
 ## Content
 
-1. Go back to your project's root folder.
+1. Go back to your CAP project's root folder.
 
-2. To create a topic annotation for the event changes open your `srv/external` folder and create a new file called `API_BUSINESS_PARTNER.js` and add the below code snippet.  
+2. Create a topic annotation for processing events. For this open `srv/external` folder and create a new file called `API_BUSINESS_PARTNER.js` and add the below code snippet.  
 
 ```js
 module.exports = function () {
@@ -30,7 +30,7 @@ module.exports = function () {
   }
 ```
 
-3. Open your `package.json` file and copy the code snippet to the requries section of the file to add SAP Event Mesh service to your applicaton
+3. Open `package.json` file in the root folder of the project and copy the code snippet to the requries section of the fil. This is add SAP Event Mesh service as a dependency to your applicaton
 
 ```json
 "messaging": {
@@ -49,7 +49,7 @@ this.messaging = await cds.connect.to('messaging');
     this.messaging.on('sap.s4.beh.businesspartner.v1.BusinessPartner.Changed.v1', async ({ event, data }) => await this.onBusinessPartnerChanged(event, data))
 ```
 
-6. In `srv/processors-service.js` add the an method to update the changed Business Partner
+6. In `srv/processors-service.js` add the a method to update the changed Business Partner
 
 ```js
 async onBusinessPartnerChanged(event, data){
@@ -73,7 +73,7 @@ async onBusinessPartnerChanged(event, data){
   }
 ```
 
-7. Navigate to `app/incidents` and create a new file `field.cds`.
+7. Navigate to `app/incidents`folder  and create a new file `field.cds`.
 8. To see your changes getting replicated in user interface open `app/incidents/field.cds` and add the below code snippet
 
 ```cds

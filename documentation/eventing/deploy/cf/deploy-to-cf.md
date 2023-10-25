@@ -2,7 +2,7 @@
 
 ## Usage scenario
 
-Deploy the project to Cloud Foundry using the MTA build command
+Deploy the project to Cloud Foundry using the cf deploy command
 
 ## Prerequisites
 

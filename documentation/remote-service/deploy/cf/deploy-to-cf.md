@@ -2,11 +2,11 @@
 
 ## Usage scenario
 
-Deploy the project to Cloud Foundry using the MTA build file
+Deploy the project to Cloud Foundry using the MTA build file.
 
 ## Prerequisites
 
-* You have prepared the project for productive usage
+* You have prepared the project for productive usage.
 
 ## Content
 Extend the existing MTA build file with the settings for SAP S/4HANA Cloud extension service.
@@ -14,8 +14,8 @@ Extend the existing MTA build file with the settings for SAP S/4HANA Cloud exten
 
 ### Deploy the Application
 
-1. Add SAP S/4HANA Cloud API access service. Right-click the mta.yaml file and choose **Open with ... - Text Editor**.
-2. Add the following code snippet to the resource section
+1. Add SAP S/4HANA Cloud API access service. Right-click on the *mta.yaml* file and choose **Open with ... - Text Editor**.
+2. Add the following code snippet to the *resource* section
 
     ```yaml
     - name: incidents-api-access
@@ -27,9 +27,9 @@ Extend the existing MTA build file with the settings for SAP S/4HANA Cloud exten
           system-name: <system-name>
     ```
 
-**Note** - As **system-name** you must enter the name of your the registered SAP S/4HANA Cloud system.
+**Note** - For **system-name**, enter the name of your registered SAP S/4HANA Cloud system.
 
-4. In the incident-management-srv module requires section add **- name: incident-management-destination-service**
+4. In the *incident-management-srv* modul, in the *requires* section, add **- name: incident-management-destination-service**
    
     ```yaml
     - name: incident-management-srv
@@ -42,11 +42,11 @@ Extend the existing MTA build file with the settings for SAP S/4HANA Cloud exten
     ....
     ```
 
-5. Right-click the mta.yaml file and choose **Build MTA Project**
+5. Right-click on the *mta.yaml* file and choose **Build MTA Project**
    
    ![build mtar](./images/build_mtar.png)
 
-5. If the build was successful, you find the generated file in the mta_archives folder. Right-click on incident-management_1.0.0.mtar and select **Deploy MTA Archive**  
+5. If the build was successful, you find the generated file in the *mta_archives* folder. Right-click on *incident-management_1.0.0.mta*r and choose **Deploy MTA Archive**.
    
    ![deploy mtar](./images/deploy_mtar.png)
 
@@ -57,6 +57,6 @@ Extend the existing MTA build file with the settings for SAP S/4HANA Cloud exten
    ![login](./images/select_account.png)
 
 
-You'll need to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) before you can access the application.
+Before you can access the application, you need to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 
-Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+As a next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.

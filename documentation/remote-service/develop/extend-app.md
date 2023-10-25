@@ -7,9 +7,9 @@
 
 ## Content
 
-1. Navigate to the project's root folder of incident management application. 
+1. Navigate to the project's root folder of the Incident Management application. 
    
-2.  Change the name in package.json to `incident-management`
+2.  In the *package.json*, change the name to `incident-management`.
     
     ```js
     {
@@ -18,13 +18,13 @@
       "dependencies": {
         ....
     ```
-3. Now we need to add some additional libraries to the package.json for the communication with external systems. In the terminal go to the project's root folder of incident management application and run the following command:  
+3. Add some additional libraries to the *package.json* for the communication with external systems. In the terminal, go to the project's root folder of the Incident Management application and run the following command:  
    
    ```bash
    npm add @sap-cloud-sdk/http-client@3.x @sap-cloud-sdk/util@3.x @sap-cloud-sdk/connectivity@3.x @sap-cloud-sdk/resilience@3.x
    ```
 
-4. Navigate to db/schema.cds and change the customer entity as below. The cuid flag is removed and an ID field is added as key, this field is later filled with the Business Partner ID from the SAP S/4HANA system.
+4. Navigate to *db/schema.cds* and change the customer entity as below. The cuid flag is removed and an ID field is added as key, this field is later filled with the Business Partner ID from the SAP S/4HANA system.
 
    ```js
     entity Customers : managed {
@@ -37,7 +37,7 @@
     }
    ```
 
-5. Navigate to db/data/sap.capire.incidents-Customers.csv and change the data as below. The cuid flag is removed and an ID field is added as key in the previous step. The same to be replicated in the data
+5. Navigate to *db/data/sap.capire.incidents-Customers.csv* and change the data as below. The cuid flag is removed and an ID field is added as key in the previous step. The same has to be replicated in the data.
 
   ```csv
   ID,firstName,lastName,email,phone
@@ -46,7 +46,7 @@
   1004100,Sunny,Sunshine,sunny.sunshine@demo.com,+01-555-789
   ```
 
-6. The same to be brought in to db/data/sap.capire.incidents-incidents.csv
+6. Change the same data in *db/data/sap.capire.incidents-incidents.csv*.
 
   ```csv
   ID,customer_ID,title,urgency_code,status_code
@@ -57,19 +57,19 @@
   ```
 
 7. Import the Business Partner API to your project.
-   * In the project explorer do a right-click. Select **Upload...**
+   * In the project explorer, right-click and select **Upload...**
 
      ![upload API](./images/upload-api.png)
 
-   * Select the API_BUSINESS_PARTNER.edmx file and upload it to your project folder.
-   * In the terminal execute the following command
+   * Select the *API_BUSINESS_PARTNER.edmx* file and upload it to your project folder.
+   * In the terminal, run the following command
   
       ```bash
       cds import API_BUSINESS_PARTNER.edmx --as cds
       ```
-   * You find the generated files in the **srv/external** folder 
+   * You can find the generated files in the **srv/external** folder.
 
-8. Now we change the conditions for the relationships between some entities. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartner**. Scroll down to the to_BusinessPartnerAddress section and replace it with the following:
+8. Change the conditions for the relationships between some entities. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following:
 
     ```js
     to_BusinessPartnerAddress : Composition of many API_BUSINESS_PARTNER.A_BusinessPartnerAddress on to_BusinessPartnerAddress.BusinessPartner = BusinessPartner;
@@ -83,9 +83,9 @@
     to_PhoneNumber : Composition of many API_BUSINESS_PARTNER.A_AddressPhoneNumber on to_PhoneNumber.AddressID = AddressID;
     ```
 
-10. Create new file extend.cds in srv folder.
+10. Create a new file *extend.cds* in the *srv* folder.
 
-11. Copy the below snippet to the newly created extend.cds file
+11. Copy the snippet to the newly created *extend.cds* file
 
     ```js
     using { sap.capire.incidents as my } from '../db/schema';
@@ -118,8 +118,8 @@
     }
     ```
 
-10. Now we add some buisness logic for reading and saving a business partner. 
-   * Open the srv/processor-service.js file. 
+10. Now add some buisness logic for reading and saving a business partner. 
+   * Open the *srv/processor-service.js* file. 
    * Set the `init` method to `async` 
   
       ```js
@@ -169,13 +169,13 @@
         }   
     ```
 
-*  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add the below code snippet to the init method
+*  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add this code snippet to the *init* method
 
     ```js
     this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
     this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
     ```
-* Add the custom handler after init method
+* Add the custom handler after the *init* method
 
   ```js
     async onCustomerCache(req, next) {
@@ -212,7 +212,7 @@
       }
     ```
 
-11. To run tests, navigate to `tests/test.js` and  Replace line no.3 with the below code snippet
+11. To run tests, navigate to `tests/test.js` and replace line no.3 with the code snippet below
 
     ```js
     const { GET, POST, DELETE, PATCH, expect } = cds.test(__dirname + '../../', '--with-mocks');
@@ -224,8 +224,8 @@
     npm run test
     ```
 
- ## Summary
- You have integrated the Business Partner API into your project and business logic to to read the data from the backend system. New or changed customer data would be stored at your application database.
+ ## Result
+ You have integrated the Business Partner API into your project and business logic to read the data from the backend system. New or changed customer data would be stored in your application database.
 
 
    

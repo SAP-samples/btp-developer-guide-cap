@@ -1,75 +1,77 @@
 # Configure the connectivity between SAP S/4HANA Cloud and SAP BTP
 
-## Usage scenario / Introduction 
+## Usage scenario
 
-To conect to an SAP S/4HANA Cloud system using service binding you have to register the system at your SAP BTP account.
+To conect to an SAP S/4HANA Cloud system using service binding, you have to register the system in your SAP SAP Business Technology Platform (BTP) account.
 
 ## Prerequisites
-You need an user with administrator access for the SAP BTP global account and the SAP S/4HANA Cloud system.
+You need a user with administrator access for the SAP BTP global account and the SAP S/4HANA Cloud system.
 
-## Content
+## Note
 
-> You can skip this exercise when you want to test this scenario with a mock server only.
+> You can skip this procedure if you want to test this scenario with a mock server only.
 
 ### SAP Business Technology Platform
 
-1. In your SAP Business Technology Platform Cockpit, open your global account and choose
-*System Landscape*.
+1. In SAP BTP cockpit, open your global account and choose
+**System Landscape**.
 
-2. In the Systems Landscape, choose *Add System*.
+2. In the **System Landscape** screen, choose **Systems** and then **Add System**.
 
 
    ![Register System](./images/setup1.png)
 
 
-3. In the *Register System* dialog box, enter a name for the SAP S/4HANA Cloud system you want to connect.
+3. In the **Register System** dialog box, enter a name for the SAP S/4HANA Cloud system you want to connect.
 
 - Recommendation: use a name that uniquely identifies this system, for example, system ID.
 - Example: **S/4HANA Cloud DEV System**
 
-4. In the Type dropdown list, choose *SAP S/4HANA Cloud*.
+4. In the **Type** dropdown list, choose **SAP S/4HANA Cloud**.
 
-5. Choose *Add*.
+5. Choose **Add**.
 
    ![Choose Add](./images/add-system02.png)
 
-6. Configure the communication flow. Select **All Communication Scenarios**
+6. Configure the communication flow. In the **Communication Scenario Groups** dropdown menu, select **All Communication Scenarios**.
 
-7. Set the The SAP Business Technology Platform generates an integration token so the SAP S/4HANA Cloud system administrator can configure integration with the SAP Cloud Platform from your SAP S/4HANA Cloud system. Choose **Get Token** 
+7. Choose **Get Token**.
+   SAP BTP generates an integration token so the SAP S/4HANA Cloud system administrator can configure integration with SAP BTP from your SAP S/4HANA Cloud system. 
 
    ![Get Token](./images/add-system03.png)
 
-8. Copy the generated token and close the dialog box.
+9. Copy the generated token and close the dialog box.
+    You will need the token in the following procedure.
 
   
 
 ### SAP S/4HANA Cloud
 
-1. Log onto your SAP S/4HANA Cloud tenant.
+1. Log on to your SAP S/4HANA Cloud tenant.
 
-2. Navigate to *Home -> Communication Management* tab and choose the tile *Maintain Extensions on SAP BTP*.
+2. Navigate to **Home -> Communication Management** tab and choose the tile **Maintain Extensions on SAP BTP**.
 
    ![Maintain](./images/setup4.png)
 
-3. On the *Maintain Extensions on SAP BTP* screen in the Integration section, choose *New*.
+3. On the **Maintain Extensions on SAP BTP** screen in the **Integration section**, choose **New**.
 
    ![New](./images/setup5.png)
 
-4. In the Integration Token field, paste in the integration token generated and copied from the SAP Business Technology Platform.
+4. In the **Integration Token** field, paste the integration token previously generated and copied in the SAP BTP Cockpit.
 
       ![Paste](./images/setup6.png)
 
 5. Enter a description for your system integration token.
 
-- Recommendation: use the same name you entered in SAP Business Technology Platform when you generated the token.
+- Recommendation: use the same name you entered in SAP BTP cockpit when you generated the token.
 - Example: >S/4HANA Cloud system name<
 
-6. Choose *Save*.
+6. Choose **Save**.
 
-- A new entry is displayed for your system in the table with the status *Enabling*.
+- A new entry is displayed for your system in the table with status **Enabling**.
 - Wait for a few seconds.
-- After the automated integration, the status of your system integration changes to *Enabled*.
-- The same takes place on the SAP Business Technology Platform side. You will see the system as *Registered* – potentially after a quick refresh.
+- After the automated integration, the status of your system integration changes to **Enabled**.
+- The same takes place on the SAP BTP side. You will see the system as **Registered** – potentially after a refresh.
 
    ![Registerd](./images/setup3.3.png)
 

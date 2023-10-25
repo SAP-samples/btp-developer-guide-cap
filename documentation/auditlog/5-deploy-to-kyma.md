@@ -1,6 +1,6 @@
-# Option 2 - Deploy to Kyma
+# Option 2 - Deploy and Run the Application on Kyma
 
-## Build the images
+## Build the Images
 
 We recommend using [Cloud Native Buildpacks](https://buildpacks.io/) to transform source code (or artifacts) into container images. For local development scenarios, you can use the [pack](https://buildpacks.io/docs/tools/pack/) CLI to consume Cloud Native Buildpacks. Check out [About Cloud Native Buildpacks](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cloud-native-buildpacks) for more info.
 
@@ -73,12 +73,29 @@ html5-apps-deployer:
     repository: <your-container-registry>/incident-management-html5-deployer
     tag: <html5apps-deployer-image-version>
 ```
-
 6. Change the value for `SAP_CLOUD_SERVICE` to `incidents`
 ```yaml{3}
 html5-apps-deployer:
   env:
     SAP_CLOUD_SERVICE: incidents
+```
+7. Add auditlog service configurations to your `charts/values.yaml`:
+
+```
+auditlog:
+  serviceOfferingName: auditlog
+  servicePlanName: premium
+```
+In `srv/bindings` add:
+```
+auditlog:
+    serviceInstanceName: auditlog
+```
+8. Navigate to  `chart/Charts.yaml` and update dependcies section with following code:
+```
+  - name: service-instance
+    alias: auditlog
+    version: ">0.0.0"
 ```
 ### Configure Cluster Domain
 
@@ -113,7 +130,7 @@ xsuaa:
 
 ```yaml
 backendDestinations:
-  inicdent-management-srv-api:
+  incident-management-srv-api:
     service: srv
 ```
 ::: info
@@ -142,10 +159,74 @@ This installs the Helm chart from the chart folder with the release name ***inci
 
 With the ***helm upgrade --install*** command you can install a new chart as well as upgrade an existing chart.
 :::
-The outcome of installation will look something like this:
 
-![deployed app](./images/deployedapp.png)
+## Test your application
 
-You have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) to be able to access the application.
+1. We will be using API Testing tools like [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/) to test and generate auditlog.
+2. You have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) to be able to access the application via the URL.
+3. Go to your Kyma cluster and get the application endpoint from `your-namespace->Discovery and Networks->API Rules->incident-management-srv`.
+![](./images/kyma-apirule.png)
 
-Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+4. In order to access the below endpoint, the user needs `support` role and `xsuaa token` has to be passed in the header.
+5. To generate the token, use the following credentials from your XSUAA Instance: `clientId`, `clientsecret`, `url/oauth/token`.
+
+6. To acess the xsuaa credentials follow the below steps:
+  -  Goto your namespace -> Configuration, click on Secrets, and 
+  select your XSUAA application.
+  <br/> ![](./images/kyma-xsuaa-1.png)
+  -  Now click on decode to decrypt the Data ![](./images/kyma-xsuaa-2.png)
+  -  Use the following credentials: `clientId`, `clientsecret`, `url` to generate access token. ![](./images/kyma-xsuaa-3.png)
+
+7. Use postman and generate access token. Set authorization type as `OAuth 2.0` , `cf username` ,`cf password` and generate access token.
+![](./images/access-token.png)
+
+8. Use `<your application end point>/odata/v4/processor/Customers` and send the request( Step 7 in the above screenshot)  and if successful, you will get the list of customers as response:
+```
+{
+    "@odata.context": "$metadata#Customers",
+    "value": [
+        {
+            "ID": "2b87f6ca-28a2-41d6-8c69-ccf16aa6389d",
+            "createdAt": null,
+            "createdBy": null,
+            "modifiedAt": null,
+            "modifiedBy": null,
+            "firstName": "Sunny",
+            "lastName": "Sunshine",
+            "email": "sunny.sunshine@demo.com",
+            "phone": "+01-555-789",
+            "creditCardNo": null,
+            "name": "Sunny Sunshine"
+        },
+        {
+            "ID": "8fc8231b-f6d7-43d1-a7e1-725c8e988d18",
+            "createdAt": null,
+            "createdBy": null,
+            "modifiedAt": null,
+            "modifiedBy": null,
+            "firstName": "Daniel",
+            "lastName": "Watts",
+            "email": "daniel.watts@demo.com",
+            "phone": "+44-555-123",
+            "creditCardNo": null,
+            "name": "Daniel Watts"
+        },
+        {
+            "ID": "feb04eac-f84f-4232-bd4f-80a178f24a17",
+            "createdAt": null,
+            "createdBy": null,
+            "modifiedAt": null,
+            "modifiedBy": null,
+            "firstName": "Stormy",
+            "lastName": "Weathers",
+            "email": "stormy.weathers@demo.com",
+            "phone": null,
+            "creditCardNo": null,
+            "name": "Stormy Weathers"
+        }
+    ]
+}
+```
+9. On reading the customer data( which we have annotated with @PersonalData), there will be a audit log entry in CF, which we will be retrieving in next step. 
+
+

@@ -1,5 +1,7 @@
 # SAP BTP Developer's Guide
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-developer-guide-cap)](https://api.reuse.software/info/github.com/SAP-samples/btp-developer-guide-cap)
+
 ## Overview
 
 The goal of the SAP BTP Developer’s Guide is to help you implement business applications on SAP BTP. The SAP BTP Developer's Guide explains the building blocks for developing, delivering, and integrating business applications.
@@ -41,4 +43,4 @@ In case you find a bug, or you need additional support, please open an issue in 
 
 ## License
 
-Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
+Copyright (c) 2023 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.

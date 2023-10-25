@@ -74,7 +74,7 @@ html5-apps-deployer:
     tag: <html5apps-deployer-image-version>
 ```
 
-6. Change the value for `SAP_CLOUD_SERVICE` to `ns.incidents`
+6. Change the value for `SAP_CLOUD_SERVICE` to `incidents`
 ```yaml{3}
 html5-apps-deployer:
   env:

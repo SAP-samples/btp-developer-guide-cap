@@ -2,16 +2,16 @@
 
 ## Usage Scenario
 
-If you don't have access to an SAP backend system (ECC, SAP S/4HANA or SAP on-premise system) but still need OData services with some data, you can use this [mock server application](https://github.com/SAP-samples/cloud-extension-ecc-business-process/blob/mock/README.md). It contains some entities of SAP OData services with sample data.
+If you don't have access to an SAP backend system (SAP ECC, SAP S/4HANA or an SAP on-premise system) but still need OData services with some data, you can use this [mock server application](https://github.com/SAP-samples/cloud-extension-ecc-business-process/blob/mock/README.md). It contains some entities of SAP OData services with sample data.
 
-In essence, these are the steps you need to follow:
-1. Install the mock server using [SAP Business Application Studio](#option-1-install-the-mock-server-using-sap-business-application-studio)
+In essence, you need to 
+1. Install the mock server using [SAP Business Application Studio](#option-1-install-the-mock-server-using-sap-business-application-studio).
 
-2. An additional 256 MB of Cloud Foundry runtim is required for deploying Mock Server.
+2. Have an additional 256 MB of Cloud Foundry runtime required for deploying the mock server.
 
 3. Create a [destination](#create-destination-to-mock-server) to the mock server in the same SAP BTP subaccount.
 
-> This installation of the mock server is only needed if you want to test an application deployed for cloud foundry. For running local developement test you could use the local mock server. 
+> This installation of the mock server is only needed if you want to test an application deployed for Cloud Foundry. For running local developement test, you can use the local mock server. 
 
 ## Install the Mock Server Using SAP Business Application Studio
 
@@ -26,7 +26,7 @@ In essence, these are the steps you need to follow:
 **In SAP BTP cockpit:**
 1. Navigate to your subaccount and choose **Overview**. Copy the values from the **Org Name** and **API Endpoint** parameters in a text editor of your choice.
 
-2. In the left-hand navidation, choose **Cloud Foundry** &rarr; **Spaces**, copy the Space name and write it in a text editor of your choice.
+2. In the left-hand navigation, choose **Cloud Foundry** &rarr; **Spaces**, copy the **Space name** and write it in a text editor of your choice.
 
 **In SAP Business Application Studio:**
 1. In the tabs, choose **View** and select **Command Palette**.
@@ -43,7 +43,7 @@ In essence, these are the steps you need to follow:
 
 7. Once you have selected the Org and the Space, log in to Cloud Foundry in SAP Business Application Studio.
 
-**Result:** you have successfully created a workspace and pointed to our desired Cloud Foundry Org and Space.
+**Result:** you have successfully created a workspace and pointed to your desired Cloud Foundry Org and Space.
 
 ### Build and Deploy the Mock Server Application
 
@@ -63,11 +63,11 @@ In essence, these are the steps you need to follow:
 
 4. To open the project, choose **projects** &rarr; **cloud-extension-ecc-business-process** and then choose **Open**.
 
-5. In the project folder, right-click the **mta.yaml** file and choose **Build MTA Project**.
+5. In the project folder, right-click on the **mta.yaml** file and choose **Build MTA Project**.
 
-6. When the project is built successfully, you will see a new **mta_archives** folder in your project with the **Mockserver_1.0.0.mtar** file inside. Right-click that file and choose **Deploy MTA Archive**.
+6. When the project is built successfully, you will see a new **mta_archives** folder in your project with the **Mockserver_1.0.0.mtar** file inside. Right-click on that file and choose **Deploy MTA Archive**.
 
-**Next step:** create a [destination](#create-destination-for-mock-server) to the mock server.
+Now you need to create a destination to the the mock server.
 
 ## Create Destination to Mock Server
 
@@ -88,10 +88,10 @@ In essence, these are the steps you need to follow:
 
   3. Save your settings.
 
-4. Choose **Check Connection**, you should get a `200 OK` message.
+4. Choose **Check Connection**. You should get a `200 OK` message.
 
 ## Test the Mock Server
 
 1. Call the **Application Route**.
 
-2. There will be couple of api end points to display the data.
+2. There will be a couple of API endpoints to display the data.

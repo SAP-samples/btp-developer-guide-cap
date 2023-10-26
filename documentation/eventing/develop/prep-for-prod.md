@@ -19,7 +19,7 @@ In this chapter you will add the SAP Event Mesh service to your project
     - Adds below entry in mta.yaml
 
         ```yaml
-            - name: incidents-messaging
+            - name: inicdent-management-messaging
               type: org.cloudfoundry.managed-service
               parameters:
               service: enterprise-messaging
@@ -29,7 +29,7 @@ In this chapter you will add the SAP Event Mesh service to your project
     - Adds the below entry in the `requires` section of `incident-management-srv` module
 
         ```yaml
-            - name: incidents-messaging
+            - name: inicdent-management-messaging
         ```
 
 2. Open the `mta.yaml` and copy the below module to the  `resources` section.

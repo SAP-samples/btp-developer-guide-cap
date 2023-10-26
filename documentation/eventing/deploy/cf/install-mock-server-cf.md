@@ -18,7 +18,7 @@ In this section you would redeploy the mock server and bind it to Event Mesh ins
           type: org.cloudfoundry.existing-service
         ```
 
-    - - Adds the below entry in the `requires` section of `mock-srv` module
+    - Adds the below entry in the `requires` section of `mock-srv` module
 
         ```yaml
             - name: inicdent-management-messaging

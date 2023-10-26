@@ -6,11 +6,11 @@ To increase your development speed, it is helpful to run and test your implement
 
 ## Content
 
-### Create Mock Data for the new entities.
+### Create Mock Data for the New Entities.
 
-1. Create a new folder **data** in the **srv/external** folder.
+1. Create a new folder **data** in the `srv/external` folder.
 
-2. Create a new file **API_BUSINESS_PARTNER-A_BusinessPartner.csv** and add the below data to it
+2. Create a new file **API_BUSINESS_PARTNER-A_BusinessPartner.csv** and add the following data to it
    
    ```csv
    BusinessPartner;FirstName;LastName;BusinessPartnerName;BusinessPartnerIsBlocked;
@@ -19,7 +19,7 @@ To increase your development speed, it is helpful to run and test your implement
    1004100;Sunny;Sunshine;Sunny Sunshine;true
    ```
 
-3. Create a new file **API_BUSINESS_PARTNER-A_BusinessPartnerAddress.csv** and add the below data to it
+3. Create a new file **API_BUSINESS_PARTNER-A_BusinessPartnerAddress.csv** and add the following data to it
 
    ```csv
    BusinessPartner;AddressID;
@@ -28,7 +28,7 @@ To increase your development speed, it is helpful to run and test your implement
    1004100;456
    ```
 
-4. Create a new file **API_BUSINESS_PARTNER-A_AddressEmailAddress.csv** and add the below data to it
+4. Create a new file **API_BUSINESS_PARTNER-A_AddressEmailAddress.csv** and add the following data to it
 
    ```csv
    AddressID;EmailAddress;Person;OrdinalNumber
@@ -36,7 +36,7 @@ To increase your development speed, it is helpful to run and test your implement
    345;testjohn@demo.com;Smith;222
    456;testhencry@demo.com;johnson;333
    ```
-5. Create a new file **API_BUSINESS_PARTNER-A_AddressPhoneNumber.csv** and add the below data to it
+5. Create a new file **API_BUSINESS_PARTNER-A_AddressPhoneNumber.csv** and add the following data to it
 
    ```csv
    AddressID;PhoneNumber;Person;OrdinalNumber
@@ -49,19 +49,19 @@ To increase your development speed, it is helpful to run and test your implement
 
 ### Run the Incident Management Application
 
-1. Build your application
+1. Build your application.
 
    ```sh
    npm i
    ```
 
-2. Run the below command to run the mock server locally 
+2. Run the mock server locally .
 
    ```sh
    cds mock API_BUSINESS_PARTNER
    ```
 
-3. In the terminal you should see the following output
+3. In the terminal, you should see the following output
    ```cds
    [cds] - connect using bindings from: { registry: '~/.cds-services.json' }
    [cds] - connect to db > sqlite { url: ':memory:' }
@@ -75,17 +75,17 @@ To increase your development speed, it is helpful to run and test your implement
       > init from srv/external/data/API_BUSINESS_PARTNER-A_AddressPhoneNumber.csv 
       > init from srv/external/data/API_BUSINESS_PARTNER-A_AddressEmailAddress.csv  
    ```
-   > If the API_BUSINESS_PARTNER doesn't show up, remove the .cds-services.json file - you find it in the user root folder (e.g.: /home/user/.cds-services.json) 
+   > If the API_BUSINESS_PARTNER doesn't show up, remove the `.cds-services.json` file - you find it in the user root folder (e.g.: /home/user/.cds-services.json) 
 
 4.  Open a new terminal and run `cds watch`. This will start the application connected to the running mock service.
-   >In case you had previously deployed the application to Kyma Runtime -  Navigate to `app/incidents/resources/webapp` folder and move the webapp folder to `app/incidents`. Also, delete the resources folder.
+   >In case you had previously deployed the application to Kyma Runtime -  Navigate to `app/incidents/resources/webapp` folder and move the `webapp` folder to `app/incidents`. Also, delete the `resources` folder.
 5. In a browser, open the server URL: `http://localhost:4004`.
 6. There are two URLs under web applications:
  
-    - /launchpage.html uses a [local launchpage](!https://pages.github.tools.sap/cap/golden-path/develop/Launchpage/Launchpage)
-    - /incidents/webapp/index.html uses the index.html from [ui5 app](!https://pages.github.tools.sap/cap/golden-path/develop/btp-app-create-ui-fiori-elements/btp-app-create-ui-fiori-elements)
+    - */launchpage.html* uses a [local launchpage](!https://pages.github.tools.sap/cap/golden-path/develop/Launchpage/Launchpage)
+    - */incidents/webapp/index.html* uses the *index.html* from [ui5 app](!https://pages.github.tools.sap/cap/golden-path/develop/btp-app-create-ui-fiori-elements/btp-app-create-ui-fiori-elements)
   
-    - Choose the launchpad.html
+    - Choose the *launchpad.html*.
     
    ![run test](./images/test-app01.png)
 
@@ -95,21 +95,21 @@ To increase your development speed, it is helpful to run and test your implement
     - Username: `incident.support@tester.sap.com`
     - Password: `initial`   
     
-    > You find the user settings in the .cdsrc.json file.
+    > You find the user settings in the `.cdsrc.json file`.
 
 8. Testing the scenario - while creating a new incident, the value help for customers loads data from the mock service.
-   * Open the Incident-Management application.
+   * Open the Incident Management application.
   
       ![run test](./images/test-app02.png)
   
-   *  Choose **Create**
+   *  Choose **Create**.
   
       ![run test](./images/test-app03.png)
    
-   * Set Title, Customer, Status and Urgency. 
-   * The value help for Customer fetches data from mock server.
+   * Set **Title**, **Customer**, **Status** and **Urgency**. 
+   * The value help for **Customer** fetches data from the mock server.
    * Create a conversation.
-   * Choose Create to save the settings.
+   * Choose **Create** to save the settings.
      
       ![run test](./images/test-app04.png)
    

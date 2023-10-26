@@ -5,13 +5,13 @@
 If you don't have access to an SAP backend system (SAP ECC, SAP S/4HANA or an SAP on-premise system) but still need OData services with some data, you can use this [mock server application](https://github.com/SAP-samples/cloud-extension-ecc-business-process/blob/mock/README.md). It contains some entities of SAP OData services with sample data.
 
 In essence, you need to 
-1. Install the mock server using [SAP Business Application Studio](#option-1-install-the-mock-server-using-sap-business-application-studio).
+1. Install the mock server using SAP Business Application Studio. 
 
 2. Have an additional 256 MB of Cloud Foundry runtime required for deploying the mock server.
 
-3. Create a [destination](#create-destination-to-mock-server) to the mock server in the same SAP BTP subaccount.
+3. Create a destination to the mock server in the same SAP BTP subaccount.
 
-> This installation of the mock server is only needed if you want to test an application deployed for Cloud Foundry. For running local developement test, you can use the local mock server. 
+> This installation of the mock server is only needed if you want to test an application deployed for Cloud Foundry. For local development testing, you can use the local mock server. 
 
 ## Install the Mock Server Using SAP Business Application Studio
 
@@ -39,7 +39,7 @@ In essence, you need to
 
 5. Select your Cloud Foundry Org, the same you have copied from SAP BTP cockpit. 
 
-6. Then, select the Cloud Foundry Space, the same you have copied from SAP BTP cockpit. 
+6. Select the Cloud Foundry Space, the same you have copied from SAP BTP cockpit. 
 
 7. Once you have selected the Org and the Space, log in to Cloud Foundry in SAP Business Application Studio.
 

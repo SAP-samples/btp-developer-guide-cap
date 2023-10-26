@@ -2,7 +2,7 @@
 
 ## Usage scenario
 
-Deploy the project to Kyma using Helm Configurations
+Deploy the project to SAP BTP Kyma runtime using [Helm](https://helm.sh/) Configurations
 
 ## Prepare for Production
 

@@ -2,21 +2,21 @@
 
 ## Usage scenario
 
-For using the SAP S/4HANA Cloud Extensibilty service to access the Business Partner API you need some additional configurations.
+To use the SAP S/4HANA Cloud Extensibilty service to access the Business Partner API, you need some additional configurations.
 
 
 ## Prerequisites
 
-You setup the connectiion to an [SAP S/4HANA Cloud system](../../s4hana-cloud-to-btp-connectivity/README.md). 
+You have set up the connectiion to an SAP S/4HANA Cloud system. See [Configure the connectivity between SAP S/4HANA Cloud and SAP BTP](../../s4hana-cloud-to-btp-connectivity/README.md). 
 
-> By using a mock server you can skip this exercise. 
+> If you are using a mock server, you can skip this procedure. 
 
 ## Content
 
-1. Create a new file bupa.json at the root folder of the project and copy the below content
+1. Create a new file *bupa.json* in the root folder of the project and copy the content below
 
-- As **systemName** you must enter the name of your the registered SAP S/4HANA Cloud system. 
-- As **communicationArrangementName** you must enter a speaking name for your communication arrangement (e.g. INCIDENT_MANAGEMENT_0008).
+- For **systemName**, enter the name of your registered SAP S/4HANA Cloud system. 
+- For **communicationArrangementName**, enter a speaking name for your communication arrangement (e.g. INCIDENT_MANAGEMENT_0008).
 
 
     ```json
@@ -76,9 +76,9 @@ You setup the connectiion to an [SAP S/4HANA Cloud system](../../s4hana-cloud-to
     }
     ```
 
-For more information, [see SAP Help](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html)
+For more information, see [Communication Arrangement JSON/YAML File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html).
 
-2.  Navigate to the package.json file in the root folder of the application. Replace the settings for **API_BUSINESS_PARTNER** with the following code snippet:
+2.  Navigate to the *package.json* file in the root folder of the application. Replace the settings for **API_BUSINESS_PARTNER** with the following code snippet:
     ```json
     "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
@@ -91,4 +91,5 @@ For more information, [see SAP Help](https://help.sap.com/viewer/65de2977205c403
         }
     }
     ```
-> If you deploy to Cloud Foundry then the **destination** would be `incidents-api-access` for Kyma it's `incident-management-s4-hana-cloud`. 
+> If you are deploying to Cloud Foundry, the **destination** is `incidents-api-access`.
+> For Kyma, the **destination** is `incident-management-s4-hana-cloud`. 

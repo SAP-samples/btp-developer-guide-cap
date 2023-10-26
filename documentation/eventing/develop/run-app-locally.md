@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Before you deploy the application you can do a test run locally to ensure your code is working
+Before you deploy the application to SAP BTP you can run the CAP application locally to test and ensure that your code changes are working.
 
   
 ## Content

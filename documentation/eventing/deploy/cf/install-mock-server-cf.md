@@ -14,14 +14,14 @@ In this section you would redeploy the mock server and bind it to Event Mesh ins
 
     - add the below code snippet to the **resources** section
         ```yaml
-        - name: incidents-messaging
+        - name: inicdent-management-messaging
           type: org.cloudfoundry.existing-service
         ```
 
     - - Adds the below entry in the `requires` section of `mock-srv` module
 
         ```yaml
-            - name: incidents-messaging
+            - name: inicdent-management-messaging
         ```
 
 4. In the project folder, right-click the **mta.yaml** file and choose **Build MTA Project**.

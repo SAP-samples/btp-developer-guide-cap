@@ -15,7 +15,7 @@
     - Option A - Follow the below tutorials to Deploy the application using the SAP S/4HANA Cloud system
         - [Deploy the application using the SAP S/4HANA Cloud system ](./deploy/kyma/deploy-app-to-kyma.md)
     - Option B - Follow the below tutorials to Deploy the application using Mock Server
-        - [Run the Incident Management Application with Mock Server](./deploy/kyma/deploy-app-to-kyma.md)
+        - [Run the Incident Management Application with Mock Server](./deploy/kyma/deploy-app-using-mock-kyma.md)
         - [Install Mock Server in SAP BTP Kyma Runtime](./deploy/kyma/install-mock-server-kyma.md)
 9. Test your Application
     - [Option A - Run Application using SAP S/4HANA Cloud system](./run-application/run-app-s4.md)

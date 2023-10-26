@@ -91,7 +91,7 @@ In `srv/bindings` add:
 auditlog:
     serviceInstanceName: auditlog
 ```
-8. Navigate to  `chart/Charts.yaml` and update dependcies section with following code:
+8. Navigate to  `chart/Charts.yaml` and update  dependencies section with following code:
 ```
   - name: service-instance
     alias: auditlog

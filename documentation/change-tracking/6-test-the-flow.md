@@ -1,4 +1,4 @@
-# Test the Flow
+# View Change History
 
 To test the functionality and flow of our change tracking feature, we will walk through a simple scenario. In this demonstration, we will make changes to a sample dataset, track those changes using the feature, and then explore the change history to observe how it captures and records modifications. Let's get started!
 

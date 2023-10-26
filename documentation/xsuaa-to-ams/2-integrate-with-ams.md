@@ -82,4 +82,4 @@ When accessing the `Incidents` service in your browser, you get a basic auth pop
 >Currently there’s no logout functionality. You can clear your browser's cache or simply close all browser windows to get rid of the login data in your browser.
 For Google Chrome, restart your browser (complete shutdown and restart) by entering `chrome://restart` in the address line.<br/>
 
-Now, let deploy and test our application on [SAP BTP](./4-deploy-to-cf.md).
+Now, let deploy and test our application on [SAP BTP Cloud Foundry](./3-deploy-to-cf.md).

@@ -35,6 +35,6 @@ The `Authorization Management Service` (AMS) of `SAP Identity Authentication Ser
     - See also [Establish Trust](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/161f8f0cfac64c4fa2d973bc5f08a894.html) for further details.
  - The SAP Build Workzone has [Identity Authentication enabled.](https://help.sap.com/docs/build-work-zone-standard-edition/sap-build-work-zone-standard-edition/switching-to-sap-cloud-identity-services-identity-authentication)
 
- With this, we are ready to [implement](./2-implement.md) AMS in our application.
+ With this, we are ready to [implement](./2-integrate-with-ams.md) AMS in our application.
 
    

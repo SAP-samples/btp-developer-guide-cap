@@ -30,7 +30,7 @@ module.exports = function () {
   }
 ```
 
-3. Open `package.json` file in the root folder of the project and copy the code snippet to the requries section of the fil. This is add SAP Event Mesh service as a dependency to your applicaton
+3. Open `package.json` file in the root folder of the project and copy the code snippet to the requries section of the file. This will add SAP Event Mesh service as a dependency to your applicaton
 
 ```json
 "messaging": {
@@ -65,7 +65,6 @@ async onBusinessPartnerChanged(event, data){
       }).where({BusinessPartner: Id}));
     console.log("customer after read email", customer.email[0].email);
     customer.email = customer.email[0].email
-    console.log("customer after", customer);
     if(customer){
       const result= await cds.run(UPDATE(Customers).where({ID: customer.ID}).set({email:customer.email}));
       console.log("result",result);

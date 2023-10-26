@@ -214,7 +214,7 @@ xsuaa:
   serviceOfferingName: xsuaa
   servicePlanName: application
   parameters:
-    xsappname: incidents
+    xsappname: incident-management
     tenant-mode: dedicated
     oauth2-configuration:
       redirect-uris:

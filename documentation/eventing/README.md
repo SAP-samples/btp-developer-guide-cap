@@ -6,7 +6,7 @@
 4. [Running the application locally](./develop/run-app-locally.md)
 5. [Option 1 - Deploy Incident Management Application to cf](./deploy/cf/readme.md)
     - Option A - Follow the below tutorials to Deploy the application using the SAP S/4HANA Cloud system
-        - [Prepare for Production](../../develop/prep-for-prod.md)
+        - [Prepare for Production](./develop/prep-for-prod.md)
         - [Deploy the application using the SAP S/4HANA Cloud system ](./deploy/cf/deploy-to-cf.md)
     - Option B - Follow the below tutorials to Deploy the application using Mock Server
         - [Deploy the Application with Mock Server - optional](./deploy/cf/deploy-to-cf-mock.md)
@@ -15,7 +15,7 @@
     - Option A - Follow the below tutorials to Deploy the application using the SAP S/4HANA Cloud system
         - [Deploy the application using the SAP S/4HANA Cloud system ](./deploy/kyma/deploy-app-to-kyma.md)
     - Option B - Follow the below tutorials to Deploy the application using Mock Server
-        - [Run the Incident Management Application with Mock Server](./deploy/kyma/deploy-app-to-kyma.md)
+        - [Run the Incident Management Application with Mock Server](./deploy/kyma/deploy-app-using-mock-kyma.md)
         - [Install Mock Server in SAP BTP Kyma Runtime](./deploy/kyma/install-mock-server-kyma.md)
 9. Test your Application
     - [Option A - Run Application using SAP S/4HANA Cloud system](./run-application/run-app-s4.md)

@@ -30,7 +30,7 @@ mbt build
 4. Check if the mtar has been created in the mta_archives folder and do: 
 
 ```bash
-cf deploy mta_archive/incident-management_1.0.0.mtar
+cf deploy mta_archives/incident-management_1.0.0.mtar
 ```
  
 4. After successful deployment, you can go to SAP BTP Subaccount-> Spaces -> Your Space, and see the application up and running.

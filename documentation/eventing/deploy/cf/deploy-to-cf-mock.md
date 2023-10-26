@@ -19,7 +19,7 @@ In this chapter you will add the SAP Event Mesh service to your project
     - Adds below entry in mta.yaml
 
         ```yaml
-            - name: incidents-messaging
+            - name: inicdent-management-messaging
               type: org.cloudfoundry.managed-service
               parameters:
               service: enterprise-messaging
@@ -29,7 +29,23 @@ In this chapter you will add the SAP Event Mesh service to your project
     - Adds the below entry in the `requires` section of `incident-management-srv` module
 
         ```yaml
-            - name: incidents-messaging
+            - name: inicdent-management-messaging
         ```
+
+2. Make sure you are in the project folder of your application and run command
+
+        ```bash
+        mbt build
+        ```
+
+3. To deploy the ready MTA archive execute the following command:
+
+```bash
+cf deploy mta_archives/<mtar>
+```
+
+You'll need to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) before you can access the application.
+
+Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
 
 

@@ -6,7 +6,7 @@
 4. [Running the application locally](./develop/run-app-locally.md)
 5. [Option 1 - Deploy Incident Management Application to cf](./deploy/cf/readme.md)
     - Option A - Follow the below tutorials to Deploy the application using the SAP S/4HANA Cloud system
-        - [Prepare for Production](../../develop/prep-for-prod.md)
+        - [Prepare for Production](./develop/prep-for-prod.md)
         - [Deploy the application using the SAP S/4HANA Cloud system ](./deploy/cf/deploy-to-cf.md)
     - Option B - Follow the below tutorials to Deploy the application using Mock Server
         - [Deploy the Application with Mock Server - optional](./deploy/cf/deploy-to-cf-mock.md)

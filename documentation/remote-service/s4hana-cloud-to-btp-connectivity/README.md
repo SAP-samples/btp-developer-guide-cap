@@ -1,8 +1,8 @@
-# Configure the connectivity between SAP S/4HANA Cloud and SAP BTP
+# Configure the Connectivity Between SAP S/4HANA Cloud and SAP BTP
 
-## Usage scenario
+## Usage Scenario
 
-To conect to an SAP S/4HANA Cloud system using service binding, you have to register the system in your SAP SAP Business Technology Platform (BTP) account.
+To connect to an SAP S/4HANA Cloud system using service binding, you have to register the system in your SAP SAP Business Technology Platform (BTP) account.
 
 ## Prerequisites
 You need a user with administrator access for the SAP BTP global account and the SAP S/4HANA Cloud system.
@@ -13,7 +13,7 @@ You need a user with administrator access for the SAP BTP global account and the
 
 ### SAP Business Technology Platform
 
-1. In SAP BTP cockpit, open your global account and choose
+1. In **SAP BTP cockpit**, open your global account and choose
 **System Landscape**.
 
 2. In the **System Landscape** screen, choose **Systems** and then **Add System**.

@@ -4,7 +4,7 @@
 
 1. Develop a basic full-stack CAP application. You have the following options:
     - **Option 1**: Go through the following group of tutorials based on the Incident Management application step by step and explore the source code. See [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
-    - **Option 2**: Go to the Incident Management application GitHub repository directly and deploy the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app).
+    - **Option 2**: Go to the Incident Management application GitHub repository directly and download the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app).
         1. Run the following command to clone the Incident Management application:
 
             ```sh

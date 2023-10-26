@@ -18,7 +18,7 @@ Here is what you need to do additionally, to integrate with SAP Audit Log Servic
         service: auditlog
       type: org.cloudfoundry.managed-service
     ```
-2. Bind the service to `incidents-srv` in its **requires** section.
+2. Bind the service to `incident-management-srv` in its **requires** section.
     ```yaml
       requires:
       - name: incidents-auditlog
@@ -27,13 +27,13 @@ Here is what you need to do additionally, to integrate with SAP Audit Log Servic
 ```bash
 mbt build
 ```
-4. Check mta_archieves / mta_archive and do: 
+4. Check if the mtar has been created in the mta_archives folder and do: 
 
 ```bash
-cf deploy mta_archieve/< mtar_name >.mtar
+cf deploy mta_archives/incident-management_1.0.0.mtar
 ```
  
-4. After successful deployment, you can go to your SAP BTP Subaccount-> Spaces -> Your Space, and see you application up and running.
+4. After successful deployment, you can go to SAP BTP Subaccount-> Spaces -> Your Space, and see the application up and running.
 5. You can click on service binding and see the services bind to your application. Here auditlog service is binded to your application
 ![](./images/app-and-service.png)
 6. You have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) to be able to access the application via the URL.

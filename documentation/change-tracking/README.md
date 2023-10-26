@@ -5,3 +5,4 @@
   3. [Deploy Incident Management Application to SAP BTP](./3-deploy-to-btp.md)
       - [Option 1 - Deploy to Cloud Foundry](./4-deploy-to-cf.md)
       - [Option 2 - Deploy to Kyma](./5-deploy-to-kyma.md)
+  4. [View Change History](./6-test-the-flow.md)

@@ -3,7 +3,7 @@
 ## Prerequisites
 
 * You have ensured that the [prerequisites are fullfilled and all the required systems are in place](../mission-prerequisites/README.md)
-* You have downloaded the [Business Partner API](../prepare/explore-apis-and-events/README.md)
+* You have downloaded the [Business Partner API](../explore-apis-and-events/README.md)
 
 ## Content
 

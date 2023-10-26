@@ -1,6 +1,6 @@
 # Setup CI/CD Pipeline
 
-This section describes how to configure and run a predefined continuous integration and delivery (CI/CD) pipeline that automatically tests, builds, and deploys your code changes to speed up your development and delivery cycles.
+This section describes how to configure and run a predefined continuous integration and delivery (CI/CD) pipeline using [SAP Continuous Integration and Delivery](https://discovery-center.cloud.sap/serviceCatalog/continuous-integration--delivery?region=all) service that automatically builds, tests and deploys your code changes to speed up your development and delivery cycles.
 
 The steps below will guide your through setting up your pipeline.
 
@@ -9,7 +9,7 @@ The steps below will guide your through setting up your pipeline.
 
 To be able to perform the steps for setting up a CI/CD pipeline, you will need a public repository. Currently, SAP Continuous Integration and Delivery supports **GitHub** and **Bitbucket** repositories.
 
-For real application development, you need to consider the right place for your repository, of course.
+For real application development, you need to consider the right place for your repository.
 
 In this example, we’ll be creating a repository on GitHub. You’ll need a **GitHub** account for this step.
 
@@ -191,7 +191,7 @@ For your pipeline to be able to push and pull images from your docker repository
         sonarExecuteScan: false
     Release:
         kubernetesDeploy: true
-        deploymentName: incidents-mgmt
+        deploymentName: incident-management
         kubeConfigFileCredentialsId: <kube-config-credentials-name>
         namespace: <namespaceName>
         additionalParameters:
@@ -312,6 +312,6 @@ For your pipeline to be able to push and pull images from your docker repository
 ![deploy](./cicd24.png)
 <br>
 
-You have to [Assign Application Roles](../assign-application-roles/assign-application-roles.md) to be able to access the application.
+5. [Assign Application Roles](../assign-application-roles/assign-application-roles.md) to be able to access the application.
 
-Next step, proceed to [Integrate with SAP Build Workzone](../../integrate/withBuildWorkZone.md) to access the application in launchpad.
+6. Proceed to [Integrate with SAP Build Work Zone](https://developers.sap.com/tutorials/integrate-with-work-zone..html) to access the application in launchpad from SAP Build Work Zone, standard edition.

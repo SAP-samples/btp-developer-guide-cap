@@ -21,16 +21,7 @@
         5. For Kyma Runtime
             - [Execute the preliminary setup](../../prerequisite-for-sample/prerquites-for-sample.md#prepare-application-to-deploy-to-kymak8s).
 
-> Undeploy your application by running the below command, if you had deployed it.
-    For Cloud Foundry,
-    ```sh
-    cf undeploy <YOUR_MTA_ID> --delete-services
-    ```
-
-    For Kyma Runtime,
-    ```sh
-    helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>
-    ```
+> Undeploy your application by running the below command, if you had deployed it. For Cloud Foundry, run `cf undeploy <YOUR_MTA_ID> --delete-services` and for Kyma Runtime run `helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>`
 
 ## Systems and Accounts
 

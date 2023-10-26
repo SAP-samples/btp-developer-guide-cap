@@ -1,11 +1,13 @@
 # Deploy and Run the Application on Kyma with SAP S/4HANA Cloud Backend
 
-## Usage scenario
+## Usage Scenario
 
-Deploy the project to Kyma using Helm Configurations
+Deploy the project to Kyma using Helm configurations.
 
 ## Build Images
-We recommend using [Cloud Native Buildpacks](https://buildpacks.io/) to transform source code (or artifacts) into container images. For local development scenarios, you can use the [pack](https://buildpacks.io/docs/tools/pack/) CLI to consume Cloud Native Buildpacks. Check out [About Cloud Native Buildpacks](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cloud-native-buildpacks) for more info.
+To transform source code (or artifacts) into container images, we recommend using [Cloud Native Buildpacks](https://buildpacks.io/).
+For local development scenarios, you can use the [pack](https://buildpacks.io/docs/tools/pack/) CLI to consume Cloud Native Buildpacks. 
+For more information, see [About Cloud Native Buildpacks](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cloud-native-buildpacks).
 
 Log in to your container registry:
 
@@ -13,12 +15,12 @@ Log in to your container registry:
 docker login docker.io -u <your-user>
 
 ```
-## Before you begin
+## Before You Begin
 
-Please note the following points:
+Please note:
 
-If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct the Docker to use x86 images by setting the [DOCKER_DEFAULT_PLATFORM](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) environment variable.
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
+If you're using any device with a non-x86 processor (e.g. MacBook M1/M2), you need to instruct the Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
+See [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables).
 
 ### Build CAP Node.js Image
 
@@ -38,7 +40,7 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
     ```
 
 **Info**
-The pack CLI builds the image that contains the build result in the gen/srv folder and the required npm packages by using the [Packeto Jammy Base Builder](https://github.com/paketo-buildpacks/builder-jammy-base).
+The pack CLI builds the image that contains the build result in the *gen/srv* folder and the required *npm* packages by using the [Packeto Jammy Base Builder](https://github.com/paketo-buildpacks/builder-jammy-base).
 
 ### Build UI Deployer image
 
@@ -54,7 +56,7 @@ The pack CLI builds the image that contains the build result in the gen/srv fold
 
 ### Build Database Image 
 
-Run the below command to build the database image:
+To build the database image, run:
 
 ```sh
 pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
@@ -73,7 +75,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
     version: ">0.0.0"
   ```
 
-4. Add the below configurations for `s4-hana-cloud` service instance creation in `values.yaml`:
+4. Add the following configurations for `s4-hana-cloud` service instance creation in `values.yaml`:
 
   ```yaml
   s4-hana-cloud:
@@ -81,7 +83,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
     servicePlanName: api-access
   ```
 
-More info about Helm and CAP in [About CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cap-helm).
+For more information about Helm and CAP, see [About CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cap-helm).
 
 
 ## Deploy Helm Chart
@@ -128,7 +130,7 @@ html5-apps-deployer:
 domain: <cluster domain>
 
 ```
-You can use the following command to get the domain name for your Kyma cluster:
+To get the domain name for your Kyma cluster, use the following command
 
 ```yaml
 kubectl get gateway -n kyma-system kyma-gateway \
@@ -174,14 +176,14 @@ This installs the Helm chart from the chart folder with the release name ***inci
 
 ::: tip
 
-With the ***helm upgrade --install*** command you can install a new chart as well as upgrade an existing chart.
+With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
 :::
 
-The outcome of installation will look something like this:
+The outcome of installation looks similar to this:
 
 ![deployed app](./images/deployedapp.png)
 
-You have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) to be able to access the application via the URL.
+To be able to access the application via the URL, you have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 
-Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+As a next step, to access the application in launchpad, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
 

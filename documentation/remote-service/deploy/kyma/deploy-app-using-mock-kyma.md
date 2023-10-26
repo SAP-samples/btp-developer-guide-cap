@@ -17,5 +17,3 @@ If you don't have access to an SAP S/4HANA Cloud system, you can deploy and run 
 
 2. Follow the steps in [Deploy to Kyma tutorial](./deploy-to-kyma.md), but skip the steps for the **Remote Service Configuration**.
 >Make sure you deploy the Incident Management application to the same namespace as the mock server.
-
-3. Now you can build and deploy the Incident Management application.

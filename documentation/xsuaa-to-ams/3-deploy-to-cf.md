@@ -225,5 +225,5 @@ The application has [app2app navigation](https://help.sap.com/docs/build-work-zo
     ![](./images/dependency.png)
 
 ## Access Your Application
-As a next step, proceed to Integrate with [SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+As a next step, proceed to Integrate with [SAP Build Workzone, standard edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
 

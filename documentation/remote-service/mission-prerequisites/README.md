@@ -1,27 +1,28 @@
 # Make sure prerequisites are fulfilled and all required systems are in place
 
 ## Prerequisites
-* You have the following options to develop and deploy a basic CAP application:
-    - **Option 1** - Go through the following tutorials based on the Incident Management application step by step and explore the source code and the administrative tasks.
-    For Cloud Foundry Runtime:
-       1. [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html)
-       2. [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html)
 
-    - **Option 2** - Go through the following tutorials to Download the Incident Management application  directly from GitHub repository
-        1. Run the below command to clone the Incident Management Application
+1. Develop a basic full-stack CAP application. You have the following options:
+    - **Option 1**: Go through the following group of tutorials based on the Incident Management application step by step and explore the source code. See [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
+    - **Option 2**: Go to the Incident Management application GitHub repository directly and deploy the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app).
+        1. Run the following command to clone the Incident Management application:
 
             ```sh
             git clone https://github.com/cap-js/incidents-app.git
             ```
-        2. Rename the project to `Incident-Management`
-        3. Navigate to **package.json** file from the project's root folder and modify the **name** to **incident-management**
-        4. For **Cloud Foundry**
-            - [Prepare for SAP BTP Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html)
-            - Follow untill [Add the UI Applicaiton](https://developers.sap.com/tutorials/deploy-to-cf.html#2d5dd378-1a41-4166-9a4b-75f8181ba71f) in [Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/tutorials/deploy-to-cf.html#2d5dd378-1a41-4166-9a4b-75f8181ba71f)
-        5. For **Kyma Runtime**
-            - [Execute the preliminary setup](../../prerequisite-for-sample/prerquites-for-sample.md#prepare-application-to-deploy-to-kymak8s).
+        2. Rename the root folder of the project to **Incident-Management**.
+        3. Navigate to the **package.json** file from the project's root folder and change the  value of the **name** field to **incident-management**.
 
-> Undeploy your application by running the below command, if you had deployed it. For **Cloud Foundry**, run `cf undeploy <YOUR_MTA_ID> --delete-services` and for **Kyma Runtime** run `helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>`
+2. (Optional) If you have not deployed this application, do the following:
+   - For SAP BTP, Cloud Foundry runtime:
+         1. [Prepare for SAP BTP Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html)
+         2. Follow untill [Add the UI Applicaiton](https://developers.sap.com/tutorials/deploy-to-cf.html#2d5dd378-1a41-4166-9a4b-75f8181ba71f) in [Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/tutorials/deploy-to-cf.html#2d5dd378-1a41-4166-9a4b-75f8181ba71f)
+  - For SAP BTP, Kyma runtime:
+         1. [Prepare for Deployment and Deploy in SAP BTP, Kyma Runtime](../../prerequisite-for-sample/prerquites-for-sample.md#prepare-application-to-deploy-to-kymak8s).
+
+3. (Optional) If you have deployed this application, undeploy your application by running the following command:
+       - For SAP BTP, Cloud Foundry runtime: `cf undeploy <YOUR_MTA_ID> --delete-services`
+       - For SAP BTP, Kyma runtime: `helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>`
 
 ## Systems and Accounts
 

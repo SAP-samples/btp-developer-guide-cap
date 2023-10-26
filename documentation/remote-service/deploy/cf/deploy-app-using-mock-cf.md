@@ -2,7 +2,7 @@
 
 ## Usage scenario
 
-Deploy the project to Cloud Foundry using the MTA build file
+Deploy the project to Cloud Foundry using the MTA build file.
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ Deploy the project to Cloud Foundry using the MTA build file
 
 ### Deploy the Application
 
-1. Navigate to the root folder of incident management application and change credentials in package.json file to 
+1. Navigate to the root folder of incident management application and change credentials in `package.json` file to 
 
     ```json
         "credentials": {
@@ -21,7 +21,7 @@ Deploy the project to Cloud Foundry using the MTA build file
 
 **Note** - As **destination_name** you must enter the name of the destination created while installing mock server to SAP BTP Cloud Foundry Runtime.
 
-1. In the incidents-srv module requires section add **- name: incident-management-destination-service**
+1. In the *incidents-srv* module *requires* section, add **- name: incident-management-destination-service**
    
     ```yaml
     - name: incident-management-srv
@@ -34,11 +34,11 @@ Deploy the project to Cloud Foundry using the MTA build file
     ....
     ```
 
-2. Right-click the mta.yaml file and choose **Build MTA Project**
+2. Right-click the `mta.yaml` file and choose **Build MTA Project**
    
    ![build mtar](./images/build_mtar.png)
 
-3. If the build was successful, you find the generated file in the mta_archives folder. Right-click on incidents_1.0.0.mtar and select **Deploy MTA Archive**  
+3. If the build was successful, you find the generated file in the `mta_archives` folder. Right-click on *incidents_1.0.0.mtar* and select **Deploy MTA Archive**  
    
    ![deploy mtar](./images/deploy_mtar.png)
 
@@ -48,6 +48,6 @@ Deploy the project to Cloud Foundry using the MTA build file
 
    ![login](./images/select_account.png)
 
-You'll need to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) before you can access the application.
+Before you can access the application, you need to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 
-Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+As a next step, to access the application in launchpad, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html).

@@ -1,8 +1,12 @@
 # Option 2 - Deploy to Kyma
 
-## Build the images
+## Build the Images
 
-We recommend using [Cloud Native Buildpacks](https://buildpacks.io/) to transform source code (or artifacts) into container images. For local development scenarios, you can use the [pack](https://buildpacks.io/docs/tools/pack/) CLI to consume Cloud Native Buildpacks. Check out [About Cloud Native Buildpacks](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cloud-native-buildpacks) for more info.
+To transform source code (or artifacts) into container images, we recommend using [Cloud Native Buildpacks](https://buildpacks.io/).
+
+For local development scenarios, you can use the [pack](https://buildpacks.io/docs/tools/pack/) CLI to consume Cloud Native Buildpacks. 
+
+For more information, see [About Cloud Native Buildpacks](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cloud-native-buildpacks).
 
 Log in to your container registry:
 
@@ -10,20 +14,20 @@ Log in to your container registry:
 docker login docker.io -u <your-user>
 
 ```
-**Before you begin**
+**Before You Begin**
 
-Please note the following points:
+Please note:
 
-If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct the Docker to use x86 images by setting the [DOCKER_DEFAULT_PLATFORM](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) environment variable.
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
+If you're using any device with a non-x86 processor (e.g. MacBook M1/M2), you need to instruct the Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
+See [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables).
 
-1. Do the productive build for your application, which writes into the `gen` folder:
+1. Do the productive build for your application, which writes into the `gen` folder.
 
 ```sh
 cds build --production
 ```
 
-2. Build the `srv` image:
+2. Build the `srv` image.
 
 ```sh
 pack build <your-container-registry>/incident-management-srv:<image-version> \
@@ -32,7 +36,7 @@ pack build <your-container-registry>/incident-management-srv:<image-version> \
      --publish
 ```
 
-3. Build the database image:
+3. Build the database image.
 
 ```sh
 pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
@@ -41,7 +45,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
      --publish
 ```
 
-4. Build the HTML5 Deployer image
+4. Build the HTML5 Deployer image.
 
 ```sh
 pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
@@ -50,7 +54,7 @@ pack build <your-container-registry>/incident-management-html5-deployer:<image-v
      --publish
 ```
 
-5. Add your container image settings to your `chart/values.yaml`:
+5. Add your container image settings to your `chart/values.yaml`.
 
 ```yaml{4,7,8,9,13,14,18,19,23,24}
 ...
@@ -74,7 +78,7 @@ html5-apps-deployer:
     tag: <html5apps-deployer-image-version>
 ```
 
-6. Change the value for `SAP_CLOUD_SERVICE` to `incidents`
+6. Change the value for `SAP_CLOUD_SERVICE` to `incidents`.
 ```yaml{3}
 html5-apps-deployer:
   env:
@@ -82,7 +86,7 @@ html5-apps-deployer:
 ```
 ### Configure Cluster Domain
 
-1. Specify the domain of your cluster in the `chart/values.yaml` file so that the URL of your CAP service can be generated:
+1. Specify the domain of your cluster in the `chart/values.yaml` file so that the URL of your CAP service can be generated.
 
 ```yaml
 ...
@@ -109,7 +113,7 @@ xsuaa:
         - https://*.<your-cluster-domain>/**
 
 ```
-3. Add the destinations under `backendDestinations` in the `values.yaml` file:
+3. Add the destinations under `backendDestinations` in the `values.yaml` file.
 
 ```yaml
 backendDestinations:
@@ -125,7 +129,7 @@ backendDestinations:
 
 1. Log in to your Kyma cluster.
 
-2. Run the below command to create a namespace
+2. Create a namespace.
 ```sh
 kubectl create namespace incidents-namespace
 kubectl label namespace incidents-namespace istio-injection=enabled
@@ -142,10 +146,11 @@ This installs the Helm chart from the chart folder with the release name ***inci
 
 With the ***helm upgrade --install*** command you can install a new chart as well as upgrade an existing chart.
 :::
+
 The outcome of installation will look something like this:
 
 ![deployed app](./images/deployedapp.png)
 
-You have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) to be able to access the application.
+To be able to access the application via the URL, you have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 
-Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+As a next step, to access the application in launchpad, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html).

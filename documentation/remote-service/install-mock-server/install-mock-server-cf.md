@@ -80,7 +80,7 @@ Now you need to create a destination to the the mock server.
 
       * **Name** = *[Some destination name depending on your mission]*
       * **Type** = HTTP
-      * **URL** = *[URL for your OData entities]* e.g. https://\<The application route of the mock server\>/v2/op-api-business-partner-srv/
+      * **URL** = *[URL for your OData entities]* e.g. https://\<The application route of the mock server\>
       * **Proxy Type** = Internet
       * **Authentication** = NoAuthentication
 

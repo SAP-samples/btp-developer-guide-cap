@@ -154,11 +154,11 @@ xsuaa:
 
 ```yaml
 backendDestinations:
-  inicdent-management-srv-api:
+  incident-management-srv-api:
     service: srv
 ```
 **info**
-`backend` is the name of the destination. `service` points to the deployment name whose URL will be used for this destination.
+`incident-management-srv-api` is the name of the destination. `service` points to the deployment name whose URL will be used for this destination.
 :::
 
 

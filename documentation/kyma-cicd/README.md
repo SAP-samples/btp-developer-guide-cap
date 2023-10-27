@@ -13,7 +13,7 @@ For real application development, you need to consider the right place for your 
 
 In this example, we’ll be creating a repository on GitHub. You’ll need a **GitHub** account for this step.
 
-1. In VSCode, navigatimage.pnge to **Explorer** and choose **Open Folder**. 
+1. In VSCode, navigate to **Explorer** and choose **Open Folder**. 
 ![openFolder](./cicd28.png)
 
 2. Open the folder which contains your incident-management application.

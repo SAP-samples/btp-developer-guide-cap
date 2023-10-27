@@ -11,6 +11,10 @@
     ```bash
     "@sap/ams-dev": "^0.7.1"
     ```
+  3. Make sure you have `@sap/xssec` dependency with version greater that `3.3.5`
+      ```bash
+      "@sap/xssec": "^3.3.5",
+      ```
  3. Add the following code to package.json/cds/requires/[development]/auth: 
     ```json
             "ams" : {

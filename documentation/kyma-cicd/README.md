@@ -38,7 +38,7 @@ In this example, we’ll be creating a repository on GitHub. You’ll need a **G
 - Go to the Service Marketplace
 - Type Continuous into the Search Box
 - Choose Create
-![Choose create](../btp-cicd/cicd1.png)
+![Choose create](./cicd1.png)
 
 2. Assign Role Collection
 
@@ -116,13 +116,13 @@ For your pipeline to be able to push and pull images from your docker repository
 
 1. To run this pipeline you would need your credentials to be base64-encoded. To obtain these credentials, login to your registry from the terminal using the below command.
     ```
-    docker --config /enc login docker.io
+    docker --config /tmp login docker.io
     ```
-    Provide your credentials when prompted.
+    Provide your credentials if prompted.
 
 2. Run the below command
     ```
-    cat /enc/config.json
+    cat /tmp/config.json
     ```
     You should see the output below
     ```json
@@ -143,7 +143,7 @@ For your pipeline to be able to push and pull images from your docker repository
         "credsStore": "osxkeychain"  // [!code --] 
     }   
     ```
-4. Now again run the same login command mentioned in step 1. Print the credentials in the same manner as shown in step 2. Ensure your credentials are in this form
+4. Now again run the same login command mentioned in step 1. You will need to input your credentials again. Print the credentials in the same manner as shown in step 2. Ensure your credentials are in this form
     ```json
     {
         "auths": {
@@ -173,23 +173,23 @@ For your pipeline to be able to push and pull images from your docker repository
 ## Pipeline configuration 
 1. In the root folder create a folder `.pipeline`. Within this folder create a new file `config.yml`.
 
-3. Open the newly created `.pipeline/config.yml` file and copy the following content.
+3. Open the newly created `.pipeline/config.yml` file and paste the following content.
     ```yaml
     general:
-    buildTool: "npm"
-    chartPath: chart
+      buildTool: "npm"
+      chartPath: chart
     service:
-    buildToolVersion: "N18"
+      buildToolVersion: "N18"
     stages:
-    Build:
+      Build:
         npmExecuteLint: true
-    Additional Unit Tests:
+      Additional Unit Tests:
         npmExecuteScripts: true
-    Acceptance:
+      Acceptance:
         kubernetesDeploy: false
-    Compliance:
+      Compliance:
         sonarExecuteScan: false
-    Release:
+      Release:
         kubernetesDeploy: true
         deploymentName: incident-management
         kubeConfigFileCredentialsId: <kube-config-credentials-name>
@@ -198,33 +198,33 @@ For your pipeline to be able to push and pull images from your docker repository
         - --set-file
         - xsuaa.jsonParameters=xs-security.json
     steps:
-    npmExecuteLint:
+      npmExecuteLint:
         failOnError: true
-    npmExecuteScripts:
+      npmExecuteScripts:
         runScripts:
         - "test"
-    buildExecute:
+      buildExecute:
         npmRunScripts: [ 'cds-build' ]
         npmInstall: false
         cnbBuild: true
         helmExecute: true
-    cnbBuild:
+      cnbBuild:
         containerRegistryUrl: 'https://index.docker.io'
         dockerConfigJsonCredentialsId: <docker-config-credentials-fileName>
         multipleImages:
         - path: gen/srv
-            containerImageName: <your-container-registry>/incidents-mgmt-srv
-            containerImageAlias: <your-container-registry>/incidents-mgmt-srv
-            containerImageTag: <srv-image-version>
+          containerImageName: <your-container-registry>/incident-management-srv
+          containerImageAlias: <your-container-registry>/incident-management-srv
+          containerImageTag: <srv-image-version>
         - path: gen/db
-            containerImageName: <your-container-registry>/incidents-mgmt-hana-deployer
-            containerImageAlias: <your-container-registry>/incidents-mgmt-hana-deployer
-            containerImageTag: <hana-deployer-image-version>
+          containerImageName: <your-container-registry>/incident-management-hana-deployer
+          containerImageAlias: <your-container-registry>/incident-management-hana-deployer
+          containerImageTag: <hana-deployer-image-version>
         - path: app/incidents
-            containerImageName: <your-container-registry>/incidents-mgmt-html5-deployer
-            containerImageAlias: <your-container-registry>/incidents-mgmt-html5-deployer
-            containerImageTag: <htmk5-deployer-image-version>
-    helmExecute:
+          containerImageName: <your-container-registry>/incident-management-html5-deployer
+          containerImageAlias: <your-container-registry>/incident-management-html5-deployer
+          containerImageTag: <html5-deployer-image-version>
+      helmExecute:
         helmCommand: dependency
         dependency: update
     ```
@@ -237,13 +237,13 @@ For your pipeline to be able to push and pull images from your docker repository
 
 5. Navigate to the `cnbBuild` step and change the values of **dockerConfigJsonCredentialsId** and the **containerImageName, containerImageAlias and containerImageTag**.
 ![cnbBuild](./cicd18.png)
-    For the parameter `dockerConfigJsonCredentialsId` should be the same value as the credential name given for the **Container Registry Configuration** credential given in step 2, section [Get docker credentials](./add-cicd.md#get-docker-credentials).
+    For the parameter `dockerConfigJsonCredentialsId`, it should be the same value as the credential name given for the **Container Registry Configuration** credential created in step 5, section [Get docker credentials](./add-cicd.md#get-docker-credentials).
 
     The parameters for the images must be changed with your docker registry name wherever mentioned. The preferred image versions must also be mentioned wherever relevant. 
 
 <br>
 
-## Prepare Code
+## Prepare your code
 
 1. Open the `package.json` file and add a script to run `cds build`.
     ```json
@@ -268,21 +268,22 @@ For your pipeline to be able to push and pull images from your docker repository
     - Password: enter your GitHub access token 
 
     Choose **Create**
- ![configure pipeline](../btp-cicd/cicd3.png)
+ ![configure pipeline](./cicd33.png)
 
 2. Go back to the **Jobs** tab and choose **+** icon to create a new Job
 
 3. Under **General Information** add the following data:
 
     - Job Name: "incidentManagement"
-    - Repository: Select *add repository*
-![configure pipeline](../btp-cicd/cicd5.png)
+    - Repository: Click the highlighted button. Then click on **Add Repository**
+![configure pipeline](./cicd34.png)
+![addRepository](./cicd35.png)
 
-4. Provide the information to your GitHub repository that you have created in step 3:
+4. Provide the information to your GitHub repository that you had created initially.
 
     - Name: &lt;add your repo name&gt;
     - Clone URL: &lt;add your repo-URL&gt;
-    - Credentials: &lt;add the credentials that you created in step 6.&gt;
+    - Credentials: &lt;add the credentials that you created in step 1.&gt;
     - Type: GitHub
 ![configure pipeline](./cicd25.png)
 
@@ -290,7 +291,7 @@ For your pipeline to be able to push and pull images from your docker repository
 
 6. Back in the **General Information** tab continue configuring the Job:
  
-  - Branch: main
+  - Branch: master
   - Pipeline: Kyma Runtime
  ![configure pipeline](./cicd20.png)
 

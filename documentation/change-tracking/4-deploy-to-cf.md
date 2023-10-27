@@ -10,7 +10,7 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
 
 
-2. Make sure you're logged in to your subaccount:
+2. Make sure you're logged in your subaccount:
 
      ```
     cf api <API-ENDPOINT>
@@ -25,7 +25,7 @@ You can find the API endpoint in the **Overview** section of your subaccount.
 
 ---
 
-3. Navigate to the `mta_archives` folder and run the following command to deploy the generated archive to Cloud Foundry:
+3. Navigate to the `mta_archives` folder and deploy the generated archive to Cloud Foundry:
 
     ```
     cf deploy incident-management_1.0.0.mtar 
@@ -39,9 +39,9 @@ Application "incident-management-srv" started and available at
 "[org]-[space]-incident-management.landscape-domain.com"
 ```
 
-You'll need to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) before you can access the application.
+To be able to access the application via the URL, you have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 
-Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+As a next step, to access the application in launchpad, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
 
 
 # Summary

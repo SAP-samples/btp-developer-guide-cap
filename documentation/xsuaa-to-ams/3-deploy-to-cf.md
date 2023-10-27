@@ -10,16 +10,19 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
  1. Create ias-config.json file in your project root folder with following content and replace the ```<unique-id>``` with a unique value to uniquely identify your IAS app in IAS Tenant:
 
     ```json hl_lines="7-9"
-    {
-        /**
-        product_label is the name of ams instance and display-name will be the ias instance name 
-        */
-        "authorization": {
-          "enabled":true,
-          "product_label": "inicident-ams-<unique-id>"
-        },
-        "display-name": "incident-ias-<unique-id>"
-    }
+        {
+          
+            "authorization": {
+              "enabled":true
+            },
+            "provided-apis": [
+                {
+                  "name": "incidents-api",
+                  "description": "api exposed by incident mgmt app"
+                }
+              ],
+            "display-name": "incident-ias-<unique-id>"
+        }
     ```
 
 2. Check if the following dependencies and configurations have been added to the `package.json`:
@@ -40,7 +43,7 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
         "@sap/cds-dk": "^7"
       },
     ```
-3. Change the `auth/kind` to `ias` in package.json 
+3. Change the `auth.kind` to `ias` in `package.json` for the production profile:
     ```json    
         ...
       "cds": {
@@ -59,7 +62,7 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
 
 1. Update `mta.yaml` with the following content
 
-  - Change the dependency `incident-management-auth ` in `resources` from `xsuaa` service instance:
+- Change the dependency `incident-management-auth ` in `resources` from `xsuaa` service instance:
      ```yaml
      - name: incident-management-auth
        type: org.cloudfoundry.managed-service
@@ -173,22 +176,77 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
             - npx -p @sap/cds-dk cds build --production
             - npx -p cpy-cli -- cpy "ams" "./gen/srv"
       ```
-2. Build the mtar
+2. Update `app/incidents/xs-app.json` with the following code:
+   ```json
+      {
+      "welcomeFile": "/index.html",
+      "authenticationMethod": "route",
+      "routes": [
+        {
+          "source": "^/odata/(.*)$",
+          "target": "/odata/$1",
+          "destination": "incident-management-srv-api",
+          "authenticationType": "ias",
+          "csrfProtection": false
+        },
+        {
+          "source": "^/resources/(.*)$",
+          "target": "/resources/$1",
+          "authenticationType": "none",
+          "destination": "ui5"
+        },
+        {
+          "source": "^/test-resources/(.*)$",
+          "target": "/test-resources/$1",
+          "authenticationType": "none",
+          "destination": "ui5"
+        },
+        {
+          "source": "^(.*)$",
+          "target": "$1",
+          "service": "html5-apps-repo-rt",
+          "authenticationType": "ias"
+        }
+      ]
+    }
+   ```
+   > Change the authenticationType of `incident-management-srv-api` and `html5-apps-repo-rt` from `xsuaa` to `ias`
+3. Update `app/incidents/webapp/xs-app.json` with the following code:
+   ```json
+      {
+      "authenticationMethod": "route",
+      "logout": {
+        "logoutEndpoint": "/do/logout"
+      },
+      "routes": [
+        {
+          "source": "^(.*)$",
+          "target": "$1",
+          "service": "html5-apps-repo-rt",
+          "authenticationType": "ias"
+        }
+      ]
+    }
+
+   ```
+   > Change the authenticationType of `html5-apps-repo-rt` from `xsuaa` to `ias`
+4. Update `app/incidents/webapp/manifest.json` with the following code
+5. Build the mtar
 
     ```bash
     mbt build
     ```
     
-3. Log in to your SAP BTP Subaccount and choose your CF space where you want to deploy your application
+6. Log in to your SAP BTP Subaccount and choose your CF space where you want to deploy your application
 
     ```bash
     cf login -a <api-endpoint>
     ```
     
-3.  Deploy to Cloud Foundary
+7.  Deploy to Cloud Foundary
 
     ```bash
-    cf deploy mta_archive/incident-management_1.0.0.mtar
+    cf deploy mta_archive/<mtar_name>.mtar
     ```
 
 After successful deployment, you can go to your ```BTP Cockpit/Your Subaccount/Your space``` and see your application as well as bound services.
@@ -206,8 +264,14 @@ After successful deployment, you can go to your ```BTP Cockpit/Your Subaccount/Y
 ## Set Up App2App Communication
 
 The application has [app2app navigation](https://help.sap.com/docs/build-work-zone-standard-edition/sap-build-work-zone-standard-edition/switching-to-sap-cloud-identity-services-identity-authentication#app-to-app-navigation) configuration where the CAP back end with IAS-based authentication exposes an API that is configured as a dependency of the Workzone’s IAS application. The IASDependencyName is then defined in the GACD Destination Deployer module configuration.
+### Update OpenID Connect Configuration
+  - Log in to your IAS Tenant Admin Console.
+  - Go to your Applications & Resources.
+  - Search your IAS application bounded to your CAP back end. (In this case its `incident-ias-staging`)
+  - Go to `trust` -> `OpenID Connect Configuration` -> `Advance Settings` -> `Access Token Format` and choose `JSON Web Token`
+  ![](./images/openId%20%20config.png)
 
-### Steps To set up app2app communication
+### Set up app2app communication
 
   - Log in to your IAS Tenant Admin Console.
   - Go to your Applications & Resources.

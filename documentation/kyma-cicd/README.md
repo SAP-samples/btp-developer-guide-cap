@@ -191,7 +191,7 @@ For your pipeline to be able to push and pull images from your docker repository
         sonarExecuteScan: false
       Release:
         kubernetesDeploy: true
-        deploymentName: incidents-mgmt
+        deploymentName: incident-management
         kubeConfigFileCredentialsId: <kube-config-credentials-name>
         namespace: <namespaceName>
         additionalParameters:
@@ -279,7 +279,7 @@ For your pipeline to be able to push and pull images from your docker repository
 ![configure pipeline](./cicd34.png)
 ![addRepository](./cicd35.png)
 
-4. 4. Provide the information to your GitHub repository that you had created initially.
+4. Provide the information to your GitHub repository that you had created initially.
 
     - Name: &lt;add your repo name&gt;
     - Clone URL: &lt;add your repo-URL&gt;
@@ -291,7 +291,7 @@ For your pipeline to be able to push and pull images from your docker repository
 
 6. Back in the **General Information** tab continue configuring the Job:
  
-  - Branch: main
+  - Branch: master
   - Pipeline: Kyma Runtime
  ![configure pipeline](./cicd20.png)
 

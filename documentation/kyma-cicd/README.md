@@ -213,17 +213,17 @@ For your pipeline to be able to push and pull images from your docker repository
         dockerConfigJsonCredentialsId: <docker-config-credentials-fileName>
         multipleImages:
         - path: gen/srv
-          containerImageName: <your-container-registry>/incident-mgmt-srv
-          containerImageAlias: <your-container-registry>/incident-mgmt-srv
+          containerImageName: <your-container-registry>/incident-management-srv
+          containerImageAlias: <your-container-registry>/incident-management-srv
           containerImageTag: <srv-image-version>
         - path: gen/db
-          containerImageName: <your-container-registry>/incident-mgmt-hana-deployer
-          containerImageAlias: <your-container-registry>/incident-mgmt-hana-deployer
+          containerImageName: <your-container-registry>/incident-management-hana-deployer
+          containerImageAlias: <your-container-registry>/incident-management-hana-deployer
           containerImageTag: <hana-deployer-image-version>
         - path: app/incidents
-          containerImageName: <your-container-registry>/incident-mgmt-html5-deployer
-          containerImageAlias: <your-container-registry>/incident-mgmt-html5-deployer
-          containerImageTag: <htmk5-deployer-image-version>
+          containerImageName: <your-container-registry>/incident-management-html5-deployer
+          containerImageAlias: <your-container-registry>/incident-management-html5-deployer
+          containerImageTag: <html5-deployer-image-version>
       helmExecute:
         helmCommand: dependency
         dependency: update

@@ -42,14 +42,14 @@ module.exports = function () {
       }
 ```
 
-5. Open `srv/processors-service.js` file and add the below code snippet to `init` method to set up an event listner for the BusinessPartnerChanged event
+5. Open `srv/processor-service.js` file and add the below code snippet to `init` method to set up an event listner for the BusinessPartnerChanged event
 
 ```js
 this.messaging = await cds.connect.to('messaging');
     this.messaging.on('sap.s4.beh.businesspartner.v1.BusinessPartner.Changed.v1', async ({ event, data }) => await this.onBusinessPartnerChanged(event, data))
 ```
 
-6. In `srv/processors-service.js` add the a method to update the changed Business Partner
+6. In `srv/processor-service.js` add the a method to update the changed Business Partner
 
 ```js
 async onBusinessPartnerChanged(event, data){

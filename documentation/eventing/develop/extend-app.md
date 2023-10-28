@@ -30,7 +30,7 @@ module.exports = function () {
   }
 ```
 
-3. Open `package.json` file in the root folder of the project and copy the code snippet to the requries section of the file. This will add SAP Event Mesh service as a dependency to your applicaton
+3. Open `package.json` file in the root folder of the project and copy the code snippet to the `requries` section of the file. This will add SAP Event Mesh service as a dependency to your applicaton
 
 ```json
 "messaging": {

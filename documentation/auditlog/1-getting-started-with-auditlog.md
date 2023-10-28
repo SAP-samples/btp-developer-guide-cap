@@ -45,7 +45,7 @@ There are predefined audit categories, which represent the kinds of actions:
 
 ## Entitlements required
 
-Remote service integration to the developed CAP application requires the following additional entitlements and quotas in the SAP BTP cockpit:
+Audit Logging service integration to the developed CAP application requires the following additional entitlements and quotas in the SAP BTP cockpit:
 
 | Service                           | Plan       | Number of Instances |
 |-----------------------------------|------------|:-------------------:|

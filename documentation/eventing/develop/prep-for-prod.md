@@ -16,10 +16,10 @@ In this chapter you will add the SAP Event Mesh service to your project
 
     - Adds `"@sap/xb-msg-amqp-v100": "^0"` in package.json file
     - Adds `event-mesh.json` file in the root folder
-    - Adds below entry in mta.yaml
+    - Adds below entry in **resources** section of mta.yaml
 
         ```yaml
-            - name: inicdent-management-messaging
+            - name: incident-management-messaging
               type: org.cloudfoundry.managed-service
               parameters:
               service: enterprise-messaging
@@ -29,7 +29,7 @@ In this chapter you will add the SAP Event Mesh service to your project
     - Adds the below entry in the `requires` section of `incident-management-srv` module
 
         ```yaml
-            - name: inicdent-management-messaging
+            - name: incident-management-messaging
         ```
 
 2. Open the `mta.yaml` and copy the below module to the  `resources` section.
@@ -56,3 +56,4 @@ In this chapter you will add the SAP Event Mesh service to your project
     ```
 
      > Note: system-name is the created system name you have set in Remote Service Integration tutorial
+     Value for emClientId should have maximum length of 4 and should fit in [characters: [A-Za-z0-9]; 

@@ -35,6 +35,8 @@ You need a user with administrator access for the SAP BTP global account and the
 
 6. Configure the communication flow. In the **Communication Scenario Groups** dropdown menu, select **All Communication Scenarios**.
 
+   ![approve](./images/approve.png)
+
 7. Choose **Get Token**.
    SAP BTP generates an integration token so the SAP S/4HANA Cloud system administrator can configure integration with SAP BTP from your SAP S/4HANA Cloud system. 
 

@@ -120,7 +120,7 @@ In essence, these are the steps you need to follow:
 
       * **Name** = *[Some destination name depending on your mission]*
       * **Type** = HTTP
-      * **URL** = *[service url for the installed mock server]* e.g. https://\<The application route of the mock server\>/v2/op-api-business-partner-srv/
+      * **URL** = *[service url for the installed mock server]* e.g. https://\<The application route of the mock server\>
       * **Proxy Type** = Internet
       * **Authentication** = NoAuthentication
 

@@ -57,7 +57,7 @@
   ```
 
 7. Import the Business Partner API to your project.
-   * In the project explorer, right-click on srv folder and select **Upload...**
+   * In the project explorer, right-click on the project's root folder and select **Upload...**
 
      ![upload API](./images/upload-api.png)
 

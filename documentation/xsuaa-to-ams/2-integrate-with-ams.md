@@ -73,7 +73,7 @@ The authorization checks that you added to the CAP model apply not only when dep
         }
     }
   ```
-  Here, the `policies` array can be used to assign policies to mocked users for local testing. The `roles` property of a user can still be used for manual role assignments to a mocked user. But since we want to test role assignments via the Authorization Management service, we instead assign the policy for the support role.
+  Here, the `policies` array can be used to assign policies to mocked users for local testing. The `roles` property of a user can still be used for manual role assignments to a mocked user. But since we want to test role assignments via the Authorization Management Service, we instead assign the policy for the support role.
 
 ## Access the Incidents Application with Password
 

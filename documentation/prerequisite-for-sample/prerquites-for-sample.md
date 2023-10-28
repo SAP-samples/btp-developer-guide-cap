@@ -366,37 +366,37 @@ Below the root folder, the HTML5 applications deployer looks for the `resources`
 
 5. Open `app/incidents/package.json` and add the following code snippet:
 
-        ```json
-        {
-            "name": "incidents",
-            "version": "0.0.1",
-            "description": "A Fiori application.",
-            "keywords": [
-                "ui5",
-                "openui5",
+```json
+{
+    "name": "incidents",
+    "version": "0.0.1",
+    "description": "A Fiori application.",
+    "keywords": [
+        "ui5",
+        "openui5",
                 "sapui5"
-            ],
-            "main": "webapp/index.html",
-            "scripts": {
+         ],
+          "main": "webapp/index.html",
+          "scripts": {
                 "start": "node node_modules/@sap/html5-app-deployer/index.js",
                 "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
-            },
-            "dependencies": {  
+          },
+          "dependencies": {  
                 "@sap/html5-app-deployer": "5.0.0"
-              },
-            "devDependencies": { }
-        }
-        ```
+          },
+          "devDependencies": { }
+}
+```
 6. Move `xs-app.json` from `app/incidents` to `app/incidents/resources/webapp`
 7. Open `app/incidents/resources/webapp/xs-app.json` and replace the file with the following code snippet:
 
-        ```json
-        {
-          "welcomeFile": "/index.html",
-          "authenticationMethod": "route",
-          "routes": [
+```json
+{
+     "welcomeFile": "/index.html",
+      "authenticationMethod": "route",
+      "routes": [
             {
-              "source": "^/odata/(.*)$",
+              "source": "^/odata/v4/processor/(.*)$",
               "target": "/odata/$1",
               "destination": "incident-management-srv-api",
               "authenticationType": "xsuaa",
@@ -420,9 +420,9 @@ Below the root folder, the HTML5 applications deployer looks for the `resources`
               "service": "html5-apps-repo-rt",
               "authenticationType": "xsuaa"
             }
-          ]
-        }
-        ```
+      ]
+}
+```
 
 This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
 

@@ -1,8 +1,8 @@
-# Setup SAP BTP Account Using Terraform
+# Set Up SAP BTP Account Using Terraform
 
 The Terraform provider for SAP Business Technology Platform (BTP) enables you to automate the provisioning, management, and configuration of resources on SAP BTP. By leveraging this provider, you can simplify and streamline the deployment and maintenance of SAP BTP services and applications.
 
-Currently, the [SAP BTP Terraform](https://registry.terraform.io/providers/SAP/btp/latest) provider is available in beta for non productive usage. 
+Currently, the SAP BTP provider is available in beta for non productive usage: [SAP BTP Terraform](https://registry.terraform.io/providers/SAP/btp/latest).
 
 The Terraform script documented here automates the setup of an SAP BTP subaccount based on a predefined template. The scripts can be used create SAP BTP subaccount with Cloud Foundry or Kyma runtime. The Terraform script does the below configuration after creating a SAP BTP subaccount:
 

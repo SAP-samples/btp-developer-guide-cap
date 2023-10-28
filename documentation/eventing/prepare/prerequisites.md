@@ -8,8 +8,8 @@
         ```sh
         cf undeploy <YOUR_MTA_ID> --delete-services
         ```
-        **info**
-        Replace `YOUR_MTA_ID` in the above command with the `ID` from mta.yaml file.
+     
+        > **Note:** Replace `YOUR_MTA_ID` in the command above with the `ID` from **mta.yaml** file.
 
     - If you use SAP BTP, Kyma runtime: undeploy the application using the following command:
 

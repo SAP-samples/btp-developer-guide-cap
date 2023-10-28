@@ -337,7 +337,7 @@ Below the root folder, the HTML5 applications deployer looks for the `resources`
         }
       }
     }
-    ```
+```
 
 3. Add the below code snippet to the end of the `manifest.json` file
 
@@ -346,7 +346,7 @@ Below the root folder, the HTML5 applications deployer looks for the `resources`
         "public": true,
         "service": "incidents"
     }
-    ```
+```
 
 4. In the `manifest.json` file remove the leading `/` from the `uri`
 

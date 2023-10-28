@@ -2,12 +2,12 @@
 
 ## Prerequisites
 
-Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare your sample for deploying to CF.
+Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./1-getting-started-with-ams.md).
 
 
-## Add IAS and AMS
+## Add Identity Authentication and Authorization Management
 
- 1. Create ias-config.json file in your project root folder with following content and replace the ```<unique-id>``` with a unique value to uniquely identify your IAS app in IAS Tenant:
+ 1. Create `ias-config.json` file in your project root folder with the following content and replace the ```<unique-id>``` with a unique value to identify your IAS app in IAS Tenant:
 
     ```json hl_lines="7-9"
         {
@@ -25,7 +25,7 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
         }
     ```
 
-2. Check if the following dependencies and configurations have been added to the `package.json`:
+2. Check if the following dependencies and configurations have been added to the `cxpackage.json`:
 
     <!-- cpes-file package.json:$.cds.requires -->
     ```json hl_lines="7-9"
@@ -44,7 +44,9 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
       },
     ```
 3. Change the `auth.kind` to `ias` in `package.json` for the production profile:
-    ```json    
+   
+```json
+{   
         ...
       "cds": {
         "requires": {
@@ -55,12 +57,13 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
             }
           }
         }
-        }
+      }
     }
-    ```
-## Deploy to Cloud Foundry
 
-1. Update `mta.yaml` with the following content
+   ```
+## Deploy on Cloud Foundry
+
+1. Update the `mta.yaml` with the following content
 
 - Change the dependency `incident-management-auth ` in `resources` from `xsuaa` service instance:
      ```yaml
@@ -85,9 +88,8 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
          type: org.cloudfoundry.managed-service
      ```
 
-
   
-- Add following configurations to `incident-management-srv` module
+- Add the following configurations to the `incident-management-srv` module
 
     - Change `incident-management-auth` service binding with `incident-management-srv` to: 
       ```yaml
@@ -130,7 +132,8 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
                 sap.cloud.service: incidents
       ```
   ### Note:
-  Kindly check, the module `incident-management-destination-content` in mta.yaml should look like this:
+  
+  Check if the module `incident-management-destination-content` in `mta.yaml` looks like this:
     ```yaml
     - name: incident-management-destination-content
       type: com.sap.application.content
@@ -167,7 +170,7 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
             URL: ~{srv-api/srv-url}
           existing_destinations_policy: update
       ```
-  - Update your build-parameters with the following code :
+  - Update your `build-parameters ` with the following code:
       ```yaml
         build-parameters:
           before-all:
@@ -210,7 +213,7 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
       ]
     }
    ```
-   > Change the authenticationType of `incident-management-srv-api` and `html5-apps-repo-rt` from `xsuaa` to `ias`
+   > Change the  `authenticationType ` of `incident-management-srv-api` and `html5-apps-repo-rt` from `xsuaa` to `ias`
 3. Update `app/incidents/webapp/xs-app.json` with the following code:
    ```json
       {
@@ -229,65 +232,69 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
     }
 
    ```
-   > Change the authenticationType of `html5-apps-repo-rt` from `xsuaa` to `ias`
+   > Change the `authenticationType` of `html5-apps-repo-rt` from `xsuaa` to `ias`
 4. Update `app/incidents/webapp/manifest.json` with the following code
-5. Build the mtar
+   
+6. Build the mtar.
 
     ```bash
     mbt build
     ```
     
-6. Log in to your SAP BTP Subaccount and choose your CF space where you want to deploy your application
+7. Log in to your SAP BTP subaccount and choose your Cloud Foundry space where you want to deploy your application.
 
     ```bash
     cf login -a <api-endpoint>
     ```
     
-7.  Deploy to Cloud Foundary
+8.  Deploy on Cloud Foundry.
 
     ```bash
     cf deploy mta_archive/<mtar_name>.mtar
     ```
 
-After successful deployment, you can go to your ```BTP Cockpit/Your Subaccount/Your space``` and see your application as well as bound services.
+After successful deployment, you can go to **SAP BTP Cockpit -> your subaccount and your space** and see your application as well as bound services.
 
 ## Check Your IAS Application and Uploaded AMS Policies.
 
-- Log in to your IAS Tenant and goto Applications & Resources
-- Search and swlwct your app with `incident-ias-<unique-id>` (In this case its `incident-ias-staging`)
-- Check uploaded dcl policies under the Authorization Policies Section.
+- Log in to your IAS Tenant and go to **Applications & Resources**.
+- Search and select your application with `incident-ias-<unique-id>` (in this case its `incident-ias-staging`).
+- Check the uploaded dcl policies under **Authorization Policies**.
     ![Alt text](./images/policies.png)<br />
     
 - Assign users to your policies.
     ![Alt text](./images/user-assignmrnt.png)<br/>   
 
-## Set Up App2App Communication
+## Set Up Application to Application Communication
 
-The application has [app2app navigation](https://help.sap.com/docs/build-work-zone-standard-edition/sap-build-work-zone-standard-edition/switching-to-sap-cloud-identity-services-identity-authentication#app-to-app-navigation) configuration where the CAP back end with IAS-based authentication exposes an API that is configured as a dependency of the Workzone’s IAS application. The IASDependencyName is then defined in the GACD Destination Deployer module configuration.
+The application has [app2app navigation](https://help.sap.com/docs/build-work-zone-standard-edition/sap-build-work-zone-standard-edition/switching-to-sap-cloud-identity-services-identity-authentication#app-to-app-navigation) configuration where the CAP back end with IAS-based authentication exposes an API that is configured as a dependency of the SAP Biuld Workzone’s IAS application. The `IASDependencyName` is then defined in the GACD Destination Deployer module configuration.
+
 ### Update OpenID Connect Configuration
-  - Log in to your IAS Tenant Admin Console.
-  - Go to your Applications & Resources.
-  - Search your IAS application bounded to your CAP back end. (In this case its `incident-ias-staging`)
-  - Go to `trust` -> `OpenID Connect Configuration` -> `Advance Settings` -> `Access Token Format` and choose `JSON Web Token`
+  - Log in to your SAP Cloud Identity Services admin console.
+  - Go to **Applications & Resources**.
+  - Search for your application bound to your CAP backend (in this case its `incident-ias-staging`).
+  - Go to **Trust -> OpenID Connect Configuration -> Advance Settings -> Access Token Format**. Choose **JSON Web Token** and **Save**.
   ![](./images/openId%20%20config.png)
 
-### Set up app2app communication
+### Set Up Communication
 
-  - Log in to your IAS Tenant Admin Console.
-  - Go to your Applications & Resources.
-  - Search your IAS application bounded to your CAP back end. (In this case its `incident-ias-staging`)
-  - Verify that the end point exposed by your application is listed in `Application APIs -> Provided APIs` section.
+  - Log in to your SAP Cloud Identity Services admin console.
+  - Go to **Applications & Resources**.
+  - Search for your IAS application bound to your CAP backend (in this case it's `incident-ias-staging`).
+  - Verify that the endpoint exposed by your application is listed in **Application APIs -> Provided APIs**.
    ![](./images/backend%20ias.png)
-  - Now, Search and select your Workzone IAS application `SAP Build Work Zone, standard edition` -> Application APIs -> Dependencies, add `Add` a dependency.
+
+  - Search and select your SAP Build Work Zone Workzone application in **SAP Build Work Zone, standard edition -> Application APIs -> Dependencies**. Choose **Add** a dependency.
    ![](./images/workzone%20ias.png)
-  - Give a dependency name `same` as you provide in the `destination service configuration property` in mta.yaml
+
+  - Give the dependency the same name as the one you provided in the `destination service configuration property` in the `mta.yaml`.
     ```yaml
      HTML5.IASDependencyName: incidents-api
     ```
-  - For each application, select the IAS application bounded to your CAP back end.(in this case, its `incident-ias-staging`)
-  - Select the exposed end point.(In this case, its `incidents-api`), and `save` it.
+  - For each application, select the IAS application bound to your CAP backend (in this case, it's `incident-ias-staging`).
+  - Select the exposed endpoint (in this case, its `incidents-api`), and choose **Save**.
     ![](./images/dependency.png)
 
 ## Access Your Application
-As a next step, proceed to Integrate with [SAP Build Workzone, standard edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+To access the application in launchpad, proceed to [Integrate with SAP Build Workzone, standard edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html).
 

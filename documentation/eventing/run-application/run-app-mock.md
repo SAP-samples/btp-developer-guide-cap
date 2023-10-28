@@ -1,12 +1,9 @@
-# Test Run Application
+# Run the application
 
 ## Introduction
 
-You have finished the development of your application. Now it is time to test it in a demo.
+The application development and deployment is completed and now it can be tested. The mock S/4HANA will be used to simulate sending of events which will be processed by the eventing implementation in the Incident Management application.
 
-## Prerequisites 
-
-You have finished the development of your application. Now it is time to test it in a demo.
   
 ## Content
 

@@ -44,7 +44,9 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
       },
     ```
 3. Change the `auth.kind` to `ias` in `package.json` for the production profile:
-    ```json    
+   
+```json
+{   
         ...
       "cds": {
         "requires": {
@@ -55,9 +57,10 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
             }
           }
         }
-        }
+      }
     }
-    ```
+
+   ```
 ## Deploy on Cloud Foundry
 
 1. Update the `mta.yaml` with the following content

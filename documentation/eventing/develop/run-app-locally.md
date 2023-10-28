@@ -2,21 +2,19 @@
 
 ## Introduction
 
-Before you deploy the application to SAP BTP you can run the CAP application locally to test and ensure that your code changes are working.
+Before you deploy the application in SAP BTP, you can run the CAP application locally to test and ensure that your code changes are working.
 
-  
-## Content
+## Procedure
 
+1. To open a new terminal in your development environment, choose **Terminal** &rarr; **New Terminal**.
 
-1. Open a new terminal in your development environment, by navigating **Terminal&rarr; New Terminal**
+2. To start the CAP server, run the `cds watch` command.
 
-2. Run command `cds watch` to start the CAP server
+3. Make sure you have installed the extension REST Client. Go to **Extensions** and search for **REST Client**. If this extension is not installed yet, choose **Install**.
 
-3. Make sure you have installed the extension REST Client. Go to **Extensions** and search for 'REST Client'. In case it is not installed yet, choose **Install**
+4. Navigate back to the root folder of you applicaton and create a new file called **request.http**.
 
-4. Navigate back to the root folder of you applicaton and create a new file called `request.http` .
-
-5. Copy the code snippet to the file:
+5. Copy the following code snippet to the **request.http** file:
 
 ```
 PATCH  http://localhost:4004/odata/v4/api-business-partner/A_BusinessPartner('1004100') HTTP/1.1
@@ -35,9 +33,9 @@ Authorization: Basic YWxpY2U6
     }]
 }
 ```
->Hint: The file is auto saved in SAP Business Application Studio
+>Hint: The file is auto saved in SAP Business Application Studio.
 
-4. Click on **Send request** on the top of the file. Confirm that you see the below message in the terminal
+4. Choose **Send Request** on the top of the file. Check if you see the following message in the terminal:
 
     ![Send request](./images/send-request.png)
 
@@ -46,4 +44,4 @@ Authorization: Basic YWxpY2U6
 << received BusinessPartner.Changed { BusinessPartner: '1004100' }
 ```
 
-> If the API_BUSINESS_PARTNER doesn't show up, remove the .cds-services.json file - you find it in the user root folder (e.g.: /home/user/.cds-services.json)
+> If API_BUSINESS_PARTNER doesn't show up, remove the **.cds-services.json** file. You can find it in the user's root folder (for example, /home/user/.cds-services.json)

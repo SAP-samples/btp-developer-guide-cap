@@ -1,4 +1,4 @@
-# Setup CI/CD Pipeline
+# Set Up CI/CD Pipeline
 
 This section describes how to configure and run a predefined continuous integration and delivery (CI/CD) pipeline using SAP Continuous Integration and Delivery service that automatically builds, tests and deploys your code changes to speed up your development and delivery cycles.
 For more information, see See [SAP Continuous Integration and Delivery](https://discovery-center.cloud.sap/serviceCatalog/continuous-integration--delivery?region=all).
@@ -14,7 +14,7 @@ For real application development, you need to consider the right place for your 
 
 In this example, we’ll be creating a repository on GitHub. You need a **GitHub** account for this step.
 
-1. In VS Code, navigate to **Explorer** and choose **Open Folder**. 
+1. In Visual Studio Code (VS Code), navigate to **Explorer** and choose **Open Folder**. 
 ![openFolder](./cicd28.png)
 
 2. Open the folder which contains your Incident Management application.
@@ -32,12 +32,13 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
 
 <br>
 
-## Setup the Continuous Integration and Delivery Service
+## Set Up the Continuous Integration and Delivery Service
 
 1. Enable SAP Continuous Integration and Delivery.
 - In SAP BTP Cockpit, go to your subaccount.
-- In Service Marketplace, type Continuous into the search box. Continuous Integration and Delivery service appears.
+- In **Service Marketplace**, type *continuous* in the search box. Continuous Integration and Delivery service appears.
 - Choose **Create**.
+  
 ![Choose create](./cicd1.png)
 
 2. Assign role collection.
@@ -47,9 +48,13 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
 - From the menu, choose **Assign Role Collection**. Search for *CICD Administrator* and add the role to your user.
 
 3. Ensure that you can open and access the application. In the cockpit,  go to **Instances and Subscriptions** to access the **Continuous Integration & Delivery** application.
+   
 ![cicd-app](./cicd3.png)
 
-    This should navigate you to the main page of the application.
+
+This should navigate you to the main page of the application.
+
+
 ![cicd-mainPage](./cicd4.png)
 
 <br>
@@ -65,30 +70,38 @@ helm uninstall incidents-mgmt -n <namespace>
 
 In order to run the pipeline using the CI/CD service, you need to create a service account. To do this, follow the steps.
 
-1. First you need to create a namespace. In the SAP BTP Cockpit, open the **Kyma Dashboard** for your subaccount. 
+1. Create a namespace. In the SAP BTP Cockpit, open the **Kyma Dashboard** for your subaccount. 
 
     ![dashboard](./cicd2.png)
 
     Your dashboard should look like this.
+   
 ![kyma-dashboard](./cicd5.png)
 
-2. In the left navigation menu, choose **Namespaces** and then **+ Create Namespace**. 
+3. In the left navigation menu, choose **Namespaces** and then **+ Create Namespace**.
+   
 ![namespacePage](./cicd6.png)
 
-    Provide any relevant name of your choice e.g: incidents-namespace. Also **Enable Sidecar Injection** and choose **Create**.
+
+Provide any relevant name of your choice e.g: incidents-namespace. Also **Enable Sidecar Injection** and choose **Create**.
+
+    
 ![namespaceCreation](./cicd7.png)
 
-4. For this namespace, you need to create a Service Account. This is a non-human account which will authenticate your pipeline to access your cluster. See [Service Accounts](https://kubernetes.io/docs/concepts/security/service-accounts/). 
+5. For this namespace, you need to create a Service Account. This is a non-human account which will authenticate your pipeline to access your cluster. See [Service Accounts](https://kubernetes.io/docs/concepts/security/service-accounts/). 
 
-    Ensure you are in your created namespace. From the left navigation menu, click on the dropdown **Configuration** and navigate to **Service Accounts**. Here click on **+ Create Service Account**.
+    Ensure you are in your created namespace. From the left navigation menu, choose **Configuration** and navigate to **Service Accounts**. Here choose **+ Create Service Account**.
+   
     ![serviceAccountPage](./cicd8.png)
 
     Give your service account a name e.g: incidents-namespace-service-account and choose **Create**.
+   
     ![serviceAccountCreation](./cicd9.png)
 
-5. For your pipeline to access your Kyma cluster through this service account, it requires a set of configurations. This is defined in the **KubeConfig** file of the account. 
+7. For your pipeline to access your Kyma cluster through this service account, it requires a set of configurations. This is defined in the **KubeConfig** file of the account. 
 
-    To retrieve this, ensure you are on the page of the created service account and choose on **Generate TokenRequest**. 
+    To retrieve this, on the page of the created service account, choose **Generate TokenRequest**.
+   
     ![kubeConfig](./cicd10.png)
 
     Here you can choose the **Expiration seconds** as desired from the dropdown and choose **Generate**.
@@ -98,24 +111,29 @@ In order to run the pipeline using the CI/CD service, you need to create a servi
 
     Now choose **Copy** as these details will be needed to create your pipeline credentials as described in the step below. 
 
-7. Navigate to the Continuous Integration and Delivery Application (follow the steps mentioned above). On this page, choose **Credentials** and click on the **\+** to create a new credential. 
+9. Navigate to the **Continuous Integration and Delivery Application** (follow the steps above). On this page, choose **Credentials** and click on the **+** to create a new credential. 
 
-    Choose a relevant name for your credential e.g: kube-config. For type, choose **Kubernetes Configuration** from the dropdown. In the **Content space**, paste the KubeConfig file of the service account you copied from the previous step. Choose Create.
+    Choose a relevant name for your credential e.g: kube-config. For type, choose **Kubernetes Configuration** from the dropdown. In the **Content space**, paste the KubeConfig file of the service account you copied from the previous step. Choose **Create**.
+   
     ![credential](./cicd12.png)
 
-8. You need to add your service account to a **Cluster Role Binding**. Go back to your cluster and from the menu, choose **Configurations** and navigate to **Cluster Role Bindings**. Here click on any **admin** role binding.
+11. You need to add your service account to a **Cluster Role Binding**. Go back to your cluster and from the menu, choose **Configurations** and navigate to **Cluster Role Bindings**. Here choose an **admin** role binding.
+    
 ![binding](./cicd13.png)
 
-    On this page, choose **Edit**.
+On this page, choose **Edit**.
+    
 ![edit](./cicd14.png)
 
-    Here choose **Add Subject** and click on the last row (newly created subject). For **User Name**, enter the value in the form `system:serviceaccount:<namespace>:<service-account>`. 
-    Choose **Update**. 
+Here choose **Add Subject** and click on the last row (newly created subject). For **User Name**, enter the value in the form `system:serviceaccount:<namespace>:<service-account>`. 
+Choose **Update**. 
+    
 ![subject](./cicd15.png)
 
 <br>
 
 ## Get Docker Credentials
+
 For your pipeline to be able to push and pull images from your docker repository, you need to set your docker credentials for your job. 
 
 1. To run this pipeline you would need your credentials to be base64-encoded. To obtain these credentials, login to your registry from the terminal:
@@ -148,6 +166,7 @@ For your pipeline to be able to push and pull images from your docker repository
     }   
     ```
 4. Now again run the same login command mentioned in step 1. You need to enter your credentials again. Enter the credentials as shown in step 2. Make sure your credentials are in this form
+   
     ```json
     {
         "auths": {
@@ -169,12 +188,12 @@ For your pipeline to be able to push and pull images from your docker repository
     ```
 2. Now add these docker credentials as a CI/CD credential. Navigate to the Continuous Integration and Delivery Application (follow the steps mentioned above). On this page choose **Credentials** and click on the **\+** to create a new credential. 
 
-    Choose a relevant name for your credential e.g: docker-config. For **Type**, choose **Container Registry Configuration** from the dropdown. In the **Content** space, paste the docker configurations you retrieved from the previous step. Choose **Create**.
+Choose a relevant name for your credential e.g: docker-config. For **Type**, choose **Container Registry Configuration** from the dropdown. In the **Content** space, paste the docker configurations you retrieved from the previous step. Choose **Create**.
 ![credentials](./cicd16.png)
  
 <br>
 
-## Pipeline configuration 
+## Pipeline Configuration 
 1. In the root folder, create a folder `.pipeline`. Within this folder create a new file `config.yml`.
 
 3. Open the newly created `.pipeline/config.yml` file and paste the following content.
@@ -234,17 +253,19 @@ For your pipeline to be able to push and pull images from your docker repository
     ```
 
 4. Now you'll need to make changes to the `config.yml` file. In the `Release` stage, change the **kubeConfigFileCredentialsId** and **namespace**.
+   
 ![release](./cicd17.png)
-    The parameter `kubeConfigFileCredentialsId` should have the same value as the name given to your **Kubernetes Configuration** credential. Refer to [Retrieve Kyma cluster configuration details](./add-cicd.md#retrieve-kyma-cluster-configuration-details), step 5. 
 
-    The parameter `namespace` should have the same value as the one you created in your Kyma cluster in [Retrieve Kyma cluster configuration details](./add-cicd.md#retrieve-kyma-cluster-configuration-details), step 2 .
+The parameter `kubeConfigFileCredentialsId` should have the same value as the name given to your **Kubernetes Configuration** credential in [Retrieve Kyma cluster configuration details](./add-cicd.md#retrieve-kyma-cluster-configuration-details), step 5. 
 
-5. Navigate to the `cnbBuild` step and change the values of **dockerConfigJsonCredentialsId** and the **containerImageName, containerImageAlias and containerImageTag**.
+The parameter `namespace` should have the same value as the one you created in your Kyma cluster in [Retrieve Kyma cluster configuration details](./add-cicd.md#retrieve-kyma-cluster-configuration-details), step 2 .
+
+6. Navigate to the `cnbBuild` step and change the values of **dockerConfigJsonCredentialsId** and the **containerImageName, containerImageAlias and containerImageTag**.
 ![cnbBuild](./cicd18.png)
 
-    For the parameter `dockerConfigJsonCredentialsId`, it should be the same value as the credential name given for the **Container Registry Configuration** credential created in [Get docker credentials](./add-cicd.md#get-docker-credentials), step 5.
+The parameter `dockerConfigJsonCredentialsId` should have the same value as the credential name given for the **Container Registry Configuration** credential created in [Get docker credentials](./add-cicd.md#get-docker-credentials), step 5.
 
-    The parameters for the images must be changed with your docker registry name wherever mentioned. The preferred image versions must also be mentioned wherever relevant. 
+The parameters for the images must be changed with your docker registry name wherever mentioned. The preferred image versions must also be mentioned wherever relevant. 
 
 <br>
 
@@ -259,7 +280,8 @@ For your pipeline to be able to push and pull images from your docker repository
         "cds-build": "npm install --include=dev && cds build --production" // [!code ++] 
     },
     ```
-2. Push these changes to your main branch from the **Source Control** by first staging and commiting. 
+2. Push these changes to your main branch from the **Source Control** by first staging and commiting.
+   
 ![pushChanges](./cicd32.png)
 
 <br>
@@ -267,37 +289,41 @@ For your pipeline to be able to push and pull images from your docker repository
 ## Create the Pipeline
 
 1. Create a new credential for GitHub:
-    - Name: "github"
-    - Type: Basic Authentication
-    - Username: add your GitHub username/ id
-    - Password: enter your GitHub access token 
+    - **Name**: "github"
+    - **Type**: Basic Authentication
+    - **Username**: add your GitHub username/ ID
+    - **Password**: enter your GitHub access token 
 
-    Choose **Create**
+    Choose **Create**.
+   
  ![configure pipeline](./cicd33.png)
 
-2. Go back to the **Jobs** tab and choose **+** icon to create a new job.
+3. Go back to the **Jobs** tab and choose **+** icon to create a new job.
 
-3. Under **General Information**, add the following data:
+4. Under **General Information**, add the following data:
 
-    - Job Name: "incidentManagement"
-    - Repository: Click the highlighted button. Then click on **Add Repository**
+    - **Job Name**: "incidentManagement"
+    - **Repository**: Click the highlighted button. Then click on **Add Repository**
+      
 ![configure pipeline](./cicd34.png)
 ![addRepository](./cicd35.png)
 
-4. Provide the information to your GitHub repository that you had created initially.
+5. Provide the information to your GitHub repository that you had created initially.
 
-    - Name: &lt;add your repo name&gt;
-    - Clone URL: &lt;add your repo-URL&gt;
-    - Credentials: &lt;add the credentials that you created in step 1.&gt;
-    - Type: GitHub
+    - **Name**: &lt;add your repo name&gt;
+    - **Clone URL**: &lt;add your repo-URL&gt;
+    - **Credentials**: &lt;add the credentials that you created in step 1.&gt;
+    - **Type**: GitHub
+      
 ![configure pipeline](./cicd25.png)
 
-5. Back in the **Add Repository** screen, choose **Add** to finish.
+6. In the **Add Repository** screen, choose **Add** to finish.
 
-6. In the **General Information** tab, continue configuring the Job:
+7. In the **General Information** tab, continue configuring the Job:
  
-  - Branch: master
-  - Pipeline: Kyma Runtime
+  - **Branch**: master
+  - **Pipeline**: Kyma Runtime
+    
  ![configure pipeline](./cicd20.png)
 
 7. In **Stages**, choose **Source Repository** as your **Configuration Mode** from the dropdown. 
@@ -305,11 +331,11 @@ For your pipeline to be able to push and pull images from your docker repository
 
 <br>
 
-## Run the Pipeline and See Your deployment
+## Run the Pipeline and See Your Deployment
 
 1. Now you can test your job manually for the first time after creation. Go back to the **SAP Continuous Integration and Delivery** application and navigate to the **Job** tab.
 
-2. Choose the name of your created job and choose **Run**
+2. Choose the name of your created job and choose **Run**.
 ![configure pipeline](./cicd22.png)
 
 3. You can monitor your pipeline through the logs of the different stages.

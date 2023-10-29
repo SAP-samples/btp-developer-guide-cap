@@ -22,11 +22,6 @@ In this example, we’ll be creating a repository on GitHub. You’ll need a **G
     ```
     node_modules/
     package-lock.json
-    mta.yaml
-
-    app/incidents/node_modules
-    app/incidents/package-lock.json
-
     gen/
 
     *.mtar

@@ -20,7 +20,6 @@
 ## Systems and Accounts
 
 * Have an SAP S/4HANA Cloud system 
-* [Optional] If you don't have an access to an SAP S/4HANA Cloud system, you can deploy and run the Incident Management application with a mock server. For deploying the mock server, you would need either SAP BTP, Cloud Foundry runtime (256 MB) or a Kyma cluster. The mock Server exposes a mock SAP S/4HANA Cloud entity (for example, Business Partner) as oData API  along with the sample data required for the application. The installation of the mock server is only needed if you want to test your application deployed in SAP BTP, Cloud Foundry runtime or SAP BTP, Kyma runtime. You can also use the mock server for local development and  testing.
 
 ## Additional Entitlements Required
 

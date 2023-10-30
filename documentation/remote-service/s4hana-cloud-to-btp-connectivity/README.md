@@ -7,10 +7,6 @@ To connect to an SAP S/4HANA Cloud system using service binding, you have to reg
 ## Prerequisites
 You need a user with administrator access for the SAP BTP global account and the SAP S/4HANA Cloud system.
 
-## Note
-
-> You can skip this procedure if you want to test this scenario with a mock server only.
-
 ### SAP Business Technology Platform
 
 1. In **SAP BTP cockpit**, open your global account and choose

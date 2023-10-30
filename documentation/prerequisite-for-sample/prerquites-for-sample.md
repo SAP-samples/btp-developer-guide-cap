@@ -313,40 +313,49 @@ Below the root folder, the HTML5 applications deployer looks for the `resources`
 
 1. Create a new folder called `resources` under `app/incidents` and move `webapp` folder to `resources`.
 
-2. Navigate to `app/incidents/resources/webapp/manifest.json` and modify the crossNavigation with the below code snippet
+2. Navigate to `app/incidents/resources/webapp/manifest.json` and add the following `crossNavigation` object after the `dataSources` object inside `sap.app`
 
   ```json
-  "crossNavigation": {
-      "inbounds": {
-        "intent1": {
-          "signature": {
-            "parameters": {},
-            "additionalParameters": "allowed"
+  "sap.app": {
+    ...
+    "dataSources": { ... },
+    "crossNavigation": {
+        "inbounds": {
+          "intent1": {
+            "signature": {
+              "parameters": {},
+              "additionalParameters": "allowed"
+            },
+            "semanticObject": "Incidents",
+            "action": "display"
           },
-          "semanticObject": "Incidents",
-          "action": "display"
-        },
-        "incidents-display": {
-          "semanticObject": "incidents",
-          "action": "display",
-          "title": "{{flpTitle}}",
-          "signature": {
-            "parameters": {},
-            "additionalParameters": "allowed"
+          "incidents-display": {
+            "semanticObject": "incidents",
+            "action": "display",
+            "title": "{{flpTitle}}",
+            "signature": {
+              "parameters": {},
+              "additionalParameters": "allowed"
+            }
           }
         }
-      }
+      },
+      ...
     }
 ```
 
-3. Add the below code snippet to the end of the `manifest.json` file
+3. Add the following code snippet for `sap.cloud` object to the end of the `manifest.json` file after `sap.fiori` object.
 
   ```json
-  "sap.cloud": {
+  {
+     ...
+    "sap.fiori": { ... },
+    "sap.cloud": {
         "public": true,
         "service": "incidents"
     }
-```
+  }
+  ```
 
 4. In the `manifest.json` file remove the leading `/` from the `uri`
 
@@ -364,39 +373,44 @@ Below the root folder, the HTML5 applications deployer looks for the `resources`
   }
 ```
 
+This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+
+For more information refer the [document](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL)
+
+
 5. Open `app/incidents/package.json` and add the following code snippet:
 
-        ```json
-        {
-            "name": "incidents",
-            "version": "0.0.1",
-            "description": "A Fiori application.",
-            "keywords": [
-                "ui5",
-                "openui5",
+```json
+{
+    "name": "incidents",
+    "version": "0.0.1",
+    "description": "A Fiori application.",
+    "keywords": [
+        "ui5",
+        "openui5",
                 "sapui5"
-            ],
-            "main": "webapp/index.html",
-            "scripts": {
+         ],
+          "main": "webapp/index.html",
+          "scripts": {
                 "start": "node node_modules/@sap/html5-app-deployer/index.js",
                 "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
-            },
-            "dependencies": {  
+          },
+          "dependencies": {  
                 "@sap/html5-app-deployer": "5.0.0"
-              },
-            "devDependencies": { }
-        }
-        ```
-6. Move `xs-app.json` from `app/incidents` to `app/incidents/resources/webapp`
-7. Open `app/incidents/resources/webapp/xs-app.json` and replace the file with the following code snippet:
+          },
+          "devDependencies": { }
+}
+```
+6. create a new file `xs-app.json` inside `app/incidents/resources/webapp`
+7.  Add the file following code snippet to the newly created `xs-app.json` file:
 
-        ```json
-        {
-          "welcomeFile": "/index.html",
-          "authenticationMethod": "route",
-          "routes": [
+```json
+{
+     "welcomeFile": "/index.html",
+      "authenticationMethod": "route",
+      "routes": [
             {
-              "source": "^/odata/(.*)$",
+              "source": "^/odata/v4/processor/(.*)$",
               "target": "/odata/$1",
               "destination": "incident-management-srv-api",
               "authenticationType": "xsuaa",
@@ -420,26 +434,13 @@ Below the root folder, the HTML5 applications deployer looks for the `resources`
               "service": "html5-apps-repo-rt",
               "authenticationType": "xsuaa"
             }
-          ]
-        }
-        ```
+      ]
+}
+```
 
-This is needed as the dataSource URIs must be relative to the base URL, which means there is no need for a slash as the first character.
+8. Delete `node-modules` and `package-lock.json` if there are any inside `app/incidents` folder.
 
-For more information refer the [document](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL)
-
-8. Add the below code snippet to the end of `manifest.json` file
-
-  ```json
-  "sap.cloud": {
-        "public": true,
-        "service": "incidents"
-  }
-  ```
-
-9. Delete `node-modules` and `package-lock.json` if there are any inside `app/incidents` folder.
-
-10. Run `npm i`
+9. Run `npm i`
 
 ## Add Helm Chart
 

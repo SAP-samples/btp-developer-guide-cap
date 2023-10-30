@@ -7,7 +7,7 @@
 5. [Implement remote service connectivity](./develop/extend-app.md)
 6. [Run a developer test with mock data](./develop/test-with-mock.md)
 7. [Prepare the app for production](./deploy/prep-for-prod/prep-for-prod.md)
-7. [Option 1 - Deploy to CF](./deploy/cf/deploy-to-cf.md)
-8. [Option 2 - Deploy to Kyma](./deploy/kyma/deploy-to-kyma.md)
+7. [Option 1 - Deploy to SAP BTP Cloud Foundry Runtime](./deploy/cf/deploy-to-cf.md)
+8. [Option 2 - Deploy to SAP BTP Kyma Runtime](./deploy/kyma/deploy-to-kyma.md)
 9. [Test the end to end flow](./test-the-application/test-the-app.md)
  

@@ -4,7 +4,7 @@
 
 In this chapter you will add the SAP Event Mesh service to your project.
 
-## Content
+## Procedure
 
 1. Go to SAP Business Application Studio and open a new terminal. Run the following command:
 

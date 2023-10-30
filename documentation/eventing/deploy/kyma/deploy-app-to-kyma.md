@@ -118,10 +118,6 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
      --publish
 ```
 
-## Create Event Mesh Service Instance
-
-1. Navigate to 
-
 ## Eventing Configuration
 > This section is needed only if you are going to use SAP S/4HANA Cloud system as your remote service.
 

@@ -6,7 +6,7 @@ In this chapter, you will deploy the project to the SAP BTP, Cloud Foundry runti
 
 ## Prerequisites
 
-You have prepared the project for productive usage.
+You have prepared the project for [productive usage](../../develop/prep-for-prod.md).
 
 ## Content
 

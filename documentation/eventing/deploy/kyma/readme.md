@@ -2,7 +2,7 @@
 
 Depending on whether you use an SAP S/4HANA Cloud system or a mock server to which you want to connect, choose one of the following options:
 
-* Option A - Complete the following tutorial to deploy the application using the your SAP S/4HANA Cloud system:
+* Option A - Complete the following tutorial to deploy the application using your SAP S/4HANA Cloud system:
    - [Deploy the application using your SAP S/4HANA Cloud system ](./deploy-app-to-kyma.md)
 
 * Option B - Complete the following tutorials to deploy the application using a mock server:

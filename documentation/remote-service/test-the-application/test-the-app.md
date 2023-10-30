@@ -18,7 +18,7 @@
   
       ![run test](./images/test-app03.png)
    
-   * Set **Title**, **Customer**,** Status** and **Urgency**. 
+   * Set **Title**, **Customer**, **Status** and **Urgency**. 
    * The value help for **Customer** fetches data from the remote server.
    * Create a conversation.
    * Choose **Create** to save the settings.

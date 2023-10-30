@@ -1,9 +1,9 @@
-# Implement Auditlog
-## Preliminary Setup
+# Implement Audit Logging
+
 
 ## Extending the Customer Entity 
 
-For Auditlogging, we will be extending the customer entity with some potentially sensitive properties.
+For audit logging, we will be extending the customer entity with some potentially sensitive properties.
  - Add a file `extensions.cds` in `/db` folder with the following content;
    ```js
     using from './schema';
@@ -26,9 +26,9 @@ For Auditlogging, we will be extending the customer entity with some potentially
     };
 
    ```
-   - Here we are extending the `Customers` entity and adding `Addresses` and `creditCardNo` properties. These two are only used for `auditlogging` purpose.
+   - Here we are extending the **Customer** entity and adding `Addresses` and `creditCardNo` properties. These two are only used for audit logging purposes.
 
-## Adding admin service to expose Customers Entity
+## Adding Admin Service to Expose Customers Entity
 
 Add a file `admin-service.cds` in `/srv` folder and update it with following code:
 ```js
@@ -46,7 +46,7 @@ Add a file `admin-service.cds` in `/srv` folder and update it with following cod
 
 In order to automate audit logging, personal data management, and data retention management as much as possible, the first and frequently only task to do as an application developer is to identify entities and elements (potentially) holding personal data using **@PersonalData** annotations.
 <br/>
-we annotate our domain model in a separate file srv/data-privacy.cds and fill it with the following content:
+we annotate our domain model in a separate file `srv/data-privacy.cds` and fill it with the following content:
 
 ```js
 using {sap.capire.incidents as my} from './admin-service';
@@ -87,16 +87,16 @@ Add the following plugin package to your project
 npm add @cap-js/audit-logging
 ```
 
-The package is a cds-plugin and thereby auto-wires many things so configurations and annotations are reduced to a minimum. 
+The package is a *cds-plugin* and thereby auto-writes many things so configurations and annotations are reduced to a minimum. 
 
-## Test locally
-The steps above is all we need to automatically log personal data-related events. 
+## Test Locally
+The steps above is all you need to automatically log personal data-related events. 
 
-1. Start the Server
+1. Start the server.
 ```bash
 cds watch
 ```
-2. Create a file `request.http` with following content:
+2. Create a file `request.http` with the following content:
 ```http
 @host = http://localhost:4004
 
@@ -150,4 +150,6 @@ Content-Type: application/json
 
 3. Send the requests and observe the response having logs from `[audit-log]` with `PersonalDataModified` and `SensitiveDataRead` events.
 
-*  Now we have tested the application locally, its time to deploy to [SAP BTP](./3-deploy-to-btp.md). 
+## Next Step
+Now you have implemented audit logging, tested the application locally and it's time to deploy it to SAP BTP.
+[Deploy to SAP BTP](./3-deploy-to-btp.md). 

@@ -1,5 +1,16 @@
 # Configure the Connectivity Between SAP S/4HANA Cloud and SAP BTP
 
+## Introduction
+
+You can use SAP BTP to extend standard SAP solutions without disrupting their performance and core processes. When building extension applications, you can also benefit from the automation of the integration between SAP BTP and the extended SAP solutions.
+
+SAP BTP provides a standard way for extending SAP solutions and developing event-driven extensions and applications. This framework includes:
+- Simplified, standardized and unified extensibility and configuration for the SAP solutions.
+
+- Central catalog per customer for all connected SAP systems where data such as APIs, events, credentials and other is stored. You can benefit from business services and actionable events across end-to-end business processes.
+
+SAP S/4HANA Cloud supports automated integration with SAP BTP
+
 ## Usage Scenario
 
 To connect to an SAP S/4HANA Cloud system using service binding, you have to register the system in your SAP SAP Business Technology Platform (BTP) account.

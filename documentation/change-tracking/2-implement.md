@@ -1,13 +1,13 @@
 # Implement Change Tracking
 
-In this tutorial, you will learn how to incorporate the change tracking feature into an existing Incident management application.
+In this tutorial, you will learn how to incorporate the change tracking feature into an existing Incident Management application.
 
-## Setup
+## Set Up
 
 Since you already have the Incident Mnagement application set up in your preferred IDE, let's include the following *npm* dependency.
 
-1. Open **Terminal** >> **New Terminal**
-2. Enter the following command
+1. Open **Terminal** -> **New Terminal**
+2. Run the following command
 
 ```sh
 npm add @cap-js/change-tracking

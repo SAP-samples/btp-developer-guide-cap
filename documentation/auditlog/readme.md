@@ -1,6 +1,7 @@
 # Project Board
- 
-1. [Getting Started with Audit Log](./1-getting-started-with-auditlog.md)
+
+1. [Introduction](./introduction.md)
+1. [Prerequisites](./1-getting-started-with-auditlog.md)
 2. [Implement Audit Log](./2-implement.md)
 3. [Deploy to SAP Business Technology Platform](./3-deploy-to-btp.md)
     - [Option 1 - Deploy and Run the Application on Cloud Foundry](./4-deploy-to-cf.md)

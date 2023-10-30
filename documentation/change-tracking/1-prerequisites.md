@@ -1,8 +1,4 @@
-# Overview
-
-The Change Tracking feature is designed to help you monitor and manage modifications to your data and content. It empowers you to manage changes effectively and make informed decisions.
-
-## Prerequisites
+# Prerequisites
 
 1. Develop a basic full-stack CAP application by following the below group of tutorials based on the Incident Management application step by step and explore the source code. See [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
 

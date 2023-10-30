@@ -344,14 +344,18 @@ Below the root folder, the HTML5 applications deployer looks for the `resources`
     }
 ```
 
-3. Add the below code snippet to the end of the `manifest.json` file
+3. Add the following code snippet for `sap.cloud` object to the end of the `manifest.json` file after `sap.fiori` object.
 
   ```json
-  "sap.cloud": {
+  {
+     ...
+    "sap.fiori": { ... },
+    "sap.cloud": {
         "public": true,
         "service": "incidents"
     }
-```
+  }
+  ```
 
 4. In the `manifest.json` file remove the leading `/` from the `uri`
 

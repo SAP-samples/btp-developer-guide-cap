@@ -9,8 +9,6 @@ To use the SAP S/4HANA Cloud Extensibilty service to access the Business Partner
 
 You have set up the connectiion to an SAP S/4HANA Cloud system. See [Configure the connectivity between SAP S/4HANA Cloud and SAP BTP](../../s4hana-cloud-to-btp-connectivity/README.md). 
 
-> If you are using a mock server, you can skip this procedure. 
-
 ## Content
 
 1. Create a new file *bupa.json* in the root folder of the project and copy the content below

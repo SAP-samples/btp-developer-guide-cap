@@ -258,7 +258,6 @@ backendDestinations:
   ```
 
   - without SAP S/4HANA Cloud 
-  >In this case you will be using a mock server. Installation for mock server comes in the upcoming tutorials
 
   ```sh
   helm upgrade --install incident-management --namespace incidents-namespace ./chart \

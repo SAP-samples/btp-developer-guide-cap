@@ -250,18 +250,9 @@ backendDestinations:
 
 2. Deploy using Helm command:
   
-  - with SAP S/4HANA Cloud 
-
   ```sh
   helm upgrade --install incident-management --namespace incidents-namespace ./chart \
     --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json --set-file s4-hana-cloud-messaging.jsonParameters=s4cems.json --set-file event-mesh.jsonParameters=event-mesh.json
-  ```
-
-  - without SAP S/4HANA Cloud 
-
-  ```sh
-  helm upgrade --install incident-management --namespace incidents-namespace ./chart \
-    --set-file xsuaa.jsonParameters=xs-security.json --set-file event-mesh.jsonParameters=event-mesh.json
   ```
 
 This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incidents-namespace***.

@@ -1,6 +1,6 @@
 ## Prerequisites
 
-1.Develop a basic full-stack CAP application by following the below group of tutorials based on the Incident Management application step by step and explore the source code. See [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
+1. Develop a basic full-stack CAP application by following the below group of tutorials based on the Incident Management application step by step and explore the source code. See [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
 
 2. (Optional) If you have not deployed this application, do the following:
    - For SAP BTP, Cloud Foundry runtime:

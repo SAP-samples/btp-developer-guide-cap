@@ -3,7 +3,7 @@
 ## Prerequisite
 
 * You have completed the Remote Service Integration tutorial.
-* You have deployed the mock server was deployed in the SAP BTP, Cloud Foundry runtime.
+* You have deployed the mock server in the SAP BTP, Cloud Foundry runtime.
 * You have created a destination using the following steps [here](../../../remote-service/install-mock-server/install-mock-server-cf.md).
 
 ## Redeploy the Mock Server Application
@@ -22,7 +22,7 @@ In this section you would redeploy the mock server and bind it to the SAP Event 
           type: org.cloudfoundry.existing-service
         ```
 
-    2. Adds the following entry in the `requires` section of the `mock-srv` module:
+    2. Add the following entry in the `requires` section of the `mock-srv` module:
 
         ```yaml
             - name: inicdent-management-messaging

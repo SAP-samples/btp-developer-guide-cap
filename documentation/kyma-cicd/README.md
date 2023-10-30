@@ -19,13 +19,26 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
 
 2. Open the folder which contains your Incident Management application.
 
-3. Now navigate to **Source Control** and choose **Initialize Repository**.
+3. Navigate to the project's root folder and create a new file `.gitignore`.
+
+4. Add the following code snippet to it  
+    ```
+    node_modules/
+    package-lock.json
+    gen/
+
+    *.mtar
+    mta_archives/
+    ```
+5. If your project already has a .gitignore file, ensure that the following is mentioned in it.
+
+6. Now navigate to **Source Control** and choose **Initialize Repository**.
 ![initializeRepo](./cicd29.png)
 
-4. Stage all the changes using the **+** icon and provide a relevant commit message. Then choose **Commit**.
+7. Stage all the changes using the **+** icon and provide a relevant commit message. Then click on Commit.
 ![commit](./cicd30.png)
 
-5. Choose **Publish Branch**. 
+8. Click **Publish Branch**. 
 ![publish](./cicd31.png)
 
     You may be redirected to a browser to authenticate into your GitHub account. Provide your GitHub username and password when prompted. When the changes are pushed, you’ll be able to see your project in your GitHub repository.
@@ -57,7 +70,7 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
 **NOTE:**
 **If you intend to deploy this application on a cluster that has a deployment of the same application, it is recommended to undeploy this installation via your terminal using the command:**
 ```
-helm uninstall incidents-mgmt -n <namespace>
+helm uninstall incident-management -n <namespace>
 ```
 
 
@@ -259,7 +272,25 @@ For your pipeline to be able to push and pull images from your docker repository
         "cds-build": "npm install --include=dev && cds build --production" // [!code ++] 
     },
     ```
-2. Push these changes to your main branch from the **Source Control** by first staging and commiting. 
+2. Remove the following from the same package.json file
+    ```json
+    {
+        . . . 
+        "devDependencies": {
+             . . .
+            "rimraf": "^3.0.2" // [!code --]
+        },
+        "scripts": {
+            . . .
+            "undeploy": "cf undeploy incident-management --delete-services --delete-service-keys --delete-service-brokers", // [!code --]
+            "build": "rimraf resources mta_archives && mbt build --mtar archive",   // [!code --]
+            "deploy": "cf deploy mta_archives/archive.mtar --retries 1" // [!code --]
+        }
+        . . .
+    }
+    ```
+
+3. Push these changes to your main branch from the **Source Control** by first staging and commiting. 
 ![pushChanges](./cicd32.png)
 
 <br>

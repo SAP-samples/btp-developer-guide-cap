@@ -18,7 +18,9 @@ In this example, we’ll be creating a repository on GitHub. You’ll need a **G
 
 2. Open the folder which contains your incident-management application.
 
-3. In the root folder create a file `.gitignore`. To it add the following. If your project already has a .gitignore file, ensure that the following is mentioned in it.
+3. Navigate to the project's root folder and create a new file `.gitignore`.
+
+4. Add the following code snippet to it  
     ```
     node_modules/
     package-lock.json
@@ -27,14 +29,15 @@ In this example, we’ll be creating a repository on GitHub. You’ll need a **G
     *.mtar
     mta_archives/
     ```
+5. If your project already has a .gitignore file, ensure that the following is mentioned in it.
 
-4. Now navigate to **Source Control** and choose **Initialize Repository**.
+6. Now navigate to **Source Control** and choose **Initialize Repository**.
 ![initializeRepo](./cicd29.png)
 
-5. Stage all the changes using the **+** icon and provide a relevant commit message. Then click on Commit.
+7. Stage all the changes using the **+** icon and provide a relevant commit message. Then click on Commit.
 ![commit](./cicd30.png)
 
-6. Click **Publish Branch**. 
+8. Click **Publish Branch**. 
 ![publish](./cicd31.png)
 
     You may be redirected to a browser to authenticate into your GitHub account. Provide your GitHub username and password when prompted. When the changes are pushed, you’ll be able to see your project in your GitHub repository.
@@ -264,7 +267,7 @@ For your pipeline to be able to push and pull images from your docker repository
         "cds-build": "npm install --include=dev && cds build --production" // [!code ++] 
     },
     ```
-2. Also remove the following from the same package.json file
+2. Remove the following from the same package.json file
     ```json
     {
         . . . 

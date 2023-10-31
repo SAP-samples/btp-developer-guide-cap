@@ -289,8 +289,23 @@ For your pipeline to be able to push and pull images from your docker repository
         . . .
     }
     ```
+3. From the terminal run the following command:
+   ```
+   npm add -D @sap/cds-dk
+   ```
+   This will add the devDependency to the same package.json file.
+   ```json
+    {
+        . . . 
+        "devDependencies": {
+             . . .
+            "@sap/cds-dk": "^7.x.x" // [!code ++]
+        },
+        . . .
+    }
+    ```
 
-3. Push these changes to your main branch from the **Source Control** by first staging and commiting. 
+4. Push these changes to your main branch from the **Source Control** by first staging and commiting. 
 ![pushChanges](./cicd32.png)
 
 <br>

@@ -44,20 +44,20 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
       },
     ```
 3. Change the `auth.kind` to `ias` in `package.json` for the production profile:
-    ```json    
-        ...
-      "cds": {
-        "requires": {
-          "[production]": {
-            ...
-            "auth": {
-              "kind": "ias"
+      ```json    
+          ...
+        "cds": {
+          "requires": {
+            "[production]": {
+              ...
+              "auth": {
+                "kind": "ias"
+              }
             }
           }
-        }
-        }
-    }
-    ```
+          }
+      }
+      ```
 ## Deploy to Cloud Foundry
 
 1. Update `mta.yaml` with the following content
@@ -79,9 +79,9 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
      ```yaml
        - name: incident-management-auth
          parameters:
-            path: ./ias-config.json
-            service-plan: application
-            service: identity
+           path: ./ias-config.json
+           service-plan: application
+           service: identity
          type: org.cloudfoundry.managed-service
      ```
 
@@ -122,7 +122,7 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
             service-key:
               name: incident-management-auth-key
       ```
-  - Delete `incidents_incident_management_html_repo_host` destination from `incident-management-destination-content`
+  - Delete `incidents_incident_management_auth` destination from `incident-management-destination-content`
       ```yaml
               - Authentication: OAuth2UserTokenExchange
                 Name: incidents_incident_management_auth
@@ -154,7 +154,7 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
         build-parameters:
           no-source: true
     ```
-  - Update `incident-management-srv-api` in `incident-management-destination-service`
+- Update `incident-management-srv-api` in `incident-management-destination-service`
 
     - Add `HTML5.IASDependencyName: incidents-api`
     
@@ -211,26 +211,6 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
     }
    ```
    > Change the authenticationType of `incident-management-srv-api` and `html5-apps-repo-rt` from `xsuaa` to `ias`
-3. Update `app/incidents/webapp/xs-app.json` with the following code:
-   ```json
-      {
-      "authenticationMethod": "route",
-      "logout": {
-        "logoutEndpoint": "/do/logout"
-      },
-      "routes": [
-        {
-          "source": "^(.*)$",
-          "target": "$1",
-          "service": "html5-apps-repo-rt",
-          "authenticationType": "ias"
-        }
-      ]
-    }
-
-   ```
-   > Change the authenticationType of `html5-apps-repo-rt` from `xsuaa` to `ias`
-4. Update `app/incidents/webapp/manifest.json` with the following code
 5. Build the mtar
 
     ```bash
@@ -268,7 +248,7 @@ The application has [app2app navigation](https://help.sap.com/docs/build-work-zo
   - Log in to your IAS Tenant Admin Console.
   - Go to your Applications & Resources.
   - Search your IAS application bounded to your CAP back end. (In this case its `incident-ias-staging`)
-  - Go to `trust` -> `OpenID Connect Configuration` -> `Advance Settings` -> `Access Token Format` and choose `JSON Web Token`
+  - Go to `trust` -> `OpenID Connect Configuration` -> `Advance Settings` -> `Access Token Format` and choose `JSON Web Token` and click on `save`.
   ![](./images/openId%20%20config.png)
 
 ### Set up app2app communication
@@ -278,7 +258,7 @@ The application has [app2app navigation](https://help.sap.com/docs/build-work-zo
   - Search your IAS application bounded to your CAP back end. (In this case its `incident-ias-staging`)
   - Verify that the end point exposed by your application is listed in `Application APIs -> Provided APIs` section.
    ![](./images/backend%20ias.png)
-  - Now, Search and select your Workzone IAS application `SAP Build Work Zone, standard edition` -> Application APIs -> Dependencies, add `Add` a dependency.
+  - Now, Search and select your Workzone IAS application `SAP Build Work Zone, standard edition` -> `Dependencies`, add `Add` a dependency.
    ![](./images/workzone%20ias.png)
   - Give a dependency name `same` as you provide in the `destination service configuration property` in mta.yaml
     ```yaml

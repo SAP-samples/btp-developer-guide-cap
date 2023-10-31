@@ -179,16 +179,17 @@ To test and generate audit log, we will be using one of these API Testing tools:
 [Insomnia](https://insomnia.rest/)
 
 1. To be able to access the application via the URL, you need to assign roles to users. See [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
+2. Edit the role-collection `Incident Management Support` created in the above step and add `admin` role to it. Make sure the role-collection Incident Management Support is assigned to your user.
 
 3. Go to your Kyma cluster. Get the application endpoint from *your-namespace* -> **Discovery and Networks -> API Rules -> incident-management-srv**.
    
 ![](./images/kyma-apirule.png)
 
-5. To access the below endpoint, the user needs `support` role and `xsuaa token` has to be passed in the header.
+4. To access the below endpoint, the user needs `support` and `admin` roles and `xsuaa token` has to be passed in the header.
    
-7. To generate the token, use the following credentials from your XSUAA Instance: `clientId`, `clientsecret`, `url/oauth/token`.
+5. To generate the token, use the following credentials from your XSUAA Instance: `clientId`, `clientsecret`, `<url>/oauth/token`.
 
-8. To acess the xsuaa credentials follow the steps:
+6. To acess the xsuaa credentials follow the steps:
   -  Go to *your namespace* -> **Configuration -> Secrets**, and select your XSUAA application.
     
   <br/> ![](./images/kyma-xsuaa-1.png)

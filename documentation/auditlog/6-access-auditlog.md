@@ -8,13 +8,13 @@
    
  Once you've subscribed, choose **Go to Application** to open the SAP Audit Log Viewer service and log in there.
 
-4. To retrieve the audit logs for your subaccount using the SAP Audit Log Viewer service, you need to have proper authorizations.
-    - Create a role-collection `auditlog viewer`. In **your subaccount-> Role Collections**, Choose **Create**.
+3. To retrieve the audit logs for your subaccount using the SAP Audit Log Viewer service, you need to have proper authorizations.
+    - Create a role-collection `auditlog-viewer`. In **your subaccount-> Role Collections**, Choose **Create**.
       ![](./images/auditlog-rolecollection.png)
     - Add the following roles and save:
       ![](./images/auditlog-roles.png)
     - Assign this role-collection to your user.
       
-5. Access the Audit Log Viewer Service and you will see the list of audit logs.
+4. Access the Audit Log Viewer Service and you will see the list of audit logs.
     - Filter out the logs by `data-access`, adjust the time range and you will see similar logs entries:
     - ![](./images/auditlog-viewer.png)

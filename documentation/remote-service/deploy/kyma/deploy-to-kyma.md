@@ -30,7 +30,7 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
     cds build --production
     ```
 
-2. Build the image:
+2. Build the image after updating version `<image-version>` to reflect the change in incident-management-srv app.
 
     ```sh
     pack build <your-container-registry>/incident-management-srv:<image-version> \
@@ -114,53 +114,7 @@ html5-apps-deployer:
     repository: <your-container-registry>/incident-management-html5-deployer
     tag: <html5apps-deployer-image-version>
 
-2. Change the value for `SAP_CLOUD_SERVICE` to `incidents`
-```yaml{3}
-html5-apps-deployer:
-  env:
-    SAP_CLOUD_SERVICE: incidents
 ```
-
-### Configure Cluster Domain
-
-1. Specify the domain of your cluster in the `chart/values.yaml` file so that the URL of your CAP service can be generated:
-
-```yaml
-...
-domain: <cluster domain>
-
-```
-To get the domain name for your Kyma cluster, use the following command
-
-```yaml
-kubectl get gateway -n kyma-system kyma-gateway \
-        -o jsonpath='{.spec.servers[0].hosts[0]}'
-```
-
-2. Replace `<your-cluster-domain>` with your cluster domain in the `xsuaa` section of the `values.yaml` file:
-```yaml
-xsuaa:
-  serviceOfferingName: xsuaa
-  servicePlanName: application
-  parameters:
-    xsappname: incident-management
-    tenant-mode: dedicated
-    oauth2-configuration:
-      redirect-uris:
-        - https://*.<your-cluster-domain>/**
-
-```
-3. Add the destinations under `backendDestinations` in the `values.yaml` file:
-
-```yaml
-backendDestinations:
-  incident-management-srv-api:
-    service: srv
-```
-**info**
-`incident-management-srv-api` is the name of the destination. `service` points to the deployment name whose URL will be used for this destination.
-:::
-
 
 ## Deploy CAP Helm Chart
 
@@ -174,10 +128,9 @@ backendDestinations:
   ```
 This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incidents-namespace***.
 
-::: tip
-
+```info
 With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
-:::
+```
 
 The outcome of installation looks similar to this:
 

@@ -88,7 +88,7 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
     cds build --production
     ```
 
-2. Build the image:
+2. Build the image after updating version `<image-version>` to reflect the change in incident-management-srv app.:
 
     ```sh
     pack build <your-container-registry>/incident-management-srv:<image-version> \
@@ -147,13 +147,29 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
         version: ">0.0.0"
     ```
 
-3. Add the below configurations for `s4-hana-cloud` to the `values.yaml`.
+4. Add the below configurations for `s4-hana-cloud` to the `values.yaml`.
 
     ```yaml
     s4-hana-cloud-messaging:
         serviceOfferingName: s4-hana-cloud
         servicePlanName: messaging
     ```
+
+5. Add a configuration to create SAP Event Mesh service instance in `values.yaml` file.
+
+  ```yaml
+  event-mesh:
+    serviceOfferingName: enterprise-messaging
+    servicePlanName: default
+  ```
+
+6. Add following confirguration to `chart/Chart.yaml` for SAP Event Mesh instance creation
+
+  ```yaml
+  - name: service-instance
+    alias: event-mesh
+    version: ">0.0.0"
+  ```
 
 For more information about Helm and CAP, see [About CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cap-helm).
 
@@ -162,7 +178,7 @@ Once your cluster is prepared, your container images are built and uploaded to a
 
 ### Configure Access to Your Container Images
 
-1. Add your container image settings to your `chart/values.yaml`:
+Add your container image settings to your `chart/values.yaml`:
 
 ```yaml{4,7,8,9,13,14,18,19,23,24}
 ...
@@ -185,67 +201,6 @@ html5-apps-deployer:
     repository: <your-container-registry>/incident-management-html5-deployer
     tag: <html5apps-deployer-image-version>
 
-2. Change the value for `SAP_CLOUD_SERVICE` to `incidents`
-```yaml{3}
-html5-apps-deployer:
-  env:
-    SAP_CLOUD_SERVICE: incidents
-```
-
-### Configure Cluster Domain
-
-1. Specify the domain of your cluster in the `chart/values.yaml` file so that the URL of your CAP service can be generated:
-
-```yaml
-...
-domain: <cluster domain>
-
-```
-You can use the following command to get the domain name for your Kyma cluster:
-
-```yaml
-kubectl get gateway -n kyma-system kyma-gateway \
-        -o jsonpath='{.spec.servers[0].hosts[0]}'
-```
-
-2. Replace `<your-cluster-domain>` with your cluster domain in the `xsuaa` section of the `values.yaml` file:
-```yaml
-xsuaa:
-  serviceOfferingName: xsuaa
-  servicePlanName: application
-  parameters:
-    xsappname: incident-management
-    tenant-mode: dedicated
-    oauth2-configuration:
-      redirect-uris:
-        - https://*.<your-cluster-domain>/**
-
-```
-3. Add the destinations under `backendDestinations` in the `values.yaml` file:
-
-```yaml
-backendDestinations:
-  inicdent-management-srv-api:
-    service: srv
-```
-**info**
-`backend` is the name of the destination. `service` points to the deployment name whose URL will be used for this destination.
-
-4. Add a configuration to create SAP Event Mesh service instance in `values.yaml` file.
-
-  ```yaml
-  event-mesh:
-    serviceOfferingName: enterprise-messaging
-    servicePlanName: default
-  ```
-
-5. Navigate to `chart/Chart.yaml` and add the following configurations
-
-  ```yaml
-  - name: service-instance
-    alias: event-mesh
-    version: ">0.0.0"
-  ```
 
 ## Deploy CAP Helm Chart
 

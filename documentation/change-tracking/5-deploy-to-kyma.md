@@ -28,7 +28,7 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
 cds build --production
 ```
 
-2. Build the `srv` image.
+2. Build the `incident-management-srv` image after updating version `<image-version>` to reflect the change in incident-management-srv app.
 
 ```sh
 pack build <your-container-registry>/incident-management-srv:<image-version> \
@@ -37,7 +37,7 @@ pack build <your-container-registry>/incident-management-srv:<image-version> \
      --publish
 ```
 
-3. Build the database image.
+3. Build the database image after updating version `<image-version>` to reflect the change in incident-management-hana-deployer app.
 
 ```sh
 pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
@@ -46,7 +46,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
      --publish
 ```
 
-4. Build the HTML5 Deployer image.
+4. Build the HTML5 Deployer image after updating version `<image-version>` to reflect the change in incident-management-html5-deployer app..
 
 ```sh
 pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
@@ -78,53 +78,6 @@ html5-apps-deployer:
     repository: <your-container-registry>/incident-management-html5-deployer
     tag: <html5apps-deployer-image-version>
 ```
-
-6. Change the value for `SAP_CLOUD_SERVICE` to `incidents`
-```yaml{3}
-html5-apps-deployer:
-  env:
-    SAP_CLOUD_SERVICE: incidents
-```
-### Configure Cluster Domain
-
-1. Specify the domain of your cluster in the `chart/values.yaml` file so that the URL of your CAP service can be generated:
-
-```yaml
-...
-domain: <cluster domain>
-
-```
-You can use the following command to get the domain name for your Kyma cluster:
-
-```yaml
-kubectl get gateway -n kyma-system kyma-gateway \
-        -o jsonpath='{.spec.servers[0].hosts[0]}'
-```
-
-2. Replace `<your-cluster-domain>` with your cluster domain in the `xsuaa` section of the `values.yaml` file:
-```yaml
-xsuaa:
-  serviceOfferingName: xsuaa
-  servicePlanName: application
-  parameters:
-    xsappname: incident-management
-    tenant-mode: dedicated
-    oauth2-configuration:
-      redirect-uris:
-        - https://*.<your-cluster-domain>/**
-
-```
-3. Add the destinations under `backendDestinations` in the `values.yaml` file:
-
-```yaml
-backendDestinations:
-  inicdent-management-srv-api:
-    service: srv
-```
-::: info
-`backend` is the name of the destination. `service` points to the deployment name whose URL will be used for this destination.
-:::
-
 
 ## Deploy CAP Helm Chart to Kyma
 

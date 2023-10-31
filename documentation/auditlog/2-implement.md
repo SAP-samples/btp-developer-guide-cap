@@ -93,15 +93,15 @@ The package is a *cds-plugin* and thereby auto-writes many things so configurati
 The steps above is all you need to automatically log personal data-related events. 
 
 1. Create a file `request.http` with the following content:
-    ```http
+   
+    ```
+    
     @host = http://localhost:4004
 
-    #####
-    #
-    # ProcessorService
-    #
+    ### ProcessorService
 
     ### Reading sensitive data (creditCardNo) by default - NOT recommended!
+    
     GET {{host}}/odata/v4/processor/Customers
     Authorization: Basic alice:wonderland
 
@@ -109,10 +109,7 @@ The steps above is all you need to automatically log personal data-related event
     GET {{host}}/odata/v4/processor/Customers?$select=name
     Authorization: Basic alice:wonderland
 
-    #####
-    #
-    # AdminService
-    #
+    ### AdminService
 
     ### Creating a customer with personal data
     # @name create_customer
@@ -142,19 +139,21 @@ The steps above is all you need to automatically log personal data-related event
         }
       ]
     }
+    
     ```
-2. Add `admin` role to  `alice` in `package.json`.
+    
+3. Add `admin` role to  `alice` in `package.json`.
     ```json
     "alice": {
                   "roles": ["support", "admin"]
                 }   
     ```
     > User need `admin` role to access `admin` service and modify the customer's details.
-3. Start the server.
+4. Start the server.
     ```bash
       cds watch
     ```
-4. Send the requests and observe the response having logs from `[audit-log]` with `PersonalDataModified` and `SensitiveDataRead` events.
+5. Send the requests and observe the response having logs from `[audit-log]` with `PersonalDataModified` and `SensitiveDataRead` events.
 
 ## Next Step
 Now you have implemented audit logging, tested the application locally and it's time to deploy it to SAP BTP.

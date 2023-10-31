@@ -2,37 +2,37 @@
 
 ## Introduction
 
-In this chapter you will add the SAP Event Mesh service to your project
+In this chapter you will add the SAP Event Mesh service to your project.
 
-## Content
+## Procedure
 
-1. Go to SAP Business Application Studio and open a new terminal. Run the command
+1. Go to SAP Business Application Studio and open a new terminal. Run the following command:
 
     ```bash
         cds add enterprise-messaging-shared
     ```
 
-    This will do some adjustments to your project and change the following in your application
+    This code adjusts your project and changes your application in the following way:
 
-    - Adds `"@sap/xb-msg-amqp-v100": "^0"` in package.json file
-    - Adds `event-mesh.json` file in the root folder
-    - Adds below entry in mta.yaml
+   - Adds `"@sap/xb-msg-amqp-v100": "^0"` in the **package.json** file
+   - Adds the **event-mesh.json** file in the root folder
+   - Adds the following entry in the `resources` section of the mta.yaml file:
 
         ```yaml
-            - name: inicdent-management-messaging
+            - name: incident-management-messaging
               type: org.cloudfoundry.managed-service
               parameters:
               service: enterprise-messaging
               service-plan: default
               path: ./event-mesh.json`
          ```
-    - Adds the below entry in the `requires` section of `incident-management-srv` module
+    - Adds the following entry in the `requires` section of `incident-management-srv` module:
 
         ```yaml
-            - name: inicdent-management-messaging
+            - name: incident-management-messaging
         ```
 
-2. Open the `mta.yaml` and copy the below module to the  `resources` section.
+2. Open the **mta.yaml** file and copy the following module to the  `resources` section:
 
     ```yaml
     - name: incidents-messaging-cloud
@@ -44,9 +44,9 @@ In this chapter you will add the SAP Event Mesh service to your project
         system-name: <enter-your-s4-system-name>
     ```
 
-    > Note: system-name is the created system name you have set in Remote Service Integration tutorial
+    > Note: **system-name** is the system name you have set in the Remote Service Integration tutorial.
 
-3. In the root folder of your project create a new file called `s4cems.json`. Copy the below code to it
+3. In the root folder of your project, create a new file called **s4cems.json**. Copy the following code to the **s4cems.json** file:
 
     ```json
     {
@@ -55,4 +55,5 @@ In this chapter you will add the SAP Event Mesh service to your project
     }
     ```
 
-     > Note: system-name is the created system name you have set in Remote Service Integration tutorial
+     > Note: **system-name** is the system name you have set in the Remote Service Integration tutorial.
+     The value of the **emClientId** property should have maximum length of 4 characters and should fit in the [characters: [A-Za-z0-9]; 

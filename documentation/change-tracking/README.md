@@ -1,8 +1,8 @@
 ## Project Board
 
-  1. [Prerequisites](./1-prerequisites.md)
-  2. [Implement Change Tracking](./2-implement.md)
-  3. [Deploy Incident Management Application to SAP BTP](./3-deploy-to-btp.md)
-      - [Option 1 - Deploy to Cloud Foundry](./4-deploy-to-cf.md)
-      - [Option 2 - Deploy to Kyma](./5-deploy-to-kyma.md)
-  4. [View Change History](./6-test-the-flow.md)
+1. [Introduction](./introduction.md)
+2. [Prerequisites](./1-prerequisites.md)
+3. [Implement Change Tracking](./2-implement.md)
+4. [Option 1 - Deploy Incident Management Application to SAP BTP Cloud Foundry Runtime](./4-deploy-to-cf.md)
+5. [Option 2 - Deploy Incident Management Application to SAP BTP Kyma Runtime](./5-deploy-to-kyma.md)
+6. [View Change History](./6-test-the-flow.md)

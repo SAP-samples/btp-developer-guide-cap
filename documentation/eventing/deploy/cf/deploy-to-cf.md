@@ -2,23 +2,75 @@
 
 ## Usage scenario
 
-Deploy the project to Cloud Foundry using the cf deploy command
-
-## Prerequisites
-
-* You have prepared the project for productive usage
+In this chapter, you will prepare for production and deploy the project to the SAP BTP, Cloud Foundry runtime using the **cf deploy** command.
 
 ## Content
 
-1. In **SAP Business Application Studio** open a new Terminal 
+## Prepare the Project for Production
 
-2. Make sure you are in the project folder of your application and run command
+1. Go to SAP Business Application Studio and open a new terminal. Run the following command:
+
+    ```bash
+        cds add enterprise-messaging-shared
+    ```
+
+    This code adjusts your project and changes your application in the following way:
+
+   - Adds `"@sap/xb-msg-amqp-v100": "^0"` in the **package.json** file
+   - Adds the **event-mesh.json** file in the root folder
+   - Adds the following entry in the `resources` section of the mta.yaml file:
+
+        ```yaml
+            - name: incident-management-messaging
+              type: org.cloudfoundry.managed-service
+              parameters:
+              service: enterprise-messaging
+              service-plan: default
+              path: ./event-mesh.json`
+         ```
+    - Adds the following entry in the `requires` section of `incident-management-srv` module:
+
+        ```yaml
+            - name: incident-management-messaging
+        ```
+
+2. Open the **mta.yaml** file and copy the following module to the  `resources` section:
+
+    ```yaml
+    - name: incidents-messaging-cloud
+        type: org.cloudfoundry.managed-service
+        parameters:
+        path: ./s4cems.json
+        service: s4-hana-cloud
+        service-plan: messaging
+        system-name: <enter-your-s4-system-name>
+    ```
+
+    > Note: **system-name** is the system name you have set in the Remote Service Integration tutorial.
+
+3. In the root folder of your project, create a new file called **s4cems.json**. Copy the following code to the **s4cems.json** file:
+
+    ```json
+    {
+        "emClientId": "emid", 
+        "systemName": "<enter-your-s4-system-name>"
+    }
+    ```
+
+     > Note: **system-name** is the system name you have set in the Remote Service Integration tutorial.
+     The value of the **emClientId** property should have maximum length of 4 characters and should fit in the [characters: [A-Za-z0-9]; 
+
+## Deploy the application to SAP BTP, Cloud Foundry runtime
+
+1. In SAP Business Application Studio open a new terminal.
+
+2. Make sure you are in the project folder of your application and run the following command:
 
 ```bash
 mbt build
 ```
 
-3. To deploy the ready MTA archive execute the following command:
+3. To deploy the already prepared MTA archive, run the following command:
 
 ```bash
 cf deploy mta_archives/<mtar>
@@ -26,4 +78,4 @@ cf deploy mta_archives/<mtar>
 
 You'll need to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) before you can access the application.
 
-Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+Then, proceed to the [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) tutorial to access the application in a launchpad.

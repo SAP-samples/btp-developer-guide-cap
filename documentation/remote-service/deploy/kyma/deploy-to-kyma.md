@@ -114,11 +114,11 @@ html5-apps-deployer:
     repository: <your-container-registry>/incident-management-html5-deployer
     tag: <html5apps-deployer-image-version>
 
-2. Change the value for `SAP_CLOUD_SERVICE` to `ns.incidents`
+2. Change the value for `SAP_CLOUD_SERVICE` to `incidents`
 ```yaml{3}
 html5-apps-deployer:
   env:
-    SAP_CLOUD_SERVICE: ns.incidents
+    SAP_CLOUD_SERVICE: incidents
 ```
 
 ### Configure Cluster Domain

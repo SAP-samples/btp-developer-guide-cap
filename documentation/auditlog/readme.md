@@ -1,8 +1,8 @@
 # Project Board
- 
-1. [Getting started with auditlog](./1-getting-started-with-auditlog.md)
-2. [Implement Auditlog](./2-implement.md)
-3. [Deploy to Business Technology Platform](./3-deploy-to-btp.md)
-    - [Option 1 - Deploy and Run the Application on Cloud Foundry](./4-deploy-to-cf.md)
-    - [Option 2 - Deploy and Run the Application on Kyma](./5-deploy-to-kyma.md)
-4. [Access Audit Logs](./6-acces-auditlog.md)
+
+1. [Introduction](./introduction.md)
+1. [Prerequisites](./1-getting-started-with-auditlog.md)
+2. [Implement Audit Log](./2-implement.md)
+3. [Option 1 - Deploy Incident Management Application to SAP BTP Cloud Foundry Runtime](./4-deploy-to-cf.md)
+4. [Option 2 - Deploy Incident Management Application to SAP BTP Kyma Runtime](./5-deploy-to-kyma.md)
+5. [Access Audit Logs](./6-access-auditlog.md)

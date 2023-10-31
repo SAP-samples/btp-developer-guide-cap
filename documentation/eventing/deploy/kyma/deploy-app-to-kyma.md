@@ -2,15 +2,15 @@
 
 ## Usage scenario
 
-Deploy the project to SAP BTP Kyma runtime using [Helm](https://helm.sh/) Configurations
+Deploy the project to SAP BTP Kyma runtime using Helm configurations. See [Helm](https://helm.sh/).
 
 ## Prepare for Production
 
-1. Navigate to package.json file in the root folder of your application.
+1. Navigate to `package.json` file in the root folder of your application.
 
-2. Add `"@sap/xb-msg-amqp-v100": "^0"` to the **dependencies** section of package.json file.
+2. Add `"@sap/xb-msg-amqp-v100": "^0"` to the **dependencies** section of `package.json ` file.
 
-3. Add the below code to the **requires** section of package.json file
+3. Add the below code to the **requires** section of package.json file.
 
     ```json
     "messaging": {
@@ -22,9 +22,9 @@ Deploy the project to SAP BTP Kyma runtime using [Helm](https://helm.sh/) Config
       },
     ```
 
-5. Create a new file called event-mesh.json at the root folder of the project and copy the below content. 
+5. Create a new file called `event-mesh.json` at the root folder of the project and copy the content below. 
 
-     - As **EM_NAME** you must enter a speaking name for your client (e.g. inicidents-emname).
+     - As **EM_NAME**, enter a speaking name for your client (e.g. inicidents-emname).
 
         ```json
         {
@@ -61,7 +61,11 @@ Deploy the project to SAP BTP Kyma runtime using [Helm](https://helm.sh/) Config
         ```
 
 ## Build Images
-We recommend using [Cloud Native Buildpacks](https://buildpacks.io/) to transform source code (or artifacts) into container images. For local development scenarios, you can use the [pack](https://buildpacks.io/docs/tools/pack/) CLI to consume Cloud Native Buildpacks. Check out [About Cloud Native Buildpacks](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cloud-native-buildpacks) for more info.
+To transform source code (or artifacts) into container images, we recommend using [Cloud Native Buildpacks](https://buildpacks.io/).
+
+For local development scenarios, you can use the [pack](https://buildpacks.io/docs/tools/pack/) CLI to consume Cloud Native Buildpacks. 
+
+For more information, see [About Cloud Native Buildpacks](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cloud-native-buildpacks).
 
 Log in to your container registry:
 
@@ -69,12 +73,12 @@ Log in to your container registry:
 docker login docker.io -u <your-user>
 
 ```
-## Before you begin
+## Before You Begin
 
-Please note the following points:
+Please note:
 
-If you're using any device with a non-x86 processor (e.g. MacBook M1/M2) you need to instruct the Docker to use x86 images by setting the [DOCKER_DEFAULT_PLATFORM](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables) environment variable.
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
+If you're using any device with a non-x86 processor (e.g. MacBook M1/M2), you need to instruct the Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
+See [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables).
 
 ### Build CAP Node.js Image
 
@@ -94,9 +98,9 @@ export DOCKER_DEFAULT_PLATFORM=linux/amd64
     ```
 
 **Info**
-The pack CLI builds the image that contains the build result in the gen/srv folder and the required npm packages by using the [Packeto Jammy Base Builder](https://github.com/paketo-buildpacks/builder-jammy-base).
+The pack CLI builds the image that contains the build result in the gen/srv folder and the required npm packages by using the [Packet Jammy Base Builder](https://github.com/paketo-buildpacks/builder-jammy-base).
 
-### Build UI Deployer image
+### Build UI Deployer Image
 
  Build the image:
  
@@ -109,7 +113,7 @@ The pack CLI builds the image that contains the build result in the gen/srv fold
 
 ### Build Database Image 
 
-Run the below command to build the database image:
+Run the command to build the database image:
 
 ```sh
 pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
@@ -121,10 +125,10 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
 ## Eventing Configuration
 > This section is needed only if you are going to use SAP S/4HANA Cloud system as your remote service.
 
-1. Create a new file called s4cems.json at the root folder of the project and copy the below content.
+1. Create a new file called `s4cems.json` at the root folder of the project and copy the below content.
  
- - As **emClientId** you must enter a speaking name for your client (e.g. INCI).
- - As **systemName** you must enter the name of your the registered SAP S/4HANA Cloud system. 
+ - As **emClientId**, enter a speaking name for your client (e.g. INCI).
+ - As **systemName**, enter the name of your the registered SAP S/4HANA Cloud system. 
 
     ```json
         {
@@ -133,9 +137,9 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
         }
     ``` 
 
-2. Navigate to chart/Chart.yaml file from the project root folder.
+2. Navigate to `chart/Chart.yaml` file from the project root folder.
 
-3. Add the following code snippet to the Chart.yaml to create s4hana cloud extensibility service instance with messaging plan
+3. Add the following code snippet to the `Chart.yaml` to create SAP S/4HANA Cloud extensibility service instance with messaging plan
 
     ```yaml
     - name: service-instance
@@ -143,7 +147,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
         version: ">0.0.0"
     ```
 
-3. Add the below configurations for `s4-hana-cloud` to the values.yaml
+3. Add the below configurations for `s4-hana-cloud` to the `values.yaml`.
 
     ```yaml
     s4-hana-cloud-messaging:
@@ -151,7 +155,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
         servicePlanName: messaging
     ```
 
-More info about Helm and CAP in [About CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cap-helm).
+For more information about Helm and CAP, see [About CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cap-helm).
 
 ## Deploy Helm Chart
 Once your cluster is prepared, your container images are built and uploaded to a registry, and your Helm chart is created, you're almost set for deploying your Kyma application.
@@ -226,9 +230,8 @@ backendDestinations:
 ```
 **info**
 `backend` is the name of the destination. `service` points to the deployment name whose URL will be used for this destination.
-:::
 
-4. Add a configuration to create SAP Event Mesh service instance in `values.yaml` file
+4. Add a configuration to create SAP Event Mesh service instance in `values.yaml` file.
 
   ```yaml
   event-mesh:
@@ -236,7 +239,7 @@ backendDestinations:
     servicePlanName: default
   ```
 
-5. Navigate to `chart/Chart.yaml` and add the below configurations
+5. Navigate to `chart/Chart.yaml` and add the following configurations
 
   ```yaml
   - name: service-instance
@@ -263,6 +266,6 @@ The outcome of installation will look something like this:
 
 ![deployed app](../images/deployedapp.png)
 
-You have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) to be able to access the application via the URL.
+To be able to access the application via the URL, you have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 
-Next step, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html) to access the application in launchpad.
+As a next step, to access the application in launchpad, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html).

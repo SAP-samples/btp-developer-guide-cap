@@ -25,7 +25,7 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
         }
     ```
 
-2. Check if the following dependencies and configurations have been added to the `package.json`:
+2. Check if the following dependencies and dev dependencies have been added to the `package.json`:
 
     <!-- cpes-file package.json:$.cds.requires -->
     ```json hl_lines="7-9"
@@ -42,9 +42,13 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
         "@sap/ams-dev": "^0.7.0",
         "@sap/cds-dk": "^7"
       },
+
+    ...
+    }
     ```
 3. Change the `auth.kind` to `ias` in `package.json` for the production profile:
-      ```json    
+      ```json
+      {    
           ...
         "cds": {
           "requires": {
@@ -52,6 +56,7 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
               ...
               "auth": {
                 "kind": "ias"
+                ...
               }
             }
           }

@@ -5,7 +5,6 @@ For more information, see See [SAP Continuous Integration and Delivery](https://
 
 The steps below guide you through setting up your pipeline.
 
-
 ## Initialize a Repository in VS Code
 
 To be able to perform the steps for setting up a CI/CD pipeline, you need a public repository. Currently, SAP Continuous Integration and Delivery supports **GitHub** and **Bitbucket** repositories.
@@ -29,8 +28,9 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
 
     *.mtar
     mta_archives/
+    mta.yaml
     ```
-5. If your project already has a .gitignore file, ensure that the following is mentioned in it.
+5. If your project already has a .gitignore file, ensure that the following is mentioned in it. Additionally if `resources/` is mentioned in the file, remove it.
 
 6. Now navigate to **Source Control** and choose **Initialize Repository**.
 ![initializeRepo](./cicd29.png)
@@ -42,6 +42,11 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
 ![publish](./cicd31.png)
 
     You may be redirected to a browser to authenticate into your GitHub account. Provide your GitHub username and password when prompted. When the changes are pushed, you’ll be able to see your project in your GitHub repository.
+
+<br>
+
+## Prequisites
+Please go through the [prerequisites here](../prerequisite-for-sample/prerquites-for-sample.md#prepare-application-to-deploy-to-kymak8s), which are required for deployment on the Kyma Runtime.
 
 <br>
 
@@ -116,7 +121,10 @@ In order to run the pipeline using the CI/CD service, you need to create a servi
     Choose a relevant name for your credential e.g: kube-config. For type, choose **Kubernetes Configuration** from the dropdown. In the **Content space**, paste the KubeConfig file of the service account you copied from the previous step. Choose Create.
     ![credential](./cicd12.png)
 
-8. You need to add your service account to a **Cluster Role Binding**. Go back to your cluster and from the menu, choose **Configurations** and navigate to **Cluster Role Bindings**. Here click on any **admin** role binding.
+8. You need to add your service account to a **Cluster Role Binding**. For this go back to your **Cluster Details** page. 
+![clusterRoleBinding](./cicd36.png)
+
+    From the menu, choose **Configurations** and navigate to **Cluster Role Bindings**. Here click on any **admin** role binding whose role reference is **cluster-admin**.
 ![binding](./cicd13.png)
 
     On this page, choose **Edit**.
@@ -150,7 +158,11 @@ For your pipeline to be able to push and pull images from your docker repository
         "credsStore": "osxkeychain"
     }   
     ```
-3. To retrieve the credentials in the desired format, remove the `credsStore` key-value pair.
+3. In order retrieve the credentials in desired format, you will have to remove the `credsStore` key-value pair. To modify the config.json file run the following command.
+    ```
+    vim /tmp/config.json
+    ```
+    Remove the highlighted lines of code.
     ```json
     {
         "auths": {
@@ -160,7 +172,7 @@ For your pipeline to be able to push and pull images from your docker repository
         "credsStore": "osxkeychain"  // [!code --] 
     }   
     ```
-4. Now again run the same login command mentioned in step 1. You need to enter your credentials again. Enter the credentials as shown in step 2. Make sure your credentials are in this form
+4. Now again run the same login command mentioned in step 1. You will need to input your docker credentials again. Print your config details in the same manner as shown in step 2. Ensure your credentials are in this form
     ```json
     {
         "auths": {
@@ -255,9 +267,11 @@ For your pipeline to be able to push and pull images from your docker repository
 5. Navigate to the `cnbBuild` step and change the values of **dockerConfigJsonCredentialsId** and the **containerImageName, containerImageAlias and containerImageTag**.
 ![cnbBuild](./cicd18.png)
 
+    If you are using a different container registry, modify the parameter `containerRegistryUrl` accordingly.
+
     For the parameter `dockerConfigJsonCredentialsId`, it should be the same value as the credential name given for the **Container Registry Configuration** credential created in [Get docker credentials](./README.md#get-docker-credentials), step 5.
 
-    The parameters for the images must be changed with your docker registry name wherever mentioned. The preferred image versions must also be mentioned wherever relevant. 
+    The parameters for the images must be changed with your docker registry name wherever mentioned. The preferred image versions must also be mentioned wherever relevant. Ensure these values match the ones mentioned in `chart/values.yaml`.
 
 <br>
 
@@ -336,6 +350,8 @@ For your pipeline to be able to push and pull images from your docker repository
     - Clone URL: &lt;add your repo-URL&gt;
     - Credentials: &lt;add the credentials that you created in step 1.&gt;
     - Type: GitHub
+
+    Remove the **Webhook** portion.
 ![configure pipeline](./cicd25.png)
 
 5. Back in the **Add Repository** screen, choose **Add** to finish.

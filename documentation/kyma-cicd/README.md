@@ -248,14 +248,14 @@ For your pipeline to be able to push and pull images from your docker repository
 
 4. Now you'll need to make changes to the `config.yml` file. In the `Release` stage, change the **kubeConfigFileCredentialsId** and **namespace**.
 ![release](./cicd17.png)
-    The parameter `kubeConfigFileCredentialsId` should have the same value as the name given to your **Kubernetes Configuration** credential. Refer to [Retrieve Kyma cluster configuration details](./add-cicd.md#retrieve-kyma-cluster-configuration-details), step 5. 
+    The parameter `kubeConfigFileCredentialsId` should have the same value as the name given to your **Kubernetes Configuration** credential. Refer to [Retrieve Kyma cluster configuration details](./README.md#retrieve-kyma-cluster-configuration-details), step 5. 
 
-    The parameter `namespace` should have the same value as the one you created in your Kyma cluster in [Retrieve Kyma cluster configuration details](./add-cicd.md#retrieve-kyma-cluster-configuration-details), step 2 .
+    The parameter `namespace` should have the same value as the one you created in your Kyma cluster in [Retrieve Kyma cluster configuration details](./README.md#retrieve-kyma-cluster-configuration-details), step 2 .
 
 5. Navigate to the `cnbBuild` step and change the values of **dockerConfigJsonCredentialsId** and the **containerImageName, containerImageAlias and containerImageTag**.
 ![cnbBuild](./cicd18.png)
 
-    For the parameter `dockerConfigJsonCredentialsId`, it should be the same value as the credential name given for the **Container Registry Configuration** credential created in [Get docker credentials](./add-cicd.md#get-docker-credentials), step 5.
+    For the parameter `dockerConfigJsonCredentialsId`, it should be the same value as the credential name given for the **Container Registry Configuration** credential created in [Get docker credentials](./README.md#get-docker-credentials), step 5.
 
     The parameters for the images must be changed with your docker registry name wherever mentioned. The preferred image versions must also be mentioned wherever relevant. 
 

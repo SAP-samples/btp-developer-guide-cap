@@ -185,7 +185,7 @@ To test and generate audit log, we will be using one of these API Testing tools:
    
 ![](./images/kyma-apirule.png)
 
-4. To access the below endpoint, the user needs `support` role and `xsuaa token` has to be passed in the header.
+4. To access the below endpoint, the user needs `support` and `admin` roles and `xsuaa token` has to be passed in the header.
    
 5. To generate the token, use the following credentials from your XSUAA Instance: `clientId`, `clientsecret`, `<url>/oauth/token`.
 

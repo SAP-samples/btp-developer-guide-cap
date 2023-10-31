@@ -60,9 +60,9 @@ Refer to [prerequisite-for-sample](./1-getting-started-with-ams.md) to prepare y
               }
             }
           }
-          }
+        }
       }
-      ```
+    ```
 ## Deploy to Cloud Foundry
 
 1. Update `mta.yaml` with the following content

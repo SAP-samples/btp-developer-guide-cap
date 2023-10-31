@@ -180,15 +180,15 @@ To test and generate audit log, we will be using one of these API Testing tools:
 
 1. To be able to access the application via the URL, you need to assign roles to users. See [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 
-3. Go to your Kyma cluster. Get the application endpoint from *your-namespace* -> **Discovery and Networks -> API Rules -> incident-management-srv**.
+2. Go to your Kyma cluster. Get the application endpoint from *your-namespace* -> **Discovery and Networks -> API Rules -> incident-management-srv**.
    
 ![](./images/kyma-apirule.png)
 
-5. To access the below endpoint, the user needs `support` role and `xsuaa token` has to be passed in the header.
+3. To access the below endpoint, the user needs `support` role and `xsuaa token` has to be passed in the header.
    
-7. To generate the token, use the following credentials from your XSUAA Instance: `clientId`, `clientsecret`, `url/oauth/token`.
+4. To generate the token, use the following credentials from your XSUAA Instance: `clientId`, `clientsecret`, `<url>/oauth/token`.
 
-8. To acess the xsuaa credentials follow the steps:
+5. To acess the xsuaa credentials follow the steps:
   -  Go to *your namespace* -> **Configuration -> Secrets**, and select your XSUAA application.
     
   <br/> ![](./images/kyma-xsuaa-1.png)
@@ -199,10 +199,10 @@ To test and generate audit log, we will be using one of these API Testing tools:
   -  Use the following credentials: `clientId`, `clientsecret`, `url` to generate access token.
   - ![](./images/kyma-xsuaa-3.png)
 
-7. Use Postman to generate access token. Set authorization type as `OAuth 2.0` , `cf username` ,`cf password` and generate access token.
+6. Use Postman to generate access token. Set authorization type as `OAuth 2.0` , `cf username` ,`cf password` and generate access token.
 ![](./images/access-token.png)
 
-8. Use `<your application end point>/odata/v4/processor/Customers` and send the request (Step 7 in the above screenshot). If successful, you will get the list of customers as a response:
+7. Use `<your application end point>/odata/v4/processor/Customers` and send the request (Step 7 in the above screenshot). If successful, you will get the list of customers as a response:
 ```
 {
     "@odata.context": "$metadata#Customers",
@@ -249,6 +249,6 @@ To test and generate audit log, we will be using one of these API Testing tools:
     ]
 }
 ```
-9. On reading the customer data which we have annotated with @PersonalData, there will be an audit log entry in Cloud Foundry, which you will be retrieving in the next step. 
+8. On reading the customer data which we have annotated with @PersonalData, there will be an audit log entry in Cloud Foundry, which you will be retrieving in the next step. 
 
 

@@ -45,35 +45,36 @@ The authorization checks that you added to the CAP model apply not only when dep
 
 
 1. Add the following to your `package.json` file:
-  ```json
-  {
-    "[development]": {
-        "auth": {
-              "Kind": "mocked",
-              "users": {}
-            } 
-        }
-    
-  }
-  ```
+    ```json
+    {
+      "[development]": {
+          "auth": {
+                "Kind": "mocked",
+                "users": {}
+              } 
+          }
+      
+    }
+    ```
 
   This defines which configuration to use when running with the `development` profile. We define some general parameters for the authentication behavior and as the next step, we will define some test users.
 
 3. Add the following property to the `users` in the `package.json` with the following code: 
 
-  <!-- cpes-file .cdsrc.json:$.*.*.*.users[?(@.ID=="risk.manager@tester.sap.com")] -->
-  ```json
-    "users": {
-        "alice": {
-          "policies" : [
-               "cap.support (Not restricted)"
-           ]
-        },
-        "bob": {
-        }
-    }
-  ```
-  Here, the `policies` array can be used to assign policies to mocked users for local testing. The `roles` property of a user can still be used for manual role assignments to a mocked user. But since we want to test role assignments via the Authorization Management Service, we instead assign the policy for the support role.
+
+      ```json
+          "users": {
+              "alice": {
+                "policies" : [
+                    "cap.support (Not restricted)"
+                ]
+              },
+              "bob": {
+              }
+          }
+      ```
+  Here, the `policies` array can be used to assign policies to mocked users for local testing. The `roles` property of a user can still be used for manual role assignments to a mocked user. But since we want to test role assignments via AMS, we instead assign the policy for the support role.
+
 
 ## Access the Incidents Application with Password
 

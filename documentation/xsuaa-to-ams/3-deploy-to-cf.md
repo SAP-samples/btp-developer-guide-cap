@@ -25,7 +25,8 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
         }
     ```
 
-2. Check if the following dependencies and configurations have been added to the `cxpackage.json`:
+2. Check if the following dependencies and dev dependencies have been added to the `package.json`:
+
 
     <!-- cpes-file package.json:$.cds.requires -->
     ```json hl_lines="7-9"
@@ -42,25 +43,29 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
         "@sap/ams-dev": "^0.7.0",
         "@sap/cds-dk": "^7"
       },
+
+    ...
+    }
     ```
 3. Change the `auth.kind` to `ias` in `package.json` for the production profile:
-   
-```json
-{   
-        ...
-      "cds": {
-        "requires": {
-          "[production]": {
-            ...
-            "auth": {
-              "kind": "ias"
+
+      ```json
+      {    
+          ...
+        "cds": {
+          "requires": {
+            "[production]": {
+              ...
+              "auth": {
+                "kind": "ias"
+                ...
+              }
             }
           }
         }
       }
-    }
+    ```
 
-   ```
 ## Deploy on Cloud Foundry
 
 1. Update the `mta.yaml` with the following content
@@ -82,9 +87,9 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
      ```yaml
        - name: incident-management-auth
          parameters:
-            path: ./ias-config.json
-            service-plan: application
-            service: identity
+           path: ./ias-config.json
+           service-plan: application
+           service: identity
          type: org.cloudfoundry.managed-service
      ```
 
@@ -124,7 +129,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
             service-key:
               name: incident-management-auth-key
       ```
-  - Delete `incidents_incident_management_html_repo_host` destination from `incident-management-destination-content`
+  - Delete `incidents_incident_management_auth` destination from `incident-management-destination-content`
       ```yaml
               - Authentication: OAuth2UserTokenExchange
                 Name: incidents_incident_management_auth
@@ -157,7 +162,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
         build-parameters:
           no-source: true
     ```
-  - Update `incident-management-srv-api` in `incident-management-destination-service`
+- Update `incident-management-srv-api` in `incident-management-destination-service`
 
     - Add `HTML5.IASDependencyName: incidents-api`
     
@@ -213,30 +218,11 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
       ]
     }
    ```
-   > Change the  `authenticationType ` of `incident-management-srv-api` and `html5-apps-repo-rt` from `xsuaa` to `ias`
-3. Update `app/incidents/webapp/xs-app.json` with the following code:
-   ```json
-      {
-      "authenticationMethod": "route",
-      "logout": {
-        "logoutEndpoint": "/do/logout"
-      },
-      "routes": [
-        {
-          "source": "^(.*)$",
-          "target": "$1",
-          "service": "html5-apps-repo-rt",
-          "authenticationType": "ias"
-        }
-      ]
-    }
 
-   ```
-   > Change the `authenticationType` of `html5-apps-repo-rt` from `xsuaa` to `ias`
-4. Update `app/incidents/webapp/manifest.json` with the following code
+   > Change the  `authenticationType ` of `incident-management-srv-api` and `html5-apps-repo-rt` from `xsuaa` to `ias`
+
    
 6. Build the mtar.
-
     ```bash
     mbt build
     ```
@@ -270,6 +256,7 @@ After successful deployment, you can go to **SAP BTP Cockpit -> your subaccount 
 The application has [app2app navigation](https://help.sap.com/docs/build-work-zone-standard-edition/sap-build-work-zone-standard-edition/switching-to-sap-cloud-identity-services-identity-authentication#app-to-app-navigation) configuration where the CAP back end with IAS-based authentication exposes an API that is configured as a dependency of the SAP Biuld Workzone’s IAS application. The `IASDependencyName` is then defined in the GACD Destination Deployer module configuration.
 
 ### Update OpenID Connect Configuration
+
   - Log in to your SAP Cloud Identity Services admin console.
   - Go to **Applications & Resources**.
   - Search for your application bound to your CAP backend (in this case its `incident-ias-staging`).
@@ -283,7 +270,6 @@ The application has [app2app navigation](https://help.sap.com/docs/build-work-zo
   - Search for your IAS application bound to your CAP backend (in this case it's `incident-ias-staging`).
   - Verify that the endpoint exposed by your application is listed in **Application APIs -> Provided APIs**.
    ![](./images/backend%20ias.png)
-
   - Search and select your SAP Build Work Zone Workzone application in **SAP Build Work Zone, standard edition -> Application APIs -> Dependencies**. Choose **Add** a dependency.
    ![](./images/workzone%20ias.png)
 

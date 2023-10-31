@@ -92,63 +92,68 @@ The package is a *cds-plugin* and thereby auto-writes many things so configurati
 ## Test Locally
 The steps above is all you need to automatically log personal data-related events. 
 
-1. Start the server.
-```bash
-cds watch
-```
-2. Create a file `request.http` with the following content:
-```http
-@host = http://localhost:4004
+1. Create a file `request.http` with the following content:
+   
+    ```
+    
+    @host = http://localhost:4004
 
-#####
-#
-# ProcessorService
-#
+    ### ProcessorService
 
-### Reading sensitive data (creditCardNo) by default - NOT recommended!
-GET {{host}}/odata/v4/processor/Customers
-Authorization: Basic incident.support@tester.sap.com:initial
+    ### Reading sensitive data (creditCardNo) by default - NOT recommended!
+    
+    GET {{host}}/odata/v4/processor/Customers
+    Authorization: Basic alice:wonderland
 
-### Recommendation: Avoid reading sensitive data by explicitly selecting the fields you need
-GET {{host}}/odata/v4/processor/Customers?$select=name
-Authorization: Basic incident.support@tester.sap.com:initial
+    ### Recommendation: Avoid reading sensitive data by explicitly selecting the fields you need
+    GET {{host}}/odata/v4/processor/Customers?$select=name
+    Authorization: Basic alice:wonderland
 
-#####
-#
-# AdminService
-#
+    ### AdminService
 
-### Creating a customer with personal data
-# @name create_customer
-POST {{host}}/odata/v4/admin/Customers
-Authorization: Basic alice:wonderland
-Content-Type: application/json
+    ### Creating a customer with personal data
+    # @name create_customer
+    POST {{host}}/odata/v4/admin/Customers
+    Authorization: Basic alice:wonderland
+    Content-Type: application/json
 
-{
-  "ID": "{{$guid}}",
-  "firstName": "Bob",
-  "lastName": "Builder",
-  "email": "bob.builder@example.com"
-}
-
-### Updating a customer with personal data details
-@customer = {{create_customer.response.body.ID}}
-PATCH {{host}}/odata/v4/admin/Customers({{customer}})
-Authorization: Basic alice:wonderland
-Content-Type: application/json
-
-{
-  "addresses": [
     {
-      "city": "Walldorf",
-      "postCode": "69190",
-      "streetAddress": "Dietmar-Hopp-Allee 16"
+      "ID": "{{$guid}}",
+      "firstName": "Bob",
+      "lastName": "Builder",
+      "email": "bob.builder@example.com"
     }
-  ]
-}
-```
 
-3. Send the requests and observe the response having logs from `[audit-log]` with `PersonalDataModified` and `SensitiveDataRead` events.
+    ### Updating a customer with personal data details
+    @customer = {{create_customer.response.body.ID}}
+    PATCH {{host}}/odata/v4/admin/Customers({{customer}})
+    Authorization: Basic alice:wonderland
+    Content-Type: application/json
+
+    {
+      "addresses": [
+        {
+          "city": "Walldorf",
+          "postCode": "69190",
+          "streetAddress": "Dietmar-Hopp-Allee 16"
+        }
+      ]
+    }
+    
+    ```
+    
+3. Add `admin` role to  `alice` in `package.json`.
+    ```json
+    "alice": {
+                  "roles": ["support", "admin"]
+                }   
+    ```
+    > User need `admin` role to access `admin` service and modify the customer's details.
+4. Start the server.
+    ```bash
+      cds watch
+    ```
+5. Send the requests and observe the response having logs from `[audit-log]` with `PersonalDataModified` and `SensitiveDataRead` events.
 
 ## Next Step
 Now you have implemented audit logging, tested the application locally and it's time to deploy it to SAP BTP.

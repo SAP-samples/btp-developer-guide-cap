@@ -25,6 +25,43 @@ To integrate with SAP Audit Log Service, you need to:
       requires:
       - name: incidents-auditlog
     ```
+3. Update `xs-security.json` and add `admin` role. The final `xs-security.json` will look like below:
+    ```json
+            {
+        "scopes": [
+            {
+            "name": "$XSAPPNAME.support",
+            "description": "support"
+            },
+            {
+            "name": "$XSAPPNAME.admin",
+            "description": "admin"
+            }
+        ],
+        "attributes": [],
+        "role-templates": [
+            {
+            "name": "support",
+            "description": "generated",
+            "scope-references": ["$XSAPPNAME.support"],
+            "attribute-references": []
+            },
+            {
+            "name": "admin",
+            "description": "generated",
+            "scope-references": ["$XSAPPNAME.admin"],
+            "attribute-references": []
+            },
+            {
+            "name": "Token_Exchange",
+            "description": "UAA",
+            "scope-references": [
+                "uaa.user"
+            ]
+            }
+        ]
+        }
+    ```
 3. Build the *mtar* and deploy your application.
 ```bash
 mbt build
@@ -32,14 +69,15 @@ mbt build
 4. Check if the *mtar* has been created in the *mta_archives* folder and run: 
 
 ```bash
-cf deploy mta_archives/incident-management_1.0.0.mtar
+cf deploy mta_archives/< mtar_name >.mtar
 ```
  
-4. After successful deployment, you go to the **SAP BTP cockpit**. In **Subaccount-> Spaces -> Your Space**, check if the application is up and running.
-5. In **Service Bindings**, see the services that bind to your application. Here audit log is one of them.
+5. After successful deployment, you go to the **SAP BTP cockpit**. In **Subaccount-> Spaces -> Your Space**, check if the application is up and running.
+6. In **Service Bindings**, see the services that bind to your application. Here audit log is one of them.
 ![](./images/app-and-service.png)
 
 7. To be able to access the application via the URL, you need to assign roles to users. See [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
+8. Edit the role-collection `Incident Management Support` created in the above step and add `admin` role to it. Make sure the role-collection `Incident Management Support` is assigned to your user. 
 
 ### Test Your Application
 
@@ -51,16 +89,16 @@ To test and generate audit log, we will be using one of these API Testing tools:
 
 1. To access the below endpoint, the user needs `support` role and `xsuaa token` has to be passed in the header.
 
-3. To generate the token, use the following credentials from your XSUAA Instance Service Key: `clientId`, `clientsecret`, `url/oauth/token`.
+2. To generate the token, use the following credentials from your XSUAA Instance Service Key: `clientId`, `clientsecret`, `<url>/oauth/token`.
    
 ![](./images/xsuaa-cf.png)
 
-5. Use Postman and generate access token.
+3. Use Postman and generate access token.
    Set authorization type as `OAuth 2.0` , `cf username` ,`cf password` and generate access token.
    
 ![](./images/access-token.png)
 
-7. Use `https://<org>-<space>-incidents-srv.cfapps.sap.hana.ondemand.com/odata/v4/processor/Customers` and send the request (Step 7 in the above screenshot). If successful, you will get the list of customers as a response:
+4. Use `https://<org>-<space>-incidents-srv.cfapps.sap.hana.ondemand.com/odata/v4/processor/Customers` and send the request (Step 7 in the above screenshot). If successful, you will get the list of customers as a response:
 ```
 {
     "@odata.context": "$metadata#Customers",
@@ -107,5 +145,5 @@ To test and generate audit log, we will be using one of these API Testing tools:
     ]
 }
 ```
-6. On reading the customer data which we have annotated with @PersonalData, there will be an audit log entry in Cloud Foundry, which you will be retrieving in the next step. 
+5. On reading the customer data which we have annotated with @PersonalData, there will be an audit log entry in Cloud Foundry, which you will be retrieving in the next step. 
 

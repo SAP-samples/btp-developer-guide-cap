@@ -1,4 +1,4 @@
-# Project Board
+# Setting up eventing using the SAP Event Mesh service
 
 1. [Introduction](./prepare/introduction.md)
 2. [Prerequisites](./prepare/prerequisites.md)

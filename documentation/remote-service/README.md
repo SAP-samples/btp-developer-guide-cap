@@ -1,4 +1,4 @@
-# Connecting to a remote service using the SAP Destination service and the SAP Connectivity service
+# Connect to a Remote Service Using the SAP Destination Service
 
 1. [Introduction](./introduction.md)
 1. [Prerequisites](./mission-prerequisites/README.md)

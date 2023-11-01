@@ -124,15 +124,21 @@ In order to run the pipeline using the CI/CD service, you need to create a servi
 8. You need to add your service account to a **Cluster Role Binding**. For this go back to your **Cluster Details** page. 
 ![clusterRoleBinding](./cicd36.png)
 
-    From the menu, choose **Configurations** and navigate to **Cluster Role Bindings**. Here click on any **admin** role binding whose role reference is **cluster-admin**.
+    From the menu, choose **Configurations** and navigate to **Cluster Role Bindings**. Here click on **+ Create Cluster Role Bindingn** .
 ![binding](./cicd13.png)
 
-    On this page, choose **Edit**.
-![edit](./cicd14.png)
+    On this page fill in the following details:
 
-    Here choose **Add Subject** and click on the last row (newly created subject). For **User Name**, enter the value in the form `system:serviceaccount:<namespace>:<service-account>`. 
-    Choose **Update**. 
-![subject](./cicd15.png)
+    - Name : <unique_relevant_name>
+    - Role : **cluster-admin**
+    - Kind : **ServiceAccount**
+    - Service Account Namespace : &lt;namespace&gt;
+    - Service Account Name : &lt;service_account_name&gt;
+
+    Your details page should look like this:
+![custer-role-binding](./cicd14.png)
+
+    Now click on create. You should see your newly created Cluster Role Binding.
 
 <br>
 

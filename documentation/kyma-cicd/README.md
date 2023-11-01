@@ -164,21 +164,19 @@ For your pipeline to be able to push and pull images from your docker repository
         "credsStore": "osxkeychain"
     }   
     ```
-3. In order retrieve the credentials in desired format, you will have to remove the `credsStore` key-value pair along with the preceding comma. To modify the config.json file run the following command.
+3. In order retrieve the credentials in desired format, you will have to remove the `credsStore` key-value pair along with the preceding comma. To modify the config.json file run the following command and modify the file from the editor.
     ```
-    vim /tmp/config.json
+    code /tmp/config.json
     ```
+    Ensure to save your changes.
 
-4. Run the same login command mentioned in step 1. You will need to input your docker credentials again. 
+4. Run the same `docker login` command mentioned in step 1. You will need to input your docker credentials again. 
 
-    You now need to modify the `auths` object's url of your credentials. Remove the `https://` and `/v1/`.
-    Use the same command used in step 3 to make these changes to your file. 
-    
-    Print the credentials again using the command mentioned in step 2. Ensure your credentials are in this form
+    Print the credentials again using the `cat command` mentioned in step 2. Ensure your credentials are in this form
     ```json
     {
         "auths": {
-            "index.docker.io": {       
+            "https://index.docker.io/v1/": {       
                 "auth": "abc...xyz"
             }
         }
@@ -186,7 +184,11 @@ For your pipeline to be able to push and pull images from your docker repository
     ```
 2. Now add these docker credentials as a CI/CD credential. Navigate to the Continuous Integration and Delivery Application (follow the steps mentioned above). On this page choose **Credentials** and click on the **\+** to create a new credential. 
 
-    Choose a relevant name for your credential e.g: docker-config. For **Type**, choose **Container Registry Configuration** from the dropdown. In the **Content** space, paste the docker configurations you retrieved from the previous step. Choose **Create**.
+    Choose a relevant name for your credential e.g: docker-config. For **Type**, choose **Container Registry Configuration** from the dropdown. In the **Content** space, paste the docker configurations you retrieved from the previous step.
+    
+    You additionally need to modify the `auths` object's url of your credentials. Remove the `https://` and `/v1/`. Now choose **Create**.
+
+    Ensure your credentials are in the form shown below. 
 ![credentials](./cicd16.png)
  
 <br>

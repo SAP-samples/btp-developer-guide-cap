@@ -3,8 +3,8 @@
 1. [Optional - Setup BTP Sub Account with BTP Terraform Provider](./btp-terraform/README.md)
 2. [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html)
 3. Deploy a Full-Stack CAP Application in SAP BTP
-    - [Option 1 - Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html)
-    - Option 2 - Kyma Runtime
+    - [Option 1 - Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html)
+    - [Option 2 - Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
         - [Setup CI/CD Pipeline for Kyma Application](./kyma-cicd/README.md)
 4. [Integrate with Remote Service](./remote-service/README.md)
 5. [Process Events](./eventing/README.md)

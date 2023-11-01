@@ -158,35 +158,21 @@ For your pipeline to be able to push and pull images from your docker repository
         "credsStore": "osxkeychain"
     }   
     ```
-3. In order retrieve the credentials in desired format, you will have to remove the `credsStore` key-value pair. To modify the config.json file run the following command.
+3. In order retrieve the credentials in desired format, you will have to remove the `credsStore` key-value pair along with the preceding comma. To modify the config.json file run the following command.
     ```
     vim /tmp/config.json
     ```
-    Remove the highlighted lines of code.
+
+4. Run the same login command mentioned in step 1. You will need to input your docker credentials again. 
+
+    You now need to modify the `auths` object's url of your credentials. Remove the `https://` and `/v1/`.
+    Use the same command used in step 3 to make these changes to your file. 
+    
+    Print the credentials again using the command mentioned in step 2. Ensure your credentials are in this form
     ```json
     {
         "auths": {
-            "https://index.docker.io/v1/": {}
-        }
-        ,   // [!code --] 
-        "credsStore": "osxkeychain"  // [!code --] 
-    }   
-    ```
-4. Now again run the same login command mentioned in step 1. You will need to input your docker credentials again. Print your config details in the same manner as shown in step 2. Ensure your credentials are in this form
-    ```json
-    {
-        "auths": {
-            "https://index.docker.io/v1/": {
-                "auth": "abc...xyz"
-            }
-        }
-    }
-    ```
-    To these credentials make the following changes
-    ```json
-    {
-        "auths": {
-            "index.docker.io": {        // [!code ++] 
+            "index.docker.io": {       
                 "auth": "abc...xyz"
             }
         }
@@ -277,47 +263,23 @@ For your pipeline to be able to push and pull images from your docker repository
 
 ## Prepare Your Code
 
-1. Open the `package.json` file and add a script to run `cds build`.
+1. Open the `package.json` file and add the below script to run `cds build`.
     ```json
     "scripts": {
-        "watch": "cds watch",
-        "start": "cds-serve",
-        "test": "npx jest --silent",
-        "cds-build": "npm install --include=dev && cds build --production" // [!code ++] 
+        . . .
+        "cds-build": "npm install --include=dev && cds build --production"
     },
     ```
 2. Remove the following from the same package.json file
-    ```json
-    {
-        . . . 
-        "devDependencies": {
-             . . .
-            "rimraf": "^3.0.2" // [!code --]
-        },
-        "scripts": {
-            . . .
-            "undeploy": "cf undeploy incident-management --delete-services --delete-service-keys --delete-service-brokers", // [!code --]
-            "build": "rimraf resources mta_archives && mbt build --mtar archive",   // [!code --]
-            "deploy": "cf deploy mta_archives/archive.mtar --retries 1" // [!code --]
-        }
-        . . .
-    }
-    ```
+
+    - `rimraf` from `devDependencies`
+    - `undeploy`, `build and deploy` from `scripts` 
+
 3. From the terminal run the following command:
    ```
    npm add -D @sap/cds-dk
    ```
-   This will add the devDependency to the same package.json file.
-   ```json
-    {
-        . . . 
-        "devDependencies": {
-             . . .
-            "@sap/cds-dk": "^7.x.x" // [!code ++]
-        },
-        . . .
-    }
-    ```
+   This will add `@sap/cds-dk` as a devDependency to the same package.json file.
 
 4. Push these changes to your main branch from the **Source Control** by first staging and commiting. 
 ![pushChanges](./cicd32.png)

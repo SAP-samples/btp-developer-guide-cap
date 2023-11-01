@@ -1,4 +1,4 @@
-# Setting up eventing using the SAP Event Mesh service
+# Set Up Eventing Using the SAP Event Mesh Service
 
 1. [Introduction](./prepare/introduction.md)
 2. [Prerequisites](./prepare/prerequisites.md)

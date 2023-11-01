@@ -18,9 +18,10 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
 
 2. Open the folder which contains your Incident Management application.
 
-3. Navigate to the project's root folder and create a new file `.gitignore`.
+3. Navigate to the project's root folder and check if file `.gitignore` is present. 
 
-4. Add the following code snippet to it  
+4. If your project already has a .gitignore file, ensure that the following snippet is added in it. Additionally if `resources/` is mentioned in the file, remove it. If there is no .gitignore file present create a file and add below code snippet
+ 
     ```
     node_modules/
     package-lock.json
@@ -30,25 +31,18 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
     mta_archives/
     mta.yaml
     ```
-5. If your project already has a .gitignore file, ensure that the following is mentioned in it. Additionally if `resources/` is mentioned in the file, remove it.
 
-6. Now navigate to **Source Control** and choose **Initialize Repository**.
+
+5. Now navigate to **Source Control** and choose **Initialize Repository**.
 ![initializeRepo](./cicd29.png)
 
-7. Stage all the changes using the **+** icon and provide a relevant commit message. Then click on Commit.
+6. Stage all the changes using the **+** icon and provide a relevant commit message. Then click on Commit.
 ![commit](./cicd30.png)
 
-8. Click **Publish Branch**. 
+7. Click **Publish Branch** and select the repository name to publish code to Github repository
 ![publish](./cicd31.png)
 
     You may be redirected to a browser to authenticate into your GitHub account. Provide your GitHub username and password when prompted. When the changes are pushed, you’ll be able to see your project in your GitHub repository.
-
-<br>
-
-## Prequisites
-Please go through the [prerequisites here](../prerequisite-for-sample/prerquites-for-sample.md#prepare-application-to-deploy-to-kymak8s), which are required for deployment on the Kyma Runtime.
-
-<br>
 
 ## Setup the Continuous Integration and Delivery Service
 
@@ -73,7 +67,7 @@ Please go through the [prerequisites here](../prerequisite-for-sample/prerquites
 <br>
 
 **NOTE:**
-**If you intend to deploy this application on a cluster that has a deployment of the same application, it is recommended to undeploy this installation via your terminal using the command:**
+**If you intend to deploy this application on a cluster that has a previous deployment of the same application, it is recommended to undeploy this old installation via your terminal using the command:**
 ```
 helm uninstall incident-management -n <namespace>
 ```
@@ -186,7 +180,7 @@ For your pipeline to be able to push and pull images from your docker repository
 <br>
 
 ## Pipeline configuration 
-1. In the root folder, create a folder `.pipeline`. Within this folder create a new file `config.yml`.
+1. In the root folder of the incident-management, create a folder `.pipeline`. Within this folder create a new file `config.yml`.
 
 3. Open the newly created `.pipeline/config.yml` file and paste the following content.
     ```yaml
@@ -197,7 +191,7 @@ For your pipeline to be able to push and pull images from your docker repository
       buildToolVersion: "N18"
     stages:
       Build:
-        npmExecuteLint: true
+        npmExecuteLint: false
       Additional Unit Tests:
         npmExecuteScripts: true
       Acceptance:
@@ -213,8 +207,6 @@ For your pipeline to be able to push and pull images from your docker repository
         - --set-file
         - xsuaa.jsonParameters=xs-security.json
     steps:
-      npmExecuteLint:
-        failOnError: true
       npmExecuteScripts:
         runScripts:
         - "test"
@@ -263,12 +255,20 @@ For your pipeline to be able to push and pull images from your docker repository
 
 ## Prepare Your Code
 
-1. Open the `package.json` file and add the below script to run `cds build`.
+1. Open the `package.json` file and add the below script  `cds-build` and devDependency `@cap-js/sqlite`
     ```json
-    "scripts": {
-        . . .
-        "cds-build": "npm install --include=dev && cds build --production"
-    },
+        {
+        "devDependencies": {
+           "@cap-js/sqlite": "^1",
+            ...
+
+            },
+        "scripts": {
+            . . .
+            "cds-build": "npm install --include=dev && cds build --production"
+        },
+        ...
+    }
     ```
 2. Remove the following from the same package.json file
 

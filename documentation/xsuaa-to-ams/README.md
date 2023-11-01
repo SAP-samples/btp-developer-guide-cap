@@ -1,4 +1,4 @@
-# Project Board
+# Configure Authorization and Authentication Using the Authorization Management Service and the Identity Authentication Service
 
 1. [Introduction](./1-getting-started-with-ams.md)
 2. [Prerequisites](./prerequisites.md)

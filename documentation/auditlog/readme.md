@@ -1,4 +1,4 @@
-# Project Board
+# Setting up audit logging using the SAP Audit Log service
 
 1. [Introduction](./introduction.md)
 1. [Prerequisites](./1-getting-started-with-auditlog.md)

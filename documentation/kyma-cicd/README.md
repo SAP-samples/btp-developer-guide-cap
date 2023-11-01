@@ -351,6 +351,6 @@ For your pipeline to be able to push and pull images from your docker repository
 ![deploy](./cicd24.png)
 <br>
 
-5. To be able to access the application, [Assign Application Roles](../assign-application-roles/assign-application-roles.md).
+5. To be able to access the application, [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 
 6. To access the application in launchpad from SAP Build Work Zone, proceed to [Integrate with SAP Build Work Zone](https://developers.sap.com/tutorials/integrate-with-work-zone..html).

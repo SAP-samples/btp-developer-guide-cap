@@ -26,6 +26,7 @@ The tutorials are organized in the following way.
 
     * [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html)
     * [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html)
+    * [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
 
 * Separate tutorials for the additional modules based on the Incident Management application
 

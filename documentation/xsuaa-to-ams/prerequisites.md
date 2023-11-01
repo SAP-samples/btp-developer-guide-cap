@@ -2,13 +2,11 @@
 
 ## Prerequisites
 
-1. Develop a basic full-stack CAP application by following the below group of tutorials based on the Incident Management application step by step and explore the source code. See [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
+1. Develop the Incident Management application following the step by step tutorial [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
 
-2. (Optional) If you have not deployed this application, do the following:
-     1. [Prepare for SAP BTP Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html).
-     2. Follow until [Add the UI Applicaiton](https://developers.sap.com/tutorials/deploy-to-cf.html#2d5dd378-1a41-4166-9a4b-75f8181ba71f) in [Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/tutorials/deploy-to-cf.html#2d5dd378-1a41-4166-9a4b-75f8181ba71f)
+2. Deployed the Incident Management application, to SAP BTP, Cloud Foundry runtime: [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html).
 
-3. (Optional) If you have deployed this application, undeploy your application by running the following command:
+3. Undeploy your application by running the following command:
     `cf undeploy <YOUR_MTA_ID> --delete-services`
    
 ## Systems and Entitlements Required

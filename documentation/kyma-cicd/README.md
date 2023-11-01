@@ -5,6 +5,10 @@ For more information, see See [SAP Continuous Integration and Delivery](https://
 
 The steps below guide you through setting up your pipeline.
 
+# Prerequsite
+1. Develop the Incident Management application following the step by step tutorial [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html)
+2. Deployed the Incident Management application to SAP BTP Kyma Runtime following the tutorial [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
+
 ## Initialize a Repository in VS Code
 
 To be able to perform the steps for setting up a CI/CD pipeline, you need a public repository. Currently, SAP Continuous Integration and Delivery supports **GitHub** and **Bitbucket** repositories.

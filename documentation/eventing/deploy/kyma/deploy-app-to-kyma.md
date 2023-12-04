@@ -24,7 +24,8 @@ Deploy the project to SAP BTP Kyma runtime using Helm configurations. See [Helm]
 
 5. Create a new file called `event-mesh.json` at the root folder of the project and copy the content below. 
 
-     - As **EM_NAME**, enter a speaking name for your client (e.g. inicidents-emname).
+     - As **EM_NAME**, enter a speaking name for your client (e.g. inci).
+     > The value of the **EM_NAME** property should have maximum length of 4 characters.
 
         ```json
         {
@@ -163,7 +164,16 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
     servicePlanName: default
   ```
 
-6. Add following confirguration to `chart/Chart.yaml` for SAP Event Mesh instance creation
+6. Find `srv/bindings` object in values.yaml file and add SAP Event Mesh instance to it
+
+    ```yaml
+    srv:
+      bindings:
+        event-mesh:
+          serviceInstanceName: event-mesh
+    ```
+
+7. Add following confirguration to `chart/Chart.yaml` for SAP Event Mesh instance creation
 
   ```yaml
   - name: service-instance

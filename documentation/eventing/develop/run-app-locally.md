@@ -12,7 +12,7 @@ Before you deploy the application in SAP BTP, you can run the CAP application lo
 
 3. Make sure you have installed the extension REST Client. Go to **Extensions** and search for **REST Client**. If this extension is not installed yet, choose **Install**.
 
-4. Navigate back to the root folder of your applicaton and create a new file called **request.http**.
+4. Navigate back to the root folder of your application and create a new file called **request.http**.
 
 5. Copy the following code snippet to the **request.http** file:
 

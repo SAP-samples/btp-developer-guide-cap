@@ -67,13 +67,13 @@ In this chapter, you will prepare for production and deploy the project to the S
 2. Make sure you are in the project folder of your application and run the following command:
 
 ```bash
-mbt build
+    mbt build
 ```
 
 3. To deploy the already prepared MTA archive, run the following command:
 
 ```bash
-cf deploy mta_archives/<mtar>
+    cf deploy mta_archives/<mtar>
 ```
 
 You'll need to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html) before you can access the application.

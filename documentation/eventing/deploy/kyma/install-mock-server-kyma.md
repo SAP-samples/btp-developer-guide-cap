@@ -75,7 +75,7 @@ The Remote Service Integration tutorial was executed and mock server was deploye
     ```
 **Note** - As **destination_name** you must enter the name of the destination created while installing mock server to SAP BTP Kyma Runtime.
 
-2. Follow the steps in the [Deploy to Kyma tutorial](./deploy-to-kyma.md), but skip the steps for the **Eventing Configuration**.
+2. Follow the steps in the [Deploy to Kyma tutorial](./deploy-app-to-kyma.md), but skip the steps for the **Eventing Configuration**.
 >Make sure you deploy the incident management application to the same namespace as the mock server.
 
 3. Now you can build and deploy the Incident Management Application

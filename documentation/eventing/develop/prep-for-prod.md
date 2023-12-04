@@ -22,9 +22,9 @@ In this chapter you will add the SAP Event Mesh service to your project.
             - name: incident-management-messaging
               type: org.cloudfoundry.managed-service
               parameters:
-              service: enterprise-messaging
-              service-plan: default
-              path: ./event-mesh.json`
+                service: enterprise-messaging
+                service-plan: default
+                path: ./event-mesh.json`
          ```
     - Adds the following entry in the `requires` section of `incident-management-srv` module:
 
@@ -36,8 +36,8 @@ In this chapter you will add the SAP Event Mesh service to your project.
 
     ```yaml
     - name: incidents-messaging-cloud
-        type: org.cloudfoundry.managed-service
-        parameters:
+      type: org.cloudfoundry.managed-service
+      parameters:
         path: ./s4cems.json
         service: s4-hana-cloud
         service-plan: messaging

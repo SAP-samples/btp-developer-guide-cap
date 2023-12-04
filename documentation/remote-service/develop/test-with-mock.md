@@ -2,7 +2,7 @@
 
 ## Usage scenario
 
-To increase your development speed, it is helpful to run and test your implementation in a local enviroment. In this section you will learn how to set up and use a mock server for running your development tests.  
+To increase your development speed, it is helpful to run and test your implementation in a local environment. In this section you will learn how to set up and use a mock server for running your development tests.  
 
 ## Content
 

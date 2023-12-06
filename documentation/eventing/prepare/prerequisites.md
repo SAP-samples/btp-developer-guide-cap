@@ -6,7 +6,7 @@
     - If you use SAP BTP, Cloud Foundry runtime: undeploy the application using the following command:
       
         ```sh
-        cf undeploy <YOUR_MTA_ID> --delete-services
+        cf undeploy <YOUR_MTA_ID> --delete-service-keys --delete-services
         ```
      
         > **Note:** Replace `YOUR_MTA_ID` in the command above with the `ID` from **mta.yaml** file.

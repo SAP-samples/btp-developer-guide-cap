@@ -1,4 +1,4 @@
-# Option 2 - Deploy and Run the Application on Kyma
+# Deploy and Run the Application on Kyma
 
 ## Build the Images
 

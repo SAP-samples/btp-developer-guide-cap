@@ -28,4 +28,4 @@
 
 ## Summary
 
-Congratulations You have successfully developed, configured and deployed the Incidenent Management application using an external service.
+Congratulations! You have successfully developed, configured and deployed the Incidenent Management application using an external service.

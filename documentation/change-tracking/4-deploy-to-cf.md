@@ -1,6 +1,6 @@
-## Option 1 - Deploy to Cloud Foundry
+## Deploy to Cloud Foundry
 
-1. Run the following command to assemble everything into a single `mta.tar` archive:
+1. Assemble everything into a single `mta.tar` archive with the following command:
 
 ```
 mbt build

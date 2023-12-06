@@ -1,7 +1,4 @@
-# Option 1 - Deploy and Run the Application on Cloud Foundry
-
-## Prerequisites
-Prepare your sample for deploying to Cloud Foundry by fulfilling the following [prerequisites](../prerequisite-for-sample/prerquites-for-sample.md).
+# Deploy and Run the Application on Cloud Foundry
 
 ## Use SAP Audit Log Service
 

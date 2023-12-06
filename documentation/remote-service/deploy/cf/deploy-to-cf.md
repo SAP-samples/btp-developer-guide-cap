@@ -1,6 +1,6 @@
 # Deploy and Run the Application on Cloud Foundry with SAP S/4HANA Cloud Backend
 
-## Usage scenario
+## Usage Scenario
 
 Deploy the project to Cloud Foundry using the MTA build file.
 

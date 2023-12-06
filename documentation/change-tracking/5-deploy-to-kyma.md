@@ -1,6 +1,6 @@
-# Option 2 - Deploy to Kyma
+# Deploy to Kyma
 
-## Build the images
+## Build the Images
 
 To transform source code (or artifacts) into container images, we recommend using [Cloud Native Buildpacks](https://buildpacks.io/).
 
@@ -46,7 +46,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
      --publish
 ```
 
-4. Build the HTML5 Deployer image after updating version `<image-version>` to reflect the change in incident-management-html5-deployer app..
+4. Build the HTML5 Deployer image after updating version `<image-version>` to reflect the change in incident-management-html5-deployer app.
 
 ```sh
 pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
@@ -98,7 +98,7 @@ This installs the Helm chart from the chart folder with the release name ***inci
 
 ::: tip
 
-With the ***helm upgrade --install*** command you can install a new chart as well as upgrade an existing chart.
+With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
 :::
 The outcome of installation will look something like this:
 

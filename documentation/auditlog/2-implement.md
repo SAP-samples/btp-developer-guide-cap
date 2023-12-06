@@ -1,7 +1,7 @@
 # Implement Audit Logging
 
 
-## Extending the Customer Entity 
+## Extend the Customer Entity 
 
 For audit logging, we will be extending the customer entity with some potentially sensitive properties.
  - Add a file `extensions.cds` in `/db` folder with the following content;
@@ -28,9 +28,9 @@ For audit logging, we will be extending the customer entity with some potentiall
    ```
    - Here we are extending the **Customer** entity and adding `Addresses` and `creditCardNo` properties. These two are only used for audit logging purposes.
 
-## Adding Admin Service to Expose Customers Entity
+## Add Admin Service to Expose Customers Entity
 
-Add a file `admin-service.cds` in `/srv` folder and update it with following code:
+Add a file `admin-service.cds` in `/srv` folder and update it with the following code:
 ```js
     using { sap.capire.incidents as my } from '../db/extensions';
 
@@ -42,11 +42,11 @@ Add a file `admin-service.cds` in `/srv` folder and update it with following cod
     }
 ```
   
-## Annotating Personal Data
+## Annotate Personal Data
 
 In order to automate audit logging, personal data management, and data retention management as much as possible, the first and frequently only task to do as an application developer is to identify entities and elements (potentially) holding personal data using **@PersonalData** annotations.
 <br/>
-we annotate our domain model in a separate file `srv/data-privacy.cds` and fill it with the following content:
+Annotate the domain model in a separate file `srv/data-privacy.cds` and fill it with the following content:
 
 ```js
 using {sap.capire.incidents as my} from './admin-service';
@@ -154,7 +154,3 @@ The steps above is all you need to automatically log personal data-related event
       cds watch
     ```
 5. Send the requests and observe the response having logs from `[audit-log]` with `PersonalDataModified` and `SensitiveDataRead` events.
-
-## Next Step
-Now you have implemented audit logging, tested the application locally and it's time to deploy it to SAP BTP.
-[Deploy to SAP BTP](./3-deploy-to-btp.md). 

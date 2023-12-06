@@ -1,6 +1,6 @@
 # Deploy and Run the Application on Kyma with SAP S/4HANA Cloud Backend
 
-## Usage scenario
+## Usage Scenario
 
 Deploy the project to SAP BTP Kyma runtime using Helm configurations. See [Helm](https://helm.sh/).
 
@@ -24,7 +24,8 @@ Deploy the project to SAP BTP Kyma runtime using Helm configurations. See [Helm]
 
 5. Create a new file called `event-mesh.json` at the root folder of the project and copy the content below. 
 
-     - As **EM_NAME**, enter a speaking name for your client (e.g. inicidents-emname).
+     - As **EM_NAME**, enter a speaking name for your client (e.g. inci).
+       > The value of the EM_NAME property should have maximum length of 4 characters.
 
         ```json
         {
@@ -88,7 +89,7 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
     cds build --production
     ```
 
-2. Build the image after updating version `<image-version>` to reflect the change in incident-management-srv app.:
+2. Build the image after updating version `<image-version>` to reflect the change in `incident-management-srv` app:
 
     ```sh
     pack build <your-container-registry>/incident-management-srv:<image-version> \
@@ -98,7 +99,7 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
     ```
 
 **Info**
-The pack CLI builds the image that contains the build result in the gen/srv folder and the required npm packages by using the [Packet Jammy Base Builder](https://github.com/paketo-buildpacks/builder-jammy-base).
+The pack CLI builds the image that contains the build result in the `gen/srv` folder and the required npm packages by using the [Packet Jammy Base Builder](https://github.com/paketo-buildpacks/builder-jammy-base).
 
 ### Build UI Deployer Image
 
@@ -113,7 +114,7 @@ The pack CLI builds the image that contains the build result in the gen/srv fold
 
 ### Build Database Image 
 
-Run the command to build the database image:
+Build the database image:
 
 ```sh
 pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
@@ -123,7 +124,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
 ```
 
 ## Eventing Configuration
-> This section is needed only if you are going to use SAP S/4HANA Cloud system as your remote service.
+> This section is relevant only if you are going to use SAP S/4HANA Cloud system as your remote service.
 
 1. Create a new file called `s4cems.json` at the root folder of the project and copy the below content.
  
@@ -163,7 +164,16 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
     servicePlanName: default
   ```
 
-6. Add following confirguration to `chart/Chart.yaml` for SAP Event Mesh instance creation
+6. Find `srv/bindings` object in values.yaml file and add SAP Event Mesh instance to it
+
+    ```yaml
+    srv:
+      bindings:
+        event-mesh:
+          serviceInstanceName: event-mesh
+    ```
+
+7. Add following confirguration to `chart/Chart.yaml` for SAP Event Mesh instance creation
 
   ```yaml
   - name: service-instance

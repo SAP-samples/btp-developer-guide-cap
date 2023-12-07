@@ -18,7 +18,7 @@ This tutorial shows you how to configure your CAP service to listen for upcoming
 
 # Solution Diagram
 
-![Solution-Diagram](./Solution-Diagram.png)
+![Solution-Diagram](./Solution-Diagram.png) 
 
 # Set Up Eventing Using the SAP Event Mesh Service
 

@@ -9,7 +9,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 
  1. Create `ias-config.json` file in your project root folder with the following content and replace the ```<unique-id>``` with a unique value to identify your IAS app in IAS Tenant:
 
-    ```json hl_lines="7-9"
+    ```
         {
           
             "authorization": {
@@ -29,7 +29,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 
 
     <!-- cpes-file package.json:$.cds.requires -->
-    ```json hl_lines="7-9"
+    ```json 
     {
         ...
         "dependencies": {
@@ -49,7 +49,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
     ```
 3. Change the `auth.kind` to `ias` in `package.json` for the production profile:
 
-      ```json
+      ```
       {    
           ...
         "cds": {
@@ -71,7 +71,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 1. Update the `mta.yaml` with the following content
 
 - Change the dependency `incident-management-auth ` in `resources` from `xsuaa` service instance:
-     ```yaml
+     ```
      - name: incident-management-auth
        type: org.cloudfoundry.managed-service
        parameters:
@@ -84,7 +84,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
      ```
  
 - To `ias` service instance:
-     ```yaml
+     ```
        - name: incident-management-auth
          parameters:
            path: ./ias-config.json
@@ -97,7 +97,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 - Add the following configurations to the `incident-management-srv` module
 
     - Change `incident-management-auth` service binding with `incident-management-srv` to: 
-      ```yaml
+      ```
       - name: incidents-management-srv
         type: nodejs
         path: gen/srv
@@ -109,7 +109,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
       ```
     - Update your buildpacks section by adding `OPA buildpack`
     
-      ```yaml
+      ```
           parameters:
             buildpacks:
              - https://github.com/SAP/cloud-authorization-buildpack/releases/latest/download/opa_buildpack.zip
@@ -118,28 +118,30 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
       
     - Add `AMS_DCL_ROOT` to `properties` section
     
-      ```yaml
+      ```
         properties:
           AMS_DCL_ROOT: "ams/dcl"
       ```
   - Delete `incident-management-auth` binding from `incident-management-destination-content`
-      ```yaml
+      ```
         - name: incident-management-auth
           parameters:
             service-key:
               name: incident-management-auth-key
       ```
   - Delete `incidents_incident_management_auth` destination from `incident-management-destination-content`
-      ```yaml
+      ```
               - Authentication: OAuth2UserTokenExchange
                 Name: incidents_incident_management_auth
                 ServiceKeyName: incident-management-auth-key
                 sap.cloud.service: incidents
       ```
+      
   ### Note:
   
   Check if the module `incident-management-destination-content` in `mta.yaml` looks like this:
-    ```yaml
+  
+    ```
     - name: incident-management-destination-content
       type: com.sap.application.content
       requires:
@@ -166,7 +168,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 
     - Add `HTML5.IASDependencyName: incidents-api`
     
-      ```yaml hl_lines="5"
+      ```yaml 
           - Authentication: NoAuthentication
             HTML5.IASDependencyName: incidents-api
             Name: incidents-management-srv-api
@@ -176,7 +178,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
           existing_destinations_policy: update
       ```
   - Update your `build-parameters ` with the following code:
-      ```yaml
+      ```
         build-parameters:
           before-all:
           - builder: custom
@@ -185,7 +187,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
             - npx -p cpy-cli -- cpy "ams" "./gen/srv"
       ```
 2. Update `app/incidents/xs-app.json` with the following code:
-   ```json
+   ```
       {
       "welcomeFile": "/index.html",
       "authenticationMethod": "route",
@@ -223,19 +225,19 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 
    
 6. Build the mtar.
-    ```bash
+    ```
     mbt build
     ```
     
 7. Log in to your SAP BTP subaccount and choose your Cloud Foundry space where you want to deploy your application.
 
-    ```bash
+    ```
     cf login -a <api-endpoint>
     ```
     
 8.  Deploy on Cloud Foundry.
 
-    ```bash
+    ```
     cf deploy mta_archive/<mtar_name>.mtar
     ```
 
@@ -274,7 +276,7 @@ The application has [app2app navigation](https://help.sap.com/docs/build-work-zo
    ![](./images/workzone%20ias.png)
 
   - Give the dependency the same name as the one you provided in the `destination service configuration property` in the `mta.yaml`.
-    ```yaml
+    ```
      HTML5.IASDependencyName: incidents-api
     ```
   - For each application, select the IAS application bound to your CAP backend (in this case, it's `incident-ias-staging`).

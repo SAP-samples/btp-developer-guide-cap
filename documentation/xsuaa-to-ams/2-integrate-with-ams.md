@@ -4,19 +4,19 @@
  ###  Implement in Your Application
 
  1. Add the following dependency to  `package.json/dependencies`
-    ```bash
+    ```
     "@sap/ams": "^1.13.1"
     ```
  2. Add the following dependency to  `package.json/devDependencies`
-    ```bash
+    ```
     "@sap/ams-dev": "^0.7.1"
     ```
   3. Make sure you have `@sap/xssec` dependency with version greater that `3.3.5`
-      ```bash
+      ```
       "@sap/xssec": "^3.3.5",
       ```
  3. Add the following code to  `package.json/cds/requires/[development]/auth`: 
-    ```json
+    ```
             "ams" : {
             "autoCompile" : true,
             "cache" : {
@@ -25,11 +25,11 @@
         }
     ```
  4. Build the project to install the added dependencies
-    ```bash
+    ```
     npm i
     ```
  5. To compile the **cds annotations** to **dcl files** and start your CAP application in watch mode with debug output enabled for the Authorization Management service runtime and development plug-in, run 
-    ```bash
+    ```
     DEBUG=ams cds w
     ```
   
@@ -45,7 +45,7 @@ The authorization checks that you added to the CAP model apply not only when dep
 
 
 1. Add the following to your `package.json` file:
-    ```json
+    ```
     {
       "[development]": {
           "auth": {
@@ -62,7 +62,7 @@ The authorization checks that you added to the CAP model apply not only when dep
 3. Add the following property to the `users` in the `package.json` with the following code: 
 
 
-      ```json
+      ```
           "users": {
               "alice": {
                 "policies" : [

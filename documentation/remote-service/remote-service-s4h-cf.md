@@ -1,4 +1,4 @@
-# Connect to a Remote Service Using the SAP Destination Service
+# Connect to a Remote Service Using the SAP Destination Service (SAP BTP, Cloud Foundry Runtime and SAP S/4HANA Cloud)
 
 1. [Introduction](./introduction.md)
 1. [Prerequisites](./mission-prerequisites/s4h-cf.md)

@@ -1,4 +1,4 @@
-# Connect to a Remote Service Using the SAP Destination Service
+# Connect to a Remote Service Using the SAP Destination Service (SAP BTP, Kyma Runtime and Mock Server)
 
 1. [Introduction](./introduction.md)
 1. [Prerequisites](./mission-prerequisites/mock-kyma.md)

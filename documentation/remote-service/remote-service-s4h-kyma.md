@@ -1,4 +1,4 @@
-# Connect to a Remote Service Using the SAP Destination Service (SAP BTP, Kyma Runtime and SAP S/4HANA Cloud)
+# Connect to a Remote Service Using the SAP Destination Service
 
 1. [Introduction](./introduction.md)
 1. [Prerequisites](./mission-prerequisites/s4h-kyma.md)

@@ -11,7 +11,7 @@
 
 # Systems and Accounts
 
-* Complete [this](./../install-mock-server/README.md) tutorial by installing a mock server. For the mock server, you would need 256MB of Cloud Foundry runtime.
+* Complete [this](./../install-mock-server/install-mock-server-cf.md) tutorial by installing a mock server. For the mock server, you would need 256MB of Cloud Foundry runtime.
 
 
 

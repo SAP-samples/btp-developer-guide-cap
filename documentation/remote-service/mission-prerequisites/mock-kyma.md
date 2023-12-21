@@ -12,8 +12,7 @@
 
 # Systems and Accounts
 
-* Install a mock server by completing this [tutorial](./../install-mock-server/README.md).
-* For the mock server, you would need 256MB of Cloud Foundry runtime.
+* Install a mock server by completing this [tutorial](./../install-mock-server/install-mock-server-kyma.md).
 
 
 

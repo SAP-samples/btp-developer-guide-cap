@@ -2,7 +2,7 @@
 
 ## Usage Scenario
 
-To use the SAP S/4HANA Cloud Extensibilty service to access the Business Partner API, you need some additional configurations.
+To use the SAP S/4HANA Cloud Extensibility service to access the Business Partner API, you need some additional configurations.
 
 
 ## Prerequisites

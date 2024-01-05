@@ -262,7 +262,7 @@ The application has [app2app navigation](https://help.sap.com/docs/build-work-zo
   - Log in to your SAP Cloud Identity Services admin console.
   - Go to **Applications & Resources**.
   - Search for your application bound to your CAP backend (in this case its `incident-ias-staging`).
-  - Go to **Trust -> OpenID Connect Configuration -> Advance Settings -> Access Token Format**. Choose **JSON Web Token** and **Save**.
+  - Go to **Trust -> OpenID Connect Configuration -> Advanced Settings -> Access Token Format**. Choose **JSON Web Token** and **Save**.
   ![](./images/openId%20%20config.png)
 
 ### Set Up Communication

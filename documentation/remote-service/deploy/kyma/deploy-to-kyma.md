@@ -75,7 +75,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
     version: ">0.0.0"
   ```
 
-4. Add the following configurations for `s4-hana-cloud` service instance creation in `values.yaml`:
+2. Add the following configurations for `s4-hana-cloud` service instance creation in `values.yaml`:
 
   ```yaml
   s4-hana-cloud:

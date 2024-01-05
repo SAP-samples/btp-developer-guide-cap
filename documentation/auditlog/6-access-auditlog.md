@@ -18,3 +18,4 @@
 4. Access the Audit Log Viewer Service and you will see the list of audit logs.
     - Filter out the logs by `data-access`, adjust the time range and you will see similar logs entries:
     - ![](./images/auditlog-viewer.png)
+    If you see the logs as shown above, that means you have successfully integrated the Audit Logging Service.

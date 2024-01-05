@@ -10,18 +10,6 @@ Deploy the project to SAP BTP Kyma runtime using Helm configurations. See [Helm]
 
 2. Add `"@sap/xb-msg-amqp-v100": "^0"` to the **dependencies** section of `package.json ` file.
 
-3. Add the below code to the **requires** section of package.json file.
-
-    ```json
-    "messaging": {
-        "kind": "local-messaging",
-        "[production]": {
-          "kind": "enterprise-messaging-shared",
-          "format": "cloudevents"
-        }
-      },
-    ```
-
 5. Create a new file called `event-mesh.json` at the root folder of the project and copy the content below. 
 
      - As **EM_NAME**, enter a speaking name for your client (e.g. inci).

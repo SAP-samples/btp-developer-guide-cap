@@ -1,5 +1,5 @@
 # Introduction
-SAP BTP Applications need to connect to SAP systems to fetch and and process data. 
+SAP BTP Applications need to connect to SAP systems to fetch and process data. 
 
 You can find the APIs exposed by an SAP system that you need to complete your extension scenario in [SAP Business Accelerator Hub](https://api.sap.com/).  
 SAP BTP Connectivity allows SAP BTP applications to securely access APIs that run on the Internet or on-premise. 

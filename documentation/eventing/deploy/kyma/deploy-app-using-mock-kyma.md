@@ -10,18 +10,6 @@ If you don't have an access to an SAP S/4HANA Cloud system you can have the opti
 
 2. Add `"@sap/xb-msg-amqp-v100": "^0"` to the **dependencies** section of package.json file.
 
-3. Add the below code to the **requires** section of package.json file
-
-    ```json
-    "messaging": {
-        "kind": "local-messaging",
-        "[production]": {
-          "kind": "enterprise-messaging-shared",
-          "format": "cloudevents"
-        }
-      },
-    ```
-
 ## Deploy the Incident Management Application
 
 1. Navigate to incident management application and change credentials of **API_BUSINESS_PARTNER** in package.json to 

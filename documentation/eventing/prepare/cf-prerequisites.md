@@ -21,12 +21,15 @@ Adding eventing to the developed CAP application requires the following addition
 
 | Service                           | Plan       | Number of Instances |
 |-----------------------------------|------------|:-------------------:|
-| SAP S/4HANA Cloud Extensibilty | api-access | 1 |
-| SAP S/4HANA Cloud Extensibilty | messaging | 1 |
+| SAP S/4HANA Cloud Extensibility | api-access | 1 |
+| SAP S/4HANA Cloud Extensibility | messaging | 1 |
 | SAP Event Mesh| default | 1 |
 
 
 See [Entitlements and Quotas](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/00aa2c23479d42568b18882b1ca90d79.html?locale=en-US).
+
+* While adding entitlement **SAP S/4HANA Cloud Extensibility**, please select the appropriate system under **Service Details: SAP S/4HANA Cloud Extensibility** dropdown.
+* In the checkbox, check the **api-access** and **messaging** under Available Plans and add the service plans.
 
 
 

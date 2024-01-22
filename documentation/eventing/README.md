@@ -24,4 +24,5 @@ This tutorial shows you how to configure your CAP service to listen for upcoming
 
 |                      | SAP BTP, Cloud Foundry Runtime                  | SAP BTP, Kyma Runtime                           |
 |----------------------|-------------------------------------------------|-------------------------------------------------|
-| Deployment      |  [Deploy Incident Management Application to SAP BTP Cloud Foundry Runtime](eventing-cf.md)              | [Deploy Incident Management Application to SAP BTP Kyma Runtime](eventing-kyma.md)             |
+| Mock Server       |  [Set Up Eventing Using the SAP Event Mesh Service with Mock Server on SAP BTP, Cloud Foundry Runtime](eventing-cf-mock.md)              | [Set Up Eventing Using the SAP Event Mesh Service with Mock Server on SAP BTP, Kyma Runtime](eventing-kyma-mock.md)             |
+| SAP S/4HANA Cloud      |  [Set Up Eventing Using the SAP Event Mesh Service with SAP S/4HANA Cloud on SAP BTP, Cloud Foundry Runtime](eventing-cf.md)             | [Set Up Eventing Using the SAP Event Mesh Service with SAP S/4HANA Cloud on SAP BTP, Kyma Runtime](eventing-kyma.md)             | 

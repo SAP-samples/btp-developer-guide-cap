@@ -126,7 +126,7 @@ The steps above is all you need to automatically log personal data-related event
 
     ### Updating a customer with personal data details
     @customer = {{create_customer.response.body.ID}}
-    PATCH {{host}}/odata/v4/admin/Customers({{customer}})
+    PATCH {{host}}/odata/v4/admin/Customers('{{customer}}')
     Authorization: Basic alice:wonderland
     Content-Type: application/json
 

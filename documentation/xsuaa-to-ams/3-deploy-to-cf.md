@@ -9,7 +9,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 
  1. Create `ias-config.json` file in your project root folder with the following content and replace the ```<unique-id>``` with a unique value to identify your IAS app in IAS Tenant:
 
-    ```
+    ```json
         {
           
             "authorization": {
@@ -33,15 +33,14 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
     {
         ...
         "dependencies": {
-        "@sap/ams": "^1.13.0",
+        "@sap/ams": "^1.14.2",
         "@sap/cds": "^7.0",
         "@sap/xssec": "^3.3.5",
         "hdb": "^0.19.0",
         "passport": "^0"
       },
       "devDependencies": {
-        "@sap/ams-dev": "^0.7.0",
-        "@sap/cds-dk": "^7"
+        "@sap/ams-dev": "^0.8.3"
       },
 
     ...
@@ -49,7 +48,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
     ```
 3. Change the `auth.kind` to `ias` in `package.json` for the production profile:
 
-      ```
+      ```json
       {    
           ...
         "cds": {
@@ -71,7 +70,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 1. Update the `mta.yaml` with the following content
 
 - Change the dependency `incident-management-auth ` in `resources` from `xsuaa` service instance:
-     ```
+     ```yaml
      - name: incident-management-auth
        type: org.cloudfoundry.managed-service
        parameters:
@@ -84,7 +83,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
      ```
  
 - To `ias` service instance:
-     ```
+     ```yaml
        - name: incident-management-auth
          parameters:
            path: ./ias-config.json
@@ -97,7 +96,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 - Add the following configurations to the `incident-management-srv` module
 
     - Change `incident-management-auth` service binding with `incident-management-srv` to: 
-      ```
+      ```yaml
       - name: incidents-management-srv
         type: nodejs
         path: gen/srv
@@ -109,39 +108,39 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
       ```
     - Update your buildpacks section by adding `OPA buildpack`
     
-      ```
-          parameters:
-            buildpacks:
-             - https://github.com/SAP/cloud-authorization-buildpack/releases/latest/download/opa_buildpack.zip
-             - nodejs_buildpack
+      ```yaml
+      parameters:
+        buildpacks:
+          - https://github.com/SAP/cloud-authorization-buildpack/releases/latest/download/opa_buildpack.zip
+          - nodejs_buildpack
       ```
       
     - Add `AMS_DCL_ROOT` to `properties` section
     
-      ```
-        properties:
-          AMS_DCL_ROOT: "ams/dcl"
+      ```yaml
+      properties:
+        AMS_DCL_ROOT: "ams/dcl"
       ```
   - Delete `incident-management-auth` binding from `incident-management-destination-content`
-      ```
-        - name: incident-management-auth
-          parameters:
-            service-key:
-              name: incident-management-auth-key
+      ```yaml
+      - name: incident-management-auth
+        parameters:
+          service-key:
+            name: incident-management-auth-key
       ```
   - Delete `incidents_incident_management_auth` destination from `incident-management-destination-content`
-      ```
-              - Authentication: OAuth2UserTokenExchange
-                Name: incidents_incident_management_auth
-                ServiceKeyName: incident-management-auth-key
-                sap.cloud.service: incidents
+      ```yaml
+      - Authentication: OAuth2UserTokenExchange
+        Name: incidents_incident_management_auth
+        ServiceKeyName: incident-management-auth-key
+        sap.cloud.service: incidents
       ```
       
   ### Note:
   
   Check if the module `incident-management-destination-content` in `mta.yaml` looks like this:
   
-    ```
+    ```yaml
     - name: incident-management-destination-content
       type: com.sap.application.content
       requires:
@@ -176,15 +175,6 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
             Type: HTTP
             URL: ~{srv-api/srv-url}
           existing_destinations_policy: update
-      ```
-  - Update your `build-parameters ` with the following code:
-      ```
-        build-parameters:
-          before-all:
-          - builder: custom
-            commands:
-            - npx -p @sap/cds-dk cds build --production
-            - npx -p cpy-cli -- cpy "ams" "./gen/srv"
       ```
 2. Update `app/incidents/xs-app.json` with the following code:
    ```

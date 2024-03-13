@@ -24,39 +24,7 @@
    npm add @sap-cloud-sdk/http-client@3.x @sap-cloud-sdk/util@3.x @sap-cloud-sdk/connectivity@3.x @sap-cloud-sdk/resilience@3.x
    ```
 
-4. Navigate to *db/schema.cds* and change the customer entity as below. The cuid flag is removed and an ID field is added as key, this field is later filled with the Business Partner ID from the SAP S/4HANA system.
-
-   ```js
-    entity Customers : managed {
-      key ID        : String;
-      firstName     : String;
-      lastName      : String;
-      email         : EMailAddress;
-      phone         : PhoneNumber;
-      incidents     : Association to many Incidents on incidents.customer = $self;
-    }
-   ```
-
-5. Navigate to *db/data/sap.capire.incidents-Customers.csv* and change the data as below. The cuid flag is removed and an ID field is added as key in the previous step. The same has to be replicated in the data.
-
-  ```csv
-  ID,firstName,lastName,email,phone
-  1004155,Daniel,Watts,daniel.watts@demo.com,+44-555-123
-  1004161,Stormy,Weathers,stormy.weathers@demo.com,
-  1004100,Sunny,Sunshine,sunny.sunshine@demo.com,+01-555-789
-  ```
-
-6. Change the same data in *db/data/sap.capire.incidents-incidents.csv*.
-
-  ```csv
-  ID,customer_ID,title,urgency_code,status_code
-  3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,1004155,Inverter not functional,H,C
-  3a4ede72-244a-4f5f-8efa-b17e032d01ee,1004161,No current on a sunny day,H,N
-  3ccf474c-3881-44b7-99fb-59a2a4668418,1004161,Strange noise when switching off Inverter,M,N
-  3583f982-d7df-4aad-ab26-301d4a157cd7,1004100,Solar panel broken,H,I
-  ```
-
-7. Import the Business Partner API to your project.
+4. Import the Business Partner API to your project.
    * In the project explorer, right-click on the project's root folder and select **Upload...**
 
      ![upload API](./images/upload-api.png)
@@ -69,7 +37,7 @@
       ```
    * You can find the generated files in the **srv/external** folder.
 
-8. Change the conditions for the relationships between some entities. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following:
+5. Change the conditions for the relationships between some entities. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following:
 
     ```js
     to_BusinessPartnerAddress : Composition of many API_BUSINESS_PARTNER.A_BusinessPartnerAddress on to_BusinessPartnerAddress.BusinessPartner = BusinessPartner;
@@ -83,16 +51,14 @@
     to_PhoneNumber : Composition of many API_BUSINESS_PARTNER.A_AddressPhoneNumber on to_PhoneNumber.AddressID = AddressID;
     ```
 
-10. Create a new file *extend.cds* in the *srv* folder.
+6. Create a new file *remote.cds* in the *srv* folder.
 
-11. Copy the snippet to the newly created *extend.cds* file
+7. Copy the snippet to the newly created *remote.cds* file
 
     ```js
-    using { sap.capire.incidents as my } from '../db/schema';
     using { API_BUSINESS_PARTNER as S4 } from './external/API_BUSINESS_PARTNER';
-    using from './processor-service';
 
-    extend service ProcessorService {
+    service RemoteService {
       entity BusinessPartner as projection on S4.A_BusinessPartner {
         key BusinessPartner as ID,
         FirstName as firstName,
@@ -143,7 +109,7 @@
           const top = parseInt(req._queryOptions?.$top) || 100;
           const skip = parseInt(req._queryOptions?.$skip) || 0;
         
-          const { BusinessPartner } = this.entities;
+          const { BusinessPartner } = this.remoteService.entities;
 
           // Expands are required as the runtime does not support path expressions for remote services
           let result = await this.S4bupa.run(SELECT.from(BusinessPartner, bp => {
@@ -174,6 +140,7 @@
     ```js
     this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
     this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
+    this.remoteService = await cds.connect.to('RemoteService');
     ```
 * Add the custom handler after the *init* method
 
@@ -182,7 +149,7 @@
       const { Customers } = this.entities;
       const newCustomerId = req.data.customer_ID;
       const result = await next();
-      const { BusinessPartner } = this.entities;
+      const { BusinessPartner } = this.remoteService.entities;
       if (newCustomerId && (newCustomerId !== "") && ((req.event == "CREATE") || (req.event == "UPDATE"))) {
         console.log('>> CREATE or UPDATE customer!');
 

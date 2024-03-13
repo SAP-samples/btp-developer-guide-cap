@@ -15,7 +15,7 @@ You have finished the [Remote Service Integration](../../remote-service/README.m
 
 ```js
 module.exports = function () {
-    const { A_AddressEmailAddress, A_BusinessPartner } = this.entities;
+    const { A_BusinessPartner } = this.entities;
    
     this.after('UPDATE', A_BusinessPartner, async data => {
       const messaging =  await cds.connect.to('messaging');
@@ -41,7 +41,7 @@ module.exports = function () {
 4. Open the **srv/processor-service.js** file and add the following code snippet to the `init` method to set up an event listener for the BusinessPartnerChanged event:
 
 ```js
-this.messaging = await cds.connect.to('messaging');
+    this.messaging = await cds.connect.to('messaging');
     this.messaging.on('sap.s4.beh.businesspartner.v1.BusinessPartner.Changed.v1', async ({ event, data }) => await this.onBusinessPartnerChanged(event, data))
 ```
 
@@ -49,7 +49,8 @@ this.messaging = await cds.connect.to('messaging');
 
 ```js
 async onBusinessPartnerChanged(event, data){
-    const {Customers, BusinessPartnerAddress, EmailAddress} = this.entities;
+    const { Customers } = this.entities;
+    const { BusinessPartnerAddress } = this.remoteService.entities;
     //If Business Partner exists in Cache, then update
     console.log('<< received', event, data)
     const Id = data.BusinessPartner;
@@ -60,8 +61,9 @@ async onBusinessPartnerChanged(event, data){
         emails('*')})
       }).where({BusinessPartner: Id}));
     console.log("customer after read email", customer.email[0].email);
-    customer.email = customer.email[0].email
+    
     if(customer){
+      customer.email = customer.email[0].email
       const result= await cds.run(UPDATE(Customers).where({ID: customer.ID}).set({email:customer.email}));
       console.log("result",result);
     }

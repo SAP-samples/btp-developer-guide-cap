@@ -92,8 +92,8 @@ To increase your development speed, it is helpful to run and test your implement
 
 7.  When you are prompted to authenticate, use the following credentials:
  
-    - Username: `incident.support@tester.sap.com`
-    - Password: `initial`   
+    - Username: `alice`
+    - Password: Empty / No Password   
     
     > You find the user settings in the `.cdsrc.json file`.
 

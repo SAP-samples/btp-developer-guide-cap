@@ -16,7 +16,12 @@ In this section you would redeploy the mock server and bind it to the SAP Event 
 
 3. In the project folder, open the **mta.yaml** file.
 
-    1. Add the following code snippet in the `resources` section:
+    1. Add the following code snippet to add a resources section at the end of the file:
+        ```yaml
+            resources: 
+            - name: inicdent-management-messaging 
+            type: org.cloudfoundry.existing-service  
+        ```
         ```yaml
         - name: incident-management-messaging
           type: org.cloudfoundry.existing-service
@@ -25,7 +30,9 @@ In this section you would redeploy the mock server and bind it to the SAP Event 
     2. Add the following entry in the `requires` section of the `mock-srv` module:
 
         ```yaml
-            - name: incident-management-messaging
+        - name: mock-srv
+            requires: 
+            - name: inicdent-management-messaging  
         ```
 
 4. In the project folder, right-click the **mta.yaml** file and choose **Build MTA Project**.

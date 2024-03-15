@@ -28,7 +28,7 @@ The application development and deployment is completed and now it can be tested
 5. Test your applicaton by executing below request in Postman. Choose **Patch** and copy URL to the field:
 
 ```
-<The application route of the mock server\>/A_BusinessPartner('<the-business-partner-id-of-your-created-incident\>') 
+<The application route of the mock server\>/odata/v2/api-business-partner/A_BusinessPartner('<the-business-partner-id-of-your-created-incident\>') 
 ```
 
 6. Copy below code to body
@@ -51,10 +51,12 @@ The application development and deployment is completed and now it can be tested
 }
 ```
 
-7. Choose **Send**
+7. Make sure to choose **JSON** in dropdown and choose **Send**
 
  ![Test mock](./images/test-mock.png)
 
 8. Go back to your Incident Management Application and refresh the page. Find the updated e-mail address displayed in the incident.
 
  ![Updated Business Partner](./images/mock-incident-new-mail.png)
+
+ > Note: Often, remote operations should be delayed until the main transaction succeeded. Otherwise, the remote operations are also triggered in case of a rollback. To enable this, an outbox can be used to defer remote operations until the success of the current transaction. You can find more information about transactional outbox in the [documentation](https://cap.cloud.sap/docs/node.js/outbox)

@@ -23,7 +23,7 @@ module.exports = function () {
       console.log('>> BusinessPartner.Changed')
       await messaging.emit('sap.s4.beh.businesspartner.v1.BusinessPartner.Changed.v1', event);
     })
-  }
+  },
 ```
 
 3. Open the **package.json** file in the root folder of the project and copy the code snippet to the `requires` section of the file. This will add SAP Event Mesh service as a dependency to your application:

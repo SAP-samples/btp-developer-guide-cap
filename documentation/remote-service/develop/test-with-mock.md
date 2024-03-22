@@ -8,7 +8,7 @@ To increase your development speed, it is helpful to run and test your implement
 
 ### Create Mock Data for the New Entities.
 
-1. Create a new folder **data** in the `srv/external` folder.
+1. Navigate to the Incident Management Application code base and Create a new folder **data** in the `srv/external` folder.
 
 2. Create a new file **API_BUSINESS_PARTNER-A_BusinessPartner.csv** and add the following data to it
    

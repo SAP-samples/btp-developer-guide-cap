@@ -18,10 +18,8 @@ Traces allow you to analyze how a request, a message, or a task is being process
     "cds": {
         "requires": {
      ....
-      "cds": {
-        "requires": {
             "[production]": {
-                "telemetry": 
+                "telemetry": {
                     "kind": "to-cloud-logging" 
                 }, 
             }

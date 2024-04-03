@@ -9,4 +9,4 @@ The SAP Cloud Application Programming Model (CAP) provides a plug-in to simplify
 
 ## Implementation
 
-- [Implement publishing of business notifications in SAP Build WorkZone](./2-implement.md)
+- [Implement publishing of business notifications to SAP Build WorkZone using cap-js/notifications](./2-implement.md)

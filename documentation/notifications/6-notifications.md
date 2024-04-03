@@ -1,4 +1,4 @@
-# Access Notifications Using SAP Alert Notification Service for SAP BTP
+# Receive Notifications in SAP Build Work Zone
 
 To test the notifications, you need to access the application in SAP Build Work Zone, standard edition. 
 

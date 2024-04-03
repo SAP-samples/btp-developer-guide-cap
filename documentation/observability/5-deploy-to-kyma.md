@@ -69,7 +69,7 @@ To create the SAP Cloud Logging service instance, follow these steps:
     ```
     To apply the configuration, use the following command:
     ```
-    kubectl apply -n sap-cloud-logging-integration -f servicebinding.yaml
+    kubectl apply -n sap-cloud-logging-integration -f clsbinding.yaml
     ```
     
 7. Ship the logs to the SAP Cloud Logging service. See [Ship Logs to SAP Cloud Logging](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=ship-logs-to-sap-cloud-logging).

@@ -8,7 +8,7 @@ In this tutorial, you will learn how to create service-specific telemetry signal
 
 You have the Incident Management application set up. See the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.   
 
-## Add Logs in the Application
+## Adding custom logs to the application
 
 To add logs in the Incident Management application, take advantage of the minimalistic logging facade that CAP provides. To add logging functionality to the Incident Management application:
 
@@ -37,12 +37,14 @@ Configure the initial log levels per module through `cds.env.log.levels`, for ex
   ```json
   {
     "cds": {
+    ...
       "log": {
         "levels": {
           "sqlite": "debug",
           "cds": "info"
         }
       }
+    ...
     }
   }
   ```

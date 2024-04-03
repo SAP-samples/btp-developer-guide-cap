@@ -30,7 +30,7 @@ annotate ProcessorService.Incidents with @changelog: {
   customer @changelog: [ customer.name ];
 };
 
-annotate ProcessorService.Conversations with @changelog: {
+annotate ProcessorService.Incidents.conversation with @changelog: {
   keys: [ author, timestamp ]
 } {
   message  @changelog;

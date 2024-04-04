@@ -11,5 +11,5 @@
 6. [Configure Change Tracking](./change-tracking/README.md)
 7. [Configure Audit Logging](./auditlog/readme.md)
 8. [Integrate with Authorization Management Service](./xsuaa-to-ams/README.md)
-9. [Set Up Notifications Using the SAP Alert Notification service for SAP BTP](./alert-notification/readme.md)
+9. [Notifications for SAP Build WorkZone using cap-js/notifications](./notifications/readme.md)
  

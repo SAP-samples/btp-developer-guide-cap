@@ -57,7 +57,7 @@ Have Identity Authentication SAML 2.0 integrated with the SAP Cloud Logging. See
 ## Access Application Metrics
 
 1. On the left side of the screen, click the breadcrumb and choose **Discover**.
-2. On the **Discover screen, `logs-cfsyslog-*` is selected by default. You can see the application logs. 
+2. On the **Discover Screen**, `logs-cfsyslog-*` is selected by default. You can see the application logs. 
 3. Choose `logs-cfsyslog-*`, and dropdown menu appears. Select `metrics-otel-v1-*`. This will display the metrics from the application. 
 4.  Select the fields from the left side of the screen to view specific fields. The output should be displayed like this:
 <img src="./images/metrics.png"/>

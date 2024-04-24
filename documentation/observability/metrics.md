@@ -24,7 +24,7 @@ The business user could check how many "**High**" incidents are being currently 
 Custom metrics can be added as shown in the following example:
 
 1. Create a new file at root of the application, name it `server.js` and paste the following code:
-   ```javascript 
+   ```js
     const cds = require('@sap/cds')
     // Import necessary modules
     const { metrics } = require('@opentelemetry/api');

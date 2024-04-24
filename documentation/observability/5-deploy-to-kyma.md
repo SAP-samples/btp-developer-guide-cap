@@ -1,4 +1,4 @@
-# Observability Enablement in SAP BTP, Kyma Runtime
+# Enable Observability in the SAP BTP, Kyma Runtime
 
 ## Set Up the SAP Cloud Logging Service
 
@@ -86,7 +86,7 @@ To create the SAP Cloud Logging service instance, follow these steps:
 
 10.  [Kyma Dashboard Integration](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=ship-metrics-to-sap-cloud-logging).
 
-# Deploy in SAP BTP, Kyma Runtime
+# Deploy the Incident Management Application in the SAP BTP, Kyma Runtime
 
 Follow the steps in the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial.
 

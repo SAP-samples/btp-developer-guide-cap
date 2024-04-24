@@ -1,4 +1,4 @@
-# Observability Enablement in SAP BTP, Cloud Foundry Runtime
+# Enable Observability in the SAP BTP, Cloud Foundry Runtime
 
 ## Set Up the SAP Cloud Logging Service
 

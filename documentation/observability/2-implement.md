@@ -1,8 +1,9 @@
-# Introduce Custom Metrics, Logs and Trace Spans to Capture Service-Specific Observability Telemetry 
 
-We recommend that you add additional service-specific observability telemetry signals to the build-in general monitoring and observability signals emitted by the SAP Application Programing Model (CAP) framework. Service teams should introduce specific metrics, logs and trace spans. Building up own dashboards, user flow up to defining own alerting patterns on top of these customised signals can improve efficiency in problem and incident situation.
+# Setup Custom Log Collection
+Application logging is the practice of recording valuable information and events during software execution. Logs are persisted to retain a historical record of activities, errors, and user interactions. They are categorized into different log levels, such as DEBUG, INFO, WARN, ERROR, and FATAL, to signify their importance and severity.
 
-In this tutorial, you will learn how to create service-specific telemetry signals (logs, metrics and trace) for the Incident Management application.
+Analysis, persistency of Logs is recommended in standardized, centralized and hosted service like SAP Cloud Logging.
+
 
 ## Prerequisites
 

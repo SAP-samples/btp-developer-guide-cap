@@ -2,7 +2,7 @@
 
 1. [Introduction](./introduction.md)
 2. [Prerequisites](./mission-prerequisits/1-prerequisites.md)
-3. [Introduce Custom Metrics, Logs and Trace Spans to Capture Service-Specific Observability Telemetry](./2-implement.md)
+3. [Setup Custom Log Collection](./2-implement.md)
 4. [Set Up Trace Collection](./3-implement-traces.md)
 5. [Set Up Metrics Collection](./metrics.md)
 6. [Option 1 - Deploy Incident Management Application in the SAP BTP, Cloud Foundry Runtime](./4-deploy-to-cf.md)

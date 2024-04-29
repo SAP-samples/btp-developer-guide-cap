@@ -11,6 +11,12 @@ When you seek for fully detailed observability data of your application, you can
 ### Kyma Runtime
 <img src="./images/clskyma.png" height="50%" width="50%"/>
 
+# Introduce Custom Metrics, Logs and Trace Spans to Capture Service-Specific Observability Telemetry 
+
+We recommend that you add additional service-specific observability telemetry signals to the build-in general monitoring and observability signals emitted by the SAP Application Programing Model (CAP) framework. Service teams should introduce specific metrics, logs and trace spans. Building up own dashboards, user flow up to defining own alerting patterns on top of these customised signals can improve efficiency in problem and incident situation.
+
+In this tutorial, you will learn how to create service-specific telemetry signals (logs, metrics and trace) for the Incident Management application.
+
 # Implementation
 
 - [Add custom logs, metrics, traces](./2-implement.md)

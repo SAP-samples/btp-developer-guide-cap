@@ -103,7 +103,7 @@
       ```
 
   * Add the custom handler implementation after the init method
-      ```js
+      ```
         async onCustomerRead(req) {
           console.log('>> delegating to S4 service...', req.query);
           const top = parseInt(req._queryOptions?.$top) || 100;
@@ -137,14 +137,14 @@
 
 *  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add this code snippet to the *init* method
 
-    ```js
+    ```
     this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
     this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
     this.remoteService = await cds.connect.to('RemoteService');
     ```
 * Add the custom handler after the *init* method
 
-  ```js
+  ```
     async onCustomerCache(req, next) {
       const { Customers } = this.entities;
       const newCustomerId = req.data.customer_ID;

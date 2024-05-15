@@ -1,16 +1,18 @@
-# Test the Incident Management Application
+# Test the Incident Management Application locally
 
 ## Usage scenario
 
-To increase your development speed, it is helpful to run and test your implementation in a local environment. In this section you will learn how to set up and use a mock server for running your development tests.  
+To increase your development speed, it is helpful to run and test your implementation in a local environment. In this section you will learn how to test the incident management applicaiton locally.
 
 ## Content
 
 ### Create Mock Data for the New Entities.
 
-1. Navigate to the Incident Management Application code base and Create a new folder **data** in the `srv/external` folder.
+1. If you are using cloud foundry open Business applicaiton studio for development and if you are using Kyma open Visual Studio Code for development.
 
-2. Create a new file **API_BUSINESS_PARTNER-A_BusinessPartner.csv** and add the following data to it
+2. Navigate to the Incident Management Application code base and Create a new folder **data** in the `srv/external` folder.
+
+3. Create a new file **API_BUSINESS_PARTNER-A_BusinessPartner.csv** and add the following data to it
    
    ```csv
    BusinessPartner;FirstName;LastName;BusinessPartnerName;BusinessPartnerIsBlocked;
@@ -19,7 +21,7 @@ To increase your development speed, it is helpful to run and test your implement
    1004100;Sunny;Sunshine;Sunny Sunshine;true
    ```
 
-3. Create a new file **API_BUSINESS_PARTNER-A_BusinessPartnerAddress.csv** and add the following data to it
+4. Create a new file **API_BUSINESS_PARTNER-A_BusinessPartnerAddress.csv** and add the following data to it
 
    ```csv
    BusinessPartner;AddressID;
@@ -28,7 +30,7 @@ To increase your development speed, it is helpful to run and test your implement
    1004100;456
    ```
 
-4. Create a new file **API_BUSINESS_PARTNER-A_AddressEmailAddress.csv** and add the following data to it
+5. Create a new file **API_BUSINESS_PARTNER-A_AddressEmailAddress.csv** and add the following data to it
 
    ```csv
    AddressID;EmailAddress;Person;OrdinalNumber
@@ -36,7 +38,7 @@ To increase your development speed, it is helpful to run and test your implement
    345;testjohn@demo.com;Smith;222
    456;testhencry@demo.com;johnson;333
    ```
-5. Create a new file **API_BUSINESS_PARTNER-A_AddressPhoneNumber.csv** and add the following data to it
+6. Create a new file **API_BUSINESS_PARTNER-A_AddressPhoneNumber.csv** and add the following data to it
 
    ```csv
    AddressID;PhoneNumber;Person;OrdinalNumber

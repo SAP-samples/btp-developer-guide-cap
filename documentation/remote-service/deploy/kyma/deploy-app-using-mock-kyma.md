@@ -1,4 +1,4 @@
-# Run the Incident Management Application with Mock Server
+# Deploy and Run the Incident Management Application with Mock Server
 
 ## Usage Scenario
 

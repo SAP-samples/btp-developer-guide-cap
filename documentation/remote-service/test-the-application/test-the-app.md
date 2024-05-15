@@ -1,4 +1,4 @@
-# Run the Incident Management Application with SAP S/4HANA Backend
+# Test the flow end-to-end
 
 ## Prerequisites
 

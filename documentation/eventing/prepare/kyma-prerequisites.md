@@ -1,7 +1,7 @@
 # Make sure prerequisites are fulfilled and all required systems are in place
 
 ## Prerequisites
-* Complete the [Remote Service Integration](../../remote-service/README.md) tutorial.
+* Complete the [Remote Service Integration](../../remote-service/remote-service-s4h-kyma.md) tutorial.
 * Undeploy the application that was deployed to SAP BTP in the Remote Service Integration tutorial.
 
     - Undeploy the application using the following command:

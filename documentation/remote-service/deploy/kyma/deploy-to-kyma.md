@@ -123,10 +123,10 @@ html5-apps-deployer:
 2. Deploy using Helm command:
 
   ```sh
-  helm upgrade --install incident-management --namespace incidents-namespace ./chart \
+  helm upgrade --install incident-management --namespace incident-management ./chart \
   --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
   ```
-This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incidents-namespace***.
+This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incident-management***.
 
 ```info
 With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.

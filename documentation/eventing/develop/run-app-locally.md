@@ -17,7 +17,7 @@ Before you deploy the application on SAP BTP, you can run the CAP application lo
 5. Copy the following code snippet to the **request.http** file:
 
 ```
-PATCH  http://localhost:4004/odata/v2/api-business-partner/A_BusinessPartner('1004100') HTTP/1.1
+PATCH  http://localhost:4004/odata/v4/api-business-partner/A_BusinessPartner('1004100') HTTP/1.1
 Content-Type: application/json
 Authorization: Basic YWxpY2U6
 

@@ -7,9 +7,11 @@
 
 ## Content
 
-1. Navigate to the project's root folder of the Incident Management application. 
+1. If you are using cloud foundry open Business applicaiton studio for development and if you are using Kyma open Visual Studio Code for development.
+
+2. Navigate to the project's root folder of the Incident Management application. 
    
-2.  In the *package.json*, change the name to `incident-management`.
+3.  In the *package.json*, change the name to `incident-management`.
     
     ```js
     {
@@ -18,13 +20,14 @@
       "dependencies": {
         ....
     ```
-3. Add some additional libraries to the *package.json* for the communication with external systems. In the terminal, go to the project's root folder of the Incident Management application and run the following command:  
+4. Add some additional libraries to the *package.json* for the communication with external systems. In the terminal, go to the project's root folder of the Incident Management application and run the following command:  
    
    ```bash
    npm add @sap-cloud-sdk/http-client@3.x @sap-cloud-sdk/util@3.x @sap-cloud-sdk/connectivity@3.x @sap-cloud-sdk/resilience@3.x
    ```
 
-4. Import the Business Partner API to your project.
+5. Import the Business Partner API to your project by following one of the below options based on your development environment.
+- If you are in Business Application Studio:
    * In the project explorer, right-click on the project's root folder and select **Upload...**
 
      ![upload API](./images/upload-api.png)
@@ -37,13 +40,17 @@
       ```
    * You can find the generated files in the **srv/external** folder.
 
-5. Change the conditions for the relationships between some entities. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following:
+- If you are in Visual Studio Code:
+   * Copy the *API_BUSINESS_PARTNER.edmx* file.
+   * Navigate to the root folder of your project and paste the copied file.
+
+6. Change the conditions for the relationships between some entities. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following:
 
     ```js
     to_BusinessPartnerAddress : Composition of many API_BUSINESS_PARTNER.A_BusinessPartnerAddress on to_BusinessPartnerAddress.BusinessPartner = BusinessPartner;
     ```
 
-9. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartnerAddress**. Replace the associations for email address and phone number.
+7. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartnerAddress**. Replace the associations for email address and phone number.
 
     ```js
     to_EmailAddress : Composition of many API_BUSINESS_PARTNER.A_AddressEmailAddress on to_EmailAddress.AddressID = AddressID;
@@ -51,9 +58,9 @@
     to_PhoneNumber : Composition of many API_BUSINESS_PARTNER.A_AddressPhoneNumber on to_PhoneNumber.AddressID = AddressID;
     ```
 
-6. Create a new file *remote.cds* in the *srv* folder.
+8. Create a new file *remote.cds* in the *srv* folder.
 
-7. Copy the snippet to the newly created *remote.cds* file
+9. Copy the snippet to the newly created *remote.cds* file
 
     ```js
     using { API_BUSINESS_PARTNER as S4 } from './external/API_BUSINESS_PARTNER';
@@ -103,7 +110,7 @@
       ```
 
   * Add the custom handler implementation after the init method
-      ```javascript
+      ```js
         async onCustomerRead(req) {
           console.log('>> delegating to S4 service...', req.query);
           const top = parseInt(req._queryOptions?.$top) || 100;
@@ -137,14 +144,14 @@
 
 *  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add this code snippet to the *init* method
 
-    ```javascript
+    ```js
     this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
     this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
     this.remoteService = await cds.connect.to('RemoteService');
     ```
 * Add the custom handler after the *init* method
 
-  ```javascript
+  ```js
     async onCustomerCache(req, next) {
       const { Customers } = this.entities;
       const newCustomerId = req.data.customer_ID;

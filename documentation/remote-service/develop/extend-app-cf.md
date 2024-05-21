@@ -26,8 +26,8 @@
    npm add @sap-cloud-sdk/http-client@3.x @sap-cloud-sdk/util@3.x @sap-cloud-sdk/connectivity@3.x @sap-cloud-sdk/resilience@3.x
    ```
 
-5. Import the Business Partner API to your project by following one of the below options based on your development environment.
-- If you are in Business Application Studio:
+5. Import the Business Partner API to your project by following the below steps
+
    * In the project explorer, right-click on the project's root folder and select **Upload...**
 
      ![upload API](./images/upload-api.png)
@@ -39,10 +39,6 @@
       cds import API_BUSINESS_PARTNER.edmx --as cds
       ```
    * You can find the generated files in the **srv/external** folder.
-
-- If you are in Visual Studio Code:
-   * Copy the *API_BUSINESS_PARTNER.edmx* file.
-   * Navigate to the root folder of your project and paste the copied file.
 
 6. Change the conditions for the relationships between some of the entities. Open **srv/external/API_BUSINESS_PARTNER.cds**. Search for **entity API_BUSINESS_PARTNER.A_BusinessPartner**. Scroll down to the **to_BusinessPartnerAddress** section and replace it with the following:
 

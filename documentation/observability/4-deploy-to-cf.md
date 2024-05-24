@@ -80,4 +80,4 @@ As a next step, to access the application in launchpad, proceed to [Integrate wi
 The application has been deployed with custom logs, metrics and trace collection in the SAP BTP, Cloud Foundry runtime and integrated into SAP Build Work Zone.
 
 # Visualize Logs, Metrics and Traces
-- [Access custom logs, metrics, traces](./5-test-the-flow.md)
+- [Access custom logs, metrics, traces](./6-test-the-flow.md)

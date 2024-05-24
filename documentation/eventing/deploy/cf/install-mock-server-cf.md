@@ -22,6 +22,10 @@ In this section you would redeploy the mock server and bind it to the SAP Event 
             - name: incident-management-messaging 
             type: org.cloudfoundry.existing-service  
         ```
+        ```yaml
+        - name: incident-management-messaging
+          type: org.cloudfoundry.existing-service
+        ```
 
     2. Add the following entry in the `requires` section of the `mock-srv` module:
 
@@ -44,7 +48,7 @@ In this section you would redeploy the mock server and bind it to the SAP Event 
     ```json
     "credentials": {
             "destination": "<destination_name>",
-            "path": "/odata/v2/api-business-partner"
+            "path": "/v2/odata/v4/api-business-partner"
           }
     ```
 >Note: You have to replace **destination_name** with the name of the destination created while deploying the mock server in the SAP BTP, Cloud Foundry runtime.

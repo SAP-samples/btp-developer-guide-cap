@@ -51,16 +51,16 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
 ## Setup the Continuous Integration and Delivery Service
 
 1. Enable SAP Continuous Integration and Delivery.
-- In SAP BTP Cockpit, go to your subaccount.
-- In Service Marketplace, type Continuous into the search box. Continuous Integration and Delivery service appears.
-- Choose **Create**.
-![Choose create](./cicd1.png)
+    - In SAP BTP Cockpit, go to your subaccount.
+    - In Service Marketplace, type Continuous into the search box. Continuous Integration and Delivery service appears.
+    - Choose **Create**.
+    ![Choose create](./cicd1.png)
 
 2. Assign role collection.
 
-- In your SAP BTP subaccount, choose **Security -> Users**.
-- Choose the name of your identity provider and navigate into it.
-- From the menu, choose **Assign Role Collection**. Search for *CICD Administrator* and add the role to your user.
+    - In your SAP BTP subaccount, choose **Security -> Users**.
+    - Choose the name of your identity provider and navigate into it.
+    - From the menu, choose **Assign Role Collection**. Search for *CICD Administrator* and add the role to your user.
 
 3. Ensure that you can open and access the application. In the cockpit,  go to **Instances and Subscriptions** to access the **Continuous Integration & Delivery** application.
 ![cicd-app](./cicd3.png)
@@ -86,57 +86,55 @@ In order to run the pipeline using the CI/CD service, you need to create a servi
     ![dashboard](./cicd2.png)
 
     Your dashboard should look like this.
-![kyma-dashboard](./cicd5.png)
+![kyma-dashboard](./cicd54.png)
 
-2. In the left navigation menu, choose **Namespaces** and then **+ Create Namespace**. 
-![namespacePage](./cicd6.png)
+2. In the left navigation menu, choose **Namespaces** and then choose **Create**. 
+![namespacePage](./cicd44.png)
 
-    Provide any relevant name of your choice e.g: incidents-namespace. Also **Enable Sidecar Injection** and choose **Create**.
-![namespaceCreation](./cicd7.png)
+3. Provide any relevant name of your choice e.g: `incidents-namespace`. Enable the slider for **Enable Sidecar Injection** and choose **Create**.
+![namespaceCreation](./cicd45.png)
 
 4. For this namespace, you need to create a Service Account. This is a non-human account which will authenticate your pipeline to access your cluster. See [Service Accounts](https://kubernetes.io/docs/concepts/security/service-accounts/). 
 
-    Ensure you are in your created namespace. From the left navigation menu, click on the dropdown **Configuration** and navigate to **Service Accounts**. Here click on **+ Create Service Account**.
-    ![serviceAccountPage](./cicd8.png)
+    - Ensure you are in your created namespace. From the left navigation menu, click on the dropdown **Configuration** and navigate to **Service Accounts**. Here click on **Create**.
+    ![serviceAccountPage](./cicd46.png)
 
-    Give your service account a name e.g: incidents-namespace-service-account and choose **Create**.
-    ![serviceAccountCreation](./cicd9.png)
+    - Give your service account a name `incidents-namespace-service-account` and choose **Create**.
+    ![serviceAccountCreation](./cicd47.png)
 
-5. For your pipeline to access your Kyma cluster through this service account, it requires a set of configurations. This is defined in the **KubeConfig** file of the account. 
+5. For your pipeline to access your Kyma cluster through this service account, it requires a set of configurations. This is defined in the **KubeConfig** file of the account. To retrieve this, follow the below steps
+    - Ensure you are on the page of the created service account and click on **Generate TokenRequest**. 
+    ![kubeConfig](./cicd48.png)
 
-    To retrieve this, ensure you are on the page of the created service account and choose on **Generate TokenRequest**. 
-    ![kubeConfig](./cicd10.png)
+    - From the **Expiration seconds** dropdown, select the maximum duration.
+    ![kubeConfig](./cicd49.png)
+    
+    - The configuration details should mention a token, your Kyma cluster and namespace, and choose **Copy**.
+    ![configDetails](./cicd50.png)
 
-    Here you can choose the **Expiration seconds** as desired from the dropdown and choose **Generate**.
-    The configuration details should mention a token, your Kyma cluster and namespace.
-   
-    ![configDetails](./cicd11.png)
+6. You need to add your service account to a **Cluster Role Binding**. For this go back to your **Cluster Details** page. 
+![clusterRoleBinding](./cicd51.png)
 
-    Now choose **Copy** as these details will be needed to create your pipeline credentials as described in the step below. 
+    From the left navigation menu, choose **Configurations** and navigate to **Cluster Role Bindings**. Here click on **Create**.
+![binding](./cicd52.png)
 
-7. Navigate to the Continuous Integration and Delivery Application (follow the steps mentioned above). On this page, choose **Credentials** and click on the **\+** to create a new credential. 
+7. On **Create Cluster Role Binding** page, fill in the following details:
+
+    - Name : Give <unique_relevant_name>
+    - Role : Choose **cluster-admin** from the dropdown.
+    - Kind : Choose **ServiceAccount** from the dropdown.
+    - Service Account Namespace : Choose the relevant namespace from the dropdown where the service account is created.
+    - Service Account Name : Choose the created service account from the dropdown.
+
+        Your details page should look like this:
+        ![custer-role-binding](./cicd53.png)
+
+    - Now click on create. You should see your newly created Cluster Role Binding
+
+8. Navigate to the Continuous Integration and Delivery Application. On this page, choose **Credentials** and click on the **\+** to create a new credential. 
 
     Choose a relevant name for your credential e.g: kube-config. For type, choose **Kubernetes Configuration** from the dropdown. In the **Content space**, paste the KubeConfig file of the service account you copied from the previous step. Choose Create.
     ![credential](./cicd12.png)
-
-8. You need to add your service account to a **Cluster Role Binding**. For this go back to your **Cluster Details** page. 
-![clusterRoleBinding](./cicd36.png)
-
-    From the menu, choose **Configurations** and navigate to **Cluster Role Bindings**. Here click on **+ Create Cluster Role Bindingn** .
-![binding](./cicd13.png)
-
-    On this page fill in the following details:
-
-    - Name : <unique_relevant_name>
-    - Role : **cluster-admin**
-    - Kind : **ServiceAccount**
-    - Service Account Namespace : &lt;namespace&gt;
-    - Service Account Name : &lt;service_account_name&gt;
-
-    Your details page should look like this:
-![custer-role-binding](./cicd14.png)
-
-    Now click on create. You should see your newly created Cluster Role Binding.
 
 <br>
 

@@ -6,11 +6,11 @@ If you don't have access to an SAP S/4HANA Cloud system, you can deploy and run 
 
 ## Deploy the Incident Management Application
 
-1. Navigate to the Incident Management application and change *credentials* in *package.json* to 
+1. Navigate to the Incident Management application and change *credentials* of `API_BUSINESS_PARTNER` in *package.json* to 
     ```json
     "credentials": {
             "destination": "<destination_name>",
-            "path": "/v2/odata/v4/api-business-partner"
+            "path": "/odata/v2/api-business-partner"
           }
     ```
 **Note** - As **destination_name**, you must enter the name of the destination created while installing the mock server to SAP BTP Kyma runtime.

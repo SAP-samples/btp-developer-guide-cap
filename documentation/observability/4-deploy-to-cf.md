@@ -2,10 +2,10 @@
 
 ## Set Up the SAP Cloud Logging Service
 
-To access and analyze observability telemetry signals in your SAP BTP, Cloud Foundry runtime, use the [SAP Cloud Logging](https://discovery-center.cloud.sap/serviceCatalog/cloud-logging) service. To configure the SAP Cloud Logging service, add the following lines to the `mta.yaml` file: 
+To access and analyze observability telemetry signals in your SAP BTP, Cloud Foundry runtime, use the [SAP Cloud Logging](https://discovery-center.cloud.sap/serviceCatalog/cloud-logging) service. To configure the SAP Cloud Logging service, add cloud logging configuration under resources, bind it to the incident-management service in requires section. 
 
 ```yaml
-      - name: incidents-srv
+      - name: incident-management
         type: nodejs
         path: gen/srv
         parameters:

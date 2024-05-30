@@ -6,6 +6,7 @@ To access logs in the SAP BTP cockpit, navigate to your subaccount and choose **
 
 Have Identity Authentication SAML 2.0 integrated with the SAP Cloud Logging. See [Integrate SAP Cloud Identity Services - Identity Authentication SAML 2.0 with SAP Cloud Logging](https://help.sap.com/docs/cloud-logging/sap-cloud-logging/prerequisites#integrate-sap-cloud-identity-services---identity-authentication-saml-2.0-with-sap%0Acloud-logging).
 
+> [!TIP] If you are not having SAP Cloud Identity Services, you can login using the service keys in Cloud foundry runtime. For Kyma, The sap-cloud-logging-integration namespace->secrets will have the dashboard url, username and password to login. 
 ## Access the SAP Cloud Logging Service
 
 1. In the SAP BTP cockpit, navigate to your subaccount and choose **Services** > **Instances and Subscriptions**. Then, choose the **Instances** tab. 

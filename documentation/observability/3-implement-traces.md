@@ -7,7 +7,7 @@ Traces allow you to analyze how a request, a message, or a task is being process
 1. Open terminal at the root of your application and add the following dependencies:
     
     ```
-      npm add @cap-js/telemetry @opentelemetry/exporter-metrics-otlp-grpc @opentelemetry/exporter-trace-otlp-grpc @grpc/grpc-js
+      npm add @cap-js/telemetry@0.1.0 @opentelemetry/exporter-metrics-otlp-grpc @opentelemetry/exporter-trace-otlp-grpc @grpc/grpc-js
     ```
      > CAP provides custom metrics and traces using [@cap-js/telemetry](https://github.com/cap-js/telemetry) CDS plugin. 
      

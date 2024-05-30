@@ -74,7 +74,7 @@ To create the SAP Cloud Logging service instance, follow these steps:
     
 7. Ship the logs to the SAP Cloud Logging service. See [Ship Logs to SAP Cloud Logging](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=ship-logs-to-sap-cloud-logging).
 
-8. Ship the distributed traces to the SAP Cloud Logging service. See [Ship Distributed Traces to SAP Cloud Logging](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=ship-logs-to-sap-cloud-logging).
+8. Ship the distributed traces to the SAP Cloud Logging service. See [Ship Distributed Traces to SAP Cloud Logging](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=ship-distributed-traces-to-sap-cloud-logging).
 
 9. Ship the metrics to the SAP Cloud Logging service. See [Ship Metrics to SAP Cloud Logging](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=ship-metrics-to-sap-cloud-logging).
 

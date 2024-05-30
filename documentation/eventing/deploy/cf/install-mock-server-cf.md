@@ -20,7 +20,7 @@ In this section you would redeploy the mock server and bind it to the SAP Event 
         ```yaml
             resources: 
             - name: incident-management-messaging 
-            type: org.cloudfoundry.existing-service  
+              type: org.cloudfoundry.existing-service  
         ```
 
     2. Add the following entry in the `requires` section of the `mock-srv` module:

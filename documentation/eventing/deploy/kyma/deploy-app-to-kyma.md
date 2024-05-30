@@ -111,10 +111,10 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
      --publish
 ```
 
-## Eventing Configuration
+## Configuration to use SAP S/4HANA Cloud system
 > This section is relevant only if you are going to use SAP S/4HANA Cloud system as your remote service.
 
-1. Create a new file called `s4cems.json` at the root folder of the project and copy the below content.
+Create a new file called `s4cems.json` at the root folder of the project and copy the below content.
  
  - As **emClientId**, enter a speaking name for your client (e.g. INCI).
  - As **systemName**, enter the name of your the registered SAP S/4HANA Cloud system. 
@@ -144,7 +144,9 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
         servicePlanName: messaging
     ```
 
-5. Add a configuration to create SAP Event Mesh service instance in `values.yaml` file.
+## Eventing Configuration
+
+1. Add a configuration to create SAP Event Mesh service instance in `values.yaml` file.
 
   ```yaml
   event-mesh:
@@ -152,16 +154,16 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
     servicePlanName: default
   ```
 
-6. Find `srv/bindings` object in values.yaml file and add SAP Event Mesh instance to it
+2. Find `srv/bindings` object in values.yaml file and add SAP Event Mesh instance to it
 
-    ```yaml
-    srv:
-      bindings:
-        event-mesh:
-          serviceInstanceName: event-mesh
-    ```
+  ```yaml
+  srv:
+    bindings:
+      event-mesh:
+        serviceInstanceName: event-mesh
+  ```
 
-7. Add following confirguration to `chart/Chart.yaml` for SAP Event Mesh instance creation
+3. Add following confirguration to `chart/Chart.yaml` for SAP Event Mesh instance creation
 
   ```yaml
   - name: service-instance
@@ -198,18 +200,27 @@ html5-apps-deployer:
   image:
     repository: <your-container-registry>/incident-management-html5-deployer
     tag: <html5apps-deployer-image-version>
-
+```   
 
 ## Deploy CAP Helm Chart
 
 1. Log in to your Kyma cluster.
 
-2. Deploy using Helm command:
+2. Execute one of the below commands based on the integration scenarios
+
+  a. For deploying the Incident Mnaagement Application together with SAPS/4HANA Cloud
   
-  ```sh
-  helm upgrade --install incident-management --namespace incidents-namespace ./chart \
-    --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json --set-file s4-hana-cloud-messaging.jsonParameters=s4cems.json --set-file event-mesh.jsonParameters=event-mesh.json
-  ```
+    ```sh
+    helm upgrade --install incident-management --namespace incidents-namespace ./chart \
+      --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json --set-file s4-hana-cloud-messaging.jsonParameters=s4cems.json --set-file event-mesh.jsonParameters=event-mesh.json
+    ```
+
+  b. For deploying the Incident Mnaagement Application together with Mock Server
+  
+    ```sh
+    helm upgrade --install incident-management --namespace incidents-namespace ./chart \
+      --set-file xsuaa.jsonParameters=xs-security.json --set-file event-mesh.jsonParameters=event-mesh.json
+    ```
 
 This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incidents-namespace***.
 

@@ -79,7 +79,7 @@ async onBusinessPartnerChanged(event, data){
   annotate service.Incidents with @(
   /*adding email to the object page enables users to view the
   changes recieved via Messaging/Eventing*/
-  UI.FieldGroup #GeneratedGroup1 : {
+  UI.FieldGroup #GeneratedGroup : {
   Data : [...,
     {
       $Type : 'UI.DataField',

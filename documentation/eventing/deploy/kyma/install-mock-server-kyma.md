@@ -58,11 +58,9 @@ The Remote Service Integration tutorial was executed and mock server was deploye
     helm upgrade --install mock ./chart -n <namespace>
     ```   
 
-5. Run the below command to get the api url for the installed mock server.
+    ![deployed mock app](../images/mockdeployment.png)
 
-    ```sh
-    kubectl get apirules -n <namespace>
-    ```
+5.  As shown in the above screenshot, api url for the installed mock server can be taken from the output of mock server deployment.
 
 ## Deploy the Incident Management Application
 

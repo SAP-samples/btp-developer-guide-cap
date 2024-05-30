@@ -120,11 +120,21 @@ html5-apps-deployer:
 
 1. Log in to your Kyma cluster.
 
-2. Deploy using Helm command:
+2. Execute one of the below commands based on the integration scenarios
 
-  ```sh
-  helm upgrade --install incident-management --namespace incident-management ./chart \
-  --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
+  a. For deploying the Incident Mnaagement Application together with SAPS/4HANA Cloud
+  
+    ```sh
+    helm upgrade --install incident-management --namespace incident-management ./chart \
+       --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
+    ```
+
+  b. For deploying the Incident Mnaagement Application together with Mock Server
+  
+    ```sh
+    helm upgrade --install incident-management --namespace incidents-namespace ./chart \
+      --set-file xsuaa.jsonParameters=xs-security.json
+    ```
   ```
 This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incident-management***.
 

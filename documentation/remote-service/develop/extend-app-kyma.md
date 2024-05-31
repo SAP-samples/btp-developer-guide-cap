@@ -7,7 +7,7 @@
 
 ## Content
 
-1. If you are using SAP BTP, Cloud Foundry runtime, open SAP Business Applicaiton Studio for development and if you are using SAP BTP, Kyma runtime, open Visual Studio Code for development.
+1. Open Visual Studio Code.
 
 2. Navigate to the project's root folder of the Incident Management application. 
    

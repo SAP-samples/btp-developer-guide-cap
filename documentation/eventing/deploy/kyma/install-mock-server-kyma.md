@@ -16,7 +16,7 @@ The Remote Service Integration tutorial was executed and mock server was deploye
    
         ```yaml
         messaging:
-            fromSecret: incident-management-srv-messaging
+            fromSecret: incident-management-srv-event-mesh
         ```
 
    - Remove event-mesh service instance creation from `values.yaml`
@@ -62,18 +62,3 @@ The Remote Service Integration tutorial was executed and mock server was deploye
 
 5.  As shown in the above screenshot, api url for the installed mock server can be taken from the output of mock server deployment.
 
-## Deploy the Incident Management Application
-
-1. Navigate to incident management app and change credentials in package.json to 
-    ```json
-    "credentials": {
-            "destination": "<destination_name>",
-            "path": "/v2/odata/v4/api-business-partner"
-          }
-    ```
-**Note** - As **destination_name** you must enter the name of the destination created while installing mock server to SAP BTP Kyma Runtime.
-
-2. Follow the steps in the [Deploy to Kyma tutorial](./deploy-app-to-kyma.md), but skip the steps for the **Eventing Configuration**.
->Make sure you deploy the incident management application to the same namespace as the mock server.
-
-3. Now you can build and deploy the Incident Management Application

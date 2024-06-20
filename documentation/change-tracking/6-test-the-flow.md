@@ -20,7 +20,7 @@ Let's get started!
 
 ![Add Conversation](images/add-conversation.png)
 
-5. Since the **message** field of the **conversation** entity has been marked for change tracking, it should be visible in **Change History**. 
+5. Since the **message** field of the **conversation** entity has been marked for change tracking, it should be visible in **Change History**. To see the change history, choose **Show More** and choose the **search icon**. This will load the change tracking data. 
 
 ![Change History for Conversation](images/change-history-conversation.png)
 

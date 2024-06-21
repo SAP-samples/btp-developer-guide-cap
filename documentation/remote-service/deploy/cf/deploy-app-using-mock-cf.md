@@ -14,12 +14,12 @@ Deploy the project to Cloud Foundry using the MTA build file.
 
     ```json
         "API_BUSINESS_PARTNER": {
-        "kind": "odata", 
+        "kind": "odata-v2", 
         "model": "srv/external/API_BUSINESS_PARTNER", 
         "[production]": { 
           "credentials": { 
             "destination": "<destination_name>",
-            "path": "/api-business-partner"
+            "path": "/odata/v2/api-business-partner"
           }
         }
       }

@@ -35,18 +35,3 @@ In this section you would redeploy the mock server and bind it to the SAP Event 
 
 5. When the project is built successfully, you will see a new **mta_archives** folder in your project with the **Mockserver_1.0.0.mtar** file inside. Right-click that file and choose **Deploy MTA Archive**.
 
-## Deploy the Incident Management Application
-
-1. In the menu, choose **File** and then choose **Open Folder** from the dropdown menu.
-1. To open the Incident Management project, choose **projects** &rarr; **incident-nanagement** and then choose **Open**.
-2. Open the **package.json** and change the credentials to:
-   
-    ```json
-    "credentials": {
-            "destination": "<destination_name>",
-            "path": "/odata/v2/api-business-partner"
-          }
-    ```
->Note: You have to replace **destination_name** with the name of the destination created while deploying the mock server in the SAP BTP, Cloud Foundry runtime.
-
-2. Follow the steps in the [Deploy to Cloud Foundry](./deploy-to-cf.md) tutorial.

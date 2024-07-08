@@ -1,0 +1,86 @@
+[
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "# Create a CAP Project",
+        "outputs": []
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "To get started, please use the **Run All** button on top.\n\nAfter successful generation of the CAP project, go to menu **File -> Open Folder → /home/user/projects/incident-management**. Choose OK to open the project folder.",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "rm -rf incident-management\ncds init incident-management\ncd incident-management",
+        "outputs": []
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "## Add a Domain Model",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%%writefile \"db/schema.cds\"\nusing { User, cuid, managed, sap.common.CodeList } from '@sap/cds/common';\nnamespace sap.capire.incidents; \n\n/**\n * Incidents created by Customers.\n */\nentity Incidents : cuid, managed {  \n   customer     : Association to Customers;\n   title        : String  @title : 'Title';\n   urgency        : Association to Urgency default 'M';\n   status         : Association to Status default 'N';\n   conversation  : Composition of many {\n    key ID    : UUID;\n    timestamp : type of managed:createdAt;\n    author    : type of managed:createdBy;\n    message   : String;\n  };\n}\n\n/**\n * Customers entitled to create support Incidents.\n */\nentity Customers : managed { \n  key ID        : String;\n  firstName     : String;\n  lastName      : String;\n  email         : EMailAddress;\n  phone         : PhoneNumber;\n  incidents     : Association to many Incidents on incidents.customer = $self;\n}\n\nentity Status : CodeList {\n  key code: String enum {\n      new = 'N';\n      assigned = 'A'; \n      in_process = 'I'; \n      on_hold = 'H'; \n      resolved = 'R'; \n      closed = 'C'; \n  };\n  criticality : Integer;\n}\n\nentity Urgency : CodeList {\n  key code: String enum {\n      high = 'H';\n      medium = 'M'; \n      low = 'L'; \n  };\n}\n\ntype EMailAddress : String;\ntype PhoneNumber : String;",
+        "outputs": []
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "## Create Services",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%%writefile \"srv/processor-service.cds\"\nusing { sap.capire.incidents as my } from '../db/schema';\n\nservice ProcessorService { \n  entity Incidents as projection on my.Incidents;\n\n  @readonly\n  entity Customers as projection on my.Customers;\n}\nextend projection ProcessorService.Customers with {\n  firstName || ' ' || lastName as name: String\n}",
+        "outputs": []
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "## Add Initial Data to Your Database",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "cds add data",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%%writefile \"db/data/sap.capire.incidents-Customers.csv\"\nID,firstName,lastName,email,phone\n1004155,Daniel,Watts,daniel.watts@demo.com,+44-555-123\n1004161,Stormy,Weathers,stormy.weathers@demo.com,\n1004100,Sunny,Sunshine,sunny.sunshine@demo.com,+01-555-789",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%%writefile \"db/data/sap.capire.incidents-Incidents.csv\"\nID,customer_ID,title,urgency_code,status_code\n3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,1004155,Inverter not functional,H,C\n3a4ede72-244a-4f5f-8efa-b17e032d01ee,1004161,No current on a sunny day,H,N\n3ccf474c-3881-44b7-99fb-59a2a4668418,1004161,Strange noise when switching off Inverter,M,N\n3583f982-d7df-4aad-ab26-301d4a157cd7,1004100,Solar panel broken,H,I",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%%writefile \"db/data/sap.capire.incidents-conversation.csv\"\nID,up__ID,timestamp,author,message\n2b23bb4b-4ac7-4a24-ac02-aa10cabd842c,3b23bb4b-4ac7-4a24-ac02-aa10cabd842c,1995-12-17T03:24:00Z,Harry John,Can you please check if battery connections are fine?\n2b23bb4b-4ac7-4a24-ac02-aa10cabd843c,3a4ede72-244a-4f5f-8efa-b17e032d01ee,1995-12-18T04:24:00Z,Emily Elizabeth,Can you please check if there are any loose connections?\n9583f982-d7df-4aad-ab26-301d4a157cd7,3583f982-d7df-4aad-ab26-301d4a157cd7,2022-09-04T12:00:00Z,Sunny Sunshine,Please check why the solar panel is broken\n9583f982-d7df-4aad-ab26-301d4a158cd7,3ccf474c-3881-44b7-99fb-59a2a4668418,2022-09-04T13:00:00Z,Bradley Flowers,What exactly is wrong?",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%%writefile \"db/data/sap.capire.incidents-Status.csv\"\ncode,descr,criticality\nN,New,3\nA,Assigned,2\nI,In Process,2\nH,On Hold,3\nR,Resolved,2\nC,Closed,4",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%%writefile \"db/data/sap.capire.incidents-Urgency.csv\"\ncode,descr\nH,High\nM,Medium\nL,Low",
+        "outputs": []
+    }
+]

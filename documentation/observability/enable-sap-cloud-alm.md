@@ -60,23 +60,22 @@ To enable data collection, you need to add the following configuration to your a
 6. Replace the `<tenant-id-of-your-subaccount>` with the tenant/sub-account ID of the account where you are deploying the application. 
 
 
-7. Open **app/incidents/webapp/Component.js** and replace the contents of the file with the following code:
+7. Open **app/incidents/webapp/Component.js**. To collect front-end requests from the launchpad, add the following code line. Replace "ns.incidents.Component" with your application's name.
    ```js
    sap.ui.define(
-    ["sap/fe/core/AppComponent", "sap/ui/performance/trace/FESR", "sap/ui/performance/trace/FESRHelper"], function(Component, FESR, FESRHelper) {
-        "use strict";
-
-	 const pattern = /\/([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})/;
-	 FESR.setActive(true, /*new URI(document.baseURI).path() + */ "/fesr");
-
-        return Component.extend("ns.incidents.Component", {
-            metadata: {
-                manifest: "json"
-            }
-        });
-    }
-   );
+	 ["sap/fe/core/AppComponent", "sap/ui/performance/trace/FESR"], function(Component, FESR) {
+	     "use strict";
+	  FESR.setActive(true, new URI(sap.ui.require.toURL("ns.incidents")).path() + "/fesr");
+	     return Component.extend("ns.incidents.Component", {
+		 metadata: {
+		     manifest: "json"
+		 }
+	     });
+	 }
+	);
    ```
+>[!NOTE] Disclaimer: This is considered a workaround and can be subject to change at any time.   
+   
 8. Open **app/incidents/webapp/xsapp.json** and add the following:
    ```json
    {

@@ -17,6 +17,7 @@ Each of the below tutorials are independent and only needs the beginner tutorial
 - [Data Privacy](./dataprivacy.md) 
 - [Notifications for SAP Build WorkZone using cap-js/notifications](./notifications/readme.md)
 - [Integrate with Authorization Management Service](./xsuaa-to-ams/README.md)
+- [Attachments Service](./attachments-service.md) 
 
 
  

@@ -40,14 +40,14 @@ module.exports = function () {
       }
 ```
 
-4. Open the **srv/processor-service.js** file and add the following code snippet to the `init` method to set up an event listener for the BusinessPartnerChanged event:
+4. Open the **srv/services.js** file and add the following code snippet to the `init` method to set up an event listener for the BusinessPartnerChanged event:
 
 ```js
     this.messaging = await cds.connect.to('messaging');
     this.messaging.on('sap.s4.beh.businesspartner.v1.BusinessPartner.Changed.v1', async ({ event, data }) => await this.onBusinessPartnerChanged(event, data))
 ```
 
-5. In the **srv/processor-service.js** file, add the following method to update the changed Business Partner:
+5. In the **srv/services.js** file, add the following method to update the changed Business Partner:
 
 ```js
 async onBusinessPartnerChanged(event, data){
@@ -76,7 +76,7 @@ async onBusinessPartnerChanged(event, data){
 7. To see that your changes are replicated in the user interface, open the **app/incidents/field.cds** file and add the following code snippet:
 
 ```cds
-  using ProcessorService as service from '../../srv/processor-service';
+  using ProcessorService as service from '../../srv/services';
   using from './annotations.cds';
   annotate service.Incidents with @(
   /*adding email to the object page enables users to view the

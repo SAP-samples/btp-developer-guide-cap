@@ -13,15 +13,15 @@ You have the Incident Management application set up. See the [Develop a Full-Sta
 
 To add logs in the Incident Management application, take advantage of the minimalistic logging facade that CAP provides. To add logging functionality to the Incident Management application:
 
-1. Open `srv/processor-service.js`.
-2. Add the following lines to you the code of the **srv/processor-service.js** file.
+1. Open `srv/services.js`.
+2. Add the following lines to you the code of the **srv/services.js** file.
    
    ```javascript
      const cds = require('@sap/cds')
      const LOG = cds.log('processor-service');
    ```
 
-3. To define logs as part of the custom logic, add the following lines to the code of the **srv/processor-service.js** file.
+3. To define logs as part of the custom logic, add the following lines to the code of the **srv/services.js** file.
    
    ```javascript
     if (status_code === 'C'){

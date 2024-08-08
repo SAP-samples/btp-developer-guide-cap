@@ -2,14 +2,14 @@
 
 The Terraform provider for SAP Business Technology Platform (BTP) enables you to automate the provisioning, management, and configuration of resources on SAP BTP. By leveraging this provider, you can simplify and streamline the deployment and maintenance of SAP BTP services and applications.
 
-Currently, the terraform provider for SAP BTP is available in beta for non productive usage: [Terraform provider for SAP BTP](https://registry.terraform.io/providers/SAP/btp/latest).
+Currently, the Terraform provider for SAP BTP is available in beta for non productive usage: [Terraform provider for SAP BTP](https://registry.terraform.io/providers/SAP/btp/latest).
 
-The Terraform script documented here automates the setup of an SAP BTP subaccount based on a predefined template. The scripts can be used create SAP BTP subaccount with Cloud Foundry or Kyma runtime. The Terraform script does the below configuration after creating a SAP BTP subaccount:
+The Terraform script documented here automates the setup of an SAP BTP subaccount based on a predefined template. The scripts can be used to create a SAP BTP subaccount with Cloud Foundry or Kyma runtime. The Terraform script does the below configuration after creating a SAP BTP subaccount:
 
 1. Configures the SAP BTP entitlements required to complete the mission. See [Setup SAP BTP Account using Terraform](https://github.com/SAP-samples/btp-terraform-samples/blob/main/released/discovery_center/mission_4327/setup_subaccount_cf/README.md#entitlements).
 2. Enables the SAP BTP runtime (Cloud Foundry or Kyma).
-3. Creates the neccessary subscription to applications: SAP Business Application Studio (BAS), SAP Build Work Zone, standard edition, etc.
-4. Assigns users the neccessary roles required to access the applications, such as SAP Business Application Studio.
+3. Creates the necessary subscription to applications: SAP Business Application Studio (BAS), SAP Build Work Zone, standard edition, etc.
+4. Assigns users the necessary roles required to access the applications, such as SAP Business Application Studio.
 5. Adds additional users to the subaccount.
 
 # Prerequisites

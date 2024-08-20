@@ -23,5 +23,6 @@ Before using this script, make sure you have Terraform downloaded and installed.
 
 To create your subaccount, choose one of the options based on your choice of SAP BTP Runtime for deploying the application: 
 
-- [SAP BTP Subaccount with Cloud Foundry Runtime](https://github.com/SAP-samples/btp-terraform-samples/blob/main/released/discovery_center/mission_4327/setup_subaccount_cf/README.md)
-- [SAP BTP Subaccount with Kyma Runtime](https://github.com/SAP-samples/btp-terraform-samples/blob/main/released/discovery_center/mission_4327/setup_subaccount_kyma/README.md)
+- [SAP BTP Subaccount with Cloud Foundry Runtime](https://github.com/SAP-samples/btp-terraform-samples/blob/main/released/discovery_center/mission_4327/step1/README.md)
+- [Configure Cloud Foundry in BTP Sub Account](https://github.com/SAP-samples/btp-terraform-samples/blob/main/released/discovery_center/mission_4327/step2_cf/README.md)
+- [SAP BTP Subaccount with Kyma Runtime](https://github.com/SAP-samples/btp-terraform-samples/blob/main/released/discovery_center/mission_4327/step2_kyma/README.md)

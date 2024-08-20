@@ -26,7 +26,7 @@
     {
         "kind": 2,
         "language": "shell",
-        "value": "%%writefile \"db/schema.cds\"\nusing { User, cuid, managed, sap.common.CodeList } from '@sap/cds/common';\nnamespace sap.capire.incidents; \n\n/**\n * Incidents created by Customers.\n */\nentity Incidents : cuid, managed {  \n   customer     : Association to Customers;\n   title        : String  @title : 'Title';\n   urgency        : Association to Urgency default 'M';\n   status         : Association to Status default 'N';\n   conversation  : Composition of many {\n    key ID    : UUID;\n    timestamp : type of managed:createdAt;\n    author    : type of managed:createdBy;\n    message   : String;\n  };\n}\n\n/**\n * Customers entitled to create support Incidents.\n */\nentity Customers : managed { \n  key ID        : String;\n  firstName     : String;\n  lastName      : String;\n  email         : EMailAddress;\n  phone         : PhoneNumber;\n  incidents     : Association to many Incidents on incidents.customer = $self;\n}\n\nentity Status : CodeList {\n  key code: String enum {\n      new = 'N';\n      assigned = 'A'; \n      in_process = 'I'; \n      on_hold = 'H'; \n      resolved = 'R'; \n      closed = 'C'; \n  };\n  criticality : Integer;\n}\n\nentity Urgency : CodeList {\n  key code: String enum {\n      high = 'H';\n      medium = 'M'; \n      low = 'L'; \n  };\n}\n\ntype EMailAddress : String;\ntype PhoneNumber : String;",
+        "value": "%%writefile \"db/schema.cds\"\nusing { User, cuid, managed, sap.common.CodeList } from '@sap/cds/common';\nnamespace sap.capire.incidents; \n\n/**\n* Incidents created by Customers.\n*/\nentity Incidents : cuid, managed {  \ncustomer     : Association to Customers;\ntitle        : String  @title : 'Title';\nurgency        : Association to Urgency default 'M';\nstatus         : Association to Status default 'N';\nconversation  : Composition of many {\n    key ID    : UUID;\n    timestamp : type of managed:createdAt;\n    author    : type of managed:createdBy;\n    message   : String;\n};\n}\n\n/**\n* Customers entitled to create support Incidents.\n*/\nentity Customers : managed { \nkey ID        : String;\nfirstName     : String;\nlastName      : String;\nname          : String = firstName ||' '|| lastName;\nemail         : EMailAddress;\nphone         : PhoneNumber;\nincidents     : Association to many Incidents on incidents.customer = $self;\ncreditCardNo  : String(16) @assert.format: '^[1-9]\\d{15}$';\naddresses     : Composition of many Addresses on addresses.customer = $self;\n}\n\nentity Addresses : cuid, managed {\ncustomer      : Association to Customers;\ncity          : String;\npostCode      : String;\nstreetAddress : String;\n}\n\nentity Status : CodeList {\nkey code: String enum {\n    new = 'N';\n    assigned = 'A'; \n    in_process = 'I'; \n    on_hold = 'H'; \n    resolved = 'R'; \n    closed = 'C'; \n};\ncriticality : Integer;\n}\n\nentity Urgency : CodeList {\nkey code: String enum {\n    high = 'H';\n    medium = 'M'; \n    low = 'L'; \n};\n}\n\ntype EMailAddress : String;\ntype PhoneNumber : String;",
         "outputs": []
     },
     {
@@ -38,7 +38,7 @@
     {
         "kind": 2,
         "language": "shell",
-        "value": "%%writefile \"srv/processor-service.cds\"\nusing { sap.capire.incidents as my } from '../db/schema';\n\nservice ProcessorService { \n  entity Incidents as projection on my.Incidents;\n\n  @readonly\n  entity Customers as projection on my.Customers;\n}\nextend projection ProcessorService.Customers with {\n  firstName || ' ' || lastName as name: String\n}",
+        "value": "%%writefile \"srv/services.cds\"\nusing { sap.capire.incidents as my } from '../db/schema';\n\n/**\n* Service used by support personel, i.e. the incidents' 'processors'.\n*/\nservice ProcessorService { \n    entity Incidents as projection on my.Incidents;\n\n    @readonly\n    entity Customers as projection on my.Customers;\n}\n\n/**\n* Service used by administrators to manage customers and incidents.\n*/\nservice AdminService{\n    entity Customers as projection on my.Customers;\n    entity Incidents as projection on my.Incidents;\n}\n\nannotate ProcessorService.Incidents with @odata.draft.enabled; \nannotate ProcessorService with @(requires: 'support'); \nannotate AdminService with @(requires: 'admin'); ",
         "outputs": []
     },
     {
@@ -51,6 +51,12 @@
         "kind": 2,
         "language": "shell",
         "value": "cds add data",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%%writefile \"db/data/sap.capire.incidents-Addresses.csv\"\nID,customer_ID,city,postCode,streetAddress\n17e00347-dc7e-4ca9-9c5d-06ccef69f064,1004155,Rome,00164,Piazza Adriana\nd8e797d9-6507-4aaa-b43f-5d2301df5135,1004161,Munich,80809,Olympia Park\nff13d2fa-e00f-4ee5-951c-3303f490777b,1004100,Walldorf,69190,Dietmar-Hopp-Allee",
         "outputs": []
     },
     {

@@ -7,6 +7,10 @@ The Attachments Service in our Incident Management Application streamlines the s
 
 To follow along with this guide, Complete the prerequisites and ensure that all the required systems are in place.
 
+## Solution Diagram
+
+<img src="./images/attachments-solutiondiagram.png"/>
+
 # Prerequisites
 1. Develop the Incident Management application following the step-by-step tutorial [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
 

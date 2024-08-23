@@ -17,9 +17,9 @@ The package is a *cds-plugin*, which means it automatically handles many aspects
 
 ## Annotate the Models
 
-Once you've included the *cds-plugin*, proceed to insert the `@changelog` annotations into the entities that you want to track changes for in the `processor-service.cds` file.
+Once you've included the *cds-plugin*, proceed to insert the `@changelog` annotations into the entities that you want to track changes for in the `services.cds` file.
 
-Add the below annotations into `processor-service.cds` file.
+Add the below annotations into `services.cds` file.
 
 ```cds
 annotate ProcessorService.Incidents with @changelog: {

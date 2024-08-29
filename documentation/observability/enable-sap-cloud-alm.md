@@ -40,12 +40,12 @@ To enable data collection, you need to add the following configuration to your a
         type: nodejs
         path: gen/srv
         properties:
-          SAP_SAP Cloud ALM_FESR_LOG_LEVEL: debug 
-          SAP_SAP Cloud ALM_DCI_LOG_LEVEL: warn 
-          SAP_SAP Cloud ALM_SERVICE_NAME: incidents-srv 
-          SAP_SAP Cloud ALM_SERVICE_TYPE: SAP_CP_CF
+          SAP_CALM_FESR_LOG_LEVEL: debug
+          SAP_CALM_DCI_LOG_LEVEL: debug
+          SAP_CALM_SERVICE_NAME: incidents-srv
+          SAP_CALM_SERVICE_TYPE: SAP_CP_CF
           OTEL_RESOURCE_ATTRIBUTES: sap.tenancy.tenant_id=<tenant-id-of-your-subaccount> 
-          NODE_ARGS: -r @sap/xotel-agent-ext-js/dist/common/tracer 
+          NODE_ARGS: -r @sap/xotel-agent-ext-js/dist/common/tracer
     ...
         requires:
           - name: incident-management-db

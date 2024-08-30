@@ -24,7 +24,7 @@ Once the application is configured for multitenancy and dependency callback hand
   
 3. In the **app/resources** folder, create a file called **cdm.json** and paste the following:
     
-    ```json
+```json
     [
         {
         "_version": "3.0",
@@ -100,7 +100,7 @@ Once the application is configured for multitenancy and dependency callback hand
           }
        }
     ]
-    ```
+```
 
 4. Automate the setup for HTML5 application deployment by running:
    

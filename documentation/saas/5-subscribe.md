@@ -1,4 +1,4 @@
-# Subscribe to Multitenant Application
+# Subscribe to the Application
 
 You will learn about the lifecycle management of a multitenant application.
 

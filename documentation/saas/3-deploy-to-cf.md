@@ -1,4 +1,4 @@
-# Build and Deploy the Application in the SAP BTP, Cloud Foundry Runtime
+# Deploy in the SAP BTP, Cloud Foundry Runtime
 
 Build and deploy the MTA file with the following command:
 

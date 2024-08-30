@@ -1,4 +1,4 @@
-# Subscribe Tenants
+# Subscribe Tenants to the Application Locally
 
 1. Subscribe to the first tenant locally by using the following command:
 

@@ -1,4 +1,4 @@
-# Enable Multitenancy 
+# Enable Multitenancy for the CAP Application
 
 The `@sap/cds-mtxs` package provides a set of SAP Cloud Application Programming Model (CAP) services which implement multitenancy, features toggles and extensibility, also called 'MTX'. Read more about [`@sap/cds-mtxs`](https://www.npmjs.com/package/@sap/cds-mtxs) at the npm documentation.
 MTX services are implemented in Node.js and can run in the same Node.js server as your application services or in a separate micro services called **sidecars**. All services can be consumed via REST APIs.

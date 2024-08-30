@@ -1,4 +1,4 @@
-# Test Locally
+# Test the CAP Application Locally
 
 For local testing of the multitenancy you have enabled, you have to:
 

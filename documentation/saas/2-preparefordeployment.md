@@ -25,7 +25,6 @@ In the `mta.yaml` file, update the following configurations:
         - name: incidents-auth
         - name: incidents-registry
         - name: incident-management-repo-host # Add
-        - name: incident-management-destination-service # Add
   ```
   
 > **NOTE** 

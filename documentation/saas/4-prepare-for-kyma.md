@@ -10,15 +10,15 @@ Once the application is configured for multitenancy and dependency callback hand
 
 1. Configure the Helm chart for multitenancy using the following command at the root of project:
    
-   ```sh
-    cds add helm
-   ```
+```shell
+cds add helm
+```
    
 2. Build the project using the following command:
    
-   ```sh
-    cds build --production
-    ```
+```shell
+cds build --production
+```
     
 > If the project already has cdm file, skip the next step.
   
@@ -104,7 +104,7 @@ Once the application is configured for multitenancy and dependency callback hand
 
 4. Automate the setup for HTML5 application deployment by running:
    
-```sh
+```shell
     cds add html5-repo
 ```
 
@@ -128,14 +128,14 @@ html5-apps-repo-runtime:
 
 1. Delete the destination configuration from **chat/values.yaml**:
    
-   ```yaml
+```yaml
     destination:
       serviceOfferingName: 'destination'
       servicePlanName: 'lite'
       parameters:
         version: '1.0.0'
         HTML5Runtime_enabled: true
-   ```
+```
    
 2. Delete the destination binding from **chat/values.yaml** whereever it is available.
 3. Under **html5-apps-deployer**, do the following:
@@ -158,7 +158,7 @@ html5-apps-repo-runtime:
             destinations: '[{"forwardAuthToken":true,"name":"srv-api","url":"https://<deployment-name>-srv-<namespace>.<cluster-domain>"}]'
         ```
       
-    >[!NOTE]
+    >
     > Update the placeholder values for cluster-domain, namespace and deployment name.
     > Ensure that the indentation is correctly maintained
     
@@ -176,15 +176,15 @@ Once all the configurations are done, build the images and update the image name
 
 1. Build the **html5-deployer** image:
 
-```sh
-pack build <repository>/incident-management-html5-deployer:<version> \  --path app/incidents \
+```shell
+pack build <repository>/incident-management-html5-deployer:<version> \  --path ui-resources \
     --builder paketobuildpacks/builder-jammy-base \
     --publish
 ```
 
 2. Build the **side-car** image:
 
-```sh
+```shell
 pack build <repository>/incident-management-sidecar:<version> \   --path gen/mtx/sidecar \
      --builder paketobuildpacks/builder-jammy-base \
      --publish
@@ -192,7 +192,7 @@ pack build <repository>/incident-management-sidecar:<version> \   --path gen/mtx
 
 3. Build the **srv** image:
 
-```sh
+```shell
 pack build <repository>/incident-management-srv:<version> \   --path gen/srv \
     --builder paketobuildpacks/builder-jammy-base \
     --publish

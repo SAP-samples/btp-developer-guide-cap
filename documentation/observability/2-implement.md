@@ -17,7 +17,6 @@ To add logs in the Incident Management application, take advantage of the minima
 2. Add the following lines to you the code of the **srv/services.js** file.
    
    ```javascript
-     const cds = require('@sap/cds')
      const LOG = cds.log('processor-service');
    ```
 
@@ -51,7 +50,7 @@ Configure the initial log levels per module through `cds.env.log.levels`, for ex
   ```
 ## Run and Test Locally
 
-Once the application has all the requried configurations, you can test it locally. 
+Once the application has all the required configurations, you can test it locally. 
 
 1. In the terminal, run the application with the `cds watch` command.
 2. Open the application and create a incident. 

@@ -11,7 +11,7 @@ Traces allow you to analyze how a request, a message, or a task is being process
     ```
      > CAP provides custom metrics and traces using [@cap-js/telemetry](https://github.com/cap-js/telemetry) CDS plugin. 
      
-2. Update the code of the `package.json` file with the following configuration:
+2. Update the code of the `package.json` file with `"telemetry": {"kind": "to-cloud-logging"}`  as shown below:
 
    ```javascript
     .... 

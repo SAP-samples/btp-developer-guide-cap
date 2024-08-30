@@ -52,6 +52,6 @@ Custom metrics can be added as shown in the following example:
    ```
   
 
-## Deploy the application
+<!-- ## Deploy the application
 - For BTP Cloud Foundry runtime, follow the steps described [here](./4-deploy-to-cf.md) 
-- For BTP Kyma runtime, follow the steps described [here](./5-deploy-to-kyma.md)
+- For BTP Kyma runtime, follow the steps described [here](./5-deploy-to-kyma.md) -->

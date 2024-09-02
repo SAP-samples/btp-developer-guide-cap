@@ -63,7 +63,7 @@ Once the application is successfully deployed, there is a need to configure desi
 
 ### Create Design Time Destination
 
-#### Create Runtime Secret
+#### Create Design Time Secret in Kyma Runtime (If application is deployed to the Kyma Runtime)
 
 1. Open the Kyma cluster where the application is deployed and navigate to the **Namespace**.
 3. Under **Service Management** > **Service Bindings**, choose **Create**.
@@ -75,7 +75,10 @@ Once the application is successfully deployed, there is a need to configure desi
 9. It will open the secret. Choose **Decode**
 10. Copy the details, you will need them in the next step.
 
-### Configure the Runtime Destination
+
+> If the application is deployed to the **Cloud Foundry** runtime, view the service keys if **HTML5 Runtime** service instance and fill the below configurations.
+
+### Configure the Design Time Destination
 
 1. In the SAP BTP cockpit, navigate to the provider subaccount. 
 2. Choose **Connectivity** > **Destination** and then choose **Create Destination**.
@@ -110,6 +113,10 @@ Once the application is successfully deployed, there is a need to configure desi
     **uri**: `uri-from-secret`
 
     **xsappname**: `xsapp-name`
+
+    **CEP.HTML5contentprovide**: `true`
+
+>**CEP.HTML5contentprovide**: `true` is a mandatory parameter. It should be added to the additional properties of destination configuration.
 
 5. Select the **Use default JDK truststore** checkbox and choose **Save**.
 

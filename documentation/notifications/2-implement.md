@@ -47,9 +47,9 @@
    >
    > As a developer, if you'd like to store types somewhere else, you should update the `cds.requires.notifications.types` property as well.
 
-3. Open the file `processor-service.js`.
+4. Open the file `services.js`.
 
-4. Replace the code with following code:
+5. Replace the code with following code:
 
    ```js
    const cds = require("@sap/cds");

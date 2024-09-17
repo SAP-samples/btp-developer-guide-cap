@@ -27,8 +27,20 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
 ```sh
 cds build --production
 ```
+2. Build the UI applicaiton using the following command:
+```sh
+cd app/incidents
+npm run build
+```
+Now point the terminal back to root of the application.
 
-2. Build the `incident-management-srv` image after updating version `<image-version>` to reflect the change in incident-management-srv app.
+
+>**It is important to change the image version everytime there is a change in the files. If missed the new changes will not be visible after deployment.**
+
+
+3. Build the `incident-management-srv` image after updating version `<image-version>` to reflect the change in incident-management-srv app.
+
+
 
 ```sh
 pack build <your-container-registry>/incident-management-srv:<image-version> \
@@ -37,7 +49,7 @@ pack build <your-container-registry>/incident-management-srv:<image-version> \
      --publish
 ```
 
-3. Build the database image after updating version `<image-version>` to reflect the change in incident-management-hana-deployer app.
+4. Build the database image after updating version `<image-version>` to reflect the change in incident-management-hana-deployer app.
 
 ```sh
 pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
@@ -46,16 +58,16 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
      --publish
 ```
 
-4. Build the HTML5 Deployer image after updating version `<image-version>` to reflect the change in incident-management-html5-deployer app.
+5. Build the HTML5 Deployer image after updating version `<image-version>` to reflect the change in incident-management-html5-deployer app.
 
 ```sh
 pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
-     --path app/incidents \
+     --path ui-resources \
      --builder paketobuildpacks/builder-jammy-base \
      --publish
 ```
 
-5. Add your container image settings to your `chart/values.yaml`.
+6. Add your container image settings to your `chart/values.yaml`.
 
 ```yaml{4,7,8,9,13,14,18,19,23,24}
 ...
@@ -78,6 +90,7 @@ html5-apps-deployer:
     repository: <your-container-registry>/incident-management-html5-deployer
     tag: <html5apps-deployer-image-version>
 ```
+7. Build the application again using `cds build --production`
 
 ## Deploy CAP Helm Chart to Kyma
 
@@ -91,15 +104,15 @@ kubectl label namespace incidents-namespace istio-injection=enabled
 
 3. Deploy using Helm command:
 ```sh
-helm upgrade --install incident-management --namespace incidents-namespace ./chart \
+helm upgrade --install incident-management --namespace incidents-namespace ./gen/chart \
 --set-file xsuaa.jsonParameters=xs-security.json
 ```
 This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incidents-namespace***.
 
-::: tip
+>**TIP:**
+>With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
 
-With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
-:::
+
 The outcome of installation will look something like this:
 
 ![deployed app](./images/deployedapp.png)

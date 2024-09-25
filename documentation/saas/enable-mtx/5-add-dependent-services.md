@@ -6,14 +6,16 @@ Some of the services your application consumes need to be registered as reuse se
 
 Most notably, you will need such dependencies for the SAP Audit Log service, SAP Connectivity service, SAP Destination service, SAP HTML5 Application Repository service for SAP BTP, and SAP Cloud Portal service. All these services are supported natively and can be activated individually configuring them in the cds.requires file. In the most common case, you simply activate service dependencies like this:
 
-1. Open the `mtx/sidecar/package.json` file and add the following:
+1. Open the `mtx/sidecar/package.json` file and add the following dependencies:
 
     ```json
-    "cds": {
-    "requires": {
-        "html5-repo": true
-     }
-    }
+     "html5-host": {
+        "vcap": {
+           "label": "html5-apps-repo",  
+           "plan": "app-host"
+        },
+        "subscriptionDependency": { "uaa": "xsappname" }
+      }
     ```
 
 2. Install the required dependencies inside the `mtx/sidecar` module.

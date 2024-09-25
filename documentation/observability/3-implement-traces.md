@@ -7,25 +7,69 @@ Traces allow you to analyze how a request, a message, or a task is being process
 1. Open terminal at the root of your application and add the following dependencies:
     
     ```
-      npm add @cap-js/telemetry @opentelemetry/exporter-metrics-otlp-grpc @opentelemetry/exporter-trace-otlp-grpc @grpc/grpc-js
+      cds add cloud-logging --with-telemetry
     ```
      > CAP provides custom metrics and traces using [@cap-js/telemetry](https://github.com/cap-js/telemetry) CDS plugin. 
      
-2. Update the code of the `package.json` file with `"telemetry": {"kind": "to-cloud-logging"}`  as shown below:
+    This adds the following dependencies and configurations to your application:
 
-   ```javascript
-    .... 
-    "cds": {
-        "requires": {
-     ....
-            "[production]": {
-                "telemetry": {
-                    "kind": "to-cloud-logging" 
-                }, 
-            }
-     ....
+    In `package.json`:
     ```
+    "dependencies": {
+    
+    "@cap-js/telemetry": ">=0",
+    "@grpc/grpc-js": "^1",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "^0",
+    "@opentelemetry/exporter-trace-otlp-grpc": "^0",
+     "@opentelemetry/host-metrics": "^0",
+    
+    }
+
+    ```
+    
+    
+    In `mta.yaml` the following are added:
+    ```
+        modules:
+        - name: incident-management-srv
+          type: nodejs
+          path: gen/srv
+          requires:
+            - name: incident-management-auth
+            - name: incident-management-db
+            - name: incident-management-cloud-logging # Added
+
+
+       resources:
+        - name: incident-management-cloud-logging  ## Cloud Logging Module Added
+          type: org.cloudfoundry.managed-service
+          parameters:
+            service: cloud-logging
+            service-plan: standard
+            config:
+              ingest_otlp:
+                enabled: true
+    ```
+
+
    > See [Predefined Kinds](https://github.com/cap-js/telemetry/?tab=readme-ov-file#predefined-kinds).
+
+   > NOTE: The versions of these dependencies can vary at the time you are running the above command. It is not necessary to match the version of these dependencies.
+
+2. Update the code of the package.json file with "telemetry": {"kind": "to-cloud-logging"} as shown below:
+  ```
+    .... 
+  "cds": {
+      "requires": {
+    ....
+          "[production]": {
+              "telemetry": {
+                  "kind": "to-cloud-logging" 
+              }, 
+          }
+    ....
+  ```
+Delete the property `"telemetry":"to-cloud-logging"` from `package.json`.
 
 ## Run and Test Locally
 Once the application has all the requried configurations. The application can be tested locally. 

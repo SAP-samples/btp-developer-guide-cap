@@ -25,6 +25,7 @@ In the `mta.yaml` file, update the following configurations:
         - name: incidents-auth
         - name: incidents-registry
         - name: incident-management-repo-host # Add
+        - name: incidents_html_repo_runtime
   ```
   
 > **NOTE** 
@@ -77,6 +78,7 @@ In the `mta.yaml` file, update the following configurations:
           URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/<cloud-service-name>
 
         ```
+     > If you are using a extension landscape, you should replace the ${default-domain} with the mail domain, example : eu10-004 to be used as eu-10   
 4. Update the `incident-management-app-content`:
    
    1. Under the `requires` section, the following dependencies:
@@ -93,7 +95,7 @@ In the `mta.yaml` file, update the following configurations:
            config:
              destinations:
              - forwardAuthToken: true
-               name: capire_incidents-srv-api
+               name: incident-management-srv-api
                url: ~{srv-api/srv-url}
              - name: ui5
                url: https://ui5.sap.com

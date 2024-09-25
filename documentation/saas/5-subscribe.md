@@ -2,8 +2,8 @@
 
 You will learn about the lifecycle management of a multitenant application.
 
-> [!TIP]
-The subscription can be done from the same region where the multitenant application is deployed. For example, if the application is deployed in `eu12`, it can be subscribed from only subaccounts that are part of `eu12` region.
+> **TIP**
+> The subscription can be done from the same region where the multitenant application is deployed. For example, if the application is deployed in `eu12`, it can be subscribed from only subaccounts that are part of `eu12` region.
 
 ## Subscribe to SAP Build Work Zone, Standard Edition
 

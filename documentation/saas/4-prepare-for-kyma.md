@@ -22,7 +22,7 @@ cds build --production
     
 > If the project already has cdm file, skip the next step.
   
-3. In the **app/resources** folder, create a file called **cdm.json** and paste the following:
+3. In the **ui-resources** folder, create a file called **cdm.json** and paste the following:
     
 ```json
     [

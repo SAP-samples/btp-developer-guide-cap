@@ -16,7 +16,7 @@ MTX services are implemented in Node.js and can run in the same Node.js server a
 
 This command adds configuration for the SAP Software-as-a-Service Provisioning service, mtx-sidecar in the mta.yaml file.
 The tenant mode in `XSUAA` is also changed from `dedicated` to `shared`. 
-
+> **TIP:** The above comment is only valid if the project has a MTA already.
 
 
 

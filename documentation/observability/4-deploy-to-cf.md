@@ -1,40 +1,5 @@
 # Enable Observability in the SAP BTP, Cloud Foundry Runtime
 
-## Set Up the SAP Cloud Logging Service
-
-To access and analyze observability telemetry signals in your SAP BTP, Cloud Foundry runtime, use the [SAP Cloud Logging](https://discovery-center.cloud.sap/serviceCatalog/cloud-logging) service. To configure the SAP Cloud Logging service, add cloud logging configuration under resources, bind it to the incident-management service in requires section. 
-
-```yaml
-      - name: incident-management
-        type: nodejs
-        path: gen/srv
-        parameters:
-        buildpack: nodejs_buildpack
-        memory: 256MB
-        build-parameters:
-        builder: npm-ci
-        provides:
-        - name: srv-api # required by consumers of CAP services (e.g. approuter)
-            properties:
-            srv-url: ${default-url}
-        requires:
-        - name: incidents-auth
-        - name: incidents-db
-        - name: incidents-cloud-logging ## add cloud logging service instance
-
-    ...
-    resources:
-    ...
-     - name: incidents-cloud-logging  
-       type: org.cloudfoundry.managed-service  
-       parameters: 
-         service: cloud-logging  
-         service-plan: standard  
-         config:
-          ingest_otlp: 
-            enabled: true 
- ```
-
 ## Deploy the Incident Management Application in the SAP BTP, Cloud Foundry Runtime
 
 1. Assemble everything into a single `mta.tar` archive with the following command:

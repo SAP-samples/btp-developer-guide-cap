@@ -4,6 +4,11 @@
 - [Prepare for Kyma Development](./4-prepare-for-kyma.md)
   
 ## Deploy the Application
+To deploy the application we need to update the gen/charts folder with the new configurations added in the chart/values.yaml file.
+Run the following command:
+
+```cds build --production```
+
 
 To deploy the application, use the following command:
 

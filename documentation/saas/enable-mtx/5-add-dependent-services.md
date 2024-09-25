@@ -9,6 +9,8 @@ Most notably, you will need such dependencies for the SAP Audit Log service, SAP
 1. Open the `mtx/sidecar/package.json` file and add the following dependencies:
 
     ```json
+    "cds":
+    "requires":{
      "html5-host": {
         "vcap": {
            "label": "html5-apps-repo",  
@@ -16,6 +18,7 @@ Most notably, you will need such dependencies for the SAP Audit Log service, SAP
         },
         "subscriptionDependency": { "uaa": "xsappname" }
       }
+    }
     ```
 
 2. Install the required dependencies inside the `mtx/sidecar` module.

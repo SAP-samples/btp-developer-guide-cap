@@ -104,7 +104,7 @@ In the `mta.yaml` file, update the following configurations:
 5. Update `incident-management-destination-service` with the following configurations:
   
    1. Under `parameters`, delete `HTML5Runtime_enabled: true`.
-   2. Change `instance` to `destination`.
+   2. Change `instance` to `subaccount`.
    3. Delete the destinations under it and add the following:
       
       ```yaml

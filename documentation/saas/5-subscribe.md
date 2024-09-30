@@ -58,6 +58,10 @@ Once the application is successfully deployed, there is a need to configure desi
    **Proxy Type**: `Internet`
 
    **Authentication**: `NoAuthentication`
+
+   **CEP.HTML5contentprovide**: `true`
+
+>**CEP.HTML5contentprovide**: `true` is a mandatory parameter. It should be added to the additional properties of destination configuration.
    
 5. Select the **Use default JDK truststore** checkbox and choose **Save**.
 
@@ -94,9 +98,9 @@ Once the application is successfully deployed, there is a need to configure desi
 
    **Authentication**: `OAuth2ClientCredentials`
 
-   **Client ID**: `<Client ID from the runtime secret created in the pervious step>`
+   **Client ID**: `<Client ID from the HTML5 repo runtime secret created in the pervious step>`
 
-   **Client Secret**: `<Client Secret from the runtime secret created in the pervious step>`
+   **Client Secret**: `<Client Secret from the HTML5 repo runtime secret created in the pervious step>`
 
    **Token Service URL**: `<token url from secret create at previous step>/oauth/token`
 
@@ -114,9 +118,7 @@ Once the application is successfully deployed, there is a need to configure desi
 
     **xsappname**: `xsapp-name`
 
-    **CEP.HTML5contentprovide**: `true`
 
->**CEP.HTML5contentprovide**: `true` is a mandatory parameter. It should be added to the additional properties of destination configuration.
 
 5. Select the **Use default JDK truststore** checkbox and choose **Save**.
 

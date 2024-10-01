@@ -3,7 +3,7 @@
 
 Traces allow you to analyze how a request, a message, or a task is being processed throughout your distributed system. To achieve this, `@cap-js/telemetry` wraps all essential functions of `cds.Service` and its derivates. For @cap-js databases (for example, `@cap-js/sqlite`), this includes `prepare()` and subsequent `stmt.run()`.
 
-
+> If you are deploying the application to Cloud Foundry runtime follow the following step:
 1. Open terminal at the root of your application and add the following dependencies:
     
     ```
@@ -56,7 +56,15 @@ Traces allow you to analyze how a request, a message, or a task is being process
 
    > NOTE: The versions of these dependencies can vary at the time you are running the above command. It is not necessary to match the version of these dependencies.
 
-2. Update the code of the package.json file with "telemetry": {"kind": "to-cloud-logging"} as shown below:
+> NOTE: If you are deploying to the Kyma runtime follow this step:
+Open terminal at root of your application and add the following dependencies:
+```sh
+  npm add @cap-js/telemetry @opentelemetry/exporter-metrics-otlp-grpc @opentelemetry/exporter-trace-otlp-grpc @grpc/grpc-js
+```
+
+Update package.json with the following configuration:
+
+2. Update the code of the `package.json` file with "telemetry": {"kind": "to-cloud-logging"} as shown below:
   ```
     .... 
   "cds": {
@@ -69,7 +77,7 @@ Traces allow you to analyze how a request, a message, or a task is being process
           }
     ....
   ```
-Delete the property `"telemetry":"to-cloud-logging"` from `package.json`.
+Delete the property `"telemetry":"to-cloud-logging"` from `package.json` if it is present.
 
 ## Run and Test Locally
 Once the application has all the requried configurations. The application can be tested locally. 

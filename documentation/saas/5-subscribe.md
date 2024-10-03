@@ -53,7 +53,7 @@ Once the application is successfully deployed, there is a need to configure desi
 
    **Type**: `HTTP`
 
-   **URL**: `https://<subscriber-subdomain>-launchpad.cfapps.sap.hana.ondemand.com`
+   **URL**: `https://<subscriber-subdomain>.launchpad.cfapps.sap.hana.ondemand.com`
 
    **Proxy Type**: `Internet`
 
@@ -114,9 +114,9 @@ Once the application is successfully deployed, there is a need to configure desi
 
     **ServiceKeyName**: `<service key name given in kyma`
 
-    **uri**: `uri-from-secret`
+    **uri**: `uri from the HTML5 repo runtime secret`
 
-    **xsappname**: `xsapp-name`
+    **xsappname**: `xsappname from the HTML5 repo runtime secret`
 
 
 

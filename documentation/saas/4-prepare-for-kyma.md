@@ -22,8 +22,8 @@ cds build --production
     
 > If the project already has cdm file, skip the next step.
   
-3. In the **ui-resources** folder, create a file called **cdm.json** and paste the following:
-    
+3. In the **ui-resources/resources** folder, create a file called **cdm.json** and paste the following:
+    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id` . Update the `appId` below with `sap.app.id` of your application.
 ```json
     [
         {
@@ -102,7 +102,7 @@ cds build --production
     ]
 ```
 
-4. Automate the setup for HTML5 application deployment by running:
+1. Automate the setup for HTML5 application deployment by running:
    
 ```shell
     cds add html5-repo

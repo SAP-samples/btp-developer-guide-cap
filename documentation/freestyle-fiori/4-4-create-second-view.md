@@ -152,7 +152,8 @@ import { IconTabBar$SelectEvent } from "sap/m/IconTabBar";
 import IconTabBar from "sap/m/IconTabBar";
 import ListBinding from "sap/ui/model/ListBinding";
 import { Urgency } from "../format/util";
-import { Route$MatchedEvent } from "sap/ui/core/routing/Route"; 
+import { Route$MatchedEvent } from "sap/ui/core/routing/Route";
+import History from "sap/ui/core/routing/History";  
 
 /**
  * @namespace ns.manager.controller
@@ -171,7 +172,12 @@ export default class SpotStatus extends Controller {
     }
 
     navToMain() {
-        UIComponent.getRouterFor(this).navTo("RouteMain");
+        const previousHash = History.getInstance().getPreviousHash();
+        if (previousHash !== undefined) {
+            window.history.go(-1);
+        } else {
+            UIComponent.getRouterFor(this).navTo("RouteMain", {}, true);
+        }
     }
 
     onInit() {

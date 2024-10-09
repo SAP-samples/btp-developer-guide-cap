@@ -46,7 +46,7 @@ To create the SAP Cloud Logging service instance, follow these steps:
     kubectl apply -n sap-cloud-logging-integration -f cloud-logging-instance.yaml 
     ```
        
-1. Wait for the instance to be created, you can check its status using the following command:
+1. Wait for the instance to be created. You can check its status using the following command:
 
     ```
     kubectl get serviceinstances.services.cloud.sap.com -o yaml -n sap-cloud-logging-integration

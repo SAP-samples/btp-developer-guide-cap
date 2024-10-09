@@ -4,20 +4,20 @@
 
 To start streaming logs, metrics and traces from SAP BTP, Kyma runtime to the SAP Cloud Logging service, you need to follow these steps:
 
-1. Enable the Kyma [Telemetry module](https://kyma-project.io/#/telemetry-manager/user/README) by following the steps described as [Quick Install of kyma-project.io](https://kyma-project.io/#/02-get-started/01-quick-install).
+1. Enable the Kyma [Telemetry module](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-telemetry-module) by following the steps described in [Add and Delete a Kyma Module Using Kyma Dashboard](https://help.sap.com/docs/btp/sap-business-technology-platform/enable-and-disable-kyma-module).
 
-2. An instance of SAP Cloud Logging with OpenTelemetry is enabled to ingest distributed traces.
+2. An instance of SAP Cloud Logging with OpenTelemetry is enabled to ingest distributed traces and metrics.
 
 > [!TIP]
 >We recommend that you create an instance of SAP Cloud Logging with the SAP BTP service operator, because it takes care of creation and rotation of the required secret. See [Create an SAP Cloud Logging Instance through SAP BTP Service Operator](https://help.sap.com/docs/cloud-logging/cloud-logging/create-sap-cloud-logging-instance-through-sap-btp-service-operator)
-However, you can choose any other method of creating the instance and the secret, as long as the parameter for the OTLP ingestion is enabled in the instance. For details, see [Configuration Parameters](https://help.sap.com/docs/cloud-logging/cloud-logging/configuration-parameters?locale=en-US&version=Cloud).
+However, you can choose any other method of creating the instance and the secret, as long as the parameter for the OTLP ingestion is enabled in the instance. For details, see [Configuration Parameters](https://help.sap.com/docs/cloud-logging/cloud-logging/configuration-parameters).
 
 To create the SAP Cloud Logging service instance, follow these steps:
 
 1. Log in to the Kyma cluster.
 
 > [!TIP]
-> To log in to the Kyma cluster, follow the [Log In to Your Kyma cluster](https://developers.sap.com/tutorials/deploy-to-kyma.html#1206fdc5-e6d4-4238-8cef-638cc7739ca6) tutorial.
+> To log in to the Kyma cluster, follow the [Access a Kyma Instance Using kubectl](https://help.sap.com/docs/btp/sap-business-technology-platform/access-kyma-instance-using-kubectl) instructions.
 
 1. Create a namespace with the following command:
    
@@ -25,13 +25,13 @@ To create the SAP Cloud Logging service instance, follow these steps:
     kubectl create namespace sap-cloud-logging-integration 
     ```
 
-2. Create a new file called `cls.yaml` and paste the following code:
+2. Create a new file called `cloud-logging-instance.yaml` and paste the following code:
 
     ```
-    apiVersion: services.cloud.sap.com/v1alpha1
+    apiVersion: services.cloud.sap.com/v1
     kind: ServiceInstance
     metadata:
-      name: created-with-sap-btp-service-operators
+      name: sap-cloud-logging
     spec:
       serviceOfferingName: cloud-logging
       servicePlanName: standard
@@ -43,7 +43,7 @@ To create the SAP Cloud Logging service instance, follow these steps:
 3. Apply the configuration with the following command:
 
     ```
-    kubectl apply -n sap-cloud-logging-integration -f cls.yaml 
+    kubectl apply -n sap-cloud-logging-integration -f cloud-logging-instance.yaml 
     ```
        
 4. Wait for the instance to be created, you can check its status using the following command:
@@ -51,7 +51,7 @@ To create the SAP Cloud Logging service instance, follow these steps:
     ```
     kubectl get serviceinstances.services.cloud.sap.com -o yaml -n sap-cloud-logging-integration
     ```
-5. Once the instance is created, create a binding that will provide the required SAP Cloud Logging service secret. Create a file called: `clsbinding.yaml` and paste the following code: 
+5. Once the instance is created, create a binding that will provide the required SAP Cloud Logging service secret. Create a file called: `cloud-logging-binding.yaml` and paste the following code: 
 
     ```
     apiVersion: services.cloud.sap.com/v1
@@ -59,7 +59,7 @@ To create the SAP Cloud Logging service instance, follow these steps:
     metadata:
       name: cls-binding
     spec:
-      serviceInstanceName: created-with-sap-btp-service-operators
+      serviceInstanceName: sap-cloud-logging
       externalName: cloud-logging-created-with-sap-btp-service-operators
       secretName: sap-cloud-logging
       credentialsRotationPolicy:
@@ -69,14 +69,14 @@ To create the SAP Cloud Logging service instance, follow these steps:
     ```
     To apply the configuration, use the following command:
     ```
-    kubectl apply -n sap-cloud-logging-integration -f clsbinding.yaml
+    kubectl apply -n sap-cloud-logging-integration -f cloud-logging-binding.yaml
     ```
     
-7. Ship the logs to the SAP Cloud Logging service. See [Ship Logs to SAP Cloud Logging](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=ship-logs-to-sap-cloud-logging).
+7. Ship the logs to the SAP Cloud Logging service. See [Ship Logs to SAP Cloud Logging](https://help.sap.com/docs/btp/sap-business-technology-platform/integrate-with-sap-cloud-logging?ship-logs-to-sap-cloud-logging).
 
-8. Ship the distributed traces to the SAP Cloud Logging service. See [Ship Distributed Traces to SAP Cloud Logging](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=ship-distributed-traces-to-sap-cloud-logging).
+8. Ship the distributed traces to the SAP Cloud Logging service. See [Ship Distributed Traces to SAP Cloud Logging](https://help.sap.com/docs/btp/sap-business-technology-platform/integrate-with-sap-cloud-logging?ship-distributed-traces-to-sap-cloud-logging).
 
-9. Ship the metrics to the SAP Cloud Logging service. See [Ship Metrics to SAP Cloud Logging](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=ship-metrics-to-sap-cloud-logging).
+9. Ship the metrics to the SAP Cloud Logging service. See [Ship Metrics to SAP Cloud Logging](https://help.sap.com/docs/btp/sap-business-technology-platform/integrate-with-sap-cloud-logging?ship-metrics-to-sap-cloud-logging).
 
     Once the configurations are applied, you can check the status of all telemetry configurations in the Kyma dashboard. They should look like this: 
     <img src="./images/pipelines.png" />

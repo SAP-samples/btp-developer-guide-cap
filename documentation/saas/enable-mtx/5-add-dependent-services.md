@@ -20,8 +20,9 @@ Most notably, you will need such dependencies for the SAP Audit Log service, SAP
       }
     }
     ```
+2. Remove "html5-repo": true, and any other dependencies.
 
-2. Install the required dependencies inside the `mtx/sidecar` module.
+3. Install the required dependencies inside the `mtx/sidecar` module.
 
     ```sh
     cd mtx/sidecar

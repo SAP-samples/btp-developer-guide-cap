@@ -14,15 +14,10 @@ Once the application is configured for multitenancy and dependency callback hand
 cds add helm
 ```
    
-2. Build the project using the following command:
-   
-```shell
-cds build --production
-```
     
 > If the project already has cdm file, skip the next step.
   
-3. In the **ui-resources/resources** folder, create a file called **cdm.json** and paste the following:
+2. In the **ui-resources/resources** folder, create a file called **cdm.json** and paste the following:
     > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id` . Update the `appId` below with `sap.app.id` of your application.
 ```json
     [
@@ -102,13 +97,13 @@ cds build --production
     ]
 ```
 
-1. Automate the setup for HTML5 application deployment by running:
+3. Automate the setup for HTML5 application deployment by running:
    
 ```shell
     cds add html5-repo
 ```
 
-5. Add the following code snippet to **chart/Chart.yaml**  :
+4. Add the following code snippet to **chart/Chart.yaml**  :
 
 ```yaml
 - name: service-instance
@@ -116,7 +111,7 @@ cds build --production
   version: ">0.0.0"
 ```
 
-6. Add the following configurations for creating an html5-apps-repo-runtime service instance in the values.yaml file:
+5. Add the following configurations for creating an html5-apps-repo-runtime service instance in the values.yaml file:
 
 ```yaml
 html5-apps-repo-runtime: 
@@ -169,6 +164,12 @@ html5-apps-repo-runtime:
 ```yaml
 html5-apps-repo-host:
     serviceInstanceName: html5-apps-repo-host
+```
+
+5. Build the project using the following command:
+   
+```shell
+cds build --production
 ```
 
 ## Build the Images

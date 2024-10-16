@@ -24,8 +24,7 @@ In the `mta.yaml` file, update the following configurations:
         - name: incidents-db
         - name: incidents-auth
         - name: incidents-registry
-        - name: incident-management-repo-host # Add
-        - name: incidents_html_repo_runtime
+        - name: incident-management-repo-html5-host # Add
   ```
   
 > **NOTE** 
@@ -64,8 +63,8 @@ In the `mta.yaml` file, update the following configurations:
           sap.cloud.service: ns.incidents.wz
         - Authentication: OAuth2UserTokenExchange
           Name: ns_incidents_wz_incidents_auth
-          ServiceInstanceName: incidents-auth
-          ServiceKeyName: incidents-auth-key
+          ServiceInstanceName: incident-management-auth
+          ServiceKeyName: incident-management-auth-key
           sap.cloud.service: ns.incidents.wz
         ```
     
@@ -86,7 +85,7 @@ In the `mta.yaml` file, update the following configurations:
       ```yaml
         requires:
         - name: srv-api
-        - name: incidents-auth
+        - name: incident-management-auth
       ```
    2. Add the following parameters:
       
@@ -113,7 +112,7 @@ In the `mta.yaml` file, update the following configurations:
           ProxyType: Internet
           CEP.HTML5contentprovider: true
           Type: HTTP
-          URL: https://<tenant_subdomain>-launchpad.${default-domain}
+          URL: https://<provider tenant subdomain>.launchpad.${default-domain}
       ```
    
    4. Delete:

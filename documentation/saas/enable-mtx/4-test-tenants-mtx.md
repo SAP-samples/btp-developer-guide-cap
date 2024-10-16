@@ -26,6 +26,6 @@ This shows that the tenant issolation is working properly.
 
 ## Next Steps
 
-- [**Cloud Foundry** - Add Dependent Services and Prepare for Production](./2-preparefordeployment.md)
+- [**Cloud Foundry** - Add Dependent Services and Prepare for Production](../2-preparefordeployment.md)
 
-- [**Kyma** - Add Dependent Services and Prepare for Production](./4-prepare-for-kyma.md)
+- [**Kyma** - Add Dependent Services and Prepare for Production](../4-prepare-for-kyma.md)

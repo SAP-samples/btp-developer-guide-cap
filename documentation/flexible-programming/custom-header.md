@@ -2,6 +2,8 @@
 
 In this section, you will edit the Object Page with the SAP Fiori Tools page editor and add the custom header section using the **Flexible Programming Model**. This custom header section is to showcase the Micro Process Flow. The processor can use the  [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident.
 
+Before you start with the next steps, please ensure the [prerequisites](./prerequisites.md) are completed.
+
 ## Edit Object Page
 
 1. In the **Application Info - incidents** tab, click the **Open Page Map** tile. 

@@ -2,6 +2,8 @@
 
 In this section, you will edit the Object Page with the SAP Fiori Tools page editor and add a custom action **Location** using the **Flexible Programming Model**. This custom action is to showcase the  location of the customer in a dialog using the [GeoMap](https://sapui5.hana.ondemand.com/#/api/sap.ui.vbm.GeoMap) control.
 
+Before you start with the next steps, please ensure the [prerequisites](./prerequisites.md) are completed.
+
 ## Edit the Object Page
 
 1. In the **Application Info - incidents** tab, click the **Open Page Map** tile. 

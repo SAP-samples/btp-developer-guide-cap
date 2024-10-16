@@ -2,6 +2,8 @@
 
 In this chapter, we add a custom section **Process Flow** in the Object page using the **Flexible Programming Model**. This custom section is to showcase the process flow of the incidents using the [ProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.ProcessFlow) control.
 
+Before you start with the next steps, please ensure the [prerequisites](./prerequisites.md) are completed.
+
 ## Edit Object Page
 
 1. In the **Application Info - incidents** tab, click the **Open Page Map** tile. 

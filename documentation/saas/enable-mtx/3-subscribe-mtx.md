@@ -1,6 +1,6 @@
 # Subscribe Tenants to the Application Locally
 
-1. Subscribe to the first tenant locally by using the following command:
+1. Subscribe to the first tenant locally by using the following command at root of the project:
 
   ```shell
   cds subscribe t1 --to http://localhost:4005 -u yves:

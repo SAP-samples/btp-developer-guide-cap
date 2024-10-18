@@ -1,18 +1,13 @@
 # Enable Observability in the SAP BTP, Kyma Runtime
 
-## Set Up the SAP Cloud Logging Service
+## Prerequisites
 
-To start streaming logs, metrics and traces from SAP BTP, Kyma runtime to the SAP Cloud Logging service, you need to follow these steps:
+- Add the Kyma [Telemetry module](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-telemetry-module) by following the steps described in [Add and Delete a Kyma Module Using Kyma Dashboard](https://help.sap.com/docs/btp/sap-business-technology-platform/enable-and-disable-kyma-module).
+- Have an entitlement for the service `cloud-logging` assigned to your subaccount.
 
-1. Add the Kyma [Telemetry module](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-telemetry-module) by following the steps described in [Add and Delete a Kyma Module Using Kyma Dashboard](https://help.sap.com/docs/btp/sap-business-technology-platform/enable-and-disable-kyma-module).
+## Set Up SAP Cloud Logging and integrate it with the SAP BTP, Kyma runtime
 
-2. An instance of SAP Cloud Logging with OpenTelemetry is enabled to ingest distributed traces and metrics.
-
-   > [!TIP]
-   >We recommend that you create an instance of SAP Cloud Logging with the SAP BTP service operator, because it takes care of creation and rotation of the required secret. See [Create an SAP Cloud Logging Instance through SAP BTP Service Operator](https://help.sap.com/docs/cloud-logging/cloud-logging/create-sap-cloud-logging-instance-through-sap-btp-service-operator)
-   However, you can choose any other method of creating the instance and the secret, as long as the parameter for the OTLP ingestion is enabled in the instance. For details, see [Configuration Parameters](https://help.sap.com/docs/cloud-logging/cloud-logging/configuration-parameters).
-
-To create the SAP Cloud Logging service instance, follow these steps:
+To create a SAP Cloud Logging instance and start streaming logs, metrics and traces from SAP BTP, Kyma runtime to the instance, you need to follow these steps:
 
 1. Log in to the Kyma cluster.
 
@@ -40,12 +35,18 @@ To create the SAP Cloud Logging service instance, follow these steps:
         ingest_otlp:
           enabled: true
     ```
+    The `ingest_otlp` will enable support for OpenTelemetry based data, which is required for the ingestion of distributed traces and metrics.
+
 1. Apply the configuration with the following command:
 
     ```
     kubectl apply -n sap-cloud-logging-integration -f cloud-logging-instance.yaml 
     ```
-       
+    This will trigger the provisioning of a SAP CLoud Logging instance
+   > [!TIP]
+   > In this guide you create an instance of SAP Cloud Logging with the SAP BTP service operator, which is the recommended way. It takes care of creation and periodic rotation of the required secret. See [Create an SAP Cloud Logging Instance through SAP BTP Service Operator](https://help.sap.com/docs/cloud-logging/cloud-logging/create-sap-cloud-logging-instance-through-sap-btp-service-operator)
+   However, you can choose any other method of creating the instance and the secret, as long as the parameter for the OTLP ingestion is enabled in the instance. For details, see [Configuration Parameters](https://help.sap.com/docs/cloud-logging/cloud-logging/configuration-parameters).
+
 1. Wait for the instance to be created. You can check its status using the following command:
 
     ```
@@ -64,7 +65,7 @@ To create the SAP Cloud Logging service instance, follow these steps:
       secretName: sap-cloud-logging
       credentialsRotationPolicy:
         enabled: true
-        rotationFrequency: 168h
+        rotationFrequency: 1440h
 
     ```
     To apply the configuration, use the following command:

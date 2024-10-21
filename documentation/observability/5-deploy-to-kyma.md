@@ -85,7 +85,7 @@ To create an SAP Cloud Logging instance and start streaming logs, metrics, and t
     > [!TIP]
     > Learn how to access [Kyma dashboard](https://learning.sap.com/learning-journeys/deliver-side-by-side-extensibility-based-on-sap-btp-kyma-runtime/using-the-kyma-dashboard_d23b12a1-d17c-491d-a80b-cb78039e317e).
 
-1.  For easier access, adjust the Kyma dashboard navigation. See [Kyma Dashboard Integration](https://kyma-project.io/#/telemetry-manager/user/integration/sap-cloud-logging/README?id=set-up-kyma-dashboard-integration).
+1.  For easier access, adjust the Kyma dashboard navigation. See [Kyma Dashboard Integration](https://help.sap.com/docs/btp/sap-business-technology-platform/integrate-with-sap-cloud-logging?locale=en-US&version=Cloud#set-up-kyma-dashboard-integration).
 
 # Deploy the Incident Management Application in the SAP BTP, Kyma Runtime
 

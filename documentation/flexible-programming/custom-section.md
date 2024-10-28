@@ -1,8 +1,8 @@
 # Add Custom Section
 
-In this chapter, we add a custom section **Process Flow** in the Object page using the **Flexible Programming Model**. This custom section is to showcase the process flow of the incidents using the [ProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.ProcessFlow) control.
+You will add a custom section **Process Flow** in the Object page using the **Flexible Programming Model**. This custom section is to showcase the process flow of the incidents using the [ProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.ProcessFlow) control.
 
-Before you start with the next steps, please ensure the [prerequisites](./prerequisites.md) are completed.
+Before you start with the next steps, make sure the steps in [Add Custom Action](./custom-action.md) are completed.
 
 ## Edit Object Page
 
@@ -16,12 +16,12 @@ Before you start with the next steps, please ensure the [prerequisites](./prereq
     >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
     >2. Choose **Fiori: Open Application Info**.
 
-2. In the **Incident Object Page** tile, click the **Pencil** icon next to the title.
+2. In the **IncidentObjectPage** tile, click the **Pencil** icon next to the title.
 
     <!-- border; size:540px --> 
     ![Edit object page](./images/obj0.png)
 
-3. In the **Sections**, click on **+** button and choose **Add Custom Column**.
+3. In the **Sections**, click **+** and choose **Add Custom Section**.
 
     ![step 3](./images/custom-section-1.png)
 
@@ -29,17 +29,19 @@ Before you start with the next steps, please ensure the [prerequisites](./prereq
 
     | Key  | Value  |
     |---|---|
-    | **Title**  | `Process Flow` (Click the **Globe** icon to generate a translatable text key).  |
+    | **Title**  | `Process Flow`. Click the **Globe** icon to generate a translatable text key.  |
     | **View Type**  | `Fragment`   |
     | **Select Your Fragment**  | `Create New Fragment`  |
     | **Fragment Name**  | `ProcessFlow`  |
     | **Anchor Section** | `Overview (ID: i18nOverview)` |
     | **Placement** | `After` |
-    | **Generate Event Handler** | `No` |
+    | **Generate Event Handler** | `False` |
     
-    This will generate the fragment file.
+5. Choose **Add**.
+    
+ This will generate the fragment file.
 
-5. Open the `ProcessFlow.fragment.xml` file located in `app/incidents/webapp/ext/fragment` and add the following content into it.
+6. Open the `ProcessFlow.fragment.xml` file located in `app/incidents/webapp/ext/fragment` and replace the code with the following one:
 
 ```xml
 <core:FragmentDefinition
@@ -90,7 +92,7 @@ The above fragment xml includes the [ProcessFlow](https://sapui5.hana.ondemand.c
 
 1. Create a new folder `data` in the location `app/incidents/webapp/ext`.
 
-2. Create a new file `lanes.json` inside the `data` folder that we created in previous step and add the following content into it.
+2. Create a new file `lanes.json` inside the `data` folder and add the following code into it.
 
 ```json
 {
@@ -244,6 +246,19 @@ In the above code, we override the `routing` hooks and attach the lifecycle meth
 
 3. Finally, add the constant `statusCodeMapping`. This is used to map the Incident status code with the process flow node.
 
+Replace:
+
+```
+sap.ui.define([
+	'sap/ui/core/mvc/ControllerExtension', 
+	"sap/m/MessageToast",
+	"sap/ui/model/json/JSONModel",
+], 
+function (ControllerExtension, MessageToast, JSONModel) {
+	'use strict';
+```
+with 
+
 ```js hl="8-15"
 sap.ui.define([
 	'sap/ui/core/mvc/ControllerExtension', 
@@ -260,11 +275,10 @@ function (ControllerExtension, MessageToast, JSONModel) {
 		"R": 3,
 		"C": 4
 	};
-...
 ```
 
 :::details OPControllerExtension.controller.js
-After adding the above changes, the controller file should look like this
+After adding the changes above, the controller file should look like this:
 
 ```js
 sap.ui.define([
@@ -403,8 +417,11 @@ function (ControllerExtension, MessageToast, JSONModel) {
 ```
 :::
 
-## Check the result
+## Check the Result
 
-Open the Object page of the incidents and find the section **Process Flow**.
+1. In SAP Business Application Studio, you might need to close the session of the **SAP Fiori tools: Application Modeler** in the terminal, if there is an open one.
+2. Go to the **Application Info - incidents** tab, and click the **Preview Application** tile.
+3. The application opens in a separate tab of the browser.
+4. In the Incident Management application, open an incident and find the section **Process Flow**.
 
 ![Result](./images/intro-custom-section.png)

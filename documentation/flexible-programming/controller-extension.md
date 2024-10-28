@@ -1,10 +1,12 @@
 # Add Controller Extension
 
-In this section, we add a controller extension to showcase how we can extend the Fiori Elements Object Page controller and override the edit flow using the **Flexible Programming Model**. In addition, the same controller extension file can be used to include the event methods for other controls in the page.
+In this section, you will add a controller extension to showcase how you can extend the SAP Fiori elements Object Page controller and override the edit flow using the **Flexible Programming Model**. In addition, the same controller extension file can be used to include the event methods for other controls in the page.
+
+Before you start with the next steps, make sure the steps in [Add Custom Header Section](./custom-header.md) are completed.
 
 ## Add Extension Controller File
 
-1. In the **Application Info - incidents** tab, click the **Open Page Map** tile. 
+1. In SAP Business Application Studio, in the **Application Info - incidents** tab, click the **Open Page Map** tile. 
 
     <!-- border; size:540px --> 
     ![Page Map](./images/PageMap.png)
@@ -14,24 +16,26 @@ In this section, we add a controller extension to showcase how we can extend the
     >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
     >2. Choose **Fiori: Open Application Info**.
 
-2. In the **Incident Object Page** tile, click the icon next to the **Pencil** icon as mentioned in the below image and scroll to the end to find the `Controller Extension: #IncidentsObjectPage` and click on the **Add Controller Extension** button in the `Controller Extensions: Object Page` section.
+2. In the **IncidentObjectPage** tile, click the **Puzzle** icon and scroll to the end to find the `Controller Extension: #IncidentsObjectPage`. Choose the **Add Controller Extension** in the `Controller Extensions: Object Page` section.
 
     ![step 1](./images/controller-extension-1.png)
 
-3. In the popup, enter the following details
+3. In the popup, enter the following details:
 
     - **Select Controller File**: `New`
     - **Controller Name**: `OPControllerExtension`
 
     ![step 2](./images/controller-extension-2.png)
 
-4. Click on **Add**. This will generate the controller extension file `OPControllerExtension.controller.js`.
+4. Choose **Add**. 
+
+This will generate the controller extension file `OPControllerExtension.controller.js`.
 
 ## Override Edit Flow
 
-In this section you will use the controller extension to extend lifecycle hooks and override public methods of Edit Flow in the base controller.
+Use the controller extension to extend the lifecycle hooks and override public methods of the Edit Flow in the base controller.
 
-1. Open the `OPControllerExtension.controller.js` file located in `app/incidents/webapp/ext/controller` and replace with the following content into it.
+1. Open the `OPControllerExtension.controller.js` file located in `app/incidents/webapp/ext/controller` and replace the code with the following one:
 
 ```js
 
@@ -130,17 +134,17 @@ function (ControllerExtension, MessageToast, JSONModel) {
 
 :::details
 
-`Edit Flow` - Allows to override the lifecycle hooks of the Fiori Elements Object page base controller.
+`Edit Flow` - Allows to override the lifecycle hooks of the SAP Fiori elements Object page base controller.
 
-`onBeforeEdit` - We extend the before Edit hook to show a confirmation dialog before editing the incident details.
+`onBeforeEdit` - Allows you to extend the before Edit hook to show a confirmation dialog before editing the incident details.
 
-`onAfterSave` - We extend the after Save hook to show the title of the incident which is edit and saved.
+`onAfterSave` - Allows you to extend the after Save hook to show the title of the incident which is edited and saved.
 
-`onBeforeDiscard` - We extend the before Discard hook to show a confirmation dialog.
+`onBeforeDiscard` - Allows you to extend the before Discard hook to show a confirmation dialog.
 
-`Open Dialog` - To open the confirmation Dialog.
+`Open Dialog` - Allows you to open the confirmation dialog.
 
-`Close Dialog` - To close the dialog.
+`Close Dialog` - Allows you to close the dialog.
 
 :::
 
@@ -181,23 +185,26 @@ function (ControllerExtension, MessageToast, JSONModel) {
 
 :::details
 
-The above fragment includes the confirmation dialog with the message strip and the buttons which is used for the edit flow.
+The above fragment includes the confirmation dialog with the message strip and the buttons which are used for the Edit flow.
 :::
 
-## Check the result
+## Check the Result
 
-1. Open the object page of the incident and click on the **Edit** button.
+1. In SAP Business Application Studio, you might need to close the session of the **SAP Fiori tools: Application Modeler** in the terminal, if there is an open one.
+2. Go to the **Application Info - incidents** tab, and click the **Preview Application** tile.
+3. The application opens in a separate tab of the browser.
+4. On the Incident Management application, select an incident and choose **Edit**.
 
     ![result 1](./images/intro-edit-flow.png)
 
-Use the **Continue** or **Cancel** button to see the behavior.
+Choose **Continue** or **Cancel** to see the behavior.
 
-2. Once you **Continue**, click on the **Discard Draft** button to notice the **Confirmation**.
+5. Once you choose **Continue**, choose **Discard Draft** to see the **Confirmation**.
 
     ![result 2](./images/controller-extension-3.png)
 
-Use the **Continue** or **Cancel** button to see the behavior.
+Choose **Continue** or **Cancel** to see the behavior.
 
-3. Similarly, click on the **Save** button in the Edit mode and notice the **Message Toast** with the Incident title.
+6. Similarly, choose **Edit** and then choose **Save** to see the **Message Toast** with the incident title.
 
     ![result 3](./images/controller-extension-4.png)

@@ -2,7 +2,7 @@
 
 In this section, you will edit the Object Page with the SAP Fiori Tools page editor and add a custom action **Location** using the **Flexible Programming Model**. This custom action is to showcase the  location of the customer in a dialog using the [GeoMap](https://sapui5.hana.ondemand.com/#/api/sap.ui.vbm.GeoMap) control.
 
-Before you start with the next steps, please ensure the [prerequisites](./prerequisites.md) are completed.
+Before you start with the next steps, make sure the steps in [Add Controller Extension](./controller-extension.md) are completed.
 
 ## Edit the Object Page
 
@@ -16,27 +16,29 @@ Before you start with the next steps, please ensure the [prerequisites](./prereq
     >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
     >2. Choose **Fiori: Open Application Info**.
 
-2. In the **Incident Object Page** tile, click the **Pencil** icon next to the title.
+2. In the **IncidentObjectPage** tile, click the **Pencil** icon next to the title.
 
     <!-- border; size:540px --> 
     ![Edit object page](./images/obj0.png)
 
-3. In the **Sections** &rarr; **Overview** **Subsections** &rarr; **General Information** **Form** &rarr; **Actions**, click the **+** icon and choose **Add Custom Action**.
+3. In the **Sections** &rarr; **Overview** &rarr; **Subsections** &rarr; **General Information** &rarr; **Form** &rarr; **Actions**, click the **+** icon and choose **Add Custom Action**.
 
 4. In the popup, enter the following details
 
     | Key  | Value  |
     |---|---|
     | **Action ID**  | `Location`  |
-    | **Button Text**  | `Location` (Click the **Globe** icon to generate a translatable text key).  |
+    | **Button Text**  | `Location`. Click the **Globe** icon to generate a translatable text key.  |
     | **Select Action Handler File**  | `Use Existing File`  |
     | **Handler File**  | `OPControllerExtension.controller (ns.incidents.ext.controller.OPControllerExtension.controller, JS)`  |
     | **Select Action Handler Method** | `Create New Function` |
     | **Handler Method** | `viewLocation` |
 
-5. Click on **Add**. This will generate the new method `viewLocation` in the file `OPControllerExtension.controller.js` location in `app/incidents/webapp/ext/controller`.
+5. Choose **Add**. 
 
-6. Open the `OPControllerExtension.controller.js` file located in `app/incidents/webapp/ext/controller` and add the following code for the `viewLocation` method.
+This will generate the new method `viewLocation` in the file `OPControllerExtension.controller.js` location in `app/incidents/webapp/ext/controller`.
+
+6. Open the `OPControllerExtension.controller.js` file located in `app/incidents/webapp/ext/controller` and add the following code in the `viewLocation` method.
 
 ```js
     viewLocation: function() {
@@ -59,7 +61,7 @@ Before you start with the next steps, please ensure the [prerequisites](./prereq
 The above code will open the GeoMap fragment in a dialog.
 :::
 
-7. Create a new file `GeoMap.fragment.xml` in the location `app/incidents/webapp/ext/fragment` and add the following content into it.
+7. Create a new file `GeoMap.fragment.xml` in the location `app/incidents/webapp/ext/fragment` and add the following code into it.
 
 ```xml
 <core:FragmentDefinition
@@ -124,9 +126,9 @@ The above is a fragment which contains the GeoMap and the marker location based 
 
 ## Add Geo Location Details
 
-In this section, we extend the Incident Management CAP service to include the geo location details of the customer.
+In this section, you will extend the Incident Management CAP service to include the Geo location details of the customer.
 
-1. Create a new file `extend.cds` in the location `srv` and add the following content into it.
+1. Create a new file `extend.cds` in the location `srv` and add the following code into it.
 
 ```cds
 using { sap.capire.incidents as my } from '../db/schema';
@@ -137,7 +139,7 @@ extend my.Customers {
 
 ```
 
-2. Open the `sap.capire.incidents-Customers.csv` file located in `db/data` and replace with the following content.
+2. Open the `sap.capire.incidents-Customers.csv` file located in `db/data` and replace the code with the following one:
 
 ```csv
 ID,firstName,lastName,email,phone,pos
@@ -147,12 +149,15 @@ ID,firstName,lastName,email,phone,pos
 
 ```
 
-## Check the result
+## Check the Result
 
-1. Open the object page of the incident and click on the **Location** button.
+1. In SAP Business Application Studio, you might need to close the session of the **SAP Fiori tools: Application Modeler** in the terminal, if there is an open one.
+2. Go to the **Application Info - incidents** tab, and click the **Preview Application** tile.
+3. The application opens in a separate tab of the browser.
+4. In the Incident Management application, open an incident and choose **Location**.
 
     ![result 1](./images/custom-action-3.png)
 
-2. This will open the Dialog with the GeoMap location of the customer.
+5. This will open the Dialog with the GeoMap location of the customer.
 
     ![result 2](./images/custom-action-4.png)

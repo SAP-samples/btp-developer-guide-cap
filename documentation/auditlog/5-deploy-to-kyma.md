@@ -156,7 +156,7 @@ kubectl label namespace incidents-namespace istio-injection=enabled
 3. Deploy using Helm command:
    
 ```sh
-helm upgrade --install incident-management --namespace incidents-namespace ./chart \
+helm upgrade --install incident-management --namespace incidents-namespace ./gen/chart \
 --set-file xsuaa.jsonParameters=xs-security.json
 ```
 This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incidents-namespace***.

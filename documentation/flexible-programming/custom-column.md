@@ -1,12 +1,12 @@
 # Extension Points: Add Custom Column
 
-In this section, you will modify the List Report page with the SAP Fiori Tools page editor and add a custom column using the **Flexible Programming Model**. This custom column is used to showcase the process flow of the incident. The processor can use the  [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident.
+In this section, you will modify the **List Report** page with the SAP Fiori Tools page editor and add a custom column using the **Flexible Programming Model**. This custom column is used to show the process flow of the incident. The processor can use the  [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident.
 
 Before you start with the next steps, please ensure the [prerequisites](./prerequisites.md) are completed.
 
 ## Edit List Report
 
-1. In the **Application Info - incidents** tab, click the **Open Page Map** tile. 
+1. In SAP Business Application Studio, go to the **Application Info - incidents** tab, and click the **Open Page Map** tile. 
 
     <!-- border; size:540px --> 
     ![Page Map](./images/PageMap.png)
@@ -21,23 +21,24 @@ Before you start with the next steps, please ensure the [prerequisites](./prereq
     <!-- border; size:540px --> 
     ![List Report Page Config](./images/ls3.png) 
 
-3.  In the **Table** &rarr; **Columns** &rarr;. Click on the **+** icon and choose **Add Custom Column**.
+3.  In the **Table** &rarr; **Columns**. Click the **+** icon and choose **Add Custom Column**.
 
     <!-- border; size:540px --> 
     ![step 3](./images/custom-column-1.png)
 
 4. In the popup, enter the following details.
 
-    - **Header Text**: `Progress` (Click the **Globe** icon to generate a translatable text key).
+    - **Header Text**: `Progress`. Click the **Globe** icon to generate a translatable text key and then choose **Apply**.
     - **Column Fragment Name**:  `StatusProcess`
-    - **Anchor Column**: `Status (ID: status/descr)`
+    - **Anchor Column**: `Status (ID: status_code)` 
     - **Placement**: `After`
+    - **Generate Event Handler (Controller)**: `True`
     
     ![step 4](./images/custom-column-2.png)
 
-5. Click on the **Add** button. This will generate the fragment and handler file.
+5. Choose **Add**. This will generate the fragment and handler file.
 
-6. Open the `StatusProcess.fragment.xml` file located in `app/incidents/webapp/ext/fragment` and enter the following code.
+6. Open the `StatusProcess.fragment.xml` file located in `app/incidents/webapp/ext/fragment` and replace the generated code with the following one:
 
 ```xml
 <core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:m="sap.m" xmlns="sap.suite.ui.commons">
@@ -60,7 +61,7 @@ Before you start with the next steps, please ensure the [prerequisites](./prereq
 </core:FragmentDefinition>
 ```
 
-7. Open the handler file `StatusProcess.js` located in `app/incidents/webapp/ext/fragment` and copy the following code into it.
+7. Open the handler file `StatusProcess.js` located in `app/incidents/webapp/ext/fragment` and replace the generated code with the following one:
 
 ```js
 sap.ui.define([
@@ -97,7 +98,10 @@ sap.ui.define([
 
 ## Check the result
 
-8. The list page of the Incident Management application should look like this:
+1. In SAP Business Application Studio, go to the **Application Info - incidents** tab, and click the **Preview Application** tile.
+2. The application opens in a separate tab of the browser prompting you for a user and password. In the **User** field, enter **alice**, don't use capital letter A. Leave the **Password** field empty. Press **Enter**.  
+
+The list page of the Incident Management application should look like this:
 
 ![result](./images/intro-custom-column.png)
 

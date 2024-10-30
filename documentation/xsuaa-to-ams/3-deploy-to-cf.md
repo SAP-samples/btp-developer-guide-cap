@@ -34,7 +34,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
         ...
         "dependencies": {
         "@sap/ams": "^1.14.2",
-        "@sap/cds": "^7.0",
+        "@sap/cds": "^8.0",
         "@sap/xssec": "^3.3.5",
         "hdb": "^0.19.0",
         "passport": "^0"

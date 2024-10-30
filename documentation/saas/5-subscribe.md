@@ -59,9 +59,9 @@ Once the application is successfully deployed, there is a need to configure desi
 
    **Authentication**: `NoAuthentication`
 
-   **CEP.HTML5contentprovide**: `true`
+   **CEP.HTML5contentprovider**: `true`
 
->**CEP.HTML5contentprovide**: `true` is a mandatory parameter. It should be added to the additional properties of destination configuration.
+>**CEP.HTML5contentprovider**: `true` is a mandatory parameter. It should be added to the additional properties of destination configuration.
    
 5. Select the **Use default JDK truststore** checkbox and choose **Save**.
 

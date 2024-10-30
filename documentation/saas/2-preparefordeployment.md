@@ -24,7 +24,7 @@ In the `mta.yaml` file, update the following configurations:
         - name: incidents-db
         - name: incidents-auth
         - name: incidents-registry
-        - name: incident-management-repo-html5-host # Add
+        - name: incident-management-html5-repo-host # Add
   ```
   
 > **NOTE** 

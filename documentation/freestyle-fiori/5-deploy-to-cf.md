@@ -14,7 +14,7 @@ For more information about the Cloud Foundry environment, see [Cloud Foundry Env
 
 ## Add Navigation target for Manager UI
 
-Navigation targets are required to navigate between applications, but also to start applications from SAP Build Work Zone, standard edition. In this step, you add the navigation target **manager-display** to the application manifest file **manifest.json**.
+Navigation targets are required to navigate between applications and to start applications from SAP Build Work Zone, standard edition. In this step, you create and add the navigation target **manager-display** to the application manifest file **manifest.json**.
 
 1. In the **Application Info - manager** tab, choose the **Add Fiori Launchpad Config** tile.
 
@@ -26,11 +26,11 @@ Navigation targets are required to navigate between applications, but also to st
 
     ![Fiori Launchpad Config](./images/fiori-launchpad-config1.png)
 
-2. In the **Fiori Launchpad Configuration** step:
+2. In the **Fiori Launchpad Configuration** dialog:
 
-      - In the **Semantic Object** field, enter **manager**.
-      - In the **Action** field, enter **display**.
-      - In the **Title** field, enter **Incident By Location**.
+      - Enter **manager** as the **Semantic Object**.
+      - Enter **display** as the **Action**.
+      - Enter **Incident By Location** as the **Title**.
       - Choose **Finish**.
 
       ![Fiori Launchpad Config](./images/fiori-launchpad-config2.png)
@@ -66,9 +66,11 @@ This navigation configuration adds the following section in **app/manager/webapp
 
 ## Using MTA
 
-We’ll be using the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-tool/) to execute the deployment. The modules and services are configured in an mta.yaml deployment descriptor file.
+The tool will deploy the modules and services in the deployment descriptor file **mta.yaml**.
 
-If you already not have the `mta.yaml` file in the project, run the following command to generate your deployment descriptor
+You’ll deploy your app with the [Cloud MTA Build Tool](https://sap.github.io/cloud-mta-build-tool/). The tool will deploy the modules and services in the deployment descriptor file **mta.yaml**.
+
+If you don't have the `mta.yaml` file in the project already then run the following command to generate it:
 
 ```
   cds add mta
@@ -76,7 +78,7 @@ If you already not have the `mta.yaml` file in the project, run the following co
 
 ## Add the UI application
 
-1. In the **Application Info - manager** tab, choose the **Add Deploy Config** tile.
+1. Under **Application Info - manager**, choose the **Add Deploy Config** tile.
 
     ![V4 Template](./images/ui1.png)
 
@@ -86,16 +88,16 @@ If you already not have the `mta.yaml` file in the project, run the following co
     >2. Choose **Fiori: Open Application Info**.
     >3. In the next popup select `manager` app.
 
-2. In the **Deploy Configuration** step:
+2. In the **Deploy Configuration** dialog:
 
-      - In the **Please choose the target** dropdown menu, select **Cloud Foundry**.
-      - In the **Destination name** dropdown menu, select **Local CAP Project API (Instance Based Destination)**.
-      - In the **Editing the deployment configuration will overwrite existing configuration, are you sure you want to continue?** field, choose **Yes**.
+      - Choose option **Cloud Foundry** in the dropdown menu under **Please choose the target**.
+      - Choose option **Local CAP Project API (Instance Based Destination)** In the dropdown menu under **Destination name**.
+      - Choose the **Yes** option under **Editing the deployment configuration will overwrite existing configuration, are you sure you want to continue?**.
       - Choose **Finish**.
 
     ![V4 Template](./images/ui2.png)
 
-This deploy configuration adds SAP Cloud service at the end of **app/manager/webapp/manifest.json**:
+This adds the SAP Cloud service configuration at the end of the **app/manager/webapp/manifest.json** file:
 
 ```json
  "sap.cloud": {
@@ -104,7 +106,7 @@ This deploy configuration adds SAP Cloud service at the end of **app/manager/web
   }
 ```
 
-In addition, in the **mta.yaml** file, new modules have been generated and the resources have been updated:
+It also generates new modules and updates the corresponding resources in the **mta.yaml** file.
 
 ```yaml[5-28, 36-51, 57, 61]
 _schema-version: '3.1'
@@ -185,7 +187,7 @@ parameters:
   ...  
 ```
 
-> This snippet adds an HTML5 application **nsmanager**.
+> This configuration includes your UI application as the HTML5 module **nsmanager**.
 
 ## Assemble with the Cloud MTA Build Tool
 
@@ -197,7 +199,7 @@ mbt build
 
 See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/d04fc0e2ad894545aebfd7126384307c.html?locale=en-US) to learn more about MTA-based deployment.
 
-## Deploy in the SAP BTP, Cloud Foundry runtime
+## Deploy to the SAP BTP, Cloud Foundry runtime
 
 1. From the root of the **INCIDENT-MANAGEMENT** project, choose the burger menu, and then choose **Terminal** &rarr; **New Terminal**.
 
@@ -211,7 +213,7 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
     > You can find the API endpoint in the **Overview** section of your subaccount in the SAP BTP cockpit.
 
-3. Run the following command to deploy the generated archive to the SAP BTP, Cloud Foundry runtime:
+3. Run the following command to deploy the generated archive:
 
     ```bash
     cf deploy mta_archives/incident-management_1.0.0.mtar 
@@ -247,6 +249,6 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
     ![401 error](./images/401-error.png)
 
-The service expects a so called JWT (JSON Web Token) in the HTTP Authorization header that contains the required authentication and authorization information to access the service. In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition will trigger the authentication flow to provide the required token to access the service.
+This is because your request is missing the required authentication and authorizations for the service. In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition which will provide the required access information.
 
 

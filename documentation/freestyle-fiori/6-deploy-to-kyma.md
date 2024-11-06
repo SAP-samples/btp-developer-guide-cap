@@ -19,7 +19,7 @@ docker login docker.io -u <your-user>
 
 Please note:
 
-If you're using any device with a non-x86 processor (e.g. MacBook M1/M2), you need to instruct the Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
+If you're using any device with a non-x86 processor (Most recent MacBooks have non-x86 M1/M2 processors), you need to instruct the Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
 See [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables).
 
 ### Build CAP Node.js Image
@@ -44,7 +44,7 @@ The pack CLI builds the image that contains the build result in the *gen/srv* fo
 
 ### Build UI Deployer image
 
-1. Add build scripts and dependencies to the `package.json`. Open `app/manager/package.json` and add the following content.
+1. Add the following build scripts and dependencies to the `app/manager/package.json` file.
 
 ```json
   {
@@ -99,7 +99,7 @@ The pack CLI builds the image that contains the build result in the *gen/srv* fo
 
 ```
 
-2. Extend the `ui5.yaml` file located in `app/manager/ui5.yaml` with the builder details.
+2. Extend the `app/manager/ui5.yaml` file with the following builder configuration:
 
 ```yaml
 ...
@@ -119,7 +119,7 @@ resources:
     propertiesFileSourceEncoding: UTF-8
 ```
 
-3. Create a new file `ui5-deploy.yaml` inside the `app/manager` folder resulting in `app/manager/ui5-deploy.yaml` file with the below content.
+3. Create a new file called `ui5-deploy.yaml` inside the `app/manager` folder and add the following content.
 
 ```yaml
 # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
@@ -157,9 +157,9 @@ builder:
 
 ```
 
-The `ui5-deploy.yaml` file contains the configuration for building SAPUI5 applications to deploy to the runtime. It includes the builder and custom tasks.
+The `ui5-deploy.yaml` file contains the configuration to build the SAPUI5 applications for deployment. It includes the builder and custom tasks.
 
-**builder**: Defines configurations for the build process. This includes specifying which resources to exclude during the build, such as test files and local service directories.
+**builder**: Defines the configuration for the build and for excluding certain resources from the build, such as test files and local service directories.
 
 **customTasks**: Specifies custom tasks to be executed during the build process. These tasks can perform various operations to enhance the deployment process. In this case:
 
@@ -171,7 +171,7 @@ The `ui5-deploy.yaml` file contains the configuration for building SAPUI5 applic
 
 4. Create a new folder named `ui-resources` at the root directory of the project.
 
-5. Create a new file `package.json` inside `ui-resources` with the following content.
+5. In the`ui-resources` folder, create a new `package.json` file with the following content:
 
 ```json
   {
@@ -205,10 +205,10 @@ The `ui5-deploy.yaml` file contains the configuration for building SAPUI5 applic
 ```sh
   npm install && npm run package
 ```
-This will build and copy the archive `nsmanager.zip` inside the `ui-resources/resources` folder.
+This will build the the application into an archive called  `nsmanager.zip` and puts it in the `ui-resources/resources` folder.
 
 
-7. Navigate back to the root folder in the terminal and then build the image using the below command:
+7. Navigate back to the root folder in the terminal and then build the image using the following command:
 
     ```sh
     pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
@@ -261,7 +261,7 @@ html5-apps-deployer:
 
 ## Deploy CAP Helm Chart
 
-1. Log in to your Kyma cluster.
+* Log in to your Kyma cluster, if you don’t know how then follow the login step described in the [tutorial](https://developers.sap.com/tutorials/deploy-to-kyma.html#50005bff-f490-4abf-813d-d18ad7672bfe).
 
 2. Deploy using Helm command:
 

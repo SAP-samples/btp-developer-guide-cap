@@ -12,19 +12,24 @@
 
 2. Create a new incident as follows:
 
-  ![New incident](./images/new-incident.png)
+  - Under the input field for the title, type in "My new incident"
+  - For the Customer field, choose "Stormy Weathers" using the value help button
+  - For the Urgency field choose the option "Low (L)"
+  - For the status, choose "New (N)"
 
-3. Select **Create** button.
+  ![shows what the preceding text described.](./images/new-incident.png)
 
-4. Go back to the Home page and access the `Incident By Location` application via launchpad.
+3. Choose the **Create** button.
 
-5. Cick on the `Bangalore` spot marker on the GeoMap where we suppose to have the **Stormy Weathers** customer.
+4. Go back to the Home page and choose the `Incident By Location` tile in your Workzone application to access it.
 
-  ![Select Spot Marker](./images/select-customer-location.png)
+5. Click on the `Bangalore` spot marker on the GeoMap where we are supposed to have the **Stormy Weathers** customer.
+
+  ![shows what the preceding text described.](./images/select-customer-location.png)
 
 6. You will see your new incident with the creation date and marked as the one with low urgency. You can as well try the filter category buttons above to check how the filtering works.
 
-  ![Result](./images/new-incident-in-manager-app.png)
+  ![shows the result as the preceding text described.](./images/new-incident-in-manager-app.png)
 
 
 ## Summary

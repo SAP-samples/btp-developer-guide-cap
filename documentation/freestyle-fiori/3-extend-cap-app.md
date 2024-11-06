@@ -1,6 +1,6 @@
 # Extend Incident Management Application with Manager Service
 
-In this chapter, we extend the incident management application and create a new service for manager named as `ManagerService`.
+In this chapter, we extend the incident management application and create a new service for managers called `ManagerService`.
 
 ## Create New Service
 
@@ -33,7 +33,7 @@ This service adds a projection to the `Incidents` entity and provides data with 
 
 1. While you are in the **incident-management folder**, choose the burger menu and then choose **Terminal** → **New Terminal**.
 
-Now you can use the terminal to start a CAP server.
+Now you can enter this command in the terminal to start a CAP server.
 
 ```bash
 cds watch

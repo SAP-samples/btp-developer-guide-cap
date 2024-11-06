@@ -119,7 +119,7 @@ A target defines a view that is displayed, it can be referenced by one or more r
 
 This view is also defined using the XML namespace **mvc**, indicating the use of the Model-View-Controller (MVC) pattern. The controller for this view is specified as `ns.manager.controller.SpotStatus`, indicating that the logic for this view is implemented in the SpotStatus controller within the **manager** namespace.
 
-Namespaces for UI controls are declared. Here, namespaces for **sap.f** ([SAP Fiori Controls](https://sapui5.hana.ondemand.com/sdk/#/api/sap.f)), **sap.ui.layout.cssgrid** ([Flexible Grid Layout](https://experience.sap.com/fiori-design-web/flexible-grid/)), and **sap.ui.core** are declared. While **sap.ui.core** is required for the `require` utility, which can be used to import arbitrary modules. This utility enables the use of methods within these modules, such as `formatters`. 
+Namespaces for UI controls are declared. Here, namespaces for **sap.f** ([SAP Fiori Controls](https://sapui5.hana.ondemand.com/sdk/#/api/sap.f)), **sap.ui.layout.cssgrid** ([Flexible Grid Layout](https://experience.sap.com/fiori-design-web/flexible-grid/)), and **sap.ui.core** are declared. **sap.ui.core** is required for the `require` utility, which can be used to import arbitrary modules. This utility enables the use of methods within these modules, such as `formatters`. 
 
 Additionally, a custom namespace **util** is declared for custom utility functions, which are defined later in this tutorial.
 
@@ -133,7 +133,7 @@ The **GridList** uses a custom layout defined by **[GridBoxLayout](https://sapui
 
 Inside each **GridListItem**, there are **[HBox](https://sapui5.hana.ondemand.com/sdk/#/api/sap.m.HBox)** and a **[VBox](https://sapui5.hana.ondemand.com/sdk/#/api/sap.m.VBox)** components representing a horizontal and vertical flexible box layouts, respectively. This contains various controls such as **Title**, **Label**, **ObjectNumber**, and a **Button**. These controls display information about each `incident`, including its title, customer name, status, and creation date. The **Button** is disabled and includes custom data with a badge representing the number of comments.
 
-Some view properties are defined via [formatters](https://sapui5.hana.ondemand.com/sdk/#/topic/07e4b920f5734fd78fdaa236f26236d8.html). Formatters are used to define the formatting of data on the UI, while data types work in both directions: they format the data on the UI and parse and validate user input that is entered. You can either use standard formatters and data types or define your own custom objects. Here in the current view a color of every **GridListItem** is determined by the formatter function **formatHighlightColor** from the `utils` module (which will be added later). Similarly, the creation date of the incident is presented in the human-readable manner using the **formatDaysAgo** formatter.
+Some view properties are defined via [formatters](https://sapui5.hana.ondemand.com/sdk/#/topic/07e4b920f5734fd78fdaa236f26236d8.html). Formatters are used to define the formatting of data on the UI, while data types work in both directions: they format the data on the UI and parse and validate user input that is entered. You can either use standard formatters and data types or define your own custom objects. Here in the current view the color of every **GridListItem** is determined by the formatter function **formatHighlightColor** from the `utils` module (which will be added later). Similarly, the creation date of the incident is presented in the human-readable manner using the **formatDaysAgo** formatter.
 
 If there are no incidents to display, an **[IllustratedMessage](https://sapui5.hana.ondemand.com/#/entity/sap.f.IllustratedMessage)** is shown with an empty list illustration.
 
@@ -218,8 +218,8 @@ The controller contains the following functions:
 
 - **onFilterSelect**: Event handler method triggered when an item is selected in the **IconTabBar** control. It sets the filter based on the selected key.
 
-Overall, this controller gets the information of the routing by using **onRouteMatched** event. This data is stored as a default filter for the **Icon Tab Bar** component. Additional filters will be applied by clicking the corresponding **Icon Tab Filter**.
+Overall, this controller gets the information of the routing by using the **onRouteMatched** event. This data is stored as a default filter for the **Icon Tab Bar** component. Additional filters will be applied by clicking the corresponding **Icon Tab Filter**.
 
 ## Summary
 
-You have successully created the second view, controller and the necessary routing.
+You have successfully created the second view, controller and the necessary routing.

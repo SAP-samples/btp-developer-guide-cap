@@ -23,7 +23,7 @@ In addition to the main SAPUI5 library `sap.m`, you will use other control libra
 
 ## Import Data
 
-> In this exercise we assume that the geo data of the customers is stored separately in some other service. We mock the data in local JSON file for the simplicity reason. 
+> In this exercise we assume that the geo data of the customers is stored separately in some other service. For simplicity, we mock the data in a local JSON file. 
 
 Add a local data source to the application and display the data on the further enhanced SAPUI5 view.
 
@@ -98,7 +98,7 @@ After adding the spots data to your application, you'll need to configure the da
   },
 ```
 
-4. Since we does not use flexibility services, disable them by changing the first entry in the `sap.ui5` section as follows:
+4. We will not use the flexibility services, so disable them by changing the first entry in the `sap.ui5` section as follows:
 
 ```json
     "sap.ui5": {

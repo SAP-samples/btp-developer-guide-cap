@@ -13,8 +13,7 @@ Create a new SAPUI5 application based on a template provided by SAP Business App
 4. In the next dialog, choose **Use a Local CAP Project** as your Data Source and choose your current **`incident-management`** project as the CAP project.
 
     ::: tip
-   In case you get the error: `Node module @sap/cds isn't found. Please install it and try again`, you have to install the corresponding CAP module which is also required   by the app generator as described in [Add CAP Tooling](https://cap.cloud.sap/docs/tools/#command-line-interface-cli)
-    If not already done, please open a command line and run the following command:
+   In case you get the error: `Node module @sap/cds isn't found. Please install it and try again`, you have to install the corresponding CAP module which is also required   by the app generator as described in [Add CAP Tooling](https://cap.cloud.sap/docs/tools/#command-line-interface-cli). If not already done, please open a command line and run the following command:
 
     ```bash
     npm install --global @sap/cds-dk --@sap:registry=https://registry.npmjs.org/
@@ -36,7 +35,7 @@ Create a new SAPUI5 application based on a template provided by SAP Business App
     | Module name | manager |
 	| Application title | Incidents by Location |
 	| Application Namespace | ns |
-    | Description | An SAP Fiori application for manager |
+    | Description | An SAP Fiori application for managers |
     | Configure Advanced Options | Yes |
     | Add Code assist libraries to your project | Yes |
     | Enable TypeScript | Yes |
@@ -48,7 +47,7 @@ Create a new SAPUI5 application based on a template provided by SAP Business App
 
     ![V4 Template](./images/template-setup-3.png)
 
-9. The project is now being generated, and a notification window will appear in the lower right corner once the process has completed. **Wait for the message that the project has been generated!**
+9. The project will be generated and a notification window will appear in the lower right corner once the process has completed. **Wait for the message that the project has been generated!**
 
 ## Summary
 

@@ -60,7 +60,7 @@ Inside the view, there's a Page control. Its title is bound to the resource mode
 
 Within the Page's content, there's a [GeoMap control](https://sapui5.hana.ondemand.com/#/entity/sap.ui.vbm.GeoMap). The GeoMap control shows an image based map loaded from one or more configurable external providers. Here it's configured to display a geographical map using [OpenStreetMap](www.openstreetmap.org) tiles. The map is initialized with a specific zoom level (**initialZoom**) and position (**initialPosition**). The map also has a default layer (**MapLayer**) configured with **OpenStreetMap** as the reference map provider.
 
-Inside the GeoMap control, there's a collection of spots. These spots are bound to a model with `spotModel>/spots`. The data in the spots model is taken from the JSON file which we have created before. Each spot is represented by a [Spot control](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.vbm.Spot). A Spot is actually an image drawn at the given position. The position, tooltip, and label text are bound to properties from the **spotModel**. Click event handler `navToSpotStatus` will be defined in the corresponding controller.
+Inside the GeoMap control, there's a collection of spots. These spots are bound to a model with `spotModel>/spots`. The data in the spots model is taken from the JSON file which we have created before. Each spot is represented by a [Spot control](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.vbm.Spot). A Spot is actually an image drawn at the given position. The position, tooltip, and label text are bound to properties from the **spotModel**. Next step, you will define a click event handler `navToSpotStatus` in the corresponding controller.
 
 
 ## Adjusting the view controller

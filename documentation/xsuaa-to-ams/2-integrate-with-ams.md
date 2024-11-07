@@ -5,17 +5,17 @@
 
  1. Add the latest versions of `@sap/ams` dependency to  `package.json/dependencies`
     ```json
-    "@sap/ams": "latest"
+    "@sap/ams": "^1.18.1",
     ```
  2. Add the latest versions of `@sap/ams-dev` dependency to  `package.json/devDependencies`
     ```json
-    "@sap/ams-dev": "latest"
+    "@sap/ams-dev": "^1.3",
     ```
  3. Make sure you have installed latest version of  `@sap/xssec` dependency.
     ```sh
     npm install @sap/xssec
     ```
- 4. Make sure you have `@sap/cds-dk` with `version > 7.5.*` is installed as a **global** npm module.
+ 4. Make sure you have `@sap/cds-dk` with `version > 8` is installed as a **global** npm module.
     > Use `npm update -g` instead of `npm update` to update the library.
  3. Add the following code to  `package.json/cds/requires/[development]/auth`: 
     ```json

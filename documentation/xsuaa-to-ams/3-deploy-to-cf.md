@@ -33,14 +33,14 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
     {
         ...
         "dependencies": {
-        "@sap/ams": "^1.14.2",
+        "@sap/ams": "^1.18.1",
         "@sap/cds": "^8.0",
         "@sap/xssec": "^3.3.5",
         "hdb": "^0.19.0",
         "passport": "^0"
       },
       "devDependencies": {
-        "@sap/ams-dev": "^0.8.3"
+        "@sap/ams-dev": "^1.3"
       },
 
     ...
@@ -106,21 +106,33 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
             config:
                credential-type: "X509_GENERATED"
       ```
-    - Update your buildpacks section by adding `OPA buildpack`
-    
-      ```yaml
-      parameters:
-        buildpacks:
-          - https://github.com/SAP/cloud-authorization-buildpack/releases/latest/download/opa_buildpack.zip
-          - nodejs_buildpack
-      ```
       
     - Add `AMS_DCL_ROOT` to `properties` section
     
       ```yaml
       properties:
-        AMS_DCL_ROOT: "ams/dcl"
+        AMS_DCL_ROOT: ams/dcl
       ```
+- Add `incident-management-ams-policies-deployer` module in `mta.yaml` below `incident-management-srv` module:
+    ```yaml
+    - name: incident-management-ams-policies-deployer
+      type: javascript.nodejs
+      path: gen/policies
+      parameters:
+        buildpack: nodejs_buildpack
+        no-route: true
+        no-start: true
+        tasks:
+          - name: deploy-dcl
+            command: npm start
+            memory: 512M
+      requires:
+        - name: incident-management-auth
+          parameters:
+            config:
+              credential-type: X509_GENERATED
+              app-identifier: policy-deployer
+    ```
   - Delete `incident-management-auth` binding from `incident-management-destination-content`
       ```yaml
       - name: incident-management-auth
@@ -163,7 +175,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
         build-parameters:
           no-source: true
     ```
-- Update `incident-management-srv-api` in `incident-management-destination-service`
+- Update `incident-management-srv-api` destination in `incident-management-destination-service`
 
     - Add `HTML5.IASDependencyName: incidents-api`
     

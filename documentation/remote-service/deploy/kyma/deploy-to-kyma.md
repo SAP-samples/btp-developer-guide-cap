@@ -44,12 +44,17 @@ The pack CLI builds the image that contains the build result in the *gen/srv* fo
 
 ### Build UI Deployer image
 
-1. Create a new folder called `resources` under `app/incidents` and move `webapp` folder to `resources`.
-2. Build the image:
+1. Navigate to ui-resources folder from your project’s root folder and run the following command
+
+    ```sh
+    npm install && npm run package
+    ```
+
+2. Navigate back to the root folder of your project. Build the image:
 
     ```sh
     pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
-        --path app/incidents \
+        --path ui-resources \
         --builder paketobuildpacks/builder-jammy-base \
         --publish
     ```

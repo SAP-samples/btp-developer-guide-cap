@@ -51,7 +51,7 @@ pack build <your-container-registry>/incident-management-hana-deployer:<image-ve
 
 ```sh
 pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
-     --path app/incidents \
+     --path ui-resources \
      --builder paketobuildpacks/builder-jammy-base \
      --publish
 ```

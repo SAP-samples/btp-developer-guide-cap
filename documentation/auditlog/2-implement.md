@@ -39,10 +39,16 @@ annotate my.Addresses with @PersonalData: {
 ```
 ## Add the Plugin
 
-Add the following plugin package to your project
+1. Add the following plugin package to your project
 
 ```sh
 npm add @cap-js/audit-logging
+```
+
+2. Build the application by executing the below command
+
+```sh
+npm i
 ```
 
 The package is a *cds-plugin* and thereby auto-writes many things so configurations and annotations are reduced to a minimum. 

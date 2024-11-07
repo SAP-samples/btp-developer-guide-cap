@@ -103,10 +103,16 @@ In essence, these are the steps you need to follow:
    kubectl label namespace incidents-namespace istio-injection=enabled
    ```
 
-7. Deploy the mock server.
+8. Do the productive build for your application from the project's root directory, which writes into the `gen` folder using the below command:
+
+    ```sh
+    cds build --production
+    ```
+    
+9. Deploy the mock server.
 
     ```yaml
-    helm upgrade --install mock ./chart -n <namespace>
+    helm upgrade --install mock ./gen/chart -n <namespace>
     ```   
 
 8. Copy the service URL for the installed mock server from the terminal.

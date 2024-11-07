@@ -10,6 +10,12 @@ Deploy the project to SAP BTP Kyma runtime using Helm configurations. See [Helm]
 
 2. Add `"@sap/xb-msg-amqp-v100": "^0"` to the **dependencies** section of `package.json ` file.
 
+3. Execute the following command to install the dependencies
+
+    ```sh
+    npm i
+    ```
+
 5. Create a new file called `event-mesh.json` at the root folder of the project and copy the content below. 
 
      - As **EM_NAME**, enter a speaking name for your client (e.g. inci).
@@ -95,7 +101,7 @@ The pack CLI builds the image that contains the build result in the `gen/srv` fo
  
   ```sh
     pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
-        --path app/incidents \
+        --path ui-resources \
         --builder paketobuildpacks/builder-jammy-base \
         --publish
   ```
@@ -206,19 +212,25 @@ html5-apps-deployer:
 
 1. Log in to your Kyma cluster.
 
-2. Execute one of the below commands based on the integration scenarios
+2. Do the productive build for your application from the project's root directory, which writes into the `gen` folder  using the below command:
 
-  a. For deploying the Incident Mnaagement Application together with SAPS/4HANA Cloud
+    ```sh
+    cds build --production
+    ```
+
+3. Execute one of the below commands based on the integration scenarios
+
+  a. For deploying the Incident Management Application together with SAPS/4HANA Cloud
   
     ```sh
-    helm upgrade --install incident-management --namespace incidents-namespace ./chart \
+    helm upgrade --install incident-management --namespace incidents-namespace ./gen/chart \
       --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json --set-file s4-hana-cloud-messaging.jsonParameters=s4cems.json --set-file event-mesh.jsonParameters=event-mesh.json
     ```
 
-  b. For deploying the Incident Mnaagement Application together with Mock Server
+  b. For deploying the Incident Management Application together with Mock Server
   
     ```sh
-    helm upgrade --install incident-management --namespace incidents-namespace ./chart \
+    helm upgrade --install incident-management --namespace incidents-namespace ./gen/chart \
       --set-file xsuaa.jsonParameters=xs-security.json --set-file event-mesh.jsonParameters=event-mesh.json
     ```
 

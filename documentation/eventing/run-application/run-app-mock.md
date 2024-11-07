@@ -30,7 +30,7 @@ The application development and deployment is completed and now it can be tested
 5. Fetch the address Id of the Customer by executing the below request in Postman. Choose **GET** and copy URL to the field:
    
 ```
-<The application route of the mock server\>/odata/v2/api-business-partner/A_BusinessPartner('<the-business-partner-id-of-your-created-incident')/to_BusinessPartnerAddress'
+<The application route of the mock server\>/odata/v2/api-business-partner/A_BusinessPartner('<the-business-partner-id-of-your-created-incident')/to_BusinessPartnerAddress
 ```
   
   ![Fetch Address Id](./images/fetchAddressId.png)

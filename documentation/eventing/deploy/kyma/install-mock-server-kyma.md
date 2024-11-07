@@ -52,13 +52,19 @@ The Remote Service Integration tutorial was executed and mock server was deploye
 
     - Add your container image settings `<your-container-registry>` and `tag` to your `chart/values.yaml`
 
-4. Deploy mock server using
+4. Do the productive build for your application from the project's root directory, which writes into the `gen` folder using the below command:
+
+    ```sh
+    cds build --production
+    ```
+
+5. Deploy mock server using
 
     ```yaml
-    helm upgrade --install mock ./chart -n <namespace>
+    helm upgrade --install mock ./gen/chart -n <namespace>
     ```   
 
     ![deployed mock app](../images/mockdeployment.png)
 
-5.  As shown in the above screenshot, api url for the installed mock server can be taken from the output of mock server deployment.
+6.  As shown in the above screenshot, api url for the installed mock server can be taken from the output of mock server deployment.
 

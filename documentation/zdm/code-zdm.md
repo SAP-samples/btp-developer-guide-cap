@@ -195,23 +195,4 @@ Approuter supports Redis for session management. To create the redis instance an
 >[Read more](https://www.npmjs.com/package/@sap/approuter#external-session-management)
 >
 
-## Monitoring Availability
-To validate the availability of application, you can use the [Availability Service](https://availability.cfapps.sap.hana.ondemand.com/index.html)
-CAP applications have health check endpoint that can be accessed by monitoring `/health` endpoint.
-We have configured the health check for incident-mangement service and mtx module and here is the report:
-
->
->Here the availability was monitored while there was a blue green deployment.
->
-
-<img src="./images/srv-availability.png"/>
-
-
-
-<img src="./images/availability-thresold.png" />
-
-**MTX Availability**
-
-<img src="./images/mtx-availability.png"/>
-
 

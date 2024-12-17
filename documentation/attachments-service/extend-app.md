@@ -16,7 +16,7 @@
 
 2. Copy the following snippet to the newly created *attachments.cds* file
 
-    ```cds
+    ```js
         using { sap.capire.incidents as my } from './schema';
         using { Attachments } from '@cap-js/attachments';
 

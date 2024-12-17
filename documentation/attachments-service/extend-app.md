@@ -16,13 +16,12 @@
 
 2. Copy the following snippet to the newly created *attachments.cds* file
 
-    ```js
-        using { sap.capire.incidents as my } from './schema';
-        using { Attachments } from '@cap-js/attachments';
+   ```cds
+   using { sap.capire.incidents as my } from './schema';
+   using { Attachments } from '@cap-js/attachments';
 
-        extend my.Incidents with { attachments: Composition of many Attachments }
-        
-    ```
+   extend my.Incidents with { attachments: Composition of many Attachments }
+   ```
 
 ## Run and Test the Application Locally
 

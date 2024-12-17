@@ -1,7 +1,7 @@
 # Add Attachments Service
 
 
-## Setup
+## Set Up
 
 1. To enable attachments, add the required dependency to the *package.json*. In the terminal, go to the the Incident Management project's root folder and run the following command:  
    
@@ -11,7 +11,7 @@
 **Note** - To be able to use the Fiori uploadTable feature, you must ensure that the SAPUI5 version is updated to ^1.121.0 in the application's index.html.
 
 
-## Use attachments
+## Use Attachments
 1. Create a new file attachments.cds in the db folder.
 
 2. Copy the following snippet to the newly created *attachments.cds* file
@@ -21,9 +21,10 @@
         using { Attachments } from '@cap-js/attachments';
 
         extend my.Incidents with { attachments: Composition of many Attachments }
+        
     ```
 
-## Run and test the application locally
+## Run and Test the Application Locally
 
 Let's see it in action where the attachments are stored locally, it will work similarly after deployment with a database or S3 bucket for example.
 

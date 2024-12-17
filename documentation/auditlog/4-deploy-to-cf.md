@@ -24,40 +24,44 @@ To integrate with SAP Audit Log Service, you need to:
     ```
 3. Update `xs-security.json` and add `admin` role. The final `xs-security.json` will look like below:
     ```json
-            {
-        "scopes": [
-            {
-            "name": "$XSAPPNAME.support",
-            "description": "support"
-            },
-            {
-            "name": "$XSAPPNAME.admin",
-            "description": "admin"
-            }
+    {
+    "scopes": [
+        {
+        "name": "$XSAPPNAME.support",
+        "description": "support"
+        },
+        {
+        "name": "$XSAPPNAME.admin",
+        "description": "admin"
+        }
+    ],
+    "attributes": [],
+    "role-templates": [
+        {
+        "name": "support",
+        "description": "generated",
+        "scope-references": [
+            "$XSAPPNAME.support"
         ],
-        "attributes": [],
-        "role-templates": [
-            {
-            "name": "support",
-            "description": "generated",
-            "scope-references": ["$XSAPPNAME.support"],
-            "attribute-references": []
-            },
-            {
-            "name": "admin",
-            "description": "generated",
-            "scope-references": ["$XSAPPNAME.admin"],
-            "attribute-references": []
-            },
-            {
-            "name": "Token_Exchange",
-            "description": "UAA",
-            "scope-references": [
-                "uaa.user"
-            ]
-            }
+        "attribute-references": []
+        },
+        {
+        "name": "admin",
+        "description": "generated",
+        "scope-references": [
+            "$XSAPPNAME.admin"
+        ],
+        "attribute-references": []
+        },
+        {
+        "name": "Token_Exchange",
+        "description": "UAA",
+        "scope-references": [
+            "uaa.user"
         ]
         }
+    ]
+    }
     ```
 3. Build the *mtar* and deploy your application.
 ```bash

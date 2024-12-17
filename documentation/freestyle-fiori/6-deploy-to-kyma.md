@@ -39,6 +39,15 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
         --publish
     ```
 
+3. Build the DB deployer image
+
+  ```sh
+  pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
+      --path gen/db \
+      --builder paketobuildpacks/builder-jammy-base \
+      --publish
+  ```
+
 **Info**
 The pack CLI builds the image that contains the build result in the *gen/srv* folder and the required *npm* packages by using the [Packeto Jammy Base Builder](https://github.com/paketo-buildpacks/builder-jammy-base).
 

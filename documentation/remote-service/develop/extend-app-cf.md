@@ -106,7 +106,8 @@
       ```
 
   * Add the custom handler implementation after the init method:
-      ```js
+  
+         ```js
         async onCustomerRead(req) {
           console.log('>> delegating to S4 service...', req.query);
           const top = parseInt(req._queryOptions?.$top) || 100;
@@ -135,7 +136,8 @@
           result.$count = 1000;
           console.log("after result", result);
           return result;
-        }   
+        }  
+		
     ```
 
 *  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add this code snippet to the *init* method:

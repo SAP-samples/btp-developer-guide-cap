@@ -105,51 +105,52 @@
       this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
       ```
 
-  * Add the custom handler implementation after the init method:
+   * Add the custom handler implementation after the init method:
   
-         ```js
-        async onCustomerRead(req) {
-          console.log('>> delegating to S4 service...', req.query);
-          const top = parseInt(req._queryOptions?.$top) || 100;
-          const skip = parseInt(req._queryOptions?.$skip) || 0;
+      ```js
+      async onCustomerRead(req) {
+        console.log('>> delegating to S4 service...', req.query);
+        const top = parseInt(req._queryOptions?.$top) || 100;
+        const skip = parseInt(req._queryOptions?.$skip) || 0;
         
-          const { BusinessPartner } = this.remoteService.entities;
+        const { BusinessPartner } = this.remoteService.entities;
 
-          // Expands are required as the runtime does not support path expressions for remote services
-          let result = await this.S4bupa.run(SELECT.from(BusinessPartner, bp => {
-            bp('*'),
-              bp.addresses(address => {
-                address('email'),
-                  address.email(emails => {
-                    emails('email');
-                  });
-              })
-          }).limit(top, skip));
+        // Expands are required as the runtime does not support path expressions for remote services
+        let result = await this.S4bupa.run(SELECT.from(BusinessPartner, bp => {
+          bp('*'),
+            bp.addresses(address => {
+              address('email'),
+                address.email(emails => {
+                  emails('email');
+                });
+            })
+        }).limit(top, skip));
         
-          result = result.map((bp) => ({
-            ID: bp.ID,
-            name: bp.name,
-            email: bp.addresses[0]?.email[0]?.email
-          }));
+        result = result.map((bp) => ({
+          ID: bp.ID,
+          name: bp.name,
+          email: bp.addresses[0]?.email[0]?.email
+        }));
 
-          // Explicitly set $count so the values show up in the value help in the UI
-          result.$count = 1000;
-          console.log("after result", result);
-          return result;
-        }  
+        // Explicitly set $count so the values show up in the value help in the UI
+        result.$count = 1000;
+        console.log("after result", result);
+        return result;
+      }  
 		
-    ```
+      ```
 
-*  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add this code snippet to the *init* method:
+   *  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add this code snippet to the *init* method:
+
+      ```js
+      this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
+      this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
+      this.remoteService = await cds.connect.to('RemoteService');
+      ```
+    
+   * Add the custom handler after the *init* method:
 
     ```js
-    this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
-    this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
-    this.remoteService = await cds.connect.to('RemoteService');
-    ```
-* Add the custom handler after the *init* method:
-
-  ```js
     async onCustomerCache(req, next) {
       const { Customers } = this.entities;
       const newCustomerId = req.data.customer_ID;

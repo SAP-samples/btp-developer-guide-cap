@@ -1,12 +1,12 @@
-# Test the Incident Management Application locally
+# Test the Incident Management Application Locally
 
-## Usage scenario
+## Scenario
 
 To increase your development speed, it is helpful to run and test your implementation in a local environment. In this section you will learn how to test the incident management applicaiton locally.
 
 ## Content
 
-### Create Mock Data for the New Entities.
+### Create Mock Data for the New Entities
 
 1. If you are using cloud foundry open Business applicaiton studio for development and if you are using Kyma open Visual Studio Code for development.
 
@@ -47,7 +47,8 @@ To increase your development speed, it is helpful to run and test your implement
    456;+01-555-789;Sunny;333
    ```
    
-    ![mock data](./images/test-app00.png)
+   ![mock data](./images/test-app00.png)
+   
 
 ### Run the Incident Management Application
 
@@ -57,13 +58,14 @@ To increase your development speed, it is helpful to run and test your implement
    npm i
    ```
 
-2. Run the mock server locally .
+2. Run the mock server locally.
 
    ```sh
    cds mock API_BUSINESS_PARTNER
    ```
 
 3. In the terminal, you should see the following output
+
    ```cds
    [cds] - connect using bindings from: { registry: '~/.cds-services.json' }
    [cds] - connect to db > sqlite { url: ':memory:' }
@@ -80,13 +82,14 @@ To increase your development speed, it is helpful to run and test your implement
    > If the API_BUSINESS_PARTNER doesn't show up, remove the `.cds-services.json` file - you find it in the user root folder (e.g.: /home/user/.cds-services.json) 
 
 4.  Open a new terminal and run `cds watch`. This will start the application connected to the running mock service.
-   >In case you had previously deployed the application to Kyma Runtime -  Navigate to `app/incidents/resources/webapp` folder and move the `webapp` folder to `app/incidents`. Also, delete the `resources` folder.
+
+   > In case you had previously deployed the application to Kyma Runtime -  Navigate to `app/incidents/resources/webapp` folder and move the `webapp` folder to `app/incidents`. Also, delete the `resources` folder.
+
 5. In a browser, open the server URL: `http://localhost:4004`.
 6. There are two URLs under web applications:
  
     - */launchpage.html* uses a [local launchpage](!https://pages.github.tools.sap/cap/golden-path/develop/Launchpage/Launchpage)
     - */incidents/webapp/index.html* uses the *index.html* from [ui5 app](!https://pages.github.tools.sap/cap/golden-path/develop/btp-app-create-ui-fiori-elements/btp-app-create-ui-fiori-elements)
-  
     - Choose the *launchpad.html*.
     
    ![run test](./images/test-app01.png)

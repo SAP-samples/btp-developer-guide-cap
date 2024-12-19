@@ -48,7 +48,7 @@ In the `mta.yaml` file, update the following configurations:
    
 3. Update  `incident-management-destinations`:
    
-   1. Add
+   1. Add under `requires`:
         ```yaml
             - name: incidents_html_repo_runtime
               parameters:
@@ -172,7 +172,7 @@ The application deployer will look like this:
           - cp workzone/cdm.json resources/cdm.json
           - npx cds build --production    
    ```
-3. In the **workzone** folder, create a file called **cdm.json** and paste the following:
+3. Create a **workzone** folder on the root of project then create a file named **cdm.json** and paste the following:
     > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id` . Update the `appId` below with `sap.app.id` of your application.
 ```json
     [

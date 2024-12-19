@@ -13,8 +13,8 @@ Create a subscriber subaccount in the same region where the multitenant applicat
    See the below screenshot for more information:
    <img src="./images/subscribe-to-workzone.png"/>
 
-2. Follow the steps described in [Step 3 - Integrate Your Application with SAP Build Work Zone, Standard Edition tutorial](https://developers.sap.com/tutorials/integrate-with-work-zone.html#a5f75fc6-0e74-4b64-bf09-a39277f47c7e). 
-    <img src="./images/pre-req-cdm.png"/>"
+2. Follow the steps described in [Step 3 - Create a new content provider](https://developers.sap.com/tutorials/integrate-with-work-zone.html#a5f75fc6-0e74-4b64-bf09-a39277f47c7e). 
+    <img src="./images/content-provider-tutorial.png"/>"
 
 
 ## Subscribe to the Application

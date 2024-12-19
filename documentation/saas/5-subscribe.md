@@ -7,8 +7,15 @@ You will learn about the lifecycle management of a multitenant application.
 
 ## Subscribe to SAP Build Work Zone, Standard Edition
 
-1. Follow the steps described in [Step 1 of the Integrate Your Application with SAP Build Work Zone, Standard Edition tutorial](https://developers.sap.com/tutorials/integrate-with-work-zone.html#7fcf8831-58a9-429c-a18e-629800d23ded).
-2. Follow the steps described in [Step 2 of the Integrate Your Application with SAP Build Work Zone, Standard Edition tutorial](https://developers.sap.com/tutorials/integrate-with-work-zone.html#a5f75fc6-0e74-4b64-bf09-a39277f47c7e). 
+Create a subscriber subaccount in the same region where the multitenant application is deployed. And then follow the below steps in the subscriber subaccount: 
+
+1. Follow the steps described in [Step 1,2 - Subscribe to SAP Build Work Zone, standard edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html#ce55604a-ed61-423c-8b9b-62193f78af40).  
+   See the below screenshot for more information:
+   <img src="./images/subscribe-to-workzone.png"/>
+
+2. Follow the steps described in [Step 3 - Integrate Your Application with SAP Build Work Zone, Standard Edition tutorial](https://developers.sap.com/tutorials/integrate-with-work-zone.html#a5f75fc6-0e74-4b64-bf09-a39277f47c7e). 
+    <img src="./images/pre-req-cdm.png"/>"
+
 
 ## Subscribe to the Application
 

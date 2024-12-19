@@ -35,7 +35,7 @@ You are using the `html5 runtime` reuse service. When subscribing, these service
 
 1. Freeze the npm dependencies for the server and MTX sidecar. See [Freeze Dependencies](https://cap.cloud.sap/docs/guides/deployment/to-cf#freeze-dependencies).
 
-2. Go to the root of the application and run the following command:
+2. Go to the **root** of the application and run the following command:
 
 ```sh
 npm update --package-lock-only

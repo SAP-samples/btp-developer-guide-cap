@@ -72,11 +72,11 @@ In essence, these are the steps you need to follow:
 
     From `Chart.yaml` file, remove
         
-        ```yaml
-        - name: service-instance
-            alias: event-mesh
-            version: ">0.0.0"
-        ```
+      ```yaml
+      - name: service-instance
+          alias: event-mesh
+          version: ">0.0.0"
+      ```
 
 6. Configure the created Helm charts.
 

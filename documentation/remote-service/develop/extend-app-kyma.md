@@ -103,6 +103,7 @@
       ```
 
   * Add the custom handler implementation after the init method:
+  
       ```js
         async onCustomerRead(req) {
           console.log('>> delegating to S4 service...', req.query);
@@ -142,6 +143,7 @@
     this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
     this.remoteService = await cds.connect.to('RemoteService');
     ```
+    
 * Add the custom handler after the *init* method:
 
   ```js

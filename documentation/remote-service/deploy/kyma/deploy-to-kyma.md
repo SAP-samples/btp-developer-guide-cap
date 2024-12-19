@@ -134,18 +134,16 @@ html5-apps-deployer:
        --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
     ```
 
-  b. For deploying the Incident Mnaagement Application together with Mock Server
+  b. For deploying the Incident Management Application together with Mock Server
   
     ```sh
     helm upgrade --install incident-management --namespace incidents-namespace ./chart \
       --set-file xsuaa.jsonParameters=xs-security.json
     ```
-  ```
+ 
 This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incident-management***.
 
-```info
 With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
-```
 
 The outcome of installation looks similar to this:
 

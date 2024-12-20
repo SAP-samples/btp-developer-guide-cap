@@ -102,7 +102,7 @@ With the ***helm upgrade --install*** command, you can install a new chart as we
 :::
 The outcome of installation will look something like this:
 
-![deployed app](./images/deployedapp.png)
+![deployed app](./../../images/deployedapp.png)
 
 To be able to access the application via the URL, you have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 

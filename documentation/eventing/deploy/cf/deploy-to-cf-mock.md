@@ -34,9 +34,9 @@ In this chapter you will add the SAP Event Mesh service to your project.
 
 2. Make sure you are in the project folder of your application and run the following command:
 
-        ```bash
-        mbt build
-        ```
+```bash
+mbt build
+```
 
 3. To deploy the ready MTA archive, run the following command:
 

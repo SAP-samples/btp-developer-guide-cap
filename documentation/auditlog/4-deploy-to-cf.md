@@ -8,7 +8,8 @@ While we simply dumped audit log messages to *stdout* in local development, we'l
 
 To integrate with SAP Audit Log Service, you need to:
 
-1. Add the service instance as an existing resource to your **mta.yml**. 
+1. Add the service instance as an existing resource to your **mta.yml**.
+
     ```yaml
     resources:
     - name: incidents-auditlog
@@ -18,11 +19,13 @@ To integrate with SAP Audit Log Service, you need to:
       type: org.cloudfoundry.managed-service
     ```
 2. Bind the service to `incident-management-srv` in its **requires** section.
+
     ```yaml
       requires:
       - name: incidents-auditlog
     ```
 3. Update `xs-security.json` and add `admin` role. The final `xs-security.json` will look like below:
+
     ```json
     {
     "scopes": [
@@ -63,11 +66,14 @@ To integrate with SAP Audit Log Service, you need to:
     ]
     }
     ```
-3. Build the *mtar* and deploy your application.
+
+4. Build the *mtar* and deploy your application.
+
 ```bash
 mbt build
 ```
-4. Check if the *mtar* has been created in the *mta_archives* folder and run: 
+
+1. Check if the *mtar* has been created in the *mta_archives* folder and run: 
 
 ```bash
 cf deploy mta_archives/< mtar_name >.mtar
@@ -100,7 +106,8 @@ To test and generate audit log, we will be using one of these API Testing tools:
 ![](./images/access-token.png)
 
 4. Use `https://<org>-<space>-incidents-srv.cfapps.sap.hana.ondemand.com/odata/v4/processor/Customers` and send the request (Step 7 in the above screenshot). If successful, you will get the list of customers as a response:
-```
+
+```json
 {
     "@odata.context": "$metadata#Customers",
     "value": [
@@ -146,5 +153,5 @@ To test and generate audit log, we will be using one of these API Testing tools:
     ]
 }
 ```
-5. On reading the customer data which we have annotated with @PersonalData, there will be an audit log entry in Cloud Foundry, which you will be retrieving in the next step. 
+1. On reading the customer data which we have annotated with @PersonalData, there will be an audit log entry in Cloud Foundry, which you will be retrieving in the next step. 
 

@@ -127,17 +127,17 @@ html5-apps-deployer:
 
 2. Execute one of the below commands based on the integration scenarios
 
-  a. For deploying the Incident Mnaagement Application together with SAPS/4HANA Cloud
+  a. For deploying the Incident Management Application together with SAPS/4HANA Cloud
   
     ```sh
-    helm upgrade --install incident-management --namespace incident-management ./chart \
+    helm upgrade --install incident-management --namespace incident-management ./gen/chart \
        --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
     ```
 
   b. For deploying the Incident Management Application together with Mock Server
   
     ```sh
-    helm upgrade --install incident-management --namespace incidents-namespace ./chart \
+    helm upgrade --install incident-management --namespace incidents-namespace ./gen/chart \
       --set-file xsuaa.jsonParameters=xs-security.json
     ```
  

@@ -14,16 +14,14 @@ Create a new SAPUI5 application based on a template provided by SAP Business App
 
 4. In the next dialog, choose **Use a Local CAP Project** as your Data Source and choose your current **`incident-management`** project as the CAP project.
 
-    ::: tip
-   In case you get the error: `Node module @sap/cds isn't found. Please install it and try again`, you have to install the corresponding CAP module which is also required   by the app generator as described in [Add CAP Tooling](https://cap.cloud.sap/docs/tools/#command-line-interface-cli)
-    If not already done, please open a command line and run the following command:
+  > **Note:** In case you get the error: `Node module @sap/cds isn't found. Please install it and try again`, you have to install the corresponding CAP module which is also required   by the app generator as described in [Add CAP Tooling](https://cap.cloud.sap/docs/tools/#command-line-interface-cli)
+  >  If not already done, please open a command line and run the following command:
 
     ```bash
     npm install --global @sap/cds-dk --@sap:registry=https://registry.npmjs.org/
     ```
 
-    See the [CAP Troubleshooting guide](https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation) for more details.
-    :::
+  >  See the [CAP Troubleshooting guide](https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation) for more details.
 
 5. Select `ManagerService(Node.js)` as OData service and choose **Next**.
 
@@ -207,7 +205,7 @@ Lets add a map control to the `Main.view.xml` view by replacing its content as f
 </mvc:View>
 ```
 
-We have a basic [MVC View](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.core.mvc.View%23overview). The controller for this view is specified as `ns.manager.controller.Main`, indicating that the logic for this view is implemented in the Main controller of the **manager** namespace. [Namespaces](https://sapui5.hana.ondemand.com/sdk/#/topic/2421a2c9fa574b2e937461b5313671f0.html) for UI controls are declared. The default namespace for controls is `sap.m` (the main SAPUI5 controls [library](https://sapui5.hana.ondemand.com/sdk/#/api/sap.m)), and the **vbm** namespace for controls related to the Visual Business Maps (VBM) library is also declared. Later those namespaces will be used before the control name to identify a corresponding control library.
+You have a basic [MVC View](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.core.mvc.View%23overview). The controller for this view is specified as `ns.manager.controller.Main`, indicating that the logic for this view is implemented in the Main controller of the **manager** namespace. [Namespaces](https://sapui5.hana.ondemand.com/sdk/#/topic/2421a2c9fa574b2e937461b5313671f0.html) for UI controls are declared. The default namespace for controls is `sap.m` (the main SAPUI5 controls [library](https://sapui5.hana.ondemand.com/sdk/#/api/sap.m)), and the **vbm** namespace for controls related to the Visual Business Maps (VBM) library is also declared. Later those namespaces will be used before the control name to identify a corresponding control library.
 
 Inside the view, there's a Page control. Its title is bound to the resource model using `{i18n>title}`. The [resource model](https://sapui5.hana.ondemand.com/sdk/#/topic/91f122a36f4d1014b6dd926db0e91070.html#loio91f122a36f4d1014b6dd926db0e91070) is used as a wrapper for resource bundles. In data binding you use the resource model instance, for example, to bind texts of a control to language-dependent resource bundle properties.
 
@@ -217,8 +215,7 @@ Within the Page's content, there's a [GeoMap control](https://sapui5.hana.ondema
 
 Inside the GeoMap control, there's a collection of spots. These spots are bound to a model with `spotModel>/spots`. The data in the spots model is taken from the JSON file which we have created before. Each spot is represented by a [Spot control](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.vbm.Spot). A Spot is actually an image drawn at the given position. The position, tooltip, and label text are bound to properties from the **spotModel**. Click event handler `navToSpotStatus` will be defined in the corresponding controller.
 
-
-### Adjusting the view controller
+### Adjusting the View Controller
 
 1. Open `Main.controller.ts` in the `app/manager/webapp/controller/` folder and replace its content as follows:
 
@@ -242,7 +239,7 @@ The controller code defines a class named **Main** that extends the **Controller
 
 The method **navToSpotStatus** takes an event parameter of type **[GeoMap$KeyPressEvent](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.vbm.GeoMap%23events/keyPress)**. This method is invoked on click event of the **Spot** control defined in the **Main** view. The method retrieves the customer ID of the clicked spot from the event's source binding context, assuming that there's a property named **customerID** in the **spotModel** binding context. Then it [navigates](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.core.routing.Router%23methods/navTo) to a specific route named **RouteSpotStatus**, passing the customer ID as a parameter. This route will be defined later in the tutorial.
 
-### Test the result
+### Test the Result
 
 1. In SAP Business Application Studio, invoke the Command Palette ( **View** &rarr; **Command Palette** or <kbd>Shift</kbd> + <kbd>Command</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows) and choose **Fiori: Preview Application**.
 
@@ -256,9 +253,9 @@ This script runs the service in an application modeler terminal session and auto
 
 ![Preview](./images/first-view-preview.png)
 
-## Creating the second view
+## Creating the Second View
 
-### Configure routes
+### Configure Routes
 
 1. Open `manifest.json` file from the `app/manager/webapp` folder.
 
@@ -293,9 +290,10 @@ A route is a way to address a specific part or state of an application with a sp
     }
 }
 ```
+
 A target defines a view that is displayed, it can be referenced by one or more routes. Whenever a target is displayed, the corresponding view is loaded and shown in the app. The two targets point to the two content views which will be available in the application.
 
-### Add a new view
+### Add a New View
 
 1. Create a new view file named `SpotStatus.view.xml` in the location `app/manager/webapp/view/SpotStatus.view.xml`.
 
@@ -393,7 +391,7 @@ Some view properties are defined via [formatters](https://sapui5.hana.ondemand.c
 
 If there are no incidents to display, an **[IllustratedMessage](https://sapui5.hana.ondemand.com/#/entity/sap.f.IllustratedMessage)** is shown with an empty list illustration.
 
-### Add a view controller
+### Add a View Controller
 
 1. Create a new view file named `SpotStatus.controller.ts` in the location `app/manager/webapp/controller/SpotStatus.controller.ts`.
 
@@ -474,7 +472,7 @@ Overall, this controller gets the information of the routing by using **onRouteM
 
 1. Within the `app/manager/webapp`, create a new folder named `format` and inside it, create a new file named `util.ts`. This file should be located at `app/manager/webapp/format/util.ts`.
 
-2. Add the following content
+2. Add the following content:
 
 ```ts
 import  MessageType from "sap/ui/core/message/MessageType";
@@ -512,7 +510,7 @@ Imports:
 
 - **formatDaysAgo Function**: Defines a function named **formatDaysAgo** that formats a date string representing the creation date of an item into a relative date format (e.g., "2 days ago"). It uses SAPUI5's [DateFormat](https://sapui5.hana.ondemand.com/sdk/#/topic/91f2eba36f4d1014b6dd926db0e91070) class to parse and format the date string. This formatter is used to display the relative time since an incident was created.
 
-### Maintain translations
+### Maintain Translations
 
 Files in the `i18n` folder in SAPUI5 store translations for text labels and messages, enabling localization and multilingual support. These files are text files containing name-value pairs, where the translated text is assigned to a translation key. These keys are then used in the view, fragments, etc., for displaying the appropriate translated text. Multiple files exist for different languages and they are loaded as [resource bundles](https://sapui5.hana.ondemand.com/sdk/#/topic/91f225ce6f4d1014b6dd926db0e91070.html), which support dynamic language switching.
 

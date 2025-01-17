@@ -1,8 +1,8 @@
-# Add dependencies, Import Data and Configure Data Source
+# Add Dependencies, Import Data and Configure Data Source
 
 In this chapter, you will add additional dependencies, import sample data and configure them as the data source.
 
-## Add dependencies
+## Add Dependencies
 
 In addition to the main SAPUI5 library `sap.m`, you will use other control libraries like `sap.ui.layout` and `sap.ui.vbm` in your application. The central point for configuring your SAPUI5 application is the `manifest.json` file, which is located at `manager/webapp/manifest.json`
 
@@ -83,7 +83,7 @@ After adding the spots data to your application, you'll need to configure the da
     }
 ```
 
-3. Go to the section `sap.ui5`. Add a **spotModel** model to the **models** section as follows:
+3. Go to the `sap.ui5` section. Add the **spotModel** model to the **models** section as follows:
 
 ```json
 "sap.ui5": {
@@ -98,7 +98,7 @@ After adding the spots data to your application, you'll need to configure the da
   },
 ```
 
-4. We will not use the flexibility services, so disable them by changing the first entry in the `sap.ui5` section as follows:
+4. You will not use the flexibility services, so disable them by changing the first entry in the `sap.ui5` section as follows:
 
 ```json
     "sap.ui5": {

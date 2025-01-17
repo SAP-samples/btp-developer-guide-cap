@@ -38,7 +38,7 @@
     {
         "kind": 2,
         "language": "shell",
-        "value": "%%writefile \"srv/services.cds\"\nusing { sap.capire.incidents as my } from '../db/schema';\n\n/**\n* Service used by support personel, i.e. the incidents' 'processors'.\n*/\nservice ProcessorService { \n    entity Incidents as projection on my.Incidents;\n\n    @readonly\n    entity Customers as projection on my.Customers;\n}\n\n/**\n* Service used by administrators to manage customers and incidents.\n*/\nservice AdminService{\n    entity Customers as projection on my.Customers;\n    entity Incidents as projection on my.Incidents;\n}\n\nannotate ProcessorService.Incidents with @odata.draft.enabled; \nannotate ProcessorService with @(requires: 'support'); \nannotate AdminService with @(requires: 'admin'); ",
+        "value": "%%writefile \"srv/services.cds\"\nusing { sap.capire.incidents as my } from '../db/schema';\n\n/**\n* Service used by support personel, i.e. the incidents' 'processors'.\n*/\nservice ProcessorService { \n    entity Incidents as projection on my.Incidents;\n\n    @readonly\n    entity Customers as projection on my.Customers;\n}\n\n/**\n* Service used by administrators to manage customers and incidents.\n*/\nservice AdminService{\n    entity Customers as projection on my.Customers;\n    entity Incidents as projection on my.Incidents;\n}",
         "outputs": []
     },
     {

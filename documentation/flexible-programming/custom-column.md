@@ -30,7 +30,7 @@ Before you start with the next steps, please ensure the [prerequisites](./prereq
 
     - **Header Text**: `Progress`. Click the **Globe** icon to generate a translatable text key and then choose **Apply**.
     - **Column Fragment Name**:  `StatusProcess`
-    - **Anchor Column**: `Status (ID: status_code)` 
+    - **Anchor Column**: `Status (ID: status/descr)` 
     - **Placement**: `After`
     - **Generate Event Handler (Controller)**: `True`
     

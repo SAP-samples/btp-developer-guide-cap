@@ -1,12 +1,12 @@
-# Run the Manager Dashboard in the Incident Management application
+# Run the Manager Dashboard in the Incident Management Application
 
 ## Prerequisites
 
-- You have sucessfully deployed the application to your SAP BTP Runtime.
+- You have sucessfully deployed the application to your SAP BTP runtime.
 - You have assigned application roles before accessing the application. See [User Role Assignment](https://developers.sap.com/tutorials/user-role-assignment.html).
 - You have integrated your application with SAP Build Work Zone.
 
-## Run and test the application
+## Run and Test the Application
 
 1. Access the `Incidents Management` application via launchpad.
 
@@ -19,18 +19,17 @@
 
   ![shows what the preceding text described.](./images/new-incident.png)
 
-3. Choose the **Create** button.
+3. Choose **Create**.
 
 4. Go back to the Home page and choose the `Incident By Location` tile in your Workzone application to access it.
 
-5. Click on the `Bangalore` spot marker on the GeoMap where we are supposed to have the **Stormy Weathers** customer.
+5. Click the `Bangalore` spot marker on the GeoMap where we are supposed to have the **Stormy Weathers** customer.
 
   ![shows what the preceding text described.](./images/select-customer-location.png)
 
 6. You will see your new incident with the creation date and marked as the one with low urgency. You can as well try the filter category buttons above to check how the filtering works.
 
   ![shows the result as the preceding text described.](./images/new-incident-in-manager-app.png)
-
 
 ## Summary
 

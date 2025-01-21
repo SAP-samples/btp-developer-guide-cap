@@ -97,7 +97,7 @@ Once the application is successfully deployed, there is a need to configure desi
 
    **Type**: `HTTP`
 
-   **URL**: `https://html5-apps-repo-rt.cfapps.eu12.hana.ondemand.com/applications/cdm/<sap-app-id>`
+   **URL**: `https://html5-apps-repo-rt.cfapps.eu12.hana.ondemand.com/applications/cdm/<sap.cloud.service>`
 
    **Proxy Type**: `Internet`
 

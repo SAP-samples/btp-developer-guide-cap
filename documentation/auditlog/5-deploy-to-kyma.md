@@ -14,6 +14,7 @@ Log in to your container registry:
 docker login docker.io -u <your-user>
 
 ```
+
 **Before You Begin**
 
 
@@ -106,6 +107,7 @@ auditlog:
     version: ">0.0.0"
 ```
 9. Update `xs-security.json` and add `admin` role. The final `xs-security.json` will look like below:
+
     ```json
     {
       "scopes": [
@@ -146,6 +148,7 @@ auditlog:
       ]
     }
     ```
+
 ## Deploy CAP Helm Chart to Kyma
 
 1. Log in to your Kyma cluster.

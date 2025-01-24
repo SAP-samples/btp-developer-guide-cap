@@ -72,18 +72,4 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
   ![App after deploy](./images/cf-apps.png)
 
-6. Enter the route displayed for **incident-management-srv** in your browser.
-
-    ![Incident Management route](./images/incident-management-srv-route.png)
-
-    You see the CAP start page:
-
-   ![CAP start page](./images/cap-start-page.png)
-
-7. When you choose the **Incidents** service entity, you will see an error message. 
-
-    ![401 error](./images/401-error.png)
-
-This is because your request is missing the required authentication and authorizations for the service. In the next tutorial, you will access your UIs from SAP Build Work Zone, standard edition which will provide the required access information.
-
 

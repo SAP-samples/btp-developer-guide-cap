@@ -53,134 +53,9 @@ The pack CLI builds the image that contains the build result in the *gen/srv* fo
 
 ### Build UI Deployer image
 
-1. Add the following build scripts and dependencies to the `app/manager/package.json` file.
+1. Create a new folder named `ui-resources` at the root directory of the project.
 
-```json
-  {
-    "name": "manager",
-    "version": "0.0.1",
-    "private": true,
-    "description": "An SAP Fiori application for manager",
-    "keywords": [
-        "ui5",
-        "openui5",
-        "sapui5"
-    ],
-    "main": "webapp/index.html",
-    "devDependencies": {
-        "@sap-ux/eslint-plugin-fiori-tools": "^0.2.0",
-        "@sap-ux/ui5-middleware-fe-mockserver": "2",
-        "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
-        "@sap/ux-specification": "^1.120.6",
-        "@sap/ux-ui5-tooling": "1",
-        "@sapui5/ts-types": "^1.92.2",
-        "@sapui5/types": "~1.122.0",
-        "@typescript-eslint/eslint-plugin": "^5.59.0",
-        "@typescript-eslint/parser": "^5.59.0",
-        "@ui5/cli": "^3.0.0",
-        "eslint": "^7.32.0",
-        "typescript": "^5.1.6",
-        "ui5-tooling-transpile": "^3.2.0",
-        "@sap/ui5-builder-webide-extension": "^1.1.8",
-        "ui5-task-zipper": "^0.5.0",
-        "mbt": "^1.2.18",
-        "ui5-middleware-simpleproxy": "^3.2.10"
-    },
-    "scripts": {
-        "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
-        "lint": "eslint ./",
-        "ts-typecheck": "tsc --noEmit",
-        "prestart": "npm run ts-typecheck",
-        "prebuild": "npm run ts-typecheck",
-        "deploy": "fiori verify",
-        "deploy-config": "fiori add deploy-config",
-        "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateCachebusterInfo",
-        "start": "ui5 serve"
-    },
-    "ui5": {
-        "dependencies": [
-            "@sap/ui5-builder-webide-extension",
-            "ui5-task-zipper",
-            "mbt"
-        ]
-    }
-  }
-
-```
-
-2. Extend the `app/manager/ui5.yaml` file with the following builder configuration:
-
-```yaml
-...
-builder:
-  customTasks:
-    - name: ui5-tooling-transpile-task
-      afterTask: replaceVersion
-      configuration:
-        debug: true
-  resources:
-    excludes:
-      - "/test/**"
-      - "/localService/**"
-
-resources:
-  configuration:
-    propertiesFileSourceEncoding: UTF-8
-```
-
-3. Create a new file called `ui5-deploy.yaml` inside the `app/manager` folder and add the following content.
-
-```yaml
-# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-specVersion: '2.4'
-metadata:
-  name: ns.manager
-type: application
-resources:
-  configuration:
-    propertiesFileSourceEncoding: UTF-8
-builder:
-  resources:
-    excludes:
-      - "/test/**"
-      - "/localService/**"
-  customTasks:
-  - name: webide-extension-task-updateManifestJson
-    afterTask: replaceVersion
-    configuration:
-      appFolder: webapp
-      destDir: dist
-  - name: ui5-task-zipper
-    afterTask: generateCachebusterInfo
-    configuration:
-      archiveName: nsmanager
-      additionalFiles:
-      - xs-app.json
-  - name: ui5-tooling-transpile-task
-    afterTask: replaceVersion
-    configuration:
-      debug: true
-      removeConsoleStatements: true
-      transpileAsync: true
-      transpileTypeScript: true 
-
-```
-
-The `ui5-deploy.yaml` file contains the configuration to build the SAPUI5 applications for deployment. It includes the builder and custom tasks.
-
-**builder**: Defines the configuration for the build and for excluding certain resources from the build, such as test files and local service directories.
-
-**customTasks**: Specifies custom tasks to be executed during the build process. These tasks can perform various operations to enhance the deployment process. In this case:
-
-- **webide-extension-task-updateManifestJson**: This task updates the manifest.json file in the webapp folder and moves it to the dist folder. It executes after the 'replaceVersion' task.
-
-- **ui5-task-zipper**: This task zips the application files along with additional files like xs-app.json into an archive named "nsmanager". It executes after the 'generateCachebusterInfo' task.
-
-- **ui5-tooling-transpile-task**: This task transpiles TypeScript files into JavaScript. It also performs debugging-related operations and removes console statements. This task executes after the 'replaceVersion' task.
-
-4. Create a new folder named `ui-resources` at the root directory of the project.
-
-5. In the`ui-resources` folder, create a new `package.json` file with the following content:
+2. In the`ui-resources` folder, create a new `package.json` file with the following content:
 
 ```json
   {
@@ -194,7 +69,7 @@ The `ui5-deploy.yaml` file contains the configuration to build the SAPUI5 applic
     ],
     "scripts": {
         "start": "node node_modules/@sap/html5-app-deployer/index.js",
-        "build:ui5": "npm run build:cf --prefix ../ --workspaces --if-present",
+        "build:ui5": "npm run build --prefix ../ --workspaces --if-present",
         "copyzips": "copyfiles -f ../app/*/dist/*.zip ./resources/",
         "package": "run-s build:ui5 copyzips"
     },
@@ -209,7 +84,7 @@ The `ui5-deploy.yaml` file contains the configuration to build the SAPUI5 applic
 
 ```
 
-6. Navigate to the `ui-resources` folder in the terminal and run the following command.
+3. Navigate to the `ui-resources` folder in the terminal and run the following command.
 
 ```sh
   npm install && npm run package
@@ -217,7 +92,7 @@ The `ui5-deploy.yaml` file contains the configuration to build the SAPUI5 applic
 This will build the the application into an archive called  `nsmanager.zip` and puts it in the `ui-resources/resources` folder.
 
 
-7. Navigate back to the root folder in the terminal and then build the image using the following command:
+4. Navigate back to the root folder in the terminal and then build the image using the following command:
 
     ```sh
     pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \

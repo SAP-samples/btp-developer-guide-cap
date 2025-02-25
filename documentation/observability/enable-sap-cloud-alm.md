@@ -6,6 +6,8 @@
    <!-- - [You have deployed application with SAP Cloud Logging to Kyma Runtime](./enablements-kyma.md) -->
 2. Open the application in VS code as in Business Application Studio that you will not be able to install some of the dependencies.  
 
+**Exception monitoring for Incident Management will follow soon.** For guidance on implementing this in your application, please refer to the [Expert Portal.](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/integration-monitoring.html)
+
 ## Enable Data Collection for Real User Monitoring and Health Monitoring
 To enable data collection, you need to add the following configuration to your application:
 1. Create a `.npmrc` file at the root of the Incident Management application and paste the following: 
@@ -29,10 +31,20 @@ To enable data collection, you need to add the following configuration to your a
     app.listen()
     cds.on("bootstrap", (app) => fesr.registerFesrEndpoint(app));
    ```
-4. In the terminal, run the following command to install dependencies:
+3. In the terminal, run the following command to install dependencies:
    ```sh
-    npm install @opentelemetry/api  @opentelemetry/exporter-logs-otlp-grpc @sap/fesr-to-otel-js @sap/xotel-agent-ext-js cf-nodejs-logging-support hdb
+    npm install @opentelemetry/api  @opentelemetry/exporter-logs-otlp-grpc cf-nodejs-logging-support hdb
    ```
+   > Please refer [Here](https://help.sap.com/whats-new/aaa5ccb1a72444d5b54e2985250fab03?locale=en-US) for Data Collection Instrumentation Libraries
+
+4. In the **package.json** manually add the following two dependencies:
+
+   ```json
+    "@sap/xotel-agent-ext-js": "https://73555000100200018064.npmsrv.cdn.repositories.cloud.sap/@sap/xotel-agent-ext-js/-/xotel-agent-ext-js-1.5.22.tgz",
+    "@sap/fesr-to-otel-js": "https://73555000100200018064.npmsrv.cdn.repositories.cloud.sap/@sap/fesr-to-otel-js/-/fesr-to-otel-js-1.5.13.tgz"
+   ```
+    > Please ensure to use the latest library version, details can be found on [SAP Cloud ALM for Operations Expert Portal](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/data-collection-infrastructure.html?anchorId=section_415688568)
+
 5. In the **mta.yaml** file, add the following properties and resource to the current code:
    ```yaml
    ...
@@ -100,9 +112,10 @@ To enable data collection, you need to add the following configuration to your a
 9. Open **package.json** at the root of the application and replace the start command:
       ```json
          "scripts":{
-            "start": "node ${NODE_ARGS} ./node_modules/@sap/cds/bin/cds-serve",
+            "start": "node ${NODE_ARGS} ./node_modules/@sap/cds/bin/serve",
          }
       ```
+      > NOTE: The above configuration is supported for cds 8 and above. For lower versions you can use `cds-serve`.
 10. Go to root of the application and run `mbt build` to build the application. 
    > [!TIP]
    >If the build is failing, delete the **node_modules, package-lock.json**, install the node_modules and try building the application again.

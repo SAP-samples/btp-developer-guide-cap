@@ -45,6 +45,26 @@ In this section, you will configure your SAP Cloud ALM tenant to start receiving
 
    <img src="./images-sap-cloud-alm/healthMonitoring.png" height="50%" width="50%"/>
 
+## Enable Integration & Exception Monitoring
+1. Go to the SAP Cloud ALM tenant and choose the **Integration & Exception Monitoring** tile under **Operations**.  
+   
+   <img src="./images-sap-cloud-alm/add-exception-mon1.png" height="50%" width="50%"/>
+
+2. Choose the **Scope selector**, search for your service and choose **Apply**
+
+3. Go to your application tile, choose ***...*** and choose ***Edit Configuration***
+
+   <img src="./images-sap-cloud-alm/exceptionMon.png" height="50%" width="50%"/>
+
+4. Click on the row, maintain the filters and activate the configurations. 
+
+   <img src="./images-sap-cloud-alm/enableExpeptionMon1.png" height="50%" width="50%"/>
+
+
+   <img src="./images-sap-cloud-alm/elableExceptionMon2.png" height="50%" width="50%"/>
+
+5. Save the configuration.
+ 
 
 ## Next Steps
 [Analyze CAP Application in SAP Cloud ALM ](./test-the-flow.md)

@@ -1,4 +1,4 @@
-# Access Real User Monitoring and Health Monitoring Data in SAP Cloud ALM
+# Access Real User Monitoring, Health Monitoring Data and Integration & Exception Monitoring in SAP Cloud ALM 
 Once the application is deployed, SAP Cloud ALM tenant is configured with Real User Monitoring and Health Monitoring, you can start analysing the Incident Management application in SAP Cloud ALM.
 
 ## Prerequisites
@@ -39,9 +39,9 @@ You can check further details on the other pages of Real User Monitoring applica
 3. Choose the tile that is diplayed. It opens the **Monitoring Screen** showing some basic application metrics.
    <img scr="./images-sap-cloud-alm/hm-1.png" />
    <img src="./images-sap-cloud-alm/hm2.png"/>
-5. Choose your service to see further details. It will show detailed metrics for the application. 
+4. Choose your service to see further details. It will show detailed metrics for the application. 
    <img src="./images-sap-cloud-alm/hm3.png"/>
-6. Choose the tile to get metrics like **http.client.duration**. Choose the **Hstory** button on the right to show historical metrics of client duration when there was workload on the application.
+5. Choose the tile to get metrics like **http.client.duration**. Choose the **Hstory** button on the right to show historical metrics of client duration when there was workload on the application.
    <img src="./images-sap-cloud-alm/hm5.png"/>
    <img src="./images-sap-cloud-alm/hm4.png"/>
 You can explore more options like triggering alerts and drill down further into the application metrics based on your requirements. 
@@ -49,5 +49,12 @@ You can explore more options like triggering alerts and drill down further into 
 >[!NOTE]
 >The Health Metrics data takes time before it can be visualized in the Health Monitoring application. In case you don't see data, wait for sometime.
 
+### Integration & Exception Monitoring
 
-Read more about the capabilities of the Real User Monitoring and Health Monitoring applications in [Real User Monitoring](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/real-user-monitoring.html) and [Health Monitoring - Setup & Configuration](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/health-monitoring/health-monitoring-setup-configuration.html).
+Exception monitoring for Incident Management will follow soon.
+
+
+----
+
+Read more about the capabilities of the Real User Monitoring, Health Monitoring and Integration & Exception Monitoring
+applications in [Real User Monitoring](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/real-user-monitoring.html),  [Health Monitoring - Setup & Configuration](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/health-monitoring/health-monitoring-setup-configuration.html) and [Integration & Exception Monitoring](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/integration-monitoring.html)

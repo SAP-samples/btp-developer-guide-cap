@@ -23,5 +23,18 @@ Real User Monitoring helps IT users and business users understand how often appl
 ### Health Monitoring
 In the Health Monitoring application, you can check the health of your monitored cloud service and technical systems from an application and customer perspective. Technical metrics are collected regularly and can be used to calculate the overall health of the monitored object. The monitored metrics are defined by the service itself and may differ for each service type. See [Health Monitoring](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/health-monitoring.html) for more details.
 
+### Integration & Exception Monitoring
+The purpose of Integration & Exception Monitoring is to provide transparency for the data exchange processes. It supports the monitoring for peer-to-peer interfaces as well as interfaces using orchestration platforms and provides a unified user experience for all interface types using a common look-and-feel and handling pattern. 
+
+Integration & Exception Monitoring closes the gap between IT and Business. The correlation of integration artifacts provides end-to-end visibility in interface calls and message flows cross all involved cloud services and systems.
+
+Users of Integration & Exception Monitoring can analyze the actual processing of interface calls and message flows including possible technical or business-driven root causes.
+
+Integration & Exception Monitoring provides the following functionalities:
+
+- Message Monitoring
+- Message Search (Tracking)
+- Alerting on failed messages or exceptions
+
 ## Next Steps
 - [Set Up Data Collection for SAP Cloud ALM in a CAP Application](./enable-sap-cloud-alm.md)

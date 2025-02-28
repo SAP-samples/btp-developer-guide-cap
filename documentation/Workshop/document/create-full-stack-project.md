@@ -2,10 +2,7 @@
 
 This section explain how to access Build Code lobby and create full stack application using SAP build code.
 
-1. Open [SAP Build Lobby](https://dcom-buildcodeadmin.ap10.build.cloud.sap/lobby).
-
-    > To access the Build Code through Subaccount, check [Access Build Code from Subaccount](./lobby-subaccount.md)
-    
+1. Open [SAP Build Lobby](https://sit-buildcode.ap10.build.cloud.sap/index.html).
 
 2. Click on create to create a new project.
 
@@ -42,4 +39,4 @@ This section explain how to access Build Code lobby and create full stack applic
 
 ## Next Step
 
-[Generate data entities](create-data-entities.md)
+[Create data entities](create-data-entities.md)

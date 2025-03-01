@@ -103,7 +103,7 @@ The SAP BTP Developer’s Guide is the starting point for developing a business 
  <img align="center" src="../images/e2e-testing/help_sap_com_qr.png" width="50%"/>
 </p>
 
-## We would love to hear your feedback to improve the content to better suit your learning needs. Please use the [link](https://forms.office.com/e/jQLVbT1RGe) or scan the below QR code.
+## We would love to hear your feedback to improve the content to better suit your learning needs. Please use the [link](https://forms.office.com/e/YLFTM1TurN) or scan the below QR code.
 
 <p align="center">
  <img align="center" src="../images/e2e-testing/feedback_qr1.png" width="50%"/>

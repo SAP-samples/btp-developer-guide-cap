@@ -58,18 +58,18 @@ You have enhanced the sample data using [Enhance sample data](enhance-sample-dat
 ```
 using { sap.capire.incidents as my } from '../db/schema.cds';
 
-@requires: 'admin'
-service AdminService {
-    entity Customers as projection on my.Customers;
-    entity Incidents as projection on my.Incidents;
-}
-
-@requires: 'support'
+@requires: 'Support'
 service ProcessorService {
     @odata.draft.enabled
     entity Incidents as projection on my.Incidents;
     @readonly
     entity Customers as projection on my.Customers;
+}
+
+@requires: 'admin'
+service AdminService {
+    entity Customers as projection on my.Customers;
+    entity Incidents as projection on my.Incidents;
 }
 ```
 

@@ -58,54 +58,52 @@ The steps above is all you need to automatically log personal data-related event
 
 1. Create a file `request.http` with the following content:
    
-    ```
-    Host address:
+```
+@host = http://localhost:4004
 
-    `@host = http://localhost:4004`
+### Service
 
-    ### Service
-
-    ### Reading sensitive data (creditCardNo) by default - NOT recommended!
+### Reading sensitive data (creditCardNo) by default - NOT recommended!
     
-    GET {{host}}/odata/v4/processor/Customers
-    Authorization: Basic alice:wonderland
+GET {{host}}/odata/v4/processor/Customers
+Authorization: Basic alice:wonderland
 
-    ### Recommendation: Avoid reading sensitive data by explicitly selecting the fields you need
-    GET {{host}}/odata/v4/processor/Customers?$select=name
-    Authorization: Basic alice:wonderland
+### Recommendation: Avoid reading sensitive data by explicitly selecting the fields you need
+GET {{host}}/odata/v4/processor/Customers?$select=name
+Authorization: Basic alice:wonderland
 
-    ### AdminService
+### AdminService
 
-    ### Creating a customer with personal data
-    # @name create_customer
-    POST {{host}}/odata/v4/admin/Customers
-    Authorization: Basic alice:wonderland
-    Content-Type: application/json
+### Creating a customer with personal data
+# @name create_customer
+POST {{host}}/odata/v4/admin/Customers
+Authorization: Basic alice:wonderland
+Content-Type: application/json
 
+{
+  "ID": "{{$guid}}",
+  "firstName": "Bob",
+  "lastName": "Builder",
+  "email": "bob.builder@example.com"
+}
+
+### Updating a customer with personal data details
+@customer = {{create_customer.response.body.ID}}
+PATCH {{host}}/odata/v4/admin/Customers('{{customer}}')
+Authorization: Basic alice:wonderland
+Content-Type: application/json
+
+{
+  "addresses": [
     {
-      "ID": "{{$guid}}",
-      "firstName": "Bob",
-      "lastName": "Builder",
-      "email": "bob.builder@example.com"
+      "city": "Walldorf",
+      "postCode": "69190",
+      "streetAddress": "Dietmar-Hopp-Allee 16"
     }
-
-    ### Updating a customer with personal data details
-    @customer = {{create_customer.response.body.ID}}
-    PATCH {{host}}/odata/v4/admin/Customers('{{customer}}')
-    Authorization: Basic alice:wonderland
-    Content-Type: application/json
-
-    {
-      "addresses": [
-        {
-          "city": "Walldorf",
-          "postCode": "69190",
-          "streetAddress": "Dietmar-Hopp-Allee 16"
-        }
-      ]
-    }
+  ]
+}
     
-    ```
+```
     
 3. Add `admin` role to  `alice` in `package.json`.
     ```json

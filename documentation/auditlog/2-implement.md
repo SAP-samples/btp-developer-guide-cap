@@ -58,7 +58,7 @@ The steps above is all you need to automatically log personal data-related event
 
 1. Create a file `request.http` with the following content:
    
-    ```http
+    ```md
     @host = http://localhost:4004
 
     ### Service
@@ -106,16 +106,21 @@ The steps above is all you need to automatically log personal data-related event
     ```
     
 3. Add `admin` role to  `alice` in `package.json`.
+
     ```json
     "alice": {
                   "roles": ["support", "admin"]
                 }   
     ```
+
     > User need `admin` role to access `admin` service and modify the customer's details.
+
 4. Start the server.
+
     ```bash
       cds watch
     ```
+
 5. Send the requests and observe the response having logs from `[audit-log]` with `PersonalDataModified` and `SensitiveDataRead` events.
 
 
@@ -203,7 +208,7 @@ Lets try out how the custom audit log works by executing some local rest calls.
    # Service
    
    ## 
-   ### Get all properteis of all Customers will create Audit Log
+   ### Get all properties of all Customers will create Audit Log
    curl -X GET 'http://{{host}}/odata/v4/processor/Customers' 
     --user 'a:' // change the username
 

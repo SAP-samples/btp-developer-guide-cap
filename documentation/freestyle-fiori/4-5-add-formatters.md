@@ -50,7 +50,7 @@ Files in the `i18n` folder in SAPUI5 store translations for text labels and mess
 
 2. Add the following data at the end of the file:
 
-~~~
+```properties
 #Texts for the SpotStatus view
 titleSpotStatus=Status
 msgFilterAll=All
@@ -58,7 +58,7 @@ msgFilterLow=Low
 msgFilterMedium=Medium
 msgFilterHigh=High
 noIncidents=No Incidents
-~~~
+```
 
 ### Test
 

@@ -1,16 +1,16 @@
 # Create Data Entities
 
-SAP Joule is a Generative AI assistant that can generate the data model of an application as CDS (Core Data Services) entities. However, since the generated model may slightly vary each time a prompt is triggered, we provide a predefined CDS data model. Following a structured manual approach ensures consistency in exercises. Below is a step-by-step tutorial for manually creating CDS entities instead of relying on AI-generated code.
+Joule is an AI copilot that can generate the data model of an application as CDS (Core Data Services) entities. However, since the generated model may slightly vary each time a prompt is triggered, we provide a predefined CDS data model. Following a structured manual approach ensures consistency in the exercises. Follow the step-by-step tutorial for manually creating CDS entities instead of relying on AI-generated code.
 
-1. In the SAP Business Application Studio, Click on project explorer.
+1. In the SAP Business Application Studio, choose **Project Explorer**.
 
     ![project-explorer](../images/create-data-entities/project_explorer.png)
 
-2. Expand **db** folder. Click on create file icon, provide a file name as **schema.cds**
+2. Expand the **db** folder. Choose the icon to create a new file, and provide the **schema.cds** file name.
 
     ![create-schema](../images/create-data-entities/schema_creation.png)
 
-3. Copy below schema into **schema.cds** file created in previous step.
+3. Copy the following schema to the **schema.cds** file.
 
 ```
 using { User, cuid, managed, sap.common.CodeList } from '@sap/cds/common';
@@ -78,10 +78,10 @@ type EMailAddress : String;
 type PhoneNumber : String;
 ```
 
-4. Navigate to **Storyboard** on the editor and make sure **Data Models** is updated as per entities created in schema.cds file under db folder.
+4. Navigate to **Storyboard** in the editor and make sure the **Data Models** section is updated following the entities created in the **schema.cds** file.
 
     ![schema-storyboard](../images/create-data-entities/schema-storyboard.png)
 
 ## Next Step
 
-[Enhance sample data](enhance-sample-data.md)
+[Enhance Sample Data](enhance-sample-data.md)

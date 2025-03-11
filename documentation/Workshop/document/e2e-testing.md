@@ -2,75 +2,75 @@
 
 ### Prerequisites
 
-Deploy the Incident Management application following the step by step from [Deploy to CF](./deploy-cf.md)
+Deploy the Incident Management application following the step at [Deploy Application to SAP BTP, Cloud Foundry Runtime](./deploy-cf.md).
 
 ## End to End Testing
 
-1. Find the Project OverviewURL from the terminal of the deployment in Lcap dev space. 
+1. Find the **Project OverviewURL** in the terminal you used when deploying the application. 
 
     ![testing](../images/deploy-cf/deploy_completed.png)
 
-2. Click on the URL, which opens in a new tab.
+2. Choose the URL. The application opens in a new browser tab.
 
-3. Application Overview screen appears. Click on the UI application under Web Applications.
+3. The **Application Overview** page appears. Choose the UI application tile in **Web Applications**.
 
     ![testing](../images/e2e-testing/application_overview.png)
 
-    > Note: While opening the application, if it asks for sign in with, choose **aviss4yru.accounts.ondemand.com**.
+    > Note: While opening the application, if it asks you to sign in, choose **aviss4yru.accounts.ondemand.com**.
 
     ![testing](../images/e2e-testing/choose_provider.png)
 
-4. Once the application opens, click on the **Go**.
+4. Once the application opens, choose **Go**.
 
     ![testing](../images/e2e-testing/app_go.png)
 
-> **Disclaimer**: The UI screenshots given here is the from basic Fiori UI application without enhacing the UI. If you have followed the tutorial Enhance UI, then UI would be bit different.   
+> **Disclaimer**: The UI screenshots given here are from the basic SAP Fiori UI application without any enhancements. If you have followed the **Enhance UI** tutorial, then screenshots would be bit different.   
 
-## Validate the custom logic scenario 1: 
+## Validate the Custom Logic 1
 
 Update the **Urgency** from *Low/Medium* to *High*, if it encounters ```urgent``` keyword in the title.
 
-1. Click on Create, for creating a new incident.
+1. Choose **Create**, to create a new incident.
 
     ![testing](../images/e2e-testing/incident_create.png)
 
-2. For creating the incident, do the following:
+2. Fill in the incident details:
 
-    - Select any one of the customer by clicking on the value help.
+    1. In the **Customer ID** dropdown menu, select a customer of your choice.
 
         ![testing](../images/e2e-testing/customer_value_help.png)
 
-    - Give title as `Urgent issue`
+    2. In the **Title** field, enter **Urgent issue**.
 
-    - Leave the urgency_code and status_code by default.
+    3. Leave the **urgency_code** and **status_code** fields.
 
-    - Click on **Create**.
+    4. Choose **Create**.
 
         ![testing](../images/e2e-testing/create_draft.png)
 
-3. Once the incident is created, you will observe the **urgency_code** is automatically changed to H which means High from M - Medium.
+3. Once the incident has been created, you see that the **urgency_code** field is automatically changed to from **M** (Medium) to **H** (High).
 
     ![testing](../images/e2e-testing/updated_high.png)
 
-## Validate the custom logic scenario 2:
+## Validate the Custom Logic 2
 
 Cannot update the closed incident.
 
-1. Make any one of the incidents to be in closed state. 
+1. Close one of the incidents. 
 
-2. The status_code is C - Closed. Now click on the Edit button.
+2. The **status_code** changes to **C** (Closed). Choose **Edit**.
 
     ![testing](../images/e2e-testing/edit_closed.png)
 
-3. Update the title with some text, and click on **Save**.
+3. Change the value in the **Title** field, and choose **Save**.
 
-4. It will throw the error saying `cannot modify the closed incident`
+4. It will throw the error saying `cannot modify the closed incident`.
 
     ![testing](../images/e2e-testing/logic2_check.png)
 
-## Clean up of the space
+## Clean Up the Cloud Foundry Space
 
-1. Go back to the Dev space, open the terminal and type the below command. Get the mta_id from the output of the command.
+1. Go back to the **Dev** space, open the terminal and type the following command. Then, get the mta_id from the output of the command.
 
     ```shell
     cf mtas
@@ -78,9 +78,9 @@ Cannot update the closed incident.
 
     ![testing](../images/e2e-testing/get_mtaid.png)
 
-    > **Note:** We run cf mtas command to get the MTA ID
+    > **Note:** You run `cf mtas` command to get the MTA ID.
 
-2. To undeploy the application, use the below command
+2. (Optional) To undeploy the application, use the following command:
 
     ```shell
     cf undeploy mta_id --delete-service-keys --delete-services
@@ -90,20 +90,24 @@ Cannot update the closed incident.
 
     ![testing](../images/e2e-testing/undeploy_confirm.png)
 
-    > **Note:** mta_id got from step 1.
+    > **Note:** The mta_id is the same you got from Step 1.
 
 
-## Congratulations! You have successfully completed the exercise.
+## Congratulations! 
 
-## To learn more about SAP BTP Developer’s Guide, you can visit the link [here](https://help.sap.com/docs/btp/btp-developers-guide/btp-developers-guide) or scan the QR code on the screen to bookmark it for future reference.
+You have successfully completed the exercise!
 
-The SAP BTP Developer’s Guide is the starting point for developing a business application on SAP BTP. It contains recommendations and best practices that give you an overview of what you should consider when working on development projects on SAP BTP. It also contains links to step-by-step instructions when required.
+Learn more about SAP BTP Developer’s Guide in [GitHub](https://help.sap.com/docs/btp/btp-developers-guide/btp-developers-guide) or in [SAP Help Portal](https://help.sap.com/docs/btp/btp-developers-guide/btp-developers-guide?version=Cloud) or scan the QR code on the screen to bookmark it for future reference.
+
+The SAP BTP Developer’s Guide is the starting point for developing a business application on SAP BTP. It contains recommendations and best practices that give you an overview of what you should consider when working on development projects on SAP BTP. It also contains links to step-by-step instructions.
 
 <p align="center">
  <img align="center" src="../images/e2e-testing/help_sap_com_qr.png" width="50%"/>
 </p>
 
-## We would love to hear your feedback to improve the content to better suit your learning needs. Please use the [link](https://forms.office.com/e/YLFTM1TurN) or scan the below QR code.
+## Tell Us What You Think
+
+We would love to hear your feedback to improve the content to better suit your learning needs. Please use the [feedback form](https://forms.office.com/e/YLFTM1TurN) or scan the QR code below.
 
 <p align="center">
  <img align="center" src="../images/e2e-testing/feedback_qr1.png" width="50%"/>

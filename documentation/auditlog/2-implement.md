@@ -59,8 +59,9 @@ The steps above is all you need to automatically log personal data-related event
 1. Create a file `request.http` with the following content:
    
     ```
-    
-    @host = http://localhost:4004
+    Host address:
+
+    `@host = http://localhost:4004`
 
     ### Service
 

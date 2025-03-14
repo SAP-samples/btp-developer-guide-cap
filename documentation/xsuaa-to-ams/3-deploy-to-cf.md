@@ -13,7 +13,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
 
     This adds the needed configuration for an SAP HANA database (needs to be provisioned in your account), for using an approuter, and using MTA as deployment.
 
-<!-- The flow that I'm seeing is, that the mta.yaml ist just being generated. So I'll remove all the mta.yaml editing steps. -->
+<!-- The flow that I'm seeing is, that the mta.yaml is just being generated. So I'll remove all the mta.yaml editing steps. -->
 
 2. Update `app/incidents/xs-app.json` with the following code:
    ```

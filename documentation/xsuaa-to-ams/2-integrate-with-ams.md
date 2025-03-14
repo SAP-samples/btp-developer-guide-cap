@@ -9,7 +9,7 @@
     ```sh
     cds add ams
     ```
-    > This adds the needed cofiguration for AMS as well as IAS.
+    > This adds the needed configuration for AMS as well as IAS.
  3. Install the added dependencies
     ```sh
     npm i

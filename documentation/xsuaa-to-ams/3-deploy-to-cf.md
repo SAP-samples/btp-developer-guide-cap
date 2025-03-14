@@ -11,7 +11,7 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
     cds add mta,hana,approuter
     ```
 
-    This adds the needed configuration for an SAP HANA database (needs to be provisioned in your account), fur using an approuter, and using MTA as deployment.
+    This adds the needed configuration for an SAP HANA database (needs to be provisioned in your account), for using an approuter, and using MTA as deployment.
 
 <!-- The flow that I'm seeing is, that the mta.yaml ist just being generated. So I'll remove all the mta.yaml editing steps. -->
 

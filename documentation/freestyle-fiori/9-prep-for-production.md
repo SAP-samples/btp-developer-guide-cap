@@ -127,3 +127,7 @@ The `ui5-deploy.yaml` file contains the configuration to build the SAPUI5 applic
 - **ui5-task-zipper**: This task zips the application files along with additional files like xs-app.json into an archive named "nsmanager". It executes after the 'generateCachebusterInfo' task.
 
 - **ui5-tooling-transpile-task**: This task transpiles TypeScript files into JavaScript. It also performs debugging-related operations and removes console statements. This task executes after the 'replaceVersion' task.
+
+3. **Install the dependencies**
+
+As the previous step adds several `dependencies` and `devDependencies` to the html5 apps (`incidents`, `manager`) in the `app` folder. It is recommended to run `npm install` command in all the html5 apps folders (`app/incidents`, `app/manager`).

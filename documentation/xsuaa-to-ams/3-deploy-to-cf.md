@@ -4,190 +4,17 @@
 
 Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./1-getting-started-with-ams.md).
 
+## Deploy to Cloud
 
-## Add Identity Authentication and Authorization Management
-
- 1. Create `ias-config.json` file in your project root folder with the following content and replace the ```<unique-id>``` with a unique value to identify your IAS app in IAS Tenant:
-
-    ```json
-        {
-          
-            "authorization": {
-              "enabled":true
-            },
-            "provided-apis": [
-                {
-                  "name": "incidents-api",
-                  "description": "api exposed by incident mgmt app"
-                }
-              ],
-            "display-name": "incident-ias-<unique-id>"
-        }
+1. Prepare for production.
+    ```sh
+    cds add mta,hana,approuter
     ```
 
-2. Check if the following dependencies and dev dependencies have been added to the `package.json`:
+    This adds the needed configuration for an SAP HANA database (needs to be provisioned in your account), for using an approuter, and using MTA as deployment.
 
+<!-- The flow that I'm seeing is, that the mta.yaml is just being generated. So I'll remove all the mta.yaml editing steps. -->
 
-    <!-- cpes-file package.json:$.cds.requires -->
-    ```json 
-    {
-        ...
-        "dependencies": {
-        "@sap/ams": "^1.18.1",
-        "@sap/cds": "^8.0",
-        "@sap/xssec": "^3.3.5",
-        "hdb": "^0.19.0",
-        "passport": "^0"
-      },
-      "devDependencies": {
-        "@sap/ams-dev": "^1.3"
-      },
-
-    ...
-    }
-    ```
-3. Change the `auth.kind` to `ias` in `package.json` for the production profile:
-
-      ```json
-      {    
-          ...
-        "cds": {
-          "requires": {
-            "[production]": {
-              ...
-              "auth": {
-                "kind": "ias"
-                ...
-              }
-            }
-          }
-        }
-      }
-    ```
-
-## Deploy on Cloud Foundry
-
-1. Update the `mta.yaml` with the following content
-
-- Change the dependency `incident-management-auth ` in `resources` from `xsuaa` service instance:
-     ```yaml
-     - name: incident-management-auth
-       type: org.cloudfoundry.managed-service
-       parameters:
-         config:
-           tenant-mode: dedicated
-           xsappname: incidents-${org}-${space}
-         path: ./xs-security.json
-         service: xsuaa
-         service-plan: application
-     ```
- 
-- To `ias` service instance:
-     ```yaml
-       - name: incident-management-auth
-         parameters:
-           path: ./ias-config.json
-           service-plan: application
-           service: identity
-         type: org.cloudfoundry.managed-service
-     ```
-
-  
-- Add the following configurations to the `incident-management-srv` module
-
-    - Change `incident-management-auth` service binding with `incident-management-srv` to: 
-      ```yaml
-      - name: incidents-management-srv
-        type: nodejs
-        path: gen/srv
-        requires:
-        - name: incident-management-auth
-          parameters:
-            config:
-               credential-type: "X509_GENERATED"
-      ```
-      
-    - Add `AMS_DCL_ROOT` to `properties` section
-    
-      ```yaml
-      properties:
-        AMS_DCL_ROOT: ams/dcl
-      ```
-- Add `incident-management-ams-policies-deployer` module in `mta.yaml` below `incident-management-srv` module:
-    ```yaml
-    - name: incident-management-ams-policies-deployer
-      type: javascript.nodejs
-      path: gen/policies
-      parameters:
-        buildpack: nodejs_buildpack
-        no-route: true
-        no-start: true
-        tasks:
-          - name: deploy-dcl
-            command: npm start
-            memory: 512M
-      requires:
-        - name: incident-management-auth
-          parameters:
-            config:
-              credential-type: X509_GENERATED
-              app-identifier: policy-deployer
-    ```
-  - Delete `incident-management-auth` binding from `incident-management-destination-content`
-      ```yaml
-      - name: incident-management-auth
-        parameters:
-          service-key:
-            name: incident-management-auth-key
-      ```
-  - Delete `incidents_incident_management_auth` destination from `incident-management-destination-content`
-      ```yaml
-      - Authentication: OAuth2UserTokenExchange
-        Name: incidents_incident_management_auth
-        ServiceKeyName: incident-management-auth-key
-        sap.cloud.service: incidents
-      ```
-      
-  ### Note:
-  
-  Check if the module `incident-management-destination-content` in `mta.yaml` looks like this:
-  
-    ```yaml
-    - name: incident-management-destination-content
-      type: com.sap.application.content
-      requires:
-        - name: incident-management-destination-service
-          parameters:
-            content-target: true
-        - name: incident-management_html_repo_host
-          parameters:
-            service-key:
-              name: incident-management_html_repo_host-key
-        parameters:
-          content:
-            instance:
-              destinations:
-              - Name: incidents_incidents_management_html_repo_host
-                ServiceInstanceName: incident-management-html5-app-host-service
-                ServiceKeyName: incident-management_html_repo_host-key
-                sap.cloud.service: incidents
-              existing_destinations_policy: ignore
-        build-parameters:
-          no-source: true
-    ```
-- Update `incident-management-srv-api` destination in `incident-management-destination-service`
-
-    - Add `HTML5.IASDependencyName: incidents-api`
-    
-      ```yaml 
-          - Authentication: NoAuthentication
-            HTML5.IASDependencyName: incidents-api
-            Name: incidents-management-srv-api
-            ProxyType: Internet
-            Type: HTTP
-            URL: ~{srv-api/srv-url}
-          existing_destinations_policy: update
-      ```
 2. Update `app/incidents/xs-app.json` with the following code:
    ```
       {
@@ -226,18 +53,18 @@ Prepare your sample for deploying on Cloud Foundry: [Prerequisite-for-sample](./
    > Change the  `authenticationType ` of `incident-management-srv-api` and `html5-apps-repo-rt` from `xsuaa` to `ias`
 
    
-6. Build the mtar.
+3. Build the mtar.
     ```
     mbt build
     ```
     
-7. Log in to your SAP BTP subaccount and choose your Cloud Foundry space where you want to deploy your application.
+4. Log in to your SAP BTP subaccount and choose your Cloud Foundry space where you want to deploy your application.
 
     ```
     cf login -a <api-endpoint>
     ```
     
-8.  Deploy on Cloud Foundry.
+5.  Deploy on Cloud Foundry.
 
     ```
     cf deploy mta_archive/<mtar_name>.mtar

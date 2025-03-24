@@ -42,7 +42,10 @@ In essence, these are the steps you need to follow:
 3. Build an image and publish the image.
 
     ```bash
-    pack build <your-container-registry>/mockserver-srv:latest --path gen/srv --builder paketobuildpacks/builder-jammy-base --publish
+    pack build <your-container-registry>/mockserver-srv:latest \
+    --path gen/srv \
+    --builder paketobuildpacks/builder-jammy-base \
+    --publish
     ```
 
 4. CAP provides a configurable Helm chart for Node.js applications. Add Helm charts.

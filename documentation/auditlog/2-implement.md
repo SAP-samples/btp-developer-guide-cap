@@ -127,7 +127,7 @@ The steps above is all you need to automatically log personal data-related event
 
 
 ## Adding Custom Audit Logs
-As part of audit logs, there can be cases where you want to genereate custom audit logs. For example if you want to log 403 - Forbidden events when an user is not having roles but is still trying to access certain data. 
+As part of audit logs, there can be cases where you want to generate custom audit logs. For example if you want to log 403 - Forbidden events when a user is not having roles but is still trying to access certain data. 
 This can be achieved by adding custom handlers in a CAP application. 
 
 

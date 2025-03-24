@@ -18,7 +18,6 @@ The following steps comprise a set of guidance on developing Applications on SAP
 10. [Notifications for SAP Build WorkZone using cap-js/notifications](./notifications/readme.md) -->
 
 
-
 ## Additional Tutorials
 Each of the below tutorials are independent and only needs the beginner tutorial (1 - 3 above) as a prerequisite to be completed. The only exception is the Eventing tutorial, which needs the remote service connectivity tutorial to be completed.
 - [Remote Service Connectivity and Eventing](./remote-service.md)

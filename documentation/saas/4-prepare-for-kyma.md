@@ -178,7 +178,8 @@ Once all the configurations are done, build the images and update the image name
 1. Build the **html5-deployer** image:
 
 ```shell
-pack build <repository>/incident-management-html5-deployer:<version> \ --path ui-resources \
+pack build <repository>/incident-management-html5-deployer:<version> \
+     --path ui-resources \
     --builder paketobuildpacks/builder-jammy-base \
     --publish
 ```
@@ -186,7 +187,8 @@ pack build <repository>/incident-management-html5-deployer:<version> \ --path ui
 2. Build the **side-car** image:
 
 ```shell
-pack build <repository>/incident-management-sidecar:<version> \ --path gen/mtx/sidecar \
+pack build <repository>/incident-management-sidecar:<version> \
+   --path gen/mtx/sidecar \
      --builder paketobuildpacks/builder-jammy-base \
      --publish
 ```
@@ -194,7 +196,8 @@ pack build <repository>/incident-management-sidecar:<version> \ --path gen/mtx/s
 3. Build the **srv** image:
 
 ```shell
-pack build <repository>/incident-management-srv:<version> \ --path gen/srv \
+pack build <repository>/incident-management-srv:<version> \
+   --path gen/srv \
     --builder paketobuildpacks/builder-jammy-base \
     --publish
 ```

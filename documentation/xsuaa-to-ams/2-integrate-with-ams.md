@@ -3,30 +3,14 @@
 
  ###  Implement in Your Application
 
- 1. Add the latest versions of `@sap/ams` dependency to  `package.json/dependencies`
-    ```json
-    "@sap/ams": "^1.18.1",
-    ```
- 2. Add the latest versions of `@sap/ams-dev` dependency to  `package.json/devDependencies`
-    ```json
-    "@sap/ams-dev": "^1.3",
-    ```
- 3. Make sure you have installed latest version of  `@sap/xssec` dependency.
-    ```sh
-    npm install @sap/xssec
-    ```
- 4. Make sure you have `@sap/cds-dk` with `version > 8` is installed as a **global** npm module.
+ 1. Make sure you have `@sap/cds-dk` with `version > 8` is installed as a **global** npm module.
     > Use `npm update -g` instead of `npm update` to update the library.
- 3. Add the following code to  `package.json/cds/requires/[development]/auth`: 
-    ```json
-      "ams" : {
-        "autoCompile" : true,
-        "cache" : {
-              "TTL" : 0
-          }
-        }
+ 2. Add needed dependencies
+    ```sh
+    cds add ams
     ```
- 4. Build the project to install the added dependencies
+    > This adds the needed configuration for AMS as well as IAS.
+ 3. Install the added dependencies
     ```sh
     npm i
     ```

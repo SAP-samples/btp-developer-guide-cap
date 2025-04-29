@@ -29,7 +29,7 @@ ACME is a popular Electronics company. ACME hires call center support representa
 ![Solution Diagram](images/Solution-Diagram.png)
 
 
-## Hands on Exercise: Develop Basic Incident Management Application using SAP Build Code
+## Hands-On Exercise: Develop Basic Incident Management Application Using SAP Build Code
 
 1. [Create a Full-Stack Application](./document/create-full-stack-project.md)
 2. [Create Data Entities](./document/create-data-entities.md)

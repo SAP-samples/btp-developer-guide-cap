@@ -1,36 +1,20 @@
 # Integrate with Authorization Management Service
 
 
- ###  Implement in Your Application
+###  Implement in Your Application
 
- 1. Add the latest versions of `@sap/ams` dependency to  `package.json/dependencies`
-    ```json
-    "@sap/ams": "^1.18.1",
-    ```
- 2. Add the latest versions of `@sap/ams-dev` dependency to  `package.json/devDependencies`
-    ```json
-    "@sap/ams-dev": "^1.3",
-    ```
- 3. Make sure you have installed latest version of  `@sap/xssec` dependency.
-    ```sh
-    npm install @sap/xssec
-    ```
- 4. Make sure you have `@sap/cds-dk` with `version > 8` is installed as a **global** npm module.
-    > Use `npm update -g` instead of `npm update` to update the library.
- 3. Add the following code to  `package.json/cds/requires/[development]/auth`: 
-    ```json
-      "ams" : {
-        "autoCompile" : true,
-        "cache" : {
-              "TTL" : 0
-          }
-        }
-    ```
- 4. Build the project to install the added dependencies
-    ```sh
-    npm i
-    ```
- 5. To compile the **cds annotations** to **dcl files** and start your CAP application in watch mode with debug output enabled for the Authorization Management service runtime and development plug-in, run 
+1. Execute the following command to add ias and ams:
+
+   ```shell
+   cds add ams
+   ```
+
+2. Build the project to install the added dependencies
+   ```sh
+   npm i
+   ```
+   
+3. To compile the **cds annotations** to **dcl files** and start your CAP application in watch mode with debug output enabled for the Authorization Management service runtime and development plug-in, run 
     ```sh
     DEBUG=ams,ams-dev cds w
     ```
@@ -60,21 +44,21 @@ The authorization checks that you added to the CAP model apply not only when dep
     }
     ```
 
-  This defines which configuration to use when running with the `development` profile. We define some general parameters for the authentication behavior and as the next step, we will define some test users.
+> This defines which configuration to use when running with the `development` profile. We define some general parameters for the authentication behavior and as the next step, we will define some test users.
 
 3. Add the following property to the `users` in the `package.json` with the following code: 
       ```json
-          "users": {
-              "alice": {
-                "policies" : [
-                    "cap.support"
-                ]
-              },
-              "bob": {
-              }
+      "users": {
+          "alice": {
+            "policies" : [
+                "cap.support"
+            ]
+          },
+          "bob": {
           }
+      }
       ```
-  Here, the `policies` array can be used to assign policies to mocked users for local testing. The `roles` property of a user can still be used for manual role assignments to a mocked user. But since we want to test role assignments via AMS, we instead assign the policy for the support role.
+> Here, the `policies` array can be used to assign policies to mocked users for local testing. The `roles` property of a user can still be used for manual role assignments to a mocked user. But since we want to test role assignments via AMS, we instead assign the policy for the support role.
 
 
 ## Access the Incidents Application with Password
@@ -86,7 +70,7 @@ When accessing the `Incidents` service in your browser, you get a basic authenti
 3. Enter **Username**: `alice`.
 4. You can now access the `Incidents` application.
 
->Currently there’s no logout functionality. You can clear your browser's cache or simply close all browser windows to get rid of the login data in your browser.
+> Currently, there’s no logout functionality. You can clear your browser's cache or simply close all browser windows to get rid of the login data in your browser.
 For Google Chrome, restart your browser (complete shutdown and restart) by entering `chrome://restart` in the address line.<br/>
 
 ## Next Steps

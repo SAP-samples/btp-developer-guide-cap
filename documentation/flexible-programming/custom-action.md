@@ -124,6 +124,25 @@ The above code will open the GeoMap fragment in a dialog.
 The above is a fragment which contains the GeoMap and the marker location based on the customer location.
 :::
 
+## Add Dependencies
+
+In addition to the main SAPUI5 library `sap.m`, you will use other control libraries like `sap.ui.vbm` in your application. The central point for configuring your SAPUI5 application is the `manifest.json` file, which is located at `incidents/webapp/manifest.json`
+
+1. Open `manifest.json` file.
+
+2. Go to the section `sap.ui5` and add the following libraries in `dependencies/libs` section
+
+```json
+    "dependencies": {
+        ... ,
+        "libs": {
+          ... ,
+          "sap.ui.vbm": {}
+        }
+      },
+```
+
+
 ## Add Geo Location Details
 
 In this section, you will extend the Incident Management CAP service to include the Geo location details of the customer.

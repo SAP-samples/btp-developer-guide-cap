@@ -16,7 +16,7 @@ Most notably, you will need such dependencies for the SAP Audit Log service, SAP
     "launchpad": {
       "vcap": {
         "label": "build-workzone-standard",
-        "plan": "local-entry-point-build-default"
+        "plan": "local-entry-point"
       },
       "subscriptionDependency": {
         "uaa": "xsappname"

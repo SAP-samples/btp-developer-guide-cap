@@ -40,7 +40,7 @@ In contrast to single-tenant mode, applications don't serve user request immedia
 
 ## Solution Diagram
 
-<image src="./common-saas.png"/>
+<image src="../images/commonsaas.png"/>
 
 The above diagram shows the solution diagram for a multi-tenant application. One thing to note is that both the provider and subscriber subaccounts should be part of the same data center or region. 
 

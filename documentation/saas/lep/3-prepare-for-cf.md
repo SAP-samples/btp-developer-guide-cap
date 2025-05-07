@@ -278,7 +278,7 @@ In the `mta.yaml` file, update the following configurations:
           config:
             providerId: ${lepProviderId}-${org}-${space}
             exposureId: incidents.service 
-          service-plan: local-entry-point-build-default
+          service-plan: local-entry-point
           service: build-workzone-standard
         type: org.cloudfoundry.managed-service
     ```

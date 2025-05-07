@@ -6,7 +6,7 @@ The SAP Build Work Zone Local Entry point approach will look like the following:
 | Service                                    | Plan       | Number of Instances |
 |--------------------------------------------|------------|:-------------------:|
 | Service Manager                            | container       |          1          |
-| SAP Build Work Zone | local-entry-point-build-default |          1          |
+| SAP Build Work Zone | local-entry-point |          1          |
 
 ## Prerequisites
 

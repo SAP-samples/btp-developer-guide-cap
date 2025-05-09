@@ -1,4 +1,4 @@
-## SAP Build WorkZone Local Entry Point Based Multitenancy
+## SAP Build Work Zone Local Entry Point-Based Multitenancy
 The SAP Build Work Zone Local Entry point approach will look like the following:
 <img src="./images/SaaS-LEP-SolutionDiagram.png"/>
 ## Additional Entitlements Required 
@@ -29,7 +29,7 @@ cds add hana,xsuaa --for production
 > Creates the SAP Authorization and Trust Management service security configuration (that is, the xs-security.json file) for the INCIDENT-MANAGEMENT project.
 
 
-## Prepare HTML5 applications with deploy configurations
+## Prepare the HTML5 Applications with Deploy Configurations
 
 Run the following command in the terminal:
 
@@ -45,7 +45,7 @@ Run the following command in the terminal:
 cds add approuter
 ```
 
-## Setup cloud service
+## Set Up the Cloud Service
 
 Open `app/incidents/webapp/manifest.json`, and add the following code in the root level if it's not present.
 

@@ -64,10 +64,24 @@ If you are deploying to the SAP BTP, Kyma runtime, follow these steps:
 1. Open terminal at root of your application and add the following dependencies:
 
 ```sh
-  npm add @cap-js/telemetry @opentelemetry/exporter-metrics-otlp-grpc @opentelemetry/exporter-trace-otlp-grpc @grpc/grpc-js
+  npm add @cap-js/telemetry @opentelemetry/exporter-metrics-otlp-grpc @opentelemetry/exporter-trace-otlp-grpc @opentelemetry/host-metrics @grpc/grpc-js
 ```
 
-2. Update the code of the `package.json` file with "telemetry": {"kind": "to-cloud-logging"} as shown below:
+> NOTE: Since [OpenTelemetry SDK 2.0](https://github.com/cap-js/telemetry?tab=readme-ov-file#welcome-to-cap-jstelemetry) is not yet supported with @cap-js/telemetry, update @opentelemetry/exporter-metrics-otlp-grpc and @opentelemetry/exporter-trace-otlp-grpc dependencies version to `0.57.2`. 
+
+```
+  ...
+  "dependencies": {
+    ...
+    "@opentelemetry/exporter-metrics-otlp-grpc": "0.57.2",
+    "@opentelemetry/exporter-trace-otlp-grpc": "0.57.2"
+    ...
+  },
+...
+
+```
+
+2. Update the code of the `package.json` file with "telemetry": {"kind": "to-otlp"} as shown below:
   
   ```
     .... 
@@ -76,7 +90,7 @@ If you are deploying to the SAP BTP, Kyma runtime, follow these steps:
     ....
           "[production]": {
               "telemetry": {
-                  "kind": "to-cloud-logging" 
+                  "kind": "to-otlp" 
               }, 
           }
     ....

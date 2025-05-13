@@ -1,4 +1,4 @@
-# Deploy and Run the Application on Kyma with SAP S/4HANA Cloud Backend
+# Deploy and Run the Application on Kyma
 
 ## Usage Scenario
 

@@ -84,9 +84,9 @@ Before you start with the next steps, make sure the steps in [Add Custom Action]
 
 ```
 
-:::details
-The above fragment xml includes the [ProcessFlow](https://sapui5.hana.ondemand.com/#/entity/sap.suite.ui.commons.ProcessFlow) control.
-:::
+> [!NOTE]
+> The above fragment xml includes the [ProcessFlow](https://sapui5.hana.ondemand.com/#/entity/sap.suite.ui.commons.ProcessFlow) control.
+
 
 ## Add data
 
@@ -186,7 +186,7 @@ After adding the process flow lanes and nodes data, you'll need to configure the
     }
 ```
 
-3. Go to the section `sap.ui5`. Add a **** model to the **models** section as follows:
+3. Go to the section `sap.ui5`. Add a model to the **models** section as follows:
 
 ```json
     "sap.ui5": {
@@ -202,11 +202,11 @@ After adding the process flow lanes and nodes data, you'll need to configure the
     }
 ```
 
-:::warning
-JSON Model is used here in order to keep the custom section example simple.
-
-**For Productive Usage** we recommend to model the `lanes` and `nodes` in the CAP service and consume it using the OData.
-:::
+> [!NOTE]
+> JSON Model is used here in order to keep the custom section example simple.
+>
+> **For Productive Usage** we recommend to model the `lanes` and `nodes` in the CAP service and consume it using the OData.
+ 
 
 ## Add Controller Logic
 
@@ -218,31 +218,30 @@ JSON Model is used here in order to keep the custom section example simple.
 
 override: {
 
-			routing: {
-				onAfterBinding: function (oBindingContext) {
-					const oView = this.getView()
-					const processNodes = this.getView().getModel("processsFlowModel").getData()
-					oBindingContext.requestProperty('status_code').then(function (status_code) {
-						// Special case for On-Hold
-						if(status_code == "H") processNodes.nodes[1].children = ["2"]
-						else  processNodes.nodes.splice(2,1)
+	routing: {
+		onAfterBinding: function (oBindingContext) {
+			const oView = this.getView()
+			const processNodes = this.getView().getModel("processsFlowModel").getData()
+			oBindingContext.requestProperty('status_code').then(function (status_code) {
+				// Special case for On-Hold
+				if(status_code == "H") processNodes.nodes[1].children = ["2"]
+				else  processNodes.nodes.splice(2,1)
 
-						processNodes.nodes = processNodes.nodes.filter(node => node.nodeId <= statusCodeMapping[status_code])
-						processNodes.nodes[processNodes.nodes.length - 1].children = []
+				processNodes.nodes = processNodes.nodes.filter(node => node.nodeId <= statusCodeMapping[status_code])
+				processNodes.nodes[processNodes.nodes.length - 1].children = []
 
-						let processNodesModel = new JSONModel(processNodes)
-						oView.setModel(processNodesModel, "processNodesModel")
-					});
-						
-				}
-			},
+				let processNodesModel = new JSONModel(processNodes)
+				oView.setModel(processNodesModel, "processNodesModel")
+			});				
+		}
+	},
 }
 
 ```
 
-:::details
+
 In the above code, we override the `routing` hooks and attach the lifecycle method `onAfterBinding` to load the appropriate models for the process flow.
-:::
+
 
 3. Finally, add the constant `statusCodeMapping`. This is used to map the Incident status code with the process flow node.
 
@@ -257,9 +256,11 @@ sap.ui.define([
 function (ControllerExtension, MessageToast, JSONModel) {
 	'use strict';
 ```
+
 with 
 
-```js hl="8-15"
+```js
+
 sap.ui.define([
 	'sap/ui/core/mvc/ControllerExtension', 
 	"sap/m/MessageToast",
@@ -275,12 +276,13 @@ function (ControllerExtension, MessageToast, JSONModel) {
 		"R": 3,
 		"C": 4
 	};
+
 ```
 
-:::details OPControllerExtension.controller.js
-After adding the changes above, the controller file should look like this:
+### The `OPControllerExtension.controller.js` the controller file should look like this:
 
 ```js
+
 sap.ui.define([
 	'sap/ui/core/mvc/ControllerExtension', 
 	"sap/m/MessageToast",
@@ -415,7 +417,7 @@ function (ControllerExtension, MessageToast, JSONModel) {
 });
 
 ```
-:::
+
 
 ## Check the Result
 

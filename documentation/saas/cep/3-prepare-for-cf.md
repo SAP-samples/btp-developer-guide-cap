@@ -32,21 +32,8 @@ In the `mta.yaml` file, update the following configurations:
 
 > **NOTE** 
 > **Steps 2-6 are optional and are not required if you have already deployed Single Tenant Application with Workzone using CDM** 
-
-2. Add `html5-repo-runtime` under `resources`:
-
-   ```yaml
-      resources:
-      ...
-      - name: incidents_html_repo_runtime
-        type: org.cloudfoundry.managed-service
-        parameters:
-           service: html5-apps-repo
-           service-name: incidents-html5-app-runtime-service
-           service-plan: app-runtime
-   ```
    
-3. Update  `incident-management-destinations`:
+2. Update  `incident-management-destinations`:
    
    1. Add under `requires`:
         ```yaml
@@ -81,7 +68,7 @@ In the `mta.yaml` file, update the following configurations:
 
         ```
      > If you are using a extension landscape, you should replace the ${default-domain} with the mail domain, example : eu10-004 to be used as eu-10   
-4. Update the `incident-management-app-deployer`:
+3. Update the `incident-management-app-deployer`:
    
    1. Under the `requires` section, the following dependencies:
       
@@ -135,7 +122,7 @@ The application deployer will look like this:
 > **The names might differ based on your project configurations.**
 
 
-1. Update `incident-management-destination` with the following configurations:
+4. Update `incident-management-destination` with the following configurations:
   
    1. Under `parameters`, delete `HTML5Runtime_enabled: true`.
    2. Change `instance` to `subaccount`.
@@ -160,7 +147,7 @@ The application deployer will look like this:
                   url: ~{srv-url}
                   forwardAuthToken: true
         ```
-2. Update the build parameters if you haven't done this already: 
+5. Update the build parameters if you haven't done this already: 
    
    ```yaml
     build-parameters:
@@ -172,7 +159,7 @@ The application deployer will look like this:
           - cp workzone/cdm.json resources/cdm.json
           - npx cds build --production    
    ```
-3. Create a **workzone** folder on the root of project then create a file named **cdm.json** and paste the following:
+6. Create a **workzone** folder on the root of project then create a file named **cdm.json** and paste the following:
     > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id` . Update the `appId` below with `sap.app.id` of your application.
 ```json
     [

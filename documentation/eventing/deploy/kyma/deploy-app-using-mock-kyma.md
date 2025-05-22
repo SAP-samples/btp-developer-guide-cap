@@ -10,6 +10,12 @@ If you don't have an access to an SAP S/4HANA Cloud system you can have the opti
 
 2. Add `"@sap/xb-msg-amqp-v100": "^0"` to the **dependencies** section of package.json file.
 
+3. Execute the following command to install the dependencies
+
+    ```sh
+    npm i
+    ```
+
 ## Deploy the Incident Management Application
 
 1. Navigate to incident management application and change credentials of **API_BUSINESS_PARTNER** in package.json to 
@@ -20,6 +26,6 @@ If you don't have an access to an SAP S/4HANA Cloud system you can have the opti
             "path": "/v2/odata/v4/api-business-partner"
           }
     ```
-**Note** - As **destination_name** you must enter the name of the destination created while installing mock server to SAP BTP Cloud Foundry Runtime.
+**Note** - As **destination_name** you must enter the name of the destination created while installing mock server to SAP BTP Kyma Runtime.
 
 2. You can follow **Build CAP Node.js Image** to rebuild the image and **Deploy Helm Chart** in the [Deploy to Kyma tutorial](./deploy-app-to-kyma.md) to deploy the Incident Management Application.

@@ -97,13 +97,8 @@ cds add helm
     ]
 ```
 
-3. Automate the setup for HTML5 application deployment by running:
-   
-```shell
-    cds add html5-repo
-```
 
-4. Add the following code snippet to **chart/Chart.yaml**  :
+1. Add the following code snippet to **chart/Chart.yaml**  :
 
 ```yaml
 - name: service-instance
@@ -132,7 +127,7 @@ html5-apps-repo-runtime:
         HTML5Runtime_enabled: true
 ```
    
-2. Delete the destination binding from **chat/values.yaml** whereever it is available.
+2. Remove all instances of the destination binding from the `chat/values.yaml` file.
 3. Under **html5-apps-deployer**, do the following:
 
    1. Delete **SAP_CLOUD_SERVICE**.
@@ -149,8 +144,8 @@ html5-apps-repo-runtime:
        
        ```yaml
          env:
-            ASYNC_UPLOAD: "true"
-            destinations: '[{"forwardAuthToken":true,"name":"srv-api","url":"https://<deployment-name>-srv-<namespace>.<cluster-domain>"}]'
+           ASYNC_UPLOAD: "true"
+           destinations: '[{"forwardAuthToken":true,"name":"srv-api","url":"https://<deployment-name>-srv-<namespace>.<cluster-domain>"}]'
         ```
       
     >

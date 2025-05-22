@@ -189,24 +189,33 @@ Add your container image settings to your `chart/values.yaml`:
 ```yaml{4,7,8,9,13,14,18,19,23,24}
 ...
 global:
-  imagePullSecret:
-    name: [<image pull secret name>] 
+  domain: [Cluster-Domain]
+  image:
+    registry: [Repository]
+    tag: [tag]
 ...
 srv:
   image:
     repository: <your-container-registry>/incident-management-srv
-    tag: <srv-image-version>
 ...
 hana-deployer:
   image:
     repository: <your-container-registry>/incident-management-hana-deployer
-    tag: <db-deployer-image-version>
 ...
 html5-apps-deployer:
   image:
     repository: <your-container-registry>/incident-management-html5-deployer
-    tag: <html5apps-deployer-image-version>
 ```   
+
+### Updating Image Tag
+When you make changes to the project, rebuild the container image and tag it with a new version. This versioned image ensures consistent deployments and simplified rollbacks.
+Here's an example of how this can be done:
+```yaml
+srv:
+  image:
+    repository: <your-container-registry>/incident-management-srv
+    tag: <new version>
+```
 
 ## Deploy CAP Helm Chart
 

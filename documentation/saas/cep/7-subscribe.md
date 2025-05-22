@@ -82,8 +82,10 @@ Once the application is successfully deployed, there is a need to configure desi
 9. It will open the secret. Choose **Decode**
 10. Copy the details, you will need them in the next step.
 
+#### For Cloud Foundry Runtime
+If the application is deployed to the **Cloud Foundry** runtime, view the service keys of **HTML5 Runtime** service instance and fill the below configurations.
 
-> If the application is deployed to the **Cloud Foundry** runtime, view the service keys if **HTML5 Runtime** service instance and fill the below configurations.
+
 ### Configure the Design Time Destination
 
 1. In the SAP BTP cockpit, navigate to the provider subaccount. 
@@ -100,9 +102,9 @@ Once the application is successfully deployed, there is a need to configure desi
 
    **Authentication**: `OAuth2ClientCredentials`
 
-   **Client ID**: `<Client ID from the HTML5 repo runtime secret created in the pervious step>`
+   **Client ID**: `<Client ID from the HTML5 repo runtime>`
 
-   **Client Secret**: `<Client Secret from the HTML5 repo runtime secret created in the pervious step>`
+   **Client Secret**: `<Client Secret from the HTML5 repo runtime>`
 
    **Token Service URL**: `<token url from secret create at previous step>/oauth/token`
 
@@ -114,11 +116,11 @@ Once the application is successfully deployed, there is a need to configure desi
 
     **sap.cloud.service**: `html5-apps-repo-rt`
 
-    **ServiceKeyName**: `<service key name given in kyma`
+    **ServiceKeyName**: `html5-apps-repo-runtime`
 
-    **uri**: `uri from the HTML5 repo runtime secret`
+    **uri**: `uri from the HTML5 repo runtime`
 
-    **xsappname**: `xsappname from the HTML5 repo runtime secret`
+    **xsappname**: `xsappname from the HTML5 repo runtime`
 
 
 

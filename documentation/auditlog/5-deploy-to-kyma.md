@@ -80,14 +80,20 @@ html5-apps-deployer:
     repository: <your-container-registry>/incident-management-html5-deployer
     tag: <html5apps-deployer-image-version>
 ```
-6. Change the value for `SAP_CLOUD_SERVICE` to `incidents`.
+6. Update `srv module` in `values.yaml` to expose `incident-management-srv` api endpoint.
+   ```yaml
+     srv:
+       expose:
+         enabled: true
+   ```
+7. Change the value for `SAP_CLOUD_SERVICE` to `incidents`.
    
 ```yaml{3}
 html5-apps-deployer:
   env:
     SAP_CLOUD_SERVICE: incidents
 ```
-7. Add audit log service configurations to your `charts/values.yaml`:
+8. Add audit log service configurations to your `charts/values.yaml`:
 
 ```
 auditlog:
@@ -99,14 +105,14 @@ In `srv/bindings` add:
 auditlog:
     serviceInstanceName: auditlog
 ```
-8. Navigate to  `chart/Charts.yaml` and update dependencies section with the following code:
+9. Navigate to  `chart/Charts.yaml` and update dependencies section with the following code:
    
 ```
   - name: service-instance
     alias: auditlog
     version: ">0.0.0"
 ```
-9. Update `xs-security.json` and add `admin` role. The final `xs-security.json` will look like below:
+10. Update `xs-security.json` and add `admin` role. The final `xs-security.json` will look like below:
 
     ```json
     {

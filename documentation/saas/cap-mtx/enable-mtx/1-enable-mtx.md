@@ -5,14 +5,14 @@ MTX services are implemented in Node.js and can run in the same Node.js server a
 
 1. Run the `@sap/cds-mtxs` package to enable multitenancy for the Incident Management application:
 
-    ```shell
-    cds add multitenancy --for production
-    ```
+```shell
+cds add multitenancy --for production
+```
 2. Install your application dependencies:
 
-    ```shell
-    npm i
-    ```
+```shell
+npm i
+```
 
 This command adds configuration for the SAP Software-as-a-Service Provisioning service, mtx-sidecar in the mta.yaml file.
 The tenant mode in `XSUAA` is also changed from `dedicated` to `shared`. 

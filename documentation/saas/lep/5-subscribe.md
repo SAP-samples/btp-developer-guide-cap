@@ -2,9 +2,8 @@
 
 This guide will walk you through the lifecycle management of a multitenant application.
 
-> [!Tip] 
-> The subscription can be done from the same region where the multitenant application is deployed. 
-> Example: If the application is deployed in `eu12`, it can be subscribed only from subaccounts that are part of the `eu12` region.
+- The subscription must be done the same region where the multitenant application is deployed. 
+  Example: If the application is deployed in `eu12`, it can be subscribed only from subaccounts that are part of the `eu12` region.
 
 ## Subscribe to the Application
 1. Create a subaccount in the same region where the multitenant application is deployed.
@@ -16,7 +15,6 @@ This guide will walk you through the lifecycle management of a multitenant appli
 4. Choose the **Incident Management** tile and then choose **Create** on the right side of the screen. The subscription process starts. 
 6. Once the subscription process has been finished, choose **Go to Application**.
 
-> [!Note]
 > This step will give an error message:  `404 Not Found: Requested route ('*-approuter.cfapps.eu12.hana.ondemand.com') does not exist.`.
 This happens as there is no application deployed with the above route. You need to map the route to the `approuter` in the provider subaccount where the application is deployed. 
 >

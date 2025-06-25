@@ -68,10 +68,11 @@ Let's try out how the audit log works by executing some local rest calls.
     ```shell
     cds add http --filter AdminService
     ```
+   - This will add the `AdminService.http` file in `test/http` folder at the root directory.
    
-   > This will add the `AdminService.http` file in `test/http` folder at the root directory.
+> [!NOTE]
+> Change the `username` in AdminService.http to `alice`.
    
-
 3. Let's have a close look and send requests and check which audit logs they create.
 
    - Open `test/http/AdminService.http` file and run the request to read all Customers.
@@ -113,6 +114,9 @@ Let's try out how the audit log works by executing some local rest calls.
      ```
 
    - Run the request which only selecting the property name. As the name property is not annotated to be personal data, you will not gain any audit-log entry in the server console.
+   
+  > [!NOTE]
+  > Before running `post` or `patch` requests, please remove `creditCardNo` field from the request body in `AdminService.http` file.
 
    - Now, create a new customer to get `PersonalDataModified` audit logs with current timestamp:
 

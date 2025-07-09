@@ -44,7 +44,7 @@ Let's see it in action where the attachments are stored locally, it will work si
 ![Upload file](./images/upload.gif)
 6. **Delete a file** by going into Edit mode and selecting the file(s) and by clicking on **Delete** in the Attachments table header. Then choose **Save** to have that file deleted from the resource. We demonstrate this by deleting the previously uploaded PDF file: `Solar Panel Report.pdf`
 
-![delete file](./images/upload.gif)
+![delete file](./images/delete.gif)
 
 
 ## Next Step

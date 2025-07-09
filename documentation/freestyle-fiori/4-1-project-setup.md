@@ -42,6 +42,9 @@ Create a new SAPUI5 application based on a template provided by SAP Business App
 
 > In this tutorial you use **TypeScript** for the custom code. TypeScript is a statically typed superset of JavaScript. It enhances JavaScript by adding optional static typing, allowing developers to define types for variables, parameters, and return values. TypeScript offers features like interfaces, enums, generics, and advanced type inference, facilitating code organization and maintenance. Its static type checking catches errors during development, reducing runtime issues and enhancing code reliability. TypeScript transpiles to plain JavaScript, ensuring compatibility with all JavaScript environments. Its tooling support, including code editors, linters, and debuggers, enhances productivity and code quality. TypeScript's adoption by major frameworks incl. SAPUI5 further solidifies its relevance in modern web development. Its popularity in large-scale projects and enterprise environments underscores its benefits for managing complex codebases. 
 
+> [!NOTE]
+> `Add deployment configuration to MTA project` field will be available only if mta.yaml file has been generated in previous step.
+
 8. Leave the default values for all the other settings and choose **Finish**.
 
     ![V4 Template](./images/template-setup-3.png)

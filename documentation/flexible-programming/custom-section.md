@@ -30,7 +30,6 @@ Before you start with the next steps, make sure the steps in [Add Custom Action]
     | Key  | Value  |
     |---|---|
     | **Title**  | `Process Flow`. Click the **Globe** icon to generate a translatable text key.  |
-    | **View Type**  | `Fragment`   |
     | **Select Your Fragment**  | `Create New Fragment`  |
     | **Fragment Name**  | `ProcessFlow`  |
     | **Anchor Section** | `Overview (ID: i18nOverview)` |

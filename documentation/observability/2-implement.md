@@ -32,7 +32,7 @@ For more information, see [Minimalistic Logging Facade by CAP](https://cap.cloud
 
 ## Defining Log Levels
 
-Configure the initial log levels per module through `cds.env.log.levels`, for example like that in your `package.json`:
+Configure the initial log levels per module through `cds.log.levels`, for example like that in your `package.json`:
   
   ```json
   {

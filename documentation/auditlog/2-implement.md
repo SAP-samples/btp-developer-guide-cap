@@ -225,7 +225,7 @@ Let's try out how the custom audit log works by executing some local rest calls.
 
    Now send the following request in `test/http/AdminService.http`:
 
-   ```http request
+   ```sh
    ### Customers
    # @name Customers_GET
    GET {{server}}/odata/v4/admin/Customers

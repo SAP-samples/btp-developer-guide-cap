@@ -10,11 +10,9 @@
   - name: service-instance
     alias: attachments
     version: ">0.0.0"
-    repository: https://int.repositories.cloud.sap/artifactory/virtual-unified-runtime-helm-dmz
   - name: service-instance
     alias: malware
-    version: ">0.0.0"
-    repository: https://int.repositories.cloud.sap/artifactory/virtual-unified-runtime-helm-dmz    
+    version: ">0.0.0"   
   ```
 
 4. Add the following configuration for `objectstore` service instance creation in `values.yaml`:

@@ -13,7 +13,9 @@ Once the application is configured for multitenancy and dependency callback hand
 ```shell
 cds add helm
 ```
-   
+
+> Open `chart/values.yaml`, and check for the destination bindings, please remove them if exists. And Open `chart/chart.yaml` and remove the destination service instance if exists.
+
     
 > If the project already has cdm file, skip the next step.
   

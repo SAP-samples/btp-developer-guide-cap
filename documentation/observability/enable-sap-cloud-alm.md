@@ -10,19 +10,22 @@
 
 ## Enable Data Collection for Real User Monitoring and Health Monitoring
 To enable data collection, you need to add the following configuration to your application:
-1. Create a `.npmrc` file at the root of the Incident Management application and paste the following: 
+1. Specify the credentials for the RBSC repository containing the OTEL ALM Libraries in an environment variable:
+   - SAP_NPM_AUTH=<base64 encoded version of username:password>
+     You can copy the NPM Base64 Credentials directly from the RBSC UI. The value for the environment variable is the Base64 encoding of the combination of 'username:password' where the user name is the user name of the technical user. Respectively, the same holds for password.
+
+2. Create a `.npmrc` file at the root of the Incident Management application and paste the following: 
     ```sh
-    https://73555000100200018064.npmsrv.cdn.repositories.cloud.sap/:_auth=<base64 encoded version of username:password>
+    https://73555000100200018064.npmsrv.cdn.repositories.cloud.sap/:_auth=${SAP_NPM_AUTH}
     ```
+
    > [!NOTE] 
-   >The value for the _auth property is Base64 encoding of the combination of 'username:password' where the user name is the user name of the technical user. Respectively, the same holds for password.
-   >
-   >Note - It is recommended to store the password in a vault and reference it in the settings, so that it can be read during build and pipeline deployment!
+   > It is recommended to store the password in a vault and reference it in the settings, so that it can be read during build and pipeline deployment!
    >     
 
 
 
-2. Paste the following code snippet in the **server.js** file after the `const counter = meter.createUpDownCounter('incidents.urgency.high');` line:
+3. Paste the following code snippet in the **server.js** file after the `const counter = meter.createUpDownCounter('incidents.urgency.high');` line:
    ```js
     require('@sap/xotel-agent-ext-js/dist/common/tracer');
     const app = require('express')()
@@ -31,13 +34,13 @@ To enable data collection, you need to add the following configuration to your a
     app.listen()
     cds.on("bootstrap", (app) => fesr.registerFesrEndpoint(app));
    ```
-3. In the terminal, run the following command to install dependencies:
+4. In the terminal, run the following command to install dependencies:
    ```sh
     npm install @opentelemetry/api  @opentelemetry/exporter-logs-otlp-grpc cf-nodejs-logging-support hdb
    ```
    > Please refer [Here](https://help.sap.com/whats-new/aaa5ccb1a72444d5b54e2985250fab03?locale=en-US) for Data Collection Instrumentation Libraries
 
-4. In the **package.json** manually add the following two dependencies:
+5. In the **package.json** manually add the following two dependencies:
 
    ```json
     "@sap/xotel-agent-ext-js": "https://73555000100200018064.npmsrv.cdn.repositories.cloud.sap/@sap/xotel-agent-ext-js/-/xotel-agent-ext-js-1.5.22.tgz",
@@ -45,7 +48,7 @@ To enable data collection, you need to add the following configuration to your a
    ```
     > Please ensure to use the latest library version, details can be found on [SAP Cloud ALM for Operations Expert Portal](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/data-collection-infrastructure.html?anchorId=section_415688568)
 
-5. In the **mta.yaml** file, add the following properties and resource to the current code:
+6. In the **mta.yaml** file, add the following properties and resource to the current code:
    ```yaml
    ...
       - name: incidents-srv
@@ -69,10 +72,10 @@ To enable data collection, you need to add the following configuration to your a
    ```
 >[!NOTE] These properties can be updated from the BTP cockpit using application environment variables. 
 
-6. Replace the `<tenant-id-of-your-subaccount>` with the tenant/sub-account ID of the account where you are deploying the application. 
+7. Replace the `<tenant-id-of-your-subaccount>` with the tenant/sub-account ID of the account where you are deploying the application. 
 
 
-7. Open **app/incidents/webapp/Component.js**. To collect front-end requests from the launchpad, add the following code line. Replace "ns.incidents.Component" with your application's name.
+8. Open **app/incidents/webapp/Component.js**. To collect front-end requests from the launchpad, add the following code line. Replace "ns.incidents.Component" with your application's name.
    ```js
    sap.ui.define(
 	 ["sap/fe/core/AppComponent", "sap/ui/performance/trace/FESR"], function(Component, FESR) {
@@ -88,7 +91,7 @@ To enable data collection, you need to add the following configuration to your a
    ```
 >[!NOTE] Disclaimer: This is considered a workaround and can be subject to change at any time.   
    
-8. Open **app/incidents/webapp/xsapp.json** and add the following:
+9. Open **app/incidents/webapp/xsapp.json** and add the following:
    ```json
    {
     "authenticationMethod": "route",
@@ -109,19 +112,20 @@ To enable data collection, you need to add the following configuration to your a
       }
    ```
 >[!NOTE] Step 6-8 are optional, these are required for UI applications only. If you are not having any UI, these steps can be skipped. 
-9. Open **package.json** at the root of the application and replace the start command:
+
+10. Open **package.json** at the root of the application and replace the start command:
       ```json
          "scripts":{
             "start": "node ${NODE_ARGS} ./node_modules/@sap/cds/bin/serve",
          }
       ```
       > NOTE: The above configuration is supported for cds 8 and above. For lower versions you can use `cds-serve`.
-10. Go to root of the application and run `mbt build` to build the application. 
+11. Go to root of the application and run `mbt build` to build the application. 
    > [!TIP]
    >If the build is failing, delete the **node_modules, package-lock.json**, install the node_modules and try building the application again.
    >Also, the build might take longer than usual due to the additional dependencies.
 
-11. Run `cf deploy mta_archives/incident-management_1.0.0.mtar` to deploy the application. 
+12. Run `cf deploy mta_archives/incident-management_1.0.0.mtar` to deploy the application. 
   
 
 With these steps, you have prepared the data collection for SAP Cloud ALM. Process with next chapter. 

@@ -16,7 +16,7 @@ To enable data collection, you need to add the following configuration to your a
 
 2. Create a `.npmrc` file at the root of the Incident Management application and paste the following: 
     ```sh
-    https://73555000100200018064.npmsrv.cdn.repositories.cloud.sap/:_auth=${SAP_NPM_AUTH}
+    //73555000100200018064.npmsrv.cdn.repositories.cloud.sap/:_auth=${SAP_NPM_AUTH}
     ```
 
    > [!NOTE] 
@@ -43,8 +43,8 @@ To enable data collection, you need to add the following configuration to your a
 5. In the **package.json** manually add the following two dependencies:
 
    ```json
-    "@sap/xotel-agent-ext-js": "https://73555000100200018064.npmsrv.cdn.repositories.cloud.sap/@sap/xotel-agent-ext-js/-/xotel-agent-ext-js-1.5.22.tgz",
-    "@sap/fesr-to-otel-js": "https://73555000100200018064.npmsrv.cdn.repositories.cloud.sap/@sap/fesr-to-otel-js/-/fesr-to-otel-js-1.5.13.tgz"
+    "@sap/xotel-agent-ext-js": "//73555000100200018064.npmsrv.cdn.repositories.cloud.sap/@sap/xotel-agent-ext-js/-/xotel-agent-ext-js-1.5.22.tgz",
+    "@sap/fesr-to-otel-js": "//73555000100200018064.npmsrv.cdn.repositories.cloud.sap/@sap/fesr-to-otel-js/-/fesr-to-otel-js-1.5.13.tgz"
    ```
     > Please ensure to use the latest library version, details can be found on [SAP Cloud ALM for Operations Expert Portal](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/data-collection-infrastructure.html?anchorId=section_415688568)
 

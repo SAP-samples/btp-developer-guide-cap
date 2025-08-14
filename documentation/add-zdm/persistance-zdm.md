@@ -72,8 +72,3 @@ Here's the representation of DB updates:
 
 **Conclusion**: By splitting the deployment into two steps—first deploying the schema change and then updating the application code—you ensure that the application remains stable and functional throughout the process, avoiding errors due to missing or incompatible database elements.
 
-
-### Read More:
-- **[Code Changes](./code-zdm.md)**
-- **[Persistance Changes](./persistance-zdm.md)**
-- **[Content Changes](content-zdm.md)**

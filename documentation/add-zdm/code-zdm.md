@@ -2,17 +2,18 @@
 # Managing Zero Downtime Maintenance for Code Changes
 
 ## Prerequisites
-You have a [previously deployed MTA](../multitenancy/subscribe-to-multitenant-app.md), with functional productive applications and routes:
+You have a [deployed MTA](../saas/lep/5-subscribe.md), with functional productive applications and routes:
 <img src="./images/mta-route.png"/>
 
-When deploying applications using Blue Green strategies, some of the services, which require a backend/sidecar application url as a parameter, there is a need to avoid updating the urls as the default url will be then set to the idle route, which after the testing phase will not be available. 
+When deploying applications using the Blue-Green strategy, some of the services, which require a backend/sidecar application URL as a parameter, need to avoid updating the URLs because the default URL will be set to the idle route, which, after the testing phase, will not be available. 
 > 
->To ensure that the services are always pointing to the live url or your backend the following parameters can be used:
+>To ensure that the services are always pointing to the live URL or your backend the following parameters can be used:
 >`default-live-uri`.		
->Specify this parameter if you want to use `${default-uri}` without the “idle” suffix during the testing phase of the blue-green deployment.
+>Specify this parameter if you want to use `${default-uri}` without the “idle” suffix during the testing phase of the Blue-Green deployment.
 >
 
-You can add the following highlighted code block to your service configuration to have the live url configured with the services:
+You can add the following highlighted code block to your service configuration to have the live URL configured with the services:
+
 ```yaml
   - name: incident-management-mtx
     type: nodejs
@@ -51,11 +52,15 @@ You can add the following highlighted code block to your service configuration t
           callbackTimeoutMillis: 300000 # Increase if your deployments are taking longer than that
 
 ```
-[Read more about MTA parameters](https://help.sap.com/docs/btp/sap-business-technology-platform/modules#module-specific-parameters)
 
-## Deploying Application With Blue Green Deployment Strategy
+See [Module-Specific Parameters](https://help.sap.com/docs/btp/sap-business-technology-platform/modules#module-specific-parameters).
+
+## Deploying Application with Blue-Green Deployment Strategy
+
 Change the data of your application and then deploy it.
+
 - Deploy your updated MTA in idle state by executing the command :
+
    ```sh
     cf deploy <your-mta-archive-v2> --strategy blue-green
    ```
@@ -64,7 +69,7 @@ This creates:
 - New applications adding “idle” to the original application names
 - Temporary routes to the idle applications
 <img src="./images/live-idle.png"/>
-- An interrupt to the process showing a message similar to the following:
+- Interrupt the process showing a message like this:
 
 >
 >Process has entered testing phase. After testing your new deployment, you can resume or abort the process.
@@ -82,10 +87,10 @@ This creates:
 >
 >`--skip-idle-start` - this option will also skip the start of the newly deployed applications on idle routes.
 
-- Now, you can perform the tenant upgrade either by some job or by using the Subscription Management Dashboard.
+- Now, you can upgrade the tenant either by some job or by using the Subscription Management Dashboard.
 
 >
->If we use `cf deploy <your-mta-archive-v2> --strategy blue-green ` without pointing to the live url, the saas registry route will be updated to idle route Leading to the following error:
+>If you use `cf deploy <your-mta-archive-v2> --strategy blue-green ` without pointing to the live URL, the SaaS registry route will be updated to idle route leading to the following error:
 >
 ```
 updateApplicationSubscription failed. Root Subscription Id: xxxxxx. Error description: 
@@ -100,30 +105,33 @@ status code: 404 NOT_FOUND
 ```
 >
 
-
 - When the the approuter routes are switched from idle to live, the session that is maintained in memory gets destroyed. This leads to a sudden **Forbidden** error interrupting the end-user session.
 <img src="./images/routerSessionError.png"/>
 
 This can be prevented by using `Redis` for session management.
 
-## Using Redis To Enable ZDM in Approuter
-When the Live application is replaced by the idle application, the in-memory data of the Live application is lost. This means that the the user session gets cleaned. 
-To prevent this approuter allows external session management.
+## Using Redis To Enable Zero Downtime Maintenance in Approuter
 
-### External Session Management in Approuter
+When the live application is replaced by the idle application, the in-memory data of the live application is lost. This means that the user session gets cleaned. 
+To prevent this, the approuter allows external session management.
+
+### Using External Session Management in Approuter
+
 The application router supports a backup of user sessions in an external session store. This enables the session recovery in case the application router instance that stores a session crashes and another application router instance has to continue handling the running user session.
-To enable this capability, you must bind a service instance of a service that supports a fast persistence store, such as Redis. When such a service is bound, the application router backs up the in-memory session information into the external persistency store.
+To enable this capability, you must bind a service instance of a service that supports fast persistence store, such as Redis. When such a service is bound, the application router backs up the in-memory session information into the external persistency store.
 
 If, in subsequent requests, the session information is not found in the in-memory session store, the application router tries to rebuild the in-memory session information from the external persistency store.
 
 >
->**Redis Hyperscaler** option is not yet supported in the **Kyma Runtime**
+>**Redis Hyperscaler** option is not yet supported in the **SAP BTP, Kyma runtime**.
 >
 
 ### Implementing External Session Management in Approuter 
-Approuter supports Redis for session management. To create the redis instance and binding to it you will need to add the following configuration:
 
-1. Open the mta.yaml and under the resources add the following configuration:
+Approuter supports Redis for session management. To create the Redis instance and bind to it, you need to add the following configuration:
+
+1. Open the **mta.yaml** file and under **resources** add the following configuration:
+   
   ```yaml
     ..... 
     resources:
@@ -135,48 +143,49 @@ Approuter supports Redis for session management. To create the redis instance an
         service: redis-cache // Add
         service-plan: development  // Add
   ```
-2. Add binding, redis configuration to the Approuter module
-``` yaml
-##### Approuter #######
-  - name: approuter
-    type: approuter.nodejs
-    path: packages/deploy-int/approuter
-    parameters:
-      memory: 128M
-      keep-existing-routes: true
-      disk-quota: 256M   
-    requires:
-      - name: incident-management-auth
-      - name: incident-management-portal
-      - name: incident-session-management # session management 
-      - name: incident-management-html5-repo-runtime
-      - name: srv-api
-        group: destinations
-        properties:
-          forwardAuthToken: true
-          strictSSL: true
-          name: srv-api
-          url: '~{srv-url}'
-      - name: mtx-api
-        group: destinations
-        properties:
-          name: mtx-api # must be used in xs-app.json as well
-          url: ~{mtx-url}
-    provides:
-      - name: app-api
-        properties:
-          app-protocol: ${protocol}
-          app-uri: ${default-uri}
-    properties:
-      TENANT_HOST_PATTERN: "^(.*)-${default-uri}"
-      EXT_SESSION_MGT: '{ // Add
-          "instanceName": "incident-session-management", // Add
-          "storageType": "redis", // Add
-          "sessionSecret": "VqO446NAgSd795NiBW7SXPvuKKH4pDso3qVcWC1GyLa2Zq6XASh0FNZ3b26ePlZe", // # 64 character unique string
-          "defaultRetryTimeout": 10000, // Add
-          "backOffMultiplier": 10 // Add
-          }' // Add
-```
+2. Add the Redis configuration to the Approuter module:
+   
+  ``` yaml
+  ##### Approuter #######
+    - name: approuter
+      type: approuter.nodejs
+      path: packages/deploy-int/approuter
+      parameters:
+        memory: 128M
+        keep-existing-routes: true
+        disk-quota: 256M   
+      requires:
+        - name: incident-management-auth
+        - name: incident-management-portal
+        - name: incident-session-management # session management 
+        - name: incident-management-html5-repo-runtime
+        - name: srv-api
+          group: destinations
+          properties:
+            forwardAuthToken: true
+            strictSSL: true
+            name: srv-api
+            url: '~{srv-url}'
+        - name: mtx-api
+          group: destinations
+          properties:
+            name: mtx-api # must be used in xs-app.json as well
+            url: ~{mtx-url}
+      provides:
+        - name: app-api
+          properties:
+            app-protocol: ${protocol}
+            app-uri: ${default-uri}
+      properties:
+        TENANT_HOST_PATTERN: "^(.*)-${default-uri}"
+        EXT_SESSION_MGT: '{ // Add
+            "instanceName": "incident-session-management", // Add
+            "storageType": "redis", // Add
+            "sessionSecret": "VqO446NAgSd795NiBW7SXPvuKKH4pDso3qVcWC1GyLa2Zq6XASh0FNZ3b26ePlZe", // # 64 character unique string
+            "defaultRetryTimeout": 10000, // Add
+            "backOffMultiplier": 10 // Add
+            }' // Add
+  ```
 
 
 
@@ -192,6 +201,6 @@ Approuter supports Redis for session management. To create the redis instance an
 >- **sessionSecret** (mandatory) - a secret to be used to generate a session cookie. Please generate a unique string with at least 64 characters.
 >- **defaultRetryTimeout** - the maximum duration for automatic retries of failed Redis operations in milliseconds. The default value is 2000 ms.
 >- **backOffMultiplier** - a multiplier of the Redis-defined pause that determines the time between consecutive automatic retries of failed Redis operations. The default value is 50.
->[Read more](https://www.npmjs.com/package/@sap/approuter#external-session-management)
+>See [npm documentation: @sap/approuter](https://www.npmjs.com/package/@sap/approuter#external-session-management).
 >
 

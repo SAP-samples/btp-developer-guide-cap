@@ -1,24 +1,25 @@
 ## Zero Downtime Persistence Updates
 
 ### Database Schema Update
-When shipping a new application version with an updated CDS model, the database schema for each subscribed tenant needs an update. The database schema update needs to be triggered explicitly.
-[Read More](https://cap.cloud.sap/docs/java/multitenancy#database-update)
 
-## Compatible database changes
+When shipping a new application version with an updated Core Data Services (CDS) model, the database schema for each subscribed tenant needs to be updated explicitly.
+See [capire documentation: Database Schema Update](https://cap.cloud.sap/docs/java/multitenancy#database-update).
+
+## Compatible Database Changes
 
 **Goal: Avoid data losses**
 
-Certain database structure changes may result in a data loss. Therefore all incompatible changes have to be broken down into a series of compatible changes
+Certain database structure changes may result in data loss. Therefore, all incompatible changes have to be broken down into series of compatible changes:
 
 - Deploy only compatible database schema changes.
-- Ensure the Views and Projections are properly renamed and if they are consumed by any UI/Service. It should also be taken care
-- Break down incompatible changes into a series of smaller changes which are compatible (considering Backend - Database dependencies and Data Migrations).
+- Ensure the Views and Projections are properly renamed and if they are consumed by any UI/Service.
+- Break down incompatible changes into series of smaller changes which are compatible (considering Backend - Database dependencies and Data Migrations).
 - Incompatible database changes are possible, if these tables/fields are not used any more by the backend and all relevant data has been migrated into other fields or tables.
 
-
-### Deploying Compatible Database Schema Changes: An Example
+### Deploying Compatible Database Schema Changes: an Example
 
 Suppose you have the following schema for an entity called Incidents:
+
 ```sql
 entity Incidents : cuid, managed {  
    customer     : Association to Customers;
@@ -34,11 +35,12 @@ entity Incidents : cuid, managed {
 }
 
 ```
-Now, imagine you need to add a new field `severity` to the `Incidents` entity to track the severity level of each incident. Here's how you can deploy this change in a way that is compatible and avoids disruptions:
+Now, imagine you need to add a new field `severity` to the `Incidents` entity to track the severity level of each incident. Here's how you can deploy this change in a way that is compatible and without any disruptions:
 
 - Step 1: Deploy the Schema Change
 
-First, add the new `severity` field to the `Incidents` entity in the database:
+Add the new `severity` field to the `Incidents` entity in the database:
+
 ```sql
 entity Incidents : cuid, managed {  
    customer     : Association to Customers;
@@ -56,13 +58,13 @@ entity Incidents : cuid, managed {
 
 
 ```
-In this step, you deploy only the schema change. The existing application code is not yet aware of or dependent on the severity field, so it continues to operate without any issues. The new severity column is populated with a default value ('Low') for existing records.
+
+In this step, you deploy only the schema change. The existing application code is not yet aware of or dependent on the severity field, so it continues to operate without any issues. The new severity column is populated with a default value ('Low') for any existing records.
 
 - Step 2: Deploy the Application Code
 
 After the schema change is successfully deployed and verified, you can proceed to update the application code to use the new severity field:
   - Update the application logic to handle the severity field, such as displaying it in the UI, allowing users to set the severity level when creating or updating an incident, or applying business logic based on the severity.
-
 
 Since the severity column already exists in the database, the updated application code can interact with it seamlessly.
 

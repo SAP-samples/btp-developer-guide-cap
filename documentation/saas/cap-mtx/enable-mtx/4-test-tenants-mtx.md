@@ -1,14 +1,14 @@
-# Test with Different Users/Tenants
+# Test With Different Users/Tenants
 
 ## Launch the Application Server
 
-In a new terminal at root of your project run the server with the following command:
+In a new terminal at the root of your project run the server with the following command:
 
   ```shell
   cds watch --profile local-multitenancy
   ```
 
-## Test with Different Users/Tenants
+## Test With Different Users/Tenants
 
 Open the Incident Management application at `http://localhost:4004/incidents/webapp/index.html` and log in with the users `alice` and `erin`, respectively. Leave the password field empty. To see the requests served in tenant isolation, that is, from different databases, change the data in one of the tenants and check that it's not visible in the other one.
 
@@ -22,5 +22,5 @@ Open the Incident Management application at `http://localhost:4004/incidents/web
 
 <img src="../../images/tenant1.png"/>
 
-This shows that the tenant issolation is working properly. 
+This shows that the tenant isolation is working properly. 
 

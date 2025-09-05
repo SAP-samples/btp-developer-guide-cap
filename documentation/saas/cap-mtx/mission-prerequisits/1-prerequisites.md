@@ -6,7 +6,7 @@
 
 1. Clone the Incident Management application:
    
-   `git clone https://github.com/cap-js/incidents-app.git`
+   `git clone https://github.com/SAP-samples/incidents-app.git` 
 
 2. Open `package.json`, and remove the below devDependencies if exists.
 

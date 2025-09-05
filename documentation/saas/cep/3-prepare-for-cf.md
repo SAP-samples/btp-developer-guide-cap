@@ -1,6 +1,6 @@
 # Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime
 
-## Update the MTA File with Multitenancy Configuration 
+## Update the MTA File With Multitenancy Configuration 
 
 To deploy a multitenant application and access it in the subscriber subaccount through SAP Build Work Zone, there is a need to update the MTA configuration for design time and runtime configurations. 
 In the `mta.yaml` file, update the following configurations:
@@ -23,82 +23,137 @@ In the `mta.yaml` file, update the following configurations:
         requires:
           - name: incident-management-registry
           - name: incident-management-auth
+          - name: incident-management-html5-repo-host
           - name: incident-management-destination # Remove
+          - name: incident-management-html5-runtime # Remove
           - name: incident-management-db
-          - name: incident-management-html5-repo-host # Add
   ```
 
-**Remove the  incident-management-destination**
+**Remove the incident-management-destination**
 
-> **NOTE** 
-> **Steps 2-6 are optional and are not required if you have already deployed Single Tenant Application with Workzone using CDM** 
+2. Since `destination` is not needed, ensure that `mtx/sidecar/package.json` doesn't contain `"destinations": true,`, If there, Delete it.
+3. Delete the `"html5-runtime": true` from `mtx/sidecar/package.json`.
+
+> [!NOTE]
+> **Steps 4-6 are optional** and are not required if you have already deployed a Single Tenant Application with SAP Build Work Zone using CDM.
    
-2. Update  `incident-management-destinations`:
-   
-   1. Add under `requires`:
+4. Update  `incident-management-destinations`-> `type: com.sap.application.content` with the following configurations:
+  
+   1. Delete the instance level destinations under it: 
         ```yaml
-            - name: incidents_html_repo_runtime
-              parameters:
-                service-key:
-                    name: incidents-html5-app-runtime-service-key
-        ```
-   
-   2. Update  `parameters->content->instance` to `parameters->content->subaccount`.
-   3. Delete the destinations under it: 
-        
-        ```yaml
-        - Name: ns_incidents_wz_capire_incidents_repo_host
-          ServiceInstanceName: incident-management-html5-srv
-          ServiceKeyName: incident-management-repo-host-key
-          sap.cloud.service: ns.incidents.wz
-        - Authentication: OAuth2UserTokenExchange
-          Name: ns_incidents_wz_incidents_auth
-          ServiceInstanceName: incident-management-auth
-          ServiceKeyName: incident-management-auth-key
-          sap.cloud.service: ns.incidents.wz
+        instance:
+          existing_destinations_policy: update
+          destinations:
+            - Name: srv-api
+              URL: ~{srv-api/srv-url}
+              Authentication: NoAuthentication
+              Type: HTTP
+              ProxyType: Internet
+              HTML5.ForwardAuthToken: true
+              HTML5.DynamicDestination: true
         ```
     
-    4. Add a new destination for the html5 repo runtime under the destination:
+    2. Add a new destination for the CDM under the destination:
         
         ```yaml
-        - Name: incident-management_cdm
-          ServiceInstanceName: incidents-html5-app-runtime-service
-          ServiceKeyName: incidents-html5-app-runtime-service-key
-          URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/<cloud-service-name>
+        subaccount:
+          existing_destinations_policy: update
+          destinations:
+            - Name: incident-management_cdm
+              ServiceInstanceName: incident-management-html5-runtime
+              ServiceKeyName: incident-management-html5-runtime-service-key
+              URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/incidentmanagement.service
 
         ```
-     > If you are using a extension landscape, you should replace the ${default-domain} with the mail domain, example : eu10-004 to be used as eu-10   
-3. Update the `incident-management-app-deployer`:
+        > [!NOTE]
+        `<cloud.service>` should be replace with your cloud.service value
+        If you are using an extension landscape, you should replace the ${default-domain} with the mail domain, example : eu10-004 to be used as eu-10
+
+      3. Under `requires` add the following
    
-   1. Under the `requires` section, the following dependencies:
-      
       ```yaml
-        requires:
-        - name: srv-api
-        - name: incident-management-auth
-      ```
-   2. Add the following parameters:
-      
-      ```yaml
+       - name: incident-management-html5-runtime
         parameters:
-           config:
-             destinations:
-             - forwardAuthToken: true
-               name: incident-management-srv-api
-               url: ~{srv-api/srv-url}
-             - name: ui5
-               url: https://ui5.sap.com
+          service-key: 
+            name: incident-management-html5-runtime-service-key
       ```
-  3. Change the `path` from `gen` to `.`.
+> [!NOTE]
+> The Service Names `incident-management-html5-runtime` might differ based on your project configurations. You can Check the resources section in `mta.yaml` for the html5-repo-runtime service name.
+
+
+5. Update `incident-management-destination`->`type: org.cloudfoundry.managed-service` with the following configurations:
+  
+   1. Under `parameters`, delete `HTML5Runtime_enabled: true`.
+   2. **Delete** the `instance` destinations under it:
+      
+      ```yaml
+        instance:
+            existing_destinations_policy: update
+            destinations:
+              - Name: srv-api
+                URL: ~{srv-api/srv-url}
+                Authentication: NoAuthentication
+                Type: HTTP
+                ProxyType: Internet
+                HTML5.ForwardAuthToken: true
+                HTML5.DynamicDestination: true
+      ```
+   3. Delete the requires section:  
+        ```yaml
+            requires:
+              - name: srv-api
+                group: destinations
+                properties:
+                  name: srv-api # must be used in xs-app.json as well
+                  url: ~{srv-url}
+                  forwardAuthToken: true
+        ```
+
+6. Create a new module `incident-management-workzone-cdm` to add the CDM Configuration from the cdm.json file as part of the `incident-management-app-deployer`.
+
+7. In the `mta.yaml` file, add the following module under `modules`:
+   
+```yaml
+- name: incident-management-workzone-cdm
+  type: html5
+  path: workzone
+  build-parameters:
+    build-result: .
+    supported-platforms:
+      []
+```
+
+8. Add the following to the `build-parameters.requires` section:
+
+```yaml
+- name: incident-management-workzone-cdm
+    artifacts:
+      - cdm.json
+    target-path: app/
+
+```
+9. Update the `parameters` field of `incident-mangement-app-deployer` with the following value:
+```yaml
+    parameters:
+      config:
+        destinations:
+        - forwardAuthToken: true
+          name: srv-api
+          url: ~{srv-api/srv-url}
+        - name: ui5
+          url: https://ui5.sap.com
+```
+
 
 The application deployer will look like this: 
+
 ```yaml
   - name: incident-management-app-deployer
     type: com.sap.application.content
-    path: .
+    path: gen 
     requires:
-      - name: srv-api
       - name: incident-management-auth
+      - name: srv-api
       - name: incident-management-html5-repo-host
         parameters:
           content-target: true
@@ -109,58 +164,30 @@ The application deployer will look like this:
           artifacts:
             - incidents.zip
           target-path: app/
+        - name: incident-management-workzone-cdm
+          artifacts:
+            - cdm.json
+          target-path: app/
     parameters:
       config:
         destinations:
-        - forwardAuthToken: true
-          name: incident-management-srv-api
-          url: ~{srv-api/srv-url}
-        - name: ui5
-          url: https://ui5.sap.com
-
-```
-> **The names might differ based on your project configurations.**
-
-
-4. Update `incident-management-destination` with the following configurations:
-  
-   1. Under `parameters`, delete `HTML5Runtime_enabled: true`.
-   2. Change `instance` to `subaccount`.
-   3. Delete the destinations under it and add the following:
-      
-      ```yaml
-        - Authentication: NoAuthentication
-          Name: incident-management-rt
-          ProxyType: Internet
-          CEP.HTML5contentprovider: true
+        - Name: srv-api
+          URL: ~{srv-api/srv-url}
+          Authentication: NoAuthentication
           Type: HTTP
-          URL: https://<provider tenant subdomain>.launchpad.${default-domain}
-      ```
-   
-   4. Delete the requires section:  
-        ```yaml
-            requires:
-              - name: srv-api
-                group: destinations
-                properties:
-                  name: srv-api # must be used in xs-app.json as well
-                  url: ~{srv-url}
-                  forwardAuthToken: true
-        ```
-5. Update the build parameters if you haven't done this already: 
-   
-   ```yaml
-    build-parameters:
-    before-all:
-      - builder: custom
-        commands:
-          - npm ci
-          - mkdir -p resources
-          - cp workzone/cdm.json resources/cdm.json
-          - npx cds build --production    
-   ```
-6. Create a **workzone** folder on the root of project then create a file named **cdm.json** and paste the following:
-    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id` . Update the `appId` below with `sap.app.id` of your application.
+          ProxyType: Internet
+          HTML5.ForwardAuthToken: true
+        - Name: ui5
+          URL: https://ui5.sap.com
+          Authentication: NoAuthentication
+          Type: HTTP
+          ProxyType: Internet
+```
+
+1. Create a **workzone** folder on the root of the project then create a file named **cdm.json** and paste the following:
+    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
+    > Ensure that the `"vizId": "incidents-display"` is matching `crossNavigation->inbounds-><vizId>` In this case `<vizId>` is `incidents-display`.
+
 ```json
     [
         {
@@ -174,7 +201,7 @@ The application deployer will look like this:
             "viz": [
             {
                 "appId": "ns.incidents",
-                "vizId": "intent1"
+                "vizId": "incidents-display"
             }
             ]
         },
@@ -198,7 +225,7 @@ The application deployer will look like this:
             "viz": [
             {
                 "appId": "ns.incidents",
-                "vizId": "intent1"
+                "vizId": "incidents-display"
             }
             ]
         },
@@ -239,6 +266,7 @@ The application deployer will look like this:
     ]
 ```
 
+  
 ## Next Step
 
 [Deploy the Incident Management Application in the SAP BTP, Cloud Foundry Runtime](./4-deploy-to-cf.md)

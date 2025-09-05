@@ -1,6 +1,9 @@
 # Subscribe Tenants to the Application Locally
 
-1. Subscribe to the first tenant locally by using the following command at root of the project:
+> [!TIP] Details using multiple terminals...
+In the following steps, we start two servers, the main application and the MTX sidecar, and run some commands. So, you need three terminal windows.
+
+1. Subscribe to the first tenant locally by using the following command in a new terminal at the root of the project:
 
   ```shell
   cds subscribe t1 --to http://localhost:4005 -u yves:
@@ -40,6 +43,6 @@ In response to each subscription, the sidecar creates a new persistent tenant da
 [mtx] - subscribed tenant t1
 
 ```
-> **NOTE**   
+> [!NOTE]
 > When running these commands, you use the predefined mocked user `yves`. For more information, see the section on [predefined mock users](https://cap.cloud.sap/docs/node.js/authentication#mock-users).
-To see all available options, run `cds subscribe --help`.
+> To see all available options, run `cds subscribe --help`.

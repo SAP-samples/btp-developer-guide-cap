@@ -406,3 +406,24 @@ In the `mta.yaml` file, update the following configurations:
     ```
 
 **Note:** The name of the **Role collection** and **CDM identification id** should be the same as it has a **1:1 role collection relationship to CDM roles**. This is needed so that the application tiles described in `cdm.json` are visible in the subscriber subaccount.
+
+- In the `mta.yaml` remove auto-generated role collection:
+```yaml
+...
+role-collections:
+  - name: 'support (incident-management ${org}-${space})'
+    description: 'generated'
+    role-template-references:
+      - '$XSAPPNAME.support'
+  - name: 'admin (incident-management ${org}-${space})'
+    description: 'generated'
+    role-template-references:
+      - '$XSAPPNAME.admin'
+...
+```
+- Under `incident-management` router module, add:
+```yaml
+parameters:
+  host: incidents-router
+```
+It is needed as the URL of the application should not be more than 63 characters.

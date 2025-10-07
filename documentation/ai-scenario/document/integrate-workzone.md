@@ -22,14 +22,12 @@ Have your application deployed to SAP BTP, Cloud Foundry. See [Deploy in SAP BTP
 
     ![WorkZone1](../images/integrate-workzone/content-explorer.png)
 
-2. Choose the HTML5 Apps tile with your respective subdomain name.
+2. Choose the HTML5 Apps tile.
 
     ![WorkZone1](../images/integrate-workzone/html5_apps.png)
 
-3. In the items table, select the checkboxes for the application incidents and choose **Add**.
+3. In the items table, select the application and choose **Add**.
 
->[!Note]
-> While selecting the checkboxes, make sure you are selecting the application with the ID you have created.
 
 ![WorkZone1](../images/integrate-workzone/ce_checkbox.png)
 

@@ -2,7 +2,7 @@
 
 ## Prerequisite
 
-[Extend the Incident Management Application](./extend-service.md)
+- [Extend the Incident Management Application](./extend-service.md)
 
 ## Feed Data to the Application
 
@@ -16,11 +16,10 @@ cds watch --profile hybrid
 
     ![request](../images/extend-service/send-req.png)
 
-> In the terminal, you can see the data from Incidents.csv file is getting trained. Please wait until the training is ready. Then, you will see the Response status 200. 
+> [!Tip]
+> In the terminal, you can see the data from `Incidents.csv` file is getting trained. Please wait until the training is ready. Then, you will see the Response status 200. 
 
 3. Once completed, you will see the Response as 200.
-
-    to be updated.
 
 4. Go back to the terminal where the application is running, click the URL where the localhost is running.
 
@@ -42,12 +41,13 @@ cds watch --profile hybrid
 2. Fill in the incident details:
 
     1. In the **Issue Description** field, enter **Printer is not printing papers**.
-
-    2. In the **Attachments** section, choose **Upload**. Then, select your file. You can access the file at [here](../images/teste2e/issueTicket.png)
+    2. For the next step, you need to upload a file. For this example, we are using a sample image file which is an invoice. 
+    3. You can save this [image](../images/teste2e/issueTicket.png) to your computer.
+    4. Choose the **Attach File** button to upload the file.
 
         ![testing](../images/teste2e/createTicket.png)
 
-    3. Choose **Create**.
+    5. Choose **Create**.
 
 3. Wait for the ticket to be created. Then go to the **Incidents** UI.
 4. The new issue can be seen there. Select your new issue.

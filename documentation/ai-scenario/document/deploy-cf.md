@@ -4,7 +4,7 @@ This section describes how to deploy the application to the SAP BTP, Cloud Found
 
 ## Prerequisites
 
-1. Open app &rarr; incident-managmenent &rarr; webapp &rarr; manifest.json, and copy the following code snippet of the **crossNavigation** object after **dataSources** object under "sap.app":
+1. In your code in your Code Editor, Open app &rarr; incident-managmenent &rarr; webapp &rarr; manifest.json, and copy the following code snippet of the **crossNavigation** object after **dataSources** object under "sap.app":
 
     ```sh
     "sap.app": {
@@ -18,7 +18,7 @@ This section describes how to deploy the application to the SAP BTP, Cloud Found
                     },
                 "semanticObject": "Incidents",
                 "action": "display"
-                }
+                }å
             }
         }
         ....
@@ -78,22 +78,13 @@ The final step in SAP Build Code is to deploy the application to the SAP BTP, Cl
 
     3. Choose **Open a new browser page to generate your SSO passcode** to sign in to your subaccount in SAP BTP, which opens in a new browser.
 
-    4. Find the **Enter the origin key** text box and choose **Sign in with alternative identity provider**.
-
-        > Note: Ask the instructor for the origin key.
-
-        ![deploy-cf](../images/deploy-cf/tenant_login.png)
-
-        > Note: When choosing **Sign in with alternative identity provider**, if your are prompted to sign in, enter your username and password.
-        > If you are signed in with Default Identity, you can choose to sign in with default identity provider.
-
-    5. Choose the **Copy** icon to get a temporary authentication code.
+    4. Choose the **Copy** icon to get a temporary authentication code.
 
         ![deploy-cf](../images/deploy-cf/deploy_auth_code.png)
     
-    6. Paste the copied code in the **Enter your SSO Passcode** field in the Cloud Foundry login page.
+    5. Paste the copied code in the **Enter your SSO Passcode** field in the Cloud Foundry login page.
 
-    7. Choose **Sign In**.
+    6. Choose **Sign In**.
 
         ![deploy-cf](../images/deploy-cf/deploy_sign_in.png)
 
@@ -109,7 +100,7 @@ The final step in SAP Build Code is to deploy the application to the SAP BTP, Cl
 
 5. Check the terminal for the deployment progress. 
 
-6. Once the deployment is completed, the application is started log and you can see the Overview URL.
+6. Once the deployment is completed you can see the Overview URL in the terminal.
 
     ![deploy-cf](../images/deploy-cf/deploy_completed.png)
 
@@ -147,4 +138,4 @@ The final step in SAP Build Code is to deploy the application to the SAP BTP, Cl
 
 ## Next Steps
 
-Integrate your application with SAP Build Work Zone by following the steps at [Integrate with SAP Build Work Zone](integrate-workzone.md).
+- Integrate your application with SAP Build Work Zone by following the steps at [Integrate with SAP Build Work Zone](integrate-workzone.md).

@@ -41,24 +41,15 @@ cf login --sso
 
     ![prereq](../images/extend-service/get-temp-code.png)
 
-3. Find the **Enter the origin key** text box and choose **Sign in with an alternative identity provider**.
-
-    > Note: Ask the instructor for the origin key
-
-    ![deploy-cf](../images/prereq/tenant_login.png)
-
-    > Note: When choosing **Sign-in with an alternative identity provider**, if you are prompted to sign in, enter your username and password.
-    > If you are signed in with **Default Identity**, you can choose to sign in with the default identity provider.
-
-4. Choose the **Copy** icon to get a temporary authentication code.
+3. Choose the **Copy** icon to get a temporary authentication code.
 
     ![deploy-cf](../images/prereq/deploy_auth_code.png)
 
-5. Paste the copied code in the terminal and click **Enter**.
+4. Paste the copied code in the terminal and click **Enter**.
 
-6. Select the relevant org and click **Enter**.
+5. Select the relevant org and click **Enter**.
 
-7. Select the created space and click **Enter**.
+6. Select the created space and click **Enter**.
 
 ## Set Up Initial Data for Incident Management Application
 
@@ -97,14 +88,14 @@ cf login --sso
     cds build --production
     ```
 
-4. Deploy the csv files to the SAP HANA database:
+4. Deploy the csv files to the SAP HANA  Cloud database:
 
     ```sh
     cds deploy --to hana
     ```
  
     > [!Note]
-    > It might take a few seconds to finish the deployment to SAP HANA. Once done, you get the successful deployment message.
+    > It might take a few seconds to finish the deployment to SAP HANA Cloud. Once done, you get the successful deployment message.
     ![success](../images/extend-service/successful-deployment.png)
 
 ## Create Service Binding to SAP Destination Service

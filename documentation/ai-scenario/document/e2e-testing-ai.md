@@ -2,7 +2,7 @@
 
 ## Prerequisite
 
-[Intergrate with SAP Build Work Zone](./integrate-workzone.md)
+- [Integrate with SAP Build Work Zone](./integrate-workzone.md)
 
 ## Testing the Scenario End to End
 

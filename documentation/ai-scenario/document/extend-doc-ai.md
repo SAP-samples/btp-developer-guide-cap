@@ -27,7 +27,6 @@ service TicketService {
 2. Under `srv`, create handler for the `TicketService` with file called `ticket-admin.js` and paste the following content:
 
 ```js
-```js
 const cds = require('@sap/cds');
 const FormData = require('form-data');
 const { getRagResponse } = require("./generate-solutions");
@@ -252,8 +251,8 @@ module.exports = { TicketService };
 > [!Tip]
 > This handler processes new records by retrieving attachments, extracting key details through a document service, and using AI to generate a title, summary, and urgency level — seamlessly connecting file uploads, document analysis, and intelligent enrichment.
 
-3. Replace the `schemaId` and `schemaVersion` values.
+3. Replace the `schemaId` and `schemaVersion` values with the values from your SAP Document AI instance.
 
 ## Next Step
 
-[Add SAP Fiori UI Application with Attachments](./extended-ui.md)
+- [Add SAP Fiori UI Application with Attachments](./extended-ui.md)

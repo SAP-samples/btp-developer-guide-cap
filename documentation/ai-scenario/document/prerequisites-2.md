@@ -39,24 +39,15 @@ cf login --sso
 
     ![prereq](../images/extend-service/get-temp-code.png)
 
-3. Find the **Enter the origin key** text box and click **Sign in with alternative identity provider**.
-
-    > Note: Ask the instructor for the origin key
-
-    ![deploy-cf](../images/prereq/tenant_login.png)
-
-    > Note: When choosing **Sign in with alternative identity provider**, if your are prompted to sign in, enter your username and password.
-    > If you are signed in with Default Identity, you can choose to sign in with default identity provider.
-
-4. Choose the **Copy** icon to get a temporary authentication code.
+3. Choose the **Copy** icon to get a temporary authentication code.
 
     ![deploy-cf](../images/prereq/deploy_auth_code.png)
 
-5. Paste the copied code in the terminal and click **Enter**.
+4. Paste the copied code in the terminal and click **Enter**.
 
-6. Select the relevant org and click **Enter**.
+5. Select the relevant org and click **Enter**.
 
-7. Select the created space and click **Enter**.
+6. Select the created space and click **Enter**.
 
 ## Enhance the Schema of Incident Management Application for Attachements
 

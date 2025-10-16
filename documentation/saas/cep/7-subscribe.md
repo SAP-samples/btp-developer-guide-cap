@@ -35,6 +35,13 @@ Before accessing the application, you must assign the `Support` role collection 
 4. Choose **Edit**.
 5. Under **Users** fill your user details and select **Save**.
 
+To make the application tile visible in the SAP Build Work Zone, you need to assign the site role to your user. This will be done in the next section.
+1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
+2. Choose **Security** > **Role Collections**.
+3. Select **default xxxxxxx)** role collection. You can check the **Role Collection** information in the `mta.yaml` file.
+4. Choose **Edit**.
+5. Under **Users** fill your user details and select **Save**.
+
 ## Launch the Application
 
 1. In the SAP BTP cockpit, navigate to your subaccount and choose the HTML5 tab of the subaccount. 

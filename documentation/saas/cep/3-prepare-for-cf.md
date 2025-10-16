@@ -171,17 +171,11 @@ The application deployer will look like this:
     parameters:
       config:
         destinations:
-        - Name: srv-api
-          URL: ~{srv-api/srv-url}
-          Authentication: NoAuthentication
-          Type: HTTP
-          ProxyType: Internet
-          HTML5.ForwardAuthToken: true
-        - Name: ui5
-          URL: https://ui5.sap.com
-          Authentication: NoAuthentication
-          Type: HTTP
-          ProxyType: Internet
+        - forwardAuthToken: true
+          name: srv-api
+          url: ~{srv-api/srv-url}
+        - name: ui5
+          url: https://ui5.sap.com
 ```
 
 1. Create a **workzone** folder on the root of the project then create a file named **cdm.json** and paste the following:

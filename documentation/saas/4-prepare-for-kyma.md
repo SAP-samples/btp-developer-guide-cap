@@ -116,7 +116,7 @@ html5-apps-repo-runtime:
 
 ## Update the Configurations for Multitenancy Support
 
-1. Delete the destination configuration from **chat/values.yaml**:
+1. Delete the destination configuration from **chart/values.yaml**:
    
 ```yaml
     destination:
@@ -127,7 +127,7 @@ html5-apps-repo-runtime:
         HTML5Runtime_enabled: true
 ```
    
-2. Remove all instances of the destination binding from the `chat/values.yaml` file.
+2. Remove all instances of the destination binding from the `chart/values.yaml` file.
 3. Under **html5-apps-deployer**, do the following:
 
    1. Delete **SAP_CLOUD_SERVICE**.

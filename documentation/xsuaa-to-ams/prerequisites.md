@@ -31,7 +31,7 @@
    
  - The SAP Build Workzone has Identity Authentication enabled. See [Switching to SAP Cloud Identity Services - Identity Authentication](https://help.sap.com/docs/build-work-zone-standard-edition/sap-build-work-zone-standard-edition/switching-to-sap-cloud-identity-services-identity-authentication).
 
-## Nest Steps
+## Next Steps
 
 You are now ready to implement Authorization Management service in your application: [Integrate with Authorization Management service](./2-integrate-with-ams.md).
 

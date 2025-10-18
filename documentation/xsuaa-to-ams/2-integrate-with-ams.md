@@ -34,13 +34,16 @@ The authorization checks that you added to the CAP model apply not only when dep
 1. Add the following to your `package.json` file:
     ```json
     {
-      "[development]": {
-          "auth": {
-                "Kind": "mocked",
-                "users": {}
-              } 
-          }
-      
+        "cds": {
+            "requires": {
+                "[development]": {
+                    "auth": {
+                            "kind": "mocked",
+                            "users": {}
+                        } 
+                    }
+            }
+        }
     }
     ```
 

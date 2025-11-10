@@ -25,8 +25,9 @@ Each of the below tutorials are independent and only needs the beginner tutorial
 - [Implement Multitenancy in a Full-Stack CAP Application Following SAP BTP Developer’s Guide](./saas/README.md)
 - [Data Privacy](./dataprivacy.md) 
 - [Notifications for SAP Build WorkZone using cap-js/notifications](./notifications/readme.md)
-- [Integrate with Authorization Management Service](./xsuaa-to-ams/README.md)
+- [Configure Authorization and Authentication Using the SAP Cloud Identity Services](./xsuaa-to-ams/README.md)
 - [Attachments Service](./attachments-service.md)
 - [Freestyle SAPUI5 Application](./freestyle-fiori/README.md)
 - [Flexible Programming Model](./flexible-programming/README.md) 
+- [Add Zero Downtime Maintenance to Your Application](./add-zdm/add-zdm.md)
 

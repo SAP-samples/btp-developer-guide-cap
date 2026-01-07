@@ -17,7 +17,7 @@ In this section, you will deploy the Incident Management CAP application integra
 1. Use `cds up` command to create the necessary MTA files for deployment:
 
    ```shell
-   cds up
+   cds up --to cf
    ```
 
    This command will do the following:

@@ -274,13 +274,13 @@ In the `mta.yaml` file, update the following configurations:
 
   For example, as per the below code snippet, check the html5-repo-host under **resources** of **mta.yaml**, then **incident-management-html5-repo-host** becomes the `<repo-host-name>`.
 
- ```sh
- - name: incident-management-html5-repo-host
-     type: org.cloudfoundry.managed-service
-     parameters:
-       service: html5-apps-repo
-       service-plan: app-host
- ```
+    ```yaml
+    - name: incident-management-html5-repo-host
+        type: org.cloudfoundry.managed-service
+        parameters:
+          service: html5-apps-repo
+          service-plan: app-host
+    ```
 
 2. Add `incidents-build-workzone-service` under `resources`:
 
@@ -407,23 +407,28 @@ In the `mta.yaml` file, update the following configurations:
 
 **Note:** The name of the **Role collection** and **CDM identification id** should be the same as it has a **1:1 role collection relationship to CDM roles**. This is needed so that the application tiles described in `cdm.json` are visible in the subscriber subaccount.
 
-- In the `mta.yaml` remove auto-generated role collection:
-```yaml
-...
-role-collections:
-  - name: 'support (incident-management ${org}-${space})'
-    description: 'generated'
-    role-template-references:
-      - '$XSAPPNAME.support'
-  - name: 'admin (incident-management ${org}-${space})'
-    description: 'generated'
-    role-template-references:
-      - '$XSAPPNAME.admin'
-...
-```
+7. Open `package.json` and remove the workspace entry if it exists:
+    ```yaml
+    "workspaces": [ "app/*" ]
+    ```
+8. Update the `mta.yaml` by removing auto-generated role collection:
+    ```yaml
+    ...
+    role-collections:
+      - name: 'support (incident-management ${org}-${space})'
+        description: 'generated'
+        role-template-references:
+          - '$XSAPPNAME.support'
+      - name: 'admin (incident-management ${org}-${space})'
+        description: 'generated'
+        role-template-references:
+          - '$XSAPPNAME.admin'
+    ...
+   ```
+
 - Under `incident-management` router module, add:
-```yaml
-parameters:
-  host: incidents-router
-```
+  ```yaml
+    parameters:
+      host: incidents-router
+  ```
 It is needed as the URL of the application should not be more than 63 characters.

@@ -18,9 +18,11 @@ For local testing of the multitenancy you have enabled, you have to:
 
 MTX services are implemented in Node.js and can run in the same Node.js server as your application services or in separate micro services called sidecars. Use the following command to start the MTX sidecar:
 
-```sh
-cds watch mtx/sidecar
-```
+   ```sh
+   # navigate to the project root
+   cd ../..
+   cds watch mtx/sidecar
+  ```
 
 ### Add Roles for Local Testing
 The [predefined users](https://cap.cloud.sap/docs/node.js/authentication#mock-users) can be enhanced or overwritten in the package.json file. Here, the users need the `support` role to access the application. Add the following code in the package.json file to assign the `support` role to the user called Erin.

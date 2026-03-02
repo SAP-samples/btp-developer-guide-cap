@@ -98,8 +98,9 @@ sap.ui.define([
 
 ## Check the result
 
-1. In SAP Business Application Studio, go to the **Application Info - incidents** tab, and click the **Preview Application** tile.
-2. The application opens in a separate tab of the browser prompting you for a user and password. In the **User** field, enter **alice**, don't use capital letter A. Leave the **Password** field empty. Press **Enter**.  
+1. Open app/incidents/webapp/manifest.json and add the leading / from the uri parameter.
+2. In SAP Business Application Studio, go to the **Application Info - incidents** tab, and click the **Preview Application** tile.
+3. The application opens in a separate tab of the browser prompting you for a user and password. In the **User** field, enter **alice**, don't use capital letter A. Leave the **Password** field empty. Press **Enter**.  
 
 The list page of the Incident Management application should look like this:
 

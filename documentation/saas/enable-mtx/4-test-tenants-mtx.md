@@ -23,9 +23,3 @@ Open the Incident Management application at `http://localhost:4004/incidents/web
 <img src="../images/tenant1.png"/>
 
 This shows that the tenant issolation is working properly. 
-
-## Next Steps
-
-- [**Cloud Foundry** - Add Dependent Services and Prepare for Production](../2-preparefordeployment.md)
-
-- [**Kyma** - Add Dependent Services and Prepare for Production](../4-prepare-for-kyma.md)

@@ -23,6 +23,31 @@ If you don't have the `mta.yaml` file in the project already then run the follow
 ```
   cds add mta
 ```
+### Configuration Updates
+
+> **Note 1:** In `mta.yaml`, ensure the following exists under  
+> `modules -> incident-management-app-deployer -> build-parameters -> requires`:
+
+```yaml
+- name: incidentmanagementmanager
+  artifacts:
+    - manager.zip
+  target-path: resources/
+```
+
+> **Note 2:** In `manifest.json` (`dataSources -> mainService`), change:
+
+```json
+"url": "/odata/v4/manager/"
+```
+
+to
+
+```json
+"url": "odata/v4/manager/"
+```
+
+---
 
 ## Assemble with the Cloud MTA Build Tool
 

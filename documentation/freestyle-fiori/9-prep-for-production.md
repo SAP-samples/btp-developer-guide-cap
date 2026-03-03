@@ -32,11 +32,6 @@ This command will generate the following configurations
         "@sap/ux-ui5-tooling": "1",
         "ui5-task-zipper": "^3"
     },
-    "ui5": {
-    "dependencies": [
-      "ui5-task-zipper"
-    ]
-  },
     "private": true
 }
 ```

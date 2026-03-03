@@ -68,14 +68,14 @@ Let's try out how the audit log works by executing some local rest calls.
     ```shell
     cds add http --filter AdminService
     ```
-   - This will add the `AdminService.http` file in `test/http` folder at the root directory.
+   - This will add the `AdminService.http` file in `tests/http` folder at the root directory.
    
 > [!NOTE]
 > Change the `username` in AdminService.http to `alice`.
    
 3. Let's have a close look and send requests and check which audit logs they create.
 
-   - Open `test/http/AdminService.http` file and run the request to read all Customers.
+   - Open `tests/http/AdminService.http` file and run the request to read all Customers.
      ![](./images/auditlog-local.png)
 
    In the Terminal log you will find several audit-log entries. On for each Customer's entity.

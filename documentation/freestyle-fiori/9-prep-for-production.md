@@ -24,7 +24,6 @@ This command will generate the following configurations
     "scripts": {
         "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
         "build": "ui5 build preload --clean-dest --config ui5-deploy.yaml",
-        "build-local": "ui5 build preload --clean-dest",
         "start": "ui5 serve"
     },
     "devDependencies": {
@@ -34,31 +33,6 @@ This command will generate the following configurations
     },
     "private": true
 }
-```
-
-1.2 Creates a new file `ui5-deploy.yaml` in the folder `app/manager`, with the following content
-
-```yaml
-# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-specVersion: '3.1'
-metadata:
-  name: incidents
-type: application
-resources:
-  configuration:
-    propertiesFileSourceEncoding: UTF-8
-builder:
-  resources:
-    excludes:
-      - "/test/**"
-      - "/localService/**"
-  customTasks:
-    - name: ui5-task-zipper
-      afterTask: generateVersionInfo
-      configuration:
-        archiveName: incidents
-        additionalFiles:
-          - xs-app.json
 ```
 
 2. Add the `ui5-tooling-transpile-task` in the `ui5-deploy.yaml` file under the `customTasks`.

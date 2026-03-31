@@ -71,7 +71,7 @@ Let's try out how the audit log works by executing some local rest calls.
    - This will add the `AdminService.http` file in `tests/http` folder at the root directory.
    
 > [!NOTE]
-> Change the `username` in AdminService.http to `alice`.
+> Change the `username` in AdminService.http to `alice` and add Admin role to Alice in package.json
    
 3. Let's have a close look and send requests and check which audit logs they create.
 

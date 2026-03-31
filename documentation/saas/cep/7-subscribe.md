@@ -172,6 +172,5 @@ The subscriptions can be viewed, updated or unsubscribed in the Subscription Man
 ## Explore More 
 - [SAP SaaS Provisioning Service](https://help.sap.com/docs/btp/sap-business-technology-platform/developing-multitenant-applications-in-cloud-foundry-environment?locale=en-US)
 - [CAP Multitenancy](https://cap.cloud.sap/docs/guides/multitenancy/)
-- [Develop a Multitenant Extension Application in SAP BTP, Kyma Runtime](https://discovery-center.cloud.sap/missiondetail/3683/3726/)
 - [Nodejs Multitenant Easy franchise](https://github.com/SAP-samples/btp-cf-multitenant-extension)
 - [Develop a multitenant Software as a Service application in SAP BTP using CAP (Cloud Foundry)](https://github.com/SAP-samples/btp-cf-cap-multitenant-susaas)

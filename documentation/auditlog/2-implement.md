@@ -6,8 +6,8 @@ In order to automate audit logging, personal data management, and data retention
 <br/>
 Annotate the domain model in a separate file `srv/data-privacy.cds` and fill it with the following content:
 
-```js
-using {sap.capire.incidents as my} from './Processor-service.js';
+```cds
+using {sap.capire.incidents as my} from './Processor-service.cds';
 using {
   cuid,
   managed

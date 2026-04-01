@@ -20,13 +20,14 @@ You’ll deploy your app with the [Cloud MTA Build Tool](https://sap.github.io/c
 
 If you don't have the `mta.yaml` file in the project already then run the following command to generate it:
 
-```
-  cds add mta
+```shell
+cds add mta
 ```
 ### Configuration Updates
 
-> **Note 1:** In `mta.yaml`, ensure the following exists under  
-> `modules -> incident-management-app-deployer -> build-parameters -> requires`:
+**Changes that need to be made in the mta.yaml**
+
+The following snippet needs to be added at modules->- name: incident-management-app-deployer->build-parameters->requires
 
 ```yaml
 - name: incidentmanagementmanager
@@ -35,6 +36,7 @@ If you don't have the `mta.yaml` file in the project already then run the follow
   target-path: resources/
 ```
 
+> [!TIP]
 > **Note 2:** In `manifest.json` (`dataSources -> mainService`), change:
 
 ```json
@@ -53,7 +55,7 @@ to
 
 Run the following command to assemble everything into a single **mta.tar** archive:
 
-```bash
+```shell
 mbt build
 ```
 
@@ -65,7 +67,7 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
 2. Log in to your subaccount in SAP BTP:
 
-    ```bash
+    ```shell
     cf api <API-ENDPOINT>
     cf login
     cf target -o <ORG> -s <SPACE>
@@ -75,13 +77,13 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
 3. Run the following command to deploy the generated archive:
 
-    ```bash
+    ```shell
     cf deploy mta_archives/incident-management_1.0.0.mtar 
     ```
 
 4. Check if all services have been created:
 
-    ```bash 
+    ```shell
     cf services
     ```
 
@@ -91,10 +93,10 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
 
 5. Check if the apps are running:
 
-    ```bash
+    ```shell
     cf apps
     ```
 
-  ![App after deploy](./images/cf-apps.png)
+    ![App after deploy](./images/cf-apps.png)
 
 

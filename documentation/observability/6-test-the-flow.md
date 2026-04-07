@@ -76,8 +76,27 @@ In the previous chapter, you created a custom metric to count the "**High**" urg
 5. Choose the dropdown under **Aggregation** and select **Top Hit**.
 6. Choose the **Field** dropdown menu and select the **value**.
 7. Under the **Custom** label, enter a name such as **High Urgency Incidents**.
-8. Choose **Update** at the bottom of the screen.
-9. The visualisation will be created.
+8. Go to **Visualize** → **Add filter** and click on **Edit as Query DSL**.
+
+9. Paste the following Query DSL code:
+
+   ```json
+   {
+     "query": {
+       "match_phrase": {
+         "instrumentationScope.name": "@capire/incidents:incidents.urgency.high"
+       }
+     }
+   }
+   ```
+
+   <img src="./images/image.png"/> 
+
+10. Choose **Save** to apply the filter.
+
+11. Choose **Update** at the bottom of the screen.
+
+12. The visualisation will be created.
    <img src="./images/customdashboard.png"/>
 You can save this visualization for quick access.
 

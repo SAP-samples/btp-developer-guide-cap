@@ -1,5 +1,5 @@
 ## SAP Build Work Zone Local Entry Point-Based Multitenancy
-The SAP Build Work Zone Local Entry point approach will look like the following:
+The SAP Build Work Zone Local Entry Point approach is as follows:
 <img src="./images/SaaS-LEP-SolutionDiagram.png"/>
 
 ## Additional Entitlements Required 
@@ -11,13 +11,13 @@ The SAP Build Work Zone Local Entry point approach will look like the following:
 
 ## Prerequisites
 
-**If you have developed the application using [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html), update it by following the below steps and move to the next page.**
+**If you have developed the application using [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html), update it by following the below steps and proceed to the next page.**
 
 ## Update the Incident Management Application
 
-The following changes are done as it is required for integrating with SAP Build Work Zone Local Entry Point, as you will be developing the application using a standalone approuter.
+The following changes are required for integrating with SAP Build Work Zone Local Entry Point, as you will be developing the application using a standalone approuter.
 
-1. Open `package.json`, and update the below properties to false.
+1. Open `package.json`, and set the following properties to `false`.
 
    ```json
    "destinations": false,
@@ -26,7 +26,7 @@ The following changes are done as it is required for integrating with SAP Build 
 
  **Destinations** and **workzone** are not required for the standalone approuter.
 
-2. Delete `mta.yaml`, and run the below command to get the updated mta.yaml file.
+2. Delete `mta.yaml`, and run the following command to generate the updated `mta.yaml` file.
 
    ```sh
    cds add mta
@@ -62,7 +62,6 @@ Run the following command in the terminal:
 ```sh
 cds add html5-repo
 ```
-
 ### Prepare the Application Router
 
 Run the following command in the terminal:
@@ -70,10 +69,17 @@ Run the following command in the terminal:
 ```sh
 cds add approuter
 ```
+### Enable Multitenancy
+
+To enable multitenancy for the application, follow the steps in:
+
+[Enable multitenancy for the CAP application](https://discovery-center.cloud.sap/protected/index.html#/mymissiondetail/210866/cardName/Enable%20multitenancy%20for%20the%20CAP%20application/?tab=projectboard)
+
+> This step is required to support multi-tenant scenarios when integrating with SAP Build Work Zone Local Entry Point (LEP).
 
 ### Set Up the Cloud Service
 
-Open `app/incidents/webapp/manifest.json`, and add the following code in the root level if it's not present.
+Update `app/incidents/webapp/manifest.json`, and add the following code at the root level if it's not present.
 
 ```json
 "sap.cloud": {
@@ -84,7 +90,7 @@ Open `app/incidents/webapp/manifest.json`, and add the following code in the roo
 
 ### Set Up the MTA for Deployment
 
-Run the following command to generate the mta.yaml deployment descriptor:
+Run the following command to generate the `mta.yaml` deployment descriptor:
 
 ```sh
 cds add mta

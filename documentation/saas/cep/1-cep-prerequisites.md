@@ -18,12 +18,12 @@ The SAP Build Work Zone Central Entry point approach will look like the followin
     
    - Option 2: SAP BTP, Kyma runtime:  [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html).
 
-   The following step needs to be implemented from the above tutorials.
-   <img src="../images/pre-req-cdm.png" height="50%" width="50%"/>
 
-2. To clean up some of the settings and continue with this scenario, undeploy the Incident Management application by running one of the following commands depending on the runtime you use:
-   
-   - For SAP BTP, Cloud Foundry runtime: `cf undeploy <YOUR_MTA_ID> --delete-services`
-   - For SAP BTP, Kyma runtime: `helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>`
+2. **Enable Multitenancy** by following the steps in:
+   [Enable multitenancy for the CAP application](https://discovery-center.cloud.sap/protected/index.html#/mymissiondetail/210866/cardName/Enable%20multitenancy%20for%20the%20CAP%20application/?tab=projectboard)
 
+
+> **Note:** To clean up settings before continuing with this scenario, you can undeploy the Incident Management application:
+> - For SAP BTP, Cloud Foundry runtime: `cf undeploy <YOUR_MTA_ID> --delete-services`
+> - For SAP BTP, Kyma runtime: `helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>`
 

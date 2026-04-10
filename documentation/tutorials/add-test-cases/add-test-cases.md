@@ -99,10 +99,10 @@ You've configured the access to your application. Follow the steps in the [Add A
         expect(await SELECT.from(Customers)).to.have.length(3)
       })
 
-      it('Test Expand Entity Endpoint', async () => {
-        const { data } = await GET`/odata/v4/processor/Customers?$select=firstName&$expand=incidents`
-        expect(data).to.be.an('object')
-      })
+   it('Test Expand Entity Endpoint', async () => {
+    const { data } = await GET`/odata/v4/processor/Incidents?$expand=status,urgency`
+    expect(data).to.be.an('object')
+     })
     })
 
     describe('Draft Choreography APIs', () => {

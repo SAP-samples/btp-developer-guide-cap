@@ -19,8 +19,27 @@ cds add helm
     
 > If the project already has cdm file, skip the next step.
   
-2. In the **ui-resources/resources** folder, create a file called **cdm.json** and paste the following:
-    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id` . Update the `appId` below with `sap.app.id` of your application.
+2. Create a folder resources the project's root directory. Create a file named cdm.json and paste the following:
+    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id` . 
+    Update the `appId` below with `sap.app.id` of your application.
+    Ensure that the vizId is matching app/incidents/manifest.json->crossNavigation->inbounds-><your viz Id>. Update the vizId below with the correct value. Here we have used incidents-display.
+
+    ::: details Find vizId
+```json{3}
+ "crossNavigation": {
+      "inbounds": {
+        "incidents-display": {
+          "semanticObject": "incidents",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+```
+:::
+
 ```json
     [
         {
@@ -123,7 +142,7 @@ html5-apps-repo-runtime:
 
 ## Update the Configurations for Multitenancy Support
 
-1. Delete the destination configuration from **chat/values.yaml**:
+1. Delete the destination configuration from **chart/values.yaml**:
    
 ```yaml
     destination:
@@ -134,7 +153,7 @@ html5-apps-repo-runtime:
         HTML5Runtime_enabled: true
 ```
    
-2. Delete the destination binding from **chat/values.yaml** whereever it is available.
+2. Delete the destination binding from **chart/values.yaml** wherever it is available.
 3. Under **html5-apps-deployer**, do the following:
 
    1. Delete **SAP_CLOUD_SERVICE**.

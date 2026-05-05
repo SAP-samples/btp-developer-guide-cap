@@ -1,20 +1,6 @@
 # Test the CAP Application Locally
 
-For local testing of the multitenancy you have enabled, you have to:
-
-1. Create a new profile that contains the multitenancy configuration:
-
-    ```sh
-    cds add multitenancy --for local-multitenancy
-    ```
-2. Install the multitenancy module dependencies using the following command:
-
-    ```sh
-    # navigate to the project root folder
-    cd <your-project-root>
-    cd mtx/sidecar
-    npm i
-    ```
+For local testing of the multitenancy you can follow the following steps:
 
 ### Start the MTX Sidecar
 

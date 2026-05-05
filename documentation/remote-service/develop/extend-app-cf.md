@@ -119,7 +119,7 @@
         let result = await this.S4bupa.run(SELECT.from(BusinessPartner, bp => {
           bp('*'),
             bp.addresses(address => {
-              address('email'),
+              address('address'),
                 address.email(emails => {
                   emails('email');
                 });

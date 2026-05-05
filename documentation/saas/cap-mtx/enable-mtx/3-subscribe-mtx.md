@@ -46,3 +46,8 @@ In response to each subscription, the sidecar creates a new persistent tenant da
 > [!NOTE]
 > When running these commands, you use the predefined mocked user `yves`. For more information, see the section on [predefined mock users](https://cap.cloud.sap/docs/node.js/authentication#mock-users).
 > To see all available options, run `cds subscribe --help`.
+
+
+> [!WARNING]
+> If the subscription fails, check the output of the sidecar terminal for errors. Common issues include: 404 Subscription Endpoint not found. You can fix it by deleting `~/.cds-services.json` file and retry.
+> 

@@ -19,7 +19,6 @@ For local testing of the multitenancy you have enabled, you have to:
 MTX services are implemented in Node.js and can run in the same Node.js server as your application services or in separate micro services called sidecars. Use the following command to start the MTX sidecar:
 
    ```sh
-   # navigate to the project root
    cd ../..
    cds watch mtx/sidecar
   ```

@@ -21,39 +21,26 @@ This command will generate the following configurations
         "sapui5"
     ],
     "main": "webapp/index.html",
-    "scripts": {
-        "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
-        "build": "ui5 build preload --clean-dest --config ui5-deploy.yaml",
-        "start": "ui5 serve"
-    },
+    "dependencies": {},
     "devDependencies": {
-        "@ui5/cli": "^3.0.0",
-        "@sap/ux-ui5-tooling": "1",
+        "@ui5/cli": "^4",
         "ui5-task-zipper": "^3"
+    },
+    "scripts": {
+        "start": "ui5 serve",
+        "build": "ui5 build preload --clean-dest"
     },
     "private": true
 }
 ```
 
-2. Add the `ui5-tooling-transpile-task` in the `ui5-deploy.yaml` file under the `customTasks`.
+1.2 It creates a new file **ui5.yaml** in the folder **app/manager/**.
 
 ```yaml
-- name: ui5-tooling-transpile-task
-    afterTask: replaceVersion
-    configuration:
-      debug: true
-      removeConsoleStatements: true
-      transpileAsync: true
-      transpileTypeScript: true 
-```
-
-After adding, make sure the full `ui5-deploy.yaml` file looks like this
-
-```yaml
-# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-specVersion: '2.4'
+# yaml-language-server: $schema=https://ui5.github.io/cli/schema/ui5.yaml.json
+specVersion: '4.0'
 metadata:
-  name: ns.manager
+  name: manager
 type: application
 resources:
   configuration:
@@ -64,39 +51,27 @@ builder:
       - "/test/**"
       - "/localService/**"
   customTasks:
-  - name: webide-extension-task-updateManifestJson
-    afterTask: replaceVersion
-    configuration:
-      appFolder: webapp
-      destDir: dist
-  - name: ui5-task-zipper
-    afterTask: generateCachebusterInfo
-    configuration:
-      archiveName: nsmanager
-      additionalFiles:
-      - xs-app.json
-  - name: ui5-tooling-transpile-task
-    afterTask: replaceVersion
-    configuration:
-      debug: true
-      removeConsoleStatements: true
-      transpileAsync: true
-      transpileTypeScript: true 
-
+    - name: ui5-task-zipper
+      afterTask: generateVersionInfo
+      configuration:
+        archiveName: manager
+        relativePaths: true
+        additionalFiles:
+          - xs-app.json
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
 ```
 
-The `ui5-deploy.yaml` file contains the configuration to build the SAPUI5 applications for deployment. It includes the builder and custom tasks.
+The `ui5.yaml` file contains the configuration to build the SAPUI5 applications for deployment. It includes the builder and custom tasks.
 
 **builder**: Defines the configuration for the build and for excluding certain resources from the build, such as test files and local service directories.
 
 **customTasks**: Specifies custom tasks to be executed during the build process. These tasks can perform various operations to enhance the deployment process. In this case:
 
-- **webide-extension-task-updateManifestJson**: This task updates the manifest.json file in the webapp folder and moves it to the dist folder. It executes after the 'replaceVersion' task.
+- **ui5-task-zipper**: This task zips the application files along with additional files like xs-app.json into an archive named "manager". It executes after the 'generateVersionInfo' task.
 
-- **ui5-task-zipper**: This task zips the application files along with additional files like xs-app.json into an archive named "nsmanager". It executes after the 'generateCachebusterInfo' task.
+- **ui5-tooling-transpile-task**: This task transpiles TypeScript files into JavaScript. This task executes after the 'replaceVersion' task.
 
-- **ui5-tooling-transpile-task**: This task transpiles TypeScript files into JavaScript. It also performs debugging-related operations and removes console statements. This task executes after the 'replaceVersion' task.
-
-3. **Install the dependencies**
+2. **Install the dependencies**
 
 As the previous step adds several `dependencies` and `devDependencies` to the html5 apps (`incidents`, `manager`) in the `app` folder. It is recommended to run `npm install` command in all the html5 apps folders (`app/incidents`, `app/manager`).

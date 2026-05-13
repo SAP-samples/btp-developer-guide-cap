@@ -416,29 +416,21 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
       "main": "webapp/index.html",
       "dependencies": {},
       "devDependencies": {
-        "@ui5/cli": "^3.0.0",
-        "@sap/ux-ui5-tooling": "1",
+        "@ui5/cli": "^4",
         "ui5-task-zipper": "^3"
       },
       "scripts": {
-        "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
-        "build": "ui5 build preload --clean-dest --config ui5-deploy.yaml",
-        "build-local": "ui5 build preload --clean-dest",
-        "start": "ui5 serve"
-      },
-      "ui5": {
-        "dependencies": [
-          "ui5-task-zipper"
-        ]
+        "start": "ui5 serve",
+        "build": "ui5 build preload --clean-dest"
       }
     }
     ```
 
-2. Check the newly created file **ui5-deploy.yaml** in the folder **app/incidents/**.
+2. Check the newly created file **ui5.yaml** in the folder **app/incidents/**.
 
     ```yaml
-    # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-    specVersion: '3.1'
+    # yaml-language-server: $schema=https://ui5.github.io/cli/schema/ui5.yaml.json
+    specVersion: '4.0'
     metadata:
       name: incidents
     type: application
@@ -455,6 +447,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
           afterTask: generateVersionInfo
           configuration:
             archiveName: incidents
+            relativePaths: true
             additionalFiles:
               - xs-app.json
     ```

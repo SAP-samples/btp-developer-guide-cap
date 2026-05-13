@@ -52,22 +52,25 @@ module.exports = function () {
 ```js
 async onBusinessPartnerChanged(event, data){
     const { Customers } = this.entities;
-    const { BusinessPartnerAddress } = this.remoteService.entities;
+    const { BusinessPartner } = this.remoteService.entities;
     //If Business Partner exists in Cache, then update
     console.log('<< received', event, data)
     const Id = data.BusinessPartner;
     console.log("BusinessPartnerID", Id);
-    var customer =  await this.S4bupa.run(SELECT.one(BusinessPartnerAddress, address => {
-      address('*'),
-      address.email(emails => {
-        emails('*')})
-      }).where({BusinessPartner: Id}));
-    console.log("customer after read email", customer.email[0].email);
-    
+    const customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp => {
+      bp('*'),
+      bp.addresses(address => {
+        address('email'),
+        address.email(emails => {
+          emails('email')
+        })
+      })
+    }).where({ID: Id}));
+
     if(customer){
-      customer.email = customer.email[0].email
-      const result= await cds.run(UPDATE(Customers).where({ID: customer.ID}).set({email:customer.email}));
-      console.log("result",result);
+      customer.email = customer.addresses[0]?.email[0]?.email;
+      const result = await cds.run(UPDATE(Customers).where({ID: Id}).set({email: customer.email}));
+      console.log("result", result);
     }
   }
 ```

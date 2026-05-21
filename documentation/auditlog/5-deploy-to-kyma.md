@@ -17,13 +17,19 @@ docker login docker.io -u <your-user>
 If you're using any device with a non-x86 processor (e.g. MacBook M1/M2), you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
 See [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables).
 
-1. Do the productive build for your application, which writes into the `gen` folder:
+1. If the `ui-resources` folder does not exist in your project, run:
+
+```sh
+cds add html5-repo
+```
+
+2. Do the productive build for your application, which writes into the `gen` folder:
 
 ```sh
 cds build --production
 ```
 
-2. Configure `containerize.yaml` at the root of your project:
+3. Configure `containerize.yaml` at the root of your project:
 
 > **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
 

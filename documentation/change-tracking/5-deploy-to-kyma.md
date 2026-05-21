@@ -17,13 +17,19 @@ docker login docker.io -u <your-user>
 If you're using any device with a non-x86 processor (e.g. MacBook M1/M2), you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
 See [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables).
 
-1. Do the productive build for your application, which writes into the `gen` folder:
+1. If the `ui-resources` folder does not exist in your project, run:
+
+```sh
+cds add html5-repo
+```
+
+2. Do the productive build for your application, which writes into the `gen` folder:
 
 ```sh
 cds build --production
 ```
 
-2. Build the UI application:
+3. Build the UI application:
 
 ```sh
 cd app/incidents

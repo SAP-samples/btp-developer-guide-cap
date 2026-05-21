@@ -16,13 +16,11 @@ cds add helm
 
 > Open `chart/values.yaml`, and check for the destination bindings, please remove them if exists. And Open `chart/chart.yaml` and remove the destination service instance if exists.
 
-    
-> If the project already has cdm file, skip the next step.
+> If the project already has a cdm file, skip the next step.
   
-2. Create a folder resources the project's root directory. Create a file named cdm.json and paste the following:
-    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id` . 
-    Update the `appId` below with `sap.app.id` of your application.
-    Ensure that the vizId is matching app/incidents/manifest.json->crossNavigation->inbounds-><your viz Id>. Update the vizId below with the correct value. Here we have used incidents-display.
+2. Create a folder resources in the project's root directory. Create a file named cdm.json and paste the following:
+    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
+    Ensure that the vizId is matching `app/incidents/manifest.json`->crossNavigation->inbounds-><your viz Id>. Update the vizId below with the correct value. Here we have used incidents-display.
 
     ::: details Find vizId
 ```json{3}
@@ -124,7 +122,7 @@ cds add helm
     cds add html5-repo
 ```
 
-4. Add the following code snippet to **chart/Chart.yaml**  :
+4. Add the following code snippet to **chart/Chart.yaml**:
 
 ```yaml
 - name: service-instance
@@ -132,7 +130,7 @@ cds add helm
   version: ">0.0.0"
 ```
 
-5. Add the following configurations for creating an html5-apps-repo-runtime service instance in the values.yaml file:
+5. Add the following configurations for creating an html5-apps-repo-runtime service instance in the `values.yaml` file:
 
 ```yaml
 html5-apps-repo-runtime: 
@@ -157,7 +155,7 @@ html5-apps-repo-runtime:
 3. Under **html5-apps-deployer**, do the following:
 
    1. Delete **SAP_CLOUD_SERVICE**.
-   2. Delete **envFrom:** and the fields under it: 
+   2. Delete **envFrom:** and the fields under it:
    
         ```yaml
         envFrom:
@@ -174,53 +172,81 @@ html5-apps-repo-runtime:
             destinations: '[{"forwardAuthToken":true,"name":"srv-api","url":"https://<deployment-name>-srv-<namespace>.<cluster-domain>"}]'
         ```
       
-    >
     > Update the placeholder values for cluster-domain, namespace and deployment name.
-    > Ensure that the indentation is correctly maintained
+    > Ensure that the indentation is correctly maintained.
     
-   5. Delete the destination binding. 
+   5. Delete the destination binding.
    
-4. Under **sidecar:bindings:**, add the binding to html5-repository.
+4. Under **sidecar:bindings:**, add the binding to html5-repository:
 
 ```yaml
 html5-apps-repo-host:
     serviceInstanceName: html5-apps-repo-host
 ```
 
-5. Build the project using the following command:
+5. Build the project:
    
 ```shell
 cds build --production
 ```
 
 ## Build the Images
-Once all the configurations are done, build the images and update the image name, version in **chart/values.yaml**.
 
-1. Build the **html5-deployer** image:
+Configure `containerize.yaml` at the root of your project. Once all configurations are done, deploy with `cds up`.
 
-```shell
-pack build <repository>/incident-management-html5-deployer:<version> \
---path ui-resources \
---builder paketobuildpacks/builder-jammy-base \
---publish
+> **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
+
+```yaml
+_schema-version: '1.0'
+repository: <your-dockerhub-username>
+tag: <image-version>
+modules:
+  - name: incident-management-html5-deployer
+    build-parameters:
+      buildpack:
+        type: nodejs
+        builder: builder-jammy-base
+        path: ui-resources
+  - name: incident-management-sidecar
+    build-parameters:
+      buildpack:
+        type: nodejs
+        builder: builder-jammy-base
+        path: gen/mtx/sidecar
+        env:
+          BP_NODE_VERSION: "20"
+  - name: incident-management-srv
+    build-parameters:
+      buildpack:
+        type: nodejs
+        builder: builder-jammy-base
+        path: gen/srv
+        env:
+          BP_NODE_VERSION: "20"
 ```
 
-2. Build the **side-car** image:
+Update the image names and versions in **chart/values.yaml**:
 
-```shell
-pack build <repository>/incident-management-sidecar:<version> \
---path gen/mtx/sidecar \
---builder paketobuildpacks/builder-jammy-base \
---publish
-```
+> **Note:** The `global.image.registry` field must be a valid registry domain (e.g. `docker.io`). A bare Docker Hub username is not valid and will cause `cds up` to fail with a registry validation error.
 
-1. Build the **srv** image:
-
-```shell
-pack build <repository>/incident-management-srv:<version> \
---path gen/srv \
---builder paketobuildpacks/builder-jammy-base \
---publish
+```yaml
+global:
+  domain: <your-kyma-cluster-domain>
+  imagePullSecret:
+    name: <image-pull-secret-name>
+  imagePullPolicy: Always
+  image:
+    registry: docker.io
+    tag: <image-version>
+srv:
+  image:
+    repository: <your-dockerhub-username>/incident-management-srv
+sidecar:
+  image:
+    repository: <your-dockerhub-username>/incident-management-sidecar
+html5-apps-deployer:
+  image:
+    repository: <your-dockerhub-username>/incident-management-html5-deployer
 ```
 
 ## Next Step

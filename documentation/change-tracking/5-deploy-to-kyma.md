@@ -1,25 +1,20 @@
 # Deploy to Kyma
 
-## Build the Images
+## Configure the Build
 
-To transform source code (or artifacts) into container images, we recommend using [Cloud Native Buildpacks](https://buildpacks.io/).
-
-For local development scenarios, you can use the [pack](https://buildpacks.io/docs/tools/pack/) CLI to consume Cloud Native Buildpacks. 
+To transform source code into container images, CAP uses [Cloud Native Buildpacks](https://buildpacks.io/) configured via a `containerize.yaml` file.
 
 For more information, see [About Cloud Native Buildpacks](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma?impl-variant=node#about-cloud-native-buildpacks).
-
 
 Log in to your container registry:
 
 ```sh
 docker login docker.io -u <your-user>
-
 ```
+
 **Before You Begin**
 
-Please note:
-
-If you're using any device with a non-x86 processor (e.g. MacBook M1/M2), you need to instruct the Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
+If you're using any device with a non-x86 processor (e.g. MacBook M1/M2), you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
 See [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables).
 
 1. Do the productive build for your application, which writes into the `gen` folder:
@@ -27,91 +22,86 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
 ```sh
 cds build --production
 ```
-2. Build the UI applicaiton using the following command:
+
+2. Build the UI application:
+
 ```sh
 cd app/incidents
 npm run build
 ```
-Now point the terminal back to root of the application.
 
+Now point the terminal back to the root of the application.
 
->**It is important to change the image version everytime there is a change in the files. If missed the new changes will not be visible after deployment.**
+3. Configure `containerize.yaml` at the root of your project:
 
+> **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
 
-3. Build the `incident-management-srv` image after updating version `<image-version>` to reflect the change in incident-management-srv app.
-
-
-
-```sh
-pack build <your-container-registry>/incident-management-srv:<image-version> \
-     --path gen/srv \
-     --builder paketobuildpacks/builder-jammy-base \
-     --publish
+```yaml
+_schema-version: '1.0'
+repository: <your-dockerhub-username>
+tag: <image-version>
+modules:
+  - name: incident-management-srv
+    build-parameters:
+      buildpack:
+        type: nodejs
+        builder: builder-jammy-base
+        path: gen/srv
+        env:
+          BP_NODE_VERSION: "20"
+  - name: incident-management-hana-deployer
+    build-parameters:
+      buildpack:
+        type: nodejs
+        builder: builder-jammy-base
+        path: gen/db
+        env:
+          BP_NODE_VERSION: "20"
+  - name: incident-management-html5-deployer
+    build-parameters:
+      buildpack:
+        type: nodejs
+        builder: builder-jammy-base
+        path: ui-resources
 ```
 
-4. Build the database image after updating version `<image-version>` to reflect the change in incident-management-hana-deployer app.
+4. Add your container image settings to your `chart/values.yaml`:
 
-```sh
-pack build <your-container-registry>/incident-management-hana-deployer:<image-version> \
-     --path gen/db \
-     --builder paketobuildpacks/builder-jammy-base \
-     --publish
-```
+> **Note:** The `global.image.registry` field must be a valid registry domain (e.g. `docker.io`). A bare Docker Hub username is not valid and will cause `cds up` to fail with a registry validation error.
 
-5. Build the HTML5 Deployer image after updating version `<image-version>` to reflect the change in incident-management-html5-deployer app.
-
-```sh
-pack build <your-container-registry>/incident-management-html5-deployer:<image-version> \
-     --path ui-resources \
-     --builder paketobuildpacks/builder-jammy-base \
-     --publish
-```
-
-6. Add your container image settings to your `chart/values.yaml`.
-
-```yaml{4,7,8,9,13,14,18,19,23,24}
-...
+```yaml
 global:
+  domain: <your-kyma-cluster-domain>
   imagePullSecret:
-    name: [<image pull secret name>] 
-...
+    name: <image-pull-secret-name>
+  imagePullPolicy: Always
+  image:
+    registry: docker.io
+    tag: <image-version>
 srv:
   image:
-    repository: <your-container-registry>/incident-management-srv
-    tag: <srv-image-version>
-...
+    repository: <your-dockerhub-username>/incident-management-srv
 hana-deployer:
   image:
-    repository: <your-container-registry>/incident-management-hana-deployer
-    tag: <db-deployer-image-version>
-...
+    repository: <your-dockerhub-username>/incident-management-hana-deployer
 html5-apps-deployer:
   image:
-    repository: <your-container-registry>/incident-management-html5-deployer
-    tag: <html5apps-deployer-image-version>
+    repository: <your-dockerhub-username>/incident-management-html5-deployer
 ```
-7. Build the application again using `cds build --production`
 
 ## Deploy CAP Helm Chart to Kyma
 
 1. Log in to your Kyma cluster.
 
-2. Create a namespace.
+2. Deploy using the following command:
+
 ```sh
-kubectl create namespace incidents-namespace
-kubectl label namespace incidents-namespace istio-injection=enabled
+cds up --to k8s --namespace incidents-namespace
 ```
 
-3. Deploy using Helm command:
-```sh
-helm upgrade --install incident-management --namespace incidents-namespace ./gen/chart \
---set-file xsuaa.jsonParameters=xs-security.json
-```
-This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incidents-namespace***.
+This single command builds all container images using Cloud Native Buildpacks, pushes them to your registry, and deploys the Helm chart to your Kyma cluster. The namespace is created automatically if it does not exist.
 
->**TIP:**
->With the ***helm upgrade --install*** command, you can install a new chart as well as upgrade an existing chart.
-
+> **Tip:** With `cds up --to k8s`, you can deploy a new application as well as update an existing deployment.
 
 The outcome of installation will look something like this:
 

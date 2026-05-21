@@ -39,13 +39,23 @@ In essence, these are the steps you need to follow:
     cds build --production
     ```
 
-3. Build an image and publish the image.
+3. Configure `containerize.yaml` at the root of the cloned project:
 
-    ```bash
-    pack build <your-container-registry>/mockserver-srv:latest \
-    --path gen/srv \
-    --builder paketobuildpacks/builder-jammy-base \
-    --publish
+    > **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
+
+    ```yaml
+    _schema-version: '1.0'
+    repository: <your-dockerhub-username>
+    tag: latest
+    modules:
+      - name: mockserver-srv
+        build-parameters:
+          buildpack:
+            type: nodejs
+            builder: builder-jammy-base
+            path: gen/srv
+            env:
+              BP_NODE_VERSION: "20"
     ```
 
 4. CAP provides a configurable Helm chart for Node.js applications. Add Helm charts.
@@ -83,21 +93,37 @@ In essence, these are the steps you need to follow:
 
 6. Configure the created Helm charts.
 
-    - Specify the domain of your cluster in the `chart/values.yaml` file so that the URL of your CAP service can be generated.
+    - Specify the domain of your cluster in `chart/values.yaml` so that the URL of your CAP service can be generated:
 
     ```yaml
     ...
     domain: <cluster domain>
     ```
 
-    Get the domain name for your Kyma cluster. 
+    Get the domain name for your Kyma cluster: 
 
-    ```yaml
+    ```bash
     kubectl get gateway -n kyma-system kyma-gateway \
         -o jsonpath='{.spec.servers[0].hosts[0]}'
     ```
 
-    - Add your container image settings `<your-container-registry>` and `tag` to your `chart/values.yaml`.
+    - Add your container image settings to `chart/values.yaml`:
+
+    > **Note:** The `global.image.registry` field must be a valid registry domain (e.g. `docker.io`). A bare Docker Hub username is not valid and will cause `cds up` to fail with a registry validation error.
+
+    ```yaml
+    global:
+      domain: <your-kyma-cluster-domain>
+      imagePullSecret:
+        name: <image-pull-secret-name>
+      imagePullPolicy: Always
+      image:
+        registry: docker.io
+        tag: latest
+    srv:
+      image:
+        repository: <your-dockerhub-username>/mockserver-srv
+    ```
 
 7. Create a namespace if it is not done already.
 
@@ -106,25 +132,21 @@ In essence, these are the steps you need to follow:
    kubectl label namespace incidents-namespace istio-injection=enabled
    ```
 
-8. Do the productive build for your application from the project's root directory, which writes into the `gen` folder using the below command:
+8. Deploy the mock server using `cds up`:
 
     ```sh
-    cds build --production
+    cds up --to k8s --namespace incidents-namespace
     ```
-    
-9. Deploy the mock server.
 
-    ```yaml
-    helm upgrade --install mock ./gen/chart -n <namespace>
-    ```   
+    This single command builds the container image, pushes it to your registry, and deploys the Helm chart to your Kyma cluster.
 
-8. Copy the service URL for the installed mock server from the terminal.
+9. Copy the service URL for the installed mock server from the terminal.
 
     ![kyma api url](./images/kyma-api.png)
 
 ## Create Destination to Mock Server
 
-3. Go to your SAP BTP cockpit and navigate to the subaccount overview. Choose **Connectivity** &rarr; **Destination**. Then, choose **New Destination**. 
+1. Go to your SAP BTP cockpit and navigate to the subaccount overview. Choose **Connectivity** &rarr; **Destination**. Then, choose **New Destination**. 
   1. Enter the following values:
 
       * **Name** = *[Some destination name depending on your mission]*
@@ -137,7 +159,7 @@ In essence, these are the steps you need to follow:
 
   3. Save your settings.
 
-4. Choose **Check Connection**. You should get a `200 OK` message.
+2. Choose **Check Connection**. You should get a `200 OK` message.
 
 ## Test the Mock Server
 

@@ -279,7 +279,11 @@ Open the **srv/pom.xml** file and add the following snippet to the dependencies 
 ```java
 package customer.incident_management;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -295,95 +299,228 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class IncidentsODataTests {
 
     private static final String incidentsURI = "/odata/v4/ProcessorService/Incidents";
     private static final String customerURI = "/odata/v4/ProcessorService/Customers";
     private static final String expandEntityURI = "/odata/v4/ProcessorService/Customers?$select=firstName&$expand=incidents";
+    private static final String adminCustomerURI = "/odata/v4/AdminService/Customers";
 
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-    @WithMockUser(username = "alice")
-    void incidentReturned(@Autowired MockMvc mockMvc) throws Exception {
+    private String draftId;
+    private String incidentId;
+
+    // -- GET Endpoints
+
+    @Test @Order(1) @WithMockUser(username = "alice")
+    void shouldCheckProcessorService() throws Exception {
         mockMvc.perform(get(incidentsURI))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.value", hasSize(4)));
     }
 
-    @Test
-    @WithMockUser(username = "alice")
-    void customertReturned() throws Exception {
+    @Test @Order(2) @WithMockUser(username = "alice")
+    void shouldCheckCustomers() throws Exception {
         mockMvc.perform(get(customerURI))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.value", hasSize(3)));
     }
 
-    @Test
-    @WithMockUser(username = "alice")
-    void expandEntityEndpoint() throws Exception {
+    @Test @Order(3) @WithMockUser(username = "alice")
+    void testExpandEntityEndpoint() throws Exception {
         mockMvc.perform(get(expandEntityURI))
             .andExpect(jsonPath("$.value[0].incidents[0]").isMap())
             .andExpect(jsonPath("$.value[0].incidents[0]").isNotEmpty());
     }
 
-    @Test
-    @WithMockUser(username = "alice")
-    void draftIncident() throws Exception {
-        String incidentCreateJson = "{ \"title\": \"Urgent attention required!\", \"status_code\": \"N\",\"urgency_code\": \"M\"}";
+    // -- Draft Choreography APIs
 
-        MvcResult createResult = mockMvc.perform(MockMvcRequestBuilders.post("/odata/v4/ProcessorService/Incidents")
-            .content(incidentCreateJson)
+    @Test @Order(4) @WithMockUser(username = "alice")
+    void createAnIncident() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI)
+            .content("{ \"title\": \"Urgent attention required !\", \"status_code\": \"N\" }")
             .contentType("application/json")
             .accept("application/json"))
             .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.title").value("Urgent attention required!"))
-            .andExpect(jsonPath("$.status_code").value("N"))
-            .andExpect(jsonPath("$.urgency_code").value("M"))
             .andReturn();
+        draftId = JsonPath.read(result.getResponse().getContentAsString(), "$.ID");
+        incidentId = draftId;
+    }
 
-        String ID = JsonPath.read(createResult.getResponse().getContentAsString(), "$.ID");
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/odata/v4/ProcessorService/Incidents(ID="+ID+",IsActiveEntity=false)/ProcessorService.draftActivate")
+    @Test @Order(5) @WithMockUser(username = "alice")
+    void activateDraftAndCheckUrgencyH() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI+"(ID="+draftId+",IsActiveEntity=false)/ProcessorService.draftActivate")
             .contentType("application/json")
             .accept("application/json"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.urgency_code").value("H"));
-
-        mockMvc.perform(MockMvcRequestBuilders.delete("/odata/v4/ProcessorService/Incidents(ID="+ID+",IsActiveEntity=true)"))
-            .andExpect(status().is(204));
     }
 
-    @Test
-    @WithMockUser(username = "alice")
-    void updateIncident() throws Exception {
-        String incidentCreateJson = "{ \"title\": \"Urgent attention required!\", \"status_code\": \"N\"}";
-        String incidentUpdateJson = "{\"status_code\": \"C\"}";
-        String closedIncidentUpdateJson = "{\"status_code\": \"I\"}";
+    @Test @Order(6) @WithMockUser(username = "alice")
+    void testIncidentStatus() throws Exception {
+        mockMvc.perform(get(incidentsURI+"(ID="+incidentId+",IsActiveEntity=true)"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.status_code").value("N"));
+    }
 
-        MvcResult createResult = mockMvc.perform(MockMvcRequestBuilders.post("/odata/v4/ProcessorService/Incidents")
-            .content(incidentCreateJson)
+    @Test @Order(7) @WithMockUser(username = "alice")
+    void shouldCloseTheIncident() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI+"(ID="+incidentId+",IsActiveEntity=true)/ProcessorService.draftEdit")
+            .content("{ \"PreserveChanges\": true }")
             .contentType("application/json")
             .accept("application/json"))
-            .andExpect(status().isCreated())
-            .andReturn();
+            .andExpect(status().isOk());
+    }
 
-        String ID = JsonPath.read(createResult.getResponse().getContentAsString(), "$.ID");
+    @Test @Order(8) @WithMockUser(username = "alice")
+    void shouldPatchIncidentStatusToClosed() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.patch(incidentsURI+"(ID="+incidentId+",IsActiveEntity=false)")
+            .content("{\"status_code\": \"C\"}")
+            .contentType("application/json")
+            .accept("application/json"))
+            .andExpect(status().isOk());
+    }
 
-        mockMvc.perform(MockMvcRequestBuilders.patch("/odata/v4/ProcessorService/Incidents(ID="+ID+",IsActiveEntity=true)")
-            .content(incidentUpdateJson)
+    @Test @Order(9) @WithMockUser(username = "alice")
+    void activateDraftAndCheckStatusC() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI+"(ID="+incidentId+",IsActiveEntity=false)/ProcessorService.draftActivate")
             .contentType("application/json")
             .accept("application/json"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.status_code").value("C"));
+    }
 
-        mockMvc.perform(MockMvcRequestBuilders.patch("/odata/v4/ProcessorService/Incidents(ID="+ID+",IsActiveEntity=true)")
-            .content(closedIncidentUpdateJson)
+    @Test @Order(10) @WithMockUser(username = "alice")
+    void testIncidentStatusToBeClosed() throws Exception {
+        mockMvc.perform(get(incidentsURI+"(ID="+incidentId+",IsActiveEntity=true)"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.status_code").value("C"));
+    }
+
+    @Test @Order(11) @WithMockUser(username = "alice")
+    void shouldOpenClosedIncident() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI+"(ID="+incidentId+",IsActiveEntity=true)/ProcessorService.draftEdit")
+            .content("{ \"PreserveChanges\": true }")
+            .contentType("application/json")
+            .accept("application/json"))
+            .andExpect(status().isOk());
+    }
+
+    @Test @Order(12) @WithMockUser(username = "alice")
+    void shouldReOpenTheIncidentButFail() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.patch(incidentsURI+"(ID="+incidentId+",IsActiveEntity=false)")
+            .content("{\"status_code\": \"N\"}")
+            .contentType("application/json")
+            .accept("application/json"))
+            .andExpect(status().isOk());
+    }
+
+    @Test @Order(13) @WithMockUser(username = "alice")
+    void shouldFailToActivateDraftTryingToReOpenIncident() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI+"(ID="+incidentId+",IsActiveEntity=false)/ProcessorService.draftActivate")
             .contentType("application/json")
             .accept("application/json"))
             .andExpect(status().isConflict())
             .andExpect(jsonPath("$.error.message").value("Can't modify a closed incident"));
+    }
+
+    @Test @Order(14) @WithMockUser(username = "alice")
+    void deleteTheDraft() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete(incidentsURI+"(ID="+incidentId+",IsActiveEntity=false)"))
+            .andExpect(status().is(204));
+    }
+
+    @Test @Order(15) @WithMockUser(username = "alice")
+    void deleteTheIncident() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete(incidentsURI+"(ID="+incidentId+",IsActiveEntity=true)"))
+            .andExpect(status().is(204));
+    }
+
+    // -- Auto-Urgency logic
+
+    @Test @Order(16) @WithMockUser(username = "alice")
+    void doesNotChangeUrgencyForNonUrgentTitle() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI)
+            .content("{ \"title\": \"Routine maintenance\", \"urgency_code\": \"L\", \"status_code\": \"N\" }")
+            .contentType("application/json")
+            .accept("application/json"))
+            .andExpect(status().isCreated())
+            .andReturn();
+        String id = JsonPath.read(result.getResponse().getContentAsString(), "$.ID");
+
+        mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI+"(ID="+id+",IsActiveEntity=false)/ProcessorService.draftActivate")
+            .contentType("application/json").accept("application/json"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.urgency_code").value("L"));
+
+        mockMvc.perform(MockMvcRequestBuilders.delete(incidentsURI+"(ID="+id+",IsActiveEntity=true)"))
+            .andExpect(status().is(204));
+    }
+
+    @Test @Order(17) @WithMockUser(username = "alice")
+    void setsUrgencyHForAllCapsUrgentTitle() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI)
+            .content("{ \"title\": \"URGENT: system failure\", \"urgency_code\": \"L\", \"status_code\": \"N\" }")
+            .contentType("application/json")
+            .accept("application/json"))
+            .andExpect(status().isCreated())
+            .andReturn();
+        String id = JsonPath.read(result.getResponse().getContentAsString(), "$.ID");
+
+        mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI+"(ID="+id+",IsActiveEntity=false)/ProcessorService.draftActivate")
+            .contentType("application/json").accept("application/json"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.urgency_code").value("H"));
+
+        mockMvc.perform(MockMvcRequestBuilders.delete(incidentsURI+"(ID="+id+",IsActiveEntity=true)"))
+            .andExpect(status().is(204));
+    }
+
+    @Test @Order(18) @WithMockUser(username = "alice")
+    void setsUrgencyHForUrgentInMidTitle() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI)
+            .content("{ \"title\": \"Please treat this as urgent matter\", \"urgency_code\": \"M\", \"status_code\": \"N\" }")
+            .contentType("application/json")
+            .accept("application/json"))
+            .andExpect(status().isCreated())
+            .andReturn();
+        String id = JsonPath.read(result.getResponse().getContentAsString(), "$.ID");
+
+        mockMvc.perform(MockMvcRequestBuilders.post(incidentsURI+"(ID="+id+",IsActiveEntity=false)/ProcessorService.draftActivate")
+            .contentType("application/json").accept("application/json"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.urgency_code").value("H"));
+
+        mockMvc.perform(MockMvcRequestBuilders.delete(incidentsURI+"(ID="+id+",IsActiveEntity=true)"))
+            .andExpect(status().is(204));
+    }
+
+    // -- Authorization
+
+    @Test @Order(19) @WithMockUser(username = "alice")
+    void rejectsSupportRoleUserFromAdminServiceWith403() throws Exception {
+        mockMvc.perform(get(adminCustomerURI))
+            .andExpect(status().isForbidden());
+    }
+
+    @Test @Order(20) @WithMockUser(username = "carol")
+    void allowsAdminRoleUserToReadAndWriteCustomers() throws Exception {
+        mockMvc.perform(get(adminCustomerURI))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.value").isArray());
+
+        mockMvc.perform(MockMvcRequestBuilders.post(adminCustomerURI)
+            .content("{ \"ID\": \"AUTH01\", \"firstName\": \"Test\", \"lastName\": \"Admin\" }")
+            .contentType("application/json")
+            .accept("application/json"))
+            .andExpect(status().isCreated());
+
+        mockMvc.perform(MockMvcRequestBuilders.delete(adminCustomerURI+"('AUTH01')"))
+            .andExpect(status().is(204));
     }
 }
 ```
@@ -509,6 +646,33 @@ Ran all test suites.
 </details>
 
 <details>
+<details>
+<summary>Java: configure test users</summary>
+
+The Authorization tests require mocked users with specific roles. Open **srv/src/main/resources/application.yaml** and add the `mock.users` block under `cds.security`:
+
+```yaml
+cds:
+  security:
+    mock.users:
+      alice:
+        roles: [ support ]
+      bob:
+        roles: [ support ]
+      carol:
+        roles: [ admin ]
+```
+
+| User | Role | Can access |
+|---|---|---|
+| `alice` | `support` | `ProcessorService` |
+| `bob` | `support` | `ProcessorService` |
+| `carol` | `admin` | `AdminService` |
+
+> CDS security resolves roles from this config by username — not from Spring's `@WithMockUser` authorities — so users must be declared here for role-based tests to pass.
+
+</details>
+
 <summary>Java: test and verify</summary>
 
 To test the application, run the following command in the terminal:
@@ -520,11 +684,11 @@ mvn verify
 When all the test cases pass, the output looks like this:
 
 ```bash
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.28 s -- in com.sap.cap.incident_management.IncidentsODataTests
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.28 s -- in customer.incident_management.IncidentsODataTests
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] ------------------------------------------------------------------------
 ```

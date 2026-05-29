@@ -1,20 +1,6 @@
----
-title: Prepare for Production
-description: As you've followed the tutorials for the Incident Management application, you’ve developed an application with an in-memory database and basic authentication. To have such an application on production, you need to make the respective configurations.
-keywords: cap 
-parser: v2
-auto_validation: true
-time: 20
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, programming-tool>java, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Prepare for Production
 
-## You will learn
-
-- How to configure SAP HANA Cloud in your project.
-- How to configure the SAP Authorization and Trust Management service in your project.
+In this tutorial, you learn how to configure SAP HANA Cloud in your project and how to configure the SAP Authorization and Trust Management service in your project.
 
 ## Prerequisites
 

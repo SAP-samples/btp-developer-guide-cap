@@ -1,18 +1,6 @@
----
-title: Assign the User Roles
-description: This tutorial shows you how to assign role collections to users. 
-parser: v2
-auto_validation: true
-time: 15
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Assign the User Roles
 
-## You will learn
-
-- How to assign a role collection in the SAP BTP subaccount.
+In this tutorial, you learn how to assign a role collection in the SAP BTP subaccount.
 
 
 ## Prerequisites

@@ -1,20 +1,6 @@
----
-title: Introduction to Application Development Using CAP
-description: Learn about SAP Cloud Application Programming Model (CAP) and application development on SAP Business Technology Platform (BTP).
-parser: v2
-auto_validation: true
-time: 7
-tags: [ tutorial>beginner, programming-tool>sapui5, software-product>sap-business-technology-platform, software-product>sap-fiori, software-product-function>sap-cloud-application-programming-model]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Introduction to Application Development Using CAP
 
-## You will learn
-
-- How to develop and deploy a full-stack application based on the SAP Cloud Application Programming Model (CAP).
-- How to use SAP Business Application Studio.
-- How to follow best practices to improve the process of implementing a business application on SAP BTP.
+In this tutorial, you learn how to develop and deploy a full-stack application based on the SAP Cloud Application Programming Model (CAP), how to use SAP Business Application Studio, and how to follow best practices to improve the process of implementing a business application on SAP BTP.
 
 ## Prerequisites
 

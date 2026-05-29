@@ -1,21 +1,6 @@
----
-title: Integrate Your Application with SAP Build Work Zone, Standard Edition
-description: This tutorial shows you how to subscribe to the SAP Build Work Zone, standard edition.
-keywords: cap 
-parser: v2
-auto_validation: true
-time: 60
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Integrate Your Application with SAP Build Work Zone, Standard Edition
 
-## You will learn
-
-- How to subscribe to SAP Build Work Zone, standard edition.
-- How to assign the SAP Build Work Zone, standard edition role collection to your user.
-- How to integrate your application with SAP Build Work Zone, standard edition.
+In this tutorial, you learn how to subscribe to SAP Build Work Zone, standard edition, how to assign the SAP Build Work Zone, standard edition role collection to your user, and how to integrate your application with SAP Build Work Zone, standard edition.
 
 ## Prerequisites
 

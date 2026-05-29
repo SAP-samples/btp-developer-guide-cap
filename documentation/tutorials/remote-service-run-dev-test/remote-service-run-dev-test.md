@@ -1,19 +1,6 @@
----
-title: Test the Extended Incident Management Application with the Business Partner API
-description: Learn how to test the extended Incident Management application with a local mock server.
-parser: v2
-auto_validation: true
-time: 30
-tags: [ tutorial>intermediate, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Test the Extended Incident Management Application with the Business Partner API
 
-## You will learn
-
-- How to increase your development speed by running and testing your implementation in a local environment.
-- How to set up and use a local mock server for running your development tests for the extended Incident Management application.
+In this tutorial, you learn how to increase your development speed by running and testing your implementation in a local environment and how to set up and use a local mock server for running your development tests for the extended Incident Management application.
 
 ## Prerequisites
 

@@ -1,19 +1,6 @@
----
-title: Install a Mock Server in the SAP BTP, Kyma Runtime
-description: This tutorial shows you how to install a mock server in the SAP BTP, Kyma runtime using Visual Studio Code and how to create a destination to the mock server in your SAP BTP subaccount.
-parser: v2
-auto_validation: true
-time: 45
-tags: [ tutorial>intermediate, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Grzegorz Karaluch
-author_profile: https://github.com/grego952
----
+## Install a Mock Server in the SAP BTP, Kyma Runtime
 
-## You will learn
-
-- How to install a mock server in the SAP BTP, Kyma runtime.
-- How to create a destination to the mock server in the same subaccount.
+In this tutorial, you learn how to install a mock server in the SAP BTP, Kyma runtime and how to create a destination to the mock server in the same subaccount.
 
 ## Prerequisites
 

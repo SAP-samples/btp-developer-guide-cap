@@ -1,20 +1,6 @@
----
-title: Deploy in SAP BTP, Kyma Runtime
-description: This tutorial shows you how to deploy your CAP application in SAP BTP, Kyma runtime.
-keywords: cap 
-parser: v2
-auto_validation: true
-time: 30
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Grzegorz Karaluch
-author_profile: https://github.com/grego952
----
+## Deploy in SAP BTP, Kyma Runtime
 
-
-## You will learn
-
-- How to deploy your CAP application in SAP BTP, Kyma runtime.
+In this tutorial, you learn how to deploy your CAP application in SAP BTP, Kyma runtime.
 
 ## Prerequisites
 

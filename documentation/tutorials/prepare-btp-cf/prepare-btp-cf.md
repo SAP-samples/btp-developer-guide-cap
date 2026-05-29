@@ -1,21 +1,6 @@
----
-title: Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime
-description: Learn how to prepare the subaccount in SAP BTP for application deployment in the SAP BTP, Cloud Foundry runtime.
-parser: v2
-auto_validation: true
-time: 30
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime
 
-
-## You will learn
-
-- How to configure entitlements.
-- How to enable the SAP BTP Cloud Foundry runtime in your subaccount in SAP BTP.
-- How to create an SAP HANA Cloud service instance in the SAP BTP cockpit.
+In this tutorial, you learn how to configure entitlements, how to enable the SAP BTP Cloud Foundry runtime in your subaccount in SAP BTP, and how to create an SAP HANA Cloud service instance in the SAP BTP cockpit.
 
 ## Prerequisites
 

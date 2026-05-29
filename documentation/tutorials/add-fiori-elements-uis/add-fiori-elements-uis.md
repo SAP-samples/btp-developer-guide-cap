@@ -1,20 +1,7 @@
----
-title: Add SAP Fiori Elements UIs
-description: This tutorial shows you how to create an SAP Fiori elements application on top of your previously created CAP application.
-keywords: cap 
-parser: v2
-auto_validation: true
-time: 30
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, programming-tool>java, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
- 
-## You will learn 
 
-- How to generate the UI with an SAP Fiori elements template.
-- How to modify the UI with the SAP Fiori page editor.
+## Add SAP Fiori Elements UIs
+
+In this tutorial, you learn how to generate the UI with an SAP Fiori elements template and how to modify the UI with the SAP Fiori page editor.
 
 ## Prerequisites
 

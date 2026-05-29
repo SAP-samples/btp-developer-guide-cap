@@ -1,20 +1,6 @@
----
-title: Set Up a CI/CD Pipeline for SAP BTP, Kyma Runtime
-description: This section describes how to configure and run a predefined continuous integration and delivery (CI/CD) pipeline that automatically tests, builds, and deploys your code changes to speed up your development and delivery cycles.
-keywords: cap 
-parser: v2
-auto_validation: true
-time: 60
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Grzegorz Karaluch
-author_profile: https://github.com/grego952
----
+## Set Up a CI/CD Pipeline for SAP BTP, Kyma Runtime
 
-## You will learn
-
-- How to initialize a repository in VS Code.
-- How to set up your CI/CD pipeline.
+In this tutorial, you learn how to initialize a repository in VS Code and how to set up your CI/CD pipeline.
 
 ## Prerequisites
 

@@ -1,19 +1,6 @@
----
-title: Introduction to Remote Service Connectivity
-description: Learn how to extend the functionality of the Incident Management sample application.
-parser: v2
-auto_validation: true
-time: 10
-tags: [ tutorial>intermediate, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Introduction to Remote Service Connectivity
 
-## You will learn
-
-- How to extend the functionality of the Incident Management sample application.
-- How to integrate the SAP S/4HANA Cloud Business Partner API to the Incident Management application.
+In this tutorial, you learn how to extend the functionality of the Incident Management sample application and how to integrate the SAP S/4HANA Cloud Business Partner API to the Incident Management application.
 
 ## Prerequisites
 

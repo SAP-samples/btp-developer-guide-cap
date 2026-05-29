@@ -1,20 +1,6 @@
----
-title: Add Custom Logic
-description: This tutorial shows you how to add custom logic to the source code of the SAP Fiori elements application you have already created.
-keywords: cap 
-parser: v2
-auto_validation: true
-time: 10
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, programming-tool>java, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Add Custom Logic
 
-## You will learn
-
-- How to add custom code that changes the value of the **urgency** property.
-- How CAP automatically treats the JavaScript/Java file that you add as a handler.
+In this tutorial, you learn how to add custom code that changes the value of the **urgency** property and how CAP automatically treats the JavaScript/Java file that you add as a handler.
 
 ## Prerequisites
 

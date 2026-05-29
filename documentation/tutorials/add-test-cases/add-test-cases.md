@@ -1,10 +1,6 @@
-# Add Test Cases
+## Add Test Cases
 
-## You will learn
-
-- How to add dependencies.
-- How to add tests.
-- How to test the application.
+In this tutorial, you learn how to add dependencies, how to add tests, and how to test the application.
 
 ## Prerequisites
 

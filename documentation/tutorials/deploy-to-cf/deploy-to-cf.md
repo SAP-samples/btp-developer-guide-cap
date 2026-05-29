@@ -1,20 +1,6 @@
----
-title: Deploy in SAP BTP, Cloud Foundry Runtime
-description: This tutorial shows you how to deploy your CAP application as a multi-target application (MTA).
-keywords: cap 
-parser: v2
-auto_validation: true
-time: 45
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Deploy in SAP BTP, Cloud Foundry Runtime
 
-
-## You will learn
-
-- How to deploy your CAP application as a multi-target application (MTA) 
+In this tutorial, you learn how to deploy your CAP application as a multi-target application (MTA).
 
 ## Prerequisites
 

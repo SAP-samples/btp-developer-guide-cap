@@ -1,19 +1,6 @@
----
-title: Get the Business Partner API and Extend the Incident Management Application
-description: Learn how to get the Business Partner API from SAP S/4HANA Cloud and extend the functionality of the Incident Management application.
-parser: v2
-auto_validation: true
-time: 30
-tags: [ tutorial>intermediate, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Get the Business Partner API and Extend the Incident Management Application
 
-## You will learn
-
-- How to get the Business Partner API from SAP S/4HANA Cloud.
-- How to extend the functionality of the Incident Management application.
+In this tutorial, you learn how to get the Business Partner API from SAP S/4HANA Cloud and how to extend the functionality of the Incident Management application.
 
 ## Prerequisites
 

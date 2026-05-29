@@ -1,21 +1,7 @@
----
-title: Add Authorization
-description: This tutorial shows you how to enable authentication and authorization for your CAP application.
-keywords: cap 
-parser: v2
-auto_validation: true
-time: 20
-tags: [ tutorial>beginner, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, programming-tool>java, software-product>sap-business-technology-platform, software-product>sap-fiori]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
 
-## You will learn
+## Add Authorization
 
-- How to add CAP role restrictions to entities.
-- How to add users for local testing.
-- How to access the Incident Management application with a password.
+In this tutorial, you learn how to add CAP role restrictions to entities, how to add users for local testing, and how to access the Incident Management application with a password.
 
 
 ## Prerequisites

@@ -1,20 +1,6 @@
----
-title: Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform
-description: This tutorial shows you how to add your SAP S/4HANA Cloud system to your global account in SAP BTP.
-parser: v2
-auto_validation: true
-time: 30
-tags: [ tutorial>intermediate, tutorial>license, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Svetoslav Pandeliev
-author_profile: https://github.com/slavipande
----
+## Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform
 
-## You will learn
-
- - How to acquire an SAP BTP integration token.
- - How to add integration token to SAP S/4HANA Cloud system.
- - How to set up entitlements for your SAP BTP subaccount.
+In this tutorial, you learn how to acquire an SAP BTP integration token, how to add the integration token to the SAP S/4HANA Cloud system, and how to set up entitlements for your SAP BTP subaccount.
 
 ## Prerequisites
 

@@ -1,19 +1,6 @@
----
-title: Deploy and Run the Incident Management Application in the SAP BTP, Kyma Runtime with a Mock Server
-description: Learn how to deploy the Incident Management application in the SAP BTP, Kyma runtime and test it with the mock server that you've installed.
-parser: v2
-auto_validation: true
-time: 30
-tags: [ tutorial>intermediate, software-product-function>sap-cloud-application-programming-model, programming-tool>node-js, software-product>sap-business-technology-platform]
-primary_tag: software-product-function>sap-cloud-application-programming-model
-author_name: Grzegorz Karaluch
-author_profile: https://github.com/grego952
----
+## Deploy and Run the Incident Management Application in the SAP BTP, Kyma Runtime with a Mock Server
 
-## You will learn
-
-- How to deploy and the Incident Management application in the SAP BTP, Kyma runtime.
-- How to test the application with the mock server that you've installed.
+In this tutorial, you learn how to deploy the Incident Management application in the SAP BTP, Kyma runtime and how to test the application with the mock server that you've installed.
 
 ## Prerequisites
 

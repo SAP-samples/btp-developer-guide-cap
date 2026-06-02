@@ -44,5 +44,5 @@ Another option to create the route is to use the Cloud Foundry APIs during onboa
    
 ## Next Steps
 
-Continue [Assigning Roles to User](../operate/subscribe-to-multitenant-app.md#assigning-roles-to-user).
+Continue [Assigning Roles to User](../5-subscribe.md#assigning-roles-to-user).
   

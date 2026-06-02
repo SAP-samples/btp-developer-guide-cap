@@ -6,7 +6,7 @@ Build and deploy the MTA file with the following command:
 
 ```sh
 mbt build -t ./
-cf deploy incident-management_1.0.0.mtar
+cf deploy <your-mtar-file>.mtar
 ```
 
 > When deploying an existing application with active users, it's recommended to use the Blue-Green Deployment strategy to minimize or eliminate downtime and ensure a seamless user experience.

@@ -6,11 +6,20 @@ In this section, you will be preparing the Incident Management application to wo
 
 1. Create a **workzone** folder on the root of the project. Then, create a file named **cdm.json** and paste the following:
  
-    > Ensure that the `appId` is matching with `app/incidents/manifest.json`->`sap.app.id` . Update the `appId` below with the value of the `sap.app.id` of your application.
+    > Ensure that the `appId` matches `app/incidents/manifest.json` → `sap.app.id`. Update the `appId` below with the value from your application.
     >
-    >  Ensure that the `vizId` is matching with `app/incidents/manifest.json -> sap.app.crossNavigation` the name of the inbounds.
-    >
-    > For example, if your crossNavigation looks like the one below, the `vizId` becomes `intent1`.
+    > Ensure that the `vizId` matches the inbound name under `sap.app.crossNavigation.inbounds` in `app/incidents/manifest.json`. For example:
+    > ```json
+    > "crossNavigation": {
+    >   "inbounds": {
+    >     "intent1": {
+    >       "semanticObject": "incidents",
+    >       "action": "display"
+    >     }
+    >   }
+    > }
+    > ```
+    > In this example, `vizId` is `intent1`.
 
       ![vizid](./images/vizid.png)
 
@@ -179,48 +188,6 @@ In this section, you will be preparing the Incident Management application to wo
       ]
     },
     {
-      "_version": "3.1.0",
-      "identification": {
-        "id": "lepPage",
-        "entityType": "page",
-        "title": "{{title}}",
-        "description": "{{description}}"
-      },
-      "payload": {
-        "sections": [
-          {
-            "id": "section1",
-            "title": "{{sections.section1.title}}",
-            "viz": [
-              {
-                "appId": "ns.incidents",
-                "displayFormatHint": "default",
-                "vizId": "intent1"
-              }
-            ]
-          }
-        ]
-      },
-      "texts": [
-        {
-          "locale": "",
-          "textDictionary": {
-            "description": "LEP Workpage (Old Experience)",
-            "sections.section1.title": "LEP Workpage (Old Experience) Section",
-            "title": "LEP Workpage (Old Experience)"
-          }
-        },
-        {
-          "locale": "en",
-          "textDictionary": {
-            "description": "LEP Workpage (Old Experience)",
-            "sections.section1.title": "LEP Workpage (Old Experience) Section",
-            "title": "LEP Workpage (Old Experience)"
-          }
-        }
-      ]
-    },
-    {
       "_version": "3.2.0",
       "identification": {
         "id": "lepSite",
@@ -253,10 +220,10 @@ In this section, you will be preparing the Incident Management application to wo
 To deploy a multitenant application and access it in the subscriber subaccount through SAP Build Work Zone, you have to update the MTA configuration for design time and runtime. 
 In the `mta.yaml` file, update the following configurations:
 
-1. Add dependencies to `incident-management-mtx`. To get the reuse dependent services, add the following services to the `requires` section:
+1. Add dependencies to the MTX sidecar module. To get the reuse dependent services, add the following services to the `requires` section:
   
     ```yaml
-    - name: incidents-mtx
+    - name: incident-management-mtx
         ...
         requires:
           - name: incidents-registry
@@ -270,9 +237,7 @@ In the `mta.yaml` file, update the following configurations:
           - name: incidents-build-workzone-service # Add
     ```
 
-- Replace `<repo-host-name>` with the correct `html5-repo-host` name in your project.
-
-  For example, as per the below code snippet, check the html5-repo-host under **resources** of **mta.yaml**, then **incident-management-html5-repo-host** becomes the `<repo-host-name>`.
+- Replace `<repo-host-name>` with the `html5-repo-host` resource name in your `mta.yaml`. Check under **resources** — for example:
 
     ```yaml
     - name: incident-management-html5-repo-host
@@ -297,7 +262,7 @@ In the `mta.yaml` file, update the following configurations:
       type: org.cloudfoundry.managed-service
     ```
 
-- Replace the `<exposureId>` with the `sap.cloud service` specified in `app/incidents/webapp/manifest.json`.
+- Replace `<exposureId>` with the `sap.cloud.service` value from `app/incidents/webapp/manifest.json` (for example, `incidents.service`).
    
 3. Under `incidents` approuter module, add **OWN_SAP_CLOUD_SERVICE**, **COOKIE_BACKWARD_COMPATIBILITY** under `properties` section and the workzone service under the `requires` section.
    
@@ -312,7 +277,7 @@ In the `mta.yaml` file, update the following configurations:
         - name: incidents-build-workzone-service # Add
     ```
 
-    -  **OWN_SAP_CLOUD_SERVICE** is the value taken from `app/incidents/webapp/manifest.json -> sap.cloud.service`. If *sap.cloud.service* is `incidents.service`, the value of **OWN_SAP_CLOUD_SERVICE** property becomes `"["incidentsservice"]"`
+    -  **OWN_SAP_CLOUD_SERVICE** is derived from `app/incidents/webapp/manifest.json → sap.cloud.service` with all dots removed. For example, `incidents.service` becomes `incidentsservice`.
   
 4. Update the `incidents-app-deployer` module:
 
@@ -348,10 +313,10 @@ In the `mta.yaml` file, update the following configurations:
                   target-path: resources
 
           ```
-        -  **The names may differ based on your project configurations.**
+        - **The names may differ based on your project configuration. Verify the artifact name against the generated `mta.yaml`.**
 
-5. Update the `build-parameters`: 
-      
+5. Update the `build-parameters`:
+
       ```yaml
       build-parameters:
         before-all:
@@ -363,55 +328,12 @@ In the `mta.yaml` file, update the following configurations:
               - npx cds build --production
       ```
 
-6. Update the `xs-security.json` with the role template and role collection:
-
+6. Open `package.json` and remove the workspace entry if it exists:
     ```json
-
-    "scopes": [
-      ...
-        {
-          "name": "uaa.user",
-          "description": "UAA"
-        },
-      "role-templates": [
-        ...
-        {
-          "name": "MultitenancyCallbackRoleTemplate",
-          "description": "Call callback-services of applications",
-          "scope-references": [
-            "$XSAPPNAME.mtcallback"
-          ]
-        },
-        {
-          "name": "Token_Exchange",
-          "description": "UAA",
-          "scope-references": [
-            "uaa.user"
-          ]
-        },
-      ],
-      "role-collections": [
-        {
-          "name": "Incidents_LEP",  
-          "description": "Grant Administrative access to LEP",
-          "role-template-references": [
-            "$XSAPPNAME.Token_Exchange",
-            "$XSAPPNAME.MultitenancyCallbackRoleTemplate",
-            "$XSAPPNAME.support",
-            "$XSAPPNAME.admin"
-          ]
-        }
-      ]
-      
-    ```
-
-**Note:** The name of the **Role collection** and **CDM identification id** should be the same as it has a **1:1 role collection relationship to CDM roles**. This is needed so that the application tiles described in `cdm.json` are visible in the subscriber subaccount.
-
-7. Open `package.json` and remove the workspace entry if it exists:
-    ```yaml
     "workspaces": [ "app/*" ]
     ```
-8. Update the `mta.yaml` by removing auto-generated role collection:
+   > Workspaces cause `mbt build` to fail for LEP because the app directory is handled separately via the build commands above.
+7. Update the `mta.yaml` by removing the auto-generated role collections:
     ```yaml
     ...
     role-collections:
@@ -426,9 +348,15 @@ In the `mta.yaml` file, update the following configurations:
     ...
    ```
 
-- Under `incident-management` router module, add:
+> **Note:** The name of the **Role collection** and **CDM identification id** must be the same — this 1:1 relationship ensures that the application tiles described in `cdm.json` are visible in the subscriber subaccount.
+
+8. Under the `incidents` approuter module, add:
   ```yaml
     parameters:
       host: incidents-router
   ```
-It is needed as the URL of the application should not be more than 63 characters.
+  > This shortens the approuter URL to `incidents-router.cfapps.<region>.hana.ondemand.com`. It is required because the full auto-generated URL often exceeds 63 characters.
+
+## Next Step
+
+[Deploy in the SAP BTP, Cloud Foundry Runtime](./4-deploy-to-cf.md)

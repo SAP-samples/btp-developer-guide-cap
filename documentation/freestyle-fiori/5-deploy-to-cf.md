@@ -48,31 +48,14 @@ to
 ```json
 "url": "odata/v4/manager/"
 ```
-<details>
-<summary><strong>Important: manager.zip not getting generated</strong></summary>
 
-After deployment, if the UI application is missing, it may be because `manager.zip` was not generated during the UI5 build, causing the HTML5 module to be skipped.
+> [!IMPORTANT]
 
-This issue may not occur consistently and has been observed intermittently.
-
-#### Troubleshooting
-
-Update the `build` script in `app/manager/package.json`:
-
-```json
-"scripts": {
-  "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
-  "build": "ui5 build preload --clean-dest && cd dist && zip -r manager.zip .",
-  "start": "ui5 serve"
-}
-```
-#### Explanation
-
-- UI5 build does not generate a zip file by default
-- MTA deployer requires `manager.zip` for HTML5 application deployment
-- This step ensures the zip is always created inside the `dist/` folder
-
-</details>
+> **`manager.zip` not generated on Windows:** The `zip` shell command does not exist on Windows. Use `ui5-task-zipper` instead, which is already configured in `app/manager/ui5.yaml` after running `cds add html5-repo`. Make sure the build script in `app/manager/package.json` is:
+> ```json
+> "build": "ui5 build preload --clean-dest"
+> ```
+> The `ui5-task-zipper` task in `ui5.yaml` handles zip creation automatically on all platforms.
 
 
 ## Assemble with the Cloud MTA Build Tool

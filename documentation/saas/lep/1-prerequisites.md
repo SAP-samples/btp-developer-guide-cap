@@ -11,7 +11,7 @@ The SAP Build Work Zone Local Entry Point approach is as follows:
 
 ## Prerequisites
 
-**If you have developed the application using [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html), update it by following the below steps and proceed to the next page.**
+**If you have developed the application using [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html), update it by following the steps below and proceed to the next page.**
 
 ## Update the Incident Management Application
 
@@ -24,7 +24,7 @@ The following changes are required for integrating with SAP Build Work Zone Loca
    "workzone": false
    ```
 
- **Destinations** and **workzone** are not required for the standalone approuter.
+   > **Destinations** and **workzone** are not required for the standalone approuter used in the LEP approach.
 
 2. Delete `mta.yaml`, and run the following command to generate the updated `mta.yaml` file.
 
@@ -32,7 +32,7 @@ The following changes are required for integrating with SAP Build Work Zone Loca
    cds add mta
    ```
 
-**If you are setting up the Incident Management Application for the first time, set it up by following the below steps.** 
+**If you are setting up the Incident Management Application for the first time, set it up by following the steps below.**
 
 ## Set Up the Incident Management Application 
 
@@ -73,7 +73,7 @@ cds add approuter
 
 To enable multitenancy for the application, follow the steps in:
 
-[Enable multitenancy for the CAP application](https://discovery-center.cloud.sap/protected/index.html#/mymissiondetail/210866/cardName/Enable%20multitenancy%20for%20the%20CAP%20application/?tab=projectboard)
+[Enable Multitenancy for the CAP Application](../enable-mtx/1-enable-mtx.md)
 
 > This step is required to support multi-tenant scenarios when integrating with SAP Build Work Zone Local Entry Point (LEP).
 
@@ -88,6 +88,8 @@ Update `app/incidents/webapp/manifest.json`, and add the following code at the r
 }
 ```
 
+> This value is referenced in the MTA configuration as `OWN_SAP_CLOUD_SERVICE`. When setting that property, remove all dots from the service name (for example, `incidents.service` becomes `incidentsservice`).
+
 ### Set Up the MTA for Deployment
 
 Run the following command to generate the `mta.yaml` deployment descriptor:
@@ -95,3 +97,7 @@ Run the following command to generate the `mta.yaml` deployment descriptor:
 ```sh
 cds add mta
 ```
+
+## Next Step
+
+[Add Dependent Services and Prepare for Production](./2-add-dependent-services.md)

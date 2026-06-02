@@ -6,8 +6,8 @@ Some of the services your application consumes need to be registered as reuse se
 
 Most notably, you will need such dependencies for the SAP Audit Log service, SAP Connectivity service, SAP Destination service, SAP HTML5 Application Repository service for SAP BTP, and SAP Cloud Portal service. All these services are supported natively and can be activated individually configuring them in the **cds.requires** file. In the most common case, you simply activate service dependencies like this:
 
-1. Open `mtx/sidecar/package.json`. Replace the **cds.requires** section with the below code snippet. 
-   Delete **"audit-log", "destinations"** if they exist.
+1. Open `mtx/sidecar/package.json`. Add or replace the **cds.requires** section with the code snippet below.
+   If `"audit-log"` or `"destinations"` exist under `requires`, delete them.
 
     ```json
     "requires": {
@@ -45,6 +45,8 @@ Most notably, you will need such dependencies for the SAP Audit Log service, SAP
     } 
     ```
 
+   > `cp.portal/site` is the LEP launchpad entry point served by the standalone approuter through SAP Build Work Zone.
+
 You are using the `SAP Build Workzone, HTML5 repo` as a reuse service. When subscribing, these services will be added as dependent services that can be used from the subscriber account. 
 
 4. Open **app/router** folder in the terminal and run the command `npm i`.
@@ -60,3 +62,7 @@ npm i
 npm update --package-lock-only
 npm update --package-lock-only --prefix mtx/sidecar
 ```
+
+## Next Step
+
+[Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime](./3-prepare-for-cf.md)

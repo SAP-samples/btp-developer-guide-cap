@@ -72,6 +72,9 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
     <!-- border; size:540px --> ![WorkZone1](./integrate_launchpad_1.png)
 
+    > [!IMPORTANT]
+    > **HTML5 Apps shows "No data" after refresh:** This happens when the `incident-management-html5-repository` destination is at `instance` level instead of `subaccount` level in `mta.yaml`. Work Zone's Channel Manager only reads subaccount-level destinations. See the fix in the [Add configuration for SAP Build Work Zone, standard edition](https://developers.sap.com/tutorials/prep-for-prod.html#add-configuration-for-sap-build-work-zone-standard-edition) step of the Prepare for Production tutorial.
+
 #### Add application to Content Explorer
 
 1. Choose **Content Manager** in the menu on the left and choose **Content Explorer**.

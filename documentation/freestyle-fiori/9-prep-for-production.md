@@ -8,7 +8,7 @@ cds add html5-repo
 
 This command will generate the following configurations
 
-1.1 It adds the build scripts dependencies to the `app/manager/package.json`.
+1.1 It updates the `app/manager/package.json` with build scripts and dependencies:
 
 ```json
 {
@@ -21,16 +21,14 @@ This command will generate the following configurations
         "sapui5"
     ],
     "main": "webapp/index.html",
-    "dependencies": {},
     "devDependencies": {
         "@ui5/cli": "^4",
         "ui5-task-zipper": "^3"
     },
     "scripts": {
-        "start": "ui5 serve",
-        "build": "ui5 build preload --clean-dest"
-    },
-    "private": true
+        "build": "ui5 build preload --clean-dest",
+        "start": "ui5 serve"
+    }
 }
 ```
 
@@ -58,9 +56,10 @@ builder:
         relativePaths: true
         additionalFiles:
           - xs-app.json
-    - name: ui5-tooling-transpile-task
-      afterTask: replaceVersion
 ```
+
+> [!NOTE]
+> For TypeScript projects, `cds add html5-repo` also adds a `ui5-tooling-transpile-task` entry under `customTasks`. This is not generated for JavaScript projects.
 
 The `ui5.yaml` file contains the configuration to build the SAPUI5 applications for deployment. It includes the builder and custom tasks.
 
@@ -69,8 +68,6 @@ The `ui5.yaml` file contains the configuration to build the SAPUI5 applications 
 **customTasks**: Specifies custom tasks to be executed during the build process. These tasks can perform various operations to enhance the deployment process. In this case:
 
 - **ui5-task-zipper**: This task zips the application files along with additional files like xs-app.json into an archive named "manager". It executes after the 'generateVersionInfo' task.
-
-- **ui5-tooling-transpile-task**: This task transpiles TypeScript files into JavaScript. This task executes after the 'replaceVersion' task.
 
 2. **Install the dependencies**
 

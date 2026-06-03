@@ -5,7 +5,7 @@
 To deploy a multitenant application and access it in the subscriber subaccount through SAP Build Work Zone, there is a need to update the MTA configuration for design time and runtime configurations. 
 In the `mta.yaml` file, update the following configurations:
 
-1. Add dependencies to `incident-management-mtx`. To get the reuse dependent services, add the following services to the required section:
+1. Add dependencies to `incident-management-mtx`. To get the reuse dependent services, add the following services to the `requires` section:
   
   ```yaml
     - name: incident-management-mtx
@@ -23,19 +23,16 @@ In the `mta.yaml` file, update the following configurations:
         requires:
           - name: incident-management-registry
           - name: incident-management-auth
-          - name: incident-management-html5-repo-host
+          - name: incident-management-html5-repo-host # Add
           - name: incident-management-destination # Remove
           - name: incident-management-html5-runtime # Remove
           - name: incident-management-db
   ```
 
-**Remove the incident-management-destination**
-
-2. Since `destination` is not needed, ensure that `mtx/sidecar/package.json` doesn't contain `"destinations": true,`, If there, Delete it.
+2. Since `destination` is not needed, ensure that `mtx/sidecar/package.json` doesn't contain `"destinations": true`. If present, delete it.
 3. Delete the `"html5-runtime": true` from `mtx/sidecar/package.json`.
 
-> [!NOTE]
-> **Steps 4-6 are optional** and are not required if you have already deployed a Single Tenant Application with SAP Build Work Zone using CDM.
+> **Note:** **Steps 4-6 are optional** and are not required if you have already deployed a Single Tenant Application with SAP Build Work Zone using CDM.
    
 4. Update  `incident-management-destinations`-> `type: com.sap.application.content` with the following configurations:
   
@@ -62,12 +59,11 @@ In the `mta.yaml` file, update the following configurations:
             - Name: incident-management_cdm
               ServiceInstanceName: incident-management-html5-runtime
               ServiceKeyName: incident-management-html5-runtime-service-key
-              URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/incidentmanagement.service
+              URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/<your-sap-cloud-service>
 
         ```
-        > [!NOTE]
-        `<cloud.service>` should be replace with your cloud.service value
-        If you are using an extension landscape, you should replace the ${default-domain} with the mail domain, example : eu10-004 to be used as eu-10
+        > Replace `<your-sap-cloud-service>` with the `sap.cloud.service` value from `app/incidents/webapp/manifest.json` (for example, `incidentmanagement.service`).
+        > If you are using an extension landscape, replace `${default-domain}` with the main domain (for example, `eu10-004` becomes `eu10`).
 
       3. Under `requires` add the following
    
@@ -77,8 +73,7 @@ In the `mta.yaml` file, update the following configurations:
           service-key: 
             name: incident-management-html5-runtime-service-key
       ```
-> [!NOTE]
-> The Service Names `incident-management-html5-runtime` might differ based on your project configurations. You can Check the resources section in `mta.yaml` for the html5-repo-runtime service name.
+> **Note:** The service name `incident-management-html5-runtime` might differ based on your project configurations. Check the resources section in `mta.yaml` for the html5-repo-runtime service name.
 
 
 5. Update `incident-management-destination`->`type: org.cloudfoundry.managed-service` with the following configurations:
@@ -132,7 +127,7 @@ In the `mta.yaml` file, update the following configurations:
     target-path: app/
 
 ```
-9. Update the `parameters` field of `incident-mangement-app-deployer` with the following value:
+9. Update the `parameters` field of `incident-management-app-deployer` with the following value:
 ```yaml
     parameters:
       config:
@@ -178,7 +173,7 @@ The application deployer will look like this:
           url: https://ui5.sap.com
 ```
 
-1. Create a **workzone** folder on the root of the project then create a file named **cdm.json** and paste the following:
+10. Create a **workzone** folder on the root of the project then create a file named **cdm.json** and paste the following:
     > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
     > Ensure that the `"vizId": "incidents-display"` is matching `crossNavigation->inbounds-><vizId>` In this case `<vizId>` is `incidents-display`.
 
@@ -260,7 +255,6 @@ The application deployer will look like this:
     ]
 ```
 
-  
 ## Next Step
 
 [Deploy the Incident Management Application in the SAP BTP, Cloud Foundry Runtime](./4-deploy-to-cf.md)

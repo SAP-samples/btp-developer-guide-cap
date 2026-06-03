@@ -1,18 +1,34 @@
 # Deploy in the SAP BTP, Cloud Foundry Runtime
 
+## Build the Project
+
+Run the following command to generate the `gen/` folder:
+
+```sh
+cds build --production
+```
+
 ## Ensure node_modules are installed
+
 Run the `npm install` command in the following folders:
-    - `gen/mtx/sidecar`
-    - `root`
-    - `app/incidents`
+- `gen/mtx/sidecar`
+- `app/incidents`
+- `root`
 
-## Build the MTA file and Deploy to Cloud Foundry
+## Build the MTA File
 
-Build and deploy the MTA file with the following command:
+Build the MTA file with the following command:
 
 ```sh
 mbt build -t ./
-cf deploy incident-management_1.0.0.mtar
+```
+
+## Deploy to Cloud Foundry
+
+Deploy the generated `.mtar` file:
+
+```sh
+cf deploy <your-mtar-file>.mtar
 ```
 
 ## Next Step

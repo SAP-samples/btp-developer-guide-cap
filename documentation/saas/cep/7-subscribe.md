@@ -6,7 +6,7 @@ You will learn about the lifecycle management of a multitenant application.
 >The subscription can be done from the same region where the multitenant application is deployed. For example, if the application is deployed in `eu12`, it can be subscribed from only subaccounts that are part of `eu12` region.
 ## Subscribe to SAP Build Work Zone, Standard Edition
 
-Create a subscriber subaccount in the same region where the multitenant application is deployed. And then follow the below steps in the subscriber subaccount: 
+Create a subscriber subaccount in the same region where the multitenant application is deployed. Then follow the steps below in the subscriber subaccount:
 
 1. Follow the steps described in [Step 1,2 - Subscribe to SAP Build Work Zone, standard edition](https://developers.sap.com/tutorials/integrate-with-work-zone.html#ce55604a-ed61-423c-8b9b-62193f78af40).  
    See the below screenshot for more information:
@@ -38,7 +38,7 @@ Before accessing the application, you must assign the `Support` role collection 
 To make the application tile visible in the SAP Build Work Zone, you need to assign the site role to your user. This will be done in the next section.
 1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
 2. Choose **Security** > **Role Collections**.
-3. Select **default xxxxxxx)** role collection. You can check the **Role Collection** information in the `mta.yaml` file.
+3. Select **default (xxxxxxx)** role collection. You can check the **Role Collection** information in the `mta.yaml` file.
 4. Choose **Edit**.
 5. Under **Users** fill your user details and select **Save**.
 
@@ -46,7 +46,7 @@ To make the application tile visible in the SAP Build Work Zone, you need to ass
 
 1. In the SAP BTP cockpit, navigate to your subaccount and choose the HTML5 tab of the subaccount. 
 2. You will see `nsincidents` or other name based on the namespace given to your UI application.
-3. Click it and launch it. 
+3. Choose it to launch it.
 4. The final application will look like this:
 <img src="./images/FinalApp.png"/>
 
@@ -55,7 +55,7 @@ To make the application tile visible in the SAP Build Work Zone, you need to ass
 
 Once the application is successfully deployed, there is a need to configure design and runtime destination. This enables the SAP Build Work Zone service to configure sites with the application configurations like groups, roles, categories and so on.
 
-### Create Runtime Time Destination 
+### Create Runtime Destination
 
 1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
 2. Choose **Connectivity** > **Destination** and then choose **Create Destination**.
@@ -69,8 +69,8 @@ Once the application is successfully deployed, there is a need to configure desi
    | **Proxy Type** | `Internet` |
    | **Authentication** | `NoAuthentication` |
    | **CEP.HTML5contentprovider** | `true` |
->[!NOTE]
->**CEP.HTML5contentprovider**: `true` is a mandatory parameter. It should be added to the additional properties of destination configuration.
+
+> **Note:** `CEP.HTML5contentprovider: true` is a mandatory parameter. It should be added to the additional properties of destination configuration.
 >
 > Replace the values for `<subscriber-subdomain>` and `<region>`.
 
@@ -109,7 +109,7 @@ If the application is deployed to the **Cloud Foundry** runtime, view the servic
    | **Authentication** | `OAuth2ClientCredentials` |
    | **Client ID** | `<Client ID from the HTML5 repo runtime>` |
    | **Client Secret** | `<Client Secret from the HTML5 repo runtime>` |
-   | **Token Service URL** | `<token url from secret create at previous step>/oauth/token` |
+   | **Token Service URL** | `<token url from secret created at previous step>/oauth/token` |
    
    #### Additional Properties:
    
@@ -128,12 +128,21 @@ If the application is deployed to the **Cloud Foundry** runtime, view the servic
 
 ## Integrate with SAP Build Work Zone
 
-To integrate the application with SAP Build Work Zone, you need to create a new channel as a content provider. Once the channel is created, you can access the CDM configurations to streamline the group, category creation. 
+To integrate the application with SAP Build Work Zone, you need to create a new channel as a content provider. Once the channel is created, you can access the CDM configurations to streamline the group, category creation.
 
 1. Open SAP Build Work Zone.
-2. Open **Channel Manager** from the left side of the screen. 
+2. Open **Channel Manager** from the left side of the screen.
 3. Choose **New** and then choose **New Content Provider**.
-4. Fill in the details, choose **cdm** and **runtime destinations** that configured during deployment and choose **Save**.
+4. Fill in the **New Content Provider** dialog with the following details and choose **Save**:
+
+   | Field | Value |
+   |-------|-------|
+   | **Title** | Any descriptive name (for example, `New Content provider`) |
+   | **Design-Time Destination** | `incident-management_cdm` |
+   | **Runtime Destination** | Select the `html5-apps-repo-runtime` service instance from the dropdown (for example, `incidents-html5-app-runtime`). This is the HTML5 app runtime service instance deployed with your application. |
+
+   <img src="./images/content-provider.png"/>
+
 5. The content channel will be now added.
 
    <img src="./images/new channel.png"/>
@@ -141,7 +150,7 @@ To integrate the application with SAP Build Work Zone, you need to create a new 
 6. Choose **Site Manager** and create a new site. 
 7. Under Left Side of screen choose **Role Assignments**.
 8. Choose **Edit**.
-9. Switch the **`<ChannelName>`-DefaultRole>** icon to add selected mode for application role assign it to the site and choose **Save**.
+9. Switch the **`<ChannelName>-DefaultRole`** icon to add selected mode for application role, assign it to the site and choose **Save**.
     <img src="./images/siteRole.png" />
 
 ### Assign Roles and Access the Application

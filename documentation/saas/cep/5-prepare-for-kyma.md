@@ -14,29 +14,27 @@ Once the application is configured for multitenancy and dependency callback hand
 cds add helm
 ```
 
-> Open `chart/values.yaml`, and check for the destination bindings, please remove them if exists. And Open `chart/chart.yaml` and remove the destination service instance if exists.
+> Open `chart/values.yaml`, and check for the destination bindings. Remove them if they exist. Open `chart/Chart.yaml` and remove the destination service instance if it exists.
 
 > If the project already has a cdm file, skip the next step.
   
 2. Create a folder resources in the project's root directory. Create a file named cdm.json and paste the following:
-    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
-    Ensure that the vizId is matching `app/incidents/manifest.json`->crossNavigation->inbounds-><your viz Id>. Update the vizId below with the correct value. Here we have used incidents-display.
-
-    ::: details Find vizId
-```json{3}
- "crossNavigation": {
-      "inbounds": {
-        "incidents-display": {
-          "semanticObject": "incidents",
-          "action": "display",
-          "signature": {
-            "parameters": {},
-            "additionalParameters": "allowed"
-          }
-        }
-      }
-```
-:::
+    > Ensure that the `appId` matches `app/incidents/manifest.json` → `sap.app.id`. Update all `appId` values below with the value from your application.
+    >
+    > Ensure that the `vizId` matches the inbound key under `sap.app.crossNavigation.inbounds` in `app/incidents/manifest.json`. For example, if your manifest has:
+    > ```json
+    > "crossNavigation": {
+    >   "inbounds": {
+    >     "intent1": {
+    >       "semanticObject": "incidents",
+    >       "action": "display"
+    >     }
+    >   }
+    > }
+    > ```
+    > then `vizId` is `intent1`. Update all `vizId` values in the cdm.json below to match your application.
+    >
+    > **Note:** A mismatch between the `vizId` in `cdm.json` and the inbound key in `manifest.json` will cause the application tile to not appear in SAP Build Work Zone.
 
 ```json
     [
@@ -172,8 +170,7 @@ html5-apps-repo-runtime:
             destinations: '[{"forwardAuthToken":true,"name":"srv-api","url":"https://<deployment-name>-srv-<namespace>.<cluster-domain>"}]'
         ```
       
-    > Update the placeholder values for cluster-domain, namespace and deployment name.
-    > Ensure that the indentation is correctly maintained.
+    > Replace `<deployment-name>` with your Helm release name, `<namespace>` with your Kyma namespace, and `<cluster-domain>` with your Kyma cluster domain (for example, `c-1234567.kyma.ondemand.com`).
     
    5. Delete the destination binding.
    
@@ -250,4 +247,5 @@ html5-apps-deployer:
 ```
 
 ## Next Step
+
 [Deploy the Application in the SAP BTP, Kyma Runtime](./6-deploy-to-kyma.md)

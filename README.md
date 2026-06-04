@@ -51,30 +51,30 @@ The tutorials in this repository provide hands-on experience following the [SAP 
 8. [Add Test Cases](./documentation/tutorials/add-test-cases/add-test-cases.md)
 
 ### Production Preparation
-9. [Prepare for Production](./documentation/tutorials/prep-for-prod/)
+9. [Prepare for Production](./documentation/tutorials/prep-for-prod/prep-for-prod.md)
 
 ### Deployment - Cloud Foundry Runtime
-10. [Prepare for SAP BTP Development with Cloud Foundry Runtime](./documentation/tutorials/prepare-btp-cf/)
+10. [Prepare for SAP BTP Development with Cloud Foundry Runtime](./documentation/tutorials/prepare-btp-cf/prepare-btp-cf.md)
 11. [Deploy in SAP BTP, Cloud Foundry Runtime](./documentation/tutorials/deploy-to-cf/deploy-to-cf.md)
-12. [User Role Assignment](./documentation/tutorials/user-role-assignment/)
+12. [User Role Assignment](./documentation/tutorials/user-role-assignment/user-role-assignment.md)
 13. [Integrate Your Application with SAP Build Work Zone, Standard Edition](./documentation/tutorials/integrate-with-work-zone/integrate-with-work-zone.md)
-14. [Set Up a CI/CD Pipeline](./documentation/tutorials/set-up-cicd/)
+14. [Set Up a CI/CD Pipeline](./documentation/tutorials/set-up-cicd/set-up-cicd.md)
 
 ### Deployment - Kyma Runtime
-15. [Prepare for Deployment in the SAP BTP, Kyma Runtime](./documentation/tutorials/prepare-btp-kyma/)
+15. [Prepare for Deployment in the SAP BTP, Kyma Runtime](./documentation/tutorials/prepare-btp-kyma/prepare-btp-kyma.md)
 16. [Deploy in SAP BTP, Kyma Runtime](./documentation/tutorials/deploy-to-kyma/deploy-to-kyma.md)
-17. [User Role Assignment](./documentation/tutorials/user-role-assignment/)
+17. [User Role Assignment](./documentation/tutorials/user-role-assignment/user-role-assignment.md)
 18. [Integrate Your Application with SAP Build Work Zone, Standard Edition (Kyma Runtime)](./documentation/tutorials/integrate-with-work-zone-kymaruntime/integrate-with-work-zone-kymaruntime.md)
-19. [Set Up a CI/CD Pipeline for Kyma](./documentation/tutorials/set-up-cicd-kyma/)
+19. [Set Up a CI/CD Pipeline for Kyma](./documentation/tutorials/set-up-cicd-kyma/set-up-cicd-kyma.md)
 
 ### Remote Services - Mock Server Integration
-20. [Introduction to Remote Service Connectivity](./documentation/tutorials/remote-service-intro/)
-21. [Get the Business Partner API and Extend the Incident Management Application](./documentation/tutorials/remote-service-extend/)
-22. [Test the Extended Incident Management Application with the Business Partner API](./documentation/tutorials/remote-service-run-dev-test/)
-23. [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](./documentation/tutorials/remote-service-set-up-mock-cf/)
-24. [Install a Mock Server in the SAP BTP, Kyma Runtime](./documentation/tutorials/remote-service-set-up-mock-kyma/)
+20. [Introduction to Remote Service Connectivity](./documentation/tutorials/remote-service-intro/remote-service-intro.md)
+21. [Get the Business Partner API and Extend the Incident Management Application](./documentation/tutorials/remote-service-extend/remote-service-extend.md)
+22. [Test the Extended Incident Management Application with the Business Partner API](./documentation/tutorials/remote-service-run-dev-test/remote-service-run-dev-test.md)
+23. [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](./documentation/tutorials/remote-service-set-up-mock-cf/remote-service-set-up-mock-cf.md)
+24. [Install a Mock Server in the SAP BTP, Kyma Runtime](./documentation/tutorials/remote-service-set-up-mock-kyma/remote-service-set-up-mock-kyma.md)
 25. [Deploy and Run the Incident Management Application in the SAP BTP, Cloud Foundry Runtime with a Mock Server](./documentation/tutorials/remote-service-deploy-with-mock-cf/remote-service-deploy-with-mock-cf.md)
-26. [Deploy and Run the Incident Management Application in the SAP BTP, Kyma Runtime with a Mock Server](./documentation/tutorials/remote-service-deploy-with-mock-kyma/)
+26. [Deploy and Run the Incident Management Application in the SAP BTP, Kyma Runtime with a Mock Server](./documentation/tutorials/remote-service-deploy-with-mock-kyma/remote-service-deploy-with-mock-kyma.md)
 
 ### Remote Services - S/4HANA Cloud Integration
 27. [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](./documentation/tutorials/remote-service-configure-connectivity/remote-service-configure-connectivity.md)

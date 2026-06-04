@@ -237,21 +237,21 @@ Open the **srv/pom.xml** file and add the following snippet to the dependencies 
         expect(status).to.equal(403)
       })
 
-      it('allows carol (admin role) to read and write Customers', async () => {
-        const carol = { auth: { username: 'carol', password: '' } }
+      it('allows bob (admin role) to read and write Customers', async () => {
+        const bob = { auth: { username: 'bob', password: '' } }
 
-        const { status: gs, data } = await GET(`/odata/v4/admin/Customers`, carol)
+        const { status: gs, data } = await GET(`/odata/v4/admin/Customers`, bob)
         expect(gs).to.equal(200)
         expect(data.value).to.be.an('array')
 
         const { status: cs } = await POST(
           `/odata/v4/admin/Customers`,
           { ID: 'AUTH01', firstName: 'Test', lastName: 'Admin' },
-          carol
+          bob
         )
         expect(cs).to.equal(201)
 
-        const { status: ds } = await DELETE(`/odata/v4/admin/Customers('AUTH01')`, { ...carol, validateStatus: null })
+        const { status: ds } = await DELETE(`/odata/v4/admin/Customers('AUTH01')`, { ...bob, validateStatus: null })
         expect(ds).to.equal(204)
       })
     })
@@ -503,7 +503,7 @@ class IncidentsODataTests {
             .andExpect(status().isForbidden());
     }
 
-    @Test @Order(20) @WithMockUser(username = "carol")
+    @Test @Order(20) @WithMockUser(username = "bob")
     void allowsAdminRoleUserToReadAndWriteCustomers() throws Exception {
         mockMvc.perform(get(adminCustomerURI))
             .andExpect(status().isOk())
@@ -532,9 +532,9 @@ class IncidentsODataTests {
 
 #### 1. Add test users to package.json
 
-The test suite includes Authorization tests that check role-based access. These tests need three users — `alice` and `bob` with the `support` role (for `ProcessorService`), and `carol` with the `admin` role (for `AdminService`).
+The test suite includes Authorization tests that check role-based access. These tests need two users — `alice` with the `support` role (for `ProcessorService`) and `bob` with the `admin` role (for `AdminService`).
 
-Open **package.json** and add the `cds.requires` block below. If the block already exists from the [Add Authorization](add-authorization) tutorial, just make sure `carol` is present:
+Open **package.json** and add the `cds.requires` block below. If the block already exists from the [Add Authorization](add-authorization) tutorial, just make sure `bob` is present with the `admin` role:
 
 ```json
 "cds": {
@@ -544,8 +544,7 @@ Open **package.json** and add the `cds.requires` block below. If the block alrea
         "kind": "mocked",
         "users": {
           "alice": { "roles": ["support"] },
-          "bob":   { "roles": ["support"] },
-          "carol": { "roles": ["admin"]   }
+          "bob":   { "roles": ["admin"] }
         }
       }
     }
@@ -556,8 +555,7 @@ Open **package.json** and add the `cds.requires` block below. If the block alrea
 | User | Role | Can access |
 |---|---|---|
 | `alice` | `support` | `ProcessorService` |
-| `bob` | `support` | `ProcessorService` |
-| `carol` | `admin` | `AdminService` |
+| `bob` | `admin` | `AdminService` |
 
 > These are mock users for local development only. No passwords are required — leave the password field empty when prompted.
 
@@ -628,7 +626,7 @@ Auto-Urgency logic (processor-service.js custom handler)
   ✓ sets urgency_code=H when "urgent" appears mid-title (10 ms)
 Authorization
   ✓ rejects support-role user (alice) from AdminService with 403 (2 ms)
-  ✓ allows carol (admin role) to read and write Customers (6 ms)
+  ✓ allows bob (admin role) to read and write Customers (6 ms)
 
 Test Suites: 1 passed, 1 total
 Tests:       20 passed, 20 total
@@ -654,16 +652,13 @@ cds:
       alice:
         roles: [ support ]
       bob:
-        roles: [ support ]
-      carol:
         roles: [ admin ]
 ```
 
 | User | Role | Can access |
 |---|---|---|
 | `alice` | `support` | `ProcessorService` |
-| `bob` | `support` | `ProcessorService` |
-| `carol` | `admin` | `AdminService` |
+| `bob` | `admin` | `AdminService` |
 
 > CDS security resolves roles from this config by username — not from Spring's `@WithMockUser` authorities — so users must be declared here for role-based tests to pass.
 

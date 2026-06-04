@@ -46,7 +46,7 @@ The tutorials in this repository provide hands-on experience following the [SAP 
 ### Development & Enhancement
 4. [Add Fiori Elements UIs](./documentation/tutorials/add-fiori-elements-uis/add-fiori-elements-uis.md)
 5. [Add Custom Logic](./documentation/tutorials/add-custom-logic/add-custom-logic.md)
-6. [Use a Local Launch Page](./documentation/tutorials/use-local-launch-page/)
+6. [Use a Local Launch Page](./documentation/tutorials/use-local-launch-page/use-local-launch-page.md)
 7. [Add Authorization](./documentation/tutorials/add-authorization/add-authorization.md)
 8. [Add Test Cases](./documentation/tutorials/add-test-cases/add-test-cases.md)
 

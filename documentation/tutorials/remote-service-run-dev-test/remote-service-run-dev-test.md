@@ -88,34 +88,40 @@ Since you already have a SQLite in-memory database that was automatically create
 
 6. Choose **/launchpage.html** under **Web Applications**.
 
-    <!-- border; size:540px --> ![CAP index page](./cap-index-page.png)
+    <!-- border; size:540px -->
+    ![CAP index page](./cap-index-page.png)
 
     **/launchpage.html** uses a [local launchpage](!https://pages.github.tools.sap/cap/golden-path/develop/Launchpage/Launchpage), while **/incidents/webapp/index.html** uses the **index.html** from [ui5 app](!https://pages.github.tools.sap/cap/golden-path/develop/btp-app-create-ui-fiori-elements/btp-app-create-ui-fiori-elements).
 
 7. Choose the **Incident Management** tile.
 
-    <!-- border; size:540px --> ![Incident Management tile on the launchpage](./incident-management-tile.png)
+    <!-- border; size:540px -->
+    ![Incident Management tile on the launchpage](./incident-management-tile.png)
 
 7. When you're prompted to authenticate, use the following credentials:
 
     - Username: `alice`
     - Password: Empty / No Password
 
-    <!-- border; size:540px --> ![Log in](./incident-management-log-in.png)
+    <!-- border; size:540px -->
+    ![Log in](./incident-management-log-in.png)
 
     > You find the user settings in the **.cdsrc.json** file.
 
 9. Choose **Create** to start creating a new incident.
   
-    <!-- border; size:540px --> ![Create a new incident](./create-new-incident.png)
+    <!-- border; size:540px -->
+    ![Create a new incident](./create-new-incident.png)
 
 11. Open the value help for the **Customer** field.
 
-    <!-- border; size:540px --> ![Value help for Customer field](./value-help-customer.png)
+    <!-- border; size:540px -->
+    ![Value help for Customer field](./value-help-customer.png)
 
 12. Verify that customer data is fetched from the mock server.
 
-    <!-- border; size:540px --> ![Data in value help](./value-help-data.png)
+    <!-- border; size:540px -->
+    ![Data in value help](./value-help-data.png)
 
     To test the scenario, the value help for customers loads data from the mock server while creating a new incident.
 

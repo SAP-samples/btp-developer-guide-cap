@@ -42,7 +42,8 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     - Choose **Next**.
 
-        <!-- border; size:540px --> ![V4 Template](./vscv4template.png)
+        <!-- border; size:540px -->
+        ![V4 Template](./vscv4template.png)
 
 5. In the **Data Source and Service Selection** step:
 
@@ -54,7 +55,8 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
     
     - Choose **Next**.
 
-        <!-- border; size:540px --> ![CAPpro](./datasourceselection.png)
+        <!-- border; size:540px -->
+        ![CAPpro](./datasourceselection.png)
 
 6. In the **Entity Selection** step:
 
@@ -66,7 +68,8 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
     
     - Choose **Next**.
 
-        <!-- border; size:540px --> ![Entity selection](./entityselection.png)
+        <!-- border; size:540px -->
+        ![Entity selection](./entityselection.png)
 
 7. In the **Project Attributes** step:
 
@@ -78,7 +81,8 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
     - Leave the default values for all the other settings and choose **Finish**.
 
-        <!-- border; size:540px --> ![Project names](./vscrfeapp.png)
+        <!-- border; size:540px -->
+        ![Project names](./vscrfeapp.png)
 
     The application is now generated and in a few seconds you can see the application's **incidents** folder in the **app** folder of your **incident-management** project. It contains a **webapp** folder with a **Component.js** file that’s typical for an SAPUI5 application. However, the source code of this application is minimal. It inherits its logic from the **sap/fe/core/AppComponent** class. This class is managed centrally by SAP Fiori elements and provides all the services that are required (routing, edit flow) so that the building blocks and the templates work properly.
 
@@ -99,7 +103,8 @@ Instead of using `cds watch` command in the terminal to start the service, you u
 
 1. In the **Application Info - incidents** tab, choose the **Preview Application** option.
 
-    <!-- border; size:540px --> ![Application Info](./appInfo.png)
+    <!-- border; size:540px -->
+    ![Application Info](./appInfo.png)
 
     > If you get an error **SyntaxError: Unexpected token / in JSON at position 4**, open the file **.vscode/launch.json**, delete any comments that you have there, and try again. 
 
@@ -115,13 +120,15 @@ Instead of using `cds watch` command in the terminal to start the service, you u
 
 2. Select the **watch-incidents** npm script.
 
-    <!-- border; size:540px --> ![Watch script](./watchScript.png)
+    <!-- border; size:540px -->
+    ![Watch script](./watchScript.png)
 
     This script runs the service in a terminal session of the application modeler and automatically starts the SAP Fiori application in a new browser session.
 
 3. You can now see the application with the generated columns. Choose **Go**.
 
-    <!-- border; size:540px --> ![Application with the generated columns](./ls2.png)
+    <!-- border; size:540px -->
+    ![Application with the generated columns](./ls2.png)
 
 
 <!-- Section End: This entire section is not needed for the Java version -->
@@ -151,11 +158,13 @@ Instead of using `cds watch` command in the terminal to start the service, you u
 
 5. Choose **Open in a New Tab**.
 
-    <!-- border; size:540px --> ![Open in a new tab](./open-new-tab.png)
+    <!-- border; size:540px -->
+    ![Open in a new tab](./open-new-tab.png)
 
 6. You see the generic `index.html` page:
 
-    <!-- border; size:540px --> ![index.html](./index-java.png)
+    <!-- border; size:540px -->
+    ![index.html](./index-java.png)
 
 > Stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
@@ -171,11 +180,13 @@ In this section, you modify the List View Page of the UI with the SAP Fiori page
 
 1. In the **Application Info - incidents** tab, choose the **Open Page Map** option. 
 
-    <!-- border; size:540px --> ![Page Map](./PageMap.png)
+    <!-- border; size:540px -->
+    ![Page Map](./PageMap.png)
 
     The page map of the **incidents** application opens in a new tab within SAP Business Application Studio. You see the properties on the right side of the page map. You can edit these properties to update the UI of the application.
 
-    <!-- border; size:540px --> ![Page Map properties](./PageMap-properties.png)
+    <!-- border; size:540px -->
+    ![Page Map properties](./PageMap-properties.png)
 
     > In case the **Application Info - incidents** tab is closed: 
     >
@@ -184,18 +195,21 @@ In this section, you modify the List View Page of the UI with the SAP Fiori page
 
 2. In the **List Report** tile, choose the **Pencil** icon next to the title. The page editor is opened.
 
-    <!-- border; size:540px --> ![List Report Page Config](./ls3.png)
+    <!-- border; size:540px -->
+    ![List Report Page Config](./ls3.png)
 
 3. In the **Filter Bar** section of the page editor, choose **Filter Fields** and then choose the **Plus** icon to add filter fields. Then, select **Add Filter Fields** in the dropdown menu.
 
-    <!-- border; size:540px --> ![Add Filter Fields](./ls4.png)
+    <!-- border; size:540px -->
+    ![Add Filter Fields](./ls4.png)
 
 4. In the **Add Filter Fields** popup:
 
     - Select the **status_code** and **urgency_code** checkboxes in the **Filter Field** dropdown menu.
     - Choose **Add**. Your application is updated to show the new filters.
 
-    <!-- border; size:540px --> ![New Filters Added](./ls5.png)
+    <!-- border; size:540px -->
+    ![New Filters Added](./ls5.png)
 
     > This way you define which properties are exposed as search fields in the header bar above the list.
 
@@ -205,11 +219,13 @@ The filter labels are text strings. It's a good idea to update them so they're c
 
 1. Change the **urgency_code** filter label. In the **Label** field, change the value to **Urgency**. Press <kbd>Enter</kbd> to confirm the change.
 
-    <!-- border; size:540px --> ![Update filter label](./update-filter-label.png)
+    <!-- border; size:540px -->
+    ![Update filter label](./update-filter-label.png)
 
 2. Choose the **Globe** icon to generate a translatable text key and choose **Substitute**.
 
-    <!-- border; size:540px --> ![Generate Translatable Text Key](./ls10.png)
+    <!-- border; size:540px -->
+    ![Generate Translatable Text Key](./ls10.png)
 
 3. Choose the **status_code** filter. In the **Label** field, change the value to **Status**. Press <kbd>Enter</kbd> to confirm the change.
 
@@ -217,7 +233,8 @@ The filter labels are text strings. It's a good idea to update them so they're c
 
 5. For both the **Urgency** and **Status** filters, in the **Display Type** dropdown menu, select **Value Help**. A popup shows up. 
 
-    <!-- border; size:540px --> ![Value help display type](./value-help-dipslay-type.png)
+    <!-- border; size:540px -->
+    ![Value help display type](./value-help-dipslay-type.png)
 
 6. In the **Define Value Help Properties for Urgency/Status** popup: 
 
@@ -225,17 +242,20 @@ The filter labels are text strings. It's a good idea to update them so they're c
     - Select **descr**.
     - Choose **Apply**.
 
-    <!-- border; size:540px --> ![Value desc property](./value-desc-property.png)
+    <!-- border; size:540px -->
+    ![Value desc property](./value-desc-property.png)
 
 #### Edit columns
 
 1. Expand the **Columns** section under **Table** and delete the columns **customer_ID**, **urgency_code** and **status_code**. 
 
-    <!-- border; size:540px --> ![Delete Columns](./delete-columns.png)
+    <!-- border; size:540px -->
+    ![Delete Columns](./delete-columns.png)
 
 11. In **Table** &rarr; **Columns**, choose the **Plus** icon to add columns. Choose **Add Basic Columns**.
 
-    <!-- border; size:540px --> ![Add Basic Columns](./ls6.png)
+    <!-- border; size:540px -->
+    ![Add Basic Columns](./ls6.png)
 
 12. In the **Add Basic Columns** popup, choose the dropdown menu in the **Columns** field and:
 
@@ -243,11 +263,13 @@ The filter labels are text strings. It's a good idea to update them so they're c
     - Select the **urgency** &rarr; **descr** checkbox.
     - Select the **customer** &rarr; **name** checkbox and add the columns.
 
-    <!-- border; size:540px --> ![Add Basic Columns popup](./add-basic-columns-popup.png)
+    <!-- border; size:540px -->
+    ![Add Basic Columns popup](./add-basic-columns-popup.png)
 
 14. Move the **name** column just under the **Title** column.
 
-    <!-- border; size:540px --> ![Reorder Columns](./reorder-columns.png)
+    <!-- border; size:540px -->
+    ![Reorder Columns](./reorder-columns.png)
 
 15. Choose the **Title** column, choose the **Globe** icon in the **Label** field to generate a translatable text key.
 
@@ -261,27 +283,32 @@ The filter labels are text strings. It's a good idea to update them so they're c
     - Press <kbd>Enter</kbd> to confirm the change.
     - Choose the **Globe** icon in the **Label** field to generate a translatable text key.
 
-    <!-- border; size:540px --> ![Update Columns](./update-columns.png)
+    <!-- border; size:540px -->
+    ![Update Columns](./update-columns.png)
 
 #### Configure tables
 
 1. Choose **Table** and, in the **Initial Load** dropdown menu, select **Enabled** to load the data automatically.
 
-    <!-- border; size:540px --> ![Enable Data Auto Load](./ls8.png)
+    <!-- border; size:540px -->
+    ![Enable Data Auto Load](./ls8.png)
 
 18. In the **Type** dropdown menu, select **ResponsiveTable** to make the table responsive.
 
-    <!-- border; size:540px --> ![Responsive table](./responsive-table.png)
+    <!-- border; size:540px -->
+    ![Responsive table](./responsive-table.png)
   
 19. Navigate to **Table** &rarr; **Columns** &rarr; **Status** and in the **Criticality** dropdown menu, select **status/criticality**.
 
-    <!-- border; size:540px --> ![Add Status Criticality](./criticality.png)
+    <!-- border; size:540px -->
+    ![Add Status Criticality](./criticality.png)
 
 #### Check the result
 
 1. The list page of the Incident Management application looks like this:
 
-    <!-- border; size:540px --> ![Incident Management App's List Page](./IncidentsUI.png)
+    <!-- border; size:540px -->
+    ![Incident Management App's List Page](./IncidentsUI.png)
 
     <!-- We need to add some additional steps how to start local preview of the app and how to navigate to the Incident Management app (mind the name of the app in the preview, may need to changes some input values in the process of generating the fiori app) from the CAP generic index page where there's the option to choose Fiori Preview OR consider supplying the user with the partial URL to append to the generic CAP index page so they access the Incident Management app -->
 
@@ -305,15 +332,18 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
 
 2. In the **Incident Object Page** tile, choose the **Pencil** icon next to the title.
 
-    <!-- border; size:540px --> ![Edit object page](./obj0.png)
+    <!-- border; size:540px -->
+    ![Edit object page](./obj0.png)
 
 3. Choose **Header** and in the **Title** dropdown menu, select **title**.
 
-    <!-- border; size:540px --> ![Select Title](./obj1.png)
+    <!-- border; size:540px -->
+    ![Select Title](./obj1.png)
 
 4. In the **Description Type** dropdown menu, select **Property**. A popup opens.
 
-    <!-- border; size:540px --> ![Select property](./obj11.png)
+    <!-- border; size:540px -->
+    ![Select property](./obj11.png)
 
 5. In the **Define Property** popup, choose the dropdown menu in the **Description** field and:
 
@@ -321,18 +351,21 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
     - Choose **Apply**.
 
 
-    <!-- border; size:540px --> ![Apply Name](./obj2.png)
+    <!-- border; size:540px -->
+    ![Apply Name](./obj2.png)
 
 
 6. In the **Icon URL** field, enter `sap-icon://alert`.
 
-    <!-- border; size:540px --> ![Icon URL](./obj21.png)
+    <!-- border; size:540px -->
+    ![Icon URL](./obj21.png)
 
 #### Add Overview section
 
 1. Choose **Sections** and then choose the **Plus** icon to add more sections. Choose **Add Group Section**.
 
-    <!-- border; size:540px --> ![Add Group Section](./obj22.png)
+    <!-- border; size:540px -->
+    ![Add Group Section](./obj22.png)
 
 9. In the **Add Group Section** popup:
 
@@ -340,7 +373,8 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
     - Choose the **Globe** icon to generate a translatable text key and choose **Substitute**. 
     - Choose **Add**.
 
-    <!-- border; size:540px --> ![Add Overview Section](./obj5.png)
+    <!-- border; size:540px -->
+    ![Add Overview Section](./obj5.png)
 
 #### Add Details subsection
 
@@ -349,7 +383,8 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
 
 10. Choose the **Plus** icon to add more sections and choose **Add Form Section**.
 
-    <!-- border; size:540px --> ![Add Subsection](./obj51.png)
+    <!-- border; size:540px -->
+    ![Add Subsection](./obj51.png)
 
 10. In the **Add Form Section** popup:
 
@@ -357,18 +392,21 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
     - Choose the **Globe** icon to generate a translatable text key and choose **Substitute**. 
     - Choose **Add**.
 
-    <!-- border; size:540px --> ![Add Details Subsection](./obj52.png)
+    <!-- border; size:540px -->
+    ![Add Details Subsection](./obj52.png)
 
 #### Configure fields
 
 1. Choose **Sections** &rarr; **General Information** and choose the **Globe** icon in the **Label** field for **General Information** to generate a translatable text key.  
 
-    <!-- border; size:540px --> ![General information label](./obj601.png)
+    <!-- border; size:540px -->
+    ![General information label](./obj601.png)
 
 
 2. Navigate to **Sections** &rarr; **General Information** &rarr; **Form** &rarr; **Fields** and delete the **urgency_code** and **status_code** fields.
 
-    <!-- border; size:540px --> ![Delete Fields](./obj60.png)
+    <!-- border; size:540px -->
+    ![Delete Fields](./obj60.png)
 
 
 5. For the **customer_ID** field:
@@ -378,11 +416,13 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
     - Press <kbd>Enter</kbd> to confirm the change.
     - Choose the **Globe** icon in the **Label** field to generate a translatable text key.
 
-    <!-- border; size:540px --> ![Customer field update label](./fiori3.png)
+    <!-- border; size:540px -->
+    ![Customer field update label](./fiori3.png)
 
 6. For the **Customer** field, select **customer/name** in the **Text** dropdown menu, select **Text Only** in the **Text Arrangement** dropdown menu, and then select the hyperlink **Edit properties for Value Help** under **Display Type**. A popup opens. 
 
-    <!-- border; size:540px --> ![Customer properties update](./fiori4.png)
+    <!-- border; size:540px -->
+    ![Customer properties update](./fiori4.png)
 
 7. In the **Define Value Help Properties for Customer** popup:
 
@@ -391,28 +431,33 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
     - Under **Result List**, choose **Add Column** and add columns **name** and **email**.
     - Choose **Apply**.
 
-    <!-- border; size:540px --> ![Define Value Help Properties for Customer](./fiori44.png)
+    <!-- border; size:540px -->
+    ![Define Value Help Properties for Customer](./fiori44.png)
 
     > If there are already some columns in the result list, then delete them and keep only the columns **name** and **email**.
 
 7. Navigate to **Sections**, drag the **General Information**, and drop it in the **Overview** &rarr; **Subsections** node.
 
-    <!-- border; size:540px --> ![Customer properties update](./fiori5.png)
+    <!-- border; size:540px -->
+    ![Customer properties update](./fiori5.png)
 
 11. Navigate to **Sections** &rarr; **Overview** &rarr; **Subsections** &rarr; **Details** &rarr; **Form** &rarr; **Fields**, choose the **Plus** icon to add more fields, and then choose **Add Basic Fields**.
 
-    <!-- border; size:540px --> ![Add Basic Fields](./obj6.png)
+    <!-- border; size:540px -->
+    ![Add Basic Fields](./obj6.png)
 
 12. In the **Add Basic Fields** popup
 
     - From the dropdown menu in the **Fields** field, select **status_code** and **urgency_code**. 
     - Choose **Add**.
 
-    <!-- border; size:540px --> ![Add Basic Fields popup](./obj61.png)
+    <!-- border; size:540px -->
+    ![Add Basic Fields popup](./obj61.png)
 
 8. For the **Status** field, select **status/descr** in the **Text** dropdown menu and then select **Value Help** in the **Display Type** dropdown menu. A popup opens.
 
-    <!-- border; size:540px --> ![Status properties update](./obj65.png)
+    <!-- border; size:540px -->
+    ![Status properties update](./obj65.png)
 
 9. In the **Define Value Help Properties for Status** popup:
 
@@ -421,11 +466,13 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
     - Select **descr** in the **Value Description Property** dropdown menu.
     - Leave the default values for the rest of the properties and choose **Apply**.
 
-    <!-- border; size:540px --> ![Status value help](./obj66.png)
+    <!-- border; size:540px -->
+    ![Status value help](./obj66.png)
 
 10. For the **Urgency** field, select **urgency/descr** in the **Text** dropdown menu and then select **Value Help** in the **Display Type** dropdown menu. A popup opens.
 
-    <!-- border; size:540px --> ![Urgency properties update](./obj67.png)
+    <!-- border; size:540px -->
+    ![Urgency properties update](./obj67.png)
 
 11. In the **Define Value Help Properties for Urgency** popup:
 
@@ -434,7 +481,8 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
     - Select **descr** in the **Value Description Property** dropdown menu.
     - Leave the rest of the properties with the default values and choose **Apply**.
 
-    <!-- border; size:540px --> ![Urgency value help](./obj68.png)
+    <!-- border; size:540px -->
+    ![Urgency value help](./obj68.png)
 
 #### Add Conversation section
 
@@ -442,7 +490,8 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
 
 20. Choose **Add Table Section**. A popup appears.
 
-    <!-- border; size:540px --> ![Add Table section](./obj90.png)
+    <!-- border; size:540px -->
+    ![Add Table section](./obj90.png)
 
 20. In the **Add Table Section** popup:
 
@@ -450,7 +499,8 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
     - Choose the **Globe** icon to generate a translatable text key. 
     - Select **conversation** in the **Value Source** dropdown menu and choose **Add**.
 
-    <!-- border; size:540px --> ![Add Conversation Label](./obj9.png)
+    <!-- border; size:540px -->
+    ![Add Conversation Label](./obj9.png)
 
 #### Configure columns
 
@@ -458,14 +508,16 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
 
 22. Choose **Add Basic Columns**. A popup appears.
 
-    <!-- border; size:540px --> ![Add Conversation columns](./obj91.png)
+    <!-- border; size:540px -->
+    ![Add Conversation columns](./obj91.png)
 
 23. In the **Add Basic Columns** popup:
 
     - In the **Columns** dropdown menu, select **author**, **message**, and **timestamp**. 
     - Choose **Add**.
 
-    <!-- border; size:540px --> ![Add Basic Columns popup](./obj92.png)
+    <!-- border; size:540px -->
+    ![Add Basic Columns popup](./obj92.png)
 
 5. For each of the **CreatedBy**, **message**, and **CreatedOn** columns:
 
@@ -473,21 +525,25 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
     - Press <kbd>Enter</kbd> to confirm the change.
     - Choose the **Globe** icon in the **Label** field to generate a translatable text key.
 
-    <!-- border; size:540px --> ![Update column labels](./obj93.png)
+    <!-- border; size:540px -->
+    ![Update column labels](./obj93.png)
 
 #### Configure the table and check the result
 
 1. For **Table**, in the **Type** dropdown menu, select **ResponsiveTable** to make the table responsive.
 
-    <!-- border; size:540px --> ![Responsive table](./obj94.png)
+    <!-- border; size:540px -->
+    ![Responsive table](./obj94.png)
 
 2. In the **Creation Mode: Name** dropdown menu, select **Inline**.
 
-    <!-- border; size:540px --> ![Table creation mode](./obj95.png)
+    <!-- border; size:540px -->
+    ![Table creation mode](./obj95.png)
 
 3. The complete list object page looks like this:
 
-    <!-- border; size:540px --> ![Complete List Object Page](./obj10.png)
+    <!-- border; size:540px -->
+    ![Complete List Object Page](./obj10.png)
 
     <!-- Instead, we need to add some additional steps how to start local preview of the app and how to navigate to the Incident Management app (mind the name of the app in the preview, may need to changes some input values in the process of generating the fiori app) from the CAP generic index page where there's the option to choose Fiori Preview OR consider supplying the user with the partial URL to append to the generic CAP index page so they access the Incident Management app -->
 
@@ -515,13 +571,16 @@ Enabling a draft for an entity allows the users to edit the entities. To enable 
 
 3. Start creating a new incident but leave the **Customer**, **Status**, and **Urgency** fields empty.
 
-    <!-- border; size:540px --> ![Draft incident with empty fields](./draft-incident-empty.png)
+    <!-- border; size:540px -->
+    ![Draft incident with empty fields](./draft-incident-empty.png)
 
 4. Go back to the list view page without creating the incident. You see the incident draft there with the empty fields.
 
-    <!-- border; size:540px --> ![List view page with draft incident](./draft-incident-list-view-page.png)
+    <!-- border; size:540px -->
+    ![List view page with draft incident](./draft-incident-list-view-page.png)
 
 5. Try to access it again to continue the creation from where you stopped.
 
-    <!-- border; size:540px --> ![Draft incident, continue editing ](./draft-incident-continue.png)
+    <!-- border; size:540px -->
+    ![Draft incident, continue editing ](./draft-incident-continue.png)
 

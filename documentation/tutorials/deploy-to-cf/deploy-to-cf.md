@@ -59,7 +59,8 @@ For more information about the Cloud Foundry environment, see [Cloud Foundry Env
     cf services
     ```
 
-    <!-- border; size:540px --> ![Services after deploy](./cf-services.png)
+    <!-- border; size:540px -->
+    ![Services after deploy](./cf-services.png)
 
 5. Check if the apps are running:
 
@@ -67,7 +68,8 @@ For more information about the Cloud Foundry environment, see [Cloud Foundry Env
     cf apps
     ```
 
-    <!-- border; size:540px --> ![App after deploy](./cf-apps.png)
+    <!-- border; size:540px -->
+    ![App after deploy](./cf-apps.png)
 
 <!-- 6. Enter the route displayed for **incident-management-srv** in your browser. -->
 

@@ -60,11 +60,13 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
 4. Create a new incident with the word **urgent** in its title and with the urgency set to **Medium**. 
 
-    <!-- border; size:540px --> ![Create new incident](./create-new-incident.png)
+    <!-- border; size:540px -->
+    ![Create new incident](./create-new-incident.png)
     
     You see that the value in the **Urgency** field is automatically set to **high**.
 
-    <!-- border; size:540px --> ![Fiori Elements Work List](./incidentapp.png)
+    <!-- border; size:540px -->
+    ![Fiori Elements Work List](./incidentapp.png)
 
 
 [OPTION END]
@@ -142,11 +144,13 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 
 4. Create a new incident with the word **urgent** in its title and with the urgency set to **Medium**. 
 
-    <!-- border; size:540px --> ![Create new incident](./create-new-incident.png)
+    <!-- border; size:540px -->
+    ![Create new incident](./create-new-incident.png)
     
     You see that the value in the **Urgency** field is automatically set to **High**.
 
-    <!-- border; size:540px --> ![Fiori Elements Work List](./incidentapp.png)
+    <!-- border; size:540px -->
+    ![Fiori Elements Work List](./incidentapp.png)
 
 [OPTION END]
 

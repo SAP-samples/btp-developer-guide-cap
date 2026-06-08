@@ -21,7 +21,8 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 
 2. Choose the burger menu and choose **Terminal** &rarr; **New Terminal**.
 
-    <!-- border; size:540px --> ![Terminal](./bas-terminal.png)
+    <!-- border; size:540px -->
+    ![Terminal](./bas-terminal.png)
 
 3. Navigate to the **projects** folder from the root directory.
 
@@ -42,7 +43,8 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 
 5. Choose the **Explorer** icon and then choose **Open Folder**. Type `/home/user/projects/` in the field and select `incident-management`. Choose **OK** to open the project in SAP Business Application Studio.
 
-    <!-- border; size:540px --> ![Open SAP Business Application Studio folder](./bas-open-folder.png)
+    <!-- border; size:540px -->
+    ![Open SAP Business Application Studio folder](./bas-open-folder.png)
 
     > You can also use the **Cmd+Shift+E** (macOS) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
@@ -84,7 +86,8 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 
 2. Choose the burger menu and choose **Terminal** &rarr; **New Terminal**.
 
-    <!-- border; size:540px --> ![Terminal](./bas-terminal.png)
+    <!-- border; size:540px -->
+    ![Terminal](./bas-terminal.png)
 
 3. Navigate to the **projects** folder from the root directory.
 
@@ -104,7 +107,8 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 
 5. Choose the **Explorer** icon and then choose **Open Folder**. Type `/home/user/projects/` in the field and select `incident-management`. Choose **OK** to open the project in SAP Business Application Studio.
 
-    <!-- border; size:540px --> ![Open SAP Business Application Studio folder](./bas-open-folder.png)
+    <!-- border; size:540px -->
+    ![Open SAP Business Application Studio folder](./bas-open-folder.png)
 
     > You can also use the **Cmd+Shift+E** (macOS) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
@@ -331,7 +335,8 @@ This time, the CAP server reacted with additional output:
 
 As you can see in the log output, the new file created two generic service providers: `ProcessorService` that serves requests on the `/odata/v4/processor` endpoint and `AdminService` that serves requests on the `/odata/v4/admin` endpoint. If you open the link `http://localhost:4004` from SAP Business Application Studio in your browser, you see the generic `index.html` page:
 
-<!-- border; size:540px --> ![index.html](./index.png)
+<!-- border; size:540px -->
+![index.html](./index.png)
 
 You have to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `cds watch` command.
 
@@ -402,11 +407,13 @@ You have to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it
 
 2. Choose **Open in a New Tab**.
 
-    <!-- border; size:540px --> ![Open in a new tab](./open-new-tab.png)
+    <!-- border; size:540px -->
+    ![Open in a new tab](./open-new-tab.png)
 
 3. You see the generic `index.html` page:
 
-    <!-- border; size:540px --> ![index.html](./index-java.png)
+    <!-- border; size:540px -->
+    ![index.html](./index-java.png)
 
 > You need to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
@@ -533,11 +540,13 @@ Now that the database is filled with some initial data, you can send complex ODa
 
 - `/odata/v4/processor/Incidents`
 
-    <!-- border; size:540px --> ![Incidents](./incidents.png)
+    <!-- border; size:540px -->
+    ![Incidents](./incidents.png)
 
 - `/odata/v4/processor/Customers?$select=firstName&$expand=incidents`
 
-    <!-- border; size:540px --> ![Incidents per customer](./incidents-per-customer.png)
+    <!-- border; size:540px -->
+    ![Incidents per customer](./incidents-per-customer.png)
 
 [OPTION END]
 
@@ -560,11 +569,13 @@ Now that the database is filled with some initial data, you can send complex ODa
 
 - `/odata/v4/ProcessorService/Incidents`
 
-    <!-- border; size:540px --> ![Incidents](./incidents.png)
+    <!-- border; size:540px -->
+    ![Incidents](./incidents.png)
 
 - `/odata/v4/ProcessorService/Customers?$select=firstName&$expand=incidents`
 
-    <!-- border; size:540px --> ![Incidents per customer](./incidents-per-customer.png)
+    <!-- border; size:540px -->
+    ![Incidents per customer](./incidents-per-customer.png)
 
 [OPTION END]
 

@@ -161,7 +161,8 @@ You've added test cases in your application. Follow the steps in the [Add Test C
 
 2. Choose **Open in a New Tab**.
 
-    <!-- border; size:540px --> ![Open in a new tab](./open-new-tab.png)
+    <!-- border; size:540px -->
+    ![Open in a new tab](./open-new-tab.png)
 
 3. You see the generic `index.html` page:
 

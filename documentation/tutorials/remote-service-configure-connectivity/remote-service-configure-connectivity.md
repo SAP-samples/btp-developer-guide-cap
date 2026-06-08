@@ -23,7 +23,8 @@ In this tutorial, you learn how to acquire an SAP BTP integration token, how to 
 
 2. In the **System Landscape** screen, choose **Systems** and then **Add System**.
 
-     <!-- border; size:540px --> ![Add system](./add-system-button.png)
+     <!-- border; size:540px -->
+     ![Add system](./add-system-button.png)
 
 3. In the **Add System** dialog box, enter a name for the SAP S/4HANA Cloud system you want to connect.
 
@@ -31,17 +32,20 @@ In this tutorial, you learn how to acquire an SAP BTP integration token, how to 
 
 4. Select **SAP S/4HANA Cloud** from the dropdown in the **Type** field and choose **Add**. 
 
-     <!-- border; size:540px --> ![Add System dialog](./add-system-dialog.png)
+     <!-- border; size:540px -->
+     ![Add System dialog](./add-system-dialog.png)
 
 6. In the **Get Token for System "S/4HANA DEV System"**, select **All Communication Scenarios** from the dropdown in the **Communication Scenario Groups** field and choose **Get Token**.
 
-     <!-- border; size:540px --> ![Get token](./get-token.png)
+     <!-- border; size:540px -->
+     ![Get token](./get-token.png)
 
      SAP BTP generates an integration token so the SAP S/4HANA Cloud system administrator can configure integration with SAP BTP from your SAP S/4HANA Cloud system. 
 
 9. Copy the generated token and close the dialog box. You need the token in the following procedure.
 
-     <!-- border; size:540px --> ![Copy token](./copy-token.png)
+     <!-- border; size:540px -->
+     ![Copy token](./copy-token.png)
 
   
 
@@ -51,28 +55,33 @@ In this tutorial, you learn how to acquire an SAP BTP integration token, how to 
 
 2. Choose **Administration** &rarr; **Communication Management** and choose the tile **Maintain Extensions on SAP BTP**.
 
-     <!-- border; size:540px --> ![Communication Management](./communication-management-screen.png)
+     <!-- border; size:540px -->
+     ![Communication Management](./communication-management-screen.png)
 
 3. On the **Maintain Extensions on SAP BTP** screen in the **Extensions** section, choose **New**.
 
-     <!-- border; size:540px --> ![New extension](./new-extension-button.png)
+     <!-- border; size:540px -->
+     ![New extension](./new-extension-button.png)
 
 4. In the **Integration Token** field, paste the integration token you previously generated.
 
 5. Enter a **Description** for your system integration token and choose **Create**.
 
-     <!-- border; size:540px --> ![Paste integration token](./paste-token.png)
+     <!-- border; size:540px -->
+     ![Paste integration token](./paste-token.png)
 
     > Use the same name that you entered in the SAP BTP cockpit when you generated the token. For example, use the name **SAP S/4HANA DEV System**.
      
 
 6. Choose **Yes** to approve the creation, and wait until the status displayed for your newly registered system switches to **Enabled**. Refresh your page.
 
-     <!-- border; size:540px --> ![Extension enabled](./extension-enabled.png)
+     <!-- border; size:540px -->
+     ![Extension enabled](./extension-enabled.png)
 
      At the same time, you see the system status updated to **Registered** on the SAP BTP side. Refresh the page for the status to be updated.
 
-     <!-- border; size:540px --> ![System registered](./system-registered.png)
+     <!-- border; size:540px -->
+     ![System registered](./system-registered.png)
 
 
 For more details about registering an SAP S/4HANA Cloud system, see [Register an SAP S/4HANA Cloud System in a Global Account in SAP BTP](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/28171b629f3549af8c1d66d7c8de5e18.html) on the SAP Help Portal.
@@ -90,7 +99,8 @@ You've connected the SAP S/4HANA Cloud system to SAP BTP (with status **Enabled*
 
 5. Choose **Edit** &rarr; **Add Service Plans**.
 
-     <!-- border; size:540px --> ![Edit service plans](./edit-service-plans.png)
+     <!-- border; size:540px -->
+     ![Edit service plans](./edit-service-plans.png)
 
 6. In the **Subaccount `<your-subaccount-name>`: Add Service Plans** dialog box, select the service **SAP S/4HANA Cloud Extensibility**.
 
@@ -104,6 +114,7 @@ You've connected the SAP S/4HANA Cloud system to SAP BTP (with status **Enabled*
 
 9. Choose **Add 1 Service Plans** to add the service plan of the SAP S/4HANA Cloud Extensibility service.
 
-     <!-- border; size:540px --> ![Add SAP S/4HANA Cloud Extensibility service plan](./add-s4hana-extensibility.png)
+     <!-- border; size:540px -->
+     ![Add SAP S/4HANA Cloud Extensibility service plan](./add-s4hana-extensibility.png)
 
 10. Choose **Save**.

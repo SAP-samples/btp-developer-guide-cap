@@ -160,19 +160,23 @@ When creating new entries in the Incident Management application, you see all va
 
 6. Choose the Incident Management tile.
 
-    <!-- border; size:540px --> ![Incident Management tile on the launchpage](./incident-management-tile.png)
+    <!-- border; size:540px -->
+    ![Incident Management tile on the launchpage](./incident-management-tile.png)
 
 9. Choose **Create** to start creating a new incident.
   
-    <!-- border; size:540px --> ![Create a new incident](./create-new-incident.png)
+    <!-- border; size:540px -->
+    ![Create a new incident](./create-new-incident.png)
 
 11. Open the value help for the **Customer** field. 
 
-    <!-- border; size:540px --> ![Value help for Customer field](./value-help-customer.png)
+    <!-- border; size:540px -->
+    ![Value help for Customer field](./value-help-customer.png)
 
 12. Verify that customer data is fetched from the SAP S/4HANA Cloud system. 
 
-    <!-- border; size:540px --> ![Data in value help](./value-help-data1.png)
+    <!-- border; size:540px -->
+    ![Data in value help](./value-help-data1.png)
 
 
 Congratulations! You have successfully developed, configured, and deployed the Incident Management application using an external service and an SAP S/4HANA Cloud system.

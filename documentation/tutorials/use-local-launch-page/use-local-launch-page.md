@@ -80,7 +80,8 @@ In the current implementation, you can open the **Incident Management** applicat
 
     > You now see a tile of the **Incident Management** application on the launch page.
 
-	<!-- border; size:540px --> ![Launch Page](./launchpage.png)
+	<!-- border; size:540px -->
+	![Launch Page](./launchpage.png)
 
 ### Check the launchpage.html file
 

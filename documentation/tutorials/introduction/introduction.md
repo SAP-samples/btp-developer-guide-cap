@@ -20,7 +20,8 @@ This guidance covers a variety of topics starting from basic onboarding tasks to
 - Creating a subaccount in SAP BTP
 - Deploying in SAP BTP
 
-<!-- border; size:540px --> ![Solution diagram](solution-diagram.png)
+<!-- border; size:540px -->
+![Solution diagram](solution-diagram.png)
 
 ### Benefit from a sample application
 

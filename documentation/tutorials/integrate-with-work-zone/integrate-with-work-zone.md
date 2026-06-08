@@ -24,13 +24,15 @@ In this tutorial, you learn how to subscribe to SAP Build Work Zone, standard ed
 
 3. Search for the **SAP Build Work Zone, standard edition** tile and choose **Create**.
 
-    <!-- border; size:540px --> ![Create SAP Build Work Zone, standard edition](./create_workzone_instance.png)
+    <!-- border; size:540px -->
+    ![Create SAP Build Work Zone, standard edition](./create_workzone_instance.png)
 
 4. Keep the default setting for **Service** and choose **free** for **Plan**.
 
 5. Choose **Create**.
 
-    <!-- border; size:540px --> ![New Instance or Subscription](./new_instance_dialog.png)
+    <!-- border; size:540px -->
+    ![New Instance or Subscription](./new_instance_dialog.png)
 
 You have now subscribed to the SAP Build Work Zone, standard edition.
 
@@ -44,7 +46,8 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 4. Under **Role Collections** on the right, choose **Assign Role Collection** and assign the **Launchpad_Admin** role collection to your user.
 
-    <!-- border; size:540px --> ![Add role](./add_launchpad_admin_role.png)
+    <!-- border; size:540px -->
+    ![Add role](./add_launchpad_admin_role.png)
 
     You've assigned the **Launchpad_Admin** role collection to your user.
 
@@ -64,13 +67,15 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 2. Choose the application **SAP Build Work Zone, standard edition**.
 
-    <!-- border; size:540px --> ![WorkZone0](./integrate_launchpad_0.png)
+    <!-- border; size:540px -->
+    ![WorkZone0](./integrate_launchpad_0.png)
 
 3. In the menu on the left side, choose the icon for **Channel Manager**.
 
 4. Fetch the updated content.
 
-    <!-- border; size:540px --> ![WorkZone1](./integrate_launchpad_1.png)
+    <!-- border; size:540px -->
+    ![WorkZone1](./integrate_launchpad_1.png)
 
     > [!IMPORTANT]
     > **HTML5 Apps shows "No data" after refresh:** This happens when the `incident-management-html5-repository` destination is at `instance` level instead of `subaccount` level in `mta.yaml`. Work Zone's Channel Manager only reads subaccount-level destinations. See the fix in the [Add configuration for SAP Build Work Zone, standard edition](https://developers.sap.com/tutorials/prep-for-prod.html#add-configuration-for-sap-build-work-zone-standard-edition) step of the Prepare for Production tutorial.
@@ -79,21 +84,25 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 1. Choose **Content Manager** in the menu on the left and choose **Content Explorer**.
 
-    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_20.png)
+    <!-- border; size:540px -->
+    ![WorkZone2](./integrate_launchpad_20.png)
 
 6. Select the tile **HTML5 Apps** with your respective subdomain name.
 
-    <!-- border; size:540px --> ![WorkZone2](./integrate_launchpad_2.png)
+    <!-- border; size:540px -->
+    ![WorkZone2](./integrate_launchpad_2.png)
 
 7. In the items table, select the checkbox for **incident-management** app and choose **Add**.
 
-    <!-- border; size:540px --> ![WorkZone3](./integrate_launchpad_3.png)
+    <!-- border; size:540px -->
+    ![WorkZone3](./integrate_launchpad_3.png)
 
 #### Create a group
 
 1. Go back to the **Content Manager** and choose **Create** &rarr; **Group**.
 
-    <!-- border; size:540px --> ![WorkZone4](./integrate_launchpad_4.png)
+    <!-- border; size:540px -->
+    ![WorkZone4](./integrate_launchpad_4.png)
 
 9. In the **Group title** field, enter **Incident Management Group**.
 
@@ -101,7 +110,8 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 11. Choose **Save**.
 
-    <!-- border; size:540px --> ![WorkZone5](./integrate_launchpad_5.png)
+    <!-- border; size:540px -->
+    ![WorkZone5](./integrate_launchpad_5.png)
 
 #### Add application to the Everyone role
 
@@ -111,17 +121,20 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 14. Choose **Save**.
 
-    <!-- border; size:540px --> ![WorkZone6](./integrate_launchpad_6.png)
+    <!-- border; size:540px -->
+    ![WorkZone6](./integrate_launchpad_6.png)
 
 #### Create site
 
 1. Navigate to **Site Directory** and choose **Create Site**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
+    <!-- border; size:540px -->
+    ![WorkZone7](./integrate_launchpad_7.png)
 
 17. In the **Site Name** field, enter **Incident Management Site** and choose **Create**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
+    <!-- border; size:540px -->
+    ![WorkZone7](./integrate_launchpad_71.png)
 
 18. Now, you're forwarded to your created site.
 
@@ -549,13 +562,15 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
 
 2. Choose the application **SAP Build Work Zone, standard edition**.
 
-    <!-- border; size:540px --> ![WorkZone0](./integrate_launchpad_0.png)
+    <!-- border; size:540px -->
+    ![WorkZone0](./integrate_launchpad_0.png)
 
 3. In the menu on the left side, choose the icon for **Channel Manager**.
 
 4. Choose **New** &rarr; **Content Provider** on the right.
 
-    <!-- border; size:540px --> ![New Content Provider](./new-content-provider.png)
+    <!-- border; size:540px -->
+    ![New Content Provider](./new-content-provider.png)
 
 5. In the **New Content Provider** dialog:
 
@@ -568,30 +583,36 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     4. Choose **Save**.
 
 
-     <!-- border; size:540px --> ![New Content Provider dialog](./new-content-provider-dialog.png)
+     <!-- border; size:540px -->
+     ![New Content Provider dialog](./new-content-provider-dialog.png)
 
 
 6. Fetch the updated content from the **CDM** content provider. 
 
-    <!-- border; size:540px --> ![New Content Provider fetch](./new-content-provider-fetch.png)
+    <!-- border; size:540px -->
+    ![New Content Provider fetch](./new-content-provider-fetch.png)
 
 #### Create site
 
 1. Navigate to **Site Directory** and choose **Create Site**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_7.png)
+    <!-- border; size:540px -->
+    ![WorkZone7](./integrate_launchpad_7.png)
 
 17. In the **Site Name** field, enter **Incident Management Site** and choose **Create**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_71.png)
+    <!-- border; size:540px -->
+    ![WorkZone7](./integrate_launchpad_71.png)
 
 18. When you're forwarded to your created site, choose **Role Assignments** and then choose **Edit**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_72.png)
+    <!-- border; size:540px -->
+    ![WorkZone7](./integrate_launchpad_72.png)
 
 19. In the **Assignment status** field, switch on **Default Role** for your site and choose **Save**.
 
-    <!-- border; size:540px --> ![WorkZone7](./integrate_launchpad_73.png)
+    <!-- border; size:540px -->
+    ![WorkZone7](./integrate_launchpad_73.png)
 
 #### Assign CDM role collection
 
@@ -603,7 +624,8 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 4. Under **Role Collections** on the right, choose **Assign Role Collection** and assign the **~cdm_defaultRole** role collection to your user.
 
-    <!-- border; size:540px --> ![Add CDM role](./add_cdm_role.png)
+    <!-- border; size:540px -->
+    ![Add CDM role](./add_cdm_role.png)
 
     You've assigned the **~cdm_defaultRole** role collection to your user.
 
@@ -615,19 +637,23 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 1. Navigate to **Site Directory** and find your site.
 
-    <!-- border; size:540px --> ![WorkZone8](./integrate_launchpad_8.png)
+    <!-- border; size:540px -->
+    ![WorkZone8](./integrate_launchpad_8.png)
 
 21. Choose **Go to the site**. 
 
-    <!-- border; size:540px --> ![WorkZone9](./integrate_launchpad_9.png)
+    <!-- border; size:540px -->
+    ![WorkZone9](./integrate_launchpad_9.png)
 
 3. Choose the Incident Management application from the launch page. 
 
-    <!-- border; size:540px --> ![WorkZone10](./integrate_launchpad_10.png)
+    <!-- border; size:540px -->
+    ![WorkZone10](./integrate_launchpad_10.png)
 
     You see the list report page.
 
-    <!-- border; size:540px --> ![WorkZone11](./integrate_launchpad_11.png)
+    <!-- border; size:540px -->
+    ![WorkZone11](./integrate_launchpad_11.png)
 
 ### Summary
 

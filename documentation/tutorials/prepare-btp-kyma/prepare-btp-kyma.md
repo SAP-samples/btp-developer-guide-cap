@@ -41,31 +41,38 @@ Do the following steps to add the entitlements.
 
 2. Navigate to your subaccount and choose **Entitlements** &rarr; **Edit**.
 
-      <!-- border; size:540px --> ![Configure entitlements](./entitlements0.png)
+      <!-- border; size:540px -->
+      ![Configure entitlements](./entitlements0.png)
 
 3. Choose **Add Service Plans**.
 
-      <!-- border; size:540px --> ![Add service plans](./entitlements1.png)
+      <!-- border; size:540px -->
+      ![Add service plans](./entitlements1.png)
 
 2. Search for **Kyma Runtime** and select the **free (Environment)** plan.
 
-      <!-- border; size:540px --> ![Add the Kyma runtime entitlements](./entitlements2.png)
+      <!-- border; size:540px -->
+      ![Add the Kyma runtime entitlements](./entitlements2.png)
 
 2. Search for **SAP Build Work Zone, standard edition** and select the **free (Application)** plan.
 
-      <!-- border; size:540px --> ![Add Work Zone](./entitlements3.png)
+      <!-- border; size:540px -->
+      ![Add Work Zone](./entitlements3.png)
 
 3. Search for **SAP HANA Cloud** and select the **tools (Application)** service plan and **hana-free** service plan.
 
-      <!-- border; size:540px --> ![Add HANA](./entitlements4.png)
+      <!-- border; size:540px -->
+      ![Add HANA](./entitlements4.png)
 
 4. Search for **SAP HANA Schemas & HDI containers** and select the **hdi-shared** service plan.
 
-      <!-- border; size:540px --> ![Add HANA HDI](./entitlement5.png)
+      <!-- border; size:540px -->
+      ![Add HANA HDI](./entitlement5.png)
 
 5. Search for **Continuous Integration & Delivery**, select the **free (Application)** plan, and choose **Add 6 Service Plans**.
 
-      <!-- border; size:540px --> ![Add CI/CD](./entitlement6.png)
+      <!-- border; size:540px -->
+      ![Add CI/CD](./entitlement6.png)
 
 6. Choose **Save**.
 
@@ -75,11 +82,13 @@ Let's enable your subaccount to use the SAP BTP, Kyma runtime.
 
 1. Navigate to your subaccount and choose **Enable Kyma** under the **Kyma Environment** tab.
 
-      <!-- border; size:540px --> ![Enable Kyma](./enable-kyma.png)
+      <!-- border; size:540px -->
+      ![Enable Kyma](./enable-kyma.png)
 
 2. In the **Enable Kyma** popup, change the values for **Instance Name** and **Cluster Name** as needed and choose **Create**.
 
-      <!-- border; size:540px --> ![Enable Kyma popup](./enable-kyma-popup.png)
+      <!-- border; size:540px -->
+      ![Enable Kyma popup](./enable-kyma-popup.png)
 
 
     > Make sure that the instance name is CLI-friendly. CLI-friendly names make it easier to manage your instances with the SAP BTP command-line interface as well.
@@ -98,17 +107,21 @@ Let's enable your subaccount to use the SAP BTP, Kyma runtime.
 
 2. Type **SAP HANA Cloud** in the search box and choose **Create**.
 
-      <!-- border; size:540px --> ![Create an SAP HANA Cloud tools instance](./create-hana-tools.png)
+      <!-- border; size:540px -->
+      ![Create an SAP HANA Cloud tools instance](./create-hana-tools.png)
 
 2. In the **New Instance or Subscription** popup, select **tools** from the dropdown in the **Plan** field and choose **Create**.
 
-      <!-- border; size:540px --> ![SAP HANA Cloud tools instance creation popup](./create-hana-tools-popup.png)
+      <!-- border; size:540px -->
+      ![SAP HANA Cloud tools instance creation popup](./create-hana-tools-popup.png)
 
 7. Choose **View Subscription** and wait until the status changes to **Subscribed**.
 
-    <!-- border; size:540px --> ![View subscription](view-subscription.png)
+    <!-- border; size:540px -->
+    ![View subscription](view-subscription.png)
 
-    <!-- border; size:540px --> ![Status subscribed](./hanatools-status-subscribed.png)
+    <!-- border; size:540px -->
+    ![Status subscribed](./hanatools-status-subscribed.png)
 
 8. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
 
@@ -116,11 +129,13 @@ Let's enable your subaccount to use the SAP BTP, Kyma runtime.
 
 10. Choose **Edit**.
 
-    <!-- border; size:540px --> ![Edit role](./hana-edit-role.png)
+    <!-- border; size:540px -->
+    ![Edit role](./hana-edit-role.png)
 
 11. In the **Users** section, enter your user and select the icon to add the user.
 
-    <!-- border; size:540px --> ![Add user](./hana-add-user.png)
+    <!-- border; size:540px -->
+    ![Add user](./hana-add-user.png)
 
     > Keep the setting `Default Identity Provider` unless you have a custom identity provider configured.
 
@@ -140,21 +155,25 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 
 2. Choose **SAP HANA Cloud**. You're redirected to SAP HANA Cloud multi-environment administration tools. Sign in with your SAP BTP cockpit username/e-mail if necessary.
 
-    <!-- border; size:540px --> ![SAP HANA Cloud Go to application](./hana-goto-app.png)
+    <!-- border; size:540px -->
+    ![SAP HANA Cloud Go to application](./hana-goto-app.png)
 
 3. In SAP HANA Cloud Central, choose **Create Instance**.
 
-      <!-- border; size:540px --> ![SAP HANA Cloud create instance](./hana-create-instance.png)
+      <!-- border; size:540px -->
+      ![SAP HANA Cloud create instance](./hana-create-instance.png)
 
 7. Choose **SAP HANA Cloud**, **SAP HANA Database**, and then choose **Next Step**.
 
-      <!-- border; size:540px --> ![Create SAP HANA DB Step 1](./create-hana-db1.png)
+      <!-- border; size:540px -->
+      ![Create SAP HANA DB Step 1](./create-hana-db1.png)
 
 8. In the **Instance Name** field, enter **incident-management**.
 
 9. In the **Administrator Password** and **Confirm Administrator Password** fields, enter a password for DBADMIN. Choose **Next Step**.
 
-      <!-- border; size:540px --> ![Create SAP HANA DB Step 2](./create-hana-db2.png)
+      <!-- border; size:540px -->
+      ![Create SAP HANA DB Step 2](./create-hana-db2.png)
 
 10. The default settings are sufficient for the Incident Management application. Choose **Next Step**.
 
@@ -162,7 +181,8 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 
 12. Select the **Allow all IP addresses** radio button, and choose **Review and Create** to review your SAP HANA Cloud instance configuration.
 
-      <!-- border; size:540px --> ![Create SAP HANA DB Step 3](./create-hana-db3.png)
+      <!-- border; size:540px -->
+      ![Create SAP HANA DB Step 3](./create-hana-db3.png)
 
 13. Choose **Create Instance**.
 
@@ -177,7 +197,8 @@ You need the SAP BTP Operator module to map your SAP HANA Cloud service instance
 
 1. Navigate to your subaccount and choose **Dashboard URL** under the **Kyma Environment** tab.
 
-      <!-- border; size:540px --> ![Open Kyma dashboard](./kyma-console.png)
+      <!-- border; size:540px -->
+      ![Open Kyma dashboard](./kyma-console.png)
 
 2. Choose **Modify Modules**.
 
@@ -194,11 +215,13 @@ You need the SAP BTP Operator module to map your SAP HANA Cloud service instance
 
 2. For the **incident-management** instance, choose **Manage Configuration**.
 
-      <!-- border; size:540px --> ![Manage instance configuration](./hana-config.png)
+      <!-- border; size:540px -->
+      ![Manage instance configuration](./hana-config.png)
 
 3. Select the **Instance Mapping** tab and choose **Add Mapping**.
 
-      <!-- border; size:540px --> ![Add instance mapping](./hana-add-mapping.png)
+      <!-- border; size:540px -->
+      ![Add instance mapping](./hana-add-mapping.png)
 
 4. Choose **Kyma** from the dropdown under **Environment Type**.
 
@@ -209,13 +232,15 @@ You need the SAP BTP Operator module to map your SAP HANA Cloud service instance
       - Navigate to **Configuration** &rarr; **Config Maps** and choose **sap-btp-operator-config**.
       - You can see the GUID of your Kyma cluster in the **CLUSTER_ID** section.
 
-      <!-- border; size:540px --> ![Add environment instance ID](./kyma-cluster-id.png)
+      <!-- border; size:540px -->
+      ![Add environment instance ID](./kyma-cluster-id.png)
     
     > If no namespace is provided, the instance is mapped to all namespaces in the cluster.
 
 6. Choose **Review and Save**. In the popup, mark **Apply changes with a restart**, and choose **Save Changes**. 
 
-      <!-- border; size:540px --> ![Save changes](./hana-save-mapping.png)
+      <!-- border; size:540px -->
+      ![Save changes](./hana-save-mapping.png)
 
       You've mapped your SAP HANA Cloud service instance to your Kyma cluster.
 

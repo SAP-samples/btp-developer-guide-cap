@@ -99,11 +99,13 @@ See [Setup](https://github.com/int128/kubelogin#setup) in the kubelogin docs for
 
 1. Choose `KubeconfigURL` under the **Kyma Environment** tab in your subaccount.
 
-    <!-- border; size:540px --> ![Kubeconfig URL](kubeconfigURL.png)
+    <!-- border; size:540px -->
+    ![Kubeconfig URL](kubeconfigURL.png)
 
     A file `kubeconfig.yaml` is downloaded.
 
-    <!-- border; size:540px --> ![Kubeconfig yaml](kubeconfig_yaml.png)
+    <!-- border; size:540px -->
+    ![Kubeconfig yaml](kubeconfig_yaml.png)
 
 2. Copy the `kubeconfig.yaml` file to the `~/.kube/` directory and rename it to `config`. Replace or rename any existing file with the same name.
 
@@ -225,7 +227,8 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
     1. In SAP Business Application Studio, choose the icon to download dev space content.
 
-        <!-- border; size:540px --> ![Download dev space content](./downloadproject.png)
+        <!-- border; size:540px -->
+        ![Download dev space content](./downloadproject.png)
 
         > Make sure the **IncidentManagement** dev space is in status **RUNNING**.
 
@@ -375,7 +378,8 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
     The outcome of the installation looks like this:
 
-    <!-- border; size:540px --> ![Deployed app](./deployedapp.png)
+    <!-- border; size:540px -->
+    ![Deployed app](./deployedapp.png)
 
 <!-- 6. Enter the route displayed for **srv** in your browser. -->
 
@@ -425,7 +429,8 @@ In the next tutorial, you can access your UIs from SAP Build Work Zone, standard
 
     The outcome of the installation looks like this:
 
-    <!-- border; size:540px --> ![Deployed app](./deployedapp.png)
+    <!-- border; size:540px -->
+    ![Deployed app](./deployedapp.png)
 
 <!-- 6. Enter the route displayed for **srv** in your browser. -->
 

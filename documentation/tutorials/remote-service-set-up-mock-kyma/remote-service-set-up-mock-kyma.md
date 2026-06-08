@@ -201,7 +201,8 @@ You need to:
 
 4. Choose **Check Connection**. You get a `200 OK` message.
 
-    <!-- border; size:540px --> ![Destination Configuration](./destination-configuration.png)
+    <!-- border; size:540px -->
+    ![Destination Configuration](./destination-configuration.png)
 
 ### Test the mock server
 
@@ -209,4 +210,5 @@ You need to:
 
 2. Verify that there are a few API endpoints that display data.
 
-    <!-- border; size:540px --> ![Mock server endpoints](./mock-server-endpoints.png)
+    <!-- border; size:540px -->
+    ![Mock server endpoints](./mock-server-endpoints.png)

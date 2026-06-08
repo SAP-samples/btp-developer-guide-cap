@@ -163,11 +163,13 @@ When accessing the **Incidents** service of the **Incident Management** applicat
 
 4. Leave the **Password** field empty.
 
-    <!-- border; size:540px --> ![Sign In Incident Management Application](./local-login-java.png)
+    <!-- border; size:540px -->
+    ![Sign In Incident Management Application](./local-login-java.png)
 
     You can now access the **Incident Management** application.
 
-    <!-- border; size:540px --> ![Access Incident Management Application](./incident-management-app.png)
+    <!-- border; size:540px -->
+    ![Access Incident Management Application](./incident-management-app.png)
 
 [OPTION END]
 
@@ -182,11 +184,13 @@ When accessing the **Incidents** service of the **Incident Management** applicat
 
 4. Leave the **Password** field empty.
 
-    <!-- border; size:540px --> ![Sign In Incident Management Application](./local-login-java.png)
+    <!-- border; size:540px -->
+    ![Sign In Incident Management Application](./local-login-java.png)
 
     You can now access the **Incident Management** application.
 
-    <!-- border; size:540px --> ![Access Incident Management Application](./incident-management-app.png)
+    <!-- border; size:540px -->
+    ![Access Incident Management Application](./incident-management-app.png)
 
 [OPTION END]
 

@@ -35,7 +35,8 @@ You need to:
 
 2. Choose the burger menu and choose **Terminal** &rarr; **New Terminal**.
 
-    <!-- border; size:540px --> ![Terminal](./bas-terminal.png)
+    <!-- border; size:540px -->
+    ![Terminal](./bas-terminal.png)
 
 3. Navigate to the **projects** folder:
 
@@ -53,7 +54,8 @@ You need to:
 
 4. Type `/home/user/projects/` in the field and select `cloud-extension-ecc-business-process`. Choose **OK** to open the project in SAP Business Application Studio.
 
-    <!-- border; size:540px --> ![Choose mock app folder](./choose-mock-folder.png)
+    <!-- border; size:540px -->
+    ![Choose mock app folder](./choose-mock-folder.png)
 
 ### Log in to SAP BTP, Cloud Foundry runtime in SAP Business Application Studio
 
@@ -115,7 +117,8 @@ Now, you need to create a destination to the mock server.
 
 4. Choose **Check Connection**. You get a `200 OK` message.
 
-    <!-- border; size:540px --> ![Destination Configuration](./destination-configuration.png)
+    <!-- border; size:540px -->
+    ![Destination Configuration](./destination-configuration.png)
 
 ### Test the mock server
 
@@ -123,4 +126,5 @@ Now, you need to create a destination to the mock server.
 
 2. Verify that there are a few API endpoints that display data.
 
-    <!-- border; size:540px --> ![Mock server endpoints](./mock-server-endpoints.png)
+    <!-- border; size:540px -->
+    ![Mock server endpoints](./mock-server-endpoints.png)

@@ -40,7 +40,8 @@ In this tutorial, you learn how to subscribe to SAP Business Application Studio 
 
 5. Choose **Add 1 Service Plan**.
 
-    <!-- border; size:540px --> ![Screenshot showing the SAP BTP Cockpit logged in, with the entitlements entry highlighted on the left sidebar indicating it's selected, the "Add Service Plans" highlighted in the entitlements section on the right indicating it's clicked, a popover is visible in which you can find and add entitlements, the entry for "SAP Business Application Studio" is selected and the plan "free (Application) is checked finally the "Add 1 Service Plan" button is highlighted.](./bas-entitlement.png)
+    <!-- border; size:540px -->
+    ![Screenshot showing the SAP BTP Cockpit logged in, with the entitlements entry highlighted on the left sidebar indicating it's selected, the "Add Service Plans" highlighted in the entitlements section on the right indicating it's clicked, a popover is visible in which you can find and add entitlements, the entry for "SAP Business Application Studio" is selected and the plan "free (Application) is checked finally the "Add 1 Service Plan" button is highlighted.](./bas-entitlement.png)
 
 6. Choose **Save**.
 
@@ -53,11 +54,13 @@ In this tutorial, you learn how to subscribe to SAP Business Application Studio 
 
 2. Search for the **SAP Business Application Studio** tile and choose **Create**.
 
-    <!-- border; size:540px --> ![screenshot showing the "three dots menu" for SAP Business Application Studio in the Service Marketplace. after opening the menu an option to create an SAP Business Application Studio Instance is seen.](./bas-create.png)
+    <!-- border; size:540px -->
+    ![screenshot showing the "three dots menu" for SAP Business Application Studio in the Service Marketplace. after opening the menu an option to create an SAP Business Application Studio Instance is seen.](./bas-create.png)
 
 3. In the **New Instance or Subscription** popup, select **free** from the dropdown in the **Plan** field and choose **Create**.
 
-    <!-- border; size:540px --> ![SAP Business Application Studio, create free plan instance](./bas-create-free.png)
+    <!-- border; size:540px -->
+    ![SAP Business Application Studio, create free plan instance](./bas-create-free.png)
 
     > Creating your new subscription takes some minutes. You can check the current status of the submission on the **Service Instances and Subscriptions** page.
 
@@ -69,11 +72,13 @@ In this tutorial, you learn how to subscribe to SAP Business Application Studio 
 
 2. Select your user from the list and choose **Assign Role Collection**.
 
-    <!-- border; size:540px --> ![SAP Business Application Studio: Assign Role Collection](./bas-assign-role-collection.png)
+    <!-- border; size:540px -->
+    ![SAP Business Application Studio: Assign Role Collection](./bas-assign-role-collection.png)
 
 3. In the **Assign Role Collection** popup, select the **Business_Application_Studio_Developer** role collection and choose **Assign Role Collection**.
 
-    <!-- border; size:540px --> ![Assign Rol Collection popup](./bas-assign-role-collection-popup.png)
+    <!-- border; size:540px -->
+    ![Assign Rol Collection popup](./bas-assign-role-collection-popup.png)
 
     > You can find an overview about the role collections in [Manage Role Collections](https://help.sap.com/docs/bas/sap-business-application-studio/manage-role-collections) on the SAP Help Portal.
 
@@ -87,11 +92,13 @@ In this tutorial, you learn how to subscribe to SAP Business Application Studio 
 
     If you haven't created a dev space, the welcome page for SAP Business Application Studio loads.
 
-    <!-- border; size:540px --> ![SAP Business Application Studio welcome](./bas-welcome.png)
+    <!-- border; size:540px -->
+    ![SAP Business Application Studio welcome](./bas-welcome.png)
 
     If you have already created another dev space, the dev space manager for SAP Business Application Studio loads.
 
-    <!-- border; size:540px --> ![SAP Business Application Studio welcome](./bas-welcome-1.png)
+    <!-- border; size:540px -->
+    ![SAP Business Application Studio welcome](./bas-welcome-1.png)
 
     > If you create a bookmark to this page, it's easy to get back to SAP Business Application Studio later.
 
@@ -99,12 +106,14 @@ In this tutorial, you learn how to subscribe to SAP Business Application Studio 
 
 5. Choose the **Full Stack Cloud Application** template and then choose **Create Dev Space**.
 
-    <!-- border; size:540px --> ![SAP Business Application Studio Create Dev Space](./bas-create-dev-space.png)
+    <!-- border; size:540px -->
+    ![SAP Business Application Studio Create Dev Space](./bas-create-dev-space.png)
 
     > Creating your dev space takes some minutes.
 
 6. As soon as your dev space is in status **Running**, you can click its name to open it.
 
-    <!-- border; size:540px --> ![SAP Business Application Studio Create Dev Space](./bas-open-dev-space.png)
+    <!-- border; size:540px -->
+    ![SAP Business Application Studio Create Dev Space](./bas-open-dev-space.png)
 
 You've successfully completed the setup of SAP Business Application Studio.

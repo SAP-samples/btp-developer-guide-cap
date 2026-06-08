@@ -43,31 +43,38 @@ If you don't have the entitlements added already, do the following steps to add 
 
 2. Navigate to your subaccount and choose **Entitlements** &rarr; **Edit**.
 
-      <!-- border; size:540px --> ![Edit entitlements](./entitlements0.png)
+      <!-- border; size:540px -->
+      ![Edit entitlements](./entitlements0.png)
 
 3. Choose **Add Service Plans**.
 
-      <!-- border; size:540px --> ![Add service plans](./entitlements1.png)
+      <!-- border; size:540px -->
+      ![Add service plans](./entitlements1.png)
 
 2. Search for **Cloud Foundry Environment** and select the **free (Environment)** plan.
 
-      <!-- border; size:540px --> ![Add Cloud Foundry](./entitlements2.png)
+      <!-- border; size:540px -->
+      ![Add Cloud Foundry](./entitlements2.png)
 
 2. Search for **SAP Build Work Zone, standard edition** and select the **free (Application)** plan.
 
-      <!-- border; size:540px --> ![Add Work Zone](./entitlements3.png)
+      <!-- border; size:540px -->
+      ![Add Work Zone](./entitlements3.png)
 
 3. Search for **SAP HANA Cloud** and select the **tools (Application)** service plan and the **hana-free** service plan.
 
-      <!-- border; size:540px --> ![Add HANA](./entitlements4.png)
+      <!-- border; size:540px -->
+      ![Add HANA](./entitlements4.png)
 
 4. Search for **SAP HANA Schemas & HDI containers** and select the **hdi-shared** service plan.
 
-      <!-- border; size:540px --> ![Add HANA HDI](./entitlement5.png)
+      <!-- border; size:540px -->
+      ![Add HANA HDI](./entitlement5.png)
 
 5. Search for **Continuous Integration & Delivery**, select the **free (Application)** plan, and choose **Add 6 Service Plans**.
 
-      <!-- border; size:540px --> ![Add CI/CD](./entitlement6.png)
+      <!-- border; size:540px -->
+      ![Add CI/CD](./entitlement6.png)
 
 6. Choose **Save**.
 
@@ -95,11 +102,13 @@ Enabling the Cloud Foundry (CF) runtime creates a CF organization (org.) in your
 
 3. Navigate to **Cloud Foundry** &rarr; **Spaces** and choose **Create Space**.
 
-      <!-- border; size:540px --> ![Create space](./cf-createspace.png)
+      <!-- border; size:540px -->
+      ![Create space](./cf-createspace.png)
 
 4. Enter a space name (for example, **dev**) and choose **Create**.
 
-      <!-- border; size:540px --> ![Create space popup](./cf-createspace-popup.png)
+      <!-- border; size:540px -->
+      ![Create space popup](./cf-createspace-popup.png)
 
 
 
@@ -113,17 +122,21 @@ If you don't have a subscription to SAP HANA Cloud already, do the following ste
 
 2. Type **SAP HANA Cloud** in the search box and choose **Create**.
 
-      <!-- border; size:540px --> ![Create an SAP HANA Cloud tools instance](./create-hana-tools.png)
+      <!-- border; size:540px -->
+      ![Create an SAP HANA Cloud tools instance](./create-hana-tools.png)
 
 2. In the **New Instance or Subscription** popup, select **tools** from the dropdown in the **Plan** field and choose **Create**.
 
-      <!-- border; size:540px --> ![SAP HANA Cloud tools instance creation popup](./create-hana-tools-popup.png)
+      <!-- border; size:540px -->
+      ![SAP HANA Cloud tools instance creation popup](./create-hana-tools-popup.png)
 
 7. Choose **View Subscription** and wait until the status changes to **Subscribed**.
 
-    <!-- border; size:540px --> ![View subscription](view-subscription.png)
+    <!-- border; size:540px -->
+    ![View subscription](view-subscription.png)
 
-    <!-- border; size:540px --> ![Status subscribed](./hanatools-status-subscribed.png)
+    <!-- border; size:540px -->
+    ![Status subscribed](./hanatools-status-subscribed.png)
 
 8. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
 
@@ -131,11 +144,13 @@ If you don't have a subscription to SAP HANA Cloud already, do the following ste
 
 10. Choose **Edit**.
 
-    <!-- border; size:540px --> ![Edit role](./hana-edit-role.png)
+    <!-- border; size:540px -->
+    ![Edit role](./hana-edit-role.png)
 
 11. In the **Users** section, enter your user and select the icon to add the user.
 
-    <!-- border; size:540px --> ![Add user](./hana-add-user.png)
+    <!-- border; size:540px -->
+    ![Add user](./hana-add-user.png)
 
     > Keep the setting `Default Identity Provider` unless you have a custom identity provider configured.
 
@@ -155,21 +170,25 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 
 2. Choose **SAP HANA Cloud**. You're redirected to SAP HANA Cloud Central. Sign in with your SAP BTP cockpit username/e-mail if necessary.
 
-    <!-- border; size:540px --> ![SAP HANA Cloud Go to application](./hana-goto-app.png)
+    <!-- border; size:540px -->
+    ![SAP HANA Cloud Go to application](./hana-goto-app.png)
 
 3. In SAP HANA Cloud Central, choose **Create Instance**.
 
-      <!-- border; size:540px --> ![SAP HANA Cloud create instance](./hana-create-instance.png)
+      <!-- border; size:540px -->
+      ![SAP HANA Cloud create instance](./hana-create-instance.png)
 
 7. Select the **Configure manually** radio button, then select the **Free Tier** tab and make sure that the **SAP HANA Database** tab is selected. Choose **Next Step**.
 
-      <!-- border; size:540px --> ![Create SAP HANA DB Step 1](./create-hana-db1.png)
+      <!-- border; size:540px -->
+      ![Create SAP HANA DB Step 1](./create-hana-db1.png)
 
 8. In the **Instance Name** field, enter **incident-management**.
 
 9. In the **Administrator Password** and **Confirm Administrator Password** fields, enter a password for DBADMIN. Choose **Next Step**.
 
-      <!-- border; size:540px --> ![Create SAP HANA DB Step 2](./create-hana-db2.png)
+      <!-- border; size:540px -->
+      ![Create SAP HANA DB Step 2](./create-hana-db2.png)
 
 10. The default settings are sufficient for the Incident Management application. Choose **Next Step**.
 
@@ -177,7 +196,8 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 
 12. Select the **Allow all IP addresses** radio button, and choose **Review and Create** to review your SAP HANA Cloud instance configuration.
 
-      <!-- border; size:540px --> ![Create SAP HANA DB Step 3](./create-hana-db3.png)
+      <!-- border; size:540px -->
+      ![Create SAP HANA DB Step 3](./create-hana-db3.png)
 
 13. Choose **Create Instance**.
 
@@ -195,11 +215,13 @@ The creation of the database instance can take some minutes to complete.
 
 2. For the **incident-management** instance, choose **Manage Configuration**.
 
-      <!-- border; size:540px --> ![Manage instance configuration](./hana-config.png)
+      <!-- border; size:540px -->
+      ![Manage instance configuration](./hana-config.png)
 
 3. Select the **Instance Mapping** tab and choose **Add Mapping**.
 
-      <!-- border; size:540px --> ![Add instance mapping](./hana-add-mapping.png)
+      <!-- border; size:540px -->
+      ![Add instance mapping](./hana-add-mapping.png)
 
 4. Choose **Cloud Foundry** from the dropdown under **Environment Type**.
 
@@ -208,13 +230,15 @@ The creation of the database instance can take some minutes to complete.
       - Open a new terminal in SAP Business Application Studio and log in with `cf login`.
       - Run the command `cf org <Your-Cloud-Foundry-Org> --guid`. You get the GUID of your Cloud Foundry organization in response.
 
-      <!-- border; size:540px --> ![Add environment instance ID](./cf-env-instance-id.png)
+      <!-- border; size:540px -->
+      ![Add environment instance ID](./cf-env-instance-id.png)
     
     > If you only specify the organization GUID, the instance is mapped to all spaces in that organization.
 
 5. Choose **Review and Save** and then choose **Save Changes** in the popup. 
 
-      <!-- border; size:540px --> ![Save changes](./hana-save-mapping.png)
+      <!-- border; size:540px -->
+      ![Save changes](./hana-save-mapping.png)
 
       You've mapped your SAP HANA Cloud service instance to your Cloud Foundry organization.
 

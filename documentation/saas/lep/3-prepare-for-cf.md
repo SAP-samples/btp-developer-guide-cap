@@ -271,13 +271,13 @@ In the `mta.yaml` file, update the following configurations:
       ...
       properties:
         TENANT_HOST_PATTERN: "^(.*)-${default-uri}"
-        OWN_SAP_CLOUD_SERVICE: ["incidentsservice"] # Add
+        OWN_SAP_CLOUD_SERVICE: ["incidents.service"] # Add
         COOKIE_BACKWARD_COMPATIBILITY: true # Add
       requires:
         - name: incidents-build-workzone-service # Add
     ```
 
-    -  **OWN_SAP_CLOUD_SERVICE** is derived from `app/incidents/webapp/manifest.json → sap.cloud.service` with all dots removed. For example, `incidents.service` becomes `incidentsservice`.
+    -  **OWN_SAP_CLOUD_SERVICE** must exactly match the `sap.cloud.service` value in `app/incidents/webapp/manifest.json` — **keep dots**. For example, `incidents.service` stays as `incidents.service`. Removing dots causes: `LEP configured exposureId must equal the solution sap.cloud.service value`.
   
 4. Update the `incidents-app-deployer` module:
 

@@ -1,10 +1,9 @@
+
 ## Set Up SAP Business Application Studio
 
 
 In this tutorial, you learn how to subscribe to SAP Business Application Studio and how to launch SAP Business Application Studio.
 
-
-- How to launch SAP Business Application Studio.
 
 ## Prerequisites
 

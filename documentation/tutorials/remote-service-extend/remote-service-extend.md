@@ -152,7 +152,6 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
           const query = SELECT.from(BusinessPartner, bp => {
             bp('*');
             bp.addresses(address => {
-              address('email');
               address.email(emails => {
                 emails('email');
               });
@@ -266,9 +265,8 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
           let result = await this.S4bupa.run(SELECT.from(BusinessPartner, bp => {
             bp('*'),
               bp.addresses(address => {
-                address('email'),
-                  address.email(emails => {
-                    emails('email');
+                address.email(emails => {
+                  emails('email');
                   });
               })
           }).limit(top, skip));
@@ -298,14 +296,13 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         > - fetches the customer data from the remote service (including e-mail and phone number)
         > - if the customer data is found, updates the local `Customers` entity while also removing unnecessary fields
 
-10. To run the tests, navigate to the **tests/test.js** file and replace line no.3 with the following highlighted line:
+10. To run the tests, navigate to the **tests/test.js** file and replace lines no.2-5 with the following highlighted lines:
 
-    ```js[3]
-    const cds = require('@sap/cds/lib')
-    const { default: axios } = require('axios') 
-    const { GET, POST, DELETE, PATCH, expect } = cds.test(__dirname + '../../', '--with-mocks');
-
-    axios.defaults.auth = { username: 'incident.support@tester.sap.com', password: 'initial' }
+    ```js[2-5]
+    const cds = require('@sap/cds')
+    const test = cds.test(__dirname + '/..', '--with-mocks')
+    const { GET, POST, DELETE, PATCH, expect } = test
+    test.defaults.auth = { username: 'alice', password: '' }
 
     jest.setTimeout(11111)
     ...

@@ -47,11 +47,7 @@ For more information about the Cloud Foundry environment, see [Cloud Foundry Env
     cds up 
     ```
 
-    > The `cds up` command simplifies the deployment process. It automates the steps that are otherwise done manually:  
-    > 
-    >  - Adding the mta deployment descriptor with the `cds add mta` command.   
-    >  - Building the deployment archive with the `mbt build` command.   
-    >  - Deploying to the Cloud Foundry environment with the `cf deploy` command.  
+    > The `cds up` command builds the deployment archive with the `mbt build` command and deploys to Cloud Foundry with the `cf deploy` command. It uses the `mta.yaml` generated during the preparation steps.
 
 4. Check if all services have been created:
 

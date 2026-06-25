@@ -35,7 +35,7 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/cds-cli#cds-init).
 
     ```bash
-    cds init --add nodejs incident-management
+    cds init incident-management --nodejs
     ```
 
     > This command creates a folder **incident-management** with your newly created CAP project.
@@ -100,7 +100,7 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/cds-cli#cds-init).
 
     ```bash
-    cds init incident-management --add java
+    cds init incident-management --java
     ```
 
     > This command creates a folder **incident-management** with your newly created CAP Java project.

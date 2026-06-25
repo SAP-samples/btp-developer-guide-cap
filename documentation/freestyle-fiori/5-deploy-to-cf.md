@@ -50,13 +50,35 @@ to
 ```
 
 > [!IMPORTANT]
+>
+> **`manager.zip` not generated on Windows:** The `zip` shell command does not exist on Windows. `cds add html5-repo` generates `app/manager/ui5.yaml` with the `ui5-task-zipper` task, which handles zip creation on all platforms. If `manager.zip` is still not produced after the build:
+>
+> 1. Verify that `app/manager/ui5.yaml` contains the `ui5-task-zipper` entry under `builder.customTasks` (see [Prepare HTML5 Applications](./9-prep-for-production.md)).
+> 2. If it is missing, re-run `cds add html5-repo` from the project root to regenerate it.
+> 3. If re-running does not add it (for example, because the file already exists and is not overwritten), add the entry manually:
+>
+>    ```yaml
+>    builder:
+>      customTasks:
+>        - name: ui5-task-zipper
+>          afterTask: generateVersionInfo
+>          configuration:
+>            archiveName: manager
+>            relativePaths: true
+>            additionalFiles:
+>              - xs-app.json
+>    ```
+>
 
-> **`manager.zip` not generated on Windows:** The `zip` shell command does not exist on Windows. Use `ui5-task-zipper` instead, which is already configured in `app/manager/ui5.yaml` after running `cds add html5-repo`. Make sure the build script in `app/manager/package.json` is:
-> ```json
-> "build": "ui5 build preload --clean-dest"
-> ```
-> The `ui5-task-zipper` task in `ui5.yaml` handles zip creation automatically on all platforms.
+1. Run the build for the manager app and verify that `app/manager/dist/manager.zip` is created before proceeding to the MTA build:
 
+    ```bash
+    cd app/manager
+    npm run build
+    ```
+
+    > [!NOTE]
+    > If you have not yet run `npm install` in `app/manager`, do so before the build.
 
 ## Assemble with the Cloud MTA Build Tool
 

@@ -439,6 +439,9 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
               - xs-app.json
     ```
 
+    > [!IMPORTANT]
+    > If `ui5-task-zipper` is not present under `builder.customTasks` in your generated `ui5.yaml`, re-run `cds add html5-repo` from the project root to regenerate it. If the file already exists and is not overwritten, add the `ui5-task-zipper` entry manually as shown above.
+
 3. Verify that the navigation target `incidents-display` and the SAP Cloud service `sap.cloud` have been correctly added to the application manifest file **app/incidents/webapp/manifest.json**:
 
 
@@ -528,11 +531,14 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     }
     ```
 
-3. In the terminal, navigate to the **app/incidents/** folder and run the following command:
+3. In the terminal, navigate to the **app/incidents/** folder and run the following commands:
 
     ```bash
     npm install
+    npm run build
     ```
+
+    After the build completes, verify that `app/incidents/dist/incidents.zip` has been created. This file is required for deployment.
 
 [OPTION END]
 

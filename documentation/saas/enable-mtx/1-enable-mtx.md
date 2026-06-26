@@ -6,11 +6,18 @@ MTX services are implemented in Node.js and can run in the same Node.js server a
 1. Run the `@sap/cds-mtxs` package to enable multitenancy for the Incident Management application:
 
     ```shell
-    cds add multitenancy --for production
+    cds add multitenancy
     ```
 2. Install your application dependencies:
 
     ```shell
+    npm i
+    ```
+
+3. Install the multitenancy module dependencies:
+
+    ```shell
+    cd mtx/sidecar
     npm i
     ```
 

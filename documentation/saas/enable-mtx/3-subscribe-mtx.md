@@ -1,5 +1,10 @@
 # Subscribe Tenants to the Application Locally
 
+> [!TIP]
+> In the following steps, you need two terminal windows:
+> - **Terminal 1**: Start the MTX sidecar (`cds watch mtx/sidecar`)
+> - **Terminal 2**: Run the `cds subscribe` commands below, then use the same/new terminal to start the application server (`cds watch --with-mtx`)
+
 1. Subscribe to the first tenant locally by using the following command at root of the project:
 
   ```shell
@@ -40,6 +45,9 @@ In response to each subscription, the sidecar creates a new persistent tenant da
 [mtx] - subscribed tenant t1
 
 ```
-> **NOTE**   
+> [!NOTE]
 > When running these commands, you use the predefined mocked user `yves`. For more information, see the section on [predefined mock users](https://cap.cloud.sap/docs/node.js/authentication#mock-users).
-To see all available options, run `cds subscribe --help`.
+> To see all available options, run `cds subscribe --help`.
+
+> [!WARNING]
+> If the subscription fails with a `404 Not Found` error, delete `~/.cds-services.json` and restart the sidecar.

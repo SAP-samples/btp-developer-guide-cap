@@ -11,7 +11,7 @@ Once the application is configured for multitenancy and dependency callback hand
 1. Configure the Helm chart for multitenancy using the following command at the root of project:
    
 ```shell
-cds add helm
+cds add kyma
 ```
 
 > Open `chart/values.yaml`, and check for the destination bindings. Remove them if they exist. Open `chart/Chart.yaml` and remove the destination service instance if it exists.
@@ -120,6 +120,8 @@ cds add helm
     cds add html5-repo
 ```
 
+> **⚠️ Warning:** Running `cds add html5-repo` automatically re-adds `destination` bindings and service instance entries that were previously removed. Follow the cleanup steps in the next section.
+
 4. Add the following code snippet to **chart/Chart.yaml**:
 
 ```yaml
@@ -189,7 +191,7 @@ cds build --production
 
 ## Build the Images
 
-Configure `containerize.yaml` at the root of your project. Once all configurations are done, deploy with `cds up`.
+Configure `containerize.yaml` at the root of your project. Once all configurations are done, deploy with `cds up -2 k8s`.
 
 > **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
 
@@ -203,7 +205,7 @@ modules:
       buildpack:
         type: nodejs
         builder: builder-jammy-base
-        path: ui-resources
+        path: app/html5-deployer
   - name: incident-management-sidecar
     build-parameters:
       buildpack:

@@ -24,7 +24,7 @@ To integrate with SAP Audit Log Service, you need to:
       requires:
       - name: incidents-auditlog
     ```
-3. Update `xs-security.json` and add `admin` role. The final `xs-security.json` will look like below:
+3. Update `xs-security.json` and add `admin` role. Also add the `Token_Exchange` role-template to enable OAuth2 token exchange. The final `xs-security.json` will look like below:
 
     ```json
     {

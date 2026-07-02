@@ -44,7 +44,7 @@ To make the application tile visible in the SAP Build Work Zone, you need to ass
 
 ## Launch the Application
 
-1. In the SAP BTP cockpit, navigate to your subaccount and choose the HTML5 tab of the subaccount. 
+1. In the SAP BTP cockpit, navigate to the **subscriber subaccount** and choose the **HTML5** tab.
 2. You will see `nsincidents` or other name based on the namespace given to your UI application.
 3. Choose it to launch it.
 4. The final application will look like this:

@@ -22,13 +22,12 @@ You've configured the access to your application. Follow the steps in the [Add A
 3. To add the required dependencies, run the following command:
 
     ```bash
-    npm add -D @cap-js/cds-test jest
+    npm add -D @cap-js/cds-test
     ```
 
     | Package | Role |
     |---|---|
     | `@cap-js/cds-test` | CAP test helper — HTTP client, `expect`, server lifecycle |
-    | `jest` | Test runner |
 
 </details>
 
@@ -65,12 +64,10 @@ Open the **srv/pom.xml** file and add the following snippet to the dependencies 
 
     ```js
     const cds = require('@sap/cds')
-    const test = cds.test(__dirname + '/..')
+    const test = cds.test(__dirname + '/..', '--with-mocks')
     const { GET, POST, DELETE, PATCH, expect } = test
 
     test.defaults.auth = { username: 'alice', password: '' }
-
-    jest.setTimeout(11111)
 
     describe('Test The GET Endpoints', () => {
       it('Should check Processor Service', async () => {
@@ -86,7 +83,7 @@ Open the **srv/pom.xml** file and add the following snippet to the dependencies 
       })
 
       it('Test Expand Entity Endpoint', async () => {
-        const { data } = await GET`/odata/v4/processor/Customers?$select=firstName&$expand=incidents`
+        const { data } = await GET(`/odata/v4/admin/Customers?$select=firstName&$expand=incidents`, { auth: { username: 'bob', password: '' } })
         expect(data).to.be.an('object')
         expect(data.value).to.be.an('array')
       })
@@ -566,12 +563,12 @@ Add the `"test"` script to the `scripts` section of **package.json**:
 ```json
 {
   "scripts": {
-    "test": "npx jest --silent test/test.js"
+    "test": "CDS_PLUGIN_UI5_ACTIVE=false node --test --test-timeout=30000 test/test.js"
   }
 }
 ```
 
-> The `--silent` flag suppresses CDS server logs so only the Jest summary is shown. Remove it if you need to debug a failing test.
+> `CDS_PLUGIN_UI5_ACTIVE=false` prevents the UI5 plugin from starting a dev server during tests. `--test-timeout=30000` gives the CDS server enough time to boot before the first test runs.
 
 #### 3. Run the tests
 
@@ -581,58 +578,25 @@ Run the following command in the terminal:
 npm run test
 ```
 
-`--silent` suppresses CDS server logs. The output shows only the summary:
+The output shows the summary:
 
 ```bash
-Test Suites: 1 passed, 1 total
-Tests:       20 passed, 20 total
-Snapshots:   0 total
-Time:        ~3 s
-Ran all test suites.
-```
-
-To see each individual test name, run without `--silent`:
-
-```bash
-npx jest test/test.js --verbose
-```
-
-The detailed output looks like this:
-
-```bash
-PASS  test/test.js
-Test The GET Endpoints
-  ✓ Should check Processor Service (2 ms)
-  ✓ Should check Customers (1 ms)
-  ✓ Test Expand Entity Endpoint (26 ms)
-Draft Choreography APIs
-  ✓ Create an incident  (19 ms)
-  ✓ + Activate the draft & check Urgency code as H using custom logic (8 ms)
-  ✓ + Test the incident status (2 ms)
-  Close Incident and Open it again to check Custom logic
-    ✓ Should Close the Incident (6 ms)
-    ✓ Should patch the Incident status to Closed (4 ms)
-    ✓ + Activate the draft & check Status code as C using custom logic (5 ms)
-    ✓ + Test the incident status to be closed (2 ms)
-    should fail to re-open closed incident
-      ✓ Should Open Closed Incident (5 ms)
-      ✓ Should re-open the Incident but fail (3 ms)
-      ✓ Should fail to activate draft trying to re-open the incident (10 ms)
-  ✓ - Delete the Draft (2 ms)
-  ✓ - Delete the Incident (2 ms)
-Auto-Urgency logic (processor-service.js custom handler)
-  ✓ does NOT change urgency_code when title has no "urgent" (8 ms)
-  ✓ sets urgency_code=H for all-caps URGENT (case-insensitive /urgent/i) (8 ms)
-  ✓ sets urgency_code=H when "urgent" appears mid-title (10 ms)
-Authorization
-  ✓ rejects support-role user (alice) from AdminService with 403 (2 ms)
-  ✓ allows bob (admin role) to read and write Customers (6 ms)
-
-Test Suites: 1 passed, 1 total
-Tests:       20 passed, 20 total
-Snapshots:   0 total
-Time:        ~3 s
-Ran all test suites.
+▶ Test The GET Endpoints
+  ✔ Should check Processor Service (2 ms)
+  ✔ Should check Customers (1 ms)
+  ✔ Test Expand Entity Endpoint (26 ms)
+✔ Test The GET Endpoints
+▶ Draft Choreography APIs
+  ✔ Create an incident  (19 ms)
+  ✔ + Activate the draft & check Urgency code as H using custom logic (8 ms)
+  ✔ + Test the incident status (2 ms)
+  ...
+✔ Draft Choreography APIs
+✔ Auto-Urgency logic (processor-service.js custom handler)
+✔ Authorization
+ℹ tests 20
+ℹ pass 20
+ℹ fail 0
 ```
 
 > For a more detailed guide, see [Testing](https://cap.cloud.sap/docs/node.js/cds-test) in the CAP Node.js SDK documentation.

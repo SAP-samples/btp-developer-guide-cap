@@ -60,7 +60,6 @@ async onBusinessPartnerChanged(event, data){
     const customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp => {
       bp('*'),
       bp.addresses(address => {
-        address('email'),
         address.email(emails => {
           emails('email')
         })

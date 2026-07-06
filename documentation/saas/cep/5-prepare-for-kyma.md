@@ -19,9 +19,9 @@ cds add kyma
 > If the project already has a cdm file, skip the next step.
   
 2. Create a folder resources in the project's root directory. Create a file named cdm.json and paste the following:
-    > Ensure that the `appId` matches `app/incidents/manifest.json` → `sap.app.id`. Update all `appId` values below with the value from your application.
+    > Ensure that the `appId` matches `app/incidents/webapp/manifest.json` → `sap.app.id`. Update all `appId` values below with the value from your application.
     >
-    > Ensure that the `vizId` matches the inbound key under `sap.app.crossNavigation.inbounds` in `app/incidents/manifest.json`. For example, if your manifest has:
+    > Ensure that the `vizId` matches the inbound key under `sap.app.crossNavigation.inbounds` in `app/incidents/webapp/manifest.json`. For example, if your manifest has:
     > ```json
     > "crossNavigation": {
     >   "inbounds": {
@@ -48,7 +48,7 @@ cds add kyma
         "payload": {
             "viz": [
             {
-                "appId": "nsincidentswz",
+                "appId": "ns.incidents",
                 "vizId": "intent1"
             }
             ]
@@ -72,7 +72,7 @@ cds add kyma
         "payload": {
             "viz": [
             {
-                "appId": "nsincidentswz",
+                "appId": "ns.incidents",
                 "vizId": "intent1"
             }
             ]
@@ -96,7 +96,7 @@ cds add kyma
         "payload": {
             "apps": [
             {
-                "id": "nsincidentswz"
+                "id": "ns.incidents"
             }
             ],
             "catalogs": [

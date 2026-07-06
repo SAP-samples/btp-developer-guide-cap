@@ -17,7 +17,7 @@ cds add helm
 > If the project already has a cdm file, skip the next step.
   
 2. In the **ui-resources/resources** folder, create a file called **cdm.json** and paste the following:
-    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
+    > Ensure that the `appId` is matching `app/incidents/webapp/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
 
 ```json
     [
@@ -31,7 +31,7 @@ cds add helm
         "payload": {
             "viz": [
             {
-                "appId": "nsincidentswz",
+                "appId": "ns.incidents",
                 "vizId": "intent1"
             }
             ]
@@ -55,7 +55,7 @@ cds add helm
         "payload": {
             "viz": [
             {
-                "appId": "nsincidentswz",
+                "appId": "ns.incidents",
                 "vizId": "intent1"
             }
             ]
@@ -79,7 +79,7 @@ cds add helm
         "payload": {
             "apps": [
             {
-                "id": "nsincidentswz"
+                "id": "ns.incidents"
             }
             ],
             "catalogs": [

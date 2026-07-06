@@ -174,7 +174,7 @@ The application deployer will look like this:
 ```
 
 10. Create a **workzone** folder on the root of the project then create a file named **cdm.json** and paste the following:
-    > Ensure that the `appId` is matching `app/incidents/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
+    > Ensure that the `appId` is matching `app/incidents/webapp/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
     > Ensure that the `"vizId": "incidents-display"` is matching `crossNavigation->inbounds-><vizId>` In this case `<vizId>` is `incidents-display`.
 
 ```json

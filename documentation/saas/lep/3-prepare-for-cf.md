@@ -6,9 +6,9 @@ In this section, you will be preparing the Incident Management application to wo
 
 1. Create a **workzone** folder on the root of the project. Then, create a file named **cdm.json** and paste the following:
  
-    > Ensure that the `appId` matches `app/incidents/manifest.json` → `sap.app.id`. Update the `appId` below with the value from your application.
+    > Ensure that the `appId` matches `app/incidents/webapp/manifest.json` → `sap.app.id`. Update the `appId` below with the value from your application.
     >
-    > Ensure that the `vizId` matches the inbound name under `sap.app.crossNavigation.inbounds` in `app/incidents/manifest.json`. For example:
+    > Ensure that the `vizId` matches the inbound name under `sap.app.crossNavigation.inbounds` in `app/incidents/webapp/manifest.json`. For example:
     > ```json
     > "crossNavigation": {
     >   "inbounds": {

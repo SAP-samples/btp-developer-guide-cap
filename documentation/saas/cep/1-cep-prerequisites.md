@@ -21,7 +21,6 @@ The SAP Build Work Zone Central Entry Point approach will look like the followin
    > **Note:** The prerequisite deployment must include the following components, as they are required by the MTA configuration in this scenario:
    > - **XSUAA** (`incident-management-auth`) — added via `cds add xsuaa`
    > - **SAP HANA Cloud** (`incident-management-db`) — added via `cds add hana`
-   > - **Approuter** — added via `cds add approuter`
 
 2. **Enable Multitenancy** by following the steps in:
    [Enable Multitenancy for the CAP Application](../enable-mtx/1-enable-mtx.md)

@@ -22,11 +22,11 @@
 
 
 ## Accessing Custom Audit Logs Using SAP Audit Log Viewer Service
-As part of the custom implementation of Audit logs in the [previous section](../../develop/audit-logging/add-custom-auditlogs.md) you have added steps to generate custom audit logs.
+As part of the custom implementation of Audit logs in the [previous section](./2-implement.md) you have added steps to generate custom audit logs.
 To access these logs you need to follow these steps:
 
-1. Remove the `Support` role from your user while keeping the `Admin` role as it is. You can add `Support` back later.
-2. From Postman/Insomania or any other tool of your choice, make a request to `https://<org>-<space>-incidents-srv.cfapps.sap.hana.ondemand.com/odata/v4/admin/Customers` as done in the previous section.
+1. Remove the `Admin` role from your user while keeping the `Support` role as it is. You can add `Admin` back later.
+2. From Postman/Insomnia or any other tool of your choice, make a request to `https://<org>-<space>-incidents-srv.cfapps.sap.hana.ondemand.com/odata/v4/admin/Customers` as done in the previous section.
 3. Now in the `Audit Log Viewer` application, filter logs by `security-events`.
 4. Now you can see the custom audit logs.
    ![Custom Audit Logs](./images/customAuditLog.png)

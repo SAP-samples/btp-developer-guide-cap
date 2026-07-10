@@ -255,20 +255,23 @@ In the `mta.yaml` file, update the following configurations:
     - name: incidents-build-workzone-service
       parameters:
         config:
-          providerId: ${org}-${space}
+          providerId: lepProvider
           exposureId: <exposureId>
         service-plan: local-entry-point
         service: build-workzone-standard
       type: org.cloudfoundry.managed-service
     ```
 
+
 - Replace `<exposureId>` with the `sap.cloud.service` value from `app/incidents/webapp/manifest.json` (for example, `incidents.service`).
    
-3. Under `incidents` approuter module, add **OWN_SAP_CLOUD_SERVICE**, **COOKIE_BACKWARD_COMPATIBILITY** under `properties` section and the workzone service under the `requires` section.
+3. Under `incidents` approuter module, add **OWN_SAP_CLOUD_SERVICE**, **COOKIE_BACKWARD_COMPATIBILITY** under `properties` section, `host` under `parameters`, and the workzone service under the `requires` section.
    
     ```yaml
     - name: incidents
       ...
+      parameters: # Add
+        host: incidents-router # Add
       properties:
         TENANT_HOST_PATTERN: "^(.*)-${default-uri}"
         OWN_SAP_CLOUD_SERVICE: ["incidents.service"] # Add
@@ -277,7 +280,9 @@ In the `mta.yaml` file, update the following configurations:
         - name: incidents-build-workzone-service # Add
     ```
 
-    -  **OWN_SAP_CLOUD_SERVICE** must exactly match the `sap.cloud.service` value in `app/incidents/webapp/manifest.json` — **keep dots**. For example, `incidents.service` stays as `incidents.service`. Removing dots causes: `LEP configured exposureId must equal the solution sap.cloud.service value`.
+    > The host under parameters shortens the approuter URL to `incidents-router.cfapps.<region>.hana.ondemand.com`. It is required because the full auto-generated URL often exceeds 63 characters.
+
+    > **OWN_SAP_CLOUD_SERVICE** must exactly match the `sap.cloud.service` value in `app/incidents/webapp/manifest.json` — **keep dots**. For example, `incidents.service` stays as `incidents.service`. Removing dots causes: `LEP configured exposureId must equal the solution sap.cloud.service value`.
   
 4. Update the `incidents-app-deployer` module:
 
@@ -333,6 +338,7 @@ In the `mta.yaml` file, update the following configurations:
     "workspaces": [ "app/*" ]
     ```
    > Workspaces cause `mbt build` to fail for LEP because the app directory is handled separately via the build commands above.
+
 7. Update the `mta.yaml` by removing the auto-generated role collections:
     ```yaml
     ...
@@ -348,14 +354,23 @@ In the `mta.yaml` file, update the following configurations:
     ...
    ```
 
-> **Note:** The name of the **Role collection** and **CDM identification id** must be the same — this 1:1 relationship ensures that the application tiles described in `cdm.json` are visible in the subscriber subaccount.
+8. Open `xs-security.json` and add a `role-collections` array:
 
-8. Under the `incidents` approuter module, add:
-  ```yaml
-    parameters:
-      host: incidents-router
-  ```
-  > This shortens the approuter URL to `incidents-router.cfapps.<region>.hana.ondemand.com`. It is required because the full auto-generated URL often exceeds 63 characters.
+    ```json
+    "role-collections": [
+      {
+        "name": "Incidents_LEP",
+        "description": "Incident Management LEP Role Collection",
+        "role-template-references": [
+          "$XSAPPNAME.support",
+          "$XSAPPNAME.admin"
+        ]
+      }
+    ]
+    ```
+
+
+> **Note:** The name of the **Role collection** and **CDM identification id** must be the same — this 1:1 relationship ensures that the application tiles described in `cdm.json` are visible in the subscriber subaccount.
 
 ## Next Step
 

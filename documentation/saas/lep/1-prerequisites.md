@@ -88,7 +88,7 @@ Update `app/incidents/webapp/manifest.json`, and add the following code at the r
 }
 ```
 
-> This value is referenced in the MTA configuration as `OWN_SAP_CLOUD_SERVICE`. When setting that property, remove all dots from the service name (for example, `incidents.service` becomes `incidentsservice`).
+> This value is referenced in the MTA configuration as `OWN_SAP_CLOUD_SERVICE`. When setting that property, keep the dots in the service name (for example, `incidents.service` stays as `incidents.service`).
 
 ### Set Up the MTA for Deployment
 

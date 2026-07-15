@@ -35,28 +35,33 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/cds-cli#cds-init).
 
     ```bash
-    cds init incident-management --nodejs
+    cds init incident-management
     ```
 
     > This command creates a folder **incident-management** with your newly created CAP project.
 
+5. Add Node.js support.
 
-5. Choose the **Explorer** icon and then choose **Open Folder**. Type `/home/user/projects/` in the field and select `incident-management`. Choose **OK** to open the project in SAP Business Application Studio.
+    ```bash
+    cds add nodejs
+    ```
+
+6. Choose the **Explorer** icon and then choose **Open Folder**. Type `/home/user/projects/` in the field and select `incident-management`. Choose **OK** to open the project in SAP Business Application Studio.
 
     <!-- border; size:540px -->
     ![Open SAP Business Application Studio folder](./bas-open-folder.png)
 
     > You can also use the **Cmd+Shift+E** (macOS) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
-6. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
+7. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
-7. Install dependencies with the following command:
+8. Install dependencies with the following command:
 
     ```bash
     npm install
     ```
 
-8. Start a CAP server:
+9. Start a CAP server:
 
     ```bash
     cds watch
@@ -100,28 +105,34 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 4. Create a new project using [`cds init`](https://cap.cloud.sap/docs/tools/cds-cli#cds-init).
 
     ```bash
-    cds init incident-management --java
+    cds init incident-management
     ```
 
     > This command creates a folder **incident-management** with your newly created CAP Java project.
 
-5. Choose the **Explorer** icon and then choose **Open Folder**. Type `/home/user/projects/` in the field and select `incident-management`. Choose **OK** to open the project in SAP Business Application Studio.
+5. Add Java support.
+
+    ```bash
+    cds add java
+    ```
+
+6. Choose the **Explorer** icon and then choose **Open Folder**. Type `/home/user/projects/` in the field and select `incident-management`. Choose **OK** to open the project in SAP Business Application Studio.
 
     <!-- border; size:540px -->
     ![Open SAP Business Application Studio folder](./bas-open-folder.png)
 
     > You can also use the **Cmd+Shift+E** (macOS) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
-6. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
+7. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
-7. Navigate to the **srv** folder.
+8. Navigate to the **srv** folder.
 
     ```bash
     cd srv
     ```
 
 
-8. Run the following command to start a CAP Java server:
+9. Run the following command to start a CAP Java server:
 
 
     ```bash

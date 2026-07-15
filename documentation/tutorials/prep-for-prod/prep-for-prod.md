@@ -23,12 +23,10 @@ You've added test cases in your application. Follow the steps in the [Add Test C
 3. To add an SAP HANA Cloud client to your application, run the following command:
 
     ```bash
-    cds add hana --for production
+    cds add hana
     ```
 
-    > The **cds add hana** command adds the `@sap/cds-hana` module that allows SAP HANA Cloud to access the **package.json** file and the database configuration `"db": "hana"` that uses SAP HANA Cloud when the application is started on production.
-    >
-    > The **cds add hana** command adds to the **package.json** file the `"@cap-js/hana": "^x"` dependency and the `cds.requires` `[production]` profile `"db": "hana"`.
+    > The **cds add hana** command adds the `@cap-js/hana` package to the **package.json** file of the **INCIDENT-MANAGEMENT** project.
 
     ```json
     {
@@ -37,15 +35,6 @@ You've added test cases in your application. Follow the steps in the [Add Test C
             ...
             "@cap-js/hana": "^x"
         },
-        ...
-        "cds": {
-            "requires": {
-                ...
-                "[production]": {
-                    "db": "hana"
-                }
-            }
-        }
         ...
     }
     ```
@@ -73,7 +62,7 @@ You've added test cases in your application. Follow the steps in the [Add Test C
     > {
     >   middlewares: true,
     >   auth: { kind: 'jwt', vcap: { label: 'xsuaa' } },
-    >   db: { impl: '@sap/cds/libx/_runtime/hana/Service.js', kind: 'hana' }
+    >   db: { impl: '@cap-js/hana', data: [ 'db/data', 'db/csv' ], kind: 'hana' }
     > }
     >```
 
@@ -97,7 +86,7 @@ You've added test cases in your application. Follow the steps in the [Add Test C
 3. To add an SAP HANA Cloud client to your application, run the following command:
 
     ```bash
-    cds add hana --for production
+    cds add hana
     ```
 
     > The **cds add hana** command adds a dependency that contains `cds-feature-hana` dependency which is used to configure hana as production database.
@@ -132,14 +121,10 @@ You've added test cases in your application. Follow the steps in the [Add Test C
     >
     > ```bash
     > {
-    >    db: {
-    >      impl: '@sap/cds/libx/_runtime/hana/Service.js',
-    >      kind: 'hana',
-    >      'deploy-format': 'hdbtable'
-    >    },
-    >    auth: { strategy: 'JWT', kind: 'jwt-auth', vcap: { label: 'xsuaa' } },
-    >    approuter: { kind: 'cloud-foundry' }
-    >  }
+    >   middlewares: true,
+    >   auth: { kind: 'jwt', vcap: { label: 'xsuaa' } },
+    >   db: { impl: '@cap-js/hana', data: [ 'db/data', 'db/csv' ], kind: 'hana' }
+    > }
     >```
 
 2. Verify that your application still works locally. Navigate to the **srv** folder.
@@ -179,7 +164,7 @@ You've added test cases in your application. Follow the steps in the [Add Test C
 1. Run the following command in the terminal:
 
     ```bash
-    cds add xsuaa --for production
+    cds add xsuaa
     ```
 
     > Running **cds add xsuaa** does two things:
@@ -194,6 +179,7 @@ You've added test cases in your application. Follow the steps in the [Add Test C
       "name": "incident-management",
       "dependencies": {
           ...
+          "@cap-js/hana": "^x",
           "@sap/xssec": "^x"
       },
       ...
@@ -201,7 +187,6 @@ You've added test cases in your application. Follow the steps in the [Add Test C
         "requires": {
           ...
           "[production]": {
-            "db": "hana",
             "auth": "xsuaa"
           }
         ...
@@ -210,7 +195,7 @@ You've added test cases in your application. Follow the steps in the [Add Test C
     }
     ```
 
-    > In case any of the lines is missing, go ahead and add it manually. 
+    > In case any of the lines is missing, go ahead and add it manually. Note that `@cap-js/hana` was already added in the previous step and is shown here for context.
 
 3. Check the content of the **xs-security.json** file.
 
@@ -279,7 +264,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
 1. Run the following command in the terminal:
 
     ```bash
-    cds add xsuaa --for production
+    cds add xsuaa
     ```
 
     > Running **cds add xsuaa** does two things:
@@ -407,6 +392,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
         "ui5-task-zipper": "^3"
       },
       "scripts": {
+        "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf",
         "start": "ui5 serve",
         "build": "ui5 build preload --clean-dest"
       }
@@ -476,37 +462,6 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     ```
 
 
-4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
-
-    ```json
-    {
-        "_version": "1.49.0",
-        "sap.app": {
-            "id": "ns.incidents",
-            "type": "application",
-            "i18n": "i18n/i18n.properties",
-            ...
-            "dataSources": {
-                "mainService": {
-                    "uri": "odata/v4/processor/",
-                    "type": "OData",
-                    "settings": {
-                        "annotations": [],
-                        "localUri": "localService/metadata.xml",
-                        "odataVersion": "4.0"
-                    }
-                }
-            },
-            ...
-        },
-        ...
-    }
-    ```
-
-    Removing the leading `/` is needed as the dataSource URIs must be relative to the base URL, which means there's no need for a slash as the first character.
-
-    Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
-
 5. Make sure that the line `"welcomeFile": "/index.html"` in the following snippet is added to the **app/incidents/xs-app.json** file. Add if it's missing. 
 
     ```json
@@ -531,14 +486,11 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     }
     ```
 
-3. In the terminal, navigate to the **app/incidents/** folder and run the following commands:
+3. In the terminal, navigate to the **app/incidents/** folder and run the following command:
 
     ```bash
     npm install
-    npm run build
     ```
-
-    After the build completes, verify that `app/incidents/dist/incidents.zip` has been created. This file is required for deployment.
 
 [OPTION END]
 
@@ -559,44 +511,13 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     Adding feature 'workzone-standard'...
     ```
 
-4. Open **app/incidents/webapp/manifest.json** and remove the leading `/` from the `uri` parameter.
-
-    ```json
-    {
-        "_version": "1.49.0",
-        "sap.app": {
-            "id": "ns.incidents",
-            "type": "application",
-            "i18n": "i18n/i18n.properties",
-            ...
-            "dataSources": {
-                "mainService": {
-                    "uri": "odata/v4/processor/",
-                    "type": "OData",
-                    "settings": {
-                        "annotations": [],
-                        "localUri": "localService/metadata.xml",
-                        "odataVersion": "4.0"
-                    }
-                }
-            },
-            ...
-        },
-        ...
-    }
-    ```
-
-    Removing the leading `/` is needed as the dataSource URIs must be relative to the base URL, which means there's no need for a slash as the first character.
-
-    Check [Accessing Business Service UI](https://help.sap.com/docs/btp/sap-business-technology-platform/accessing-business-service-ui?locale=39723061bc4b4b679726b120cbefdf5a.html&q=base%20URL) for more information.
-
-6. Navigate to the **db** folder in the terminal and run the following command:
+2. Navigate to the **db** folder in the terminal and run the following command:
 
     ```bash
     npm install
     ```
 
-7. Navigate to the **app/incidents** folder in the terminal and run the following command:
+3. Navigate to the **app/incidents** folder in the terminal and run the following command:
 
     ```bash
     npm install

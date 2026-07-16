@@ -536,27 +536,32 @@ cds add mta
 > The `cds add mta` command generates the `mta.yaml` deployment descriptor required for building and deploying the application to Cloud Foundry. This is a one-time setup step.
 
 > [!IMPORTANT]
-> **App not appearing in Work Zone Content Explorer after deployment:** The `cds add workzone-standard` command places the `incident-management-html5-repository` destination at `instance` level in the generated `mta.yaml`. Work Zone's Channel Manager only reads **subaccount-level** destinations to discover HTML5 apps. After generating the `mta.yaml`, manually move this destination to `subaccount` level in the `incident-management-destinations` module:
+> In the generated `mta.yaml`, locate the existing `incident-management-destination` resource and add the `config:` block under `parameters:`:
 >
 > ```yaml
-> - name: incident-management-destinations
->   type: com.sap.application.content
->   ...
+> - name: incident-management-destination
+>   type: org.cloudfoundry.managed-service
 >   parameters:
->     content:
->       subaccount:
->         existing_destinations_policy: update
->         destinations:
->           - Name: incident-management-html5-repository
->             ServiceInstanceName: incident-management-html5-repo-host
->             ServiceKeyName: incident-management-html5-repo-host-key
->             sap.cloud.service: incidentmanagement.service
->       instance:
->         existing_destinations_policy: update
->         destinations: []
+>     service: destination
+>     service-plan: lite
+>     config:
+>       HTML5Runtime_enabled: true
+>       init_data:
+>         instance:
+>           existing_destinations_policy: update
+>           destinations:
+>             - Name: srv-api
+>               URL: ~{srv-api/srv-url}
+>               Authentication: NoAuthentication
+>               Type: HTTP
+>               ProxyType: Internet
+>               ForwardAuthToken: true
+>               DynamicDestination: true
+>   requires:
+>     - name: srv-api
 > ```
 >
-> Without this, the HTML5 Apps channel in Channel Manager will show no data after refresh. See also the note in the [Integrate Your Application with SAP Build Work Zone, Standard Edition](integrate-with-work-zone) tutorial.
+> The `requires: - name: srv-api` entry is usually generated automatically. If it is missing, add it manually as shown above.
 
 ### Run a test build
 

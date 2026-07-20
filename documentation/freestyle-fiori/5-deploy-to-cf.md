@@ -51,6 +51,19 @@ to
 
 > [!IMPORTANT]
 >
+> **Application not visible in HTML5 Applications tab:** Ensure that the `sap.cloud.service` value in each app's `webapp/manifest.json` matches the value configured in `mta.yaml`. If they differ, the application will not appear in the HTML5 Applications tab after deployment.
+>
+> In each app's `webapp/manifest.json`, verify:
+> ```json
+> "sap.cloud": {
+>     "public": true,
+>     "service": "incidentmanagement.service"
+> }
+> ```
+> This must match the `sap.cloud.service` value set in `mta.yaml`.
+
+> [!IMPORTANT]
+>
 > **`manager.zip` not generated on Windows:** The `zip` shell command does not exist on Windows. `cds add html5-repo` generates `app/manager/ui5.yaml` with the `ui5-task-zipper` task, which handles zip creation on all platforms. If `manager.zip` is still not produced after the build:
 >
 > 1. Verify that `app/manager/ui5.yaml` contains the `ui5-task-zipper` entry under `builder.customTasks` (see [Prepare HTML5 Applications](./9-prep-for-production.md)).

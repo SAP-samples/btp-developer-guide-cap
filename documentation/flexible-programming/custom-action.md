@@ -77,7 +77,7 @@ The above code will open the GeoMap fragment in a dialog.
             mapConfiguration='{
 			"MapProvider": [{
 					"name": "Openstreetmap",
-					"copyright": "&lt;b&gt;&lt;a href=\"http://www.openstreetmap.org/copyright\"&gt;© openstreetmap&lt;/a&gt;&lt;/b&gt;",
+					"copyright": "&#169; OpenStreetMap contributors",
 					"Source": [{
 						"id": "s1",
 						"url": "http://a.tile.openstreetmap.org/{LOD}/{X}/{Y}.png"
@@ -111,6 +111,7 @@ The above code will open the GeoMap fragment in a dialog.
                 />
             </vbm:Spots>
         </vbm:GeoMap>
+        <Link text="&#169; OpenStreetMap contributors" href="https://www.openstreetmap.org/copyright" target="_blank" wrapping="true" />
     </VBox>
 	<endButton>
 		<Button id="_IDGenButton" text="Close" press=".closeDialog" />

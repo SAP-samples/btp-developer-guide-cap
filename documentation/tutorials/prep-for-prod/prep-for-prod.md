@@ -525,44 +525,6 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
 
 [OPTION END]
 
-### Add the MTA deployment descriptor
-
-Run the following command to generate the `mta.yaml` deployment descriptor:
-
-```bash
-cds add mta
-```
-
-> The `cds add mta` command generates the `mta.yaml` deployment descriptor required for building and deploying the application to Cloud Foundry. This is a one-time setup step.
-
-> [!IMPORTANT]
-> In the generated `mta.yaml`, locate the existing `incident-management-destination` resource and add the `config:` block under `parameters:`:
->
-> ```yaml
-> - name: incident-management-destination
->   type: org.cloudfoundry.managed-service
->   parameters:
->     service: destination
->     service-plan: lite
->     config:
->       HTML5Runtime_enabled: true
->       init_data:
->         instance:
->           existing_destinations_policy: update
->           destinations:
->             - Name: srv-api
->               URL: ~{srv-api/srv-url}
->               Authentication: NoAuthentication
->               Type: HTTP
->               ProxyType: Internet
->               ForwardAuthToken: true
->               DynamicDestination: true
->   requires:
->     - name: srv-api
-> ```
->
-> The `requires: - name: srv-api` entry is usually generated automatically. If it is missing, add it manually as shown above.
-
 ### Run a test build
 
 [OPTION BEGIN [Node.js]]

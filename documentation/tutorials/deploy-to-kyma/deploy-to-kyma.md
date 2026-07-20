@@ -281,6 +281,111 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
     cds add kyma
     ```
 
+    The `cds add kyma` command generates a **chart/** folder containing the Helm chart for your application and a **container.yaml** file for container image configuration.
+
+    Update the `chart/values.yaml` file with your Kyma cluster domain and container registry details. The example below uses Docker Hub; adapt the `global.image.registry` and each `image.repository` value to match your container registry if you are not using Docker Hub:
+
+    ```yaml
+    # yaml-language-server: $schema=./values.schema.json
+
+    global:
+      domain: <xyz123>.kyma.ondemand.com
+      imagePullSecret:
+        name: docker-registry
+      image:
+        registry: docker.io
+        tag: <image-tag>
+    srv:
+      bindings:
+        auth:
+          serviceInstanceName: xsuaa
+        db:
+          serviceInstanceName: hana
+        destination:
+          serviceInstanceName: destination
+      image:
+        repository: <your-dockerhub-username>/incident-management-srv
+      resources:
+        limits:
+          ephemeral-storage: 1G
+          memory: 500M
+        requests:
+          ephemeral-storage: 1G
+          cpu: 500m
+          memory: 500M
+      health:
+        liveness:
+          path: /health
+        readiness:
+          path: /health
+    xsuaa:
+      serviceOfferingName: xsuaa
+      servicePlanName: application
+      parameters:
+        tenant-mode: dedicated
+        oauth2-configuration:
+          redirect-uris:
+            - https://*.{{ tpl .Values.global.domain . }}/**
+        xsappname: incident-management-{{ .Release.Namespace }}
+    hana-deployer:
+      image:
+        repository: <your-dockerhub-username>/incident-management-hana-deployer
+      bindings:
+        hana:
+          serviceInstanceName: hana
+      resources:
+        limits:
+          cpu: 2000m
+          memory: 1G
+        requests:
+          cpu: 1000m
+          memory: 1G
+    hana:
+      serviceOfferingName: hana
+      servicePlanName: hdi-shared
+    destination:
+      serviceOfferingName: destination
+      servicePlanName: lite
+      parameters:
+        version: 1.0.0
+        HTML5Runtime_enabled: true
+    html5-apps-repo-host:
+      serviceOfferingName: html5-apps-repo
+      servicePlanName: app-host
+    content-agent-service:
+      serviceOfferingName: content-agent
+      servicePlanName: application
+    html5-apps-deployer:
+      env:
+        SAP_CLOUD_SERVICE: incidentmanagement.service
+      image:
+        repository: <your-dockerhub-username>/incident-management-html5-deployer
+      bindings:
+        xsuaa:
+          serviceInstanceName: xsuaa
+        destination:
+          serviceInstanceName: destination
+        html5-apps-repo:
+          serviceInstanceName: html5-apps-repo-host
+        content-agent-service:
+          serviceInstanceName: content-agent-service
+      resources:
+        limits:
+          cpu: 2000m
+          memory: 1G
+        requests:
+          cpu: 1000m
+          memory: 1G
+      envFrom:
+        - configMapRef:
+            name: "{{ .Release.Name }}-html5-apps-deployer-configmap"
+    backendDestinations:
+      srv-api:
+        service: srv
+    ```
+
+    > Replace `<xyz123>` with the unique identifier of your Kyma cluster domain retrieved in the previous step, `<your-dockerhub-username>` with your Docker Hub username, and `<image-tag>` with a unique version tag (for example, `v1.0.0` or a git commit SHA). Avoid using `latest` as it can cause image caching issues and makes it difficult to track which image is deployed.
+
 [OPTION END]
 [OPTION BEGIN [Java]]
 
@@ -320,6 +425,111 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
     ```bash
     cds add kyma
     ```
+
+    The `cds add kyma` command generates a **chart/** folder containing the Helm chart for your application and a **container.yaml** file for container image configuration.
+
+    Update the `chart/values.yaml` file with your Kyma cluster domain and container registry details. The example below uses Docker Hub; adapt the `global.image.registry` and each `image.repository` value to match your container registry if you are not using Docker Hub:
+
+    ```yaml
+    # yaml-language-server: $schema=./values.schema.json
+
+    global:
+      domain: <xyz123>.kyma.ondemand.com
+      imagePullSecret:
+        name: docker-registry
+      image:
+        registry: docker.io
+        tag: <image-tag>
+    srv:
+      bindings:
+        auth:
+          serviceInstanceName: xsuaa
+        db:
+          serviceInstanceName: hana
+        destination:
+          serviceInstanceName: destination
+      image:
+        repository: <your-dockerhub-username>/incident-management-srv
+      resources:
+        limits:
+          ephemeral-storage: 1G
+          memory: 1G
+        requests:
+          ephemeral-storage: 1G
+          cpu: 500m
+          memory: 1G
+      health:
+        liveness:
+          path: /actuator/health
+        readiness:
+          path: /actuator/health
+    xsuaa:
+      serviceOfferingName: xsuaa
+      servicePlanName: application
+      parameters:
+        tenant-mode: dedicated
+        oauth2-configuration:
+          redirect-uris:
+            - https://*.{{ tpl .Values.global.domain . }}/**
+        xsappname: incident-management-{{ .Release.Namespace }}
+    hana-deployer:
+      image:
+        repository: <your-dockerhub-username>/incident-management-hana-deployer
+      bindings:
+        hana:
+          serviceInstanceName: hana
+      resources:
+        limits:
+          cpu: 2000m
+          memory: 1G
+        requests:
+          cpu: 1000m
+          memory: 1G
+    hana:
+      serviceOfferingName: hana
+      servicePlanName: hdi-shared
+    destination:
+      serviceOfferingName: destination
+      servicePlanName: lite
+      parameters:
+        version: 1.0.0
+        HTML5Runtime_enabled: true
+    html5-apps-repo-host:
+      serviceOfferingName: html5-apps-repo
+      servicePlanName: app-host
+    content-agent-service:
+      serviceOfferingName: content-agent
+      servicePlanName: application
+    html5-apps-deployer:
+      env:
+        SAP_CLOUD_SERVICE: incidentmanagement.service
+      image:
+        repository: <your-dockerhub-username>/incident-management-html5-deployer
+      bindings:
+        xsuaa:
+          serviceInstanceName: xsuaa
+        destination:
+          serviceInstanceName: destination
+        html5-apps-repo:
+          serviceInstanceName: html5-apps-repo-host
+        content-agent-service:
+          serviceInstanceName: content-agent-service
+      resources:
+        limits:
+          cpu: 2000m
+          memory: 1G
+        requests:
+          cpu: 1000m
+          memory: 1G
+      envFrom:
+        - configMapRef:
+            name: "{{ .Release.Name }}-html5-apps-deployer-configmap"
+    backendDestinations:
+      srv-api:
+        service: srv
+    ```
+
+    > Replace `<xyz123>` with the unique identifier of your Kyma cluster domain retrieved in the previous step, `<your-dockerhub-username>` with your Docker Hub username, and `<image-tag>` with a unique version tag (for example, `v1.0.0` or a git commit SHA). Avoid using `latest` as it can cause image caching issues and makes it difficult to track which image is deployed.
 
     Provide your container registry and the domain name when prompted.
 

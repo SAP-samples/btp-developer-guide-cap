@@ -284,41 +284,27 @@ In the `mta.yaml` file, update the following configurations:
 
     > **OWN_SAP_CLOUD_SERVICE** must exactly match the `sap.cloud.service` value in `app/incidents/webapp/manifest.json` — **keep dots**. For example, `incidents.service` stays as `incidents.service`. Removing dots causes: `LEP configured exposureId must equal the solution sap.cloud.service value`.
   
-4. Update the `incidents-app-deployer` module:
+4. Replace the entire `incidents-app-deployer` module with the following:
 
-    1. In the `requires` section, add the following dependencies:
-        
-        ```yaml
+    ```yaml
+    - name: incidents-app-deployer
+      type: com.sap.application.content
+      path: app
+      requires:
+        - name: incidents-build-workzone-service
+        - name: incidents-html5-repo-host
+          parameters:
+            content-target: true
+      build-parameters:
+        build-result: resources
         requires:
-        ...
-          - name: incidents-build-workzone-service
-        ```
+          - name: incidentsincidents
+            artifacts:
+              - incidents.zip
+            target-path: resources
+    ```
 
-    2. Change the `path` from `gen` to `app`.
-
-    3. Change the `build-result` and `target-path` from `app/` to `resources`.
-
-         The application deployer will look like this: 
-
-          ```yaml
-          - name: incidents-app-deployer
-            type: com.sap.application.content
-            path: app
-            requires:
-              - name: incidents-build-workzone-service
-              - name: incidents-html5-repo-host
-                parameters:
-                  content-target: true
-            build-parameters:
-              build-result: resources
-              requires:
-                - name: incidentsincidents
-                  artifacts:
-                    - incidents.zip
-                  target-path: resources
-
-          ```
-        - **The names may differ based on your project configuration. Verify the artifact name against the generated `mta.yaml`.**
+    > **The names may differ based on your project configuration. Verify the artifact name against the generated `mta.yaml`.**
 
 5. Update the `build-parameters`:
 

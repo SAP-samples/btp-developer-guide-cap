@@ -67,21 +67,19 @@ If you are deploying to the SAP BTP, Kyma runtime, follow these steps:
   npm add @cap-js/telemetry @opentelemetry/exporter-metrics-otlp-grpc @opentelemetry/exporter-trace-otlp-grpc @opentelemetry/host-metrics @grpc/grpc-js
 ```
 
-> NOTE: Since [OpenTelemetry SDK 2.0](https://github.com/cap-js/telemetry?tab=readme-ov-file#welcome-to-cap-jstelemetry) is not yet supported with @cap-js/telemetry, update @opentelemetry/exporter-metrics-otlp-grpc and @opentelemetry/exporter-trace-otlp-grpc dependencies version to `0.57.2`. 
+   This adds the following dependencies to your `package.json`:
 
-```
-  ...
-  "dependencies": {
-    ...
-    "@opentelemetry/exporter-metrics-otlp-grpc": "0.57.2",
-    "@opentelemetry/exporter-trace-otlp-grpc": "0.57.2"
-    ...
-  },
-...
+   ```json
+   "dependencies": {
+     "@cap-js/telemetry": "^x",
+     "@grpc/grpc-js": "^x",
+     "@opentelemetry/exporter-metrics-otlp-grpc": "^x",
+     "@opentelemetry/exporter-trace-otlp-grpc": "^x",
+     "@opentelemetry/host-metrics": "^x"
+   }
+   ```
 
-```
-
-2. Update the code of the `package.json` file with "telemetry": {"kind": "to-otlp"} as shown below:
+   > NOTE: The versions of these dependencies can vary at the time you are running the above command. It is not necessary to match the version of these dependencies. with "telemetry": {"kind": "to-otlp"} as shown below:
   
   ```
     .... 

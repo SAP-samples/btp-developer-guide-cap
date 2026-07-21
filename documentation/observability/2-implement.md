@@ -14,20 +14,26 @@ You have the Incident Management application set up. See the [Develop a Full-Sta
 To add logs in the Incident Management application, take advantage of the minimalistic logging facade that CAP provides. To add logging functionality to the Incident Management application:
 
 1. Open `srv/services.js`.
-2. Add the following lines to you the code of the **srv/services.js** file.
-   
+
+2. After the existing `const cds = require('@sap/cds')` line at the top of the file, add the logger initialization:
+
    ```javascript
-     const LOG = cds.log('processor-service');
+   const cds = require('@sap/cds')
+   const LOG = cds.log('processor-service')  // <-- add this line
    ```
 
-3. To define logs as part of the custom logic, add the following lines to the code of the **srv/services.js** file.
-   
+3. In the `onUpdate` method, expand the single-line `if (closed)` statement into a block and add the log statement before `req.reject`:
+
    ```javascript
-    if (status_code === 'C'){
-      LOG.info(`Incident ${req.data.ID} has already been closed`);
-      return req.reject(`Can't modify a closed incident`)
+   async onUpdate (req) {
+     let closed = await SELECT.one(1) .from (req.subject) .where `status.code = 'C'`
+     if (closed) {                                                        // <-- expand to block
+       LOG.info(`Incident ${req.data.ID} has already been closed`)       // <-- add this line
+       req.reject `Can't modify a closed incident!`
      }
+   }
    ```
+
 For more information, see [Minimalistic Logging Facade by CAP](https://cap.cloud.sap/docs/node.js/cds-log#minimalistic-logging-facade).
 
 ## Defining Log Levels

@@ -11,9 +11,8 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 
 ### Create a CAP project
 
-> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way. 
-
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 1. In SAP Business Application Studio, go to your **IncidentManagement** dev space.
 
@@ -81,9 +80,10 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
     Waiting for some to arrive...
     ```
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 1. In SAP Business Application Studio, go to your **IncidentManagement** dev space.
 
@@ -170,7 +170,7 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
     ```
     The CAP server also prints a message `BUILD FAILURE` stating that the build has failed. After this message, the CAP server waits for any changes on the filesystem and tries a rebuild. So, let's go on and add a domain model.
 
-[OPTION END]
+</details>
 
 ### Add a domain model
 
@@ -269,7 +269,8 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 > The code also includes the use of `cuid` and `managed` from `@sap/cds/common`, which are common features for defining entities in CDS. The `cuid` feature provides a unique identifier for an entity, while `managed` adds common administrative fields such as `createdAt` and `createdBy`.
 
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 As soon as you paste the code in your newly created file, the CAP server that is still running reacts immediately with a new output:
 
@@ -291,13 +292,14 @@ No service definitions found in loaded models.
 Waiting for some to arrive...
 ```
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 At this stage, the CAP server that is still running detects the changes in **schema.cds** and automatically creates an in-memory SQLite database when restarting the server process. However, there are still no service definitions.
 
-[OPTION END]
+</details>
 
 ### Create services
 
@@ -305,7 +307,8 @@ It's a good practice in CAP to create [single-purposed services](https://cap.clo
 
 To create the services' definition:
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 1. In the **srv** folder, create a new **services.cds** file.
 
@@ -351,9 +354,10 @@ As you can see in the log output, the new file created two generic service provi
 
 You have to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `cds watch` command.
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 1. In the **srv** folder, create a new **services.cds** file.
 
@@ -428,7 +432,7 @@ You have to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it
 
 > You need to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
-[OPTION END]
+</details>
 
 ### Generate comma-separated values (CSV) templates
 
@@ -531,7 +535,8 @@ Replace the respective generated CSV templates with the following content:
 
 Upon detecting these new files, the CAP server prints a message stating that the content of the files has been filled into the database automatically:
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 ```bash
 [cds] - connect to db > sqlite { database: ':memory:' }
@@ -559,9 +564,10 @@ Now that the database is filled with some initial data, you can send complex ODa
     <!-- border; size:540px -->
     ![Incidents per customer](./incidents-per-customer.png)
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 ```bash
 2024-12-06T14:12:46.228Z  INFO 10998 --- [  restartedMain] c.s.c.s.impl.persistence.CsvDataLoader   : Filling sap.capire.incidents.Incidents.conversation from ../db/data/sap.capire.incidents-Incidents.conversation.csv
@@ -588,7 +594,7 @@ Now that the database is filled with some initial data, you can send complex ODa
     <!-- border; size:540px -->
     ![Incidents per customer](./incidents-per-customer.png)
 
-[OPTION END]
+</details>
 
 > When you revisit the **Incidents** or the **Customers** endpoint, you see unformatted data instead of the nicely formatted output from above.
 >

@@ -39,9 +39,8 @@ With these changes, users with the **support** role can view and change the inci
 
 ### Add users for local testing
 
-> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
-
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 The authorization checks that you added to the CAP model apply not only when deployed in the cloud but also when testing locally. Therefore, you need a way to log in to the application locally.
 
@@ -106,9 +105,10 @@ CAP offers a possibility to add local users for testing as part of the `cds` con
 
     > Keep in mind that the CAP roles and the Cloud Foundry roles and scopes aren't the same thing. See [Authentication](https://cap.cloud.sap/docs/node.js/authentication) in the CAP documentation.
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 The authorization checks that you added to the CAP model apply not only when deployed in the cloud but also when testing locally. Therefore, you need a way to log in to the application locally.
 
@@ -143,11 +143,12 @@ The authorization checks that you added to the CAP model apply not only when dep
 
     > Keep in mind that the CAP roles and the Cloud Foundry roles and scopes aren't the same thing. See [Authentication](https://cap.cloud.sap/docs/node.js/authentication) in the CAP documentation.
 
-[OPTION END]
+</details>
 
 ### Access the Incident Management application with a password
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 When accessing the **Incidents** service of the **Incident Management** application in your browser, you get a basic auth popup now, asking for your user and password. You can use the users to log in and see how it works.
 
@@ -171,9 +172,10 @@ When accessing the **Incidents** service of the **Incident Management** applicat
     <!-- border; size:540px -->
     ![Access Incident Management Application](./incident-management-app.png)
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 When accessing the **Incidents** service of the **Incident Management** application in your browser, you get a basic auth popup now, asking for your user and password. You can use the users to log in and see how it works.
 
@@ -192,6 +194,6 @@ When accessing the **Incidents** service of the **Incident Management** applicat
     <!-- border; size:540px -->
     ![Access Incident Management Application](./incident-management-app.png)
 
-[OPTION END]
+</details>
 
 > Currently, there’s no logout functionality. You can clear your browser's cache or simply close all browser windows to get rid of the login data in your browser. For Google Chrome, restart your browser (complete shutdown and restart) by entering `chrome://restart` in the address line.

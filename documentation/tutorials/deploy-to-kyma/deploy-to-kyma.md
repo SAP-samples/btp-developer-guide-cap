@@ -35,7 +35,9 @@ You start by building your project as container images and push those images to 
 
 ### Install kubectl
 
-[OPTION BEGIN [macOS]]
+<details open>
+<summary>macOS</summary>
+
 1. To install kubectl, run the following command:
 ```Shell/Bash
 brew install kubectl
@@ -45,9 +47,12 @@ brew install kubectl
 kubectl version --client
 ```
 You see a version number.
-[OPTION END]
 
-[OPTION BEGIN [Windows]]
+</details>
+
+<details>
+<summary>Windows</summary>
+
 You can install kubectl using chocolatey.
 
 1. To install kubectl, run the following command:
@@ -60,23 +65,32 @@ kubectl version --client
 ```
 You see something like:
 `Client Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.3", GitCommit:"1e11e4a2108024935ecfcb2912226cedeafd99df", GitTreeState:"clean", BuildDate:"2020-10-14T12:50:19Z", GoVersion:"go1.15.2", Compiler:"gc", Platform:"windows/amd64"}`
-[OPTION END]
 
-[OPTION BEGIN [Linux]]
+</details>
+
+<details>
+<summary>Linux</summary>
+
 Follow the instructions for your preferred way of installing kubectl at [Install and Set Up kubectl on Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/).
-[OPTION END]
+
+</details>
 
 ### Install kubelogin
 
-[OPTION BEGIN [macOS]]
+<details open>
+<summary>macOS</summary>
+
 To install kubelogin, run the following command:
 ```Shell/Bash
 brew install int128/kubelogin/kubelogin
 ```
 See [Setup](https://github.com/int128/kubelogin#setup) in the kubelogin docs for more details.
-[OPTION END]
 
-[OPTION BEGIN [Windows]]
+</details>
+
+<details>
+<summary>Windows</summary>
+
 You can install kubelogin using chocolatey:
 
 ```Shell/Bash
@@ -84,16 +98,20 @@ choco install kubelogin
 ```
 
 See [Setup](https://github.com/int128/kubelogin#setup) in the kubelogin docs for more details.
-[OPTION END]
 
-[OPTION BEGIN [Linux]]
+</details>
+
+<details>
+<summary>Linux</summary>
+
 To install kubelogin, run the following command:
 ```Shell/Bash
 brew install int128/kubelogin/kubelogin
 ```
 
 See [Setup](https://github.com/int128/kubelogin#setup) in the kubelogin docs for more details.
-[OPTION END]
+
+</details>
 
 ### Log in to your Kyma cluster
 
@@ -118,16 +136,21 @@ There are two additional steps for Windows users only:
 
 ### Install helm
 
-[OPTION BEGIN [macOS]]
+<details open>
+<summary>macOS</summary>
+
 There's a multitude of options to install helm. You can see the full list at [Installing Helm](https://helm.sh/docs/intro/install/). We have also listed some options:
 
 To install helm, run the following command:
 ```Shell/Bash
 brew install helm
 ```
-[OPTION END]
 
-[OPTION BEGIN [Windows]]
+</details>
+
+<details>
+<summary>Windows</summary>
+
 There's a multitude of options to install helm. You can see the full list at [Installing Helm](https://helm.sh/docs/intro/install/). We have also listed some options:
 
 You can install helm using chocolatey.
@@ -141,20 +164,26 @@ choco install kubernetes-helm
 helm version
 ```
 You see something like `version.BuildInfo{Version:"v3.8.0", GitCommit:"d14138609b01886f544b2025f5000351c9eb092e", GitTreeState:"clean", GoVersion:"go1.17.5"}`.
-[OPTION END]
+
+</details>
 
 
 ### Install Paketo (pack)
 
-[OPTION BEGIN [macOS]]
+<details open>
+<summary>macOS</summary>
+
 Pack lets you build container images, which are collaboratively maintained making it easier to maintain and update.
 
 ```Shell/Bash
 brew install buildpacks/tap/pack
 ```
-[OPTION END]
 
-[OPTION BEGIN [Windows]]
+</details>
+
+<details>
+<summary>Windows</summary>
+
 Pack lets you build container images, which are collaboratively maintained making it easier to maintain and update.
 
 You can install pack using chocolatey with the command:
@@ -170,17 +199,22 @@ As an alternative, you can install `pack` manually:
 5. Choose your `Path` environment variable under *User Variables for `<your_user_name>`* and choose **Edit**.
 6. Choose **Browse** and navigate to the folder where you extracted the `pack` binary.
 7. Choose **OK** to add `pack` to your `Path` environment variable.
-[OPTION END]
 
-[OPTION BEGIN [Linux]]
+</details>
+
+<details>
+<summary>Linux</summary>
+
 Pack lets you build container images, which are collaboratively maintained making it easier to maintain and update.
 
 Follow the instructions to install the [pack CLI](https://buildpacks.io/docs/tools/pack/#install).
-[OPTION END]
+
+</details>
 
 ### Install a container management app
 
-[OPTION BEGIN [Docker Desktop]]
+<details open>
+<summary>Docker Desktop</summary>
 
 Kyma runs on containers. Hence, for this tutorial, you need an application that enables you to manage (build, push, pull, and run) container images on your desktop and a docker-compatible command-line interface. We provide two examples - Docker Desktop and Rancher Desktop. You can pick one of them or any other app suitable for the purpose.
 
@@ -189,8 +223,10 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 * **Windows**: Download the installer from [Install Docker Desktop on Windows](https://docs.docker.com/desktop/windows/install/) and follow the instructions to install and set up Docker Desktop.
 
-[OPTION END]
-[OPTION BEGIN [Rancher Desktop]]
+</details>
+
+<details>
+<summary>Rancher Desktop</summary>
 
 Kyma runs on containers. Hence, for this tutorial, you need an application that enables you to manage (build, push, pull, and run) container images on your desktop and a docker-compatible command-line interface. We provide two examples - Docker Desktop and Rancher Desktop. You can pick one of them or any other app suitable for the purpose.
 
@@ -219,7 +255,7 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 * **Linux**: There are several different ways to install Rancher Desktop on Linux. You can find details about installation requirements and steps to install or uninstall steps in [Linux](https://docs.rancherdesktop.io/getting-started/installation#linux).
 
-[OPTION END]
+</details>
 
 ### Download and set up the project locally
 
@@ -243,7 +279,9 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 ### Prepare your application
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
+
 > Make sure you're logged in to your container registry.
 
 1. In VS Code, choose **Terminal** &rarr; **New Terminal** and run the following command:
@@ -386,8 +424,10 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
     > Replace `<xyz123>` with the unique identifier of your Kyma cluster domain retrieved in the previous step, `<your-dockerhub-username>` with your Docker Hub username, and `<image-tag>` with a unique version tag (for example, `v1.0.0` or a git commit SHA). Avoid using `latest` as it can cause image caching issues and makes it difficult to track which image is deployed.
 
-[OPTION END]
-[OPTION BEGIN [Java]]
+</details>
+
+<details>
+<summary>Java</summary>
 
 > Make sure you're logged in to your container registry.
 
@@ -539,11 +579,13 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
     npm install && npm run build
     ```
 
-[OPTION END]
+</details>
 
 ### Deploy the application
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
+
 1. Run the following command to create a namespace:
 
     ```bash
@@ -605,8 +647,10 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 In the next tutorial, you can access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition triggers the authentication flow to provide the required token to access the service.
 
-[OPTION END]
-[OPTION BEGIN [Java]]
+</details>
+
+<details>
+<summary>Java</summary>
 
 1. Run the following command to create a namespace:
 
@@ -655,4 +699,5 @@ In the next tutorial, you can access your UIs from SAP Build Work Zone, standard
 <!-- border; size:540px  ![401 error](./401-error.png) -->
 
 In the next tutorial, you can access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition triggers the authentication flow to provide the required token to access the service.
-[OPTION END]
+
+</details>

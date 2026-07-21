@@ -224,7 +224,8 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 #### Configure pipeline and stages
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 1. Back in the **General Information** tab, enter **main** in the **Branch** field.
 
@@ -267,9 +268,10 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     <!-- border; size:540px -->
     ![Configure release](./configure-release.png)
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 1. Back in the **General Information** tab, enter **main** in the **Branch** field.
 
@@ -304,7 +306,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     <!-- border; size:540px -->
     ![Configure release](./configure-release.png)
 
-[OPTION END]
+</details>
 
 
 ### Create a GitHub webhook

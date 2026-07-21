@@ -10,9 +10,8 @@ You've added test cases in your application. Follow the steps in the [Add Test C
 
 ### Add SAP HANA Cloud
 
-> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
-
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 1. In SAP Business Application Studio, go to your **IncidentManagement** dev space.
 
@@ -73,9 +72,10 @@ You've added test cases in your application. Follow the steps in the [Add Test C
     >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
     >2. Choose **Fiori: Open Application Info**.
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 1. In SAP Business Application Studio, go to your **IncidentManagement** dev space.
 
@@ -155,11 +155,12 @@ You've added test cases in your application. Follow the steps in the [Add Test C
 
 > Stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
-[OPTION END]
+</details>
 
 ### Configure the SAP Authorization and Trust Management service
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 1. Run the following command in the terminal:
 
@@ -257,9 +258,10 @@ You've added test cases in your application. Follow the steps in the [Add Test C
 
 You can learn more about authorization in CAP in [CDS-based Authorization](https://cap.cloud.sap/docs/guides/security/authorization).
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 1. Run the following command in the terminal:
 
@@ -333,13 +335,14 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
 
 You can learn more about authorization in CAP in [CDS-based Authorization](https://cap.cloud.sap/docs/guides/security/authorization).
 
-[OPTION END]
+</details>
 
 ### Add configuration for SAP Build Work Zone, standard edition
 
-> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
+> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The **Node.js** and **Java** sections below provide detailed steps for each alternative way.
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 1. Run the following command in the terminal:
 
@@ -492,9 +495,10 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     npm install
     ```
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 1. Run the following command in the root folder of your project:
 
@@ -523,11 +527,12 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     npm install
     ```
 
-[OPTION END]
+</details>
 
 ### Run a test build
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 To validate that everything is prepared as expected, run a test build. Navigate to your project's root folder in the terminal and run the following command:
 
@@ -540,9 +545,10 @@ You get an output like:
 [cds] - build completed in 511 ms
 ```
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 To validate that everything is prepared as expected, run a test build. Navigate to your project's root folder in the terminal and run the following command:
 
@@ -560,7 +566,7 @@ You get an output like:
 [INFO] ------------------------------------------------------------------------
 ```
 
-[OPTION END]
+</details>
 
 ### Deployment Options
 

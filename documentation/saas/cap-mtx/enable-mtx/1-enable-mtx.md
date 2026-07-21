@@ -3,6 +3,9 @@
 The `@sap/cds-mtxs` package provides a set of SAP Cloud Application Programming Model (CAP) services which implement multitenancy, features toggles and extensibility, also called 'MTX'. Read more about [`@sap/cds-mtxs`](https://www.npmjs.com/package/@sap/cds-mtxs) at the npm documentation.
 MTX services are implemented in Node.js and can run in the same Node.js server as your application services or in a separate micro service called **sidecars**. All services can be consumed via REST APIs.
 
+> [!IMPORTANT]
+> Local multitenancy testing is **not supported in SAP Business Application Studio (BAS)**. You must use **VS Code** to run and test the application locally with multitenancy enabled.
+
 1. Run the `@sap/cds-mtxs` package to enable multitenancy for the Incident Management application:
 
 ```shell

@@ -90,9 +90,10 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
 ### Start the Incident-Management application
 
-> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
+> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The **Node.js** and **Java** sections below provide detailed steps for each alternative way.
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 <!-- Section Start: This entire section is not needed for the Java version -->
 
@@ -133,9 +134,10 @@ Instead of using `cds watch` command in the terminal to start the service, you u
 
 <!-- Section End: This entire section is not needed for the Java version -->
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 1. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
@@ -168,7 +170,7 @@ Instead of using `cds watch` command in the terminal to start the service, you u
 
 > Stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `mvn cds:watch` command.
 
-[OPTION END]
+</details>
 
 <!-- Instead, we need to add some additional steps how to start local preview of the app and how to navigate to the Incident Management app (mind the name of the app in the preview, may need to changes some input values in the process of generating the fiori app) from the CAP generic index page where there's the option to choose Fiori Preview OR consider supplying the user with the partial URL to append to the generic CAP index page so they access the Incident Management app -->
 

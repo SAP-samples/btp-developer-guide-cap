@@ -152,13 +152,14 @@ In this section, you will deploy the Incident Management CAP application integra
          no-source: true
        parameters:
          content:
-           instance:
+           subaccount:
              existing_destinations_policy: update
              destinations:
                - Name: incident-management-html5-repository
                  ServiceInstanceName: incident-management-html5-repo-host
                  ServiceKeyName: incident-management-html5-repo-host-key
                  sap.cloud.service: incidentmanagement.service
+                 HTML5Runtime_enabled: true
 
    resources:
      - name: incident-management-ias

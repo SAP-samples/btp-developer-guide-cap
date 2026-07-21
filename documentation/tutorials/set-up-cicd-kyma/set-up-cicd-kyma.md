@@ -40,7 +40,9 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 ### Initialize a repository in VS Code
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
+
 1. Make sure you've opened the **incident-management** folder in VS Code.
 
 2. Navigate to the **.gitignore** file in your project's root folder and replace the contents of the file with the following code snippet:
@@ -83,9 +85,12 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     ![Publish branch](./publish-branch.png)
 
 8. Provide your GitHub username and password when prompted. When the changes are pushed, you see your project in your GitHub repository.
-[OPTION END]
 
-[OPTION BEGIN [Java]]
+</details>
+
+<details>
+<summary>Java</summary>
+
 1. Make sure you've opened the **incident-management** folder in VS Code.
 
 2. Navigate to the **.gitignore** file in your project's root folder and replace the contents of the file with the following code snippet:
@@ -126,7 +131,8 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     ![Publish branch](./publish-branch.png)
 
 8. Provide your GitHub username and password when prompted. When the changes are pushed, you see your project in your GitHub repository.
-[OPTION END]
+
+</details>
 
 ### Enable SAP Continuous Integration and Delivery service
 
@@ -312,7 +318,9 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 ### Prepare package.json
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
+
 1. Open the **package.json** file in your project root folder.
 
 2. Add `"@cap-js/sqlite": "^1"` as a `devDependency` and the script `"cds-build": "npm install --include=dev && cds build --production"` to the **package.json** file:
@@ -339,8 +347,10 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 4. Make sure to commit and push your changes to the remote repository.
 
-[OPTION END]
-[OPTION BEGIN [Java]]
+</details>
+
+<details>
+<summary>Java</summary>
 
 1. Open the **package.json** file in your project root folder.
 
@@ -387,11 +397,14 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     ```
 
 6. Make sure to commit and push your changes to the remote repository.
-[OPTION END]
+
+</details>
 
 ### Add a CI/CD job
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
+
 1. Navigate to the **Jobs** tab and choose the icon to add a new job.
 
     <!-- border; size:540px -->
@@ -498,8 +511,11 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 6. Choose **Create**.
 
-[OPTION END]
-[OPTION BEGIN [Java]]
+</details>
+
+<details>
+<summary>Java</summary>
+
 1. Navigate to the **Jobs** tab and choose the icon to add a new job.
 
     <!-- border; size:540px -->
@@ -598,7 +614,8 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     ![Add Helm Values](./add-helm-values.png)
 
 5. Choose **Create**.
-[OPTION END]
+
+</details>
 
 ### Test your job
 

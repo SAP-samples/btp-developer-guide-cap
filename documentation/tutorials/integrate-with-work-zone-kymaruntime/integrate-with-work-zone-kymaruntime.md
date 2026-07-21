@@ -138,7 +138,8 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 
 [OPTION END]
 
-[OPTION BEGIN [Common Data Model]]
+<details>
+<summary>Common Data Model</summary>
 
 The Common Data Model (CDM) is the basis for interoperability and content federation of business content from various SAP and third-party products, all integrated in a unified manner in one site that serves as a central entry point. Business content items such as roles, catalogs, groups, spaces, and pages can be included in the CDM. For this purpose, developers must specify the business content of the site in a **cdm.json** file that is part of the multitarget application (MTA) and also define design-time and runtime destinations in the **mta.yaml** file. For more information, see [Developing HTML5 Business Solutions as Content Providers](https://help.sap.com/docs/build-work-zone-advanced-edition/sap-build-work-zone-advanced-edition/developing-html5-apps-for-cross-subaccount-consumption) and [About the Common Data Model](https://help.sap.com/docs/build-work-zone-advanced-edition/sap-build-work-zone-advanced-edition/creating-cdm-json-file-for-multi-tenancy-html5-app).
 
@@ -538,7 +539,7 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 > Log out and log in again to make sure your new role collection is considered.
 
-[OPTION END]
+</details>
 
 ### Test your site
 

@@ -10,9 +10,8 @@ You've implemented the user interface of your application. Follow the steps in t
 
 ### Add custom code
 
-> You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The tabs **Node.js** and **Java** provide detailed steps for each alternative way.
-
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 In this tutorial, you add some custom code to the CAP application. Depending on the contents of the **title** property, the custom code changes the value of the **urgency** property.
 
@@ -68,10 +67,10 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
     <!-- border; size:540px -->
     ![Fiori Elements Work List](./incidentapp.png)
 
+</details>
 
-[OPTION END]
-
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 In this tutorial, you add some custom code to the CAP application. Depending on the contents of the **title** property, the custom code changes the value of the **urgency** property.
 
@@ -152,22 +151,24 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
     <!-- border; size:540px -->
     ![Fiori Elements Work List](./incidentapp.png)
 
-[OPTION END]
+</details>
 
 ### Understand the custom code
 
-[OPTION BEGIN [Node.js]]
+<details open>
+<summary>Node.js</summary>
 
 Because your file is called **services.js** and has the same name as your application definition file **services.cds**, CAP automatically treats it as a handler file for the application defined in there. CAP exposes several [events](https://cap.cloud.sap/docs/node.js/events) and you can easily write handlers like the one mentioned earlier.
 
-[OPTION END]
+</details>
 
-[OPTION BEGIN [Java]]
+<details>
+<summary>Java</summary>
 
 Because the Java class containing the custom code is annotated with `@ServiceName(ProcessorService_.CDS_NAME)`, CAP knows that any handler methods in the class are registered for events on entities defined in the **srv/services.cds** file.
 
 The handler method itself is annotated with `@Before(event = CqnService.EVENT_CREATE, entity = Incidents_.CDS_NAME)`. This annotation means that the method is called before each **CREATE** event on the entity Incidents. CAP exposes several [events](https://cap.cloud.sap/docs/java/event-handlers/#phases) and you can easily write [handlers](https://cap.cloud.sap/docs/java/event-handlers/#handlerclasses) like the one mentioned earlier.
 
-[OPTION END]
+</details>
 
 In this case, the event is triggered after a **READ** was carried out for the **Incidents** entity. In your custom handler, you get all the data (in this case, all the incidents) that was read according to the query. You can loop over each of them and, if needed, adjust the data of the response. In this case, you change the value of the **urgency** property when the **title** contains the word **urgent**. The new values for **Urgency** are then part of the response to the READ request.

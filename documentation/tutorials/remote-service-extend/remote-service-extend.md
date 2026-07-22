@@ -114,7 +114,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         ```js[1]
         async init() {
           this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
-          this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
+          this.before("CREATE", "Incidents", (req) => this.changeUrgencyDueToSubject(req.data));
 
           return super.init();
         }
@@ -125,7 +125,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         ```js[4]
         async init() {
           this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
-          this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
+          this.before("CREATE", "Incidents", (req) => this.changeUrgencyDueToSubject(req.data));
           this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
 
           return super.init();
@@ -137,7 +137,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         ```js[9-44]
         async init() {
           this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
-          this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
+          this.before("CREATE", "Incidents", (req) => this.changeUrgencyDueToSubject(req.data));
           this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
 
           return super.init();
@@ -197,7 +197,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         ```js[5-7]
         async init() {
           this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
-          this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
+          this.before("CREATE", "Incidents", (req) => this.changeUrgencyDueToSubject(req.data));
           this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
           this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
           this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');
@@ -212,7 +212,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         ```js[12-43]
         async init() {
           this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
-          this.after("READ", "Incidents", (data) => this.changeUrgencyDueToSubject(data));
+          this.before("CREATE", "Incidents", (req) => this.changeUrgencyDueToSubject(req.data));
           this.on('READ', 'Customers', (req) => this.onCustomerRead(req));
           this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));
           this.S4bupa = await cds.connect.to('API_BUSINESS_PARTNER');

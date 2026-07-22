@@ -20,6 +20,33 @@ In this tutorial, you learn how to deploy your CAP application in SAP BTP, Kyma 
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
+> [!IMPORTANT]
+> Before deploying, open your **xs-security.json** file and verify it contains a `role-collections` section. If it is missing, add the following `role-collections` key/value pair inside the root object of your existing `xs-security.json`:
+>
+> ```json
+> {
+>   ...,
+>   "role-collections": [
+>     {
+>       "name": "IncidentManagement_Support",
+>       "description": "Support role collection for Incident Management",
+>       "role-template-references": [
+>         "$XSAPPNAME.support"
+>       ]
+>     },
+>     {
+>       "name": "IncidentManagement_Admin",
+>       "description": "Admin role collection for Incident Management",
+>       "role-template-references": [
+>         "$XSAPPNAME.admin"
+>       ]
+>     }
+>   ]
+> }
+> ```
+>
+> Without role collections, users cannot be assigned the required roles after deployment.
+
 ### Introduction
 
 SAP BTP, Kyma runtime is a cloud-native application runtime that combines the power of Kubernetes with a set of best-in-class tools and open-source components that empower you to develop, run, and operate secure and scalable cloud-native applications. Detailed information is available at [Kyma Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment).

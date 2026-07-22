@@ -55,6 +55,7 @@ Custom metrics can be added as shown in the following example:
    ```
   
 
-<!-- ## Deploy the application
-- For BTP Cloud Foundry runtime, follow the steps described [here](./4-deploy-to-cf.md) 
-- For BTP Kyma runtime, follow the steps described [here](./5-deploy-to-kyma.md) -->
+
+## Next Step
+- For SAP BTP, Cloud Foundry runtime, follow the steps in [Enable Observability in the SAP BTP, Cloud Foundry Runtime](./4-deploy-to-cf.md).
+- For SAP BTP, Kyma runtime, follow the steps in [Enable Observability in the SAP BTP, Kyma Runtime](./5-deploy-to-kyma.md).

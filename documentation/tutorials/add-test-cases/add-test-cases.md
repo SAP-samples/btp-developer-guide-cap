@@ -34,7 +34,9 @@ You've configured the access to your application. Follow the steps in the [Add A
 <details>
 <summary>Java dependencies</summary>
 
-Open the **srv/pom.xml** file and add the following snippet to the dependencies section:
+Open the **srv/pom.xml** file and add the following snippet to the dependencies section.
+
+> **Note:** `spring-boot-starter-test` may already be present if you followed a previous tutorial step. Check before adding to avoid a duplicate dependency declaration.
 
 ```xml
 <dependency>

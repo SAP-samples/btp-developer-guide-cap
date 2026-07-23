@@ -25,6 +25,17 @@ cds add mta
 ```
 ### Configuration Updates
 
+**Changes that need to be made in the root `package.json`**
+
+Make sure the `sapux` property in the root `package.json` lists both HTML5 apps:
+
+```json
+"sapux": [
+    "app/incidents",
+    "app/manager"
+]
+```
+
 **Changes that need to be made in the mta.yaml**
 
 The following snippet needs to be added at modules->- name: incident-management-app-deployer->build-parameters->requires
@@ -33,7 +44,7 @@ The following snippet needs to be added at modules->- name: incident-management-
 - name: incidentmanagementmanager
   artifacts:
     - manager.zip
-  target-path: resources/
+  target-path: app/
 ```
 
 > [!TIP]

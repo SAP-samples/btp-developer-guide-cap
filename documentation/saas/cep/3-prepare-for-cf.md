@@ -127,7 +127,12 @@ In the `mta.yaml` file, update the following configurations:
     target-path: app/
 
 ```
-9. Update the `parameters` field of `incident-management-app-deployer` with the following value:
+9. Update the `incident-management-app-deployer` module:
+
+   1. Under the **resources** section, locate `incident-management-html5-repo-host` and delete `HTML5Runtime_enabled: true` from its `parameters` block.
+
+
+   2. Update the `parameters` field with the following value:
 ```yaml
     parameters:
       config:

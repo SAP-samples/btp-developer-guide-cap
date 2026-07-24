@@ -130,14 +130,6 @@ cds add kyma
   version: ">0.0.0"
 ```
 
-5. Add the following configurations for creating an html5-apps-repo-runtime service instance in the `values.yaml` file:
-
-```yaml
-html5-apps-repo-runtime: 
-  serviceOfferingName: html5-apps-repo
-  servicePlanName: app-runtime
-```
-
 ## Update the Configurations for Multitenancy Support
 
 1. Delete the destination configuration from **chart/values.yaml**:
@@ -183,7 +175,17 @@ html5-apps-repo-host:
     serviceInstanceName: html5-apps-repo-host
 ```
 
-5. Build the project:
+5. Add the following `html5-apps-repo-runtime` service instance configuration to **chart/values.yaml**:
+
+```yaml
+html5-apps-repo-runtime: 
+  serviceOfferingName: html5-apps-repo
+  servicePlanName: app-runtime
+```
+
+> **Note:** This entry is required for tenant subscription to succeed. Without it, the sidecar dependency callback fails with a 500 error.
+
+6. Build the project:
    
 ```shell
 cds build --production

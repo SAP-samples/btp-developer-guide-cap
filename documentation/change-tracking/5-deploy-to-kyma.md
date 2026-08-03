@@ -40,8 +40,6 @@ Now point the terminal back to the root of the application.
 
 3. Configure `containerize.yaml` at the root of your project:
 
-> **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
-
 ```yaml
 _schema-version: '1.0'
 repository: <your-dockerhub-username>
@@ -54,7 +52,7 @@ modules:
         builder: builder-jammy-base
         path: gen/srv
         env:
-          BP_NODE_VERSION: "20"
+          BP_NODE_RUN_SCRIPTS: ""
   - name: incident-management-hana-deployer
     build-parameters:
       buildpack:
@@ -62,7 +60,7 @@ modules:
         builder: builder-jammy-base
         path: gen/db
         env:
-          BP_NODE_VERSION: "20"
+          BP_NODE_RUN_SCRIPTS: ""
   - name: incident-management-html5-deployer
     build-parameters:
       buildpack:

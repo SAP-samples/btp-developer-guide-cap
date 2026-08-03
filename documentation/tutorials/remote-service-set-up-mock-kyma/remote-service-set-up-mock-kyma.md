@@ -79,41 +79,16 @@ You need to:
 1. Add Helm chart: 
 
     ```bash
-    cds add helm --y
+    cds add kyma
     ```
+
+    > **Note:** `cds add helm` is deprecated since CDS 9 and removed in CDS 10. Use `cds add kyma` instead.
 
     CAP provides a configurable Helm chart for Node.js applications. As a result from running the command, you see a newly created **chart** folder in your project. The **chart** folder holds the helm configuration, including the **values.yaml** file where you add your container image settings later on.
 
 2. Change the **chart/values.yaml** file:
 
-    1. Remove the lines `messaging:` and `serviceInstanceName: event-mesh` from the `srv.bindings` section:
-
-        ```yaml
-        srv:
-          bindings:
-            destination:
-              serviceInstanceName: 'destination'
-            messaging:
-              serviceInstanceName: event-mesh
-          image:
-            repository: mockserver-srv
-        ...
-        ```
-    2. Remove the `event-mesh` section:
-
-        ```yaml[7-9]
-        ...
-        destination:
-          serviceOfferingName: 'destination'
-          servicePlanName: 'lite'
-          parameters:
-            version: '1.0.0'
-        event-mesh:
-          serviceOfferingName: enterprise-messaging
-          servicePlanName: default
-        ```
-
-    4. Run the following command to get the domain name of your Kyma cluster:
+    1. Run the following command to get the domain name of your Kyma cluster:
 
         ```bash
         kubectl get gateway -n kyma-system kyma-gateway \
@@ -128,28 +103,13 @@ You need to:
 
         > `<xyz123>` is a placeholder for a string of characters that's unique for your cluster.
 
-    5. In the **chart/values.yaml** file, add the result without the leading `*.` in the `domain` property so that the URL of your CAP service can be generated:
+    2. In the **chart/values.yaml** file, add the result without the leading `*.` in the `domain` property so that the URL of your CAP service can be generated:
 
         ```yaml[2]
         global:
             domain: <your-cluster-domain>
         ...
         ```
-
-1. Open the **chart/Chart.yaml** file and remove the dependency for `event-mesh` (last 3 lines) from it:
-
-    ```yaml
-     dependencies:
-       - name: web-application
-         alias: srv
-         version: ">0.0.0"
-       - name: service-instance
-         alias: destination
-         version: ">0.0.0"
-       - name: service-instance
-         alias: event-mesh
-         version: ">0.0.0"
-    ```
 
 1. Update the productive CAP build for your application: 
 

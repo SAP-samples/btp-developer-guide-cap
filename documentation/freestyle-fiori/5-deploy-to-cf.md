@@ -47,19 +47,6 @@ The following snippet needs to be added at modules->- name: incident-management-
   target-path: app/
 ```
 
-> [!TIP]
-> **Note 2:** In `manifest.json` (`dataSources -> mainService`), change:
-
-```json
-"url": "/odata/v4/manager/"
-```
-
-to
-
-```json
-"url": "odata/v4/manager/"
-```
-
 > [!IMPORTANT]
 >
 > **Application not visible in HTML5 Applications tab:** Ensure that the `sap.cloud.service` value in each app's `webapp/manifest.json` matches the value configured in `mta.yaml`. If they differ, the application will not appear in the HTML5 Applications tab after deployment.

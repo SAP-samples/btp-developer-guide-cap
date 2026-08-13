@@ -92,7 +92,7 @@
     ```
 
 10. Add some buisness logic for reading and saving a business partner. 
-   * Open the *srv/services.js* file. 
+   * Open the *srv/processor-service.js* file. 
    * Set the `init` method to `async`:
   
       ```js

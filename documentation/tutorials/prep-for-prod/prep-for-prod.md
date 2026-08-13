@@ -91,14 +91,16 @@ You've added test cases in your application. Follow the steps in the [Add Test C
 
     > The **cds add hana** command adds a dependency that contains `cds-feature-hana` dependency which is used to configure hana as production database.
     >
-    > The **cds add hana** command adds to the **srv/pom.xml** file the highlighted lines:
+    > The **cds add hana** command adds to the **srv/pom.xml** file the following new dependency:
 
     ```xml
     <dependency>
-		        <groupId>com.sap.cds</groupId>
-		        <artifactId>cds-starter-cloudfoundry</artifactId>
-	      </dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
     ```
+
+    > **Note:** `spring-boot-starter-actuator` enables the health endpoints (`/actuator/health/liveness` and `/actuator/health/readiness`) required for Kyma deployment.
     
     > To learn more, see: 
     >

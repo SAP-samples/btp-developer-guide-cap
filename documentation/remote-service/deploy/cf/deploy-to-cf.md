@@ -39,6 +39,7 @@ Extend the existing MTA build file with the settings for SAP S/4HANA Cloud exten
       - name: incident-management-auth
       - name: incident-management-db
       - name: incident-management-destination-service
+      - name: incidents-api-access
     ....
     ```
 

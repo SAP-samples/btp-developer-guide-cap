@@ -88,7 +88,7 @@
     ```
 
 10. Add some buisness logic for reading and saving a business partner. 
-   * Open the *srv/services.js* file. 
+   * Open the *srv/processor-service.js* file. 
    * Set the `init` method to `async`:
   
       ```js
@@ -163,8 +163,7 @@
         const customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp => {
           bp('*'),
             bp.addresses(address => {
-              address('email', 'phoneNumber'),
-                address.email(emails => {
+              address.email(emails => {
                   emails('email')
                 }),
                 address.phoneNumber(phoneNumber => {

@@ -31,8 +31,6 @@ cds build --production
 
 3. Configure `containerize.yaml` at the root of your project:
 
-> **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
-
 ```yaml
 _schema-version: '1.0'
 repository: <your-dockerhub-username>
@@ -45,7 +43,7 @@ modules:
         builder: builder-jammy-base
         path: gen/srv
         env:
-          BP_NODE_VERSION: "20"
+          BP_NODE_RUN_SCRIPTS: ""
   - name: incident-management-hana-deployer
     build-parameters:
       buildpack:
@@ -53,7 +51,7 @@ modules:
         builder: builder-jammy-base
         path: gen/db
         env:
-          BP_NODE_VERSION: "20"
+          BP_NODE_RUN_SCRIPTS: ""
   - name: incident-management-html5-deployer
     build-parameters:
       buildpack:
@@ -62,7 +60,7 @@ modules:
         path: ui-resources
 ```
 
-3. Add your container image settings to your `chart/values.yaml`.
+4. Add your container image settings to your `chart/values.yaml`.
 
 > **Note:** The `global.image.registry` field must be a valid registry domain (e.g. `docker.io`). A bare Docker Hub username is not valid and will cause `cds up` to fail with a registry validation error.
 
@@ -86,7 +84,7 @@ html5-apps-deployer:
     repository: <your-dockerhub-username>/incident-management-html5-deployer
 ```
 
-4. Update `srv` in `values.yaml` to expose the `incident-management-srv` API endpoint:
+5. Update `srv` in `values.yaml` to expose the `incident-management-srv` API endpoint:
 
 ```yaml
 srv:
@@ -94,7 +92,7 @@ srv:
     enabled: true
 ```
 
-5. Change the value for `SAP_CLOUD_SERVICE` to `incidents`:
+6. Change the value for `SAP_CLOUD_SERVICE` to `incidents`:
 
 ```yaml
 html5-apps-deployer:
@@ -102,7 +100,13 @@ html5-apps-deployer:
     SAP_CLOUD_SERVICE: incidents
 ```
 
-6. Add audit log service configurations to your `chart/values.yaml`:
+7. Run the following command to add the audit logging service configuration to your project:
+
+```sh
+cds add audit-logging
+```
+
+This command adds the following configuration to your `chart/values.yaml`:
 
 ```yaml
 auditlog:
@@ -110,14 +114,14 @@ auditlog:
   servicePlanName: premium
 ```
 
-In `srv/bindings`, add:
+And in `srv/bindings`:
 
 ```yaml
 auditlog:
     serviceInstanceName: auditlog
 ```
 
-7. Navigate to `chart/Chart.yaml` and update the dependencies section:
+It also adds the following dependency to `chart/Chart.yaml`:
 
 ```yaml
   - name: service-instance

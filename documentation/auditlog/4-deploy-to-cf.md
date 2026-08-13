@@ -6,25 +6,31 @@ While we simply dumped audit log messages to *stdout* in local development, we'l
 
 ### Set up Instance and Deploy Application
 
-To integrate with SAP Audit Log Service, you need to:
+To integrate with SAP Audit Log Service, run the following command:
 
-1. Add the service instance as an existing resource to your **mta.yml**.
+```sh
+cds add audit-logging
+```
 
-    ```yaml
-    resources:
-    - name: incidents-auditlog
-      parameters:
-        service-plan: premium
-        service: auditlog
-      type: org.cloudfoundry.managed-service
-    ```
-2. Bind the service to `incident-management-srv` in its **requires** section.
+This command adds the auditlog service resource to your `mta.yaml`:
 
-    ```yaml
-      requires:
-      - name: incidents-auditlog
-    ```
-3. Update `xs-security.json` and add `admin` role. Also add the `Token_Exchange` role-template to enable OAuth2 token exchange. The final `xs-security.json` will look like below:
+```yaml
+resources:
+  - name: incidents-auditlog
+    parameters:
+      service-plan: premium
+      service: auditlog
+    type: org.cloudfoundry.managed-service
+```
+
+And binds it to `incident-management-srv` in its **requires** section:
+
+```yaml
+  requires:
+  - name: incidents-auditlog
+```
+
+1. Update `xs-security.json` and add `admin` role. Also add the `Token_Exchange` role-template to enable OAuth2 token exchange. The final `xs-security.json` will look like below:
 
     ```json
     {
@@ -67,24 +73,24 @@ To integrate with SAP Audit Log Service, you need to:
     }
     ```
 
-4. Build the *mtar* and deploy your application.
+2. Build the *mtar* and deploy your application.
 
 ```bash
 mbt build
 ```
 
-1. Check if the *mtar* has been created in the *mta_archives* folder and run: 
+3. Check if the *mtar* has been created in the *mta_archives* folder and run:
 
 ```bash
 cf deploy mta_archives/< mtar_name >.mtar
 ```
- 
-5. After successful deployment, you go to the **SAP BTP cockpit**. In **Subaccount-> Spaces -> Your Space**, check if the application is up and running.
-6. In **Service Bindings**, see the services that bind to your application. Here audit log is one of them.
+
+4. After successful deployment, you go to the **SAP BTP cockpit**. In **Subaccount-> Spaces -> Your Space**, check if the application is up and running.
+5. In **Service Bindings**, see the services that bind to your application. Here audit log is one of them.
 ![](./images/app-and-service.png)
 
-7. To be able to access the application via the URL, you need to assign roles to users. See [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
-8. Edit the role-collection `Incident Management Support` created in the above step and add `admin` role to it. Make sure the role-collection `Incident Management Support` is assigned to your user. 
+6. To be able to access the application via the URL, you need to assign roles to users. See [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
+7. Edit the role-collection `Incident Management Support` created in the above step and add `admin` role to it. Make sure the role-collection `Incident Management Support` is assigned to your user. 
 
 ### Test Your Application
 
@@ -153,5 +159,5 @@ To test and generate audit log, we will be using one of these API Testing tools:
     ]
 }
 ```
-1. On reading the customer data which we have annotated with @PersonalData, there will be an audit log entry in Cloud Foundry, which you will be retrieving in the next step. 
+5. On reading the customer data which we have annotated with @PersonalData, there will be an audit log entry in Cloud Foundry, which you will be retrieving in the next step. 
 

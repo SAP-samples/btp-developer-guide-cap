@@ -108,7 +108,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
 
 9. Add application logic for reading and saving a business partner:
 
-    1. Open the **srv/services.js** file.
+    1. Open the **srv/processor-service.js** file.
     2. Set the `init` method to `async`:
   
         ```js[1]
@@ -233,8 +233,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
             const customer = await this.S4bupa.run(SELECT.one(BusinessPartner, bp => {
               bp('*');
                 bp.addresses(address => {
-                  address('email', 'phoneNumber');
-                    address.email(emails => {
+                  address.email(emails => {
                       emails('email')
                     });
                     address.phoneNumber(phoneNumber => {

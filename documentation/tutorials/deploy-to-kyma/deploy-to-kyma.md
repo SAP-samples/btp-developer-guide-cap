@@ -4,7 +4,7 @@ In this tutorial, you learn how to deploy your CAP application in SAP BTP, Kyma 
 
 ## Prerequisites
 
-- You've configured the respective entitlements, enabled the Kyma runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. Follow the steps in the [Prepare for Deployment in the SAP BTP, Kyma Runtime](prepare-btp-kyma) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
+- You've configured the respective entitlements, enabled the Kyma runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. Follow the steps in the [Prepare for Deployment in the SAP BTP, Kyma Runtime](../prepare-btp-kyma/prepare-btp-kyma.md) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
 - You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
 - You're an administrator of the global account in SAP BTP.
@@ -21,11 +21,10 @@ In this tutorial, you learn how to deploy your CAP application in SAP BTP, Kyma 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
 > [!IMPORTANT]
-> Before deploying, open your **xs-security.json** file and verify it contains a `role-collections` section. If it is missing, add the following `role-collections` key/value pair inside the root object of your existing `xs-security.json`:
+> Before deploying, open your **xs-security.json** file and verify it contains a `role-collections` section. If it is missing, add the following `role-collections` key/value pair inside the root object of your existing **xs-security.json**:
 >
 > ```json
 > {
->   ...,
 >   "role-collections": [
 >     {
 >       "name": "IncidentManagement_Support",
@@ -493,7 +492,21 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
     cds add kyma
     ```
 
-    The `cds add kyma` command generates a **chart/** folder containing the Helm chart for your application and a **container.yaml** file for container image configuration.
+    The `cds add kyma` command generates a **chart/** folder containing the Helm chart for your application and a **containerize.yaml** file for container image configuration.
+
+    > [!IMPORTANT]
+    > For CAP Java applications, you must add a `before-all` section to the generated **containerize.yaml** file. Without it, `cds up` will not build the Java JAR before creating the container image, causing the deployment to fail. Open **containerize.yaml** and add the following `before-all` section:
+    >
+    > ```yaml
+    > before-all:
+    >   - helm dependency update ./gen/chart
+    >   - mvn clean package -Dmaven.test.skip=true --batch-mode
+    >   - npx cds build --production
+    >   - npm i --prefix app/incidents
+    >   - npm run build --prefix app/incidents
+    >   - cp app/incidents/dist/incidents.zip app/html5-deployer/resources/incidents.zip
+    >   - helm dependency build ./gen/chart
+    > ```
 
     Update the `chart/values.yaml` file with your Kyma cluster domain and container registry details. The example below uses Docker Hub; adapt the `global.image.registry` and each `image.repository` value to match your container registry if you are not using Docker Hub:
 
@@ -527,9 +540,9 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
           memory: 1G
       health:
         liveness:
-          path: /actuator/health
+          path: /actuator/health/liveness
         readiness:
-          path: /actuator/health
+          path: /actuator/health/readiness
     xsuaa:
       serviceOfferingName: xsuaa
       servicePlanName: application
@@ -596,15 +609,9 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
         service: srv
     ```
 
-    > Replace `<xyz123>` with the unique identifier of your Kyma cluster domain retrieved in the previous step, `<your-dockerhub-username>` with your Docker Hub username, and `<image-tag>` with a unique version tag (for example, `v1.0.0` or a git commit SHA). Avoid using `latest` as it can cause image caching issues and makes it difficult to track which image is deployed.
+    > Replace `<xyz123>` with the unique identifier of your Kyma cluster domain retrieved in the previous step, `<your-dockerhub-username>` with your Docker Hub username, and `<image-tag>` with a unique version tag (for example, `v1`, `v2`, etc.). Avoid using `latest` as it can cause image caching issues and makes it difficult to track which image is deployed.
 
     Provide your container registry and the domain name when prompted.
-
-5. In the VS Code terminal, navigate to the **app/incidents** folder and run the following command:
-
-    ```bash
-    npm install && npm run build
-    ```
 
 </details>
 

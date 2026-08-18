@@ -571,7 +571,7 @@ Enabling a draft for an entity allows the users to edit the entities. To enable 
     annotate ProcessorService.Incidents with @odata.draft.enabled; 
     ```
 
-3. Start creating a new incident but leave the **Customer**, **Status**, and **Urgency** fields empty.
+3. Start creating a new incident but leave the **Customer**, **Status**, and **Urgency** fields empty and press return button.
 
     <!-- border; size:540px -->
     ![Draft incident with empty fields](./draft-incident-empty.png)

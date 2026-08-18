@@ -70,13 +70,13 @@ Inside the GeoMap control, there's a collection of spots. These spots are bound 
 ```ts
 import UIComponent from "sap/ui/core/UIComponent";
 import Controller from "sap/ui/core/mvc/Controller";
-import { GeoMap$KeyPressEvent } from "sap/ui/vbm/GeoMap";
+import { VoBase$ClickEvent } from "sap/ui/vbm/VoBase";
 
 /**
  * @namespace ns.manager.controller
  */
 export default class Main extends Controller {
-    navToSpotStatus(event: GeoMap$KeyPressEvent) {
+    navToSpotStatus(event: VoBase$ClickEvent) {
         const spotIndex = event.getSource().getBindingContext("spotModel")?.getProperty("customerID");
         UIComponent.getRouterFor(this).navTo("RouteSpotStatus", {index: spotIndex});
     }
@@ -85,7 +85,7 @@ export default class Main extends Controller {
 
 The controller code defines a class named **Main** that extends the **Controller** class from `sap.ui.core.mvc` library. This class serves as the controller for a specific view in the application.
 
-The method **navToSpotStatus** takes an event parameter of type **[GeoMap$KeyPressEvent](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.vbm.GeoMap%23events/keyPress)**. This method is invoked on click event of the **Spot** control defined in the **Main** view. The method retrieves the customer ID of the clicked spot from the event's source binding context, assuming that there's a property named **customerID** in the **spotModel** binding context. Then it [navigates](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.core.routing.Router%23methods/navTo) to a specific route named **RouteSpotStatus**, passing the customer ID as a parameter. This route will be defined later in the tutorial.
+The method **navToSpotStatus** takes an event parameter of type **[VoBase$ClickEvent](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.vbm.VoBase%23events/click)**. This method is invoked on click event of the **Spot** control defined in the **Main** view. The method retrieves the customer ID of the clicked spot from the event's source binding context, assuming that there's a property named **customerID** in the **spotModel** binding context. Then it [navigates](https://sapui5.hana.ondemand.com/sdk/#/api/sap.ui.core.routing.Router%23methods/navTo) to a specific route named **RouteSpotStatus**, passing the customer ID as a parameter. This route will be defined later in the tutorial.
 
 ## Test the result
 

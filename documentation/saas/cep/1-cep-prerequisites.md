@@ -23,7 +23,7 @@ The SAP Build Work Zone Central Entry Point approach will look like the followin
    > - **SAP HANA Cloud** (`incident-management-db`) — added via `cds add hana`
 
 2. **Enable Multitenancy** by following the steps in:
-   [Enable Multitenancy for the CAP Application](../enable-mtx/1-enable-mtx.md)
+   [Enable Multitenancy for the CAP Application](../cap-mtx/enable-mtx/1-enable-mtx.md)
 
 
 > **Note:** To clean up settings before continuing with this scenario, you can undeploy the Incident Management application:

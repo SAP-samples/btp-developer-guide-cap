@@ -15,7 +15,7 @@ Create a subscriber subaccount in the same region where the multitenant applicat
 
 ## Subscribe to the Application
 
-1. In the SAP BTP cockpit, navigate to your subaccount and choose **Service Marketplace**.
+1. In the SAP BTP cockpit, navigate to your subaccount where you want to subscribe and choose **Service Marketplace**.
 2. Find the `Incident Management` application.
 
    <img src="./images/incidentsapp.png" height="200px" width="300px"/>
@@ -25,7 +25,9 @@ Create a subscriber subaccount in the same region where the multitenant applicat
 3. Choose the **Incident Management** tile and then choose **Create** on the right side of the screen.
 4. The subscription process will start. Wait for it to finish, and then move to the next step.
 
-## Assigning Roles to User
+## For Cloud Foundry Runtime
+
+### Assigning Roles to User
 
 Before accessing the application, you must assign the `Support` role collection to the user. 
 
@@ -35,14 +37,7 @@ Before accessing the application, you must assign the `Support` role collection 
 4. Choose **Edit**.
 5. Under **Users** fill your user details and select **Save**.
 
-To make the application tile visible in the SAP Build Work Zone, you need to assign the site role to your user. This will be done in the next section.
-1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
-2. Choose **Security** > **Role Collections**.
-3. Select **default (xxxxxxx)** role collection. You can check the **Role Collection** information in the `mta.yaml` file.
-4. Choose **Edit**.
-5. Under **Users** fill your user details and select **Save**.
-
-## Launch the Application
+### Launch the Application
 
 1. In the SAP BTP cockpit, navigate to the **subscriber subaccount** and choose the **HTML5** tab.
 2. You will see `nsincidents` or other name based on the namespace given to your UI application.
@@ -50,7 +45,7 @@ To make the application tile visible in the SAP Build Work Zone, you need to ass
 4. The final application will look like this:
 <img src="./images/FinalApp.png"/>
 
-## Configure Design and Runtime Destinations 
+### Configure Design and Runtime Destinations 
 
 
 Once the application is successfully deployed, there is a need to configure design and runtime destination. This enables the SAP Build Work Zone service to configure sites with the application configurations like groups, roles, categories and so on.
@@ -76,9 +71,60 @@ Once the application is successfully deployed, there is a need to configure desi
 
 4. Select the **Use default JDK truststore** checkbox and choose **Save**.
 
-### Create Design Time Destination
+### Design Time Destination
 
-#### Create Design Time Secret in **Kyma Runtime** (If application is deployed to the Kyma Runtime)
+Destination would be created automatically through the configurations from mta.yaml file. Verify **incident-management_cdm** destination is created under destinations tab of Provider Subaccount. 
+
+## For Kyma Runtime
+
+### Assigning Roles to User
+
+Before accessing the application, you must assign the `Support` role collection to the user. 
+
+1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
+2. Choose **Security** > **Role Collections**.
+3. Click **Create** and give role collection name as **incident management role collection**.
+4. Choose **Edit**.
+5. Under roles, select **support** role with your application identifier and click on **Add**.
+   <img src="./images/support-role.png"/>
+6. Under **Users** fill your user details and select **Save**.
+
+### Launch the Application
+
+1. In the SAP BTP cockpit, navigate to the **subscriber subaccount** and choose the **HTML5** tab.
+2. You will see `nsincidents` or other name based on the namespace given to your UI application.
+3. Choose it to launch it.
+4. The final application will look like this:
+<img src="./images/FinalApp.png"/>
+
+### Configure Design and Runtime Destinations 
+
+Once the application is successfully deployed, there is a need to configure design and runtime destination. This enables the SAP Build Work Zone service to configure sites with the application configurations like groups, roles, categories and so on.
+
+### Create Runtime Destination
+
+1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
+2. Choose **Connectivity** > **Destination** and then choose **Create Destination**.
+3. Fill in the following configuration:
+
+   | Property | Value |
+   |----------|-------|
+   | **Name** | `incident-management-rt` |
+   | **Type** | `HTTP` |
+   | **URL** | `https://<subscriber-subdomain>.launchpad.cfapps.<region>.hana.ondemand.com` |
+   | **Proxy Type** | `Internet` |
+   | **Authentication** | `NoAuthentication` |
+   | **CEP.HTML5contentprovider** | `true` |
+
+> **Note:** `CEP.HTML5contentprovider: true` is a mandatory parameter. It should be added to the additional properties of destination configuration.
+>
+> Replace the values for `<subscriber-subdomain>` and `<region>`.
+
+4. Select the **Use default JDK truststore** checkbox and choose **Save**.
+
+### Configure the Design Time Destination 
+
+#### Create Design Time Secret
 
 1. Open the Kyma cluster where the application is deployed and navigate to the **Namespace**.
 2. Under **Service Management** > **Service Bindings**, choose **Create**.
@@ -90,13 +136,9 @@ Once the application is successfully deployed, there is a need to configure desi
 8. It will open the secret. Choose **Decode**
 9. Copy the details, you will need them in the next step.
 
-#### For **Cloud Foundry Runtime**
-If the application is deployed to the **Cloud Foundry** runtime, view the service keys of **HTML5 Runtime** service instance and fill the below configurations.
+#### Configure the destination
 
-
-### Configure the Design Time Destination
-
-1. In the SAP BTP cockpit, navigate to the provider subaccount. 
+1. In the SAP BTP cockpit, navigate to the **provider** subaccount. 
 2. Choose **Connectivity** > **Destination** and then choose **Create Destination**.
 3. Fill in the following configuration:
 
@@ -126,28 +168,33 @@ If the application is deployed to the **Cloud Foundry** runtime, view the servic
 
 4. Select the **Use default JDK truststore** checkbox and choose **Save**.
 
+
 ## Integrate with SAP Build Work Zone
 
 To integrate the application with SAP Build Work Zone, you need to create a new channel as a content provider. Once the channel is created, you can access the CDM configurations to streamline the group, category creation.
 
 1. Open SAP Build Work Zone.
 2. Open **Channel Manager** from the left side of the screen.
-3. Choose **New** and then choose **New Content Provider**.
+3. Choose **New** and then choose **New Content Provider** from the dropdown.
 4. Fill in the **New Content Provider** dialog with the following details and choose **Save**:
 
    | Field | Value |
    |-------|-------|
+   | **Content Provider Source** | Local |
    | **Title** | Any descriptive name (for example, `New Content provider`) |
-   | **Design-Time Destination** | `incident-management_cdm` |
-   | **Runtime Destination** | Select the `html5-apps-repo-runtime` service instance from the dropdown (for example, `incidents-html5-app-runtime`). This is the HTML5 app runtime service instance deployed with your application. |
+   | **Fetching Type** | Subscribed |
+   | **Business Solution** | Choose your subscribed application from the dropdown.  |
+   | **Runtime Destination** | Choose `incident-management-rt` destination from the dropdown which we have created earlier. |
 
-   <img src="./images/content-provider.png"/>
+   Enable **Include group and catalog assignments to roles**.
+
+   <img src="./images/cepworkzone.png"/>
 
 5. The content channel will be now added.
 
    <img src="./images/new channel.png"/>
 
-6. Choose **Site Manager** and create a new site. 
+6. Choose **Site Directory** and create a new site. 
 7. Under Left Side of screen choose **Role Assignments**.
 8. Choose **Edit**.
 9. Switch the **`<ChannelName>-DefaultRole`** icon to add selected mode for application role, assign it to the site and choose **Save**.

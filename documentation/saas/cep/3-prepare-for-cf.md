@@ -7,7 +7,7 @@ In the `mta.yaml` file, update the following configurations:
 
 1. Add dependencies to `incident-management-mtx`. To get the reuse dependent services, add the following services to the `requires` section:
   
-  ```yaml
+    ```yaml
     - name: incident-management-mtx
         type: nodejs
         path: gen/mtx/sidecar
@@ -27,27 +27,22 @@ In the `mta.yaml` file, update the following configurations:
           - name: incident-management-destination # Remove
           - name: incident-management-html5-runtime # Remove
           - name: incident-management-db
-  ```
+    ```
 
-2. Since `destination` is not needed, ensure that `mtx/sidecar/package.json` doesn't contain `"destinations": true`. If present, delete it.
-3. Delete the `"html5-runtime": true` from `mtx/sidecar/package.json`.
 
-> **Note:** **Steps 4-6 are optional** and are not required if you have already deployed a Single Tenant Application with SAP Build Work Zone using CDM.
+> **Note:** **Steps 2-4 are optional** and are not required if you have already deployed a Single Tenant Application with SAP Build Work Zone using CDM.
    
-4. Update  `incident-management-destinations`-> `type: com.sap.application.content` with the following configurations:
+2. Update module `incident-management-destinations`-> `type: com.sap.application.content` with the following configurations:
   
    1. Delete the instance level destinations under it: 
         ```yaml
         instance:
           existing_destinations_policy: update
           destinations:
-            - Name: srv-api
-              URL: ~{srv-api/srv-url}
-              Authentication: NoAuthentication
-              Type: HTTP
-              ProxyType: Internet
-              HTML5.ForwardAuthToken: true
-              HTML5.DynamicDestination: true
+            - Name: incident-management-html5-repository
+              ...
+            - Name: incident-management-auth
+              ...
         ```
     
     2. Add a new destination for the CDM under the destination:
@@ -65,20 +60,20 @@ In the `mta.yaml` file, update the following configurations:
         > Replace `<your-sap-cloud-service>` with the `sap.cloud.service` value from `app/incidents/webapp/manifest.json` (for example, `incidentmanagement.service`).
         > If you are using an extension landscape, replace `${default-domain}` with the main domain (for example, `eu10-004` becomes `eu10`).
 
-      3. Under `requires` add the following
+    3. Under `requires` add the following
    
-      ```yaml
-       - name: incident-management-html5-runtime
-        parameters:
-          service-key: 
-            name: incident-management-html5-runtime-service-key
-      ```
-> **Note:** The service name `incident-management-html5-runtime` might differ based on your project configurations. Check the resources section in `mta.yaml` for the html5-repo-runtime service name.
+        ```yaml
+        - name: incident-management-html5-runtime
+          parameters:
+            service-key: 
+              name: incident-management-html5-runtime-service-key
+        ```
+    > **Note:** The service name `incident-management-html5-runtime` might differ based on your project configurations. Check the resources section in `mta.yaml` for the html5-repo-runtime service name.
 
 
-5. Update `incident-management-destination`->`type: org.cloudfoundry.managed-service` with the following configurations:
+3. Update resource `incident-management-destination`->`type: org.cloudfoundry.managed-service` with the following configurations:
   
-   1. Under `parameters`, delete `HTML5Runtime_enabled: true`.
+   1. Under `parameters -> config`, delete `HTML5Runtime_enabled: true`.
    2. **Delete** the `instance` destinations under it:
       
       ```yaml
@@ -104,160 +99,159 @@ In the `mta.yaml` file, update the following configurations:
                   forwardAuthToken: true
         ```
 
-6. Create a new module `incident-management-workzone-cdm` to add the CDM Configuration from the cdm.json file as part of the `incident-management-app-deployer`.
-
-7. In the `mta.yaml` file, add the following module under `modules`:
+4. Create a new module `incident-management-workzone-cdm` to add the CDM Configuration from the cdm.json file as part of the app deployer module. In the `mta.yaml` file, add the following module under `modules`
    
-```yaml
-- name: incident-management-workzone-cdm
-  type: html5
-  path: workzone
-  build-parameters:
-    build-result: .
-    supported-platforms:
-      []
-```
+    ```yaml
+    - name: incident-management-workzone-cdm
+      type: html5
+      path: workzone
+      build-parameters:
+        build-result: .
+        supported-platforms:
+          []
+    ```
 
-8. Add the following to the `build-parameters.requires` section:
+5. Update the `incident-management-app-deployer` module:
 
-```yaml
-- name: incident-management-workzone-cdm
-    artifacts:
-      - cdm.json
-    target-path: app/
+   1. Update the `build-parameters.requires` with CDM.
+      ```yaml
+        - name: incident-management-workzone-cdm
+            artifacts:
+              - cdm.json
+            target-path: app/
 
-```
-9. Update the `incident-management-app-deployer` module:
+        ```
 
-   1. Under the **resources** section, locate `incident-management-html5-repo-host` and delete `HTML5Runtime_enabled: true` from its `parameters` block.
+   2. Under the **requires** section, locate `incident-management-html5-repo-host` and delete `config` -> `HTML5Runtime_enabled: true` from its `parameters` block.
 
 
-   2. Update the `parameters` field with the following value:
-```yaml
-    parameters:
-      config:
-        destinations:
-        - forwardAuthToken: true
-          name: srv-api
-          url: ~{srv-api/srv-url}
-        - name: ui5
-          url: https://ui5.sap.com
-```
+   3. Update the `parameters` field with the following value:
+      ```yaml
+      parameters:
+        config:
+          destinations:
+          - forwardAuthToken: true
+            name: srv-api
+            url: ~{srv-api/srv-url}
+          - name: ui5
+            url: https://ui5.sap.com
+      ```
 
 
 The application deployer will look like this: 
 
 ```yaml
-  - name: incident-management-app-deployer
-    type: com.sap.application.content
-    path: gen 
+- name: incident-management-app-deployer
+  type: com.sap.application.content
+  path: gen 
+  requires:
+    - name: incident-management-auth
+    - name: srv-api
+    - name: incident-management-html5-repo-host
+      parameters:
+        content-target: true
+  build-parameters:
+    build-result: app/
     requires:
-      - name: incident-management-auth
-      - name: srv-api
-      - name: incident-management-html5-repo-host
-        parameters:
-          content-target: true
-    build-parameters:
-      build-result: app/
-      requires:
-        - name: incidentmanagementincidents
-          artifacts:
-            - incidents.zip
-          target-path: app/
-        - name: incident-management-workzone-cdm
-          artifacts:
-            - cdm.json
-          target-path: app/
-    parameters:
-      config:
-        destinations:
-        - forwardAuthToken: true
-          name: srv-api
-          url: ~{srv-api/srv-url}
-        - name: ui5
-          url: https://ui5.sap.com
+      - name: incidentmanagementincidents
+        artifacts:
+          - incidents.zip
+        target-path: app/
+      - name: incident-management-workzone-cdm
+        artifacts:
+          - cdm.json
+        target-path: app/
+  parameters:
+    config:
+      destinations:
+      - forwardAuthToken: true
+        name: srv-api
+        url: ~{srv-api/srv-url}
+      - name: ui5
+        url: https://ui5.sap.com
 ```
 
-10. Create a **workzone** folder on the root of the project then create a file named **cdm.json** and paste the following:
-    > Ensure that the `appId` is matching `app/incidents/webapp/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
-    > Ensure that the `"vizId": "incidents-display"` is matching `crossNavigation->inbounds-><vizId>` In this case `<vizId>` is `incidents-display`.
+6. Create a **workzone** folder on the root of the project then create a file named **cdm.json** and paste the following:
+
+> Ensure that the `appId` is matching `app/incidents/webapp/manifest.json`->`sap.app.id`. Update the `appId` below with `sap.app.id` of your application.
+> Ensure that the `"vizId": "incidents-display"` is matching `crossNavigation->inbounds-><vizId>` In this case `<vizId>` is `incidents-display`.
 
 ```json
-    [
+[
+    {
+    "_version": "3.0",
+    "identification": {
+        "id": "defaultCatalogId",
+        "title": "{{title}}",
+        "entityType": "catalog"
+    },
+    "payload": {
+        "viz": [
         {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultCatalogId",
-            "title": "{{title}}",
-            "entityType": "catalog"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "incidents-display"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Default Catalog Title"
-            }
-            }
+            "appId": "ns.incidents",
+            "vizId": "incidents-display"
+        }
         ]
-        },
+    },
+    "texts": [
         {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultGroupId",
-            "title": "{{title}}",
-            "entityType": "group"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "incidents-display"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Business Apps"
-            }
-            }
-        ]
-        },
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultRole",
-            "entityType": "role",
-            "title": "Default Role"
-        },
-        "payload": {
-            "apps": [
-            {
-                "id": "ns.incidents"
-            }
-            ],
-            "catalogs": [
-            {
-                "id": "defaultCatalogId"
-            }
-            ],
-            "groups": [
-            {
-                "id": "defaultGroupId"
-            }
-            ]
-          }
-       }
+        "locale": "",
+        "textDictionary": {
+            "title": "Default Catalog Title"
+        }
+        }
     ]
+    },
+    {
+    "_version": "3.0",
+    "identification": {
+        "id": "defaultGroupId",
+        "title": "{{title}}",
+        "entityType": "group"
+    },
+    "payload": {
+        "viz": [
+        {
+            "appId": "ns.incidents",
+            "vizId": "incidents-display"
+        }
+        ]
+    },
+    "texts": [
+        {
+        "locale": "",
+        "textDictionary": {
+            "title": "Business Apps"
+        }
+        }
+    ]
+    },
+    {
+    "_version": "3.0",
+    "identification": {
+        "id": "defaultRole",
+        "entityType": "role",
+        "title": "Default Role"
+    },
+    "payload": {
+        "apps": [
+        {
+            "id": "ns.incidents"
+        }
+        ],
+        "catalogs": [
+        {
+            "id": "defaultCatalogId"
+        }
+        ],
+        "groups": [
+        {
+            "id": "defaultGroupId"
+        }
+        ]
+      }
+    }
+]
 ```
 
 ## Next Step

@@ -8,17 +8,9 @@
 
 Once the application is configured for multitenancy and dependency callback handlers are added, more configurations are needed to make it work in multitenancy mode.
 
-1. Configure the Helm chart for multitenancy using the following command at the root of project:
-   
-```shell
-cds add kyma
-```
-
-> Open `chart/values.yaml`, and check for the destination bindings. Remove them if they exist. Open `chart/Chart.yaml` and remove the destination service instance if it exists.
-
 > If the project already has a cdm file, skip the next step.
   
-2. Create a folder resources in the project's root directory. Create a file named cdm.json and paste the following:
+1. Create a folder resources in the project's root directory. Create a file named cdm.json and paste the following:
     > Ensure that the `appId` matches `app/incidents/webapp/manifest.json` → `sap.app.id`. Update all `appId` values below with the value from your application.
     >
     > Ensure that the `vizId` matches the inbound key under `sap.app.crossNavigation.inbounds` in `app/incidents/webapp/manifest.json`. For example, if your manifest has:
@@ -37,92 +29,84 @@ cds add kyma
     > **Note:** A mismatch between the `vizId` in `cdm.json` and the inbound key in `manifest.json` will cause the application tile to not appear in SAP Build Work Zone.
 
 ```json
-    [
+[
+    {
+    "_version": "3.0",
+    "identification": {
+        "id": "defaultCatalogId",
+        "title": "{{title}}",
+        "entityType": "catalog"
+    },
+    "payload": {
+        "viz": [
         {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultCatalogId",
-            "title": "{{title}}",
-            "entityType": "catalog"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "intent1"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Default Catalog Title"
-            }
-            }
+            "appId": "ns.incidents",
+            "vizId": "intent1"
+        }
         ]
-        },
+    },
+    "texts": [
         {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultGroupId",
-            "title": "{{title}}",
-            "entityType": "group"
-        },
-        "payload": {
-            "viz": [
-            {
-                "appId": "ns.incidents",
-                "vizId": "intent1"
-            }
-            ]
-        },
-        "texts": [
-            {
-            "locale": "",
-            "textDictionary": {
-                "title": "Business Apps"
-            }
-            }
-        ]
-        },
-        {
-        "_version": "3.0",
-        "identification": {
-            "id": "defaultRole",
-            "entityType": "role",
-            "title": "Default Role"
-        },
-        "payload": {
-            "apps": [
-            {
-                "id": "ns.incidents"
-            }
-            ],
-            "catalogs": [
-            {
-                "id": "defaultCatalogId"
-            }
-            ],
-            "groups": [
-            {
-                "id": "defaultGroupId"
-            }
-            ]
-          }
-       }
+        "locale": "",
+        "textDictionary": {
+            "title": "Default Catalog Title"
+        }
+        }
     ]
+    },
+    {
+    "_version": "3.0",
+    "identification": {
+        "id": "defaultGroupId",
+        "title": "{{title}}",
+        "entityType": "group"
+    },
+    "payload": {
+        "viz": [
+        {
+            "appId": "ns.incidents",
+            "vizId": "intent1"
+        }
+        ]
+    },
+    "texts": [
+        {
+        "locale": "",
+        "textDictionary": {
+            "title": "Business Apps"
+        }
+        }
+    ]
+    },
+    {
+    "_version": "3.0",
+    "identification": {
+        "id": "defaultRole",
+        "entityType": "role",
+        "title": "Default Role"
+    },
+    "payload": {
+        "apps": [
+        {
+            "id": "ns.incidents"
+        }
+        ],
+        "catalogs": [
+        {
+            "id": "defaultCatalogId"
+        }
+        ],
+        "groups": [
+        {
+            "id": "defaultGroupId"
+        }
+        ]
+        }
+    }
+]
 ```
 
-3. Automate the setup for HTML5 application deployment by running:
-   
-```shell
-    cds add html5-repo
-```
-
-> **⚠️ Warning:** Running `cds add html5-repo` automatically re-adds `destination` bindings and service instance entries that were previously removed. Follow the cleanup steps in the next section.
-
-4. Add the following code snippet to **chart/Chart.yaml**:
+2. Add the following code snippet to **chart/Chart.yaml**:
 
 ```yaml
 - name: service-instance
@@ -130,10 +114,21 @@ cds add kyma
   version: ">0.0.0"
 ```
 
-## Update the Configurations for Multitenancy Support
-
-1. Delete the destination configuration from **chart/values.yaml**:
+3. Configure the Helm chart for multitenancy using the following command at the root of project:
    
+```sh
+cds add kyma
+```
+
+4. Automate the setup for HTML5 application deployment by running:
+   
+```sh
+cds add html5-repo
+```
+
+> Open `chart/values.yaml`, and check for the destination bindings. Remove them if they exist. Open `chart/Chart.yaml` and remove the destination service instance if it exists.
+
+> **⚠️ Warning:** Running `cds add kyma` and `cds add html5-repo` automatically adds `destination` bindings and service instance entries. Open `chart/values.yaml` and delete the destination configuration. 
 ```yaml
     destination:
       serviceOfferingName: 'destination'
@@ -141,10 +136,14 @@ cds add kyma
       parameters:
         version: '1.0.0'
         HTML5Runtime_enabled: true
-```
-   
-2. Delete the destination binding from **chart/values.yaml** wherever it is available.
-3. Under **html5-apps-deployer**, do the following:
+``` 
+Open `chart/Chart.yaml` and remove the destination instance entries if exists. 
+
+
+
+## Update the Configurations for Multitenancy Support
+
+1. Under **html5-apps-deployer**, do the following:
 
    1. Delete **SAP_CLOUD_SERVICE**.
    2. Delete **envFrom:** and the fields under it:
@@ -168,14 +167,14 @@ cds add kyma
     
    5. Delete the destination binding.
    
-4. Under **sidecar:bindings:**, add the binding to html5-repository:
+2. Under **sidecar:bindings:**, add the binding to html5-repository:
 
 ```yaml
 html5-apps-repo-host:
     serviceInstanceName: html5-apps-repo-host
 ```
 
-5. Add the following `html5-apps-repo-runtime` service instance configuration to **chart/values.yaml**:
+3. Add the following `html5-apps-repo-runtime` service instance configuration to **chart/values.yaml**:
 
 ```yaml
 html5-apps-repo-runtime: 
@@ -185,7 +184,7 @@ html5-apps-repo-runtime:
 
 > **Note:** This entry is required for tenant subscription to succeed. Without it, the sidecar dependency callback fails with a 500 error.
 
-6. Build the project:
+4. Build the project:
    
 ```shell
 cds build --production
@@ -201,6 +200,8 @@ Configure `containerize.yaml` at the root of your project. Once all configuratio
 _schema-version: '1.0'
 repository: <your-dockerhub-username>
 tag: <image-version>
+before-all:
+  - cp -f resources/cdm.json app/html5-deployer/resources/cdm.json
 modules:
   - name: incident-management-html5-deployer
     build-parameters:

@@ -11,24 +11,26 @@ Most notably, you will need such dependencies for the SAP Audit Log service, SAP
 
    > CEP handles destinations at subaccount level via the Destination service, not at application level.
 
-3. From `mtx/sidecar/package.json`, remove `"html5-repo": true` and `"destination": true`.
+3. From `mtx/sidecar/package.json`, remove `"html5-repo": true`, `"destination": true` and `"html5-runtime": true`
 
-4. Install the required dependencies inside the `mtx/sidecar` module.
-```sh
-cd mtx/sidecar
-npm install @sap/xsenv
-```
-The `mtx/sidecar/package.json` should have configuration like the following for dependencies:
-```json
-...
-  "cds": {
-    "profile": "mtx-sidecar",
-    "requires": {
-      "html5-host": true
-    }
-  }
-...
-```
+4. The `mtx/sidecar/package.json` should have configuration like the following for dependencies:
+    ```json
+    ...
+      "cds": {
+        "profile": "mtx-sidecar",
+        "requires": {
+          "html5-host": true
+        }
+      }
+    ...
+    ```
+
+Install the required dependencies inside the `mtx/sidecar` module.
+  ```sh
+    cd mtx/sidecar
+    npm install @sap/xsenv
+  ```
+
 
 You are using the `html5 repo host` reuse service. When subscribing, these services will be added as dependent services that can be used from the subscriber account. 
 

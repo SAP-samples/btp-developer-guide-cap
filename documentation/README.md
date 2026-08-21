@@ -11,7 +11,7 @@ The following steps comprise a set of guidance on developing Applications on SAP
      - [Setup CI/CD Pipeline for Kyma Application](./kyma-cicd/README.md)
 <!-- 4. [Integrate with Remote Service](./remote-service/README.md)
 5. [Process Events](./eventing/README.md)
-6. [Implement Multitenancy in a Full-Stack CAP Application Following SAP BTP Developer’s Guide](./saas/README.md)
+6. [Implement Multitenancy in a Full-Stack CAP Application Following SAP BTP Developer’s Guide](./saas/menu.md)
 7. [Configure Change Tracking](./change-tracking/README.md)
 8. [Configure Audit Logging](./auditlog/readme.md)
 9. [Integrate with Authorization Management Service](./xsuaa-to-ams/README.md)
@@ -22,7 +22,7 @@ The following steps comprise a set of guidance on developing Applications on SAP
 Each of the below tutorials are independent and only needs the beginner tutorial (1 - 3 above) as a prerequisite to be completed. The only exception is the Eventing tutorial, which needs the remote service connectivity tutorial to be completed.
 - [Remote Service Connectivity and Eventing](./remote-service.md)
 - [Observability using cap-js/telemetry](./observability/README.md)
-- [Implement Multitenancy in a Full-Stack CAP Application Following SAP BTP Developer’s Guide](./saas/README.md)
+- [Implement Multitenancy in a Full-Stack CAP Application Following SAP BTP Developer’s Guide](./saas/menu.md)
 - [Data Privacy](./dataprivacy.md) 
 - [Notifications for SAP Build WorkZone using cap-js/notifications](./notifications/readme.md)
 - [Configure Authorization and Authentication Using the SAP Cloud Identity Services](./xsuaa-to-ams/README.md)

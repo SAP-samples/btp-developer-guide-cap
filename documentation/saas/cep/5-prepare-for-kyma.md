@@ -106,21 +106,13 @@ Once the application is configured for multitenancy and dependency callback hand
 ]
 ```
 
-2. Add the following code snippet to **chart/Chart.yaml**:
-
-```yaml
-- name: service-instance
-  alias: html5-apps-repo-runtime
-  version: ">0.0.0"
-```
-
-3. Configure the Helm chart for multitenancy using the following command at the root of project:
+2. Configure the Helm chart for multitenancy using the following command at the root of project:
    
 ```sh
 cds add kyma
 ```
 
-4. Automate the setup for HTML5 application deployment by running:
+3. Automate the setup for HTML5 application deployment by running:
    
 ```sh
 cds add html5-repo
@@ -139,6 +131,13 @@ cds add html5-repo
 ``` 
 Open `chart/Chart.yaml` and remove the destination instance entries if exists. 
 
+4. Add the following code snippet to **chart/Chart.yaml**:
+
+```yaml
+- name: service-instance
+  alias: html5-apps-repo-runtime
+  version: ">0.0.0"
+```
 
 
 ## Update the Configurations for Multitenancy Support

@@ -113,7 +113,7 @@ In the `mta.yaml` file, update the following configurations:
 
 5. Update the `incident-management-app-deployer` module:
 
-   1. Update the `build-parameters.requires` with CDM.
+   1. Add cdm configuration to the `build-parameters.requires` section.
       ```yaml
         - name: incident-management-workzone-cdm
             artifacts:
@@ -125,7 +125,7 @@ In the `mta.yaml` file, update the following configurations:
    2. Under the **requires** section, locate `incident-management-html5-repo-host` and delete `config` -> `HTML5Runtime_enabled: true` from its `parameters` block.
 
 
-   3. Update the `parameters` field with the following value:
+   3. Remove the existing `parameters` field and update with the following value:
       ```yaml
       parameters:
         config:

@@ -571,10 +571,12 @@ Enabling a draft for an entity allows the users to edit the entities. To enable 
     annotate ProcessorService.Incidents with @odata.draft.enabled; 
     ```
 
-3. Start creating a new incident but leave the **Customer**, **Status**, and **Urgency** fields empty and press return button.
+3. Choose **Create** to create a new draft incident and switch to the object page. Enter a title and press **Enter/Return**. The footer shows that the draft is automatically updated. Leave the **Customer**, **Status**, and **Urgency** fields empty.
 
     <!-- border; size:540px -->
     ![Draft incident with empty fields](./draft-incident-empty.png)
+
+    > **Note:** Make sure to press **Enter/Return** after entering the title. If you navigate back without pressing Enter, the title will not be saved and will appear empty in the list.
 
 4. Go back to the list view page without creating the incident. You see the incident draft there with the empty fields.
 
@@ -585,8 +587,4 @@ Enabling a draft for an entity allows the users to edit the entities. To enable 
 
     <!-- border; size:540px -->
     ![Draft incident, continue editing ](./draft-incident-continue.png)
-
-> **Note:** UI5 versions **1.148.0** and **1.148.1** have a known incompatibility with CAP Java draft handling. If you see *"Sorry, we can't find this page"* when opening a draft, downgrade the UI5 version to **1.136.2**:
-> - In `app/incidents/webapp/index.html`, update the `src` attribute of the bootstrap script to `https://sapui5.hana.ondemand.com/1.136.2/resources/sap-ui-core.js`.
-> - In `app/incidents/webapp/manifest.json`, update `"minUI5Version"` to `"1.136.2"`.
 

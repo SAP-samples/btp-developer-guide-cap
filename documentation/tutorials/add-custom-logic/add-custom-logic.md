@@ -24,13 +24,13 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
 3. Add the following code (the actual business logic) to the **services.js** file:
 
     ```js
-    const cds = require('@sap/cds')
+    import cds from '@sap/cds'
 
-    class ProcessorService extends cds.ApplicationService {
+    export class ProcessorService extends cds.ApplicationService {
       /** Registering custom event handlers */
       init() {
         this.before("UPDATE", "Incidents", (req) => this.onUpdate(req));
-        this.before("CREATE", "Incidents", (req) => this.changeUrgencyDueToSubject(req.data));
+        this.before(["CREATE", "UPDATE"], "Incidents", (req) => this.changeUrgencyDueToSubject(req.data));
 
         return super.init();
       }
@@ -46,10 +46,9 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
         if (closed) req.reject `Can't modify a closed incident!`
       }
     }
-    module.exports = { ProcessorService }
     ```
 
-3. Make sure that the SAP Fiori application is running. If you closed it, choose the **Preview Application** option in the **Application Info - incidents** tab and select the **watch-incidents** npm script.
+4. Make sure that the SAP Fiori application is running. If you closed it, choose the **Preview Application** option in the **Application Info - incidents** tab and select the **watch-incidents** npm script.
 
     > To open the **Application Info - incidents** tab: 
     >
@@ -57,7 +56,7 @@ In this tutorial, you add some custom code to the CAP application. Depending on 
     >2. Choose **Fiori: Open Application Info**.
 
 
-4. Create a new incident with the word **urgent** in its title and with the urgency set to **Medium**. 
+5. Create a new incident with the word **urgent** in its title and with the urgency set to **Medium**. 
 
     <!-- border; size:540px -->
     ![Create new incident](./create-new-incident.png)
@@ -171,4 +170,4 @@ The handler method itself is annotated with `@Before(event = CqnService.EVENT_CR
 
 </details>
 
-In this case, the event is triggered after a **READ** was carried out for the **Incidents** entity. In your custom handler, you get all the data (in this case, all the incidents) that was read according to the query. You can loop over each of them and, if needed, adjust the data of the response. In this case, you change the value of the **urgency** property when the **title** contains the word **urgent**. The new values for **Urgency** are then part of the response to the READ request.
+In this case, the `changeUrgencyDueToSubject` method is called **before CREATE and UPDATE** events on the **Incidents** entity. CAP calls this handler before writing to the database, allowing you to inspect and modify the incoming data. In this case, you change the value of the **urgency** property when the **title** contains the word **urgent**. The `onUpdate` method similarly runs **before an UPDATE** event and rejects any attempt to modify a closed incident.

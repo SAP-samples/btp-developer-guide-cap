@@ -340,11 +340,17 @@ To create the services' definition:
 This time, the CAP server reacted with additional output:
 
 ```bash
-[cds] - serving ProcessorService { path: '/odata/v4/processor' }
-[cds] - serving AdminService { path: '/odata/v4/admin' }
+[cds] - serving ProcessorService {
+  at: [ '/odata/v4/processor' ],
+  decl: 'srv/services.cds:1'
+}
+[cds] - serving AdminService {
+  at: [ '/odata/v4/admin' ],
+  decl: 'srv/services.cds:2'
+}
 
 [cds] - server listening on { url: 'http://localhost:4004' }
-[cds] - [ terminate with ^C ]
+[cds] - server v10.x.x launched in Xms
 ```
 
 As you can see in the log output, the new file created two generic service providers: `ProcessorService` that serves requests on the `/odata/v4/processor` endpoint and `AdminService` that serves requests on the `/odata/v4/admin` endpoint. If you open the link `http://localhost:4004` from SAP Business Application Studio in your browser, you see the generic `index.html` page:
@@ -352,7 +358,7 @@ As you can see in the log output, the new file created two generic service provi
 <!-- border; size:540px -->
 ![index.html](./index.png)
 
-You have to stop the CAP server with <kbd>Ctrl</kbd> + <kbd>C</kbd> and start it again with the `cds watch` command.
+> `cds watch` automatically detects and reloads when you add new files — no manual restart is needed.
 
 </details>
 

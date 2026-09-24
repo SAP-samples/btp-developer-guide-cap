@@ -1,0 +1,77 @@
+{
+  "name": "mockserver",
+  "version": "1.0.0",
+  "description": "OData Mockserver",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.16.1",
+    "@cap-js/sqlite": "^3.1.1",
+    "@sap/cds": "^10.1.1",
+    "@sap/xb-msg-amqp-v100": "^0.9.58",
+    "cds-swagger-ui-express": "^0.11.0",
+    "express": "^5.2.1"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development cds-serve --with-mocks --in-memory"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es2020": true,
+      "node": true,
+      "jest": true,
+      "mocha": true
+    },
+    "globals": {
+      "SELECT": true,
+      "INSERT": true,
+      "UPDATE": true,
+      "DELETE": true,
+      "CREATE": true,
+      "DROP": true,
+      "CDL": true,
+      "CQL": true,
+      "CXL": true,
+      "cds": true
+    },
+    "rules": {
+      "no-console": "off",
+      "require-atomic-updates": "off"
+    }
+  },
+  "cds": {
+    "features": {
+      "serve_on_root": true
+    },
+    "cov2ap": {
+      "plugin": true
+    },
+    "requires": {
+      "messaging": {
+        "kind": "enterprise-messaging",
+        "format": "cloudevents",
+        "[production]": {
+          "kind": "enterprise-messaging",
+          "format": "cloudevents"
+        },
+        "[hybrid]": {
+          "kind": "enterprise-messaging-shared"
+        }
+      },
+      "OP_API_BUSINESS_PARTNER_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/OP_API_BUSINESS_PARTNER_SRV"
+      },
+      "c4codata": {
+        "kind": "odata-v2",
+        "model": "srv/external/c4codata"
+      },
+      "API_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_BUSINESS_PARTNER"
+      }
+    }
+  }
+}

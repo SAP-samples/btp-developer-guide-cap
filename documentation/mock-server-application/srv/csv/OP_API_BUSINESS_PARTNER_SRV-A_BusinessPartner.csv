@@ -1,0 +1,4 @@
+BusinessPartner;BusinessPartnerName;BusinessPartnerIsBlocked;BusinessPartnerFullName;BusinessPartnerCategory
+1004155;Williams Electric Drives;false;Williams Electric Drives;Customer
+1004161;Smith Batteries Ltd;false;Smith Batteries Ltd;Customer
+1004100;Johnson Automotive Supplies;true;Johnson Automotive Supplies;Customer

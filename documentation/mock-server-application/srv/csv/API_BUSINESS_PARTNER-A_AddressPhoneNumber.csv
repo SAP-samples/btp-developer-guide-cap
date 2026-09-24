@@ -1,0 +1,2 @@
+AddressID,Person,OrdinalNumber,DestinationLocationCountry,IsDefaultPhoneNumber,PhoneNumber,PhoneNumberExtension,InternationalPhoneNumber,PhoneNumberType
+27512,1,1,DE,true,860-828-5500,,+498608285500,1

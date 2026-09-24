@@ -1,0 +1,5 @@
+BusinessPartner;AddressID;Country;PostalCode;CityName;StreetName;HouseNumber;FullName
+1004155;1;DE;69190;Walldorf;Dietmar-Hopp-Allee;16;Dietmar-Hopp-Allee 16 Walldorf
+1004155;2;US;19072;Palo Alto;West-wood-way;16;West-wood-way 16 Palo Alto
+1004161;1;US;19073;West Chester Pike;Woodway Drive;3999;Woodway Drive 3999 West Chester Pike
+1004100;1;DE;69190;Walldorf;Dietmar-Hopp-Allee;1;Dietmar-Hopp-Allee 1 Walldorf

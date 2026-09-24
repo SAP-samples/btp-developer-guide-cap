@@ -64,6 +64,23 @@ cds add mta
 >
 > The `requires: - name: srv-api` entry is usually generated automatically. If it is missing, add it manually as shown above.
 
+> [!IMPORTANT]
+> **If you used a custom project or service name**, verify that the `sap.cloud.service` value in the generated `mta.yaml` matches the `"service"` field under `"sap.cloud"` in `app/incidents/webapp/manifest.json`. In `mta.yaml`, find the destinations module and check:
+>
+> ```yaml
+> destinations:
+>   - Name: incident-management-html5-repository
+>     sap.cloud.service: incidentmanagement.service   # must match manifest.json
+> ```
+>
+> In `app/incidents/webapp/manifest.json`, confirm:
+>
+> ```json
+> "sap.cloud": { "public": true, "service": "incidentmanagement.service" }
+> ```
+>
+> If the values differ, update `mta.yaml` to match `manifest.json`. A mismatch causes SAP Build Work Zone to fail to discover the HTML5 application.
+
 ### Deploy in the SAP BTP, Cloud Foundry runtime
 
 

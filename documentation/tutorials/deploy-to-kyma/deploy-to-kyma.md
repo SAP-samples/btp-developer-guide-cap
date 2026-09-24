@@ -507,6 +507,29 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
     >   - cp app/incidents/dist/incidents.zip app/html5-deployer/resources/incidents.zip
     >   - helm dependency build ./gen/chart
     > ```
+    >
+    > If you are a 🪟 Windows OS user, use the following commands instead:
+    >
+    > ```yaml
+    > before-all:
+    >   - npx cds build --production
+    >   - if not exist "app\html5-deployer\resources" mkdir app\html5-deployer\resources
+    >   - mvn clean package -DskipTests=true --batch-mode
+    >   - npm i --prefix app/incidents
+    >   - npm run build --prefix app/incidents
+    >   - copy /Y "app\incidents\dist\incidents.zip" "app\html5-deployer\resources\incidents.zip"
+    >   - helm dependency update ./gen/chart
+    > ```
+    >
+    > **Note:** The folder name (for example, `app/incidents`) and the zip file name (for example, `incidents.zip`) can vary based on your project name. Update them accordingly. The folder name is the name of your app folder under the **app/** directory. The zip file name is defined by the `archiveName` field in **app/&lt;your-app-folder&gt;/ui5.yaml**:
+    >
+    > ```yaml
+    > builder:
+    >   customTasks:
+    >     - name: ui5-task-zipper
+    >       configuration:
+    >         archiveName: incidents   # this is your zip file name
+    > ```
 
     Update the `chart/values.yaml` file with your Kyma cluster domain and container registry details. The example below uses Docker Hub; adapt the `global.image.registry` and each `image.repository` value to match your container registry if you are not using Docker Hub:
 

@@ -17,7 +17,7 @@ docker login docker.io -u <your-user>
 If you're using any device with a non-x86 processor (e.g. MacBook M1/M2), you need to instruct Docker to use x86 images by setting the **DOCKER_DEFAULT_PLATFORM** environment variable: *export DOCKER_DEFAULT_PLATFORM=linux/amd64*.
 See [Environment variables](https://docs.docker.com/engine/reference/commandline/cli/#environment-variables).
 
-1. If the `ui-resources` folder does not exist in your project, run:
+1. If the `app/html5-deployer` folder does not exist in your project, run:
 
 ```sh
 cds add html5-repo
@@ -42,7 +42,7 @@ Now point the terminal back to the root of the application.
 
 ```yaml
 _schema-version: '1.0'
-repository: <your-dockerhub-username>
+repository: docker.io/<your-dockerhub-username>
 tag: <image-version>
 modules:
   - name: incident-management-srv
@@ -64,9 +64,9 @@ modules:
   - name: incident-management-html5-deployer
     build-parameters:
       buildpack:
-        type: nodejs
+        type: sapse/application-content-deployer-buildpack:1.4.0
         builder: builder-jammy-base
-        path: ui-resources
+        path: app/html5-deployer
 ```
 
 4. Add your container image settings to your `chart/values.yaml`:

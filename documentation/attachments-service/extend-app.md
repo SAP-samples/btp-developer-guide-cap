@@ -8,6 +8,12 @@
    ```bash
     npm add @cap-js/attachments
    ```
+
+2. Run the following command to add the AWS S3 SDK dependencies:
+
+   ```bash
+   npm add @aws-sdk/client-s3 @aws-sdk/lib-storage
+   ```
 **Note** - To be able to use the Fiori uploadTable feature, you must ensure that the SAPUI5 version is updated to ^1.121.0 in the application's index.html.
 
 

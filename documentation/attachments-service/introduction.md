@@ -15,17 +15,17 @@ To follow along with this guide, Complete the prerequisites and ensure that all 
 1. Develop the Incident Management application following the step-by-step tutorial [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
 
 2. Deploy the Incident Management application to Cloud Foundry runtime:
-   - SAP BTP, Cloud Foundry runtime: [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html).
+   - Cloud Foundry runtime: [Deploy a Full-Stack CAP Application in Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html).
 
 3. Undeploy your application by running the following command:
    
-   - For SAP BTP, Cloud Foundry runtime: `cf undeploy <YOUR_MTA_ID> --delete-services`
+   - For Cloud Foundry runtime: `cf undeploy <YOUR_MTA_ID> --delete-services`
 
 # Required Additional Entitlements
 
-To use attachments, enable the following additional entitlements and quotas in the SAP BTP cockpit:
+To use attachments, enable the following additional entitlements and quotas in the cockpit:
 
-| Service                           | Plan       | Number of Instances |
+| Service | Plan | Number of Instances |
 |-----------------------------------|------------|:-------------------:|
 | Object Store| s3-standard | 1 |
 | SAP Malware Scanning Service | clamav | 1 |

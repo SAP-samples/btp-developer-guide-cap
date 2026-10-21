@@ -1,4 +1,4 @@
-# Option 2 - Install Mock Server in SAP BTP Kyma Runtime
+# Option 2 - Install Mock Server in Kyma Runtime
 
 ## Usage Scenario
 
@@ -146,7 +146,7 @@ In essence, these are the steps you need to follow:
 
 ## Create Destination to Mock Server
 
-1. Go to your SAP BTP cockpit and navigate to the subaccount overview. Choose **Connectivity** &rarr; **Destination**. Then, choose **New Destination**. 
+1. Go to your cockpit and navigate to the subaccount overview. Choose **Connectivity** &rarr; **Destination**. Then, choose **New Destination**. 
   1. Enter the following values:
 
       * **Name** = *[Some destination name depending on your mission]*

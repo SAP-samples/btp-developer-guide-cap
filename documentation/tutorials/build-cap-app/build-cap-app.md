@@ -4,7 +4,7 @@ In this tutorial, you learn how to create a CAP project, how to add a domain mod
 
 ## Prerequisites
 
-You've configured the SAP Business Application Studio. Follow the steps in the [Set Up SAP Business Application Studio for Development](set-up-bas) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+You've configured the SAP Business Application Studio. Follow the steps in the [Set Up SAP Business Application Studio for Development](set-up-bas) tutorial that is part of the [Develop a Full-Stack CAP Application Following Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
@@ -110,29 +110,35 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
 
     > This command creates a folder **incident-management** with your newly created CAP Java project.
 
-5. Add Java support.
+5. Navigate to the **incident-management** folder.
+
+    ```bash
+    cd incident-management
+    ```
+
+6. Add Java support.
 
     ```bash
     cds add java
     ```
 
-6. Choose the **Explorer** icon and then choose **Open Folder**. Type `/home/user/projects/` in the field and select `incident-management`. Choose **OK** to open the project in SAP Business Application Studio.
+7. Choose the **Explorer** icon and then choose **Open Folder**. Type `/home/user/projects/` in the field and select `incident-management`. Choose **OK** to open the project in SAP Business Application Studio.
 
     <!-- border; size:540px -->
     ![Open SAP Business Application Studio folder](./bas-open-folder.png)
 
     > You can also use the **Cmd+Shift+E** (macOS) or **Ctrl+Shift+E** (Windows/Linux) key combination to quickly navigate to the **Explorer**.
   
-7. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
+8. While you're in the **incident-management** folder, choose the burger menu and then choose **Terminal** &rarr; **New Terminal**.
 
-8. Navigate to the **srv** folder.
+9. Navigate to the **srv** folder.
 
     ```bash
     cd srv
     ```
 
 
-9. Run the following command to start a CAP Java server:
+10. Run the following command to start a CAP Java server:
 
 
     ```bash
@@ -148,7 +154,7 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
     [INFO] 
     [INFO] --------------------< customer:incident-management >--------------------
     [INFO] Building incident-management 1.0.0-SNAPSHOT
-    [INFO]   from pom.xml
+    [INFO] from pom.xml
     [INFO] --------------------------------[ jar ]---------------------------------
     [INFO] 
     [INFO] --- cds-maven-plugin:3.4.1:watch (default-cli) @ incident-management ---
@@ -191,15 +197,15 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
     * Incidents created by Customers.
     */
     entity Incidents : cuid, managed {
-      customer     : Association to Customers;
-      title        : String @title: 'Title';
-      urgency      : Association to Urgency default 'M';
-      status       : Association to Status default 'N';
+      customer : Association to Customers;
+      title : String @title: 'Title';
+      urgency : Association to Urgency default 'M';
+      status : Association to Status default 'N';
       conversation : Composition of many {
-                       key ID        : UUID;
+                       key ID : UUID;
                            timestamp : type of managed : createdAt;
-                           author    : type of managed : createdBy;
-                           message   : String;
+                           author : type of managed : createdBy;
+                           message : String;
                      };
     }
     
@@ -207,28 +213,28 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
     * Customers entitled to create support Incidents.
     */
     entity Customers : managed {
-      key ID           : String;
-          firstName    : String;
-          lastName     : String;
-          name         : String = trim(firstName || ' ' || lastName);
-          email        : EMailAddress;
-          phone        : PhoneNumber;
-          incidents    : Association to many Incidents
+      key ID : String;
+          firstName : String;
+          lastName : String;
+          name : String = trim(firstName || ' ' || lastName);
+          email : EMailAddress;
+          phone : PhoneNumber;
+          incidents : Association to many Incidents
                            on incidents.customer = $self;
           creditCardNo : String(16) @assert.format: '^[1-9]\d{15}$';
-          addresses    : Composition of many Addresses
+          addresses : Composition of many Addresses
                            on addresses.customer = $self;
     }
     
     entity Addresses : cuid, managed {
-      customer      : Association to Customers;
-      city          : String;
-      postCode      : String;
+      customer : Association to Customers;
+      city : String;
+      postCode : String;
       streetAddress : String;
     }
     
     entity Status : CodeList {
-      key code        : String enum {
+      key code : String enum {
             new = 'N';
             assigned = 'A';
             in_process = 'I';
@@ -248,7 +254,7 @@ You've configured the SAP Business Application Studio. Follow the steps in the [
     }
     
     type EMailAddress : String;
-    type PhoneNumber  : String;
+    type PhoneNumber : String;
     ```
 
 
@@ -396,29 +402,29 @@ As you can see in the log output, the new file created two generic service provi
     This time, the CAP server reacted with additional output:
 
     ```bash
-    2024-12-06T14:02:29.740Z  INFO 10998 --- [  restartedMain] c.s.c.services.impl.ServiceCatalogImpl   : Registered service AdminService
-    2024-12-06T14:02:29.742Z  INFO 10998 --- [  restartedMain] c.s.c.services.impl.ServiceCatalogImpl   : Registered service ProcessorService
-    2024-12-06T14:02:29.743Z  INFO 10998 --- [  restartedMain] .s.c.r.CdsRuntimeBeanDefinitionRegistrar : Auto-configuration of DataSource beans is explicitly disabled.
-    2024-12-06T14:02:30.161Z  INFO 10998 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-    2024-12-06T14:02:30.175Z  INFO 10998 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-    2024-12-06T14:02:30.175Z  INFO 10998 --- [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-    2024-12-06T14:02:30.199Z  INFO 10998 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-    2024-12-06T14:02:30.199Z  INFO 10998 --- [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 944 ms
-    2024-12-06T14:02:30.217Z  INFO 10998 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-    2024-12-06T14:02:30.339Z  INFO 10998 --- [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:ef5eb10f-0fc9-413e-9358-0c9e2365c3aa user=SA
-    2024-12-06T14:02:30.340Z  INFO 10998 --- [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-    2024-12-06T14:02:30.348Z  INFO 10998 --- [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:ef5eb10f-0fc9-413e-9358-0c9e2365c3aa'
-    2024-12-06T14:02:30.388Z  INFO 10998 --- [  restartedMain] c.s.c.f.s.c.adapter.AdapterBeanFactory   : Servlet CdsODataV4Servlet mapped to /odata/v4
-    2024-12-06T14:02:30.391Z  INFO 10998 --- [  restartedMain] c.s.c.f.s.c.adapter.AdapterBeanFactory   : Servlet IndexPageServlet mapped to /
-    2024-12-06T14:02:30.393Z  INFO 10998 --- [  restartedMain] c.s.c.f.s.c.adapter.AdapterBeanFactory   : Servlet CdsFioriPreviewServlet mapped to /$fiori-preview
-    2024-12-06T14:02:30.573Z  INFO 10998 --- [  restartedMain] c.s.c.services.impl.ServiceCatalogImpl   : Registered service PersistenceService$Default
-    2024-12-06T14:02:30.614Z  INFO 10998 --- [  restartedMain] .s.c.a.o.v.m.p.EdmxProviderConfiguration : Initialized Default EDMX V4 Provider
-    2024-12-06T14:02:30.619Z  INFO 10998 --- [  restartedMain] .s.c.a.o.v.m.p.EdmxProviderConfiguration : Initialized Default EDMX I18n Provider
-    2024-12-06T14:02:30.650Z  INFO 10998 --- [  restartedMain] c.sap.cds.services.impl.utils.BuildInfo  : git.commit.id: 9d82be78fe5d02e889632e16057953cbfc609d5b
-    2024-12-06T14:02:30.650Z  INFO 10998 --- [  restartedMain] c.sap.cds.services.impl.utils.BuildInfo  : maven.version: 3.4.1
-    2024-12-06T14:02:30.689Z  INFO 10998 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-    2024-12-06T14:02:30.703Z  INFO 10998 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-    2024-12-06T14:02:30.709Z  INFO 10998 --- [  restartedMain] c.incident_management.Application        : Started Application in 1.725 seconds (process running for 2.035)
+    2024-12-06T14:02:29.740Z INFO 10998 --- [ restartedMain] c.s.c.services.impl.ServiceCatalogImpl : Registered service AdminService
+    2024-12-06T14:02:29.742Z INFO 10998 --- [ restartedMain] c.s.c.services.impl.ServiceCatalogImpl : Registered service ProcessorService
+    2024-12-06T14:02:29.743Z INFO 10998 --- [ restartedMain] .s.c.r.CdsRuntimeBeanDefinitionRegistrar : Auto-configuration of DataSource beans is explicitly disabled.
+    2024-12-06T14:02:30.161Z INFO 10998 --- [ restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat initialized with port 8080 (http)
+    2024-12-06T14:02:30.175Z INFO 10998 --- [ restartedMain] o.apache.catalina.core.StandardService : Starting service [Tomcat]
+    2024-12-06T14:02:30.175Z INFO 10998 --- [ restartedMain] o.apache.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+    2024-12-06T14:02:30.199Z INFO 10998 --- [ restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+    2024-12-06T14:02:30.199Z INFO 10998 --- [ restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 944 ms
+    2024-12-06T14:02:30.217Z INFO 10998 --- [ restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Starting...
+    2024-12-06T14:02:30.339Z INFO 10998 --- [ restartedMain] com.zaxxer.hikari.pool.HikariPool : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:ef5eb10f-0fc9-413e-9358-0c9e2365c3aa user=SA
+    2024-12-06T14:02:30.340Z INFO 10998 --- [ restartedMain] com.zaxxer.hikari.HikariDataSource : HikariPool-1 - Start completed.
+    2024-12-06T14:02:30.348Z INFO 10998 --- [ restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:ef5eb10f-0fc9-413e-9358-0c9e2365c3aa'
+    2024-12-06T14:02:30.388Z INFO 10998 --- [ restartedMain] c.s.c.f.s.c.adapter.AdapterBeanFactory : Servlet CdsODataV4Servlet mapped to /odata/v4
+    2024-12-06T14:02:30.391Z INFO 10998 --- [ restartedMain] c.s.c.f.s.c.adapter.AdapterBeanFactory : Servlet IndexPageServlet mapped to /
+    2024-12-06T14:02:30.393Z INFO 10998 --- [ restartedMain] c.s.c.f.s.c.adapter.AdapterBeanFactory : Servlet CdsFioriPreviewServlet mapped to /$fiori-preview
+    2024-12-06T14:02:30.573Z INFO 10998 --- [ restartedMain] c.s.c.services.impl.ServiceCatalogImpl : Registered service PersistenceService$Default
+    2024-12-06T14:02:30.614Z INFO 10998 --- [ restartedMain] .s.c.a.o.v.m.p.EdmxProviderConfiguration : Initialized Default EDMX V4 Provider
+    2024-12-06T14:02:30.619Z INFO 10998 --- [ restartedMain] .s.c.a.o.v.m.p.EdmxProviderConfiguration : Initialized Default EDMX I18n Provider
+    2024-12-06T14:02:30.650Z INFO 10998 --- [ restartedMain] c.sap.cds.services.impl.utils.BuildInfo : git.commit.id: 9d82be78fe5d02e889632e16057953cbfc609d5b
+    2024-12-06T14:02:30.650Z INFO 10998 --- [ restartedMain] c.sap.cds.services.impl.utils.BuildInfo : maven.version: 3.4.1
+    2024-12-06T14:02:30.689Z INFO 10998 --- [ restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+    2024-12-06T14:02:30.703Z INFO 10998 --- [ restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+    2024-12-06T14:02:30.709Z INFO 10998 --- [ restartedMain] c.incident_management.Application : Started Application in 1.725 seconds (process running for 2.035)
     ```
 
     You can see in the log output, the new file created two generic service providers: `ProcessorService` and `AdminService`. 
@@ -576,15 +582,15 @@ Now that the database is filled with some initial data, you can send complex ODa
 <summary>Java</summary>
 
 ```bash
-2024-12-06T14:12:46.228Z  INFO 10998 --- [  restartedMain] c.s.c.s.impl.persistence.CsvDataLoader   : Filling sap.capire.incidents.Incidents.conversation from ../db/data/sap.capire.incidents-Incidents.conversation.csv
-2024-12-06T14:12:46.229Z  INFO 10998 --- [  restartedMain] c.s.c.s.impl.persistence.CsvDataLoader   : Filling sap.capire.incidents.Incidents from ../db/data/sap.capire.incidents-Incidents.csv
-2024-12-06T14:12:46.230Z  INFO 10998 --- [  restartedMain] c.s.c.s.impl.persistence.CsvDataLoader   : Filling sap.capire.incidents.Customers from ../db/data/sap.capire.incidents-Customers.csv
-2024-12-06T14:12:46.231Z  INFO 10998 --- [  restartedMain] c.s.c.s.impl.persistence.CsvDataLoader   : Filling sap.capire.incidents.Status from ../db/data/sap.capire.incidents-Status.csv
-2024-12-06T14:12:46.232Z  INFO 10998 --- [  restartedMain] c.s.c.s.impl.persistence.CsvDataLoader   : Filling sap.capire.incidents.Addresses from ../db/data/sap.capire.incidents-Addresses.csv
-2024-12-06T14:12:46.233Z  INFO 10998 --- [  restartedMain] c.s.c.s.impl.persistence.CsvDataLoader   : Filling sap.capire.incidents.Urgency from ../db/data/sap.capire.incidents-Urgency.csv
-2024-12-06T14:12:46.244Z  INFO 10998 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2024-12-06T14:12:46.249Z  INFO 10998 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-06T14:12:46.250Z  INFO 10998 --- [  restartedMain] c.incident_management.Application        : Started Application in 0.211 seconds (process running for 617.577)
+2024-12-06T14:12:46.228Z INFO 10998 --- [ restartedMain] c.s.c.s.impl.persistence.CsvDataLoader : Filling sap.capire.incidents.Incidents.conversation from ../db/data/sap.capire.incidents-Incidents.conversation.csv
+2024-12-06T14:12:46.229Z INFO 10998 --- [ restartedMain] c.s.c.s.impl.persistence.CsvDataLoader : Filling sap.capire.incidents.Incidents from ../db/data/sap.capire.incidents-Incidents.csv
+2024-12-06T14:12:46.230Z INFO 10998 --- [ restartedMain] c.s.c.s.impl.persistence.CsvDataLoader : Filling sap.capire.incidents.Customers from ../db/data/sap.capire.incidents-Customers.csv
+2024-12-06T14:12:46.231Z INFO 10998 --- [ restartedMain] c.s.c.s.impl.persistence.CsvDataLoader : Filling sap.capire.incidents.Status from ../db/data/sap.capire.incidents-Status.csv
+2024-12-06T14:12:46.232Z INFO 10998 --- [ restartedMain] c.s.c.s.impl.persistence.CsvDataLoader : Filling sap.capire.incidents.Addresses from ../db/data/sap.capire.incidents-Addresses.csv
+2024-12-06T14:12:46.233Z INFO 10998 --- [ restartedMain] c.s.c.s.impl.persistence.CsvDataLoader : Filling sap.capire.incidents.Urgency from ../db/data/sap.capire.incidents-Urgency.csv
+2024-12-06T14:12:46.244Z INFO 10998 --- [ restartedMain] o.s.b.d.a.OptionalLiveReloadServer : LiveReload server is running on port 35729
+2024-12-06T14:12:46.249Z INFO 10998 --- [ restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port 8080 (http) with context path '/'
+2024-12-06T14:12:46.250Z INFO 10998 --- [ restartedMain] c.incident_management.Application : Started Application in 0.211 seconds (process running for 617.577)
 ```
 > Make sure that your CAP server is still running. You can start it with `mvn cds:watch`.
 

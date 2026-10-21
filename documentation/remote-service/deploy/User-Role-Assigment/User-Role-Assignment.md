@@ -1,11 +1,11 @@
 # User Role Assignment
 
-Follow the below steps to add users to the SAP BTP subaccount and assign roles.
+Follow the below steps to add users to the subaccount and assign roles.
 
 
 ## Create a User
 
-1. Open the SAP BTP cockpit and navigate to your subaccount.
+1. Open the cockpit and navigate to your subaccount.
 
 1. Choose **Security** &rarr; **Users**, and then choose **Create**.
 
@@ -17,7 +17,7 @@ Follow the below steps to add users to the SAP BTP subaccount and assign roles.
 
 ## Create a Role Collection
 
-1. At the **SAP BTP Cockpit** choose **Security**  &rarr; **Role Collections** Press "+" and create a new Role Collection called **IncidentManagement**
+1. In the **cockpit**, choose **Security** &rarr; **Role Collections**. Choose **+** and create a role collection called **IncidentManagement**.
 
     ![Role Collection](./images/rolecollection01.png)
 

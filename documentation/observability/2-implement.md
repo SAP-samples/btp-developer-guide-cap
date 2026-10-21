@@ -7,7 +7,7 @@ Analysis, persistency of Logs is recommended in standardized, centralized and ho
 
 ## Prerequisites
 
-You have the Incident Management application set up. See the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.   
+You have the Incident Management application set up. See the [Develop a Full-Stack CAP Application Following Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.   
 
 ## Adding custom logs to the application
 
@@ -19,7 +19,7 @@ To add logs in the Incident Management application, take advantage of the minima
 
    ```javascript
    const cds = require('@sap/cds')
-   const LOG = cds.log('processor-service')  // <-- add this line
+   const LOG = cds.log('processor-service') // <-- add this line
    ```
 
 3. In the `onUpdate` method, expand the single-line `if (closed)` statement into a block and add the log statement before `req.reject`:
@@ -27,8 +27,8 @@ To add logs in the Incident Management application, take advantage of the minima
    ```javascript
    async onUpdate (req) {
      let closed = await SELECT.one(1) .from (req.subject) .where `status.code = 'C'`
-     if (closed) {                                                        // <-- expand to block
-       LOG.info(`Incident ${req.data.ID} has already been closed`)       // <-- add this line
+     if (closed) { // <-- expand to block
+       LOG.info(`Incident ${req.data.ID} has already been closed`) // <-- add this line
        req.reject `Can't modify a closed incident!`
      }
    }

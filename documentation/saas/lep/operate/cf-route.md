@@ -8,8 +8,8 @@ The approuter will then route the traffic to the application using the tenant ho
 
 You can create the route automatically or with Cloud Foundry APIs during onboarding, or manually using the Cloud Foundry command-line interface(cf CLI).
 
-### Option 1: Using SAP BTP Cockpit
-1. In the SAP BTP cockpit, navigate to the provider subaccount. Provider Subaccount is the place where the multitenant applications is deployed.
+### Option 1: Using Cockpit
+1. In the cockpit, navigate to the provider subaccount. Provider Subaccount is the place where the multitenant applications is deployed.
 2. Choose Cloud Foundry &rarr; Spaces, and then choose the space where the Incident Management application is deployed.
 3. Choose **Routes**, and then choose **New Route**.
 4. Select the domain from the dropdown menu.
@@ -28,11 +28,11 @@ You can create the route using the cf CLI. Change the hostname and the applicati
 1. Log in to cf CLI and navigate to your provider's Cloud Foundry space where the Incident Management application is deployed.
 2. Run the following command:
    ```sh
-    cf map-route approuter cfapps.eu12.hana.ondemand.com --hostname  ga-subscriber2-referenceapps-ga-cls-upduevll-dev-approuter
+    cf map-route approuter cfapps.eu12.hana.ondemand.com --hostname ga-subscriber2-referenceapps-ga-cls-upduevll-dev-approuter
    ```
 
 ### Details
--  `approuter` is the name of the approuter application
+- `approuter` is the name of the approuter application
 - `cfapps.eu12.hana.ondemand.com` is the domain of the approuter application
 - `--hostname` is the hostname obtained after subscribing to the approuter
 

@@ -22,15 +22,15 @@ Suppose you have the following schema for an entity called Incidents:
 
 ```sql
 entity Incidents : cuid, managed {  
-   customer     : Association to Customers;
-   title        : String  @title : 'Title';
-   urgency      : Association to Urgency default 'M';
-   status       : Association to Status default 'N';
+   customer : Association to Customers;
+   title : String @title : 'Title';
+   urgency : Association to Urgency default 'M';
+   status : Association to Status default 'N';
    conversation : Composition of many {
-      key ID    : UUID;
+      key ID : UUID;
       timestamp : type of managed:createdAt;
-      author    : type of managed:createdBy;
-      message   : String;
+      author : type of managed:createdBy;
+      message : String;
    };
 }
 
@@ -43,16 +43,16 @@ Add the new `severity` field to the `Incidents` entity in the database:
 
 ```sql
 entity Incidents : cuid, managed {  
-   customer     : Association to Customers;
-   title        : String  @title : 'Title';
-   urgency      : Association to Urgency default 'M';
-   status       : Association to Status default 'N';
-   severity     : String default 'Low';  // New field added
+   customer : Association to Customers;
+   title : String @title : 'Title';
+   urgency : Association to Urgency default 'M';
+   status : Association to Status default 'N';
+   severity : String default 'Low'; // New field added
    conversation : Composition of many {
-      key ID    : UUID;
+      key ID : UUID;
       timestamp : type of managed:createdAt;
-      author    : type of managed:createdBy;
-      message   : String;
+      author : type of managed:createdBy;
+      message : String;
    };
 }
 

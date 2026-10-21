@@ -1,4 +1,4 @@
-# Option 1 - Install Mock Server in SAP BTP Cloud Foundry Runtime
+# Option 1 - Install Mock Server in Cloud Foundry Runtime
 
 ## Usage Scenario
 
@@ -9,7 +9,7 @@ In essence, you need to
 
 2. Have an additional 256 MB of Cloud Foundry runtime required for deploying the mock server.
 
-3. Create a destination to the mock server in the same SAP BTP subaccount.
+3. Create a destination to the mock server in the same subaccount.
 
 > This installation of the mock server is only needed if you want to test an application deployed for Cloud Foundry. For local development testing, you can use the local mock server. 
 
@@ -23,7 +23,7 @@ In essence, you need to
 
 ### Log In to Cloud Foundry in SAP Business Application Studio
 
-**In SAP BTP cockpit:**
+**In cockpit:**
 1. Navigate to your subaccount and choose **Overview**. Copy the values from the **Org Name** and **API Endpoint** parameters in a text editor of your choice.
 
 2. In the left-hand navigation, choose **Cloud Foundry** &rarr; **Spaces**, copy the **Space name** and write it in a text editor of your choice.
@@ -33,13 +33,13 @@ In essence, you need to
 
 2. Search for **CF Login** and select **CF: Login to Cloud Foundry**.
 
-3. Enter the Cloud Foundy API endpoint you have copied from SAP BTP cockpit or take the default suggested API endpoint.
+3. Enter the Cloud Foundy API endpoint you have copied from cockpit or take the default suggested API endpoint.
 
-4. When prompted, enter your the email and password for your global account in SAP BTP.
+4. When prompted, enter your email and password for your global account.
 
-5. Select your Cloud Foundry Org, the same you have copied from SAP BTP cockpit. 
+5. Select your Cloud Foundry Org, the same you have copied from cockpit. 
 
-6. Select the Cloud Foundry Space, the same you have copied from SAP BTP cockpit. 
+6. Select the Cloud Foundry Space, the same you have copied from cockpit. 
 
 7. Once you have selected the Org and the Space, log in to Cloud Foundry in SAP Business Application Studio.
 
@@ -67,11 +67,11 @@ In essence, you need to
 
 6. When the project is built successfully, you will see a new **mta_archives** folder in your project with the **Mockserver_1.0.0.mtar** file inside. Right-click on that file and choose **Deploy MTA Archive**.
 
-Now you need to create a destination to the the mock server.
+Now you need to create a destination to the mock server.
 
 ## Create Destination to Mock Server
 
-1. In SAP BTP cockpit, go to your subaccount and navigate to the space where you have deployed the mock server. In the **Applications** section, choose the **mock-srv** application.
+1. In cockpit, go to your subaccount and navigate to the space where you have deployed the mock server. In the **Applications** section, choose the **mock-srv** application.
 
 2. In the application overview screen, copy the **Application Route** of the mock server.
 

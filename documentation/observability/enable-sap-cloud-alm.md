@@ -36,7 +36,7 @@ To enable data collection, you need to add the following configuration to your a
    ```
 4. In the terminal, run the following command to install dependencies:
    ```sh
-    npm install @opentelemetry/api  @opentelemetry/exporter-logs-otlp-grpc cf-nodejs-logging-support hdb
+    npm install @opentelemetry/api @opentelemetry/exporter-logs-otlp-grpc cf-nodejs-logging-support hdb
    ```
    > Please refer [Here](https://help.sap.com/whats-new/aaa5ccb1a72444d5b54e2985250fab03?locale=en-US) for Data Collection Instrumentation Libraries
 
@@ -70,7 +70,7 @@ To enable data collection, you need to add the following configuration to your a
     ...
   
    ```
->[!NOTE] These properties can be updated from the BTP cockpit using application environment variables. 
+>[!NOTE] These properties can be updated from the cockpit using application environment variables.
 
 7. Replace the `<tenant-id-of-your-subaccount>` with the tenant/sub-account ID of the account where you are deploying the application. 
 

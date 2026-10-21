@@ -1,14 +1,14 @@
-## Set Up a CI/CD Pipeline for SAP BTP, Cloud Foundry Runtime
+## Set Up a CI/CD Pipeline for Cloud Foundry Runtime
 
 In this tutorial, you learn how to initialize a repository in SAP Business Application Studio and how to set up your CI/CD pipeline.
 
 ## Prerequisites
 
-- You've prepared your application for deployment in SAP BTP, Cloud Foundry runtime. Follow the steps in the [Deploy in SAP BTP, Cloud Foundry Runtime](deploy-to-cf) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've prepared your application for deployment in Cloud Foundry runtime. Follow the steps in the [Deploy in Cloud Foundry Runtime](deploy-to-cf) tutorial that is part of the [Deploy a Full-Stack CAP Application in Cloud Foundry Runtime Following Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
@@ -96,7 +96,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     <!-- border; size:540px -->
     ![Status subscribed](./cicd-status-subscribed.png)
 
-8. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
+8. In your subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
 
 9. Choose role collection **CICD Service Administrator**.
 
@@ -122,14 +122,14 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
 ### Access SAP Continuous Integration and Delivery Service
 
-1. In your SAP BTP subaccount, navigate to **Services** &rarr; **Instances and Subscriptions** in the left-hand pane.
+1. In your subaccount, navigate to **Services** &rarr; **Instances and Subscriptions** in the left-hand pane.
 
 2. Choose **Continuous Integration & Delivery**.
 
     <!-- border; size:540px -->
     ![CI/CD Go to application](./cicd-goto-app.png)
 
-3. Use your SAP BTP global user name and global password to log in to the application.
+3. Use your global user name and global password to log in to the application.
  
 
 ### Add Credentials
@@ -156,8 +156,8 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
 
     - Enter **cf** in the **Credential Name** field.
     - Choose **Basic Authentication** from the dropdown in the **Type** field.
-    - Enter your SAP BTP global user name in the **Username** field.
-    - Enter your SAP BTP global password in the **Password** field.
+    - Enter your global user name in the **Username** field.
+    - Enter your global password in the **Password** field.
     - Choose **Create**.
 
     <!-- border; size:540px -->
@@ -259,7 +259,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     - Enter the name of your Cloud Foundry organisation in the **Org Name** field.
     - Enter the name of your development space in the **Space** field.
 
-        > You can get the values from your subaccount's **Overview** page in the SAP BTP cockpit.
+        > You can get the values from your subaccount's **Overview** page in the cockpit.
 
     - Select **standard** from the dropdown in the **Deploy Type** field.
     - Open the value help in the **Credentials** field and choose the credential **cf** that you created in **Step 5: Add credentials**.
@@ -297,7 +297,7 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     - Enter the name of your Cloud Foundry organisation in the **Org Name** field.
     - Enter the name of your development space in the **Space** field.
 
-        > You can get the values from your subaccount's **Overview** page in the SAP BTP cockpit.
+        > You can get the values from your subaccount's **Overview** page in the cockpit.
 
     - Select **standard** from the dropdown in the **Deploy Type** field.
     - Open the value help in the **Credentials** field and choose the credential **cf** that you created in **Step 5: Add credentials**.

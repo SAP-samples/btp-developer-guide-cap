@@ -12,7 +12,7 @@ SAP Build Code offers an AI-powered cloud development environment specifically t
 
 ## SAP Build Code Powered by Joule
 
-By seamlessly integrating coding, testing, and application management, SAP Build Code streamlines the application development process on SAP BTP. It combines SAP Business Application Studio with the most essential services and SDKs on SAP BTP.
+By seamlessly integrating coding, testing, and application management, SAP Build Code streamlines the application development process. It combines SAP Business Application Studio with the most essential services and SDKs.
 
 With the integration of Joule, the innovative AI copilot of SAP, SAP Build Code enables automatic generation of application code, data models, services, and sample data. Using SAP Build Code ensures adherence to the best practices and guidance outlined in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/btp-developers-guide?version=Cloud).
 
@@ -37,5 +37,5 @@ ACME is a popular Electronics company. ACME hires call center support representa
 4. [Generate Services](./document/generate-service.md)
 5. [Create Backend Logic with Joule](./document/custom-logic.md)
 6. [Create Fiori UI Using Joule](./document/fiori-ui.md)
-7. [Deploy to SAP BTP, Cloud Foundry Runtime](./document/deploy-cf.md)
+7. [Deploy to Cloud Foundry Runtime](./document/deploy-cf.md)
 8. [Test the Scenario End to End](./document/e2e-testing.md)

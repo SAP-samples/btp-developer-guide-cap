@@ -51,7 +51,7 @@ Extend the existing MTA build file with the settings for SAP S/4HANA Cloud exten
    
    ![deploy mtar](./images/deploy_mtar.png)
 
-6. Login to your SAP BTP subaccount and space to start the deployment.
+6. Login to your subaccount and space to start the deployment.
    
    ![login](./images/login.png)
 

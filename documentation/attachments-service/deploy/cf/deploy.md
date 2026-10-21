@@ -20,7 +20,7 @@ Deploy the project to Cloud Foundry using the MTA build file.
    
    ![deploy mtar](./../../../remote-service/deploy/cf/images/deploy_mtar.png)
 
-3. Login to your SAP BTP subaccount and space to start the deployment.
+3. Login to your subaccount and space to start the deployment.
    
    ![login](./../../../remote-service/deploy/cf/images/login.png)
 

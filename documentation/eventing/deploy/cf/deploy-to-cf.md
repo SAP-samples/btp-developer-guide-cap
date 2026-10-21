@@ -2,7 +2,7 @@
 
 ## Usage Scenario
 
-In this chapter, you will prepare for production and deploy the project to the SAP BTP, Cloud Foundry runtime using the **cf deploy** command.
+In this chapter, you will prepare for production and deploy the project to the Cloud Foundry runtime using the **cf deploy** command.
 
 ## Content
 
@@ -34,7 +34,7 @@ In this chapter, you will prepare for production and deploy the project to the S
             - name: incident-management-messaging
         ```
 
-2. Open the **mta.yaml** file and copy the following module to the  `resources` section:
+2. Open the **mta.yaml** file and copy the following module to the `resources` section:
 
     ```yaml
     - name: incidents-messaging-cloud
@@ -60,7 +60,7 @@ In this chapter, you will prepare for production and deploy the project to the S
      > Note: **system-name** is the system name you have set in the Remote Service Integration tutorial.
      The value of the **emClientId** property should have maximum length of 4 characters and should fit in the [characters: [A-Za-z0-9]; 
 
-## Deploy the Application to SAP BTP, Cloud Foundry Runtime
+## Deploy the Application to Cloud Foundry Runtime
 
 1. In SAP Business Application Studio, open a new terminal.
 

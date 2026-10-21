@@ -8,5 +8,5 @@ In this tutorial, we extend the Incident Management application to create the Ma
 
 # Options
 
-- [Deploy and Run the application on SAP BTP, Cloud Foundry](./freestyle-sapui5-cf.md)
-- [Deploy and Run the Application on SAP BTP, Kyma](./freestyle-sapui5-kyma.md)
+- [Deploy and Run the application on Cloud Foundry](./freestyle-sapui5-cf.md)
+- [Deploy and Run the Application on Kyma](./freestyle-sapui5-kyma.md)

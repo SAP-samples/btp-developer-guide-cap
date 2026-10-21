@@ -1,4 +1,4 @@
-# Deploy in the SAP BTP, Kyma Runtime
+# Deploy in the Kyma Runtime
 
 ## Prerequisites
 - [Prepare for Kyma Development](./5-prepare-for-kyma.md)

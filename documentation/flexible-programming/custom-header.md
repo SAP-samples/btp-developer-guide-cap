@@ -1,6 +1,6 @@
 # Add Custom Header Section
 
-In this section, you will edit the Object Page with the SAP Fiori Tools page editor and add the custom header section using the **Flexible Programming Model**. This custom header section is to showcase the Micro Process Flow. The processor can use the  [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident.
+In this section, you will edit the Object Page with the SAP Fiori Tools page editor and add the custom header section using the **Flexible Programming Model**. This custom header section is to showcase the Micro Process Flow. The processor can use the [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident.
 
 Before you start with the next steps, make sure the steps in [Extension Points: Add Custom Column](./custom-column.md) are completed.
 
@@ -27,11 +27,11 @@ Before you start with the next steps, make sure the steps in [Extension Points: 
 
 4. In the popup, enter the following details.
 
-    | Key  | Value  |
+    | Key | Value |
     |---|---|
-    | **Title**  | `Process`. Click the **Globe** icon to generate a translatable text key.  |
-    | **Select View Mode Fragment**  | `Use Existing Fragment`  |
-    | **View Mode Fragment Name**  | `StatusProcess (ns.incidents.ext.fragment.StatusProcess)`. Select it from the dropdown list. |
+    | **Title** | `Process`. Click the **Globe** icon to generate a translatable text key. |
+    | **Select View Mode Fragment** | `Use Existing Fragment` |
+    | **View Mode Fragment Name** | `StatusProcess (ns.incidents.ext.fragment.StatusProcess)`. Select it from the dropdown list. |
     
     ![step 4](./images/custom-header-2.png)
 

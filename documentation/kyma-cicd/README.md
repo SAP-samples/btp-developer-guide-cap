@@ -8,7 +8,7 @@ The steps below guide you through setting up your pipeline.
 
 # Prerequsites
 1. Develop the Incident Management application following the step by step tutorial [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html)
-2. Deploy the Incident Management application to SAP BTP Kyma Runtime following the tutorial [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
+2. Deploy the Incident Management application to Kyma Runtime following the tutorial [Deploy a Full-Stack CAP Application in Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
 
 ## Initialize a Repository in VS Code
 
@@ -52,18 +52,18 @@ In this example, we’ll be creating a repository on GitHub. You need a **GitHub
 ## Setup the Continuous Integration and Delivery Service
 
 1. Enable SAP Continuous Integration and Delivery.
-    - In SAP BTP Cockpit, go to your subaccount.
+    - In Cockpit, go to your subaccount.
     - In Service Marketplace, type Continuous into the search box. Continuous Integration and Delivery service appears.
     - Choose **Create**.
     ![Choose create](./cicd1.png)
 
 2. Assign role collection.
 
-    - In your SAP BTP subaccount, choose **Security -> Users**.
+    - In your subaccount, choose **Security -> Users**.
     - Choose the name of your identity provider and navigate into it.
     - From the menu, choose **Assign Role Collection**. Search for *CICD Administrator* and add the role to your user.
 
-3. Ensure that you can open and access the application. In the cockpit,  go to **Instances and Subscriptions** to access the **Continuous Integration & Delivery** application.
+3. Ensure that you can open and access the application. In the cockpit, go to **Instances and Subscriptions** to access the **Continuous Integration & Delivery** application.
 ![cicd-app](./cicd3.png)
 
     This should navigate you to the main page of the application.
@@ -82,7 +82,7 @@ helm uninstall incident-management -n <namespace>
 
 In order to run the pipeline using the CI/CD service, you need to create a service account. To do this, follow the steps.
 
-1. First you need to create a namespace. In the SAP BTP Cockpit, open the **Kyma Dashboard** for your subaccount. 
+1. First you need to create a namespace. In the Cockpit, open the **Kyma Dashboard** for your subaccount. 
 
     ![dashboard](./cicd2.png)
 
@@ -189,7 +189,7 @@ For your pipeline to be able to push and pull images from your docker repository
 
 ## Prepare Your Code
 
-1. Open the `package.json` file and add the below script  `cds-build` and devDependency `@cap-js/sqlite`
+1. Open the `package.json` file and add the below script `cds-build` and devDependency `@cap-js/sqlite`
     ```json
         {
         "devDependencies": {

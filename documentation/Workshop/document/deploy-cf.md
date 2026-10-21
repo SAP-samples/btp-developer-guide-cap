@@ -1,6 +1,6 @@
-# Deploy the Application to SAP BTP, Cloud Foundry Runtime
+# Deploy the Application to Cloud Foundry Runtime
 
-This section describes how to deploy the application to the SAP BTP, Cloud Foundry runtime.
+This section describes how to deploy the application to the Cloud Foundry runtime.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ This section describes how to deploy the application to the SAP BTP, Cloud Found
 
 ## Deploy the Application
 
-The final step in SAP Build Code is to deploy the application to the SAP BTP, Cloud Foundry runtime. This process also involves the automatic creation of destinations, enabling ODATA services to be utilized by other tools such as SAP Build Apps.
+The final step in SAP Build Code is to deploy the application to the Cloud Foundry runtime. This process also involves the automatic creation of destinations, enabling ODATA services to be utilized by other tools such as SAP Build Apps.
 
 1. Navigate to **Task Explorer** and run **Enable Discovery and Deploy**.
 
@@ -32,7 +32,7 @@ The final step in SAP Build Code is to deploy the application to the SAP BTP, Cl
 
         ![deploy-cf](../images/deploy-cf/signin.png)
 
-    3. Choose **Open a new browser page to generate your SSO passcode** to sign in to your subaccount in SAP BTP, which opens in a new browser.
+    3. Choose **Open a new browser page to generate your SSO passcode** to sign in to your subaccount, which opens in a new browser.
 
     4. If you want to log in with an alternative identity provider, find the text box with **Enter the origin key**, and enter **aviss4yru-platform**. Then, choose **Sign in with alternative identity provider**.
 
@@ -70,7 +70,7 @@ The final step in SAP Build Code is to deploy the application to the SAP BTP, Cl
 
 ### Create a Role Collection and Add a Role
 
-1. Open the SAP BTP cockpit and navigate to your subaccount.
+1. Open the cockpit and navigate to your subaccount.
 
 2. Choose **Security** > **Role Collections**.
 

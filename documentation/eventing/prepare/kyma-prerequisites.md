@@ -2,7 +2,7 @@
 
 ## Prerequisites
 * Complete the [Remote Service Integration](../../remote-service/remote-service-s4h-kyma.md) tutorial.
-* Undeploy the application that was deployed to SAP BTP in the Remote Service Integration tutorial.
+* Undeploy the application that was deployed to in the Remote Service Integration tutorial.
 
     - Undeploy the application using the following command:
 
@@ -16,9 +16,9 @@
 
 ## Additional Entitlements Required
 
-Adding eventing to the developed CAP application requires the following additional entitlements and quotas in the SAP BTP cockpit:
+Adding eventing to the developed CAP application requires the following additional entitlements and quotas in the cockpit:
 
-| Service                           | Plan       | Number of Instances |
+| Service | Plan | Number of Instances |
 |-----------------------------------|------------|:-------------------:|
 | SAP S/4HANA Cloud Extensibility | api-access | 1 |
 | SAP S/4HANA Cloud Extensibility | messaging | 1 |

@@ -3,7 +3,7 @@ To create event-based extensions for SAP S/4HANA Cloud you need to set up the me
 
 # Business Scenario
 
-This tutorial shows you how to configure your CAP service to listen for upcoming events and deploy it to the SAP BTP. CAP offers native support for both emitting and receiving events, enabling CAP applications to effectively receive event notifications concerning changes in remote systems.
+This tutorial shows you how to configure your CAP service to listen for upcoming events and deploy it. CAP offers native support for both emitting and receiving events, enabling CAP applications to effectively receive event notifications concerning changes in remote systems.
 
 # Solution Diagram
 

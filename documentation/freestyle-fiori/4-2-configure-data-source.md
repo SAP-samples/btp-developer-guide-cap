@@ -68,7 +68,7 @@ After adding the spots data to your application, you'll need to configure the da
 
 1. Open `manifest.json` file.
 
-2. Go to the section `sap.app`. Add a new **spotService** data source to the  **dataSources** section as follows:
+2. Go to the section `sap.app`. Add a new **spotService** data source to the **dataSources** section as follows:
 
 ```json
     "sap.app": {

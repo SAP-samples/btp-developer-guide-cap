@@ -25,15 +25,15 @@ Add the below annotations into `services.cds` file.
 annotate ProcessorService.Incidents with @changelog: {
   keys: [ customer.name, createdAt ]
 } {
-  title    @changelog;
-  status   @changelog;
+  title @changelog;
+  status @changelog;
   customer @changelog: [ customer.name ];
 };
 
 annotate ProcessorService.Incidents.conversation with @changelog: {
   keys: [ author, timestamp ]
 } {
-  message  @changelog;
+  message @changelog;
 }
 ```
 

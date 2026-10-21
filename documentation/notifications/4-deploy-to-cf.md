@@ -1,6 +1,6 @@
-# Deploy and Run the Application in SAP BTP, Cloud Foundry Runtime
+# Deploy and Run the Application in Cloud Foundry Runtime
 
-While we simply dumped notifications to **stdout** in local development, we'll be using the **SAP Alert Notification service for SAP BTP** in **production**.
+While we simply dumped notifications to **stdout** in local development, we'll be using the **SAP Alert Notification Service** in **production**.
 
 ## Set Up Instance and Deploy Application
 

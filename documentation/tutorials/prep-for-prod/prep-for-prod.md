@@ -4,7 +4,7 @@ In this tutorial, you learn how to configure SAP HANA Cloud in your project and 
 
 ## Prerequisites
 
-You've added test cases in your application. Follow the steps in the [Add Test Cases](add-test-cases) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+You've added test cases in your application. Follow the steps in the [Add Test Cases](add-test-cases) tutorial that is part of the [Develop a Full-Stack CAP Application Following Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
@@ -59,9 +59,9 @@ You've added test cases in your application. Follow the steps in the [Add Test C
     >
     > ```bash
     > {
-    >   middlewares: true,
-    >   auth: { kind: 'jwt', vcap: { label: 'xsuaa' } },
-    >   db: { impl: '@cap-js/hana', data: [ 'db/data', 'db/csv' ], kind: 'hana' }
+    > middlewares: true,
+    > auth: { kind: 'jwt', vcap: { label: 'xsuaa' } },
+    > db: { impl: '@cap-js/hana', data: [ 'db/data', 'db/csv' ], kind: 'hana' }
     > }
     >```
 
@@ -123,9 +123,9 @@ You've added test cases in your application. Follow the steps in the [Add Test C
     >
     > ```bash
     > {
-    >   middlewares: true,
-    >   auth: { kind: 'jwt', vcap: { label: 'xsuaa' } },
-    >   db: { impl: '@cap-js/hana', data: [ 'db/data', 'db/csv' ], kind: 'hana' }
+    > middlewares: true,
+    > auth: { kind: 'jwt', vcap: { label: 'xsuaa' } },
+    > db: { impl: '@cap-js/hana', data: [ 'db/data', 'db/csv' ], kind: 'hana' }
     > }
     >```
 
@@ -210,7 +210,7 @@ You've added test cases in your application. Follow the steps in the [Add Test C
     /**
     * Used by support team members to process incidents
     */
-    service ProcessorService  {
+    service ProcessorService {
       ...
     }
     annotate ProcessorService.Incidents with @odata.draft.enabled; 
@@ -287,7 +287,7 @@ You can learn more about authorization in CAP in [CDS-based Authorization](https
     /**
     * Used by support team members to process incidents
     */
-    service ProcessorService  {
+    service ProcessorService {
       ...
     }
     annotate ProcessorService.Incidents with @odata.draft.enabled; 
@@ -563,7 +563,7 @@ You get an output like:
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  33.848 s
+[INFO] Total time: 33.848 s
 [INFO] Finished at: 
 [INFO] ------------------------------------------------------------------------
 ```
@@ -574,5 +574,5 @@ You get an output like:
 
 Now that you've prepared your CAP application for deployment, you can choose from the following deployment options:
 
-- Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group to deploy the application in the SAP BTP, Cloud Foundry runtime.
-- Follow the tutorials in the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group to deploy the application in the SAP BTP, Kyma runtime.
+- Follow the tutorials in the [Deploy a Full-Stack CAP Application in Cloud Foundry Runtime Following Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) group to deploy the application in the Cloud Foundry runtime.
+- Follow the tutorials in the [Deploy a Full-Stack CAP Application in Kyma Runtime Following Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group to deploy the application in the Kyma runtime.

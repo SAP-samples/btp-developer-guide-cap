@@ -1,22 +1,22 @@
-## Deploy in SAP BTP, Kyma Runtime
+## Deploy in Kyma Runtime
 
-In this tutorial, you learn how to deploy your CAP application in SAP BTP, Kyma runtime.
+In this tutorial, you learn how to deploy your CAP application in Kyma runtime.
 
 ## Prerequisites
 
-- You've configured the respective entitlements, enabled the Kyma runtime in your subaccount, and created an SAP HANA Cloud service instance in the SAP BTP cockpit. Follow the steps in the [Prepare for Deployment in the SAP BTP, Kyma Runtime](../prepare-btp-kyma/prepare-btp-kyma.md) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've configured the respective entitlements, enabled the Kyma runtime in your subaccount, and created an SAP HANA Cloud service instance in the cockpit. Follow the steps in the [Prepare for Deployment in the Kyma Runtime](../prepare-btp-kyma/prepare-btp-kyma.md) tutorial that is part of the [Deploy a Full-Stack CAP Application in Kyma Runtime Following Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 - You have a tenant of SAP Cloud Identity Services. See [Get Your Tenant](https://help.sap.com/docs/cloud-identity-services/cloud-identity-services/get-your-tenant) for details how to get a tenant of SAP Cloud Identity Services if you don't have one yet.
-- You've established trust between your tenant of SAP Cloud Identity Services and your SAP BTP account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
+- You've established trust between your tenant of SAP Cloud Identity Services and your account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
     - Microsoft Edge
  - For Windows, you need Chocolatey. Chocolatey is a package manager that speeds up and eases installation of the tools in this tutorial. See how to install Chocolatey in [Setup/Install](https://docs.chocolatey.org/en-us/choco/setup).
- - You've prepared a container registry and you've logged in to the container registry through your CLI. A container registry is a repo where you can push your Docker images. SAP BTP doesn't currently provide a container registry. You can use any container registry offering as long as it can be reached from the public Internet.
+ - You've prepared a container registry and you've logged in to the container registry through your CLI. A container registry is a repo where you can push your Docker images. The Kyma runtime doesn't currently provide a container registry. You can use any container registry offering as long as it can be reached from the public Internet.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
@@ -25,22 +25,22 @@ In this tutorial, you learn how to deploy your CAP application in SAP BTP, Kyma 
 >
 > ```json
 > {
->   "role-collections": [
->     {
->       "name": "IncidentManagement_Support",
->       "description": "Support role collection for Incident Management",
->       "role-template-references": [
->         "$XSAPPNAME.support"
->       ]
->     },
->     {
->       "name": "IncidentManagement_Admin",
->       "description": "Admin role collection for Incident Management",
->       "role-template-references": [
->         "$XSAPPNAME.admin"
->       ]
->     }
->   ]
+> "role-collections": [
+> {
+> "name": "IncidentManagement_Support",
+> "description": "Support role collection for Incident Management",
+> "role-template-references": [
+> "$XSAPPNAME.support"
+> ]
+> },
+> {
+> "name": "IncidentManagement_Admin",
+> "description": "Admin role collection for Incident Management",
+> "role-template-references": [
+> "$XSAPPNAME.admin"
+> ]
+> }
+> ]
 > }
 > ```
 >
@@ -48,16 +48,16 @@ In this tutorial, you learn how to deploy your CAP application in SAP BTP, Kyma 
 
 ### Introduction
 
-SAP BTP, Kyma runtime is a cloud-native application runtime that combines the power of Kubernetes with a set of best-in-class tools and open-source components that empower you to develop, run, and operate secure and scalable cloud-native applications. Detailed information is available at [Kyma Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment).
+Kyma runtime is a cloud-native application runtime that combines the power of Kubernetes with a set of best-in-class tools and open-source components that empower you to develop, run, and operate secure and scalable cloud-native applications. Detailed information is available at [Kyma Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment).
 
-The files of the SAP BTP, Kyma runtime are provided as a container image. In addition, since the containers run on Kubernetes, their configuration is described by Kubernetes resources.
+The files of the Kyma runtime are provided as a container image. In addition, since the containers run on Kubernetes, their configuration is described by Kubernetes resources.
 
 Hence, you need two kinds of artifacts to run applications on Kubernetes:
 
 - Container images
 - Kubernetes resources
 
-You start by building your project as container images and push those images to a container registry of your choice. Then, you add a [CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma#about-cap-helm) to your project. As a last step, you deploy the Helm chart to your Kyma resources, where service instances of SAP BTP services are created and pods pull the previously created container images from the container registry.
+You start by building your project as container images and push those images to a container registry of your choice. Then, you add a [CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma#about-cap-helm) to your project. As a last step, you deploy the Helm chart to your Kyma resources, where service instances of services are created and pods pull the previously created container images from the container registry.
 
 ### Install kubectl
 
@@ -285,7 +285,7 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 ### Download and set up the project locally
 
-1. Skip this step if you cloned the application from the [Incident Management application GitHub repository](https://github.com/cap-js/incidents-app/tree/beginner-tutorials) without going through the application development steps. Perform this step only in case you've developed the application from the start following the tutorials in the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group.
+1. Skip this step if you cloned the application from the [Incident Management application GitHub repository](https://github.com/cap-js/incidents-app/tree/beginner-tutorials) without going through the application development steps. Perform this step only in case you've developed the application from the start following the tutorials in the [Develop a Full-Stack CAP Application Following Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group.
 
     1. In SAP Business Application Studio, choose the icon to download dev space content.
 
@@ -512,13 +512,13 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
     >
     > ```yaml
     > before-all:
-    >   - npx cds build --production
-    >   - if not exist "app\html5-deployer\resources" mkdir app\html5-deployer\resources
-    >   - mvn clean package -DskipTests=true --batch-mode
-    >   - npm i --prefix app/incidents
-    >   - npm run build --prefix app/incidents
-    >   - copy /Y "app\incidents\dist\incidents.zip" "app\html5-deployer\resources\incidents.zip"
-    >   - helm dependency update ./gen/chart
+    > - npx cds build --production
+    > - if not exist "app\html5-deployer\resources" mkdir app\html5-deployer\resources
+    > - mvn clean package -DskipTests=true --batch-mode
+    > - npm i --prefix app/incidents
+    > - npm run build --prefix app/incidents
+    > - copy /Y "app\incidents\dist\incidents.zip" "app\html5-deployer\resources\incidents.zip"
+    > - helm dependency update ./gen/chart
     > ```
     >
     > **Note:** The folder name (for example, `app/incidents`) and the zip file name (for example, `incidents.zip`) can vary based on your project name. Update them accordingly. The folder name is the name of your app folder under the **app/** directory. The zip file name is defined by the `archiveName` field in **app/&lt;your-app-folder&gt;/ui5.yaml**:
@@ -528,7 +528,7 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
     >   customTasks:
     >     - name: ui5-task-zipper
     >       configuration:
-    >         archiveName: incidents   # this is your zip file name
+    >         archiveName: incidents # this is your zip file name
     > ```
 
     Update the `chart/values.yaml` file with your Kyma cluster domain and container registry details. The example below uses Docker Hub; adapt the `global.image.registry` and each `image.repository` value to match your container registry if you are not using Docker Hub:
@@ -669,7 +669,7 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
     > Your SAP HANA Cloud service instance is automatically stopped overnight, according to the time zone of the region where the server is located. That means you need to restart your instance every day before you start working with it.
     >
-    > You can either use the SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
+    > You can either use the cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
     >
     > ```bash
     > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
@@ -694,13 +694,13 @@ Kyma runs on containers. Hence, for this tutorial, you need an application that 
 
 <!-- border; size:540px ![Depoyed app route](./deployedapp-route.png) -->
 
-<!--     You see the CAP start page: -->
+<!-- You see the CAP start page: -->
 
 <!-- border; size:540px ![CAP start page](./cap-start-page.png) --> 
 
-<!-- 4. When you choose the **Incidents** service entity, you will see an error message.  -->
+<!-- 4. When you choose the **Incidents** service entity, you will see an error message. -->
 
-<!-- border; size:540px  ![401 error](./401-error.png) -->
+<!-- border; size:540px ![401 error](./401-error.png) -->
 
 In the next tutorial, you can access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition triggers the authentication flow to provide the required token to access the service.
 
@@ -720,7 +720,7 @@ In the next tutorial, you can access your UIs from SAP Build Work Zone, standard
 
     > Your SAP HANA Cloud service instance is automatically stopped overnight, according to the time zone of the region where the server is located. That means you need to restart your instance every day before you start working with it.
     >
-    > You can either use the SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
+    > You can either use the cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
     >
     > ```bash
     > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
@@ -747,13 +747,13 @@ In the next tutorial, you can access your UIs from SAP Build Work Zone, standard
 
 <!-- border; size:540px ![Depoyed app route](./deployedapp-route.png) -->
 
-<!--     You see the CAP start page: -->
+<!-- You see the CAP start page: -->
 
 <!-- border; size:540px ![CAP start page](./cap-start-page.png) --> 
 
-<!-- 4. When you choose the **Incidents** service entity, you will see an error message.  -->
+<!-- 4. When you choose the **Incidents** service entity, you will see an error message. -->
 
-<!-- border; size:540px  ![401 error](./401-error.png) -->
+<!-- border; size:540px ![401 error](./401-error.png) -->
 
 In the next tutorial, you can access your UIs from SAP Build Work Zone, standard edition. The SAP Build Work Zone, standard edition triggers the authentication flow to provide the required token to access the service.
 

@@ -3,7 +3,7 @@
 
 ## Set Up
 
-1. To enable attachments, add the required dependency to the *package.json*. In the terminal, go to the the Incident Management project's root folder and run the following command:  
+1. To enable attachments, add the required dependency to the *package.json*. In the terminal, go to the Incident Management project's root folder and run the following command:  
    
    ```bash
     npm add @cap-js/attachments

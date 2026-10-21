@@ -1,19 +1,19 @@
 ## Assign the User Roles
 
-In this tutorial, you learn how to assign a role collection in the SAP BTP subaccount.
+In this tutorial, you learn how to assign a role collection in the subaccount.
 
 
 ## Prerequisites
 
-- You've deployed your application in either the SAP BTP, Cloud Foundry runtime or the SAP BTP, Kyma runtime: 
-    - For deploying in the SAP BTP, Cloud Foundry runtime, follow the steps in the [Deploy in SAP BTP, Cloud Foundry Runtime](../deploy-to-cf/deploy-to-cf.md) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer's Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group. 
-    - For deploying in the SAP BTP, Kyma runtime, follow the steps in the [Deploy in SAP BTP, Kyma Runtime](../deploy-to-kyma/deploy-to-kyma.md) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer's Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group. 
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've deployed your application in either the Cloud Foundry runtime or the Kyma runtime: 
+    - For deploying in the Cloud Foundry runtime, follow the steps in the [Deploy in Cloud Foundry Runtime](../deploy-to-cf/deploy-to-cf.md) tutorial that is part of the [Deploy a Full-Stack CAP Application in Cloud Foundry Runtime Following SAP BTP Developer's Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group. 
+    - For deploying in the Kyma runtime, follow the steps in the [Deploy in Kyma Runtime](../deploy-to-kyma/deploy-to-kyma.md) tutorial that is part of the [Deploy a Full-Stack CAP Application in Kyma Runtime Following SAP BTP Developer's Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group. 
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 - You have a tenant of SAP Cloud Identity Services. See [Get Your Tenant](https://help.sap.com/docs/cloud-identity-services/cloud-identity-services/get-your-tenant) for details how to get a tenant of SAP Cloud Identity Services if you don't have one yet.
-- You've established trust between your tenant of SAP Cloud Identity Services and your SAP BTP account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
+- You've established trust between your tenant of SAP Cloud Identity Services and your account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome

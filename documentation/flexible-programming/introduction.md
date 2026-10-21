@@ -12,13 +12,13 @@ In the following tutorials, you extend the Incident Management sample applicatio
 
 ## Extension Points: Custom Column
 
-In the [Add Custom Column](./custom-column.md) tutorial, you extend the **Incidents** table in the **List Report** page with a custom column. This custom column is used to showcase the Micro Process Flow. The processor can use the  [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident. 
+In the [Add Custom Column](./custom-column.md) tutorial, you extend the **Incidents** table in the **List Report** page with a custom column. This custom column is used to showcase the Micro Process Flow. The processor can use the [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident. 
 
 ![Custom Column](./images/intro-custom-column.png)
 
 ## Extension Points: Custom Header Facet
 
-In the [Add Custom Header](./custom-header.md) tutorial, you extend header section in the **Object** page to add a custom header facet. This custom header facet shows the Micro Process Flow. The processor can use the  [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident.
+In the [Add Custom Header](./custom-header.md) tutorial, you extend header section in the **Object** page to add a custom header facet. This custom header facet shows the Micro Process Flow. The processor can use the [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident.
 
 ![Custom Header](./images/intro-custom-header.png)
 

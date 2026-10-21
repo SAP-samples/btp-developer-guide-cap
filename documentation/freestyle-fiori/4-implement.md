@@ -14,14 +14,14 @@ Create a new SAPUI5 application based on a template provided by SAP Business App
 
 4. In the next dialog, choose **Use a Local CAP Project** as your Data Source and choose your current **`incident-management`** project as the CAP project.
 
-  > **Note:** In case you get the error: `Node module @sap/cds isn't found. Please install it and try again`, you have to install the corresponding CAP module which is also required   by the app generator as described in [Add CAP Tooling](https://cap.cloud.sap/docs/tools/#command-line-interface-cli)
-  >  If not already done, please open a command line and run the following command:
+  > **Note:** In case you get the error: `Node module @sap/cds isn't found. Please install it and try again`, you have to install the corresponding CAP module which is also required by the app generator as described in [Add CAP Tooling](https://cap.cloud.sap/docs/tools/#command-line-interface-cli)
+  > If not already done, please open a command line and run the following command:
 
     ```bash
     npm install --global @sap/cds-dk --@sap:registry=https://registry.npmjs.org/
     ```
 
-  >  See the [CAP Troubleshooting guide](https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation) for more details.
+  > See the [CAP Troubleshooting guide](https://cap.cloud.sap/docs/advanced/troubleshooting#npm-installation) for more details.
 
 5. Select `ManagerService(Node.js)` as OData service and choose **Next**.
 
@@ -117,7 +117,7 @@ After adding the spots data to your application, you'll need to configure the da
 
 1. Open `manifest.json` file.
 
-2. Go to the section `sap.app`. Add a new **spotService** data source to the  **dataSources** section as follows:
+2. Go to the section `sap.app`. Add a new **spotService** data source to the **dataSources** section as follows:
 
 ```json
     "sap.app": {
@@ -475,7 +475,7 @@ Overall, this controller gets the information of the routing by using **onRouteM
 2. Add the following content:
 
 ```ts
-import  MessageType from "sap/ui/core/message/MessageType";
+import MessageType from "sap/ui/core/message/MessageType";
 import DateFormat from "sap/ui/core/format/DateFormat";
 
 export enum Urgency {

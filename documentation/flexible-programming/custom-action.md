@@ -1,6 +1,6 @@
 # Add Custom Action
 
-In this section, you will edit the Object Page with the SAP Fiori Tools page editor and add a custom action **Location** using the **Flexible Programming Model**. This custom action is to showcase the  location of the customer in a dialog using the [GeoMap](https://sapui5.hana.ondemand.com/#/api/sap.ui.vbm.GeoMap) control.
+In this section, you will edit the Object Page with the SAP Fiori Tools page editor and add a custom action **Location** using the **Flexible Programming Model**. This custom action is to showcase the location of the customer in a dialog using the [GeoMap](https://sapui5.hana.ondemand.com/#/api/sap.ui.vbm.GeoMap) control.
 
 Before you start with the next steps, make sure the steps in [Add Controller Extension](./controller-extension.md) are completed.
 
@@ -25,12 +25,12 @@ Before you start with the next steps, make sure the steps in [Add Controller Ext
 
 4. In the popup, enter the following details
 
-    | Key  | Value  |
+    | Key | Value |
     |---|---|
-    | **Action ID**  | `Location`  |
-    | **Button Text**  | `Location`. Click the **Globe** icon to generate a translatable text key.  |
-    | **Select Action Handler File**  | `Use Existing File`  |
-    | **Handler File**  | `OPControllerExtension.controller (ns.incidents.ext.controller.OPControllerExtension.controller, JS)`  |
+    | **Action ID** | `Location` |
+    | **Button Text** | `Location`. Click the **Globe** icon to generate a translatable text key. |
+    | **Select Action Handler File** | `Use Existing File` |
+    | **Handler File** | `OPControllerExtension.controller (ns.incidents.ext.controller.OPControllerExtension.controller, JS)` |
     | **Select Action Handler Method** | `Create New Function` |
     | **Handler Method** | `viewLocation` |
 

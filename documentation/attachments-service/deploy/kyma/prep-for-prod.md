@@ -41,4 +41,4 @@ For more information about Helm and CAP, see [About CAP Helm chart](https://cap.
 
 
 ## Next Step
-- [Deploy the application to SAP BTP kyma Runtime](./deploy.md)
+- [Deploy the application to kyma Runtime](./deploy.md)

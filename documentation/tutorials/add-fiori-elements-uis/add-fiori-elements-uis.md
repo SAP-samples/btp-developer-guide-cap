@@ -5,7 +5,7 @@ In this tutorial, you learn how to generate the UI with an SAP Fiori elements te
 
 ## Prerequisites
 
-You've built your CAP application. Follow the steps in the [Build a CAP application](../build-cap-app/build-cap-app.md) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+You've built your CAP application. Follow the steps in the [Build a CAP application](../build-cap-app/build-cap-app.md) tutorial that is part of the [Develop a Full-Stack CAP Application Following Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 

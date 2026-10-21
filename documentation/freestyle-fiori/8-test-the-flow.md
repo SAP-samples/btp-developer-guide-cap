@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- You have sucessfully deployed the application to your SAP BTP runtime.
+- You have sucessfully deployed the application to your runtime.
 - You have assigned application roles before accessing the application. See [User Role Assignment](https://developers.sap.com/tutorials/user-role-assignment.html).
 - You have integrated your application with SAP Build Work Zone.
 

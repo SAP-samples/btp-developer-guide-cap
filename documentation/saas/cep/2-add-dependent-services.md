@@ -4,7 +4,7 @@
 
 Some of the services your application consumes need to be registered as reuse services to work in multitenant environments. `@sap/cds-mtxs` offers an easy way to integrate these dependencies. It supports some services out of the box and also provides a simple API for plug-ins. See [SaaS Registry Dependencies](https://cap.cloud.sap/docs/guides/multitenancy/#saas-registry-dependencies).
 
-Most notably, you will need such dependencies for the SAP Audit Log service, SAP Connectivity service, SAP Destination service, SAP HTML5 Application Repository service for SAP BTP, and SAP Cloud Portal service. All these services are supported natively and can be activated individually by configuring them in the **cds.requires** section. In the most common case, you simply activate service dependencies like this:
+Most notably, you will need such dependencies for the SAP Audit Log service, SAP Connectivity service, SAP Destination service, SAP HTML5 Application Repository service, and SAP Cloud Portal service. All these services are supported natively and can be activated individually by configuring them in the **cds.requires** section. In the most common case, you simply activate service dependencies like this:
 
 1. At the root of your project, run the command `cds add workzone` in the terminal.
 2. From `package.json`, remove `"destination": true`.
@@ -48,5 +48,5 @@ npm update --package-lock-only --prefix mtx/sidecar
 
 ## Next Step
 
-- For SAP BTP, Cloud Foundry runtime: [Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime](./3-prepare-for-cf.md)
-- For SAP BTP, Kyma runtime: [Prepare for Deployment in the SAP BTP, Kyma Runtime](./5-prepare-for-kyma.md)
+- For Cloud Foundry runtime: [Prepare for Deployment in the Cloud Foundry Runtime](./3-prepare-for-cf.md)
+- For Kyma runtime: [Prepare for Deployment in the Kyma Runtime](./5-prepare-for-kyma.md)

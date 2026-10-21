@@ -129,7 +129,7 @@ html5-apps-deployer:
     >
     > ```sh
     > helm upgrade incident-management --namespace incident-management ./gen/chart \
-    >   --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
+    > --set-file xsuaa.jsonParameters=xs-security.json --set-file s4-hana-cloud.jsonParameters=bupa.json
     > ```
 
   b. For deploying together with Mock Server:

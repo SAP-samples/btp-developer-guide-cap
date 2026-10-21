@@ -192,7 +192,7 @@ For this scenario, you use the Business Partner API from SAP S/4HANA Cloud.
         > - maps the result to include only the necessary fields 
         > - sets the `$count` property
 
-    5.  Add a custom handler for CREATE and UPDATE of incidents. Add these code lines to the **init()** method:
+    5. Add a custom handler for CREATE and UPDATE of incidents. Add these code lines to the **init()** method:
 
         ```js[5-7]
         async init() {

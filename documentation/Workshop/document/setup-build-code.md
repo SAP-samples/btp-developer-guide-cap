@@ -1,12 +1,12 @@
-# Setup SAP Build Code in SAP BTP
+# Setup SAP Build Code
 
-##  Prequisite 
+## Prequisite 
 
-You should have a trial or an enterprise SAP BTP global account. If you don't have [Get an Account on SAP BTP Trial](https://developers.sap.com/tutorials/hcp-create-trial-account..html)
+You should have a trial or enterprise global account. If you don't have one, follow [Get an Account on Trial](https://developers.sap.com/tutorials/hcp-create-trial-account.html).
 
 ## Run the SAP Build Code Booster
 
-1. In the SAP BTP cockpit, access your global account. It can be either trial or enterprise account.
+1. In the cockpit, access your global account. It can be either trial or enterprise account.
 
 2. Navigate to trial global account
     

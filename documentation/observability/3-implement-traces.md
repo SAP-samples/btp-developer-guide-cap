@@ -3,9 +3,9 @@
 
 Traces allow you to analyze how a request, a message, or a task is being processed throughout your distributed system. To achieve this, `@cap-js/telemetry` wraps all essential functions of `cds.Service` and its derivates. For @cap-js databases (for example, `@cap-js/sqlite`), this includes `prepare()` and subsequent `stmt.run()`.
 
-## Option 1: Configure the SAP BTP, Cloud Foundry Runtime Deployment
+## Option 1: Configure the Cloud Foundry Runtime Deployment
 
-If you are deploying the application to SAP BTP, Cloud Foundry runtime, open terminal at the root of your application and add the following dependencies using the command:
+If you are deploying the application to Cloud Foundry runtime, open terminal at the root of your application and add the following dependencies using the command:
     
 ```
 cds add cloud-logging --with-telemetry
@@ -43,7 +43,7 @@ This adds the following dependencies and configurations to your application:
 
 
        resources:
-        - name: incident-management-cloud-logging  ## Cloud Logging Module Added
+        - name: incident-management-cloud-logging ## Cloud Logging Module Added
           type: org.cloudfoundry.managed-service
           parameters:
             service: cloud-logging
@@ -57,9 +57,9 @@ This adds the following dependencies and configurations to your application:
  
    > NOTE: The versions of these dependencies can vary at the time you are running the above command. It is not necessary to match the version of these dependencies.
 
-## Option 2: Configure the SAP BTP, Kyma Runtime Deployment
+## Option 2: Configure the Kyma Runtime Deployment
 
-If you are deploying to the SAP BTP, Kyma runtime, follow these steps:
+If you are deploying to the Kyma runtime, follow these steps:
 
 1. Open terminal at root of your application and add the following dependencies:
 
@@ -104,20 +104,20 @@ Once the application has all the requried configurations. The application can be
 
     ```
     [telemetry] - elapsed times:
-        0.00 →  95.53 =  95.53 ms  POST /odata/v4/processor/$batch
-      10.07 →  92.64 =  82.56 ms    GET Incidents?$count=true&$filter=(IsActiveEntity%20eq%20false%20or%20SiblingEnt…
-      35.54 →  55.97 =  20.43 ms      ProcessorService - READ ProcessorService.Incidents.drafts
-      38.75 →  55.82 =  17.07 ms        db - READ ProcessorService.Incidents.drafts
-      53.87 →  54.76 =   0.88 ms          @cap-js/sqlite - prepare SELECT json_insert('{}','$."HasActiveEntity"',CASE HasA…
-      55.24 →  55.60 =   0.35 ms          @cap-js/sqlite - stmt.all SELECT json_insert('{}','$."HasActiveEntity"',CASE Has…
-      56.92 →  71.60 =  14.68 ms      ProcessorService - READ ProcessorService.Incidents
-      57.75 →  71.40 =  13.65 ms        db - READ ProcessorService.Incidents
-      69.26 →  70.03 =   0.76 ms          @cap-js/sqlite - prepare SELECT json_insert('{}','$."ID"',ID,'$."title"',title,'…
-      70.16 →  70.78 =   0.61 ms          @cap-js/sqlite - stmt.all SELECT json_insert('{}','$."ID"',ID,'$."title"',title,…
-      72.21 →  74.65 =   2.43 ms      ProcessorService - READ ProcessorService.Incidents.drafts
-      72.75 →  74.59 =   1.84 ms        db - READ ProcessorService.Incidents.drafts
-      73.83 →  74.22 =   0.39 ms          @cap-js/sqlite - prepare SELECT json_insert('{}','$."ID"',ID) as _json_ FROM (SE…
-      74.31 →  74.54 =   0.22 ms          @cap-js/sqlite - stmt.all SELECT json_insert('{}','$."ID"',ID) as _json_ FROM (S…
+        0.00 → 95.53 = 95.53 ms POST /odata/v4/processor/$batch
+      10.07 → 92.64 = 82.56 ms GET Incidents?$count=true&$filter=(IsActiveEntity%20eq%20false%20or%20SiblingEnt…
+      35.54 → 55.97 = 20.43 ms ProcessorService - READ ProcessorService.Incidents.drafts
+      38.75 → 55.82 = 17.07 ms db - READ ProcessorService.Incidents.drafts
+      53.87 → 54.76 = 0.88 ms @cap-js/sqlite - prepare SELECT json_insert('{}','$."HasActiveEntity"',CASE HasA…
+      55.24 → 55.60 = 0.35 ms @cap-js/sqlite - stmt.all SELECT json_insert('{}','$."HasActiveEntity"',CASE Has…
+      56.92 → 71.60 = 14.68 ms ProcessorService - READ ProcessorService.Incidents
+      57.75 → 71.40 = 13.65 ms db - READ ProcessorService.Incidents
+      69.26 → 70.03 = 0.76 ms @cap-js/sqlite - prepare SELECT json_insert('{}','$."ID"',ID,'$."title"',title,'…
+      70.16 → 70.78 = 0.61 ms @cap-js/sqlite - stmt.all SELECT json_insert('{}','$."ID"',ID,'$."title"',title,…
+      72.21 → 74.65 = 2.43 ms ProcessorService - READ ProcessorService.Incidents.drafts
+      72.75 → 74.59 = 1.84 ms db - READ ProcessorService.Incidents.drafts
+      73.83 → 74.22 = 0.39 ms @cap-js/sqlite - prepare SELECT json_insert('{}','$."ID"',ID) as _json_ FROM (SE…
+      74.31 → 74.54 = 0.22 ms @cap-js/sqlite - stmt.all SELECT json_insert('{}','$."ID"',ID) as _json_ FROM (S…
     ```
   
 

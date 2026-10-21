@@ -4,10 +4,10 @@ The SAP Build Work Zone Local Entry Point approach is as follows:
 
 ## Additional Entitlements Required 
 
-| Service                                    | Plan       | Number of Instances |
+| Service | Plan | Number of Instances |
 |--------------------------------------------|------------|:-------------------:|
-| Service Manager                            | container       |          1          |
-| SAP Build Work Zone | local-entry-point |          1          |
+| Service Manager | container | 1 |
+| SAP Build Work Zone | local-entry-point | 1 |
 
 ## Prerequisites
 

@@ -17,7 +17,7 @@ In this section, you'll modify the List Report with the SAP Fiori Tools page edi
 
     > You can also invoke the Command Palette quickly using the following key combination:  
     > <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS.        
-    >  <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
+    > <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
 
 2. Type **Fiori: Open Application Info** in the field and select this entry from the list.
 
@@ -29,7 +29,7 @@ In this section, you'll modify the List Report with the SAP Fiori Tools page edi
 
 ### Add filter fields
 
-1.  The page map of the **incidents** application opens in a new tab within SAP Build code. You will see the properties on the right side of the page map. You can edit these properties to update the UI of the application.
+1. The page map of the **incidents** application opens in a new tab within SAP Build code. You will see the properties on the right side of the page map. You can edit these properties to update the UI of the application.
 
     ![Page Map properties](../images/extend-fiori-ui/PageMap-properties.png)
 
@@ -103,7 +103,7 @@ Let's start by rearranging the column order.
 
     ![Reorder Columns](../images/extend-fiori-ui/reorder-columns.png)
 
-14.  Select the **Title** column. Field **Label** contains string **Title** which was automatically set during app generation. Click the **Globe** icon in the **Label** field to generate a translatable text key for it, and apply the changes.
+14. Select the **Title** column. Field **Label** contains string **Title** which was automatically set during app generation. Click the **Globe** icon in the **Label** field to generate a translatable text key for it, and apply the changes.
 
 15. For each of the columns **customer_ID**, **status_code** and **urgency_code**:
     - In the **Label** field, change the value to **Customer**, **Status**, and **Urgency**, respectively.
@@ -119,8 +119,8 @@ Let's start by rearranging the column order.
       
       ![Customer Column](../images/extend-fiori-ui/customer-column.png)
 
-17.  Select text property for columns **Status** (select **status/descr** ) and **Urgency** (select **urgency/descr**) and also set **Text Arrangement** to **Text Only**
-18.  Switch back to the app preview to see the effect.
+17. Select text property for columns **Status** (select **status/descr** ) and **Urgency** (select **urgency/descr**) and also set **Text Arrangement** to **Text Only**
+18. Switch back to the app preview to see the effect.
 
 ### Configure the Table
 

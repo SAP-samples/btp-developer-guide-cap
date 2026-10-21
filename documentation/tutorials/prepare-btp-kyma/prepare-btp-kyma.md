@@ -1,18 +1,18 @@
-## Prepare for Deployment in the SAP BTP, Kyma Runtime
+## Prepare for Deployment in the Kyma Runtime
 
-In this tutorial, you learn how to configure entitlements, how to enable the SAP BTP Kyma runtime in your subaccount in SAP BTP, and how to create an SAP HANA Cloud service instance in the SAP BTP cockpit.
+In this tutorial, you learn how to configure entitlements, how to enable the Kyma runtime in your subaccount, and how to create an SAP HANA Cloud service instance in the cockpit.
 
 ## Prerequisites
 
 - You've set up the Incident Management sample application. You can choose from two alternative options:
-    - Follow the tutorials in the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group to develop the application from the start. 
+    - Follow the tutorials in the [Develop a Full-Stack CAP Application Following Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) group to develop the application from the start. 
     - Go to the Incident Management application GitHub repository directly and clone the application without going through the application development steps. See [Incident Management](https://github.com/cap-js/incidents-app/tree/beginner-tutorials).
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 - You have a tenant of SAP Cloud Identity Services. See [Get Your Tenant](https://help.sap.com/docs/cloud-identity-services/cloud-identity-services/get-your-tenant) for details how to get a tenant of SAP Cloud Identity Services if you don't have one yet.
-- You've established trust between your tenant of SAP Cloud Identity Services and your SAP BTP account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
+- You've established trust between your tenant of SAP Cloud Identity Services and your account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
@@ -22,22 +22,22 @@ In this tutorial, you learn how to configure entitlements, how to enable the SAP
 
 ### Configure the entitlements
 
-In this section, you set up the SAP BTP Kyma runtime for deploying CAP applications.
+In this section, you set up the Kyma runtime for deploying CAP applications.
 
 To deploy the Incident Management application, you need the following entitlements:
 
-| Service     |      Plan      |  Quota required |
+| Service | Plan | Quota required |
 | ------------- | :-----------: | ----: |
-| Kyma runtime | free (Environment) |   1 |
-| SAP Build Work Zone, standard edition    |  free (Application)    |   1 |
-| SAP HANA Cloud |   hana-free    |   1 |
-| SAP HANA Cloud |   tools (Application)   |   1 |
-| SAP HANA Schemas & HDI Containers |   hdi-shared   |   1 |
-| SAP Continuous Integration and Delivery | free (Application) |   1 |
+| Kyma runtime | free (Environment) | 1 |
+| SAP Build Work Zone, standard edition | free (Application) | 1 |
+| SAP HANA Cloud | hana-free | 1 |
+| SAP HANA Cloud | tools (Application) | 1 |
+| SAP HANA Schemas & HDI Containers | hdi-shared | 1 |
+| SAP Continuous Integration and Delivery | free (Application) | 1 |
 
 Do the following steps to add the entitlements.
 
-1. Log in to the SAP BTP cockpit.
+1. Log in to the cockpit.
 
 2. Navigate to your subaccount and choose **Entitlements** &rarr; **Edit**.
 
@@ -76,9 +76,9 @@ Do the following steps to add the entitlements.
 
 6. Choose **Save**.
 
-### Enable SAP BTP, Kyma runtime
+### Enable Kyma runtime
 
-Let's enable your subaccount to use the SAP BTP, Kyma runtime.
+Let's enable your subaccount to use the Kyma runtime.
 
 1. Navigate to your subaccount and choose **Enable Kyma** under the **Kyma Environment** tab.
 
@@ -91,7 +91,7 @@ Let's enable your subaccount to use the SAP BTP, Kyma runtime.
       ![Enable Kyma popup](./enable-kyma-popup.png)
 
 
-    > Make sure that the instance name is CLI-friendly. CLI-friendly names make it easier to manage your instances with the SAP BTP command-line interface as well.
+    > Make sure that the instance name is CLI-friendly. CLI-friendly names make it easier to manage your instances with the command-line interface as well.
     >
     > A CLI-friendly name is a short string (up to 32 characters) that contains only alphanumeric characters (A-Z, a-z, 0-9), periods, underscores, and hyphens. It can't contain white spaces.
     >
@@ -123,7 +123,7 @@ Let's enable your subaccount to use the SAP BTP, Kyma runtime.
     <!-- border; size:540px -->
     ![Status subscribed](./hanatools-status-subscribed.png)
 
-8. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
+8. In your subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
 
 9. Choose role collection **SAP HANA Cloud Administrator**.
 
@@ -149,11 +149,11 @@ Let's enable your subaccount to use the SAP BTP, Kyma runtime.
 
 SAP HANA Cloud is used as a persistence layer.
 
-Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP cockpit:
+Follow these steps to create an SAP HANA Cloud service instance in the cockpit:
 
-1. In your SAP BTP subaccount, navigate to **Services** &rarr; **Instances and Subscriptions** in the left-hand pane.
+1. In your subaccount, navigate to **Services** &rarr; **Instances and Subscriptions** in the left-hand pane.
 
-2. Choose **SAP HANA Cloud**. You're redirected to SAP HANA Cloud multi-environment administration tools. Sign in with your SAP BTP cockpit username/e-mail if necessary.
+2. Choose **SAP HANA Cloud**. You're redirected to SAP HANA Cloud multi-environment administration tools. Sign in with your cockpit username/e-mail if necessary.
 
     <!-- border; size:540px -->
     ![SAP HANA Cloud Go to application](./hana-goto-app.png)
@@ -193,9 +193,9 @@ The creation of the database instance can take some minutes to complete.
 > Your SAP HANA Cloud service instance is automatically stopped overnight, according to the time zone of the region where the server is located. That means you need to restart your instance every day before you start working with it.
 
 
-### Add the SAP BTP Operator module for your Kyma cluster
+### Add the Operator module for your Kyma cluster
 
-You need the SAP BTP Operator module to map your SAP HANA Cloud service instance to the Kyma cluster. The module is added by default when you enable the SAP BTP, Kyma runtime. Follow these steps to make sure it's enabled:
+You need the Operator module to map your SAP HANA Cloud service instance to the Kyma cluster. The module is added by default when you enable the Kyma runtime. Follow these steps to make sure it's enabled:
 
 1. Navigate to your subaccount and choose **Dashboard URL** under the **Kyma Environment** tab.
 
@@ -212,8 +212,8 @@ You need the SAP BTP Operator module to map your SAP HANA Cloud service instance
 
 1. Go to SAP HANA Cloud Central. If you've closed it, open it again by following these steps: 
 
-      - In your SAP BTP subaccount, navigate to **Services** &rarr; **Instances and Subscriptions**.
-      - Choose **SAP HANA Cloud**. You're redirected to SAP HANA Cloud multi-environment administration tools. Sign in with your SAP BTP cockpit username/e-mail if necessary.
+      - In your subaccount, navigate to **Services** &rarr; **Instances and Subscriptions**.
+      - Choose **SAP HANA Cloud**. You're redirected to SAP HANA Cloud multi-environment administration tools. Sign in with your cockpit username/e-mail if necessary.
 
 2. For the **incident-management** instance, choose **Manage Configuration**.
 

@@ -4,11 +4,11 @@
 
 2. Deploy the Incident Management application to Kyma runtime:
     
-   - SAP BTP, Kyma runtime:  [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html).
+   - Kyma runtime: [Deploy a Full-Stack CAP Application in Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html).
 
 3. Undeploy your application by running the following command:
   
-   - For SAP BTP, Kyma runtime: `helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>`
+   - For Kyma runtime: `helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>`
 
 # Systems and Accounts
 
@@ -16,9 +16,9 @@
 
 # Additional Entitlements Required
 
-Remote service integration to the developed CAP application requires the following additional entitlements and quotas in the SAP BTP cockpit:
+Remote service integration to the developed CAP application requires the following additional entitlements and quotas in the cockpit:
 
-| Service                           | Plan       | Number of Instances |
+| Service | Plan | Number of Instances |
 |-----------------------------------|------------|:-------------------:|
 | SAP S/4HANA Cloud Extensibility | api-access | 1 |
 

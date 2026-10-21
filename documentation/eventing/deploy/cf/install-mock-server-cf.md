@@ -1,9 +1,9 @@
-# Option 1 - Install Mock Server in SAP BTP, Cloud Foundry Runtime
+# Option 1 - Install Mock Server in Cloud Foundry Runtime
 
 ## Prerequisite
 
 * You have completed the Remote Service Integration tutorial.
-* You have deployed the mock server in the SAP BTP, Cloud Foundry runtime.
+* You have deployed the mock server in the Cloud Foundry runtime.
 * You have created a destination using the following steps [here](../../../remote-service/install-mock-server/install-mock-server-cf.md).
 
 ## Redeploy the Mock Server Application

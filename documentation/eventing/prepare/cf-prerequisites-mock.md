@@ -2,7 +2,7 @@
 
 ## Prerequisites
 * Complete the [Remote Service Integration](../../remote-service/remote-service-mock-cf.md) tutorial.
-* Undeploy the application that was deployed to SAP BTP in the Remote Service Integration tutorial.
+* Undeploy the application that was deployed to in the Remote Service Integration tutorial.
     - Undeploy the application using the following command:
       
         ```sh
@@ -13,13 +13,13 @@
 
 ## Mock Server 
 
-* You have to build and deploy mock server on SAP BTP Cloud Foundry Runtime.
+* You have to build and deploy mock server on Cloud Foundry Runtime.
 
 ## Additional Entitlements Required
 
-Adding eventing to the developed CAP application requires the following additional entitlements and quotas in the SAP BTP cockpit:
+Adding eventing to the developed CAP application requires the following additional entitlements and quotas in the cockpit:
 
-| Service                           | Plan       | Number of Instances |
+| Service | Plan | Number of Instances |
 |-----------------------------------|------------|:-------------------:|
 | SAP Event Mesh| default | 1 |
 

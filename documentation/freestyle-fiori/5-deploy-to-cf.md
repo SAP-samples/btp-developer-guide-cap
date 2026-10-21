@@ -1,10 +1,10 @@
-# Deploy and Run the application on SAP BTP, Cloud Foundry
+# Deploy and Run the application on Cloud Foundry
 
 ## Introduction
 
-The SAP BTP, Cloud Foundry environment allows you to create polyglot cloud applications in Cloud Foundry. It contains the SAP BTP, Cloud Foundry runtime, which is based on the open-source application platform managed by the Cloud Foundry Foundation.
+The Cloud Foundry environment allows you to create polyglot cloud applications in Cloud Foundry. It contains the Cloud Foundry runtime, which is based on the open-source application platform managed by the Cloud Foundry Foundation.
 
-The SAP BTP, Cloud Foundry environment enables you to develop new business applications and business services, supporting multiple runtimes, programming languages, libraries, and services.
+The Cloud Foundry environment enables you to develop new business applications and business services, supporting multiple runtimes, programming languages, libraries, and services.
 
 For more information about the Cloud Foundry environment, see [Cloud Foundry Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/cloud-foundry-environment).
 
@@ -54,8 +54,8 @@ The following snippet needs to be added at modules->- name: incident-management-
 > In each app's `webapp/manifest.json`, verify:
 > ```json
 > "sap.cloud": {
->     "public": true,
->     "service": "incidentmanagement.service"
+> "public": true,
+> "service": "incidentmanagement.service"
 > }
 > ```
 > This must match the `sap.cloud.service` value set in `mta.yaml`.
@@ -68,17 +68,17 @@ The following snippet needs to be added at modules->- name: incident-management-
 > 2. If it is missing, re-run `cds add html5-repo` from the project root to regenerate it.
 > 3. If re-running does not add it (for example, because the file already exists and is not overwritten), add the entry manually:
 >
->    ```yaml
->    builder:
->      customTasks:
->        - name: ui5-task-zipper
->          afterTask: generateVersionInfo
->          configuration:
->            archiveName: manager
->            relativePaths: true
->            additionalFiles:
->              - xs-app.json
->    ```
+> ```yaml
+> builder:
+>   customTasks:
+>     - name: ui5-task-zipper
+>       afterTask: generateVersionInfo
+>       configuration:
+>         archiveName: manager
+>         relativePaths: true
+>         additionalFiles:
+>           - xs-app.json
+> ```
 >
 
 1. Run the build for the manager app and verify that `app/manager/dist/manager.zip` is created before proceeding to the MTA build:
@@ -101,11 +101,11 @@ mbt build
 
 See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/d04fc0e2ad894545aebfd7126384307c.html?locale=en-US) to learn more about MTA-based deployment.
 
-## Deploy to the SAP BTP, Cloud Foundry runtime
+## Deploy to the Cloud Foundry runtime
 
 1. From the root of the **INCIDENT-MANAGEMENT** project, choose the burger menu, and then choose **Terminal** &rarr; **New Terminal**.
 
-2. Log in to your subaccount in SAP BTP:
+2. Log in to your subaccount:
 
     ```shell
     cf api <API-ENDPOINT>
@@ -113,7 +113,7 @@ See [Multitarget Applications in the Cloud Foundry Environment](https://help.sap
     cf target -o <ORG> -s <SPACE>
     ```
 
-    > You can find the API endpoint in the **Overview** section of your subaccount in the SAP BTP cockpit.
+    > You can find the API endpoint in the **Overview** section of your subaccount in the cockpit.
 
 3. Run the following command to deploy the generated archive:
 

@@ -1,5 +1,5 @@
 
-## Setup  Metrics collection
+## Setup Metrics collection
 Metrics are "measurements captured at runtime", which help you understand your app's health and performance.
 
 Out of the box, `@cap-js/telemetry` offers metrics regarding the app's database pool, namely the [pool info](https://www.npmjs.com/package/generic-pool#pool-info) statistics of `generic-pool`.
@@ -15,7 +15,7 @@ Once the application has all the requried configurations. The application can be
     ```
     [telemetry] - db.pool:
         size | available | pending
-          1/1 |       1/1 |       0
+          1/1 | 1/1 | 0
     ```
 
 ## Adding custom metrics to the application
@@ -57,5 +57,5 @@ Custom metrics can be added as shown in the following example:
 
 
 ## Next Step
-- For SAP BTP, Cloud Foundry runtime, follow the steps in [Enable Observability in the SAP BTP, Cloud Foundry Runtime](./4-deploy-to-cf.md).
-- For SAP BTP, Kyma runtime, follow the steps in [Enable Observability in the SAP BTP, Kyma Runtime](./5-deploy-to-kyma.md).
+- For Cloud Foundry runtime, follow the steps in [Enable Observability in the Cloud Foundry Runtime](./4-deploy-to-cf.md).
+- For Kyma runtime, follow the steps in [Enable Observability in the Kyma Runtime](./5-deploy-to-kyma.md).

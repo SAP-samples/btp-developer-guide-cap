@@ -5,7 +5,7 @@ You benefit from a native cloud solution, designed as the central entry point to
 
 SAP Cloud ALM is included in SAP Enterprise Support/Product Support for Large Enterprises contracts and in SAP Cloud Service subscriptions containing Enterprise Support, cloud edition. 
 
-## SAP Cloud ALM  and SAP Cloud Logging
+## SAP Cloud ALM and SAP Cloud Logging
 [SAP Cloud ALM](https://support.sap.com/en/alm/sap-cloud-alm.html?anchorId=section_copy), and [SAP Cloud Logging](https://help.sap.com/docs/application-logging-service?locale=en-US&state=PRODUCTION&version=Validation) can work together to ensure centralized access control, logging, monitoring, and analysis of SAP applications and services running in the cloud environment.
 
 

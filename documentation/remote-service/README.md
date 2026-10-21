@@ -1,9 +1,9 @@
 # Introduction
-SAP BTP Applications need to connect to SAP systems to fetch and and process data. 
+Applications need to connect to SAP systems to fetch and process data.
 
 You can find the APIs exposed by an SAP system that you need to complete your extension scenario in [SAP Business Accelerator Hub](https://api.sap.com/).  
-SAP BTP Connectivity allows SAP BTP applications to securely access APIs that run on the Internet or on-premise. 
-To allow applications running on SAP BTP to consume SAP S/4HANA Cloud APIs, you need to create a service instance of the [SAP S/4HANA Cloud Extensibility service](https://help.sap.com/docs/btp/sap-business-technology-platform/create-service-instance-to-consume-sap-s-4hana-cloud-apis?locale=en-USstate%3DPRODUCTION).
+Connectivity allows applications to securely access APIs that run on the Internet or on-premise.
+To consume SAP S/4HANA Cloud APIs, applications need a service instance of the [SAP S/4HANA Cloud Extensibility service](https://help.sap.com/docs/btp/sap-business-technology-platform/create-service-instance-to-consume-sap-s-4hana-cloud-apis?locale=en-USstate%3DPRODUCTION).
 
 # Business Scenario
 
@@ -21,10 +21,10 @@ For this purpose, we will be using the [SAP S/4HANA Business Partner API](https:
 # Options
 
 If you don't have access to an SAP S/4HANA system, you can use a mock server.
-Based on your SAP BTP runtime, choose between Cloud Foundry runtime and Kyma runtime.
+Based on your runtime, choose between Cloud Foundry runtime and Kyma runtime.
 
 
-|                      | SAP BTP, Cloud Foundry Runtime                  | SAP BTP, Kyma Runtime                           |
+| | Cloud Foundry Runtime | Kyma Runtime |
 |----------------------|-------------------------------------------------|-------------------------------------------------|
-| Mock Server       |  [Connect to a Remote Service Using the SAP Destination Service (SAP BTP, Cloud Foundry Runtime and Mock Server)](remote-service-mock-cf.md)              | [Connect to a Remote Service Using the SAP Destination Service (SAP BTP, Kyma Runtime and Mock Server)](remote-service-mock-kyma.md)             |
-| SAP S/4HANA Cloud      |  [Connect to a Remote Service Using the SAP Destination Service (SAP BTP, Cloud Foundry Runtime and SAP S/4HANA Cloud)](remote-service-s4h-cf.md)             | [Connect to a Remote Service Using the SAP Destination Service (SAP BTP, Kyma Runtime and SAP S/4HANA Cloud)](remote-service-s4h-kyma.md)             |
+| Mock Server | [Connect to a Remote Service Using the SAP Destination Service (Cloud Foundry Runtime and Mock Server)](remote-service-mock-cf.md) | [Connect to a Remote Service Using the SAP Destination Service (Kyma Runtime and Mock Server)](remote-service-mock-kyma.md) |
+| SAP S/4HANA Cloud | [Connect to a Remote Service Using the SAP Destination Service (Cloud Foundry Runtime and SAP S/4HANA Cloud)](remote-service-s4h-cf.md) | [Connect to a Remote Service Using the SAP Destination Service (Kyma Runtime and SAP S/4HANA Cloud)](remote-service-s4h-kyma.md) |

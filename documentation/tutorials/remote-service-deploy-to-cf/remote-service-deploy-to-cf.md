@@ -1,14 +1,14 @@
-## Deploy and Run the Incident Management Application in the SAP BTP, Cloud Foundry Runtime with SAP S/4HANA Cloud Backend
+## Deploy and Run the Incident Management Application in the Cloud Foundry Runtime with SAP S/4HANA Cloud Backend
 
 In this tutorial, you learn how to connect to your SAP S/4HANA Cloud system, how to extend the existing MTA build file with the settings for the SAP S/4HANA Cloud extension service, and how to test the application with your SAP S/4HANA Cloud system.
 
 ## Prerequisites
 
-- You've set up the connection to an SAP S/4HANA Cloud system. Follow the steps in the [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](remote-service-configure-connectivity) tutorial that is part of the [Consume Remote Services from SAP S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.sap-s4hana-consume-remote-services.html) tutorial group. 
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've set up the connection to an SAP S/4HANA Cloud system. Follow the steps in the [Configure Connectivity Between SAP S/4HANA Cloud and ](remote-service-configure-connectivity) tutorial that is part of the [Consume Remote Services from SAP S/4HANA Cloud in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in Cloud Foundry Runtime](https://developers.sap.com/group.sap-s4hana-consume-remote-services.html) tutorial group. 
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
@@ -84,7 +84,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
     > For more information, see [Communication Arrangement JSON/YAML File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html).
 
-2.  Navigate to the **package.json** file in the root folder of the application. Add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER**:
+2. Navigate to the **package.json** file in the root folder of the application. Add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER**:
 
     ```json
     "API_BUSINESS_PARTNER": {
@@ -131,7 +131,7 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
 
 ### Deploy the application
 
-1. Log in to your subaccount in SAP BTP:
+1. Log in to your subaccount:
 
     ```bash
     cf api <API-ENDPOINT>
@@ -139,9 +139,9 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
     cf target -o <ORG> -s <SPACE>
     ```
 
-    > You can find the API endpoint in the **Overview** section of your subaccount in the SAP BTP cockpit.
+    > You can find the API endpoint in the **Overview** section of your subaccount in the cockpit.
 
-5. Run the following commands to build and deploy your project in the SAP BTP, Cloud Foundry runtime:
+5. Run the following commands to build and deploy your project in the Cloud Foundry runtime:
 
     ```bash
     mbt build

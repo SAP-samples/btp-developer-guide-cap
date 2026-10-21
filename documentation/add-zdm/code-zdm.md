@@ -27,7 +27,7 @@ You can add the following highlighted code block to your service configuration t
       - name: mtx-api
         properties:
           mtx-url: ${default-url}
-          mtx-live: ${default-live-url}  // Added
+          mtx-live: ${default-live-url} // Added
   - name: incident-management-registry
     type: org.cloudfoundry.managed-service
     requires:
@@ -105,7 +105,7 @@ status code: 404 NOT_FOUND
 ```
 >
 
-- When the the approuter routes are switched from idle to live, the session that is maintained in memory gets destroyed. This leads to a sudden **Forbidden** error interrupting the end-user session.
+- When the approuter routes are switched from idle to live, the session that is maintained in memory gets destroyed. This leads to a sudden **Forbidden** error interrupting the end-user session.
 <img src="./images/routerSessionError.png"/>
 
 This can be prevented by using `Redis` for session management.
@@ -123,7 +123,7 @@ To enable this capability, you must bind a service instance of a service that su
 If, in subsequent requests, the session information is not found in the in-memory session store, the application router tries to rebuild the in-memory session information from the external persistency store.
 
 >
->**Redis Hyperscaler** option is not yet supported in the **SAP BTP, Kyma runtime**.
+>**Redis Hyperscaler** option is not yet supported in the **Kyma runtime**.
 >
 
 ### Implementing External Session Management in Approuter 
@@ -141,7 +141,7 @@ Approuter supports Redis for session management. To create the Redis instance an
       type: org.cloudfoundry.managed-service // Add
       parameters: // Add
         service: redis-cache // Add
-        service-plan: development  // Add
+        service-plan: development // Add
   ```
 2. Add the Redis configuration to the Approuter module:
    

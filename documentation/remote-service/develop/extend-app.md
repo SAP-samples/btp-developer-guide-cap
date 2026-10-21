@@ -7,11 +7,11 @@
 
 ## Content
 
-1. If you are using SAP BTP, Cloud Foundry runtime, open SAP Business Applicaiton Studio for development and if you are using SAP BTP, Kyma runtime, open Visual Studio Code for development.
+1. If you are using Cloud Foundry runtime, open SAP Business Applicaiton Studio for development and if you are using Kyma runtime, open Visual Studio Code for development.
 
 2. Navigate to the project's root folder of the Incident Management application. 
    
-3.  In the *package.json*, change the name to `incident-management`.
+3. In the *package.json*, change the name to `incident-management`.
     
     ```js
     {
@@ -141,7 +141,7 @@
         }   
     ```
 
-*  Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add this code snippet to the *init* method:
+* Add a custom handler for CREATE, UPDATE, DELETE of incidents. Add this code snippet to the *init* method:
 
     ```js
     this.on(['CREATE','UPDATE'], 'Incidents', (req, next) => this.onCustomerCache(req, next));

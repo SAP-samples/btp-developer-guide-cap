@@ -75,4 +75,4 @@
 
 ## Summary 
 
-You have integrated SAP Build Work Zone, standard edition service, to have one central entry point to show all of your SAP BTP applications.
+You have integrated SAP Build Work Zone, standard edition service, to have one central entry point to show all of your applications.

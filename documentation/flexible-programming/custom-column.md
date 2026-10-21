@@ -1,6 +1,6 @@
 # Extension Points: Add Custom Column
 
-In this section, you will modify the **List Report** page with the SAP Fiori Tools page editor and add a custom column using the **Flexible Programming Model**. This custom column is used to show the process flow of the incident. The processor can use the  [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident.
+In this section, you will modify the **List Report** page with the SAP Fiori Tools page editor and add a custom column using the **Flexible Programming Model**. This custom column is used to show the process flow of the incident. The processor can use the [MicroProcessFlow](https://sapui5.hana.ondemand.com/#/api/sap.suite.ui.commons.MicroProcessFlow) control to track the progress of an incident.
 
 Before you start with the next steps, please ensure the [prerequisites](./prerequisites.md) are completed.
 
@@ -21,7 +21,7 @@ Before you start with the next steps, please ensure the [prerequisites](./prereq
     <!-- border; size:540px --> 
     ![List Report Page Config](./images/ls3.png) 
 
-3.  In the **Table** &rarr; **Columns**. Click the **+** icon and choose **Add Custom Column**.
+3. In the **Table** &rarr; **Columns**. Click the **+** icon and choose **Add Custom Column**.
 
     <!-- border; size:540px --> 
     ![step 3](./images/custom-column-1.png)
@@ -29,7 +29,7 @@ Before you start with the next steps, please ensure the [prerequisites](./prereq
 4. In the popup, enter the following details.
 
     - **Header Text**: `Progress`. Click the **Globe** icon to generate a translatable text key and then choose **Apply**.
-    - **Column Fragment Name**:  `StatusProcess`
+    - **Column Fragment Name**: `StatusProcess`
     - **Anchor Column**: `Status (ID: status/descr)` 
     - **Placement**: `After`
     - **Generate Event Handler (Controller)**: `True`

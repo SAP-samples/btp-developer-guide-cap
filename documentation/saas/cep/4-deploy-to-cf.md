@@ -1,4 +1,4 @@
-# Deploy in the SAP BTP, Cloud Foundry Runtime
+# Deploy in the Cloud Foundry Runtime
 
 ## Build the Project
 

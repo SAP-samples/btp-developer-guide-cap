@@ -57,4 +57,4 @@ Exception monitoring for Incident Management will follow soon.
 ----
 
 Read more about the capabilities of the Real User Monitoring, Health Monitoring and Integration & Exception Monitoring
-applications in [Real User Monitoring](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/real-user-monitoring.html),  [Health Monitoring - Setup & Configuration](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/health-monitoring/health-monitoring-setup-configuration.html) and [Integration & Exception Monitoring](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/integration-monitoring.html)
+applications in [Real User Monitoring](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/real-user-monitoring.html), [Health Monitoring - Setup & Configuration](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/health-monitoring/health-monitoring-setup-configuration.html) and [Integration & Exception Monitoring](https://support.sap.com/en/alm/sap-cloud-alm/operations/expert-portal/integration-monitoring.html)

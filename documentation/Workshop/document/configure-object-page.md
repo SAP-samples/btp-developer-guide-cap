@@ -84,7 +84,7 @@ Extend fiori UI list report page by following the tutorial [Configure List Repor
 
     ![Customer field update label](../images/configure-object-page/fiori3.png)
 
-15. For the the now renamed **Customer** field, click **Edit properties for Value Help**.
+15. For the now renamed **Customer** field, click **Edit properties for Value Help**.
 
     ![Customer properties update](../images/configure-object-page/fiori4.png)    
 
@@ -118,7 +118,7 @@ Extend fiori UI list report page by following the tutorial [Configure List Repor
 
 Please note that when you use the Page Map to configure fields by adding for example a label, a Text/TextArrangement or a value help configuration, the corresponding CDS annotations are generated on property level. As we have already configured and added fields **status_code** and **urgency_code** to the List Report table, these annotations are automatically leveraged when displaying them also at other parts of the UI. You can access the property annotation directly from the Page Map.
 
-21.  Click field **Status**. Move the mouse pointer to property **Text** and click the **Edit in source code** icon. This will open the corresponding CDS annotation for field **Status** in a separate tab.
+21. Click field **Status**. Move the mouse pointer to property **Text** and click the **Edit in source code** icon. This will open the corresponding CDS annotation for field **Status** in a separate tab.
 
 ![Field property annotations](../images/configure-object-page/field-property-annotations.png)
 
@@ -126,7 +126,7 @@ Please note that when you use the Page Map to configure fields by adding for exa
 
 We will now add another section to the object page displaying a table with conversation related to the incident.
 
-22.  Navigate to **Sections** and click the **Plus** icon. 
+22. Navigate to **Sections** and click the **Plus** icon. 
 
 23. Select **Add Table Section**. A dialog appears.
 
@@ -150,7 +150,7 @@ We will now add another section to the object page displaying a table with conve
 
 27. In the **Add Basic Columns** dialog:
 
-    - Open the **Columns** dropdown menu.  All properties of the composition of aspects **conversation** are listed, as defined inline for the `Incidents` entity in file **./db/schema.cds**. 
+    - Open the **Columns** dropdown menu. All properties of the composition of aspects **conversation** are listed, as defined inline for the `Incidents` entity in file **./db/schema.cds**. 
     - Select **author**, **message**, and **timestamp**. 
     - Click **Add**.
 
@@ -166,19 +166,19 @@ We will now add another section to the object page displaying a table with conve
 
 ### Configure table and check the result
 
-1.  For **Table**, in the **Type** dropdown menu, select **ResponsiveTable**.
+1. For **Table**, in the **Type** dropdown menu, select **ResponsiveTable**.
 
     ![Responsive table](../images/configure-object-page/obj94.png)
 
-2.  In the **Creation Mode: Name** dropdown menu, select **Inline**. With it, the create action adds a new row at the table instead of navigating to a new object entry page.
+2. In the **Creation Mode: Name** dropdown menu, select **Inline**. With it, the create action adds a new row at the table instead of navigating to a new object entry page.
 
     ![Table creation mode](../images/configure-object-page/obj95.png)
 
-3.  The complete Object Page looks like this:
+3. The complete Object Page looks like this:
 
     ![Complete List Object Page](../images/configure-object-page/obj10.png)
 
 
 ## Next Steps
 
-Deploy your application in SAP BTP, Cloud Foundry and test using [Deploy in SAP BTP, Cloud Foundry Runtime](deploy-cf.md)
+Deploy your application in Cloud Foundry and test using [Deploy in Cloud Foundry Runtime](deploy-cf.md)

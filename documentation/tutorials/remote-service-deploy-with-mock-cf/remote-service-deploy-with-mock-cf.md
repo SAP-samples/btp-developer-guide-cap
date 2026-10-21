@@ -1,15 +1,15 @@
-## Deploy and Run the Incident Management Application in the SAP BTP, Cloud Foundry Runtime with a Mock Server
+## Deploy and Run the Incident Management Application in the Cloud Foundry Runtime with a Mock Server
 
-In this tutorial, you learn how to deploy the Incident Management application in the SAP BTP, Cloud Foundry runtime and how to test the application with the mock server that you've installed.
+In this tutorial, you learn how to deploy the Incident Management application in the Cloud Foundry runtime and how to test the application with the mock server that you've installed.
 
 ## Prerequisites
 
-- You've tested the extended Incident Management sample application. Follow the steps in the [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.sap-mock-consume-remote-services.html) tutorial group.
-- You've installed a mock server in your Cloud Foundry space in the SAP BTP, Cloud Foundry runtime. Follow the steps in the [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock-cf) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.sap-mock-consume-remote-services.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've tested the extended Incident Management sample application. Follow the steps in the [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in Cloud Foundry Runtime](https://developers.sap.com/group.sap-mock-consume-remote-services.html) tutorial group.
+- You've installed a mock server in your Cloud Foundry space in the Cloud Foundry runtime. Follow the steps in the [Install a Mock Server in the Cloud Foundry Runtime](remote-service-set-up-mock-cf) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in Cloud Foundry Runtime](https://developers.sap.com/group.sap-mock-consume-remote-services.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA (Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
@@ -34,7 +34,7 @@ In this tutorial, you learn how to deploy the Incident Management application in
       }
     ```
 
-    > Replace **<destination_name>** with the name of the destination that you created at **Step 5: Create a destination to the mock server** of [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](remote-service-set-up-mock-cf).
+    > Replace **<destination_name>** with the name of the destination that you created at **Step 5: Create a destination to the mock server** of [Install a Mock Server in the Cloud Foundry Runtime](remote-service-set-up-mock-cf).
 
 2. In the **mta.yaml** file, look for the **incident-management-srv** module's **requires** section, and make sure that the line `- name: incident-management-destination` is added:
 
@@ -49,7 +49,7 @@ In this tutorial, you learn how to deploy the Incident Management application in
     ....
     ```
 
-4. Log in to your subaccount in SAP BTP:
+4. Log in to your subaccount:
 
     ```bash
     cf api <API-ENDPOINT>
@@ -57,9 +57,9 @@ In this tutorial, you learn how to deploy the Incident Management application in
     cf target -o <ORG> -s <SPACE>
     ```
 
-    > You can find the API endpoint in the **Overview** section of your subaccount in the SAP BTP cockpit.
+    > You can find the API endpoint in the **Overview** section of your subaccount in the cockpit.
 
-5. Run the following commands to build and deploy your project to the SAP BTP, Cloud Foundry runtime:
+5. Run the following commands to build and deploy your project to the Cloud Foundry runtime:
 
     ```bash
     mbt build

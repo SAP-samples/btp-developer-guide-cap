@@ -3,7 +3,7 @@
 1. The SAP Audit Log Viewer service displays the audit logs for your Cloud Foundry account produced by SAP applications and services you’ve subscribed to.
    See [Audit Log Viewer for the Cloud Foundry Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/audit-log-viewer-for-cloud-foundry-environment).
 
-2. To use the SAP Audit Log Viewer service, subscribe to it using the SAP BTP cockpit.
+2. To use the SAP Audit Log Viewer service, subscribe to it using the cockpit.
    In **your subaccount -> Services-> Instances and Subscriptions -> Subscriptions**, choose `default` or `free` service plan.<br/>
    
  Once you've subscribed, choose **Go to Application** to open the SAP Audit Log Viewer service and log in there.

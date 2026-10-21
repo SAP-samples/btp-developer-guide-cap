@@ -1,11 +1,11 @@
 # Deploy the Application to Kyma Runtime
 
-In this section, you will deploy the Incident Management CAP application integrated with IAS and AMS to the SAP BTP Kyma runtime.
+In this section, you will deploy the Incident Management CAP application integrated with IAS and AMS to the Kyma runtime.
 
 ## Prerequisites
 
 - You have completed the [Prepare for Production](./3-prepare-for-production.md) steps to configure your CAP application for production deployment.
-- You have [enabled the Kyma runtime in your SAP BTP subaccount](https://developers.sap.com/tutorials/prepare-btp-kyma.html)
+- You have [enabled the Kyma runtime in your subaccount](https://developers.sap.com/tutorials/prepare-btp-kyma.html)
 - You have installed `kubectl` and `docker` or any other container management tools on your local machine.
 - Install `ctz` cli using `npm i -g ctz` command.
 
@@ -14,7 +14,7 @@ In this section, you will deploy the Incident Management CAP application integra
 ### Prerequisites for Kyma Deployment
 
 - Ensure that you have access to a container registry (like Docker Hub or SAP Container Registry) to push your container images.
-- Make sure you have logged in to your SAP BTP Kyma runtime on your local machine.
+- Make sure you have logged in to your Kyma runtime on your local machine.
 
 1. Use `cds up` command to create the necessary MTA files for deployment:
 

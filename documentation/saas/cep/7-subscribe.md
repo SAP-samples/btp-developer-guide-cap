@@ -15,7 +15,7 @@ Create a subscriber subaccount in the same region where the multitenant applicat
 
 ## Subscribe to the Application
 
-1. In the SAP BTP cockpit, navigate to your subaccount where you want to subscribe and choose **Service Marketplace**.
+1. In the cockpit, navigate to your subaccount where you want to subscribe and choose **Service Marketplace**.
 2. Find the `Incident Management` application.
 
    <img src="./images/incidentsapp.png" height="200px" width="300px"/>
@@ -31,7 +31,7 @@ Create a subscriber subaccount in the same region where the multitenant applicat
 
 Before accessing the application, you must assign the `Support` role collection to the user. 
 
-1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
+1. In the cockpit, navigate to the subscriber subaccount. 
 2. Choose **Security** > **Role Collections**.
 3. Select **support (incident-management xxxxxxx)** role collection. You can check the **Role Collection** information in the `mta.yaml` file.
 4. Choose **Edit**.
@@ -39,7 +39,7 @@ Before accessing the application, you must assign the `Support` role collection 
 
 ### Launch the Application
 
-1. In the SAP BTP cockpit, navigate to the **subscriber subaccount** and choose the **HTML5** tab.
+1. In the cockpit, navigate to the **subscriber subaccount** and choose the **HTML5** tab.
 2. You will see `nsincidents` or other name based on the namespace given to your UI application.
 3. Choose it to launch it.
 4. The final application will look like this:
@@ -52,7 +52,7 @@ Once the application is successfully deployed, there is a need to configure desi
 
 ### Create Runtime Destination
 
-1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
+1. In the cockpit, navigate to the subscriber subaccount. 
 2. Choose **Connectivity** > **Destination** and then choose **Create Destination**.
 3. Fill in the following configuration:
 
@@ -81,7 +81,7 @@ Destination would be created automatically through the configurations from mta.y
 
 Before accessing the application, you must assign the `Support` role collection to the user. 
 
-1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
+1. In the cockpit, navigate to the subscriber subaccount. 
 2. Choose **Security** > **Role Collections**.
 3. Click **Create** and give role collection name as **incident management role collection**.
 4. Choose **Edit**.
@@ -91,7 +91,7 @@ Before accessing the application, you must assign the `Support` role collection 
 
 ### Launch the Application
 
-1. In the SAP BTP cockpit, navigate to the **subscriber subaccount** and choose the **HTML5** tab.
+1. In the cockpit, navigate to the **subscriber subaccount** and choose the **HTML5** tab.
 2. You will see `nsincidents` or other name based on the namespace given to your UI application.
 3. Choose it to launch it.
 4. The final application will look like this:
@@ -103,7 +103,7 @@ Once the application is successfully deployed, there is a need to configure desi
 
 ### Create Runtime Destination
 
-1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
+1. In the cockpit, navigate to the subscriber subaccount. 
 2. Choose **Connectivity** > **Destination** and then choose **Create Destination**.
 3. Fill in the following configuration:
 
@@ -138,7 +138,7 @@ Once the application is successfully deployed, there is a need to configure desi
 
 #### Configure the destination
 
-1. In the SAP BTP cockpit, navigate to the **provider** subaccount. 
+1. In the cockpit, navigate to the **provider** subaccount. 
 2. Choose **Connectivity** > **Destination** and then choose **Create Destination**.
 3. Fill in the following configuration:
 
@@ -183,7 +183,7 @@ To integrate the application with SAP Build Work Zone, you need to create a new 
    | **Content Provider Source** | Local |
    | **Title** | Any descriptive name (for example, `New Content provider`) |
    | **Fetching Type** | Subscribed |
-   | **Business Solution** | Choose your subscribed application from the dropdown.  |
+   | **Business Solution** | Choose your subscribed application from the dropdown. |
    | **Runtime Destination** | Choose `incident-management-rt` destination from the dropdown which we have created earlier. |
 
    Enable **Include group and catalog assignments to roles**.
@@ -203,7 +203,7 @@ To integrate the application with SAP Build Work Zone, you need to create a new 
 ### Assign Roles and Access the Application
 
 Now that the site has been created. To access the site, you have to assign a site role to your user. To do so, follow these steps:
-1. In the SAP BTP cockpit, navigate to the subscriber subaccount. 
+1. In the cockpit, navigate to the subscriber subaccount. 
 2. Choose **Security** > **Role Collections**.
 3. Find **~`<ChannelName>`_defaultRole** or any other name that you had given to your site when creating the site. 
 4. Assign the **Support** role to the role collection and add your user.
@@ -215,11 +215,11 @@ Now that the site has been created. To access the site, you have to assign a sit
 
 The subscriptions can be viewed, updated or unsubscribed in the Subscription Manager Dashboard. This dashboard enables you to manage the lifecycle of a tenant in one central place. See [Using the Subscription Management Dashboard](https://help.sap.com/docs/btp/sap-business-technology-platform/using-subscription-management-dashboard?locale=en-US).
 
-1. In the SAP BTP cockpit, navigate to the provider subaccount. 
+1. In the cockpit, navigate to the provider subaccount. 
 2. Assign the `Subscription Management Dashboard Administrator` role to your user.
 3. Choose **Instance and Subscriptions**.
 4. Choose the **SaaS Provisioning service** name or **incidents-registry**.
-5. It will open the **SAP BTP Subscription Management Dashboard**.
+5. It will open the ** Subscription Management Dashboard**.
 6. You can see the list of subscribed tenants there. Choosing it will open more details to the right side.
 7. Choose the **Dependencies** tab on the right. This will show the list of dependent/reuse service that is part of this application.
 
@@ -229,4 +229,4 @@ The subscriptions can be viewed, updated or unsubscribed in the Subscription Man
 - [SAP SaaS Provisioning Service](https://help.sap.com/docs/btp/sap-business-technology-platform/developing-multitenant-applications-in-cloud-foundry-environment?locale=en-US)
 - [CAP Multitenancy](https://cap.cloud.sap/docs/guides/multitenancy/)
 - [Nodejs Multitenant Easy franchise](https://github.com/SAP-samples/btp-cf-multitenant-extension)
-- [Develop a multitenant Software as a Service application in SAP BTP using CAP (Cloud Foundry)](https://github.com/SAP-samples/btp-cf-cap-multitenant-susaas)
+- [Develop a multitenant Software as a Service application in using CAP (Cloud Foundry)](https://github.com/SAP-samples/btp-cf-cap-multitenant-susaas)

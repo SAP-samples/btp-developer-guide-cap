@@ -2,7 +2,7 @@
 
 ## Introduction
 
-You need to enable the events that are to be sent from your SAP S/4HANA Cloud system to SAP Business Technology Platform. For this enablement step, go to your SAP S/4HANA system.
+You need to enable the events that are to be sent from your SAP S/4HANA Cloud system. For this enablement step, go to your SAP S/4HANA system.
 
 ## Content
 

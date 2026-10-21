@@ -1,16 +1,16 @@
-## Integrate Your Application Deployed in SAP BTP, Kyma Runtime with SAP Build Work Zone, Standard Edition
+## Integrate Your Application Deployed in Kyma Runtime with SAP Build Work Zone, Standard Edition
 
 In this tutorial, you learn how to subscribe to SAP Build Work Zone, standard edition, how to assign the SAP Build Work Zone, standard edition role collection to your user, and how to integrate your application with SAP Build Work Zone, standard edition.
 
 ## Prerequisites
 
-- You've created a role collection and assigned it to a user. Follow the steps in the [Assign the User Roles](user-role-assignment) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've created a role collection and assigned it to a user. Follow the steps in the [Assign the User Roles](user-role-assignment) tutorial that is part of the [Deploy a Full-Stack CAP Application in Cloud Foundry Runtime Following Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-application.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 - You have a tenant of SAP Cloud Identity Services. See [Get Your Tenant](https://help.sap.com/docs/cloud-identity-services/cloud-identity-services/get-your-tenant) for details how to get a tenant of SAP Cloud Identity Services if you don't have one yet.
-- You've established trust between your tenant of SAP Cloud Identity Services and your SAP BTP account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
+- You've established trust between your tenant of SAP Cloud Identity Services and your account. This established trust allows you to use your SAP Cloud Identity Services tenant as an identity provider or a proxy to your own identity provider hosting your business users. See [Establish Trust and Federation Between SAP Authorization and Trust Management Service and SAP Cloud Identity Services](https://help.sap.com/docs/btp/sap-business-technology-platform/establish-trust-and-federation-between-uaa-and-identity-authentication).
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
@@ -56,11 +56,11 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
 > See section [Initial Setup](https://help.sap.com/viewer/8c8e1958338140699bd4811b37b82ece/Cloud/en-US/fd79b232967545569d1ae4d8f691016b.html) in the SAP Build Work Zone, standard edition's documentation for more details.
 
 
-###  Integrate your application with SAP Build Work Zone, standard edition
+### Integrate your application with SAP Build Work Zone, standard edition
 
-> There are two different ways to integrate your application with SAP Build Work Zone, standard edition. You have to choose one way or the other and follow through. It's currently not possible to mix the approaches. Both ways provide the same result. You can integrate your application with SAP Build Work Zone, standard edition through the SAP BTP cockpit or through Common Data Model. The tabs **SAP BTP cockpit** and **Common Data Model** provide detailed steps for each alternative way.  
+> There are two different ways to integrate your application with SAP Build Work Zone, standard edition. You have to choose one way or the other and follow through. It's currently not possible to mix the approaches. Both ways provide the same result. You can integrate your application with SAP Build Work Zone, standard edition through the cockpit or through Common Data Model. The tabs **cockpit** and **Common Data Model** provide detailed steps for each alternative way.  
 
-[OPTION BEGIN [SAP BTP Cockpit]]
+[OPTION BEGIN [ Cockpit]]
 
 #### Update content
 
@@ -222,16 +222,16 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     >
     > ```bash
     > kubectl get gateway -n kyma-system kyma-gateway \
-    >        -o jsonpath='{.spec.servers[0].hosts[0]}'
+    > -o jsonpath='{.spec.servers[0].hosts[0]}'
     > ```
     > Add the result without the leading `*.` in the placeholder `<cluster-domain>`.
 
 
 <!-- 6. Verify. Here's how your **values.yaml** file should look like at this stage: -->
-<!--     -->
-<!--    ```yaml  -->
-<!--    ...      -->
-<!--    ```      -->
+<!-- -->
+<!-- ```yaml -->
+<!-- ... -->
+<!-- ``` -->
 
 #### Create the CDM configuration
 
@@ -315,7 +315,7 @@ The Common Data Model (CDM) is the basis for interoperability and content federa
     ]
     ```
 
-#### Build the images and deploy your application in SAP BTP, Kyma runtime
+#### Build the images and deploy your application in Kyma runtime
 
 1. Build the UI deployer image:
 
@@ -433,15 +433,15 @@ When the application is successfully deployed, you have to configure design and 
         - **URL** = `https://html5-apps-repo-rt.cfapps.<subaccount-region>.hana.ondemand.com/applications/cdm/<cloud-service-name>`
         - **Proxy Type** = `Internet`
         - **Authentication** = `OAuth2ClientCredentials`
-        - **Client ID** =  `<Client ID from decoded secret details>`
-        - **Client Secret** =  `<Client Secret from decoded secret details>`
-        - **Token Service URL** =  `<url from decoded secret details>` + `/oauth/token`
+        - **Client ID** = `<Client ID from decoded secret details>`
+        - **Client Secret** = `<Client Secret from decoded secret details>`
+        - **Token Service URL** = `<url from decoded secret details>` + `/oauth/token`
 
         > You can find the value for `<cloud-service-name>` in the **app/incidents/webapp/manifest.json** file.
         > ```json[3]
         > "sap.cloud": {
-        >    "public": true,
-        >    "service": "incidents"
+        > "public": true,
+        > "service": "incidents"
         >}
         >```
 
@@ -567,4 +567,4 @@ You need to assign your user to the **~cdm_defaultRole** role collection, so you
 
 ### Summary
 
-Congratulations! You now have finished the development of your application and you've integrated SAP Build Work Zone, standard edition to have one central entry point to show all of your SAP BTP applications.
+Congratulations! You now have finished the development of your application and you've integrated SAP Build Work Zone, standard edition to have one central entry point to show all of your applications.

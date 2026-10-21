@@ -1,10 +1,10 @@
 # Deploy the Application to Cloud Foundry
-In this section, you will deploy the Incident Management CAP application integrated with IAS and AMS to the SAP BTP Cloud Foundry runtime.
+In this section, you will deploy the Incident Management CAP application integrated with IAS and AMS to the Cloud Foundry runtime.
 
 ## Prerequisites
 - You have completed the [Prepare for Production](./3-prepare-for-production.md) steps to configure your CAP application for production deployment.
 - You have the [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html) installed on your local machine.
-- You have logged in to your SAP BTP Cloud Foundry subaccount using the Cloud Foundry CLI:
+- You have logged in to your Cloud Foundry subaccount using the Cloud Foundry CLI:
 
    ```shell
    cf login -a https://api.<region>.cf.<domain> --sso

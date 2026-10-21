@@ -1,13 +1,13 @@
-## Install a Mock Server in the SAP BTP, Kyma Runtime
+## Install a Mock Server in the Kyma Runtime
 
-In this tutorial, you learn how to install a mock server in the SAP BTP, Kyma runtime and how to create a destination to the mock server in the same subaccount.
+In this tutorial, you learn how to install a mock server in the Kyma runtime and how to create a destination to the mock server in the same subaccount.
 
 ## Prerequisites
 
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
@@ -17,11 +17,11 @@ If you don't have access to an SAP back end system (SAP ECC, SAP S/4HANA Cloud o
 
 You need to:
 
-1. Install the mock server in the SAP BTP, Kyma runtime.
+1. Install the mock server in the Kyma runtime.
 
-2. Create a destination to the mock server in the same subaccount in SAP BTP.
+2. Create a destination to the mock server in the same subaccount.
 
-> The installation of the mock server is only needed if you want to test an application deployed in the SAP BTP, Kyma runtime. For local development testing, you can use the local mock server.
+> The installation of the mock server is only needed if you want to test an application deployed in the Kyma runtime. For local development testing, you can use the local mock server.
 
 ### Clone the mock server repository
 
@@ -123,7 +123,7 @@ You need to:
     helm upgrade --install mock ./gen/chart -n incident-management
     ```
 
-    > The mock server must be deployed in the same namespace as your application. If you've followed the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group of tutorial, you've created a namespace **incident-management** already. In case you haven't created a namespace yet, run the following command to create it now:
+    > The mock server must be deployed in the same namespace as your application. If you've followed the [Deploy a Full-Stack CAP Application in Kyma Runtime Following Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) group of tutorial, you've created a namespace **incident-management** already. In case you haven't created a namespace yet, run the following command to create it now:
     
     > ```bash
     > kubectl create namespace incident-management
@@ -145,7 +145,7 @@ You need to:
 
 ### Create a destination to the mock server
 
-3. Go back to the SAP BTP cockpit, navigate to your subaccount overview, and choose **Connectivity** &rarr; **Destination**. Then, choose **Create Destination**.
+3. Go back to the cockpit, navigate to your subaccount overview, and choose **Connectivity** &rarr; **Destination**. Then, choose **Create Destination**.
 
 1. Enter the following values:
 

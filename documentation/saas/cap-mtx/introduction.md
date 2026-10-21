@@ -1,5 +1,5 @@
 ## What Is Multitenancy?
-SAP BTP provides a multitenant functionality that allows application providers to own, deploy, and operate tenant-aware applications for multiple consumers, with reduced costs. For example, the application provider upgrades the application for all your consumers instead of performing each update individually, or share resources across multiple consumers. The application consumers launch the applications using consumer-specific URLs, and configure certain application features.
+A multitenant platform allows application providers to own, deploy, and operate tenant-aware applications for multiple consumers at reduced cost. For example, the application provider can upgrade the application for all consumers instead of performing each update individually and can share resources across multiple consumers. Application consumers launch applications using consumer-specific URLs and configure selected application features.
 
 With tenant-aware applications, you can:
 - Separate data securely for each tenant

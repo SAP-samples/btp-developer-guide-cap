@@ -4,8 +4,8 @@
 2. [Prerequisites](./prepare/prerequisites.md)
 3. [Extend Incident Management Application with Eventing](./develop/extend-app.md)
 4. [Running the application locally](./develop/run-app-locally.md)
-5. [Option 1 - Deploy Incident Management Application to SAP BTP Cloud Foundry Runtime](./deploy/cf/deploy-to-cf.md)
-6. [Option 2 - Deploy Incident Management Application to SAP BTP Kyma Runtime](./deploy/kyma/deploy-app-to-kyma.md)
+5. [Option 1 - Deploy Incident Management Application to Cloud Foundry Runtime](./deploy/cf/deploy-to-cf.md)
+6. [Option 2 - Deploy Incident Management Application to Kyma Runtime](./deploy/kyma/deploy-app-to-kyma.md)
 7. [Test the end to end flow](./run-application/run-app-s4.md)
 
  -->
@@ -14,7 +14,7 @@ To create event-based extensions for SAP S/4HANA Cloud, you need to set up the m
 
 # Business Scenario
 
-This tutorial shows you how to configure your CAP service to listen for upcoming events and deploy it to the SAP BTP. CAP offers native support for both emitting and receiving events, enabling CAP applications to effectively receive event notifications concerning changes in remote systems.
+This tutorial shows you how to configure your CAP service to listen for upcoming events and deploy it. CAP offers native support for both emitting and receiving events, enabling CAP applications to effectively receive event notifications concerning changes in remote systems.
 
 # Solution Diagram
 
@@ -22,7 +22,7 @@ This tutorial shows you how to configure your CAP service to listen for upcoming
 
 # Set Up Eventing Using the SAP Event Mesh Service
 
-|                      | SAP BTP, Cloud Foundry Runtime                  | SAP BTP, Kyma Runtime                           |
+| | Cloud Foundry Runtime | Kyma Runtime |
 |----------------------|-------------------------------------------------|-------------------------------------------------|
-| Mock Server       |  [Set Up Eventing Using the SAP Event Mesh Service with Mock Server on SAP BTP, Cloud Foundry Runtime](eventing-cf-mock.md)              | [Set Up Eventing Using the SAP Event Mesh Service with Mock Server on SAP BTP, Kyma Runtime](eventing-kyma-mock.md)             |
-| SAP S/4HANA Cloud      |  [Set Up Eventing Using the SAP Event Mesh Service with SAP S/4HANA Cloud on SAP BTP, Cloud Foundry Runtime](eventing-cf.md)             | [Set Up Eventing Using the SAP Event Mesh Service with SAP S/4HANA Cloud on SAP BTP, Kyma Runtime](eventing-kyma.md)             | 
+| Mock Server | [Set Up Eventing Using the SAP Event Mesh Service with Mock Server on Cloud Foundry Runtime](eventing-cf-mock.md) | [Set Up Eventing Using the SAP Event Mesh Service with Mock Server on Kyma Runtime](eventing-kyma-mock.md) |
+| SAP S/4HANA Cloud | [Set Up Eventing Using the SAP Event Mesh Service with SAP S/4HANA Cloud on Cloud Foundry Runtime](eventing-cf.md) | [Set Up Eventing Using the SAP Event Mesh Service with SAP S/4HANA Cloud on Kyma Runtime](eventing-kyma.md) | 

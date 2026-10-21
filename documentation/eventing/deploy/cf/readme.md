@@ -8,4 +8,4 @@ Depending on whether you use an SAP S/4HANA Cloud system or mock server to which
 
 * Option B - Follow these tutorials to deploy the application using a mock server:
    - [Deploy the Application with Mock Server - optional](./deploy-to-cf-mock.md)
-   - [Install Mock Server in SAP BTP, Cloud Foundry Runtime](./install-mock-server-cf.md)
+   - [Install Mock Server in Cloud Foundry Runtime](./install-mock-server-cf.md)

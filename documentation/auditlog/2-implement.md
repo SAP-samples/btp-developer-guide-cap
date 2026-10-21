@@ -18,20 +18,20 @@ annotate my.Customers with @PersonalData: {
   EntitySemantics: 'DataSubject',
   DataSubjectRole: 'Customer',
 } {
-  ID         @PersonalData.FieldSemantics : 'DataSubjectID';
-  firstName     @PersonalData.IsPotentiallyPersonal;
-  lastName      @PersonalData.IsPotentiallyPersonal;
-  email         @PersonalData.IsPotentiallyPersonal;
-  phone         @PersonalData.IsPotentiallyPersonal;
+  ID @PersonalData.FieldSemantics : 'DataSubjectID';
+  firstName @PersonalData.IsPotentiallyPersonal;
+  lastName @PersonalData.IsPotentiallyPersonal;
+  email @PersonalData.IsPotentiallyPersonal;
+  phone @PersonalData.IsPotentiallyPersonal;
   creditCardNo @PersonalData.IsPotentiallySensitive;
 }
 
 annotate my.Addresses with @PersonalData: {
   EntitySemantics: 'DataSubjectDetails'
 } {
-  customer      @PersonalData.FieldSemantics: 'DataSubjectID';
-  city          @PersonalData.IsPotentiallyPersonal;
-  postCode      @PersonalData.IsPotentiallyPersonal;
+  customer @PersonalData.FieldSemantics: 'DataSubjectID';
+  city @PersonalData.IsPotentiallyPersonal;
+  postCode @PersonalData.IsPotentiallyPersonal;
   streetAddress @PersonalData.IsPotentiallyPersonal;
 }
 
@@ -207,7 +207,7 @@ CAP provides different handlers that can be used to catch events and add custom 
     module.exports = cds.server
     ```
 
-Here in this custom code we are trying to generate `security-events` for  `403` `forbidden` events. This can be modified to include any other events as well.
+Here in this custom code we are trying to generate `security-events` for `403` `forbidden` events. This can be modified to include any other events as well.
 
 ## Test Locally
 

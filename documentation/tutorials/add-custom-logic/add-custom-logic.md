@@ -4,7 +4,7 @@ In this tutorial, you learn how to add custom code that changes the value of the
 
 ## Prerequisites
 
-You've implemented the user interface of your application. Follow the steps in the [Add SAP Fiori Elements UIs](add-fiori-elements-uis) tutorial that is part of the [Develop a Full-Stack CAP Application Following SAP BTP Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
+You've implemented the user interface of your application. Follow the steps in the [Add SAP Fiori Elements UIs](add-fiori-elements-uis) tutorial that is part of the [Develop a Full-Stack CAP Application Following Developer’s Guide](https://developers.sap.com/group.cap-application-full-stack.html) tutorial group.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 

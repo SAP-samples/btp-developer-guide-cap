@@ -7,10 +7,10 @@ In this tutorial, you learn how to subscribe to SAP Business Application Studio 
 
 ## Prerequisites
 
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
@@ -20,9 +20,9 @@ In this tutorial, you learn how to subscribe to SAP Business Application Studio 
 
 ### Configure entitlements for SAP Business Application Studio
 
-> This task is done by the administrator of the global account in SAP BTP. Developers then need to create their personal development space by following the instructions in **Step 4: Launch SAP Business Application Studio**.
+> This task is done by the administrator of the global account. Developers then need to create their personal development space by following the instructions in **Step 4: Launch SAP Business Application Studio**.
   
-1. In the SAP BTP cockpit, choose **Entitlements** &rarr; **Entity Assignments**.
+1. In the cockpit, choose **Entitlements** &rarr; **Entity Assignments**.
 
 2. In the **Subaccounts/Directories** field, select the subaccount you have already created.
 
@@ -40,14 +40,14 @@ In this tutorial, you learn how to subscribe to SAP Business Application Studio 
 5. Choose **Add 1 Service Plan**.
 
     <!-- border; size:540px -->
-    ![Screenshot showing the SAP BTP Cockpit logged in, with the entitlements entry highlighted on the left sidebar indicating it's selected, the "Add Service Plans" highlighted in the entitlements section on the right indicating it's clicked, a popover is visible in which you can find and add entitlements, the entry for "SAP Business Application Studio" is selected and the plan "free (Application) is checked finally the "Add 1 Service Plan" button is highlighted.](./bas-entitlement.png)
+    ![Screenshot showing the Cockpit logged in, with the entitlements entry highlighted on the left sidebar indicating it's selected, the "Add Service Plans" highlighted in the entitlements section on the right indicating it's clicked, a popover is visible in which you can find and add entitlements, the entry for "SAP Business Application Studio" is selected and the plan "free (Application) is checked finally the "Add 1 Service Plan" button is highlighted.](./bas-entitlement.png)
 
 6. Choose **Save**.
 
 
 ### Subscribe to the SAP Business Application Studio
 
-> This task is done by the administrator of the global account in SAP BTP. Developers then need to create their personal development space by following the instructions in **Step 4: Launch SAP Business Application Studio**.
+> This task is done by the administrator of the global account. Developers then need to create their personal development space by following the instructions in **Step 4: Launch SAP Business Application Studio**.
 
 1. Navigate to your subaccount and choose **Services** &rarr; **Service Marketplace**.
 
@@ -65,7 +65,7 @@ In this tutorial, you learn how to subscribe to SAP Business Application Studio 
 
 ### Assign the necessary roles to your user
 
-> This task is done by the administrator of the global account in SAP BTP. Developers then need to create their personal development space by following the instructions in **Step 4: Launch SAP Business Application Studio**.
+> This task is done by the administrator of the global account. Developers then need to create their personal development space by following the instructions in **Step 4: Launch SAP Business Application Studio**.
 
 1. Navigate to your subaccount and choose **Security** &rarr; **Users**.
 

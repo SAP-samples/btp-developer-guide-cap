@@ -1,6 +1,6 @@
-# Enable Observability in the SAP BTP, Cloud Foundry Runtime
+# Enable Observability in the Cloud Foundry Runtime
 
-## Deploy the Incident Management Application in the SAP BTP, Cloud Foundry Runtime
+## Deploy the Incident Management Application in the Cloud Foundry Runtime
 
 1. Assemble everything into a single `mta.tar` archive with the following command:
 
@@ -22,7 +22,7 @@
     >You can find the API end point in the **Overview** section of your subaccount.
     >
     
-3. Navigate to the `mta_archives` folder and deploy the generated archive to the SAP BTP, Cloud Foundry runtime using the following command:
+3. Navigate to the `mta_archives` folder and deploy the generated archive to the Cloud Foundry runtime using the following command:
 
     ```
     cf deploy incident-management_1.0.0.mtar 
@@ -42,7 +42,7 @@ As a next step, to access the application in launchpad, proceed to [Integrate wi
 
 ## Summary
 
-The application has been deployed with custom logs, metrics and trace collection in the SAP BTP, Cloud Foundry runtime and integrated into SAP Build Work Zone.
+The application has been deployed with custom logs, metrics and trace collection in the Cloud Foundry runtime and integrated into SAP Build Work Zone.
 
 # Visualize Logs, Metrics and Traces
 - [Access custom logs, metrics, traces](./6-test-the-flow.md)

@@ -555,7 +555,7 @@ Open **package.json** and add the `cds.requires` block below. If the block alrea
         "kind": "mocked",
         "users": {
           "alice": { "roles": ["support"] },
-          "bob":   { "roles": ["admin"] }
+          "bob": { "roles": ["admin"] }
         }
       }
     }
@@ -601,7 +601,7 @@ The output shows the summary:
   ✔ Test Expand Entity Endpoint (26 ms)
 ✔ Test The GET Endpoints
 ▶ Draft Choreography APIs
-  ✔ Create an incident  (19 ms)
+  ✔ Create an incident (19 ms)
   ✔ + Activate the draft & check Urgency code as H using custom logic (8 ms)
   ✔ + Test the incident status (2 ms)
   ...

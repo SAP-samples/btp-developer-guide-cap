@@ -1,4 +1,4 @@
-# Install Mock Server in SAP BTP Kyma Runtime
+# Install Mock Server in Kyma Runtime
 
 ## Pre requisite
 The Remote Service Integration tutorial was executed and mock server was deployed on Kyma and destination was created following steps [here](../../../remote-service/install-mock-server/install-mock-server-kyma.md)
@@ -66,5 +66,5 @@ The Remote Service Integration tutorial was executed and mock server was deploye
 
     ![deployed mock app](../images/mockdeployment.png)
 
-6.  As shown in the above screenshot, api url for the installed mock server can be taken from the output of mock server deployment.
+6. As shown in the above screenshot, api url for the installed mock server can be taken from the output of mock server deployment.
 

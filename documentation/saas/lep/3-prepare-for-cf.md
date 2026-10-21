@@ -1,4 +1,4 @@
-# Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime
+# Prepare for Deployment in the Cloud Foundry Runtime
 
 In this section, you will be preparing the Incident Management application to work with the SAP Build Work Zone local entry point approach.
 
@@ -11,12 +11,12 @@ In this section, you will be preparing the Incident Management application to wo
     > Ensure that the `vizId` matches the inbound name under `sap.app.crossNavigation.inbounds` in `app/incidents/webapp/manifest.json`. For example:
     > ```json
     > "crossNavigation": {
-    >   "inbounds": {
-    >     "intent1": {
-    >       "semanticObject": "incidents",
-    >       "action": "display"
-    >     }
-    >   }
+    > "inbounds": {
+    > "intent1": {
+    > "semanticObject": "incidents",
+    > "action": "display"
+    > }
+    > }
     > }
     > ```
     > In this example, `vizId` is `intent1`.
@@ -360,4 +360,4 @@ In the `mta.yaml` file, update the following configurations:
 
 ## Next Step
 
-[Deploy in the SAP BTP, Cloud Foundry Runtime](./4-deploy-to-cf.md)
+[Deploy in the Cloud Foundry Runtime](./4-deploy-to-cf.md)

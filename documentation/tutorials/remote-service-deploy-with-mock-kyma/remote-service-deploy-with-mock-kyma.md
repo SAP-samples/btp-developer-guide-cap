@@ -1,15 +1,15 @@
-## Deploy and Run the Incident Management Application in the SAP BTP, Kyma Runtime with a Mock Server
+## Deploy and Run the Incident Management Application in the Kyma Runtime with a Mock Server
 
-In this tutorial, you learn how to deploy the Incident Management application in the SAP BTP, Kyma runtime and how to test the application with the mock server that you've installed.
+In this tutorial, you learn how to deploy the Incident Management application in the Kyma runtime and how to test the application with the mock server that you've installed.
 
 ## Prerequisites
 
-- You've tested the extended Incident Management sample application. Follow the steps in the [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/group.kyma-cap-consume-mock-services.html) tutorial group.
-- You've installed a mock server in your namespace in the SAP BTP, Kyma runtime. Follow the steps in the [Install a Mock Server in the SAP BTP, Kyma Runtime](remote-service-set-up-mock-kyma) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in SAP BTP, Kyma Runtime](https://developers.sap.com/group.kyma-cap-consume-mock-services.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've tested the extended Incident Management sample application. Follow the steps in the [Test the Extended Incident Management Application with the Business Partner API](remote-service-run-dev-test) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in Kyma Runtime](https://developers.sap.com/group.kyma-cap-consume-mock-services.html) tutorial group.
+- You've installed a mock server in your namespace in the SAP BTPKyma runtime. Follow the steps in the [Install a Mock Server in the Kyma Runtime](remote-service-set-up-mock-kyma) tutorial that is part of the [Consume Remote Services from a Mock Server in Your Full-Stack CAP Application Following the SAP BTP Developer's Guide and Deploy in Kyma Runtime](https://developers.sap.com/group.kyma-cap-consume-mock-services.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 
 > This tutorial follows the guidance provided in the [SAP BTP Developer's Guide](https://help.sap.com/docs/btp/btp-developers-guide/what-is-btp-developers-guide).
 
@@ -38,7 +38,7 @@ In this tutorial, you learn how to deploy the Incident Management application in
       }
     ```
 
-    > Replace **<destination_name>** with the name of the destination that you created at **Step 5: Create a destination to the mock server** of [Install a Mock Server in the SAP BTP, Kyma Runtime](remote-service-set-up-mock-kyma).
+    > Replace **<destination_name>** with the name of the destination that you created at **Step 5: Create a destination to the mock server** of [Install a Mock Server in the Kyma Runtime](remote-service-set-up-mock-kyma).
 
 
 3. Create the productive CAP build for your application: 
@@ -60,7 +60,7 @@ In this tutorial, you learn how to deploy the Incident Management application in
 
     >- Make sure to replace `<your-container-registry>` with your docker server URL. 
     > 
-    >- Keep in mind that `<new-image-version>` is a string that’s different from the string defined in [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) to reflect the changes in the Incident Management app. 
+    >- Keep in mind that `<new-image-version>` is a string that’s different from the string defined in [Deploy in Kyma Runtime](deploy-to-kyma) to reflect the changes in the Incident Management app. 
 
     > Looking for your docker server URL?
     
@@ -100,7 +100,7 @@ In this tutorial, you learn how to deploy the Incident Management application in
 
     >- Make sure to replace `<your-container-registry>` with the link to your container registry and keep in mind that `<image-version>` is a string. 
     
-    >- Keep in mind that `<new-image-version>` is a string that’s different from the string defined in [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) to reflect the changes in the Incident Management app. 
+    >- Keep in mind that `<new-image-version>` is a string that’s different from the string defined in [Deploy in Kyma Runtime](deploy-to-kyma) to reflect the changes in the Incident Management app. 
     
     > Looking for your docker server URL?
     
@@ -156,7 +156,7 @@ Since the database image is unchanged, you don't need to build it again.
 
     > Your SAP HANA Cloud service instance is automatically stopped overnight, according to the time zone of the region where the server is located. That means you need to restart your instance every day before you start working with it.
     >
-    > You can either use the SAP BTP cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
+    > You can either use the cockpit or the terminal in the SAP Business Application Studio to restart the stopped instance:
     >
     > ```bash
     > cf update-service incident-management -c '{"data":{"serviceStopped":false}}'
@@ -175,9 +175,9 @@ Since the database image is unchanged, you don't need to build it again.
 
 When creating new entries in the Incident Management application, you see all values from the mock server in the value help of the **Customer** field.
 
-> Before you continue with this step, don’t forget to perform the steps from the tutorials [Assign the User Roles](https://developers.sap.com/tutorials/user-role-assignment.html) and [Integrate Your Application Deployed in SAP BTP, Kyma Runtime with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone-kymaruntime.html).
+> Before you continue with this step, don’t forget to perform the steps from the tutorials [Assign the User Roles](https://developers.sap.com/tutorials/user-role-assignment.html) and [Integrate Your Application Deployed in Kyma Runtime with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone-kymaruntime.html).
 
-1. Open your SAP Build Work Zone, standard edition site as described in [Integrate Your Application Deployed in SAP BTP, Kyma Runtime with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone-kymaruntime.html).
+1. Open your SAP Build Work Zone, standard edition site as described in [Integrate Your Application Deployed in Kyma Runtime with SAP Build Work Zone, Standard Edition](https://developers.sap.com/tutorials/integrate-with-work-zone-kymaruntime.html).
 
 6. Choose the **Incident Management** tile.
 

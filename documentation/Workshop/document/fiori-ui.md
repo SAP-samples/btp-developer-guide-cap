@@ -52,6 +52,6 @@ You have created custom logic following the steps at [Create Backend Logic with 
 
 **[Optional]** If you want to enhance the user interface, follow the steps at [Extend SAP Fiori UI](./extend-fiori-ui.md). 
 
-To deploy the application to SAP BTP, Cloud Foundry runtime, follow the steps at [Deploy in SAP BTP, Cloud Foundry Runtime](deploy-cf.md).
+To deploy the application to Cloud Foundry runtime, follow the steps at [Deploy in Cloud Foundry Runtime](deploy-cf.md).
 
 

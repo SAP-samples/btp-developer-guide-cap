@@ -32,7 +32,7 @@ In this chapter you will add the SAP Event Mesh service to your project.
             - name: incident-management-messaging
         ```
 
-2. Open the **mta.yaml** file and copy the following module to the  `resources` section:
+2. Open the **mta.yaml** file and copy the following module to the `resources` section:
 
     ```yaml
     - name: incidents-messaging-cloud

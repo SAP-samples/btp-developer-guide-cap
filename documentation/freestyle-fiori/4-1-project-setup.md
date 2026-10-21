@@ -12,7 +12,7 @@ Create a new SAPUI5 application based on a template provided by SAP Business App
 
 4. In the next dialog, choose **Use a Local CAP Project** as your Data Source and choose your current **`incident-management`** project as the CAP project.
 
-   > **Note:** In case you get the error: `Node module @sap/cds isn't found. Please install it and try again`, you have to install the corresponding CAP module which is also required   by the app generator as described in [Add CAP Tooling](https://cap.cloud.sap/docs/tools/#command-line-interface-cli). If not already done, please open a command line and run the following command:
+   > **Note:** In case you get the error: `Node module @sap/cds isn't found. Please install it and try again`, you have to install the corresponding CAP module which is also required by the app generator as described in [Add CAP Tooling](https://cap.cloud.sap/docs/tools/#command-line-interface-cli). If not already done, please open a command line and run the following command:
 
     ```bash
     npm install --global @sap/cds-dk --@sap:registry=https://registry.npmjs.org/

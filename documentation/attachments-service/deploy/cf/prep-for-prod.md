@@ -33,4 +33,4 @@
     ```
 
 ## Next Step
-- [Deploy the application to SAP BTP Cloud Foundry Runtime](./deploy.md)
+- [Deploy the application to Cloud Foundry Runtime](./deploy.md)

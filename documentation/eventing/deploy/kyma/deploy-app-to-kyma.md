@@ -2,7 +2,7 @@
 
 ## Usage Scenario
 
-Deploy the project to SAP BTP Kyma runtime using Helm configurations. See [Helm](https://helm.sh/).
+Deploy the project to Kyma runtime using Helm configurations. See [Helm](https://helm.sh/).
 
 ## Prepare for Production
 
@@ -223,10 +223,10 @@ html5-apps-deployer:
     >
     > ```sh
     > helm upgrade incident-management --namespace incidents-namespace ./gen/chart \
-    >   --set-file xsuaa.jsonParameters=xs-security.json \
-    >   --set-file s4-hana-cloud.jsonParameters=bupa.json \
-    >   --set-file s4-hana-cloud-messaging.jsonParameters=s4cems.json \
-    >   --set-file event-mesh.jsonParameters=event-mesh.json
+    > --set-file xsuaa.jsonParameters=xs-security.json \
+    > --set-file s4-hana-cloud.jsonParameters=bupa.json \
+    > --set-file s4-hana-cloud-messaging.jsonParameters=s4cems.json \
+    > --set-file event-mesh.jsonParameters=event-mesh.json
     > ```
 
   b. For deploying the Incident Management Application together with Mock Server:
@@ -239,8 +239,8 @@ html5-apps-deployer:
     >
     > ```sh
     > helm upgrade incident-management --namespace incidents-namespace ./gen/chart \
-    >   --set-file xsuaa.jsonParameters=xs-security.json \
-    >   --set-file event-mesh.jsonParameters=event-mesh.json
+    > --set-file xsuaa.jsonParameters=xs-security.json \
+    > --set-file event-mesh.jsonParameters=event-mesh.json
     > ```
 
 This installs the Helm chart from the chart folder with the release name ***incident-management*** in the namespace ***incidents-namespace***. The namespace is created automatically if it does not exist.

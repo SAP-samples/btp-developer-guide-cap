@@ -1,4 +1,4 @@
-# Implement Multitenancy in a Full-Stack CAP Application Following SAP BTP Developer’s Guide
+# Implement Multitenancy in a Full-Stack CAP Application Following Developer’s Guide
 
 1. [Introduction](./cap-mtx/introduction.md)
 2. [Prerequisites](./cap-mtx/mission-prerequisits/1-prerequisites.md)
@@ -12,17 +12,17 @@
         1. [Prerequisites](./cep/1-cep-prerequisites.md)
         2. [Add Dependent Services and Prepare for Production](./cep/2-add-dependent-services.md)
         3. Deploy the Application in the Respective Runtime:
-            - *SAP BTP, Cloud Foundry Runtime*:
-                1. [Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime](./cep/3-prepare-for-cf.md)
-                2. [Deploy in the SAP BTP, Cloud Foundry Runtime](./cep/4-deploy-to-cf.md)
-            - *SAP BTP, Kyma Runtime*:
-                1. [Prepare for Deployment in the SAP BTP, Kyma Runtime](./cep/5-prepare-for-kyma.md)
-                2. [Deploy in the SAP BTP, Kyma Runtime](./cep/6-deploy-to-kyma.md) 
+            - *Cloud Foundry Runtime*:
+                1. [Prepare for Deployment in the Cloud Foundry Runtime](./cep/3-prepare-for-cf.md)
+                2. [Deploy in the Cloud Foundry Runtime](./cep/4-deploy-to-cf.md)
+            - *Kyma Runtime*:
+                1. [Prepare for Deployment in the Kyma Runtime](./cep/5-prepare-for-kyma.md)
+                2. [Deploy in the Kyma Runtime](./cep/6-deploy-to-kyma.md) 
         4. [Subscribe to the Application](./cep/7-subscribe.md)
     - **Local Entry Point (LEP):**
         1. [Prerequisites](./lep/1-prerequisites.md)
         2. [Add Dependent Services and Prepare for Production](./lep/2-add-dependent-services.md)
-        3. Deploy the Application to SAP BTP, Cloud Foundry Runtime:
-            1. [Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime](./lep/3-prepare-for-cf.md)
-            2. [Deploy in the SAP BTP, Cloud Foundry Runtime](./lep/4-deploy-to-cf.md)
+        3. Deploy the Application to Cloud Foundry Runtime:
+            1. [Prepare for Deployment in the Cloud Foundry Runtime](./lep/3-prepare-for-cf.md)
+            2. [Deploy in the Cloud Foundry Runtime](./lep/4-deploy-to-cf.md)
         4. [Subscribe to the Application](./lep/5-subscribe.md)

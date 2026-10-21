@@ -15,7 +15,7 @@ This guide will walk you through the lifecycle management of a multitenant appli
 4. Choose the **Incident Management** tile and then choose **Create** on the right side of the screen. The subscription process starts.
 5. Once the subscription process has been finished, choose **Go to Application**.
 
-> This step will give an error message:  `404 Not Found: Requested route ('*-approuter.cfapps.<region>.hana.ondemand.com') does not exist.`.
+> This step will give an error message: `404 Not Found: Requested route ('*-approuter.cfapps.<region>.hana.ondemand.com') does not exist.`.
 This happens as there is no application deployed with the above route. You need to map the route to the `approuter` in the provider subaccount where the application is deployed. 
 >
 > To create tenant-specific routes, see [Create Tenant-Specific Route in Cloud Foundry](./operate/cf-route.md).
@@ -40,7 +40,7 @@ The subscriptions can be viewed, updated or unsubscribed in the Subscription Man
 1. Open the provider subaccount where the application is deployed.
 2. Assign the `Subscription Management Dashboard Administrator` role to your user.
 3. Open **Instance and Subscriptions**.
-4. Choose the **SaaS Provisioning service** name or **incidents-registry**. It will open the **SAP BTP Subscription Management Dashboard**.
+4. Choose the **SaaS Provisioning service** name or **incidents-registry**. It will open the ** Subscription Management Dashboard**.
 5. You can see the list of subscribed tenants. Choosing it will open more details to the right side.
 6. Choose the **Dependencies** tab on the right. This will show the list of dependent/reuse service that is part of this application.
 <img src="./images/saasDependencies.png"/>

@@ -6,7 +6,7 @@
 
 The goal of the SAP BTP Developer’s Guide is to help you implement business applications on SAP BTP. The SAP BTP Developer's Guide explains the building blocks for developing, delivering, and integrating business applications.
 Development projects for business applications have similar characteristics. Standardized development guidance is driving developer efficiency.
-The Incident Management sample application is a showcase of the SAP Cloud Application Programming Model (CAP) and adheres to the development recommendations set out in the SAP BTP Developer’s Guide. Best practices are documented in step-by-step tutorials based on the Incident Management application for learning how to develop, deploy, and operate a full-stack application using CAP and SAP Fiori. The tutorials also show how to use a set of important SAP BTP services in a CAP application.
+The Incident Management sample application is a showcase of the SAP Cloud Application Programming Model (CAP) and adheres to the development recommendations set out in the SAP BTP Developer’s Guide. Best practices are documented in step-by-step tutorials based on the Incident Management application for learning how to develop, deploy, and operate a full-stack application using CAP and SAP Fiori. The tutorials also show how to use a set of important services in a CAP application.
 
 ## Business Scenario
 
@@ -25,8 +25,8 @@ The tutorials are organized in the following way.
 * Basic groups of tutorials for the Incident Management application. See:
 
     * [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html)
-    * [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html)
-    * [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
+    * [Deploy a Full-Stack CAP Application in Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html)
+    * [Deploy a Full-Stack CAP Application in Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
 
 * Separate tutorials for the additional modules based on the Incident Management application
 
@@ -54,15 +54,15 @@ The tutorials in this repository provide hands-on experience following the [SAP 
 9. [Prepare for Production](./documentation/tutorials/prep-for-prod/prep-for-prod.md)
 
 ### Deployment - Cloud Foundry Runtime
-10. [Prepare for SAP BTP Development with Cloud Foundry Runtime](./documentation/tutorials/prepare-btp-cf/prepare-btp-cf.md)
-11. [Deploy in SAP BTP, Cloud Foundry Runtime](./documentation/tutorials/deploy-to-cf/deploy-to-cf.md)
+10. [Prepare for Development with Cloud Foundry Runtime](./documentation/tutorials/prepare-btp-cf/prepare-btp-cf.md)
+11. [Deploy in Cloud Foundry Runtime](./documentation/tutorials/deploy-to-cf/deploy-to-cf.md)
 12. [User Role Assignment](./documentation/tutorials/user-role-assignment/user-role-assignment.md)
 13. [Integrate Your Application with SAP Build Work Zone, Standard Edition](./documentation/tutorials/integrate-with-work-zone/integrate-with-work-zone.md)
 14. [Set Up a CI/CD Pipeline](./documentation/tutorials/set-up-cicd/set-up-cicd.md)
 
 ### Deployment - Kyma Runtime
-15. [Prepare for Deployment in the SAP BTP, Kyma Runtime](./documentation/tutorials/prepare-btp-kyma/prepare-btp-kyma.md)
-16. [Deploy in SAP BTP, Kyma Runtime](./documentation/tutorials/deploy-to-kyma/deploy-to-kyma.md)
+15. [Prepare for Deployment in the Kyma Runtime](./documentation/tutorials/prepare-btp-kyma/prepare-btp-kyma.md)
+16. [Deploy in Kyma Runtime](./documentation/tutorials/deploy-to-kyma/deploy-to-kyma.md)
 17. [User Role Assignment](./documentation/tutorials/user-role-assignment/user-role-assignment.md)
 18. [Integrate Your Application with SAP Build Work Zone, Standard Edition (Kyma Runtime)](./documentation/tutorials/integrate-with-work-zone-kymaruntime/integrate-with-work-zone-kymaruntime.md)
 19. [Set Up a CI/CD Pipeline for Kyma](./documentation/tutorials/set-up-cicd-kyma/set-up-cicd-kyma.md)
@@ -71,21 +71,21 @@ The tutorials in this repository provide hands-on experience following the [SAP 
 20. [Introduction to Remote Service Connectivity](./documentation/tutorials/remote-service-intro/remote-service-intro.md)
 21. [Get the Business Partner API and Extend the Incident Management Application](./documentation/tutorials/remote-service-extend/remote-service-extend.md)
 22. [Test the Extended Incident Management Application with the Business Partner API](./documentation/tutorials/remote-service-run-dev-test/remote-service-run-dev-test.md)
-23. [Install a Mock Server in the SAP BTP, Cloud Foundry Runtime](./documentation/tutorials/remote-service-set-up-mock-cf/remote-service-set-up-mock-cf.md)
-24. [Install a Mock Server in the SAP BTP, Kyma Runtime](./documentation/tutorials/remote-service-set-up-mock-kyma/remote-service-set-up-mock-kyma.md)
-25. [Deploy and Run the Incident Management Application in the SAP BTP, Cloud Foundry Runtime with a Mock Server](./documentation/tutorials/remote-service-deploy-with-mock-cf/remote-service-deploy-with-mock-cf.md)
-26. [Deploy and Run the Incident Management Application in the SAP BTP, Kyma Runtime with a Mock Server](./documentation/tutorials/remote-service-deploy-with-mock-kyma/remote-service-deploy-with-mock-kyma.md)
+23. [Install a Mock Server in the Cloud Foundry Runtime](./documentation/tutorials/remote-service-set-up-mock-cf/remote-service-set-up-mock-cf.md)
+24. [Install a Mock Server in the Kyma Runtime](./documentation/tutorials/remote-service-set-up-mock-kyma/remote-service-set-up-mock-kyma.md)
+25. [Deploy and Run the Incident Management Application in the Cloud Foundry Runtime with a Mock Server](./documentation/tutorials/remote-service-deploy-with-mock-cf/remote-service-deploy-with-mock-cf.md)
+26. [Deploy and Run the Incident Management Application in the Kyma Runtime with a Mock Server](./documentation/tutorials/remote-service-deploy-with-mock-kyma/remote-service-deploy-with-mock-kyma.md)
 
 ### Remote Services - S/4HANA Cloud Integration
-27. [Configure Connectivity Between SAP S/4HANA Cloud and SAP Business Technology Platform](./documentation/tutorials/remote-service-configure-connectivity/remote-service-configure-connectivity.md)
+27. [Configure SAP S/4HANA Cloud Connectivity](./documentation/tutorials/remote-service-configure-connectivity/remote-service-configure-connectivity.md)
 28. [Deploy and Run the Application on Cloud Foundry with SAP S/4HANA Cloud Backend](./documentation/tutorials/remote-service-deploy-to-cf/remote-service-deploy-to-cf.md)
 29. [Deploy and Run the Application on Kyma with SAP S/4HANA Cloud Backend](./documentation/tutorials/remote-service-deploy-to-kyma/remote-service-deploy-to-kyma.md)
 
 ### External Resources
 For additional context, you can also refer to the published tutorial groups on SAP Developer Center:
 - [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html)
-- [Deploy a Full-Stack CAP Application in SAP BTP, Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html)
-- [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
+- [Deploy a Full-Stack CAP Application in Cloud Foundry Runtime](https://developers.sap.com/group.deploy-full-stack-cap-application.html)
+- [Deploy a Full-Stack CAP Application in Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
 
 ## Known Issues
 

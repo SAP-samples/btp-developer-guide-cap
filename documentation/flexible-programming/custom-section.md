@@ -27,11 +27,11 @@ Before you start with the next steps, make sure the steps in [Add Custom Action]
 
 4. In the popup, enter the following details.
 
-    | Key  | Value  |
+    | Key | Value |
     |---|---|
-    | **Title**  | `Process Flow`. Click the **Globe** icon to generate a translatable text key.  |
-    | **Select Your Fragment**  | `Create New Fragment`  |
-    | **Fragment Name**  | `ProcessFlow`  |
+    | **Title** | `Process Flow`. Click the **Globe** icon to generate a translatable text key. |
+    | **Select Your Fragment** | `Create New Fragment` |
+    | **Fragment Name** | `ProcessFlow` |
     | **Anchor Section** | `Overview (ID: i18nOverview)` |
     | **Placement** | `After` |
     | **Generate Event Handler** | `False` |
@@ -224,7 +224,7 @@ override: {
 			oBindingContext.requestProperty('status_code').then(function (status_code) {
 				// Special case for On-Hold
 				if(status_code == "H") processNodes.nodes[1].children = ["2"]
-				else  processNodes.nodes.splice(2,1)
+				else processNodes.nodes.splice(2,1)
 
 				processNodes.nodes = processNodes.nodes.filter(node => node.nodeId <= statusCodeMapping[status_code])
 				processNodes.nodes[processNodes.nodes.length - 1].children = []
@@ -323,7 +323,7 @@ function (ControllerExtension, MessageToast, JSONModel) {
 					oBindingContext.requestProperty('status_code').then(function (status_code) {
 						// Special case for On-Hold
 						if(status_code == "H") processNodes.nodes[1].children = ["2"]
-						else  processNodes.nodes.splice(2,1)
+						else processNodes.nodes.splice(2,1)
 
 						processNodes.nodes = processNodes.nodes.filter(node => node.nodeId <= statusCodeMapping[status_code])
 						processNodes.nodes[processNodes.nodes.length - 1].children = []

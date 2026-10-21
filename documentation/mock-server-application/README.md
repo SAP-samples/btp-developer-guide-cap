@@ -39,7 +39,7 @@ To deploy the mock server application it's necessary to have a Cloud Foundry run
     - Enter the following command:
     <code>cf bs mock-srv BusinessPartnerValidation-ems && cf restart mock-srv</code>
     - NOTE: in the example above the name of Event Mesh service instance is BusinessPartnerValidation-ems. It can be different in your case!
-6. \[OPTIONAL\] You can also create a destination to the newly deployed Mock Server Application. It's only relevant if you have a destination service instance created in your CF space.  Go to terminal and start the following command:
+6. \[OPTIONAL\] You can also create a destination to the newly deployed Mock Server Application. It's only relevant if you have a destination service instance created in your CF space. Go to terminal and start the following command:
     <code>bash create-destination.sh bupa BusinessPartnerValidation-dest</code>
     - NOTE: in the command above the destination name is "bupa". You can change it as you need.
     - NOTE: in the command above the destination service instance is "BusinessPartnerValidation-dest". You can change it as you need.
@@ -141,7 +141,7 @@ Note: old models have incorrect connection between object nodes. In the generate
 entity API_BUSINESS_PARTNER.A_BusinessPartner{    
 
    /**
-   * Please add  an ON condition  
+   * Please add an ON condition  
    */    
    Association to many API_BUSINESS_PARTNER.A_BusinessPartnerAddress{ }    
 
@@ -153,7 +153,7 @@ This shoud be changed to:
 ```
 entity API_BUSINESS_PARTNER.A_BusinessPartner{    
 
-   Composition of  many API_BUSINESS_PARTNER.A_BusinessPartnerAddress
+   Composition of many API_BUSINESS_PARTNER.A_BusinessPartnerAddress
     on to_BusinessPartnerAddress.BusinessPartner = BusinessPartner;
 
 }

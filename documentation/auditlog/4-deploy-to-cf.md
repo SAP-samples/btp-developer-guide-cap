@@ -2,7 +2,7 @@
 
 ## Use SAP Audit Log Service
 
-While we simply dumped audit log messages to *stdout* in local development, we'll be using the **SAP Audit Log Service** on SAP BTP in **production**.
+While we simply dumped audit log messages to *stdout* in local development, we'll be using the **SAP Audit Log Service** in **production**.
 
 ### Set up Instance and Deploy Application
 
@@ -85,7 +85,7 @@ mbt build
 cf deploy mta_archives/< mtar_name >.mtar
 ```
 
-4. After successful deployment, you go to the **SAP BTP cockpit**. In **Subaccount-> Spaces -> Your Space**, check if the application is up and running.
+4. After successful deployment, you go to the **cockpit**. In **Subaccount-> Spaces -> Your Space**, check if the application is up and running.
 5. In **Service Bindings**, see the services that bind to your application. Here audit log is one of them.
 ![](./images/app-and-service.png)
 

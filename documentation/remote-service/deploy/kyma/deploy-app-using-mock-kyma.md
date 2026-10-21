@@ -19,7 +19,7 @@ If you don't have access to an SAP S/4HANA Cloud system, you can deploy and run 
         }
       },
     ```
-**Note** - As **destination_name**, you must enter the name of the destination created while installing the mock server to SAP BTP Kyma runtime.
+**Note** - As **destination_name**, you must enter the name of the destination created while installing the mock server to Kyma runtime.
 
 2. Follow the steps in [Deploy to Kyma tutorial](./deploy-to-kyma.md), but skip the steps for the **Remote Service Configuration**.
 >Make sure you deploy the Incident Management application to the same namespace as the mock server.

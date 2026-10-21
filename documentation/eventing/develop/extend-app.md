@@ -1,7 +1,7 @@
 # Extend the Incident Management Application with Eventing
 
 ## Introduction 
-In this chapter you will add code, so that the CAP-based application can listen and react to events from your SAP S/4HANA Cloud system.  One will need to add event definitions for the SAP S/4HANA Cloud events. The SAP S/4HANA Cloud Extensibility service instance is the client which creates the SAP S/4HANA Cloud integration and provides the credentials for the SAP S/4HANA Cloud system so that the SAP S/4HANA Cloud system can send events to that event bus. The purpose of this client is to send messages to a topic. It sends messages to the namespace which was configured while creating the service instance of S/4HANA Cloud Extensibility service. See [Define SAP S/4HANA Cloud Extensibility Service Descriptor JSON/YAML File](https://help.sap.com/docs/btp/sap-business-technology-platform/define-sap-s-4hana-cloud-extensibility-service-descriptor-json-yaml-file)
+In this chapter you will add code, so that the CAP-based application can listen and react to events from your SAP S/4HANA Cloud system. One will need to add event definitions for the SAP S/4HANA Cloud events. The SAP S/4HANA Cloud Extensibility service instance is the client which creates the SAP S/4HANA Cloud integration and provides the credentials for the SAP S/4HANA Cloud system so that the SAP S/4HANA Cloud system can send events to that event bus. The purpose of this client is to send messages to a topic. It sends messages to the namespace which was configured while creating the service instance of S/4HANA Cloud Extensibility service. See [Define SAP S/4HANA Cloud Extensibility Service Descriptor JSON/YAML File](https://help.sap.com/docs/btp/sap-business-technology-platform/define-sap-s-4hana-cloud-extensibility-service-descriptor-json-yaml-file)
 
 If you don't have an SAP S/4HANA Cloud system you can have the option to deploy and run the application with a mock server. The below configuration steps can be used to connect to mock server as well.
 
@@ -20,7 +20,7 @@ module.exports = function () {
     const { A_BusinessPartner } = this.entities;
    
     this.after('UPDATE', A_BusinessPartner, async data => {
-      const messaging =  await cds.connect.to('messaging');
+      const messaging = await cds.connect.to('messaging');
       const event = { BusinessPartner: data.BusinessPartner }
       console.log('>> BusinessPartner.Changed')
       await messaging.emit('sap.s4.beh.businesspartner.v1.BusinessPartner.Changed.v1', event);

@@ -1,10 +1,10 @@
-# Prepare for Deployment in the SAP BTP, Kyma Runtime
+# Prepare for Deployment in the Kyma Runtime
 
 ## Prerequisites
 1. [Configure your application for Kyma deployment](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html)
 2. [Prepare for Multitenancy](../cap-mtx/enable-mtx/1-enable-mtx.md)
 
-## Update Helm Chart for Deployment in the SAP BTP, Kyma Runtime
+## Update Helm Chart for Deployment in the Kyma Runtime
 
 Once the application is configured for multitenancy and dependency callback handlers are added, more configurations are needed to make it work in multitenancy mode.
 
@@ -16,12 +16,12 @@ Once the application is configured for multitenancy and dependency callback hand
     > Ensure that the `vizId` matches the inbound key under `sap.app.crossNavigation.inbounds` in `app/incidents/webapp/manifest.json`. For example, if your manifest has:
     > ```json
     > "crossNavigation": {
-    >   "inbounds": {
-    >     "intent1": {
-    >       "semanticObject": "incidents",
-    >       "action": "display"
-    >     }
-    >   }
+    > "inbounds": {
+    > "intent1": {
+    > "semanticObject": "incidents",
+    > "action": "display"
+    > }
+    > }
     > }
     > ```
     > then `vizId` is `intent1`. Update all `vizId` values in the cdm.json below to match your application.
@@ -252,4 +252,4 @@ html5-apps-deployer:
 
 ## Next Step
 
-[Deploy the Application in the SAP BTP, Kyma Runtime](./6-deploy-to-kyma.md)
+[Deploy the Application in the Kyma Runtime](./6-deploy-to-kyma.md)

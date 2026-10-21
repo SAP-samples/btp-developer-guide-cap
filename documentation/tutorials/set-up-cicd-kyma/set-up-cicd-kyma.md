@@ -1,14 +1,14 @@
-## Set Up a CI/CD Pipeline for SAP BTP, Kyma Runtime
+## Set Up a CI/CD Pipeline for Kyma Runtime
 
 In this tutorial, you learn how to initialize a repository in VS Code and how to set up your CI/CD pipeline.
 
 ## Prerequisites
 
-- You've prepared your application for deployment in SAP BTP, Kyma runtime. Follow the steps in the [Deploy in SAP BTP, Kyma Runtime](deploy-to-kyma) tutorial that is part of the [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime Following SAP BTP Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
-- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e) in SAP BTP. To use services for free, you can sign up for an SAP BTPEA (SAP BTP Enterprise Agreement) or a Pay-As-You-Go for SAP BTP global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
+- You've prepared your application for deployment in Kyma runtime. Follow the steps in the [Deploy in Kyma Runtime](deploy-to-kyma) tutorial that is part of the [Deploy a Full-Stack CAP Application in Kyma Runtime Following Developer’s Guide](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html) tutorial group.
+- You have an [enterprise global account](https://help.sap.com/docs/btp/sap-business-technology-platform/getting-global-account#loiod61c2819034b48e68145c45c36acba6e). To use services for free, you can sign up for an EA ( Enterprise Agreement) or a Pay-As-You-Go for global account and use the free tier services only. See [Using Free Service Plans](https://help.sap.com/docs/btp/sap-business-technology-platform/using-free-service-plans?version=Cloud).
 - You have a platform user. See [User and Member Management](https://help.sap.com/docs/btp/sap-business-technology-platform/user-and-member-management).
-- You're an administrator of the global account in SAP BTP.
-- You have a subaccount in SAP BTP to deploy the services and applications.
+- You're an administrator of the global account.
+- You have a subaccount to deploy the services and applications.
 - You have one of the following browsers that are supported for working in SAP Business Application Studio:
     - Mozilla Firefox
     - Google Chrome
@@ -154,23 +154,23 @@ In this example, we're creating a repository on GitHub. You need a [GitHub](http
     <!-- border; size:540px -->
     ![Status subscribed](./cicd-status-subscribed.png)
 
-5. In your SAP BTP subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
+5. In your subaccount, choose **Security** &rarr; **Role Collections** in the left-hand pane.
 
 6. Choose the role collection **CICD Service Administrator**.
 
-7.  Choose **Edit**.
+7. Choose **Edit**.
 
     <!-- border; size:540px -->
     ![Edit role](./cicd-edit-role.png)
 
-8.  In the **Users** section, enter your user and select the icon to add the user.
+8. In the **Users** section, enter your user and select the icon to add the user.
 
     <!-- border; size:540px -->
     ![Add user](./cicd-add-user.png)
 
     > Keep the setting `Default Identity Provider` unless you have a custom identity provider configured.
 
-9.  Choose **Save**.
+9. Choose **Save**.
 
     You've assigned the **CICD Service Administrator** role collection to your user.
 
@@ -250,14 +250,14 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
 ### Access SAP Continuous Integration and Delivery service
 
-1. In your SAP BTP subaccount, navigate to **Services** &rarr; **Instances and Subscriptions** in the left-hand pane.
+1. In your subaccount, navigate to **Services** &rarr; **Instances and Subscriptions** in the left-hand pane.
 
 2. Choose **Continuous Integration & Delivery**.
 
     <!-- border; size:540px -->
     ![CI/CD Go to application](./cicd-goto-app.png)
 
-3. Use your SAP BTP global user name and global password to log in to the application.
+3. Use your global user name and global password to log in to the application.
 
 
 ### Add Credentials
@@ -305,7 +305,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     >
     >1. Run `cat /tmp/config.json` to print your container registry credentials. The output looks like this:
     >
-    >       ![Container registry credentials](./container-registry-credentials-print1.png)
+    > ![Container registry credentials](./container-registry-credentials-print1.png)
     >
     >2. Open the `/tmp/config.json` in a text editor and delete the `credsStore` key-value pair. 
     >
@@ -313,7 +313,7 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     >
     >4. Print your container registry credentials again with `cat /tmp/config.json`. The output look like this now:
     >
-    >       ![Container registry credentials](./container-registry-credentials-print2.png)
+    > ![Container registry credentials](./container-registry-credentials-print2.png)
 
 
 ### Prepare package.json

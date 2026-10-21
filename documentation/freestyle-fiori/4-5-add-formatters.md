@@ -7,7 +7,7 @@
 2. Add the following content
 
 ```ts
-import  MessageType from "sap/ui/core/message/MessageType";
+import MessageType from "sap/ui/core/message/MessageType";
 import DateFormat from "sap/ui/core/format/DateFormat";
 
 export enum Urgency {

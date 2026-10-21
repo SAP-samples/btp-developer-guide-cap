@@ -10,7 +10,7 @@
 
 2. Navigate to **package.json** file from the project's root folder and modify the **name** to **incident-management**
 
-Based on the SAP BTP Runtime environment to which you want to deploy your application, you can choose one of the below two options
+Based on the Runtime environment to which you want to deploy your application, you can choose one of the below two options
 
   - [Prepare application to Deploy to Cloud Foundry](#prepare-application-to-deploy-to-cloud-foundry)
   - [Prepare application to Deploy to Kyma Runtime](#prepare-application-to-deploy-to-kymak8s)
@@ -19,7 +19,7 @@ Based on the SAP BTP Runtime environment to which you want to deploy your applic
 
 ## Preliminary Setup
 
-- [Prepare for SAP BTP Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html)
+- [Prepare for Development with Cloud Foundry Runtime](https://developers.sap.com/tutorials/prepare-btp-cf.html)
 
 ---
 **Info:**
@@ -38,9 +38,9 @@ In case you want to use VS Code as your development environment instead of SAP B
 
 
 ## Overview
-The SAP BTP, Cloud Foundry environment allows you to create polyglot cloud applications in Cloud Foundry. It contains the SAP BTP, Cloud Foundry runtime, which is based on the open-source application platform managed by the Cloud Foundry Foundation.
+The Cloud Foundry environment allows you to create polyglot cloud applications in Cloud Foundry. It contains the Cloud Foundry runtime, which is based on the open-source application platform managed by the Cloud Foundry Foundation.
 
-The SAP BTP for the Cloud Foundry environment enables you to develop new business applications and business services, supporting multiple runtimes, programming languages, libraries, and services. You can leverage a multitude of buildpacks, including community innovations and self-developed buildpacks. It also integrates with SAP HANA extended application services, advanced model.
+The Cloud Foundry environment enables you to develop new business applications and business services, supporting multiple runtimes, programming languages, libraries, and services. You can leverage a multitude of buildpacks, including community innovations and self-developed buildpacks. It also integrates with SAP HANA extended application services, advanced model.
 
 For more information about the Cloud Foundry environment, refer to [Cloud Foundry Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/cloud-foundry-environment).
 
@@ -165,7 +165,7 @@ build-parameters:
 2. Choose **Add Deploy Config** under the **Application Info - incidents** tab.
 ![V4 Template](./images/ui1.png)
 
-3. Select **Cloud Foundry** for **Target** in deployment configuration .
+3. Select **Cloud Foundry** for **Target** in the deployment configuration.
 
 4. Select **Local CAP Project API** in destination name and choose the option yes for Edit the deployment configurations.
 
@@ -250,7 +250,7 @@ resources:
 
 ## Preliminary Setup
 - [Download your project from SAP Business Application Studio](#download-and-setup-the-project-locally), unzip and import it into Visual Studio Code.
-- [Prepare for SAP BTP Development with Kyma Runtime]()
+- [Prepare for Development with Kyma Runtime]()
 - [SAP BTP Operator Module is enabled](https://help.sap.com/docs/btp/sap-business-technology-platform/enable-and-disable-kyma-module#loio1b548e9ad4744b978b8b595288b0cb5c)
 - Download and install the following command line tools:
   - [kubectl command line client for Kubernetes](https://kubernetes.io/docs/tasks/tools/)
@@ -261,18 +261,18 @@ resources:
 - Use the image artifactory recommended by your organization. Incase if you dont have an artifactory you can use [dockerhub](https://docs.docker.com/docker-hub/quickstart/) for a non-productive usage.
 
 ## Overview
-SAP BTP, Kyma runtime is a cloud-native application runtime that combines the power of Kubernetes with a set of best-in-class tools and open-source components that empower you to develop, run, and operate secure and scalable cloud-native applications. Detailed information is available at [Kyma Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment).
-The Kyma runtime for SAP BTP's files are provided as a container image. In addition, since the containers run on Kubernetes, their configuration is described by Kubernetes resources.
+Kyma runtime is a cloud-native application runtime that combines the power of Kubernetes with a set of best-in-class tools and open-source components that empower you to develop, run, and operate secure and scalable cloud-native applications. Detailed information is available at [Kyma Environment](https://help.sap.com/docs/btp/sap-business-technology-platform/kyma-environment).
+The Kyma runtime files are provided as a container image. In addition, since the containers run on Kubernetes, their configuration is described by Kubernetes resources.
 
 Hence, two kinds of artifacts are needed to run applications on Kubernetes:
 
 1. Container images
 2. Kubernetes resources
 
-You start by building your project as container images and push those images to a container registry of your choice. Then, you add a [CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma#about-cap-helm) to your project. As a last step, you deploy the Helm chart to your Kyma resources, where service instances of SAP BTP services are created and pods pull the previously created container images from the container registry.
+You start by building your project as container images and push those images to a container registry of your choice. Then, you add a [CAP Helm chart](https://cap.cloud.sap/docs/guides/deployment/deploy-to-kyma#about-cap-helm) to your project. As a last step, you deploy the Helm chart to your Kyma resources, where service instances of services are created and pods pull the previously created container images from the container registry.
 
 ## Get Access to a Container Registry
-SAP BTP doesn't provide a container registry.
+The Kyma runtime doesn't provide a container registry.
 
 You can choose from offerings of hosted open source and private container image registries, as well as solutions that can be run on premise or in your own cloud infrastructure. However, you need to consider that the Kubernetes cluster needs to access the container registry from its network.
 
@@ -402,7 +402,7 @@ For more information refer the [document](https://help.sap.com/docs/btp/sap-busi
 }
 ```
 6. create a new file `xs-app.json` inside `app/incidents/resources/webapp`
-7.  Add the file following code snippet to the newly created `xs-app.json` file:
+7. Add the file following code snippet to the newly created `xs-app.json` file:
 
 ```json
 {
@@ -457,7 +457,7 @@ The generated chart will look something like this:
 
 <img src="./images/charts.png" width="30%" height="20%">
 
-The files in the charts folder support the deployment of your CAP service, database and UI content, and the creation of instances for SAP BTP services.
+The files in the charts folder support the deployment of your CAP service, database and UI content, and the creation of instances for services.
 
 2. Run the below command to automate the setup for HTML5 application deployment:
 
@@ -467,11 +467,11 @@ The files in the charts folder support the deployment of your CAP service, datab
 
 # Undeploy the Application
 
-Based on the SAP BTP Runtime environment to which you had deployed your application, you can choose one of the below two options:
+Based on the Runtime environment to which you had deployed your application, you can choose one of the below two options:
   
 ## Undeploy application from Cloud Foundry
 
-Run the below command to undeploy your application from SAP BTP Cloud Foundry Runtime
+Run the below command to undeploy your application from Cloud Foundry Runtime
 
   ```sh
   cf undeploy <YOUR_MTA_ID> --delete-services
@@ -482,7 +482,7 @@ Replace `YOUR_MTA_ID` in the above command with the `ID` from mta.yaml file.
 
 ## Undeploy application from Kyma Runtime
 
-Run the below command to undeploy your application from SAP BTP Kyma Runtime
+Run the below command to undeploy your application from Kyma Runtime
 
   ```sh
   helm uninstall <RELEASE_NAME> -n <YOUR_NAMESPACE>

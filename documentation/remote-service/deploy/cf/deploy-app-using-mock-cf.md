@@ -24,7 +24,7 @@ Deploy the project to Cloud Foundry using the MTA build file.
         }
       }
     ```
-**Note** - As **destination_name** you must enter the name of the destination created while installing mock server to SAP BTP Cloud Foundry Runtime.
+**Note** - As **destination_name** you must enter the name of the destination created while installing mock server to Cloud Foundry Runtime.
 
 2. In the **mta.yaml** file look for the *incident-management-srv* module *requires* section, add **- name: incident-management-destination-service**
    
@@ -59,7 +59,7 @@ Deploy the project to Cloud Foundry using the MTA build file.
    
    ![deploy mtar](./images/deploy_mtar.png)
 
-6. Login to your SAP BTP subaccount and space to start the deployment.
+6. Login to your subaccount and space to start the deployment.
    
    ![login](./images/login.png)
 

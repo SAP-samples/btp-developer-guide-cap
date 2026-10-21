@@ -1,4 +1,4 @@
-# Prepare for Deployment in the SAP BTP, Cloud Foundry Runtime
+# Prepare for Deployment in the Cloud Foundry Runtime
 
 ## Update the MTA File With Multitenancy Configuration 
 
@@ -256,4 +256,4 @@ The application deployer will look like this:
 
 ## Next Step
 
-[Deploy the Incident Management Application in the SAP BTP, Cloud Foundry Runtime](./4-deploy-to-cf.md)
+[Deploy the Incident Management Application in the Cloud Foundry Runtime](./4-deploy-to-cf.md)

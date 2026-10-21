@@ -2,7 +2,7 @@
 
 1. Develop the Incident Management application following the step by step tutorial [Develop a Full-Stack CAP Application](https://developers.sap.com/group.cap-application-full-stack.html).
 
-2. Deployed the Incident Management application, to [Deploy a Full-Stack CAP Application in SAP BTP, Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html).
+2. Deployed the Incident Management application, to [Deploy a Full-Stack CAP Application in Kyma Runtime](https://developers.sap.com/group.deploy-full-stack-cap-kyma-runtime.html).
 
 3. Undeploy your application by running the following command:
    
@@ -10,9 +10,9 @@
 
 # Entitlements required
 
-Audit Logging service integration to the developed CAP application requires the following additional entitlements and quotas in the SAP BTP cockpit:
+Audit Logging service integration to the developed CAP application requires the following additional entitlements and quotas in the cockpit:
 
-| Service                           | Plan       | Number of Instances |
+| Service | Plan | Number of Instances |
 |-----------------------------------|------------|:-------------------:|
 | SAP Audit Log Service | premium | 1 |
 | Audit Log Viewer Service | free/default | 1

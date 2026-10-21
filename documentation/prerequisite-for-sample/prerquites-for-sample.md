@@ -414,7 +414,7 @@ For more information refer the [document](https://help.sap.com/docs/btp/sap-busi
               "target": "/odata/$1",
               "destination": "incident-management-srv-api",
               "authenticationType": "xsuaa",
-              "csrfProtection": false
+              "csrfProtection": true
             },
             {
               "source": "^/resources/(.*)$",

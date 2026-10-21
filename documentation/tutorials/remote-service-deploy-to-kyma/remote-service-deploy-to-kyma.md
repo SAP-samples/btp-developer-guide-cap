@@ -78,7 +78,6 @@ First, you create a service instance for the SAP S/4HANA Cloud Extensibility ser
      - For **systemName**, enter the name of your registered SAP S/4HANA Cloud system. For example, `SAP S/4HANA DEV System`.
      - For **communicationArrangementName**, enter a name for the communication arrangement that is created for the SAP S/4HANA Cloud tenant. For example, `INCIDENT_MANAGEMENT_0008`.
 
-
     > For more information, see [Communication Arrangement JSON/YAML File - Properties](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/553a4c6b98be4c1ba7d1dfa0e9df8669.html).
 
 2.  Navigate to the **package.json** file in the root folder of the application. Add the `[production]` profile `credentials` (`destination` and `path`) to the settings for **API_BUSINESS_PARTNER**:

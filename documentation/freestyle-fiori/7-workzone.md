@@ -57,6 +57,8 @@
 
   ![shows what the preceding text described.](./images/workzone-add-app-to-role.png)
 
+> **Note:** Assigning the app to the **Everyone** role makes the tile visible to all authenticated users of your Work Zone site. To restrict visibility to specific users, you can configure role-based access instead. See [Assign Content to a Role](https://help.sap.com/docs/build-work-zone-standard-edition/sap-build-work-zone-standard-edition/federation-assign-content-to-role?locale=en-US).
+
 ### Test your site
 
 1. Navigate to **Site Directory** and find your site.

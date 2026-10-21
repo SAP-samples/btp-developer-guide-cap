@@ -220,12 +220,12 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
 
     This action generates a set of configurations that represent the **kubeconfig** file of the service account.
 
-8. Choose a longer period from the dropdown in the **Expiration seconds** field and copy the **TokenRequest** value. You need it following in the steps. 
+8. Accept the **Expiration seconds** and copy the **TokenRequest** value. You need it in the steps that follow. Do not set a maximum expiration — use the default and rotate credentials regularly instead.
 
     <!-- border; size:540px -->
     ![Copy token request](./copy-token-request.png)
 
-9. Navigate to the **Cluster Details** page and choose **Configuration** &rarr; **Cluster Role Bindings**.
+9. Navigate to the namespace **incident-management-namespace** and choose **Configuration** &rarr; **Role Bindings**.
 
     <!-- border; size:540px -->
     ![Cluster details](./cluster-details.png)
@@ -235,10 +235,10 @@ To run the pipeline using the SAP Continuous Integration and Delivery service, y
     <!-- border; size:540px -->
     ![Create cluster role binding](./create-cluster-role-binding.png)
 
-11. In the **Create Cluster Role Binding** dialog:
+11. In the **Create Role Binding** dialog:
 
     - Enter a unique name in the **Name** field. For example, **incident-management-namespace-admin**.
-    - Select **cluster-admin** from the dropdown in the **Role** field.
+    - Select **admin** from the dropdown in the **Role** field. This grants full access within the namespace only — no cluster-wide privileges are needed for this deployment.
     - Select **ServiceAccount** from the dropdown in the **Kind** field.
     - Select **incident-management-namespace** from the dropdown in the **Service Account Namespace** field.
     - Select **incident-management-namespace-service-account** from the dropdown in the **Service Account Name** field.

@@ -16,7 +16,7 @@ The Remote Service Integration tutorial was executed and mock server was deploye
    
         ```yaml
         messaging:
-            fromSecret: incident-management-srv-event-mesh
+            serviceInstanceFullname: incident-management-srv-event-mesh
         ```
 
    - Remove event-mesh service instance creation from `values.yaml`

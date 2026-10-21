@@ -1,3 +1,4 @@
+
 # Setup CI/CD Pipeline
 
 This section describes how to configure and run a predefined continuous integration and delivery (CI/CD) pipeline using SAP Continuous Integration and Delivery service that automatically builds, tests and deploys your code changes to speed up your development and delivery cycles.
@@ -106,22 +107,19 @@ In order to run the pipeline using the CI/CD service, you need to create a servi
     - Ensure you are on the page of the created service account and click on **Generate TokenRequest**. 
     ![kubeConfig](./cicd48.png)
 
-    - From the **Expiration seconds** dropdown, select the maximum duration.
+    - Accept the **Expiration seconds**, and choose **Copy**. Do not set a maximum expiration — use the default and rotate credentials regularly instead.
     ![kubeConfig](./cicd49.png)
     
     - The configuration details should mention a token, your Kyma cluster and namespace, and choose **Copy**.
     ![configDetails](./cicd50.png)
 
-6. You need to add your service account to a **Cluster Role Binding**. For this go back to your **Cluster Details** page. 
-![clusterRoleBinding](./cicd51.png)
-
-    From the left navigation menu, choose **Configurations** and navigate to **Cluster Role Bindings**. Here click on **Create**.
+6. You need to add your service account to a **Role Binding** scoped to your namespace. Navigate to your namespace and from the left navigation menu, choose **Configurations** and navigate to **Role Bindings**. Here click on **Create**.
 ![binding](./cicd52.png)
 
-7. On **Create Cluster Role Binding** page, fill in the following details:
+7. On **Create Role Binding** page, fill in the following details:
 
     - Name : Give <unique_relevant_name>
-    - Role : Choose **cluster-admin** from the dropdown.
+    - Role : Choose **admin** from the dropdown. This grants full access within the namespace only — no cluster-wide privileges are needed for this deployment.
     - Kind : Choose **ServiceAccount** from the dropdown.
     - Service Account Namespace : Choose the relevant namespace from the dropdown where the service account is created.
     - Service Account Name : Choose the created service account from the dropdown.
@@ -129,7 +127,7 @@ In order to run the pipeline using the CI/CD service, you need to create a servi
         Your details page should look like this:
         ![custer-role-binding](./cicd53.png)
 
-    - Now click on create. You should see your newly created Cluster Role Binding
+    - Now click on create. You should see your newly created Role Binding
 
 8. Navigate to the Continuous Integration and Delivery Application. On this page, choose **Credentials** and click on the **\+** to create a new credential. 
 
@@ -195,7 +193,7 @@ For your pipeline to be able to push and pull images from your docker repository
     ```json
         {
         "devDependencies": {
-           "@cap-js/sqlite": "^1",
+           "@cap-js/sqlite": "^3",
             ...
 
             },

@@ -120,6 +120,8 @@ You need to assign your user to the **Launchpad_Admin** role collection, so you 
     <!-- border; size:540px -->
     ![WorkZone6](./integrate_launchpad_6.png)
 
+> **Note:** Assigning the app to the **Everyone** role makes the tile visible to all authenticated users of your Work Zone site. To restrict visibility to specific users, you can configure role-based access instead. See [Assign Content to a Role](https://help.sap.com/docs/build-work-zone-standard-edition/sap-build-work-zone-standard-edition/federation-assign-content-to-role?locale=en-US).
+
 #### Create site
 
 1. Navigate to **Site Directory** and choose **Create Site**.

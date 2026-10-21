@@ -181,7 +181,7 @@ Approuter supports Redis for session management. To create the Redis instance an
         EXT_SESSION_MGT: '{ // Add
             "instanceName": "incident-session-management", // Add
             "storageType": "redis", // Add
-            "sessionSecret": "VqO446NAgSd795NiBW7SXPvuKKH4pDso3qVcWC1GyLa2Zq6XASh0FNZ3b26ePlZe", // # 64 character unique string
+            "sessionSecret": "<YOUR_UNIQUE_64_CHAR_SECRET>", 
             "defaultRetryTimeout": 10000, // Add
             "backOffMultiplier": 10 // Add
             }' // Add

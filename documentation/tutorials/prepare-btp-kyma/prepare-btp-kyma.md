@@ -179,10 +179,12 @@ Follow these steps to create an SAP HANA Cloud service instance in the SAP BTP c
 
 11. At **SAP HANA Database Availability Zone and Replicas**, choose again **Next Step**.
 
-12. Select the **Allow all IP addresses** radio button, and choose **Review and Create** to review your SAP HANA Cloud instance configuration.
+12. Select the **Allow specific IP addresses and IP ranges(in addition to CLoud Foundry in BTP)** radio button, and choose **Review and Create** to review your SAP HANA Cloud instance configuration.
 
       <!-- border; size:540px -->
       ![Create SAP HANA DB Step 3](./create-hana-db3.png)
+
+      > **Note:** To get the IP addresses to allowlist, follow [How to find egress IP addresses for SAP BTP](https://userapps.support.sap.com/sap/support/knowledge/en/3749298).
 
 13. Choose **Create Instance**.
 

@@ -80,7 +80,7 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
 
 2. Configure `containerize.yaml` at the root of your project:
 
-    > **Note:** Set `BP_NODE_VERSION: "20"` to pin Node.js to version 20 LTS. Without it, the Paketo buildpack selects Node.js 26, which requires `libatomic.so.1` — a library not present in the `paketobuildpacks/run-jammy-base` runtime image, causing the container to crash on startup.
+    > **Note:** Set `BP_NODE_VERSION: "22"` to pin Node.js to version 22 LTS. CAP `@sap/cds` v10 and later require Node.js 22+. Without it, the Paketo buildpack may select an incompatible Node.js version, causing the container to crash on startup.
 
     ```yaml
     _schema-version: '1.0'
@@ -94,7 +94,7 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
             builder: builder-jammy-base
             path: gen/srv
             env:
-              BP_NODE_VERSION: "20"
+              BP_NODE_VERSION: "22"
       - name: incident-management-hana-deployer
         build-parameters:
           buildpack:
@@ -102,7 +102,7 @@ See [Environment variables](https://docs.docker.com/engine/reference/commandline
             builder: builder-jammy-base
             path: gen/db
             env:
-              BP_NODE_VERSION: "20"
+              BP_NODE_VERSION: "22"
       - name: incident-management-html5-deployer
         build-parameters:
           buildpack:
@@ -158,6 +158,8 @@ Create a new file called `s4cems.json` at the root folder of the project and cop
     servicePlanName: default
   ```
 
+  > **Note:** The SAP Service Operator will deploy this instance with the name `incident-management-event-mesh` (Helm release name + alias). You will need this full name when binding other applications — such as the mock server — to the same instance.
+
 2. Find `srv/bindings` in `values.yaml` and add the SAP Event Mesh instance:
 
   ```yaml
@@ -166,6 +168,8 @@ Create a new file called `s4cems.json` at the root folder of the project and cop
       event-mesh:
         serviceInstanceName: event-mesh
   ```
+
+  > **Note:** The binding key (`event-mesh`) and `serviceInstanceName` here refer to the alias defined in `Chart.yaml`, not the full deployed name. After running `cds build --production`, verify the binding key in your generated `gen/chart/values.yaml` — the key may be named `messaging` depending on your CAP version, in which case the binding created in the cluster will be `incident-management-srv-messaging`.
 
 3. Add the following configuration to `chart/Chart.yaml` for SAP Event Mesh instance creation:
 
@@ -180,6 +184,11 @@ For more information about Helm and CAP, see [About CAP Helm chart](https://cap.
 ## Deploy Helm Chart
 
 Once all configurations are done, configure access to your container images and deploy.
+
+> **Note:** If you are redeploying with a new image version, verify that the image tag in `gen/chart/values.yaml` matches what you set in `containerize.yaml`, or pass it explicitly:
+> ```sh
+> helm upgrade incident-management ./gen/chart -n <namespace> --set global.image.tag=<image-version>
+> ```
 
 ### Configure Access to Your Container Images
 
@@ -251,6 +260,6 @@ The outcome of installation will look something like this:
 
 ![deployed app](../images/deployedapp.png)
 
-To be able to access the application via the URL, you have to [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
+Before accessing the Incident Management application, assign the appropriate application roles to your SAP user. The **support** role is required to access `ProcessorService`. Without this role, requests to `/odata/v4/processor/` return `HTTP 403 Forbidden` and the application may display a blank page. Sign out and sign back in after assigning the role.
 
 As a next step, to access the application in launchpad, proceed to [Integrate with SAP Build Workzone](https://developers.sap.com/tutorials/integrate-with-work-zone.html).

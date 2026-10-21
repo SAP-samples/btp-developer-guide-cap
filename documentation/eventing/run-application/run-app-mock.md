@@ -2,10 +2,12 @@
 
 ## Introduction
 
-The application development and deployment is completed and now it can be tested. The mock S/4HANA will be used to simulate sending of events which will be processed by the eventing implementation in the Incident Management application.
+The application development and deployment are complete and now it can be tested. The mock S/4HANA will be used to simulate sending of events which will be processed by the eventing implementation in the Incident Management application.
 
   
 ## Content
+
+> **Before you begin:** Ensure that the **support** role collection is assigned to your user. Without the required role, the Incident Management application may display a blank page and requests to `ProcessorService` may return `HTTP 403 Forbidden`. See [Assign Application Roles](https://developers.sap.com/tutorials/user-role-assignment.html).
 
 1. Access your Incident Management application.
 
@@ -17,9 +19,9 @@ The application development and deployment is completed and now it can be tested
     - Urgency: Low(L)
     - Status: New(N)
 
-    Note: While Choosing customer copy the ID of the customer to a clipboard for a later use.
+    Note: When selecting a customer, copy the customer ID to a clipboard for a later use.
     
-    Choose **Save** to finish
+    Choose **Save** to finish. Ensure the incident is saved and is not left as a draft before proceeding with the eventing test.
 
  ![Create Incident](./images/mock-incident.png)
 
@@ -27,21 +29,23 @@ The application development and deployment is completed and now it can be tested
 
  ![Create Incident](./images/mock-incident-mail.png)
 
-5. Fetch the address Id of the Customer by executing the below request in Postman. Choose **GET** and copy URL to the field:
+5. Retrieve the customer's AddressID by sending the following request in Postman. Choose **GET** and copy URL to the field:
    
 ```
-<The application route of the mock server\>/odata/v2/api-business-partner/A_BusinessPartner('<the-business-partner-id-of-your-created-incident')/to_BusinessPartnerAddress
+<mock-server-route>/odata/v2/api-business-partner/A_BusinessPartner('<your-business-partner-id>')/to_BusinessPartnerAddress
 ```
   
   ![Fetch Address Id](./images/fetchAddressId.png)
 
-6. Test your applicaton by executing below request in Postman. Choose **Patch** and copy URL to the field:
+  Note the `AddressID` returned in the response. You will use this value in Step 7.
+
+6. Test your application by sending the following request in Postman. Choose **PATCH** and copy URL to the field:
 
 ```
-<The application route of the mock server\>/odata/v2/api-business-partner/A_BusinessPartner('<the-business-partner-id-of-your-created-incident\>') 
+<mock-server-route>/odata/v2/api-business-partner/A_BusinessPartner('<your-business-partner-id>')
 ```
 
-7. Copy below code to body
+7. Copy the following JSON into the request body
 
 ```json
 {
@@ -61,7 +65,7 @@ The application development and deployment is completed and now it can be tested
 }
 ```
 
-8. Make sure to choose **JSON** in dropdown and choose **Send**
+8. Make sure to select **JSON** from the dropdown and choose **Send**
 
  ![Test mock](./images/test-mock.png)
 

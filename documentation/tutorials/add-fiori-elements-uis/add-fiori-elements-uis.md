@@ -92,6 +92,10 @@ To learn more about each of these points, see [Why Use SAP Fiori Elements?](http
 
 > You can create a CAP project in either Node.js or Java. You have to choose one way or the other and follow through. The **Node.js** and **Java** sections below provide detailed steps for each alternative way.
 
+> **Note:** If the **Application Info - incidents** tab is closed at any point, you can reopen it:
+> 1. Invoke the Command Palette — **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows.
+> 2. Choose **Fiori: Open Application Info**.
+
 <details open>
 <summary>Node.js</summary>
 
@@ -110,14 +114,6 @@ Instead of using `cds watch` command in the terminal to start the service, you u
     > If you get an error **SyntaxError: Unexpected token / in JSON at position 4**, open the file **.vscode/launch.json**, delete any comments that you have there, and try again. 
 
     This option opens a dropdown menu at the top offering all scripts maintained in the scripts section of the `package.json` file that is based on the `cds run` and `cds watch` commands.
-
-    > In case the **Application Info - incidents** tab is closed: 
-    >
-    >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
-    >2. Choose **Fiori: Open Application Info**.
-
-
-
 
 2. Select the **watch-incidents** npm script.
 
@@ -189,11 +185,6 @@ In this section, you modify the List View Page of the UI with the SAP Fiori page
 
     <!-- border; size:540px -->
     ![Page Map properties](./PageMap-properties.png)
-
-    > In case the **Application Info - incidents** tab is closed: 
-    >
-    >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
-    >2. Choose **Fiori: Open Application Info**.
 
 2. In the **List Report** tile, choose the **Pencil** icon next to the title. The page editor is opened.
 
@@ -326,11 +317,6 @@ In this section, you modify the Incident Object Page of the UI with the SAP Fior
 #### Edit header
 
 1. Make sure that the SAP Fiori page editor is open. If you closed it, choose the **Open Page Map** option in the **Application Info - incidents** tab.
-
-    > To open the **Application Info - incidents** tab: 
-    >
-    >1. Invoke the Command Palette - **View** &rarr; **Command Palette** or <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for macOS / <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for Windows. 
-    >2. Choose **Fiori: Open Application Info**.
 
 2. In the **Incident Object Page** tile, choose the **Pencil** icon next to the title.
 

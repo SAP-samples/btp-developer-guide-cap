@@ -158,7 +158,7 @@ CAP provides different handlers that can be used to catch events and add custom 
 2. Add the following code:
 
     ```javascript
-    const cds = require('@sap/cds')
+    import cds from '@sap/cds'
 
     let audit
 
@@ -204,7 +204,7 @@ CAP provides different handlers that can be used to catch events and add custom 
     }
     })
 
-    module.exports = cds.server
+    export default cds.server
     ```
 
 Here in this custom code we are trying to generate `security-events` for `403` `forbidden` events. This can be modified to include any other events as well.

@@ -56,13 +56,13 @@ Open the **srv/pom.xml** file and add the following snippet to the dependencies 
 ### Add tests
 
 <details open>
-<summary>Node.js test cases (test.js)</summary>
+<summary>Node.js test cases (test.cjs)</summary>
 
 1. Create a folder at the root of the **INCIDENT-MANAGEMENT** project and name it **test**.
 
-2. In the **test** folder, create the **test.js** file.
+2. In the **test** folder, create the **test.cjs** file.
 
-3. Add the following code to the **test.js** file:
+3. Add the following code to the **test.cjs** file:
 
     ```js
     const cds = require('@sap/cds')
@@ -577,7 +577,7 @@ Add the `"test"` script to the `scripts` section of **package.json**:
 ```json
 {
   "scripts": {
-    "test": "CDS_PLUGIN_UI5_ACTIVE=false node --test --test-timeout=30000 test/test.js"
+    "test": "CDS_PLUGIN_UI5_ACTIVE=false node --test --test-timeout=30000 test/test.cjs"
   }
 }
 ```

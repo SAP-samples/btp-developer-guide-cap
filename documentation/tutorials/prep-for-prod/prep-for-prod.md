@@ -27,6 +27,18 @@ You've added test cases in your application. Follow the steps in the [Add Test C
 
     > The **cds add hana** command adds the `@cap-js/hana` package to the **package.json** file of the **INCIDENT-MANAGEMENT** project.
 
+    > **Note:** The version `^x` in the sample **package.json** is a placeholder. The actual version range is determined by the CAP tooling — for example, `"@cap-js/hana": "^3"`. If the `@cap-js/hana` package is reported as not installed, run the following command from the project root:
+    >
+    > ```bash
+    > npm install
+    > ```
+    >
+    > You can verify the installation with:
+    >
+    > ```bash
+    > npm ls @cap-js/hana
+    > ```
+
     ```json
     {
         "name": "incident-management",
@@ -174,6 +186,20 @@ You've added test cases in your application. Follow the steps in the [Add Test C
     >
     >- Adds the SAP Authorization and Trust Management service (including the `"@sap/xssec": "^x"` dependency and the `cds.requires` `[production]` profile `"auth": "xsuaa"`) to the **package.json** file of the **INCIDENT-MANAGEMENT** project.
     >- Creates the SAP Authorization and Trust Management service security configuration (that is, the **xs-security.json** file) for the **INCIDENT-MANAGEMENT** project.
+
+    > **Note:** After running `cds add xsuaa`, the `@sap/xssec` dependency is declared in the project's **package.json**. If the package is reported as not installed, run the following command from the project root:
+    >
+    > ```bash
+    > npm install
+    > ```
+    >
+    > Verify the installation with:
+    >
+    > ```bash
+    > npm ls @sap/xssec
+    > ```
+    >
+    > If installation still fails, inspect the output from `npm install` and resolve the reported dependency or registry error before continuing.
 
 2. Make sure that the SAP Authorization and Trust Management configuration has been added to the **package.json** file:
     

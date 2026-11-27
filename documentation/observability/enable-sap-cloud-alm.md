@@ -80,7 +80,7 @@ To enable data collection, you need to add the following configuration to your a
    sap.ui.define(
 	 ["sap/fe/core/AppComponent", "sap/ui/performance/trace/FESR"], function(Component, FESR) {
 	     "use strict";
-	  FESR.setActive(true, new URI(sap.ui.require.toURL("ns.incidents")).path() + "/fesr");
+	  FESR.setActive(true, new URI(sap.ui.require.toUrl("ns.incidents")).path() + "/fesr");
 	     return Component.extend("ns.incidents.Component", {
 		 metadata: {
 		     manifest: "json"
